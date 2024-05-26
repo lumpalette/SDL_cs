@@ -206,9 +206,9 @@ unsafe partial class SDL
 	/// Get the properties associated with a surface.
 	/// </summary>
 	/// <remarks>
+	/// The properties' string values can be found in <see cref="PropNames"/>; they have 'SURFACE_' as a prefix.
+	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceProperties">here</see>.
-	/// <br/>
-	/// The name of the properties can be found in the <see cref="PropNames"/> class. You can identify them with the 'SURFACE_' prefix.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="Surface"/> structure to query. </param>
 	/// <returns> A valid property id on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -228,16 +228,16 @@ unsafe partial class SDL
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceColorspace">here</see>.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="Surface"/> structure to update. </param>
-	/// <param name="colorspace"> A <see cref="Colorspace"/> value describing the surface colorspace. </param>
+	/// <param name="colorspace"> A <see cref="ColorspaceValue"/> value describing the surface colorspace. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int SetSurfaceColorspace(Surface* surface, Colorspace colorspace)
+	public static int SetSurfaceColorspace(Surface* surface, ColorspaceValue colorspace)
 	{
 		return _PInvokeSetSurfaceColorspace(surface, colorspace);
 	}
 
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorspace")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetSurfaceColorspace(Surface* surface, Colorspace colorspace);
+	private static partial int _PInvokeSetSurfaceColorspace(Surface* surface, ColorspaceValue colorspace);
 
 	/// <summary>
 	/// Get the colorspace used by a surface.
@@ -246,11 +246,11 @@ unsafe partial class SDL
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorspace">here</see>.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="Surface"/> structure to query. </param>
-	/// <param name="colorspace"> Returns the <see cref="Colorspace"/> value describing the surface colorspace. </param>
+	/// <param name="colorspace"> Returns the <see cref="ColorspaceValue"/> value describing the surface colorspace. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int GetSurfaceColorspace(Surface* surface, out Colorspace colorspace)
+	public static int GetSurfaceColorspace(Surface* surface, out ColorspaceValue colorspace)
 	{
-		fixed (Colorspace* c = &colorspace)
+		fixed (ColorspaceValue* c = &colorspace)
 		{
 			return _PInvokeGetSurfaceColorspace(surface, c);
 		}
@@ -258,7 +258,7 @@ unsafe partial class SDL
 
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorspace")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetSurfaceColorspace(Surface* surface, Colorspace* colorspace);
+	private static partial int _PInvokeGetSurfaceColorspace(Surface* surface, ColorspaceValue* colorspace);
 
 	/// <summary>
 	/// Set the palette used by a surface.
@@ -697,14 +697,14 @@ unsafe partial class SDL
 	/// <param name="colorspace"> The new colorspace. </param>
 	/// <param name="props"> An <see cref="PropertiesId"/> with additional color properties, or <see cref="PropertiesId.Invalid"/>. </param>
 	/// <returns> The new <see cref="Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static Surface* ConvertSurfaceFormatAndColorspace(Surface* surface, PixelFormatValue format, Colorspace colorspace, PropertiesId props)
+	public static Surface* ConvertSurfaceFormatAndColorspace(Surface* surface, PixelFormatValue format, ColorspaceValue colorspace, PropertiesId props)
 	{
 		return _PInvokeConvertSurfaceFormatAndColorspace(surface, format, colorspace, props);
 	}
 
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertSurfaceFormatAndColorspace")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Surface* _PInvokeConvertSurfaceFormatAndColorspace(Surface* surface, PixelFormatValue format, Colorspace colorspace, PropertiesId props);
+	private static partial Surface* _PInvokeConvertSurfaceFormatAndColorspace(Surface* surface, PixelFormatValue format, ColorspaceValue colorspace, PropertiesId props);
 
 	/// <summary>
 	/// Copy a block of pixels of one format to another format.
@@ -744,17 +744,17 @@ unsafe partial class SDL
 	/// <param name="width"> The width of the block to copy, in pixels. </param>
 	/// <param name="height"> The height of the block to copy, in pixels. </param>
 	/// <param name="srcFormat"> A <see cref="PixelFormatValue"/> value of the <paramref name="src"/> pixels format. </param>
-	/// <param name="srcColorspace"> A <see cref="Colorspace"/> value describing the colorspace of the <paramref name="src"/> pixels. </param>
+	/// <param name="srcColorspace"> A <see cref="ColorspaceValue"/> value describing the colorspace of the <paramref name="src"/> pixels. </param>
 	/// <param name="srcProps"> A <see cref="PropertiesId"/> with additional source color properties, or <see cref="PropertiesId.Invalid"/>. </param>
 	/// <param name="src"> The source pixels, as an unsigned 32-bit integers array. </param>
 	/// <param name="srcPitch"> The pitch of the source pixels, in bytes. </param>
 	/// <param name="dstFormat"> A <see cref="PixelFormatValue"/> value of the <paramref name="dst"/> pixels format. </param>
-	/// <param name="dstColorspace"> A <see cref="Colorspace"/> value describing the colorspace of the <paramref name="dst"/> pixels. </param>
+	/// <param name="dstColorspace"> A <see cref="ColorspaceValue"/> value describing the colorspace of the <paramref name="dst"/> pixels. </param>
 	/// <param name="dstProps"> A <see cref="PropertiesId"/> with additional destination color properties, or <see cref="PropertiesId.Invalid"/>. </param>
 	/// <param name="dst"> Returns the new pixel data, as an unsigned 32-bit integer array. </param>
 	/// <param name="srcPitch"> The pitch of the destination pixels, in bytes. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int ConvertPixelsAndColorspace(int width, int height, PixelFormatValue srcFormat, Colorspace srcColorspace, PropertiesId srcProps, uint[] src, int srcPitch, PixelFormatValue dstFormat, Colorspace dstColorspace, PropertiesId dstProps, out uint[] dst, int dstPitch)
+	public static int ConvertPixelsAndColorspace(int width, int height, PixelFormatValue srcFormat, ColorspaceValue srcColorspace, PropertiesId srcProps, uint[] src, int srcPitch, PixelFormatValue dstFormat, ColorspaceValue dstColorspace, PropertiesId dstProps, out uint[] dst, int dstPitch)
 	{
 		dst = new uint[src.Length];
 		fixed (uint* s = src, d = dst)
@@ -765,7 +765,7 @@ unsafe partial class SDL
 
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertPixelsAndColorspace")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeConvertPixelsAndColorspace(int width, int height, PixelFormatValue srcFormat, Colorspace srcColorspace, PropertiesId srcProps, uint* src, int srcPitch, PixelFormatValue dstFormat, Colorspace dstColorspace, PropertiesId dstProps, uint* dst, int dstPitch); // wtf with this function.
+	private static partial int _PInvokeConvertPixelsAndColorspace(int width, int height, PixelFormatValue srcFormat, ColorspaceValue srcColorspace, PropertiesId srcProps, uint* src, int srcPitch, PixelFormatValue dstFormat, ColorspaceValue dstColorspace, PropertiesId dstProps, uint* dst, int dstPitch); // wtf with this function.
 
 	/// <summary>
 	/// Premultiply the alpha on a block of pixels.

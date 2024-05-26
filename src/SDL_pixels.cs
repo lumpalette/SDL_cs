@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -9,97 +8,97 @@ namespace SDL3;
 unsafe partial class SDL
 {
 	/// <summary>
-	/// A collection of <see cref="PixelFormatValue"/> structures. This class replaces the SDL_PixelFormatEnum enumerator.
+	/// A collection of <see cref="PixelFormatValue"/> structures.
 	/// </summary>
 	/// <remarks>
-	/// The official documentation for the equivalent symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormatEnum">here</see>.
-	/// <br/>
-	/// Entries from SDL_PixelFormatEnum are now properties that return <see cref="PixelFormatValue"/> structures. The returned structures are equivalent
-	/// (in value) to their respective enum enties in the C side.
+	/// This symbol is now a collection of properties that return <see cref="PixelFormatValue"/> structures, representing
+	/// the entries of the original enumerator.
+	/// <br/><br/>
+	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormatEnum">here</see>.
 	/// </remarks>
-	public static class PixelFormats
+	public static class PixelFormatEnum
 	{
 		public static PixelFormatValue Unknown => new();
 		
-		public static PixelFormatValue Index1LSB => new(PixelType.Index1, BitmapOrder.O4321, PackedLayout.None, 1, 0);
+		public static PixelFormatValue Index1LSB => new(PixelType.Index1, BitmapOrder.Order4321, PackedLayout.None, 1, 0);
 		
-		public static PixelFormatValue Index1MSB => new(PixelType.Index1, BitmapOrder.O1234, PackedLayout.None, 1, 0);
+		public static PixelFormatValue Index1MSB => new(PixelType.Index1, BitmapOrder.Order1234, PackedLayout.None, 1, 0);
 		
-		public static PixelFormatValue Index2LSB => new(PixelType.Index2, BitmapOrder.O4321, PackedLayout.None, 2, 0);
+		public static PixelFormatValue Index2LSB => new(PixelType.Index2, BitmapOrder.Order4321, PackedLayout.None, 2, 0);
 		
-		public static PixelFormatValue Index2MSB => new(PixelType.Index2, BitmapOrder.O1234, PackedLayout.None, 2, 0);
+		public static PixelFormatValue Index2MSB => new(PixelType.Index2, BitmapOrder.Order1234, PackedLayout.None, 2, 0);
 		
-		public static PixelFormatValue Index4LSB => new(PixelType.Index4, BitmapOrder.O4321, PackedLayout.None, 4, 0);
+		public static PixelFormatValue Index4LSB => new(PixelType.Index4, BitmapOrder.Order4321, PackedLayout.None, 4, 0);
 		
-		public static PixelFormatValue Index4MSB => new(PixelType.Index4, BitmapOrder.O1234, PackedLayout.None, 4, 0);
+		public static PixelFormatValue Index4MSB => new(PixelType.Index4, BitmapOrder.Order1234, PackedLayout.None, 4, 0);
 		
 		public static PixelFormatValue Index8 => new(PixelType.Index8, BitmapOrder.None, PackedLayout.None, 8, 1);
 		
-		public static PixelFormatValue RGB332 => new(PixelType.Packed8, PackedOrder.XRGB, PackedLayout.L332, 8, 1);
+		public static PixelFormatValue RGB332 => new(PixelType.Packed8, PackedOrder.XRGB, PackedLayout.Layout332, 8, 1);
 		
-		public static PixelFormatValue XRGB4444 => new(PixelType.Packed16, PackedOrder.XRGB, PackedLayout.L4444, 12, 2);
+		public static PixelFormatValue XRGB4444 => new(PixelType.Packed16, PackedOrder.XRGB, PackedLayout.Layout4444, 12, 2);
 		
 		public static PixelFormatValue RGB444 => XRGB4444;
 		
-		public static PixelFormatValue XBGR4444 => new(PixelType.Packed16, PackedOrder.XBGR, PackedLayout.L4444, 12, 2);
+		public static PixelFormatValue XBGR4444 => new(PixelType.Packed16, PackedOrder.XBGR, PackedLayout.Layout4444, 12, 2);
 		
 		public static PixelFormatValue BGR444 => XBGR4444;
 		
-		public static PixelFormatValue XRGB1555 => new(PixelType.Packed16, PackedOrder.XRGB, PackedLayout.L1555, 15, 2);
+		public static PixelFormatValue XRGB1555 => new(PixelType.Packed16, PackedOrder.XRGB, PackedLayout.Layout1555, 15, 2);
 		
 		public static PixelFormatValue RGB555 => XRGB1555;
 		
-		public static PixelFormatValue XBGR1555 => new(PixelType.Packed16, PackedOrder.XBGR, PackedLayout.L1555, 15, 2);
+		public static PixelFormatValue XBGR1555 => new(PixelType.Packed16, PackedOrder.XBGR, PackedLayout.Layout1555, 15, 2);
 		
 		public static PixelFormatValue BGR555 => XBGR1555;
 		
-		public static PixelFormatValue ARGB4444 => new(PixelType.Packed16, PackedOrder.ARGB, PackedLayout.L4444, 16, 2);
+		public static PixelFormatValue ARGB4444 => new(PixelType.Packed16, PackedOrder.ARGB, PackedLayout.Layout4444, 16, 2);
 		
-		public static PixelFormatValue RGBA4444 => new(PixelType.Packed16, PackedOrder.RGBA, PackedLayout.L4444, 16, 2);
+		public static PixelFormatValue RGBA4444 => new(PixelType.Packed16, PackedOrder.RGBA, PackedLayout.Layout4444, 16, 2);
 		
-		public static PixelFormatValue ABGR4444 => new(PixelType.Packed16, PackedOrder.ABGR, PackedLayout.L4444, 16, 2);
+		public static PixelFormatValue ABGR4444 => new(PixelType.Packed16, PackedOrder.ABGR, PackedLayout.Layout4444, 16, 2);
 		
-		public static PixelFormatValue BGRA4444 => new(PixelType.Packed16, PackedOrder.BGRA, PackedLayout.L4444, 16, 2);
+		public static PixelFormatValue BGRA4444 => new(PixelType.Packed16, PackedOrder.BGRA, PackedLayout.Layout4444, 16, 2);
 		
-		public static PixelFormatValue ARGB1555 => new(PixelType.Packed16, PackedOrder.ARGB, PackedLayout.L1555, 16, 2);
+		public static PixelFormatValue ARGB1555 => new(PixelType.Packed16, PackedOrder.ARGB, PackedLayout.Layout1555, 16, 2);
 		
-		public static PixelFormatValue RGBA5551 => new(PixelType.Packed16, PackedOrder.RGBA, PackedLayout.L5551, 16, 2);
+		public static PixelFormatValue RGBA5551 => new(PixelType.Packed16, PackedOrder.RGBA, PackedLayout.Layout5551, 16, 2);
 		
-		public static PixelFormatValue ABGR1555 => new(PixelType.Packed16, PackedOrder.ABGR, PackedLayout.L1555, 16, 2);
+		public static PixelFormatValue ABGR1555 => new(PixelType.Packed16, PackedOrder.ABGR, PackedLayout.Layout1555, 16, 2);
 		
-		public static PixelFormatValue BGRA5551 => new(PixelType.Packed16, PackedOrder.BGRA, PackedLayout.L5551, 16, 2);
+		public static PixelFormatValue BGRA5551 => new(PixelType.Packed16, PackedOrder.BGRA, PackedLayout.Layout5551, 16, 2);
 		
-		public static PixelFormatValue RGB565 => new(PixelType.Packed16, PackedOrder.XRGB, PackedLayout.L565, 16, 2);
+		public static PixelFormatValue RGB565 => new(PixelType.Packed16, PackedOrder.XRGB, PackedLayout.Layout565, 16, 2);
 		
-		public static PixelFormatValue BGR565 => new(PixelType.Packed16, PackedOrder.XBGR, PackedLayout.L565, 16, 2);
+		public static PixelFormatValue BGR565 => new(PixelType.Packed16, PackedOrder.XBGR, PackedLayout.Layout565, 16, 2);
 		
 		public static PixelFormatValue RGB24 => new(PixelType.ArrayU8, ArrayOrder.RGB, PackedLayout.None, 24, 3);
 		
 		public static PixelFormatValue BGR24 => new(PixelType.ArrayU8, ArrayOrder.BGR, PackedLayout.None, 24, 3);
 		
-		public static PixelFormatValue XRGB8888 => new(PixelType.Packed32, PackedOrder.XRGB, PackedLayout.L8888, 24, 4);
+		public static PixelFormatValue XRGB8888 => new(PixelType.Packed32, PackedOrder.XRGB, PackedLayout.Layout8888, 24, 4);
 		
-		public static PixelFormatValue RGBX8888 => new(PixelType.Packed32, PackedOrder.RGBX, PackedLayout.L8888, 24, 4);
+		public static PixelFormatValue RGBX8888 => new(PixelType.Packed32, PackedOrder.RGBX, PackedLayout.Layout8888, 24, 4);
 		
-		public static PixelFormatValue XBGR8888 => new(PixelType.Packed32, PackedOrder.XBGR, PackedLayout.L8888, 24, 4);
+		public static PixelFormatValue XBGR8888 => new(PixelType.Packed32, PackedOrder.XBGR, PackedLayout.Layout8888, 24, 4);
 		
-		public static PixelFormatValue BGRX8888 => new(PixelType.Packed32, PackedOrder.BGRX, PackedLayout.L8888, 24, 4);
+		public static PixelFormatValue BGRX8888 => new(PixelType.Packed32, PackedOrder.BGRX, PackedLayout.Layout8888, 24, 4);
 		
-		public static PixelFormatValue ARGB8888 => new(PixelType.Packed32, PackedOrder.ARGB, PackedLayout.L8888, 32, 4);
+		public static PixelFormatValue ARGB8888 => new(PixelType.Packed32, PackedOrder.ARGB, PackedLayout.Layout8888, 32, 4);
 		
-		public static PixelFormatValue RGBA8888 => new(PixelType.Packed32, PackedOrder.RGBA, PackedLayout.L8888, 32, 4);
+		public static PixelFormatValue RGBA8888 => new(PixelType.Packed32, PackedOrder.RGBA, PackedLayout.Layout8888, 32, 4);
 		
-		public static PixelFormatValue ABGR8888 => new(PixelType.Packed32, PackedOrder.ABGR, PackedLayout.L8888, 32, 4);
+		public static PixelFormatValue ABGR8888 => new(PixelType.Packed32, PackedOrder.ABGR, PackedLayout.Layout8888, 32, 4);
 		
-		public static PixelFormatValue BGRA8888 => new(PixelType.Packed32, PackedOrder.BGRA, PackedLayout.L8888, 32, 4);
+		public static PixelFormatValue BGRA8888 => new(PixelType.Packed32, PackedOrder.BGRA, PackedLayout.Layout8888, 32, 4);
 		
-		public static PixelFormatValue XRGB2101010 => new(PixelType.Packed32, PackedOrder.XRGB, PackedLayout.L2101010, 32, 4);
+		public static PixelFormatValue XRGB2101010 => new(PixelType.Packed32, PackedOrder.XRGB, PackedLayout.Layout2101010, 32, 4);
 		
-		public static PixelFormatValue XBGR2101010 => new(PixelType.Packed32, PackedOrder.XBGR, PackedLayout.L2101010, 32, 4);
+		public static PixelFormatValue XBGR2101010 => new(PixelType.Packed32, PackedOrder.XBGR, PackedLayout.Layout2101010, 32, 4);
 		
-		public static PixelFormatValue ARGB2101010 => new(PixelType.Packed32, PackedOrder.ARGB, PackedLayout.L2101010, 32, 4);
+		public static PixelFormatValue ARGB2101010 => new(PixelType.Packed32, PackedOrder.ARGB, PackedLayout.Layout2101010, 32, 4);
 		
-		public static PixelFormatValue ABGR2101010 => new(PixelType.Packed32, PackedOrder.ABGR, PackedLayout.L2101010, 32, 4);
+		public static PixelFormatValue ABGR2101010 => new(PixelType.Packed32, PackedOrder.ABGR, PackedLayout.Layout2101010, 32, 4);
 		
 		public static PixelFormatValue RGB48 => new(PixelType.ArrayU16, ArrayOrder.RGB, PackedLayout.None, 48, 6);
 		
@@ -173,20 +172,24 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// A collection of <see cref="Colorspace"/> structures. This class replaces the SDL_Colorspace enumerator.
+	/// A collection of <see cref="ColorspaceValue"/> structures.
 	/// </summary>
-	public static class Colorspaces
+	/// <remarks>
+	/// This symbol is now a collection of properties that return <see cref="ColorspaceValue"/> structures, representing
+	/// the entries of the original enumerator.
+	/// </remarks>
+	public static class Colorspace
 	{
 		/// <summary>
 		/// Unknown colorspace.
 		/// </summary>
-		public static Colorspace Unknown => new();
+		public static ColorspaceValue Unknown => new();
 
 		/// <summary>
 		/// sRGB is a gamma corrected colorspace, and the default colorspace for SDL rendering and 8-bit RGB surfaces.
 		/// Equivalent to DXGI_COLOR_SPACE_RGB_FULL_G22_NONE_P709.
 		/// </summary>
-		public static Colorspace SRGB => new(ColorType.RGB, ColorRange.Full, ColorPrimaries.BT709, TransferCharacteristics.SRGB, MatrixCoefficients.Identity, ChromaLocation.None);
+		public static ColorspaceValue SRGB => new(ColorType.RGB, ColorRange.Full, ColorPrimaries.BT709, TransferCharacteristics.SRGB, MatrixCoefficients.Identity, ChromaLocation.None);
 
 		/// <summary>
 		/// This is a linear colorspace and the default colorspace for floating point surfaces.
@@ -195,48 +198,48 @@ unsafe partial class SDL
 		/// <remarks>
 		/// On Windows this is the scRGB colorspace, and on Apple platforms this is kCGColorSpaceExtendedLinearSRGB for EDR content.
 		/// </remarks>
-		public static Colorspace SRGBLinear => new(ColorType.RGB, ColorRange.Full, ColorPrimaries.BT709, TransferCharacteristics.Linear, MatrixCoefficients.Identity, ChromaLocation.None);
+		public static ColorspaceValue SRGBLinear => new(ColorType.RGB, ColorRange.Full, ColorPrimaries.BT709, TransferCharacteristics.Linear, MatrixCoefficients.Identity, ChromaLocation.None);
 
 		/// <summary>
 		/// HDR10 is a non-linear HDR colorspace and the default colorspace for 10-bit surfaces.
 		/// Equivalent to DXGI_COLOR_SPACE_RGB_FULL_G2084_NONE_P2020
 		/// </summary>
-		public static Colorspace HDR10 => new(ColorType.RGB, ColorRange.Full, ColorPrimaries.BT2020, TransferCharacteristics.PQ, MatrixCoefficients.Identity, ChromaLocation.None);
+		public static ColorspaceValue HDR10 => new(ColorType.RGB, ColorRange.Full, ColorPrimaries.BT2020, TransferCharacteristics.PQ, MatrixCoefficients.Identity, ChromaLocation.None);
 
 		/// <summary>
 		/// Equivalent to DXGI_COLOR_SPACE_YCBCR_FULL_G22_NONE_P709_X601.
 		/// </summary>
-		public static Colorspace JPEG => new(ColorType.YCbCr, ColorRange.Full, ColorPrimaries.BT709, TransferCharacteristics.BT601, MatrixCoefficients.BT601, ChromaLocation.None);
+		public static ColorspaceValue JPEG => new(ColorType.YCbCr, ColorRange.Full, ColorPrimaries.BT709, TransferCharacteristics.BT601, MatrixCoefficients.BT601, ChromaLocation.None);
 
 		/// <summary>
 		/// Equivalent to DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P601.
 		/// </summary>
-		public static Colorspace BT601Limited => new(ColorType.YCbCr, ColorRange.Limited, ColorPrimaries.BT601, TransferCharacteristics.BT601, MatrixCoefficients.BT601, ChromaLocation.Left);
+		public static ColorspaceValue BT601Limited => new(ColorType.YCbCr, ColorRange.Limited, ColorPrimaries.BT601, TransferCharacteristics.BT601, MatrixCoefficients.BT601, ChromaLocation.Left);
 
 		/// <summary>
 		/// Equivalent to DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P601.
 		/// </summary>
-		public static Colorspace BT601Full => new(ColorType.YCbCr, ColorRange.Full, ColorPrimaries.BT601, TransferCharacteristics.BT601, MatrixCoefficients.BT601, ChromaLocation.Left);
+		public static ColorspaceValue BT601Full => new(ColorType.YCbCr, ColorRange.Full, ColorPrimaries.BT601, TransferCharacteristics.BT601, MatrixCoefficients.BT601, ChromaLocation.Left);
 
 		/// <summary>
 		/// Equivalent to DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P2020.
 		/// </summary>
-		public static Colorspace BT2020Limited => new(ColorType.YCbCr, ColorRange.Limited, ColorPrimaries.BT2020, TransferCharacteristics.PQ, MatrixCoefficients.BT2020NCL, ChromaLocation.Left);
+		public static ColorspaceValue BT2020Limited => new(ColorType.YCbCr, ColorRange.Limited, ColorPrimaries.BT2020, TransferCharacteristics.PQ, MatrixCoefficients.BT2020NCL, ChromaLocation.Left);
 
 		/// <summary>
 		/// Equivalent to DXGI_COLOR_SPACE_YCBCR_FULL_G22_LEFT_P2020.
 		/// </summary>
-		public static Colorspace BT2020Full => new(ColorType.YCbCr, ColorRange.Full, ColorPrimaries.BT2020, TransferCharacteristics.PQ, MatrixCoefficients.BT2020NCL, ChromaLocation.Left);
+		public static ColorspaceValue BT2020Full => new(ColorType.YCbCr, ColorRange.Full, ColorPrimaries.BT2020, TransferCharacteristics.PQ, MatrixCoefficients.BT2020NCL, ChromaLocation.Left);
 
 		/// <summary>
 		/// The default colorspace for RGB surfaces if no colorspace is specified.
 		/// </summary>
-		public static Colorspace DefaultRGB => SRGB;
+		public static ColorspaceValue DefaultRGB => SRGB;
 
 		/// <summary>
 		/// The default colorspace for YUV surfaces if no colorspace is specified.
 		/// </summary>
-		public static Colorspace DefaultYUV => JPEG;
+		public static ColorspaceValue DefaultYUV => JPEG;
 	}
 
 	/// <summary>
@@ -445,10 +448,9 @@ unsafe partial class SDL
 	/// A pixel format in numerical form. This structure serves as a wrapper for an unsigned 32-bit integer.
 	/// </summary>
 	/// <remarks>
+	/// This structure represents a single entry of SDL_PixelFormatEnum; see <see cref="PixelFormatEnum"/> for more details.
+	/// <br/><br/>
 	/// The official documentation for the equivalent symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormatEnum">here</see>.
-	/// <br/>
-	/// Since SDL_PixelFormatEnum was replaced with the <see cref="PixelFormats"/> class, this structure represents a single entry from the
-	/// mentioned enumerator.
 	/// </remarks>
 	public readonly struct PixelFormatValue
 	{
@@ -548,7 +550,7 @@ unsafe partial class SDL
 	/// <summary>
 	/// A colorspace represented in numerical form. This structure serves as a wrapper for an unsigned 32-bit integer.
 	/// </summary>
-	public readonly struct Colorspace(ColorType type, ColorRange range, ColorPrimaries primaries, TransferCharacteristics transfer, MatrixCoefficients matrix, ChromaLocation chroma)
+	public readonly struct ColorspaceValue(ColorType type, ColorRange range, ColorPrimaries primaries, TransferCharacteristics transfer, MatrixCoefficients matrix, ChromaLocation chroma)
 	{
 		private static uint CreateValue(ColorType type, ColorRange range, ColorPrimaries primaries, TransferCharacteristics transfer, MatrixCoefficients matrix, ChromaLocation chroma)
 		{
@@ -558,11 +560,11 @@ unsafe partial class SDL
 		/// <summary>
 		/// Compares another colorspace with this instance.
 		/// </summary>
-		/// <param name="obj"> The <see cref="Colorspace"/> structure to compare with. </param>
-		/// <returns> True if both <see cref="Colorspace"/> structures represent the same colorspace, otherwise false. </returns>
+		/// <param name="obj"> The <see cref="ColorspaceValue"/> structure to compare with. </param>
+		/// <returns> True if both <see cref="ColorspaceValue"/> structures represent the same colorspace, otherwise false. </returns>
 		public override bool Equals([NotNullWhen(true)] object? obj)
 		{
-			if (obj is Colorspace colorspace)
+			if (obj is ColorspaceValue colorspace)
 			{
 				return Value == colorspace.Value;
 			}
@@ -578,8 +580,8 @@ unsafe partial class SDL
 			return HashCode.Combine(Value);
 		}
 
-		public static bool operator ==(Colorspace a, Colorspace b) => a.Value == b.Value;
-		public static bool operator !=(Colorspace a, Colorspace b) => a.Value != b.Value;
+		public static bool operator ==(ColorspaceValue a, ColorspaceValue b) => a.Value == b.Value;
+		public static bool operator !=(ColorspaceValue a, ColorspaceValue b) => a.Value != b.Value;
 
 		/// <summary>
 		/// The colorspace value, represented as an unsigned 32-bit integer.
@@ -613,8 +615,8 @@ unsafe partial class SDL
 	public enum BitmapOrder : byte
 	{
 		None,
-		O4321,
-		O1234
+		Order4321,
+		Order1234
 	}
 
 	/// <summary>
@@ -653,14 +655,14 @@ unsafe partial class SDL
 	public enum PackedLayout : byte
 	{
 		None,
-		L332,
-		L4444,
-		L1555,
-		L5551,
-		L565,
-		L8888,
-		L2101010,
-		L1010102
+		Layout332,
+		Layout4444,
+		Layout1555,
+		Layout5551,
+		Layout565,
+		Layout8888,
+		Layout2101010,
+		Layout1010102
 	}
 
 	/// <summary>
@@ -1044,7 +1046,7 @@ unsafe partial class SDL
 	{
 		if (IS_PIXELFORMAT_FOURCC(format))
 		{
-			if ((format == PixelFormats.YUY2) | (format == PixelFormats.UYVY) | (format == PixelFormats.YVYU) | (format == PixelFormats.P010))
+			if ((format == PixelFormatEnum.YUY2) | (format == PixelFormatEnum.UYVY) | (format == PixelFormatEnum.YVYU) | (format == PixelFormatEnum.P010))
 			{
 				return 2;
 			}
@@ -1109,7 +1111,7 @@ unsafe partial class SDL
 	[Macro]
 	public static bool IS_PIXELFORMAT_10BIT(PixelFormatValue format)
 	{
-		return (!IS_PIXELFORMAT_FOURCC(format)) && (GET_PIXELFORMAT_TYPE(format) == PixelType.Packed32) && (GET_PIXELFORMAT_LAYOUT(format) == PackedLayout.L2101010);
+		return (!IS_PIXELFORMAT_FOURCC(format)) && (GET_PIXELFORMAT_TYPE(format) == PixelType.Packed32) && (GET_PIXELFORMAT_LAYOUT(format) == PackedLayout.Layout2101010);
 	}
 
 	[Macro]
@@ -1126,72 +1128,72 @@ unsafe partial class SDL
 	[Macro]
 	public static bool IS_PIXELFORMAT_FOURCC(PixelFormatValue format)
 	{
-		return (format != PixelFormats.Unknown) && (GET_PIXELFORMAT_FLAG(format) != 1);
+		return (format != PixelFormatEnum.Unknown) && (GET_PIXELFORMAT_FLAG(format) != 1);
 	}
 
 	[Macro]
-	public static ColorType GET_COLORSPACE_TYPE(Colorspace colorspace)
+	public static ColorType GET_COLORSPACE_TYPE(ColorspaceValue colorspace)
 	{
 		return (ColorType)((colorspace.Value >> 28) & 0x0F);
 	}
 
 	[Macro]
-	public static ColorRange GET_COLORSPACE_RANGE(Colorspace colorspace)
+	public static ColorRange GET_COLORSPACE_RANGE(ColorspaceValue colorspace)
 	{
 		return (ColorRange)((colorspace.Value >> 24) & 0x0F);
 	}
 
 	[Macro]
-	public static ChromaLocation GET_COLORSPACE_CHROMA(Colorspace colorspace)
+	public static ChromaLocation GET_COLORSPACE_CHROMA(ColorspaceValue colorspace)
 	{
 		return (ChromaLocation)((colorspace.Value >> 20) & 0x0F);
 	}
 
 	[Macro]
-	public static ColorPrimaries GET_COLORSPACE_PRIMARIES(Colorspace colorspace)
+	public static ColorPrimaries GET_COLORSPACE_PRIMARIES(ColorspaceValue colorspace)
 	{
 		return (ColorPrimaries)((colorspace.Value >> 10) & 0x1F);
 	}
 
 	[Macro]
-	public static TransferCharacteristics GET_COLORSPACE_TRANSFER(Colorspace colorspace)
+	public static TransferCharacteristics GET_COLORSPACE_TRANSFER(ColorspaceValue colorspace)
 	{
 		return (TransferCharacteristics)((colorspace.Value >> 5) & 0x1F);
 	}
 
 	[Macro]
-	public static MatrixCoefficients GET_COLORSPACE_MATRIX(Colorspace colorspace)
+	public static MatrixCoefficients GET_COLORSPACE_MATRIX(ColorspaceValue colorspace)
 	{
 		return (MatrixCoefficients)(colorspace.Value & 0x1F);
 	}
 
 	[Macro]
-	public static bool IS_COLORSPACE_MATRIX_BT601(Colorspace colorspace)
+	public static bool IS_COLORSPACE_MATRIX_BT601(ColorspaceValue colorspace)
 	{
 		MatrixCoefficients matrix = GET_COLORSPACE_MATRIX(colorspace);
 		return (matrix == MatrixCoefficients.BT601) || (matrix == MatrixCoefficients.BT470BG);
 	}
 
 	[Macro]
-	public static bool IS_COLORSPACE_MATRIX_BT709(Colorspace colorspace)
+	public static bool IS_COLORSPACE_MATRIX_BT709(ColorspaceValue colorspace)
 	{
 		return GET_COLORSPACE_MATRIX(colorspace) == MatrixCoefficients.BT709;
 	}
 
 	[Macro]
-	public static bool IS_COLORSPACE_MATRIX_BT2020_NCL(Colorspace colorspace)
+	public static bool IS_COLORSPACE_MATRIX_BT2020_NCL(ColorspaceValue colorspace)
 	{
 		return GET_COLORSPACE_MATRIX(colorspace) == MatrixCoefficients.BT2020NCL;
 	}
 
 	[Macro]
-	public static bool IS_COLORSPACE_LIMITED_RANGE(Colorspace colorspace)
+	public static bool IS_COLORSPACE_LIMITED_RANGE(ColorspaceValue colorspace)
 	{
 		return GET_COLORSPACE_RANGE(colorspace) != ColorRange.Full;
 	}
 
 	[Macro]
-	public static bool IS_COLORSPACE_FULLRANGE(Colorspace colorspace)
+	public static bool IS_COLORSPACE_FULLRANGE(ColorspaceValue colorspace)
 	{
 		return GET_COLORSPACE_RANGE(colorspace) == ColorRange.Full;
 	}
@@ -1219,7 +1221,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetMasksForPixelFormatEnum">here</see>
 	/// </remarks>
-	/// <param name="format"> One of the <see cref="PixelFormatValue"/> values from the <see cref="PixelFormats"/> class. </param>
+	/// <param name="format"> One of the <see cref="PixelFormatValue"/> values from the <see cref="PixelFormatEnum"/> class. </param>
 	/// <param name="bpp"> Returns a bits per pixel value; usually 15, 16, or 32. </param>
 	/// <param name="rMask"> Returns the red mask for the format. </param>
 	/// <param name="gMask"> Returns the green mask for the format. </param>
@@ -1252,7 +1254,7 @@ unsafe partial class SDL
 	/// <param name="gMask"> The green mask for the format. </param>
 	/// <param name="bMask"> The blue mask for the format. </param>
 	/// <param name="aMask"> The alpha mask for the format. </param>
-	/// <returns> The <see cref="PixelFormatValue"/> value corresponding to the format masks, or <see cref="PixelFormats.Unknown"/> if there isn't a match. </returns>
+	/// <returns> The <see cref="PixelFormatValue"/> value corresponding to the format masks, or <see cref="PixelFormatEnum.Unknown"/> if there isn't a match. </returns>
 	public static PixelFormatValue GetPixelFormatValueForMasks(int bpp, uint rMask, uint gMask, uint bMask, uint aMask)
 	{
 		return _PInvokeGetPixelFormatValueForMasks(bpp, rMask, gMask, bMask, aMask);
@@ -1268,7 +1270,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_CreatePixelFormat">here</see>.
 	/// </remarks>
-	/// <param name="format"> One of the <see cref="PixelFormatValue"/> values from the <see cref="PixelFormats"/> class. </param>
+	/// <param name="format"> One of the <see cref="PixelFormatValue"/> values from the <see cref="PixelFormatEnum"/> class. </param>
 	/// <returns> The new <see cref="PixelFormat"/> structure on success or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PixelFormat* CreatePixelFormat(PixelFormatValue format)
 	{

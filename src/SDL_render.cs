@@ -327,9 +327,9 @@ unsafe partial class SDL
 	/// Create a 2D rendering context for a window, with the specified properties.
 	/// </summary>
 	/// <remarks>
+	/// The properties' string values can be found in <see cref="PropNames"/>; they have 'RENDERER_CREATE_' as a prefix.
+	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_CreateRendererWithProperties">here</see>.
-	/// <br/>
-	/// The name of the properties can be found in the <see cref="PropNames"/> class. You can identify them with the 'RENDERER_CREATE_' prefix.
 	/// </remarks>
 	/// <param name="props"> The properties to use. </param>
 	/// <returns> A valid rendering context or null if there was an error; call <see cref="GetError"/> for more information. </returns>
@@ -418,9 +418,9 @@ unsafe partial class SDL
 	/// Get the properties associated with a renderer.
 	/// </summary>
 	/// <remarks>
+	/// The properties' string values can be found in <see cref="PropNames"/>; they have 'RENDERER_' as a prefix.
+	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetRendererProperties">here</see>.
-	/// <br/>
-	/// The name of the properties can be found in the <see cref="PropNames"/> class. You can identify them with the 'RENDERER_' prefix.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <returns> A valid property id on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -484,7 +484,7 @@ unsafe partial class SDL
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_CreateTexture">here</see>.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
-	/// <param name="format"> One of the <see cref="PixelFormatValue"/> values from the <see cref="PixelFormats"/> class. </param>
+	/// <param name="format"> One of the <see cref="PixelFormatValue"/> values from the <see cref="PixelFormatEnum"/> class. </param>
 	/// <param name="access"> One of the enumerated values in <see cref="TextureAccess"/>. </param>
 	/// <param name="width"> The width of the texture in pixels. </param>
 	/// <param name="height"> The height of the texture in pixels. </param>
@@ -520,9 +520,9 @@ unsafe partial class SDL
 	/// Create a texture for a rendering context with the specified properties.
 	/// </summary>
 	/// <remarks>
+	/// The properties' string values can be found in <see cref="PropNames"/>; they have 'TEXTURE_CREATE_' as a prefix.
+	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_CreateTextureWithProperties">here</see>.
-	/// <br/>
-	/// The name of the properties can be found in the <see cref="PropNames"/> class. You can identify them with the 'TEXTURE_CREATE_' prefix.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="props"> The properties to use. </param>
@@ -540,9 +540,9 @@ unsafe partial class SDL
 	/// Get the properties associated with a texture.
 	/// </summary>
 	/// <remarks>
+	/// The properties' string values can be found in <see cref="PropNames"/>; they have 'TEXTURE_' as a prefix.
+	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureProperties">here</see>.
-	/// <br/>
-	/// The name of the properties can be found in the <see cref="PropNames"/> class. You can identify them with the 'TEXTURE_' prefix.
 	/// </remarks>
 	/// <param name="texture"> The texture to query. </param>
 	/// <returns> A valid property id on success or 0 on failure; call <see cref="GetError"/> for more information. </returns>
@@ -579,7 +579,7 @@ unsafe partial class SDL
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_QueryTexture">here</see>.
 	/// </remarks>
 	/// <param name="texture"> The texture to query. </param>
-	/// <param name="format"> Returns the raw format of the texture; the actual format may differ, but pixel transfers will use this format (a value from the <see cref="PixelFormats"/> class). </param>
+	/// <param name="format"> Returns the raw format of the texture; the actual format may differ, but pixel transfers will use this format (a value from the <see cref="PixelFormatEnum"/> class). </param>
 	/// <param name="access"> Returns the actual access to the texture (one of the <see cref="TextureAccess"/> values). </param>
 	/// <param name="width"> Returns the width of the texture in pixels. </param>
 	/// <param name="height"> Returns the height of the texture in pixels. </param>

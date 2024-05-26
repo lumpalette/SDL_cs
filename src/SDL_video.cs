@@ -896,7 +896,7 @@ unsafe partial class SDL
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowPixelFormat">here</see>.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
-	/// <returns> The pixel format of the window on success or <see cref="PixelFormats.Unknown"/> on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <returns> The pixel format of the window on success or <see cref="PixelFormatEnum.Unknown"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PixelFormatValue GetWindowPixelFormat(Window* window)
 	{
 		return _PInvokeGetWindowPixelFormat(window);
@@ -955,9 +955,9 @@ unsafe partial class SDL
 	/// Create a window with the specified properties.
 	/// </summary>
 	/// <remarks>
+	/// The properties' string values can be found in <see cref="PropNames"/>; they have 'WINDOW_CREATE_' as a prefix.
+	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_CreateWindowWithProperties">here</see>.
-	/// <br/>
-	/// The name of the properties can be found in the <see cref="PropNames"/> class. You can identify them with the 'WINDOW_CREATE_' prefix.
 	/// </remarks>
 	/// <param name="props"> The properties to use. </param>
 	/// <returns> The window that was created or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -1025,9 +1025,9 @@ unsafe partial class SDL
 	/// Get the properties associated with a window.
 	/// </summary>
 	/// <remarks>
+	/// The properties' string values can be found in <see cref="PropNames"/>; they have 'WINDOW_' as a prefix.
+	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowProperties">here</see>.
-	/// <br/>
-	/// The name of the properties can be found in the <see cref="PropNames"/> class. You can identify them with the 'WINDOW_' prefix.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> A valid property id on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
