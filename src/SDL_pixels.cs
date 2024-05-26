@@ -8,7 +8,7 @@ namespace SDL3;
 unsafe partial class SDL
 {
 	/// <summary>
-	/// A collection of <see cref="PixelFormatValue"/> structures.
+	/// All pixel formats known to SDL. Represents a collection of <see cref="PixelFormatValue"/> structures.
 	/// </summary>
 	/// <remarks>
 	/// This symbol is now a collection of properties that return <see cref="PixelFormatValue"/> structures, representing
