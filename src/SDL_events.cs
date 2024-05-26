@@ -38,7 +38,7 @@ unsafe partial class SDL
 	public struct DisplayEvent
 	{
 		/// <summary>
-		/// An entry from <see cref="EventType"/> with the prefix <c>Display</c>.
+		/// An <see cref="EventType"/> that has <c>Display</c> as prefix.
 		/// </summary>
 		public EventType Type;
 
@@ -70,7 +70,7 @@ unsafe partial class SDL
 	public struct WindowEvent
 	{
 		/// <summary>
-		/// An entry from <see cref="EventType"/> with the prefix <c>Window</c>.
+		/// An <see cref="EventType"/> that has <c>Window</c> as prefix.
 		/// </summary>
 		public EventType Type;
 
@@ -95,6 +95,28 @@ unsafe partial class SDL
 		/// Event dependent data.
 		/// </summary>
 		public int Data2;
+	}
+
+	/// <summary>
+	/// Keyboard device event structure (FIXME:event.kdevice.*).
+	/// </summary>
+	/// <remarks>
+	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_KeyboardDeviceEvent">here</see>.
+	/// </remarks>
+	[StructLayout(LayoutKind.Sequential)]
+	public struct KeyboardDeviceEvent
+	{
+		/// <summary>
+		/// <see cref="EventType.KeyDown"/> or <see cref="EventType.KeyUp"/>.
+		/// </summary>
+		public EventType Type;
+
+		private readonly uint _reserved;
+
+		/// <summary>
+		/// In nanoseconds, populated using <see cref="FIXME:SDL_GetTicksNS()"/>.
+		/// </summary>
+		public ulong Timestamp;
 	}
 
 	/// <summary>
@@ -322,7 +344,7 @@ unsafe partial class SDL
 		WindowLeaveFullscreenMode,
 
 		/// <summary>
-		/// The window with the associated ID is being or has been destroyed.
+		/// The window with the associated id is being or has been destroyed.
 		/// </summary>
 		/// <remarks>
 		/// If this message is being handled in an event watcher, the window handle is still valid and can still be used
@@ -332,12 +354,12 @@ unsafe partial class SDL
 		WindowDestroyed,
 
 		/// <summary>
-		/// Window has gained focus of the pressure-sensitive pen with ID "data1".
+		/// Window has gained focus of the pressure-sensitive pen with id "data1".
 		/// </summary>
 		WindowPenEnter,
 
 		/// <summary>
-		/// Window has lost focus of the pressure-sensitive pen with ID "data1".
+		/// Window has lost focus of the pressure-sensitive pen with id "data1".
 		/// </summary>
 		WindowPenLeave,
 
@@ -693,11 +715,15 @@ unsafe partial class SDL
 
 		#endregion
 
+		#region Custom events
+
 		/// <summary>
 		/// Events <see cref="User"/> through <see cref="Last"/> are for your use and should be allocated with
 		/// <see cref="FIXME:SDL_RegisterEvents()"/>.
 		/// </summary>
 		User = 0x8000,
+
+		#endregion
 
 		/// <summary>
 		/// This last event is only for bounding internal arrays.

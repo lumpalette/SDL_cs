@@ -211,7 +211,7 @@ unsafe partial class SDL
 	/// The name of the properties can be found in the <see cref="PropNames"/> class. You can identify them with the 'SURFACE_' prefix.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="Surface"/> structure to query. </param>
-	/// <returns> A valid property ID on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <returns> A valid property id on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PropertiesId GetSurfaceProperties(Surface* surface)
 	{
 		return _PInvokeGetSurfaceProperties(surface);

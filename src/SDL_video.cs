@@ -86,9 +86,8 @@ unsafe partial class SDL
 	public struct Window;
 
 	/// <summary>
-	/// Represents an ID for a display. This structure serves as a wrapper for an unsigned 32-bit integer.
+	/// Represents an id for a display. This structure serves as a wrapper for an unsigned 32-bit integer.
 	/// </summary>
-	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct DisplayId
 	{
 		internal DisplayId(uint value)
@@ -97,7 +96,7 @@ unsafe partial class SDL
 		}
 
 		/// <summary>
-		/// An invalid ID for a display.
+		/// An invalid id for a display.
 		/// </summary>
 		/// <remarks>
 		/// This is used when a function that returns a <see cref="DisplayId"/> instance fails.
@@ -114,9 +113,8 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// Represents the internal ID of a window. This structure serves as a wrapper for an unsigned 32-bit integer.
+	/// Represents the internal id of a window. This structure serves as a wrapper for an unsigned 32-bit integer.
 	/// </summary>
-	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct WindowId
 	{
 		internal WindowId(uint value)
@@ -125,7 +123,7 @@ unsafe partial class SDL
 		}
 
 		/// <summary>
-		/// An invalid ID for a window.
+		/// An invalid id for a window.
 		/// </summary>
 		/// <remarks>
 		/// This is used when a function that returns a <see cref="WindowId"/> instance fails.
@@ -522,7 +520,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetPrimaryDisplay">here</see>.
 	/// </remarks>
-	/// <returns> The instance ID of the primary display on success or <see cref="DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <returns> The instance id of the primary display on success or <see cref="DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayId GetPrimaryDisplay()
 	{
 		return _PInvokeGetPrimaryDisplay();
@@ -538,8 +536,8 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayProperties">here</see>.
 	/// </remarks>
-	/// <param name="displayId"> The instance ID of the display to query. </param>
-	/// <returns> A valid property ID on success or <see cref="DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <param name="displayId"> The instance id of the display to query. </param>
+	/// <returns> A valid property id on success or <see cref="DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PropertiesId GetDisplayProperties(DisplayId displayId)
 	{
 		return _PInvokeGetDisplayProperties(displayId);
@@ -555,7 +553,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayName">here</see>.
 	/// </remarks>
-	/// <param name="displayId"> The instance ID of the display to query. </param>
+	/// <param name="displayId"> The instance id of the display to query. </param>
 	/// <returns> The name of a display or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static string? GetDisplayName(DisplayId displayId)
 	{
@@ -572,7 +570,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayBounds">here</see>.
 	/// </remarks>
-	/// <param name="displayId"> The instance ID of the display to query. </param>
+	/// <param name="displayId"> The instance id of the display to query. </param>
 	/// <param name="rect"> Returns the <see cref="Rect"/> structure filled in with the display bounds. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetDisplayBounds(DisplayId displayId, out Rect rect)
@@ -593,7 +591,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayUsableBounds">here</see>.
 	/// </remarks>
-	/// <param name="displayId"> The instance ID of the display to query. </param>
+	/// <param name="displayId"> The instance id of the display to query. </param>
 	/// <param name="rect"> Returns the <see cref="Rect"/> structure filled in with the display bounds </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetDisplayUsableBounds(DisplayId displayId, out Rect rect)
@@ -614,7 +612,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetNaturalDisplayOrientation">here</see>.
 	/// </remarks>
-	/// <param name="displayId"> The instance ID of the display to query. </param>
+	/// <param name="displayId"> The instance id of the display to query. </param>
 	/// <returns> The <see cref="DisplayOrientation"/> enum value of the display, or <see cref="DisplayOrientation.Unknown"/> if it isn't available. </returns>
 	public static DisplayOrientation GetNaturalDisplayOrientation(DisplayId displayId)
 	{
@@ -631,7 +629,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentDisplayOrientation">here</see>.
 	/// </remarks>
-	/// <param name="displayId"> The instance ID of the display to query. </param>
+	/// <param name="displayId"> The instance id of the display to query. </param>
 	/// <returns> The <see cref="DisplayOrientation"/> enum value of the display, or <see cref="DisplayOrientation.Unknown"/> if it isn't available. </returns>
 	public static DisplayOrientation GetCurrentDisplayOrientation(DisplayId displayId)
 	{
@@ -648,7 +646,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayContentScale">here</see>.
 	/// </remarks>
-	/// <param name="displayId"> The instance ID of the display to query. </param>
+	/// <param name="displayId"> The instance id of the display to query. </param>
 	/// <returns> The content scale of the display, or 0.0f on error; call <see cref="GetError"/> for more details. </returns>
 	public static float GetDisplayContentScale(DisplayId displayId)
 	{
@@ -665,7 +663,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetFullscreenDisplayModes">here</see>.
 	/// </remarks>
-	/// <param name="displayId"> The instance ID of the display to query. </param>
+	/// <param name="displayId"> The instance id of the display to query. </param>
 	/// <param name="count"> Returns the number of display modes returned. </param>
 	/// <returns> An array of display modes or null on error; call <see cref="GetError"/> for more details. </returns>
 	public static DisplayMode[]? GetFullscreenDisplayModes(DisplayId displayId, out int count)
@@ -697,7 +695,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetClosestFullscreenDisplayMode">here</see>.
 	/// </remarks>
-	/// <param name="displayId"> The instance ID of the display to query. </param>
+	/// <param name="displayId"> The instance id of the display to query. </param>
 	/// <param name="width"> The width in pixels of the desired display mode. </param>
 	/// <param name="height"> The height in pixels of the desired display mode. </param>
 	/// <param name="refreshRate"> The refresh rate of the desired display mode, or 0.0f for the desktop refresh rate. </param>
@@ -723,7 +721,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetDesktopDisplayMode">here</see>.
 	/// </remarks>
-	/// <param name="displayId"> The instance ID of the display to query </param>
+	/// <param name="displayId"> The instance id of the display to query </param>
 	/// <returns> The desktop display mode or null on error; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayMode? GetDesktopDisplayMode(DisplayId displayId)
 	{
@@ -745,7 +743,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentDisplayMode">here</see>.
 	/// </remarks>
-	/// <param name="displayId"> The instance ID of the display to query. </param>
+	/// <param name="displayId"> The instance id of the display to query. </param>
 	/// <returns> The desktop display mode or null on error; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayMode? GetCurrentDisplayMode(DisplayId displayId)
 	{
@@ -768,7 +766,7 @@ unsafe partial class SDL
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayForPoint">here</see>.
 	/// </remarks>
 	/// <param name="point"> The point to query. </param>
-	/// <returns> The instance ID of the display containing the point or <see cref="DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <returns> The instance id of the display containing the point or <see cref="DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayId GetDisplayForPoint(Point point)
 	{
 		return _PInvokeGetDisplayForPoint(&point);
@@ -785,7 +783,7 @@ unsafe partial class SDL
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayForRect">here</see>.
 	/// </remarks>
 	/// <param name="rect"> The rect to query. </param>
-	/// <returns> The instance ID of the display entirely containing the rect or closest to the center of the rect on success or <see cref="DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <returns> The instance id of the display entirely containing the rect or closest to the center of the rect on success or <see cref="DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayId GetDisplayForRect(Rect rect)
 	{
 		return _PInvokeGetDisplayForRect(&rect);
@@ -802,7 +800,7 @@ unsafe partial class SDL
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayForWindow">here</see>.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
-	/// <returns> The instance ID of the display containing the center of the window on success or 0 on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <returns> The instance id of the display containing the center of the window on success or 0 on failure; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayId GetDisplayForWindow(Window* window)
 	{
 		return _PInvokeGetDisplayForWindow(window);
@@ -973,13 +971,13 @@ unsafe partial class SDL
 	private static partial Window* _PInvokeCreateWindowWithProperties(PropertiesId props);
 
 	/// <summary>
-	/// Get the numeric ID of a window.
+	/// Get the numeric id of a window.
 	/// </summary>
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowID">here</see>.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
-	/// <returns> The ID of the window on success or <see cref="WindowId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <returns> The id of the window on success or <see cref="WindowId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static WindowId GetWindowId(Window* window)
 	{
 		return _PInvokeGetWindowId(window);
@@ -990,12 +988,12 @@ unsafe partial class SDL
 	private static partial WindowId _PInvokeGetWindowId(Window* window);
 
 	/// <summary>
-	/// Get a window from a stored ID.
+	/// Get a window from a stored id.
 	/// </summary>
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowFromID">here</see>.
 	/// </remarks>
-	/// <param name="id"> The ID of the window. </param>
+	/// <param name="id"> The id of the window. </param>
 	/// <returns> The window associated with <paramref name="id"/> or null if it doesn't exist; call <see cref="GetError"/> for more information. </returns>
 	public static Window* GetWindowFromId(WindowId id)
 	{
@@ -1032,7 +1030,7 @@ unsafe partial class SDL
 	/// The name of the properties can be found in the <see cref="PropNames"/> class. You can identify them with the 'WINDOW_' prefix.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
-	/// <returns> A valid property ID on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <returns> A valid property id on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PropertiesId GetWindowProperties(Window* window)
 	{
 		return _PInvokeGetWindowProperties(window);

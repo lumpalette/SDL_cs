@@ -423,7 +423,7 @@ unsafe partial class SDL
 	/// The name of the properties can be found in the <see cref="PropNames"/> class. You can identify them with the 'RENDERER_' prefix.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
-	/// <returns> A valid property ID on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <returns> A valid property id on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PropertiesId GetRendererProperties(Renderer* renderer)
 	{
 		return _PInvokeGetRendererProperties(renderer);
@@ -545,7 +545,7 @@ unsafe partial class SDL
 	/// The name of the properties can be found in the <see cref="PropNames"/> class. You can identify them with the 'TEXTURE_' prefix.
 	/// </remarks>
 	/// <param name="texture"> The texture to query. </param>
-	/// <returns> A valid property ID on success or 0 on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <returns> A valid property id on success or 0 on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PropertiesId GetTextureProperties(Texture* texture)
 	{
 		return _PInvokeGetTextureProperties(texture);

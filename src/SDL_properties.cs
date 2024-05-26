@@ -15,7 +15,7 @@ unsafe partial class SDL
 	public static partial class PropNames { }
 
 	/// <summary>
-	/// An ID of a set of properties. This structure serves as a wrapper for an unsigned 32-bit integer.
+	/// An id of a set of properties. This structure serves as a wrapper for an unsigned 32-bit integer.
 	/// </summary>
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_PropertiesID">here</see>.
@@ -47,7 +47,7 @@ unsafe partial class SDL
 		public static bool operator !=(PropertiesId a, PropertiesId b) => a.Id != b.Id;
 
 		/// <summary>
-		/// An ID to an invalid set of properties.
+		/// An id to an invalid set of properties.
 		/// </summary>
 		/// <remarks>
 		/// Use this whenever you need to tell SDL that a set of properties is not required. This is also used when a function that
@@ -106,7 +106,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetGlobalProperties">here</see>.
 	/// </remarks>
-	/// <returns> A valid property ID on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <returns> A valid property id on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PropertiesId GetGlobalProperties()
 	{
 		return _PInvokeGetGlobalProperties();
@@ -122,7 +122,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_CreateProperties">here</see>.
 	/// </remarks>
-	/// <returns> An ID for a new set of properties, or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <returns> An id for a new set of properties, or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PropertiesId CreateProperties()
 	{
 		return _PInvokeCreateProperties();
