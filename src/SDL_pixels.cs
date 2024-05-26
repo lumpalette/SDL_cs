@@ -449,8 +449,6 @@ unsafe partial class SDL
 	/// </summary>
 	/// <remarks>
 	/// This structure represents a single entry of SDL_PixelFormatEnum; see <see cref="PixelFormatEnum"/> for more details.
-	/// <br/><br/>
-	/// The official documentation for the equivalent symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormatEnum">here</see>.
 	/// </remarks>
 	public readonly struct PixelFormatValue
 	{
