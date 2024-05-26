@@ -550,6 +550,9 @@ unsafe partial class SDL
 	/// <summary>
 	/// A colorspace represented in numerical form. This structure serves as a wrapper for an unsigned 32-bit integer.
 	/// </summary>
+	/// <remarks>
+	/// This structure represents a single entry of the SDL_Colorspace enum; see <see cref="Colorspace"/> for more details.
+	/// </remarks>
 	public readonly struct ColorspaceValue(ColorType type, ColorRange range, ColorPrimaries primaries, TransferCharacteristics transfer, MatrixCoefficients matrix, ChromaLocation chroma)
 	{
 		private static uint CreateValue(ColorType type, ColorRange range, ColorPrimaries primaries, TransferCharacteristics transfer, MatrixCoefficients matrix, ChromaLocation chroma)
