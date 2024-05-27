@@ -102,7 +102,6 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_Renderer">here</see>.
 	/// </remarks>
-	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct Renderer;
 
 	/// <summary>
@@ -111,7 +110,6 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_Texture">here</see>.
 	/// </remarks>
-	[StructLayout(LayoutKind.Sequential)]
 	public readonly struct Texture;
 
 	/// <summary>
