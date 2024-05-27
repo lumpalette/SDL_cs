@@ -105,9 +105,6 @@ unsafe partial class SDL
 		/// <summary>
 		/// The id value, as an unsigned 32-bit integer.
 		/// </summary>
-		/// <remarks>
-		/// This is used when a function that returns a <see cref="DisplayId"/> instance fails.
-		/// </remarks>
 		public readonly uint Id;
 	}
 
