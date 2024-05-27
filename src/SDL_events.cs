@@ -107,7 +107,7 @@ unsafe partial class SDL
 	public struct KeyboardDeviceEvent
 	{
 		/// <summary>
-		/// <see cref="EventType.KeyDown"/> or <see cref="EventType.KeyUp"/>.
+		/// Can be <see cref="EventType.KeyboardAdded"/> or <see cref="EventType.KeyboardRemoved"/>.
 		/// </summary>
 		public EventType Type;
 
@@ -117,6 +117,139 @@ unsafe partial class SDL
 		/// In nanoseconds, populated using <see cref="FIXME:SDL_GetTicksNS()"/>.
 		/// </summary>
 		public ulong Timestamp;
+
+		/// <summary>
+		/// The keyboard instance id.
+		/// </summary>
+		public KeyboardId Which;
+	}
+
+	/// <summary>
+	/// Keyboard button event structure (FIXME:event.key.*)
+	/// </summary>
+	/// <remarks>
+	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_KeyboardEvent">here</see>.
+	/// </remarks>
+	[StructLayout(LayoutKind.Sequential)]
+	public struct KeyboardEvent
+	{
+		/// <summary>
+		/// Can be <see cref="EventType.KeyDown"/> or <see cref="EventType.KeyUp"/>.
+		/// </summary>
+		public EventType Type;
+
+		private readonly uint _reserved;
+
+		/// <summary>
+		/// In nanoseconds, populated using <see cref="FIXME:SDL_GetTicksNS()"/>.
+		/// </summary>
+		public ulong Timestamp;
+
+		/// <summary>
+		/// The window with keyboard focus, if any.
+		/// </summary>
+		public WindowId WindowId;
+
+		/// <summary>
+		/// The keyboard instance id, or 0 if unknown or virtual.
+		/// </summary>
+		public KeyboardId Which;
+
+		/// <summary>
+		/// Can be <see cref="PRESSED"/> or <see cref="RELEASED"/>.
+		/// </summary>
+		public byte State;
+
+		/// <summary>
+		/// Non-zero if this is a key repeat.
+		/// </summary>
+		public byte Repeat;
+
+		private readonly byte _padding;
+		private readonly byte _padding1;
+
+		/// <summary>
+		/// The key that was pressed or released.
+		/// </summary>
+		public Keysym Keysym;
+	}
+
+	/// <summary>
+	/// Keyboard text editing event structure (FIXME:event.edit.*).
+	/// </summary>
+	/// <remarks>
+	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_TextEditingEvent">here</see>.
+	/// </remarks>
+	[StructLayout(LayoutKind.Sequential)]
+	public struct TextEditingEvent
+	{
+		/// <summary>
+		/// Returns <see cref="EventType.TextEditing"/>.
+		/// </summary>
+		public EventType Type;
+
+		private readonly uint _reserved;
+
+		/// <summary>
+		/// In nanoseconds, populated using <see cref="FIXME:SDL_GetTicksNS()"/>.
+		/// </summary>
+		public ulong Timestamp;
+
+		/// <summary>
+		/// The window with keyboard focus, if any.
+		/// </summary>
+		public WindowId WindowId;
+
+		/// <summary>
+		/// The editing text.
+		/// </summary>
+		public readonly string Text => Marshal.PtrToStringUTF8((nint)_text)!;
+
+		private readonly byte* _text;
+
+		/// <summary>
+		/// The start cursor of selected editing text.
+		/// </summary>
+		public int Start;
+
+		/// <summary>
+		/// The length of selected editing text.
+		/// </summary>
+		public int Length;
+	}
+
+	/// <summary>
+	/// Keyboard text input event structure (FIXME:event.text.*).
+	/// </summary>
+	/// <remarks>
+	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_TextInputEvent">here</see>.
+	/// </remarks>
+	[StructLayout(LayoutKind.Sequential)]
+	public struct TextInputEvent
+	{
+		/// <summary>
+		/// Returns <see cref="EventType.TextInput"/>.
+		/// </summary>
+		public EventType Type;
+
+		private readonly uint _reserved;
+
+		/// <summary>
+		/// In nanoseconds, populated using <see cref="FIXME:SDL_GetTicksNS()"/>.
+		/// </summary>
+		public ulong Timestamp;
+
+		/// <summary>
+		/// The window with keyboard focus, if any.
+		/// </summary>
+		public WindowId WindowId;
+
+		/// <summary>
+		/// The input text.
+		/// </summary>
+		public readonly string Text => Marshal.PtrToStringUTF8((nint)_text)!;
+
+		private readonly byte* _text;
 	}
 
 	/// <summary>
@@ -249,7 +382,7 @@ unsafe partial class SDL
 		WindowHidden,
 
 		/// <summary>
-		/// Window has been exposed and should be redrawn.
+		/// Window has been exposed and should be redrawn, and can be redrawn directly from event watchers for this event.
 		/// </summary>
 		WindowExposed,
 

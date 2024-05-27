@@ -1145,7 +1145,8 @@ unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	private static partial int _PInvokeRenderCoordinatesToWindow(Renderer* renderer, float x, float y, float* windowX, float* windowY);
 
-	// LINE 1142: the bane of my existence.
+	// this function below is the bane of my existence (because of it i have to implement SDL_event.h
+	// [that uses literally like >90% of the SDL library {i have to write bindings for all of that ;_;}]).
 
 	/// <summary>
 	/// The name of the software renderer.
