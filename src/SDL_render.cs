@@ -72,28 +72,28 @@ unsafe partial class SDL
 		public const string SDL_PROP_TEXTURE_CREATE_VULKAN_TEXTURE_NUMBER = "vulkan.texture";
 
 		// GetTextureProperties()
-		public const string SDL_PROP_TEXTURE_COLORSPACE_NUMBER = "SDL.texture.colorspace";
-		public const string SDL_PROP_TEXTURE_SDR_WHITE_POINT_FLOAT = "SDL.texture.SDR_white_point";
-		public const string SDL_PROP_TEXTURE_HDR_HEADROOM_FLOAT = "SDL.texture.HDR_headroom";
-		public const string SDL_PROP_TEXTURE_D3D11_TEXTURE_POINTER = "SDL.texture.d3d11.texture";
-		public const string SDL_PROP_TEXTURE_D3D11_TEXTURE_U_POINTER = "SDL.texture.d3d11.texture_u";
-		public const string SDL_PROP_TEXTURE_D3D11_TEXTURE_V_POINTER = "SDL.texture.d3d11.texture_v";
-		public const string SDL_PROP_TEXTURE_D3D12_TEXTURE_POINTER = "SDL.texture.d3d12.texture";
-		public const string SDL_PROP_TEXTURE_D3D12_TEXTURE_U_POINTER = "SDL.texture.d3d12.texture_u";
-		public const string SDL_PROP_TEXTURE_D3D12_TEXTURE_V_POINTER = "SDL.texture.d3d12.texture_v";
-		public const string SDL_PROP_TEXTURE_OPENGL_TEXTURE_NUMBER = "SDL.texture.opengl.texture";
-		public const string SDL_PROP_TEXTURE_OPENGL_TEXTURE_UV_NUMBER = "SDL.texture.opengl.texture_uv";
-		public const string SDL_PROP_TEXTURE_OPENGL_TEXTURE_U_NUMBER = "SDL.texture.opengl.texture_u";
-		public const string SDL_PROP_TEXTURE_OPENGL_TEXTURE_V_NUMBER = "SDL.texture.opengl.texture_v";
-		public const string SDL_PROP_TEXTURE_OPENGL_TEXTURE_TARGET_NUMBER = "SDL.texture.opengl.target";
-		public const string SDL_PROP_TEXTURE_OPENGL_TEX_W_FLOAT = "SDL.texture.opengl.tex_w";
-		public const string SDL_PROP_TEXTURE_OPENGL_TEX_H_FLOAT = "SDL.texture.opengl.tex_h";
-		public const string SDL_PROP_TEXTURE_OPENGLES2_TEXTURE_NUMBER = "SDL.texture.opengles2.texture";
-		public const string SDL_PROP_TEXTURE_OPENGLES2_TEXTURE_UV_NUMBER = "SDL.texture.opengles2.texture_uv";
-		public const string SDL_PROP_TEXTURE_OPENGLES2_TEXTURE_U_NUMBER = "SDL.texture.opengles2.texture_u";
-		public const string SDL_PROP_TEXTURE_OPENGLES2_TEXTURE_V_NUMBER = "SDL.texture.opengles2.texture_v";
-		public const string SDL_PROP_TEXTURE_OPENGLES2_TEXTURE_TARGET_NUMBER = "SDL.texture.opengles2.target";
-		public const string SDL_PROP_TEXTURE_VULKAN_TEXTURE_NUMBER = "SDL.texture.vulkan.texture";
+		public const string TEXTURE_COLORSPACE_NUMBER = "SDL.texture.colorspace";
+		public const string TEXTURE_SDR_WHITE_POINT_FLOAT = "SDL.texture.SDR_white_point";
+		public const string TEXTURE_HDR_HEADROOM_FLOAT = "SDL.texture.HDR_headroom";
+		public const string TEXTURE_D3D11_TEXTURE_POINTER = "SDL.texture.d3d11.texture";
+		public const string TEXTURE_D3D11_TEXTURE_U_POINTER = "SDL.texture.d3d11.texture_u";
+		public const string TEXTURE_D3D11_TEXTURE_V_POINTER = "SDL.texture.d3d11.texture_v";
+		public const string TEXTURE_D3D12_TEXTURE_POINTER = "SDL.texture.d3d12.texture";
+		public const string TEXTURE_D3D12_TEXTURE_U_POINTER = "SDL.texture.d3d12.texture_u";
+		public const string TEXTURE_D3D12_TEXTURE_V_POINTER = "SDL.texture.d3d12.texture_v";
+		public const string TEXTURE_OPENGL_TEXTURE_NUMBER = "SDL.texture.opengl.texture";
+		public const string TEXTURE_OPENGL_TEXTURE_UV_NUMBER = "SDL.texture.opengl.texture_uv";
+		public const string TEXTURE_OPENGL_TEXTURE_U_NUMBER = "SDL.texture.opengl.texture_u";
+		public const string TEXTURE_OPENGL_TEXTURE_V_NUMBER = "SDL.texture.opengl.texture_v";
+		public const string TEXTURE_OPENGL_TEXTURE_TARGET_NUMBER = "SDL.texture.opengl.target";
+		public const string TEXTURE_OPENGL_TEX_W_FLOAT = "SDL.texture.opengl.tex_w";
+		public const string TEXTURE_OPENGL_TEX_H_FLOAT = "SDL.texture.opengl.tex_h";
+		public const string TEXTURE_OPENGLES2_TEXTURE_NUMBER = "SDL.texture.opengles2.texture";
+		public const string TEXTURE_OPENGLES2_TEXTURE_UV_NUMBER = "SDL.texture.opengles2.texture_uv";
+		public const string TEXTURE_OPENGLES2_TEXTURE_U_NUMBER = "SDL.texture.opengles2.texture_u";
+		public const string TEXTURE_OPENGLES2_TEXTURE_V_NUMBER = "SDL.texture.opengles2.texture_v";
+		public const string TEXTURE_OPENGLES2_TEXTURE_TARGET_NUMBER = "SDL.texture.opengles2.target";
+		public const string TEXTURE_VULKAN_TEXTURE_NUMBER = "SDL.texture.vulkan.texture";
 	}
 
 	/// <summary>
@@ -103,13 +103,16 @@ unsafe partial class SDL
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_Renderer">here</see>.
 	/// </remarks>
 	[StructLayout(LayoutKind.Sequential)]
-	public struct Renderer;
+	public readonly struct Renderer;
 
 	/// <summary>
 	/// An efficient driver-specific representation of pixel data. This structure is an opaque type.
 	/// </summary>
+	/// <remarks>
+	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_Texture">here</see>.
+	/// </remarks>
 	[StructLayout(LayoutKind.Sequential)]
-	public struct Texture;
+	public readonly struct Texture;
 
 	/// <summary>
 	/// Information on the capabilities of a render driver or context.

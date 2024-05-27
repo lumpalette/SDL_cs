@@ -77,13 +77,13 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// The struct used as an opaque handle to a window. This structure is an opaque type.
+	/// The struct used as an opaque handle to a window.
 	/// </summary>
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_Window">here</see>.
 	/// </remarks>
 	[StructLayout(LayoutKind.Sequential)]
-	public struct Window;
+	public readonly struct Window;
 
 	/// <summary>
 	/// Represents an id for a display. This structure serves as a wrapper for an unsigned 32-bit integer.

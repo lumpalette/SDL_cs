@@ -15,7 +15,7 @@ unsafe partial class SDL
 	public struct CommonEvent
 	{
 		/// <summary>
-		/// Event type, shared with all events, <see cref="uint"/> to cover user events which are not in the <see cref="EventType"/>
+		/// Event type, shared with all events, an unsigned 32-bit integer to cover user events which are not in the <see cref="EventType"/>
 		/// enumeration.
 		/// </summary>
 		public uint Type;

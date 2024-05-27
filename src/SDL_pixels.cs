@@ -204,12 +204,12 @@ unsafe partial class SDL
 		/// HDR10 is a non-linear HDR colorspace and the default colorspace for 10-bit surfaces.
 		/// Equivalent to DXGI_COLOR_SPACE_RGB_FULL_G2084_NONE_P2020
 		/// </summary>
-		public static ColorspaceValue HDR10 => new(ColorType.RGB, ColorRange.Full, ColorPrimaries.BT2020, TransferCharacteristics.PQ, MatrixCoefficients.Identity, ChromaLocation.None);
+		public static ColorspaceValue Hdr10 => new(ColorType.RGB, ColorRange.Full, ColorPrimaries.BT2020, TransferCharacteristics.PQ, MatrixCoefficients.Identity, ChromaLocation.None);
 
 		/// <summary>
 		/// Equivalent to DXGI_COLOR_SPACE_YCBCR_FULL_G22_NONE_P709_X601.
 		/// </summary>
-		public static ColorspaceValue JPEG => new(ColorType.YCbCr, ColorRange.Full, ColorPrimaries.BT709, TransferCharacteristics.BT601, MatrixCoefficients.BT601, ChromaLocation.None);
+		public static ColorspaceValue Jpeg => new(ColorType.YCbCr, ColorRange.Full, ColorPrimaries.BT709, TransferCharacteristics.BT601, MatrixCoefficients.BT601, ChromaLocation.None);
 
 		/// <summary>
 		/// Equivalent to DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P601.
@@ -239,7 +239,7 @@ unsafe partial class SDL
 		/// <summary>
 		/// The default colorspace for YUV surfaces if no colorspace is specified.
 		/// </summary>
-		public static ColorspaceValue DefaultYUV => JPEG;
+		public static ColorspaceValue DefaultYUV => Jpeg;
 	}
 
 	/// <summary>

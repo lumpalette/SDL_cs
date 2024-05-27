@@ -17,6 +17,14 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
+	/// An opaque type used in <see cref="Surface"/>.
+	/// </summary>
+	/// <remarks>
+	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_BlitMap">here</see>.
+	/// </remarks>
+	public readonly struct BlitMap;
+
+	/// <summary>
 	/// A collection of pixels used in software blitting.
 	/// </summary>
 	/// <remarks>
@@ -28,7 +36,7 @@ unsafe partial class SDL
 		/// <summary>
 		/// Surface internal flags.
 		/// </summary>
-		public readonly uint Flags;
+		public readonly SurfaceFlags Flags;
 
 		/// <summary>
 		/// The pixel format this surface uses.
@@ -58,20 +66,57 @@ unsafe partial class SDL
 		private readonly void* _reserved;
 
 		/// <summary>
-		/// The number of locks this surface has. Each time you lock/unlock the surface, this counter increments/decrements by one.
+		/// The number of locks this surface has. For each time the surface is locked or unlocked, this counter goes up or down.
 		/// </summary>
 		public readonly int Locked;
 
-		public readonly void* _listBlitmap;
+		public readonly BlitMap* _listBlitmap;
 
 		/// <summary>
 		/// The surface's area that can be renderable.
 		/// </summary>
 		public readonly Rect ClipRect;
 
-		private readonly void* _map;
+		private readonly BlitMap* _map;
 
-		private readonly int _refCount;
+		/// <summary>
+		/// Reference count - used when freeing surface.
+		/// </summary>
+		public readonly int RefCount;
+	}
+
+	/// <summary>
+	/// The flags on a <see cref="Surface"/>.
+	/// </summary>
+	/// <remarks>
+	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceFlags">here</see>.
+	/// </remarks>
+	public enum SurfaceFlags : uint
+	{
+		/// <summary>
+		/// Surface uses preallocated memory.
+		/// </summary>
+		PreAlloc = 0x00000001u,
+
+		/// <summary>
+		/// Surface is RLE encoded.
+		/// </summary>
+		RleAccel = 0x00000002u,
+
+		/// <summary>
+		/// Surface is referenced internally.
+		/// </summary>
+		DontFree = 0x00000004u,
+
+		/// <summary>
+		/// Surface uses aligned memory.
+		/// </summary>
+		SimdAligned = 0x00000008u,
+
+		/// <summary>
+		/// Surface uses properties.
+		/// </summary>
+		UsesProperties = 0x00000010u
 	}
 
 	/// <summary>
@@ -131,9 +176,9 @@ unsafe partial class SDL
 	/// <param name="surface"> (Ref) The <see cref="Surface"/> structure to evaluate. </param>
 	/// <returns> True if <paramref name="surface"/> needs to be locked, otherwise false. </returns>
 	[Macro]
-	public static bool MUST_LOCK_SURFACE(Surface* surface)
+	public static bool MUSTLOCK_SURFACE(Surface* surface)
 	{
-		return (surface->Flags & SURFACE_RLEACCEL) != 0;
+		return (surface->Flags & SurfaceFlags.RleAccel) != 0;
 	}
 
 	/// <summary>
@@ -979,29 +1024,4 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ReadSurfacePixel")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	private static partial int _PInvokeReadSurfacePixel(Surface* surface, int x, int y, byte* r, byte* g, byte* b, byte* a);
-
-	/// <summary>
-	/// Surface uses preallocated memory.
-	/// </summary>
-	public const uint SURFACE_PREALLOC = 0x00000001;
-
-	/// <summary>
-	/// Surface is RLE encoded.
-	/// </summary>
-	public const uint SURFACE_RLEACCEL = 0x00000002;
-
-	/// <summary>
-	/// Surface is referenced internally.
-	/// </summary>
-	public const uint SURFACE_DONT_FREE = 0x00000004;
-
-	/// <summary>
-	/// Surface uses aligned memory.
-	/// </summary>
-	public const uint SURFACE_SIMD_ALIGNED = 0x00000008;
-
-	/// <summary>
-	/// Surface uses properties
-	/// </summary>
-	public const uint SURFACE_USES_PROPERTIES = 0x00000010;
 }
