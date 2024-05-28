@@ -95,7 +95,7 @@ unsafe partial class SDL
 				return null;
 			}
 			var keyboards = new KeyboardId[count];
-			for (var i = 0; i < count; i++)
+			for (int i = 0; i < count; i++)
 			{
 				keyboards[i] = k[i];
 			}

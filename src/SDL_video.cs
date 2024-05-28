@@ -491,13 +491,13 @@ unsafe partial class SDL
 	{
 		fixed (int* c = &count)
 		{
-			var d = _PInvokeGetDisplays(c);
+			DisplayId* d = _PInvokeGetDisplays(c);
 			if (d is null)
 			{
 				return null;
 			}
 			var ids = new DisplayId[count];
-			for (var i = 0; i < count; i++)
+			for (int i = 0; i < count; i++)
 			{
 				ids[i] = d[i];
 			}
@@ -666,13 +666,13 @@ unsafe partial class SDL
 	{
 		fixed (int* c = &count)
 		{
-			var d = _PInvokeGetFullscreenDisplayModes(displayId, c);
+			DisplayMode** d = _PInvokeGetFullscreenDisplayModes(displayId, c);
 			if (d is null)
 			{
 				return null;
 			}
-			var modes = new DisplayMode[count];
-			for (var i = 0; i < count; i++)
+			DisplayMode[] modes = new DisplayMode[count];
+			for (int i = 0; i < count; i++)
 			{
 				modes[i] = *d[i];
 			}
@@ -699,7 +699,7 @@ unsafe partial class SDL
 	/// <returns> The closest display mode equal to or larger than the desired mode, or null on error; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayMode? GetClosestFullscreenDisplayMode(DisplayId displayId, int width, int height, float refreshRate, bool includeHighDensityModes)
 	{
-		var d = _PInvokeGetClosestFullscreenDisplayMode(displayId, width, height, refreshRate, includeHighDensityModes ? 1 : 0);
+		DisplayMode* d = _PInvokeGetClosestFullscreenDisplayMode(displayId, width, height, refreshRate, includeHighDensityModes ? 1 : 0);
 		if (d is null)
 		{
 			return null;
@@ -721,7 +721,7 @@ unsafe partial class SDL
 	/// <returns> The desktop display mode or null on error; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayMode? GetDesktopDisplayMode(DisplayId displayId)
 	{
-		var d = _PInvokeGetDesktopDisplayMode(displayId);
+		DisplayMode* d = _PInvokeGetDesktopDisplayMode(displayId);
 		if (d is null)
 		{
 			return null;
@@ -743,7 +743,7 @@ unsafe partial class SDL
 	/// <returns> The desktop display mode or null on error; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayMode? GetCurrentDisplayMode(DisplayId displayId)
 	{
-		var d = _PInvokeGetCurrentDisplayMode(displayId);
+		DisplayMode* d = _PInvokeGetCurrentDisplayMode(displayId);
 		if (d is null)
 		{
 			return null;
@@ -873,7 +873,7 @@ unsafe partial class SDL
 	/// <returns> The exclusive fullscreen mode to use or null for borderless fullscreen desktop mode. </returns>
 	public static DisplayMode? GetWindowFullscreenMode(Window* window)
 	{
-		var d = _PInvokeGetWindowFullscreenMode(window);
+		DisplayMode* d = _PInvokeGetWindowFullscreenMode(window);
 		if (d is null)
 		{
 			return null;

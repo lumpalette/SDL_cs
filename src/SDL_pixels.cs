@@ -1063,7 +1063,7 @@ unsafe partial class SDL
 		{
 			return false;
 		}
-		var type = PIXEL_TYPE(format);
+		PixelType type = PIXEL_TYPE(format);
 		return (type == PixelType.Index1)
 			|| (type == PixelType.Index2)
 			|| (type == PixelType.Index4)

@@ -141,7 +141,7 @@ unsafe partial class SDL
 			get
 			{
 				var formats = new PixelFormatValue[NumTextureFormats];
-				for (var i = 0; i < NumTextureFormats; i++)
+				for (int i = 0; i < NumTextureFormats; i++)
 				{
 					formats[i] = _textureFormats[i];
 				}
