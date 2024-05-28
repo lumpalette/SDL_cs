@@ -391,25 +391,25 @@ unsafe partial class SDL
 	}
 
 	[Macro]
-	public static int GET_WINDOWPOS_UNDEFINED_DISPLAY(int x)
+	public static int WINDOWPOS_UNDEFINED_DISPLAY(int x)
 	{
 		return (int)(WINDOWPOS_UNDEFINED_MASK | x);
 	}
 
 	[Macro]
-	public static bool IS_WINDOWPOS_UNDEFINED(int x)
+	public static bool WINDOWPOS_IS_UNDEFINED(int x)
 	{
 		return (x & 0xFFFF0000) == WINDOWPOS_UNDEFINED_MASK;
 	}
 
 	[Macro]
-	public static int GET_WINDOWPOS_CENTERED_DISPLAY(int x)
+	public static int WINDOWPOS_CENTERED_DISPLAY(int x)
 	{
 		return (int)(WINDOWPOS_CENTERED_MASK | x);
 	}
 
 	[Macro]
-	public static bool IS_WINDOWPOS_CENTERED(int x)
+	public static bool WINDOWPOS_IS_CENTERED(int x)
 	{
 		return (x & 0xFFFF0000) == WINDOWPOS_CENTERED_MASK;
 	}
