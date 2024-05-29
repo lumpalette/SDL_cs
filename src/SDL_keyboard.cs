@@ -114,7 +114,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboardInstanceName">here</see>.
 	/// </remarks>
-	/// <param name="keyboardId"> The keyboard instance ID. </param>
+	/// <param name="keyboardId"> The keyboard instance id. </param>
 	/// <returns> The name of the selected keyboard, or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static string? GetKeyboardInstanceName(KeyboardId keyboardId)
 	{

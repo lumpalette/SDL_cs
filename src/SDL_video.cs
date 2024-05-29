@@ -8,7 +8,7 @@ namespace SDL3;
 // SDL_video.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_video.h.
 unsafe partial class SDL
 {
-	partial class PropNames
+	partial class PropConsts
 	{
 		// CreateWindowWithProperties()
 		public const string WINDOW_CREATE_ALWAYS_ON_TOP_BOOLEAN = "always_on_top";
@@ -391,25 +391,25 @@ unsafe partial class SDL
 	}
 
 	[Macro]
-	public static int WINDOWPOS_UNDEFINED_DISPLAY(int x)
+	public static uint WINDOWPOS_UNDEFINED_DISPLAY(int x)
 	{
-		return (int)(WINDOWPOS_UNDEFINED_MASK | x);
+		return (uint)(WINDOWPOS_UNDEFINED_MASK | x);
 	}
 
 	[Macro]
-	public static bool WINDOWPOS_IS_UNDEFINED(int x)
+	public static bool IS_WINDOWPOS_UNDEFINED(int x)
 	{
 		return (x & 0xFFFF0000) == WINDOWPOS_UNDEFINED_MASK;
 	}
 
 	[Macro]
-	public static int WINDOWPOS_CENTERED_DISPLAY(int x)
+	public static uint WINDOWPOS_CENTERED_DISPLAY(int x)
 	{
-		return (int)(WINDOWPOS_CENTERED_MASK | x);
+		return (uint)(WINDOWPOS_CENTERED_MASK | x);
 	}
 
 	[Macro]
-	public static bool WINDOWPOS_IS_CENTERED(int x)
+	public static bool IS_WINDOWPOS_CENTERED(int x)
 	{
 		return (x & 0xFFFF0000) == WINDOWPOS_CENTERED_MASK;
 	}
@@ -951,7 +951,7 @@ unsafe partial class SDL
 	/// Create a window with the specified properties.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropNames"/>; they have 'WINDOW_CREATE_' as a prefix.
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'WINDOW_CREATE_' as a prefix.
 	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_CreateWindowWithProperties">here</see>.
 	/// </remarks>
@@ -1021,7 +1021,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a window.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropNames"/>; they have 'WINDOW_' as a prefix.
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'WINDOW_' as a prefix.
 	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowProperties">here</see>.
 	/// </remarks>

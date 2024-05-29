@@ -1015,9 +1015,9 @@ unsafe partial class SDL
 	[Macro]
 	public static byte PIXEL_FLAG(PixelFormatValue format)
 	{
-		return (byte)((format.Value >> 28) & 0x0F);
+		return (byte)(((format.Value) >> 28) & 0x0F);
 	}
-
+	 
 	[Macro]
 	public static PixelType PIXEL_TYPE(PixelFormatValue format)
 	{
@@ -1047,11 +1047,7 @@ unsafe partial class SDL
 	{
 		if (IS_PIXELFORMAT_FOURCC(format))
 		{
-			if ((format == PixelFormatEnum.YUY2) | (format == PixelFormatEnum.UYVY) | (format == PixelFormatEnum.YVYU) | (format == PixelFormatEnum.P010))
-			{
-				return 2;
-			}
-			return 1;
+			return (byte)(((format == PixelFormatEnum.YUY2) || (format == PixelFormatEnum.UYVY) || (format == PixelFormatEnum.YVYU) || (format == PixelFormatEnum.P010)) ? 2 : 1);
 		}
 		return (byte)((format.Value >> 0) & 0xFF);
 	}
@@ -1059,71 +1055,38 @@ unsafe partial class SDL
 	[Macro]
 	public static bool IS_PIXELFORMAT_INDEXED(PixelFormatValue format)
 	{
-		if (IS_PIXELFORMAT_FOURCC(format))
-		{
-			return false;
-		}
-		PixelType type = PIXEL_TYPE(format);
-		return (type == PixelType.Index1)
-			|| (type == PixelType.Index2)
-			|| (type == PixelType.Index4)
-			|| (type == PixelType.Index8);
+		return (!IS_PIXELFORMAT_FOURCC(format)) && ((PIXEL_TYPE(format) == PixelType.Index1) || (PIXEL_TYPE(format) == PixelType.Index2) || (PIXEL_TYPE(format) == PixelType.Index4) || (PIXEL_TYPE(format) == PixelType.Index8));
 	}
 
 	[Macro]
 	public static bool IS_PIXELFORMAT_PACKED(PixelFormatValue format)
 	{
-		if (IS_PIXELFORMAT_FOURCC(format))
-		{
-			return false;
-		}
-		PixelType type = PIXEL_TYPE(format);
-		return (type == PixelType.Packed8)
-			|| (type == PixelType.Packed16)
-			|| (type == PixelType.Packed32);
+		return (!IS_PIXELFORMAT_FOURCC(format)) && ((PIXEL_TYPE(format) == PixelType.Packed8) || (PIXEL_TYPE(format) == PixelType.Packed16) || (PIXEL_TYPE(format) == PixelType.Packed32));
 	}
 
 	[Macro]
 	public static bool IS_PIXELFORMAT_ARRAY(PixelFormatValue format)
 	{
-		if (IS_PIXELFORMAT_FOURCC(format))
-		{
-			return false;
-		}
-		PixelType type = PIXEL_TYPE(format);
-		return (type == PixelType.ArrayU8)
-			|| (type == PixelType.ArrayU16)
-			|| (type == PixelType.ArrayU32)
-			|| (type == PixelType.ArrayF16)
-			|| (type == PixelType.ArrayF32);
+		return (!IS_PIXELFORMAT_FOURCC(format)) && ((PIXEL_TYPE(format) == PixelType.ArrayU8) || (PIXEL_TYPE(format) == PixelType.ArrayU16) || (PIXEL_TYPE(format) == PixelType.ArrayU32) || (PIXEL_TYPE(format) == PixelType.ArrayF16) || (PIXEL_TYPE(format) == PixelType.ArrayF32));
 	}
 
 	[Macro]
 	public static bool IS_PIXELFORMAT_ALPHA(PixelFormatValue format)
 	{
-		if (IS_PIXELFORMAT_PACKED(format))
-		{
-			var order = (PackedOrder)PIXEL_ORDER(format);
-			return (order == PackedOrder.ARGB) || (order == PackedOrder.RGBA) || (order == PackedOrder.ABGR) || (order == PackedOrder.BGRA);
-		}
-		return false;
+		var order = (PackedOrder)PIXEL_ORDER(format);
+		return IS_PIXELFORMAT_PACKED(format) && ((order == PackedOrder.ARGB) || (order == PackedOrder.RGBA) || (order == PackedOrder.ABGR) || (order == PackedOrder.BGRA));
 	}
 
 	[Macro]
 	public static bool IS_PIXELFORMAT_10BIT(PixelFormatValue format)
 	{
-		return (!IS_PIXELFORMAT_FOURCC(format)) && (PIXEL_TYPE(format) == PixelType.Packed32) && (PIXEL_LAYOUT(format) == PackedLayout.Layout2101010);
+		return (!IS_PIXELFORMAT_FOURCC(format)) && ((PIXEL_TYPE(format) == PixelType.Packed32) || (PIXEL_LAYOUT(format) == PackedLayout.Layout2101010));
 	}
 
 	[Macro]
 	public static bool IS_PIXELFORMAT_FLOAT(PixelFormatValue format)
 	{
-		if (!IS_PIXELFORMAT_FOURCC(format))
-		{
-			return false;
-		}
-		PixelType type = PIXEL_TYPE(format);
-		return (type == PixelType.ArrayF16) || (type == PixelType.ArrayF32);
+		return (!IS_PIXELFORMAT_FOURCC(format)) && ((PIXEL_TYPE(format) == PixelType.ArrayF16) || (PIXEL_TYPE(format) == PixelType.ArrayF32));
 	}
 
 	[Macro]
@@ -1171,8 +1134,7 @@ unsafe partial class SDL
 	[Macro]
 	public static bool IS_COLORSPACE_MATRIX_BT601(ColorspaceValue colorspace)
 	{
-		MatrixCoefficients matrix = COLORSPACE_MATRIX(colorspace);
-		return (matrix == MatrixCoefficients.BT601) || (matrix == MatrixCoefficients.BT470BG);
+		return (COLORSPACE_MATRIX(colorspace) == MatrixCoefficients.BT601) || (COLORSPACE_MATRIX(colorspace) == MatrixCoefficients.BT470BG);
 	}
 
 	[Macro]

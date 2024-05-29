@@ -7,7 +7,7 @@ namespace SDL3;
 // SDL_surface.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_surface.h.
 unsafe partial class SDL
 {
-	partial class PropNames
+	partial class PropConsts
 	{
 		// GetSurfaceProperties()
 		public const string SURFACE_COLORSPACE_NUMBER = "SDL.surface.colorspace";
@@ -91,6 +91,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceFlags">here</see>.
 	/// </remarks>
+	[Flags]
 	public enum SurfaceFlags : uint
 	{
 		/// <summary>
@@ -176,7 +177,7 @@ unsafe partial class SDL
 	/// <param name="surface"> (Ref) The <see cref="Surface"/> structure to evaluate. </param>
 	/// <returns> True if <paramref name="surface"/> needs to be locked, otherwise false. </returns>
 	[Macro]
-	public static bool MUST_LOCK(Surface* surface)
+	public static bool MUST_LOCK_SURFACE(Surface* surface)
 	{
 		return (surface->Flags & SurfaceFlags.RleAccel) != 0;
 	}
@@ -251,7 +252,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a surface.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropNames"/>; they have 'SURFACE_' as a prefix.
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'SURFACE_' as a prefix.
 	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceProperties">here</see>.
 	/// </remarks>

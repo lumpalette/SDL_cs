@@ -12,7 +12,7 @@ unsafe partial class SDL
 	/// <summary>
 	/// A collection of strings for properties' names used by various SDL systems.
 	/// </summary>
-	public static partial class PropNames { }
+	public static partial class PropConsts { }
 
 	/// <summary>
 	/// An id of a set of properties. This structure serves as a wrapper for an unsigned 32-bit integer.

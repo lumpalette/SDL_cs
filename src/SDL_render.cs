@@ -7,7 +7,7 @@ namespace SDL3;
 // SDL_render.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_render.h
 unsafe partial class SDL
 {
-	partial class PropNames
+	partial class PropConsts
 	{
 		// CreateRendererWithProperties()
 		public const string RENDERER_CREATE_NAME_STRING = "name";
@@ -68,8 +68,8 @@ unsafe partial class SDL
 		public const string TEXTURE_CREATE_OPENGLES2_TEXTURE_NUMBER = "opengles2.texture";
 		public const string TEXTURE_CREATE_OPENGLES2_TEXTURE_UV_NUMBER = "opengles2.texture_uv";
 		public const string TEXTURE_CREATE_OPENGLES2_TEXTURE_U_NUMBER = "opengles2.texture_u";
-		public const string SDL_PROP_TEXTURE_CREATE_OPENGLES2_TEXTURE_V_NUMBER = "opengles2.texture_v";
-		public const string SDL_PROP_TEXTURE_CREATE_VULKAN_TEXTURE_NUMBER = "vulkan.texture";
+		public const string TEXTURE_CREATE_OPENGLES2_TEXTURE_V_NUMBER = "opengles2.texture_v";
+		public const string TEXTURE_CREATE_VULKAN_TEXTURE_NUMBER = "vulkan.texture";
 
 		// GetTextureProperties()
 		public const string TEXTURE_COLORSPACE_NUMBER = "SDL.texture.colorspace";
@@ -328,7 +328,7 @@ unsafe partial class SDL
 	/// Create a 2D rendering context for a window, with the specified properties.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropNames"/>; they have 'RENDERER_CREATE_' as a prefix.
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'RENDERER_CREATE_' as a prefix.
 	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_CreateRendererWithProperties">here</see>.
 	/// </remarks>
@@ -419,7 +419,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a renderer.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropNames"/>; they have 'RENDERER_' as a prefix.
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'RENDERER_' as a prefix.
 	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetRendererProperties">here</see>.
 	/// </remarks>
@@ -521,7 +521,7 @@ unsafe partial class SDL
 	/// Create a texture for a rendering context with the specified properties.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropNames"/>; they have 'TEXTURE_CREATE_' as a prefix.
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'TEXTURE_CREATE_' as a prefix.
 	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_CreateTextureWithProperties">here</see>.
 	/// </remarks>
@@ -541,7 +541,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a texture.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropNames"/>; they have 'TEXTURE_' as a prefix.
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'TEXTURE_' as a prefix.
 	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureProperties">here</see>.
 	/// </remarks>
