@@ -37,19 +37,11 @@ unsafe partial class SDL
 
 		public static PixelFormatValue XRGB4444 => new(PixelType.Packed16, PackedOrder.XRGB, PackedLayout.Layout4444, 12, 2);
 
-		public static PixelFormatValue RGB444 => XRGB4444;
-
 		public static PixelFormatValue XBGR4444 => new(PixelType.Packed16, PackedOrder.XBGR, PackedLayout.Layout4444, 12, 2);
-
-		public static PixelFormatValue BGR444 => XBGR4444;
 
 		public static PixelFormatValue XRGB1555 => new(PixelType.Packed16, PackedOrder.XRGB, PackedLayout.Layout1555, 15, 2);
 
-		public static PixelFormatValue RGB555 => XRGB1555;
-
 		public static PixelFormatValue XBGR1555 => new(PixelType.Packed16, PackedOrder.XBGR, PackedLayout.Layout1555, 15, 2);
-
-		public static PixelFormatValue BGR555 => XBGR1555;
 
 		public static PixelFormatValue ARGB4444 => new(PixelType.Packed16, PackedOrder.ARGB, PackedLayout.Layout4444, 16, 2);
 
