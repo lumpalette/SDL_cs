@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.Text;
 
 namespace SDL3;
@@ -19,13 +18,12 @@ unsafe partial class SDL
 	{
 		fixed (byte* m = Encoding.UTF8.GetBytes(msg))
 		{
-			return _PInvokeSetError(m);
+			return _PInvoke(m);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetError")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetError(byte* fmt);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetError", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(byte* fmt);
+	}
 
 	/// <summary>
 	/// Retrieve a message about the last error that occurred on the current thread.
@@ -36,12 +34,11 @@ unsafe partial class SDL
 	/// <returns> A message with information about the specific error that occurred, or an empty string if there hasn't been an error message set since the last call to <see cref="ClearError"/>. </returns>
 	public static string GetError()
 	{
-		return Marshal.PtrToStringUTF8((nint)_PInvokeGetError())!;
-	}
+		return Marshal.PtrToStringUTF8((nint)_PInvoke())!;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetError")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial byte* _PInvokeGetError();
+		[DllImport(LibraryName, EntryPoint = "SDL_GetError", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern byte* _PInvoke();
+	}
 
 	/// <summary>
 	/// Clear any previous error message for this thread.
@@ -51,10 +48,9 @@ unsafe partial class SDL
 	/// </remarks>
 	public static void ClearError()
 	{
-		_PInvokeClearError();
-	}
+		_PInvoke();
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ClearError")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeClearError();
+		[DllImport(LibraryName, EntryPoint = "SDL_ClearError", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void _PInvoke();
+	}
 }

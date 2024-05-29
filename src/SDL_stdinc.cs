@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace SDL3;
 
@@ -12,7 +11,11 @@ unsafe partial class SDL
 		return (uint)(a | (b << 8) | (c << 16) | (d << 24));
 	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_free")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeFree(void* mem);
+	public static void Free(void* mem)
+	{
+		_PInvoke(mem);
+
+		[DllImport(LibraryName, EntryPoint = "SDL_free", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void _PInvoke(void* mem);
+	}
 }

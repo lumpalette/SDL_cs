@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.Text;
 
 namespace SDL3;
@@ -423,12 +421,11 @@ unsafe partial class SDL
 	/// <returns> A number >= 1 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetNumVideoDrivers()
 	{
-		return _PInvokeGetNumVideoDrivers();
-	}
+		return _PInvoke();
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetNumVideoDrivers")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetNumVideoDrivers();
+		[DllImport(LibraryName, EntryPoint = "SDL_GetNumVideoDrivers", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke();
+	}
 
 	/// <summary>
 	/// Get the name of a built in video driver.
@@ -440,12 +437,11 @@ unsafe partial class SDL
 	/// <returns> The name of the video driver with the given <paramref name="index"/>. </returns>
 	public static string GetVideoDriver(int index)
 	{
-		return Marshal.PtrToStringUTF8((nint)_PInvokeGetVideoDriver(index))!;
-	}
+		return Marshal.PtrToStringUTF8((nint)_PInvoke(index))!;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetVideoDriver")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial byte* _PInvokeGetVideoDriver(int index);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetVideoDriver", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern byte* _PInvoke(int index);
+	}
 
 	/// <summary>
 	/// Get the name of the currently initialized video driver.
@@ -456,12 +452,11 @@ unsafe partial class SDL
 	/// <returns> The name of the current video driver or null if no driver has been initialized. </returns>
 	public static string? GetCurrentVideoDriver()
 	{
-		return Marshal.PtrToStringUTF8((nint)_PInvokeGetCurrentVideoDriver());
-	}
+		return Marshal.PtrToStringUTF8((nint)_PInvoke());
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentVideoDriver")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial byte* _PInvokeGetCurrentVideoDriver();
+		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentVideoDriver", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern byte* _PInvoke();
+	}
 
 	/// <summary>
 	/// Get the current system theme.
@@ -472,12 +467,11 @@ unsafe partial class SDL
 	/// <returns> The current system theme, light, dark, or unknown. </returns>
 	public static SystemTheme GetSystemTheme()
 	{
-		return (SystemTheme)_PInvokeGetSystemTheme();
-	}
+		return (SystemTheme)_PInvoke();
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSystemTheme")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetSystemTheme();
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSystemTheme", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke();
+	}
 
 	/// <summary>
 	/// Get a list of currently connected displays.
@@ -491,7 +485,7 @@ unsafe partial class SDL
 	{
 		fixed (int* c = &count)
 		{
-			DisplayId* d = _PInvokeGetDisplays(c);
+			DisplayId* d = _PInvoke(c);
 			if (d is null)
 			{
 				return null;
@@ -501,14 +495,13 @@ unsafe partial class SDL
 			{
 				ids[i] = d[i];
 			}
-			_PInvokeFree(d);
+			Free(d);
 			return ids;
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplays")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial DisplayId* _PInvokeGetDisplays(int* count);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplays", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern DisplayId* _PInvoke(int* count);
+	}
 
 	/// <summary>
 	/// Return the primary display.
@@ -519,12 +512,11 @@ unsafe partial class SDL
 	/// <returns> The instance id of the primary display on success or <see cref="DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayId GetPrimaryDisplay()
 	{
-		return _PInvokeGetPrimaryDisplay();
-	}
+		return _PInvoke();
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPrimaryDisplay")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial DisplayId _PInvokeGetPrimaryDisplay();
+		[DllImport(LibraryName, EntryPoint = "SDL_GetPrimaryDisplay", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern DisplayId _PInvoke();
+	}
 
 	/// <summary>
 	/// Get the properties associated with a display.
@@ -536,12 +528,11 @@ unsafe partial class SDL
 	/// <returns> A valid property id on success or <see cref="DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PropertiesId GetDisplayProperties(DisplayId displayId)
 	{
-		return _PInvokeGetDisplayProperties(displayId);
-	}
+		return _PInvoke(displayId);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayProperties")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial PropertiesId _PInvokeGetDisplayProperties(DisplayId displayId);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern PropertiesId _PInvoke(DisplayId displayId);
+	}
 
 	/// <summary>
 	/// Get the name of a display.
@@ -553,12 +544,11 @@ unsafe partial class SDL
 	/// <returns> The name of a display or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static string? GetDisplayName(DisplayId displayId)
 	{
-		return Marshal.PtrToStringUTF8((nint)_PInvokeGetDisplayName(displayId));
-	}
+		return Marshal.PtrToStringUTF8((nint)_PInvoke(displayId));
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayName")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial byte* _PInvokeGetDisplayName(DisplayId displayId);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern byte* _PInvoke(DisplayId displayId);
+	}
 
 	/// <summary>
 	/// Get the desktop area represented by a display.
@@ -573,13 +563,12 @@ unsafe partial class SDL
 	{
 		fixed (Rect* r = &rect)
 		{
-			return _PInvokeGetDisplayBounds(displayId, r);
+			return _PInvoke(displayId, r);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayBounds")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetDisplayBounds(DisplayId displayId, Rect* rect);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayBounds", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(DisplayId displayId, Rect* rect);
+	}
 
 	/// <summary>
 	/// Get the usable desktop area represented by a display, in screen coordinates.
@@ -594,13 +583,12 @@ unsafe partial class SDL
 	{
 		fixed (Rect* r = &rect)
 		{
-			return _PInvokeGetDisplayUsableBounds(displayId, r);
+			return _PInvoke(displayId, r);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayUsableBounds")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetDisplayUsableBounds(DisplayId displayId, Rect* rect);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayUsableBounds", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(DisplayId displayId, Rect* rect);
+	}
 
 	/// <summary>
 	/// Get the orientation of a display when it is unrotated.
@@ -612,12 +600,11 @@ unsafe partial class SDL
 	/// <returns> The <see cref="DisplayOrientation"/> enum value of the display, or <see cref="DisplayOrientation.Unknown"/> if it isn't available. </returns>
 	public static DisplayOrientation GetNaturalDisplayOrientation(DisplayId displayId)
 	{
-		return (DisplayOrientation)_PInvokeGetNaturalDisplayOrientation(displayId);
-	}
+		return (DisplayOrientation)_PInvoke(displayId);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetNaturalDisplayOrientation")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetNaturalDisplayOrientation(DisplayId displayId);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetNaturalDisplayOrientation", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(DisplayId displayId);
+	}
 
 	/// <summary>
 	/// Get the orientation of a display.
@@ -629,12 +616,11 @@ unsafe partial class SDL
 	/// <returns> The <see cref="DisplayOrientation"/> enum value of the display, or <see cref="DisplayOrientation.Unknown"/> if it isn't available. </returns>
 	public static DisplayOrientation GetCurrentDisplayOrientation(DisplayId displayId)
 	{
-		return (DisplayOrientation)_PInvokeGetCurrentDisplayOrientation(displayId);
-	}
+		return (DisplayOrientation)_PInvoke(displayId);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayOrientation")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetCurrentDisplayOrientation(DisplayId displayId);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayOrientation", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(DisplayId displayId);
+	}
 
 	/// <summary>
 	/// Get the content scale of a display.
@@ -646,12 +632,11 @@ unsafe partial class SDL
 	/// <returns> The content scale of the display, or 0.0f on error; call <see cref="GetError"/> for more details. </returns>
 	public static float GetDisplayContentScale(DisplayId displayId)
 	{
-		return _PInvokeGetDisplayContentScale(displayId);
-	}
+		return _PInvoke(displayId);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayOrientation")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial float _PInvokeGetDisplayContentScale(DisplayId displayId);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayOrientation", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern float _PInvoke(DisplayId displayId);
+	}
 
 	/// <summary>
 	/// Get a list of fullscreen display modes available on a display.
@@ -666,7 +651,7 @@ unsafe partial class SDL
 	{
 		fixed (int* c = &count)
 		{
-			DisplayMode** d = _PInvokeGetFullscreenDisplayModes(displayId, c);
+			DisplayMode** d = _PInvoke(displayId, c);
 			if (d is null)
 			{
 				return null;
@@ -676,14 +661,13 @@ unsafe partial class SDL
 			{
 				modes[i] = *d[i];
 			}
-			_PInvokeFree(d);
+			Free(d);
 			return modes;
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetFullscreenDisplayModes")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial DisplayMode** _PInvokeGetFullscreenDisplayModes(DisplayId displayId, int* count);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetFullscreenDisplayModes", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern DisplayMode** _PInvoke(DisplayId displayId, int* count);
+	}
 
 	/// <summary>
 	/// Get the closest match to the requested display mode.
@@ -699,17 +683,16 @@ unsafe partial class SDL
 	/// <returns> The closest display mode equal to or larger than the desired mode, or null on error; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayMode? GetClosestFullscreenDisplayMode(DisplayId displayId, int width, int height, float refreshRate, bool includeHighDensityModes)
 	{
-		DisplayMode* d = _PInvokeGetClosestFullscreenDisplayMode(displayId, width, height, refreshRate, includeHighDensityModes ? 1 : 0);
+		DisplayMode* d = _PInvoke(displayId, width, height, refreshRate, includeHighDensityModes ? 1 : 0);
 		if (d is null)
 		{
 			return null;
 		}
 		return *d;
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetClosestFullscreenDisplayMode")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial DisplayMode* _PInvokeGetClosestFullscreenDisplayMode(DisplayId displayId, int width, int height, float refreshRate, int includeHighDensityModes);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetClosestFullscreenDisplayMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern DisplayMode* _PInvoke(DisplayId displayId, int width, int height, float refreshRate, int includeHighDensityModes);
+	}
 
 	/// <summary>
 	/// Get information about the desktop's display mode.
@@ -721,17 +704,16 @@ unsafe partial class SDL
 	/// <returns> The desktop display mode or null on error; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayMode? GetDesktopDisplayMode(DisplayId displayId)
 	{
-		DisplayMode* d = _PInvokeGetDesktopDisplayMode(displayId);
+		DisplayMode* d = _PInvoke(displayId);
 		if (d is null)
 		{
 			return null;
 		}
 		return *d;
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDesktopDisplayMode")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial DisplayMode* _PInvokeGetDesktopDisplayMode(DisplayId displayId);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDesktopDisplayMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern DisplayMode* _PInvoke(DisplayId displayId);
+	}
 
 	/// <summary>
 	/// Get information about the current display mode.
@@ -743,17 +725,16 @@ unsafe partial class SDL
 	/// <returns> The desktop display mode or null on error; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayMode? GetCurrentDisplayMode(DisplayId displayId)
 	{
-		DisplayMode* d = _PInvokeGetCurrentDisplayMode(displayId);
+		DisplayMode* d = _PInvoke(displayId);
 		if (d is null)
 		{
 			return null;
 		}
 		return *d;
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayMode")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial DisplayMode* _PInvokeGetCurrentDisplayMode(DisplayId displayId);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern DisplayMode* _PInvoke(DisplayId displayId);
+	}
 
 	/// <summary>
 	/// Get the display containing a point.
@@ -765,12 +746,11 @@ unsafe partial class SDL
 	/// <returns> The instance id of the display containing the point or <see cref="DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayId GetDisplayForPoint(Point point)
 	{
-		return _PInvokeGetDisplayForPoint(&point);
-	}
+		return _PInvoke(&point);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayForPoint")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial DisplayId _PInvokeGetDisplayForPoint(Point* point);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayForPoint", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern DisplayId _PInvoke(Point* point);
+	}
 
 	/// <summary>
 	/// Get the display primarily containing a rect.
@@ -782,12 +762,11 @@ unsafe partial class SDL
 	/// <returns> The instance id of the display entirely containing the rect or closest to the center of the rect on success or <see cref="DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayId GetDisplayForRect(Rect rect)
 	{
-		return _PInvokeGetDisplayForRect(&rect);
-	}
+		return _PInvoke(&rect);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayForRect")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial DisplayId _PInvokeGetDisplayForRect(Rect* rect);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayForRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern DisplayId _PInvoke(Rect* rect);
+	}
 
 	/// <summary>
 	/// Get the display associated with a window.
@@ -799,12 +778,11 @@ unsafe partial class SDL
 	/// <returns> The instance id of the display containing the center of the window on success or 0 on failure; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayId GetDisplayForWindow(Window* window)
 	{
-		return _PInvokeGetDisplayForWindow(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayForWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial DisplayId _PInvokeGetDisplayForWindow(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayForWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern DisplayId _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Get the pixel density of a window.
@@ -816,12 +794,11 @@ unsafe partial class SDL
 	/// <returns> The pixel density or 0.0f on failure; call <see cref="GetError"/> for more information. </returns>
 	public static float GetWindowPixelDensity(Window* window)
 	{
-		return _PInvokeGetWindowPixelDensity(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowPixelDensity")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial float _PInvokeGetWindowPixelDensity(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowPixelDensity", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern float _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Get the content display scale relative to a window's pixel size.
@@ -833,12 +810,11 @@ unsafe partial class SDL
 	/// <returns> The display scale, or 0 on failure; call <see cref="GetError"/> for more information. </returns>
 	public static float GetWindowDisplayScale(Window* window)
 	{
-		return _PInvokeGetWindowDisplayScale(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowDisplayScale")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial float _PInvokeGetWindowDisplayScale(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowDisplayScale", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern float _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Set the display mode to use when a window is visible and fullscreen.
@@ -854,14 +830,13 @@ unsafe partial class SDL
 		if (displayMode.HasValue)
 		{
 			DisplayMode dm = displayMode.Value;
-			return _PInvokeSetWindowFullscreenMode(window, &dm);
+			return _PInvoke(window, &dm);
 		}
-		return _PInvokeSetWindowFullscreenMode(window, null);
-	}
+		return _PInvoke(window, null);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowFullscreenMode")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowFullscreenMode(Window* window, DisplayMode* displayMode);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowFullscreenMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, DisplayMode* displayMode);
+	}
 
 	/// <summary>
 	/// Query the display mode to use when a window is visible at fullscreen.
@@ -873,17 +848,16 @@ unsafe partial class SDL
 	/// <returns> The exclusive fullscreen mode to use or null for borderless fullscreen desktop mode. </returns>
 	public static DisplayMode? GetWindowFullscreenMode(Window* window)
 	{
-		DisplayMode* d = _PInvokeGetWindowFullscreenMode(window);
+		DisplayMode* d = _PInvoke(window);
 		if (d is null)
 		{
 			return null;
 		}
 		return *d;
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowFullscreenMode")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial DisplayMode* _PInvokeGetWindowFullscreenMode(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowFullscreenMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern DisplayMode* _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Get the pixel format associated with the window.
@@ -895,12 +869,11 @@ unsafe partial class SDL
 	/// <returns> The pixel format of the window on success or <see cref="PixelFormatEnum.Unknown"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PixelFormatValue GetWindowPixelFormat(Window* window)
 	{
-		return _PInvokeGetWindowPixelFormat(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowPixelFormat")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial PixelFormatValue _PInvokeGetWindowPixelFormat(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowPixelFormat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern PixelFormatValue _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Create a window with the specified dimensions and flags.
@@ -917,13 +890,12 @@ unsafe partial class SDL
 	{
 		fixed (byte* t = Encoding.UTF8.GetBytes(title))
 		{
-			return _PInvokeCreateWindow(t, width, height, flags);
+			return _PInvoke(t, width, height, flags);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Window* _PInvokeCreateWindow(byte* title, int width, int height, WindowFlags flags);
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Window* _PInvoke(byte* title, int width, int height, WindowFlags flags);
+	}
 
 	/// <summary>
 	/// Create a child popup window of the specified parent window.
@@ -940,12 +912,11 @@ unsafe partial class SDL
 	/// <returns> The window that was created or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static Window* CreatePopupWindow(Window* parent, int offsetX, int offsetY, int width, int height, WindowFlags flags)
 	{
-		return _PInvokeCreatePopupWindow(parent, offsetX, offsetY, width, height, (uint)flags);
-	}
+		return _PInvoke(parent, offsetX, offsetY, width, height, (uint)flags);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_CreatePopupWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Window* _PInvokeCreatePopupWindow(Window* parent, int offsetX, int offsetY, int width, int height, uint flags);
+		[DllImport(LibraryName, EntryPoint = "SDL_CreatePopupWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Window* _PInvoke(Window* parent, int offsetX, int offsetY, int width, int height, uint flags);
+	}
 
 	/// <summary>
 	/// Create a window with the specified properties.
@@ -959,12 +930,11 @@ unsafe partial class SDL
 	/// <returns> The window that was created or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static Window* CreateWindowWithProperties(PropertiesId props)
 	{
-		return _PInvokeCreateWindowWithProperties(props);
-	}
+		return _PInvoke(props);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateWindowWithProperties")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Window* _PInvokeCreateWindowWithProperties(PropertiesId props);
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateWindowWithProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Window* _PInvoke(PropertiesId props);
+	}
 
 	/// <summary>
 	/// Get the numeric id of a window.
@@ -976,12 +946,11 @@ unsafe partial class SDL
 	/// <returns> The id of the window on success or <see cref="WindowId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static WindowId GetWindowId(Window* window)
 	{
-		return _PInvokeGetWindowId(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowID")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial WindowId _PInvokeGetWindowId(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern WindowId _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Get a window from a stored id.
@@ -994,11 +963,10 @@ unsafe partial class SDL
 	public static Window* GetWindowFromId(WindowId id)
 	{
 		return GetWindowFromId(id);
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowFromID")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Window* _PInvokeGetWindowFromId(WindowId id);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowFromID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Window* _PInvoke(WindowId id);
+	}
 
 	/// <summary>
 	/// Get parent of a window.
@@ -1010,12 +978,11 @@ unsafe partial class SDL
 	/// <returns> The parent of the window on success or null if the window has no parent. </returns>
 	public static Window* GetWindowParent(Window* window)
 	{
-		return _PInvokeGetWindowParent(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowParent")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Window* _PInvokeGetWindowParent(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowParent", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Window* _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Get the properties associated with a window.
@@ -1029,12 +996,11 @@ unsafe partial class SDL
 	/// <returns> A valid property id on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PropertiesId GetWindowProperties(Window* window)
 	{
-		return _PInvokeGetWindowProperties(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowProperties")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial PropertiesId _PInvokeGetWindowProperties(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern PropertiesId _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Get the window flags.
@@ -1046,12 +1012,11 @@ unsafe partial class SDL
 	/// <returns> A mask of the <see cref="WindowFlags"/> associated with <paramref name="window"/>. </returns>
 	public static WindowFlags GetWindowFlags(Window* window)
 	{
-		return _PInvokeGetWindowFlags(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowFlags")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial WindowFlags _PInvokeGetWindowFlags(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowFlags", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern WindowFlags _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Set the title of a window.
@@ -1066,13 +1031,12 @@ unsafe partial class SDL
 	{
 		fixed (byte* t = Encoding.UTF8.GetBytes(title))
 		{
-			return _PInvokeSetWindowTitle(window, t);
+			return _PInvoke(window, t);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowTitle")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowTitle(Window* window, byte* title);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowTitle", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, byte* title);
+	}
 
 	/// <summary>
 	/// Get the title of a window.
@@ -1084,12 +1048,11 @@ unsafe partial class SDL
 	/// <returns> The title of the window or an empty string if there is no title. </returns>
 	public static string GetWindowTitle(Window* window)
 	{
-		return Marshal.PtrToStringUTF8((nint)_PInvokeGetWindowTitle(window))!;
-	}
+		return Marshal.PtrToStringUTF8((nint)_PInvoke(window))!;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowTitle")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial byte* _PInvokeGetWindowTitle(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowTitle", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern byte* _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Set the icon for a window.
@@ -1102,12 +1065,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowIcon(Window* window, Surface* surface)
 	{
-		return _PInvokeSetWindowIcon(window, surface);
-	}
+		return _PInvoke(window, surface);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowIcon")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowIcon(Window* window, Surface* icon);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowIcon", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, Surface* icon);
+	}
 
 	/// <summary>
 	/// Request that the window's position be set.
@@ -1121,12 +1083,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowPosition(Window* window, int x, int y)
 	{
-		return _PInvokeSetWindowPosition(window, x, y);
-	}
+		return _PInvoke(window, x, y);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowPosition")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowPosition(Window* window, int x, int y);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowPosition", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int x, int y);
+	}
 
 	/// <summary>
 	/// Get the position of a window.
@@ -1142,13 +1103,12 @@ unsafe partial class SDL
 	{
 		fixed (int* xx = &x, yy = &y)
 		{
-			return _PInvokeGetWindowPosition(window, xx, yy);
+			return _PInvoke(window, xx, yy);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowPosition")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetWindowPosition(Window* window, int* x, int* y);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowPosition", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int* x, int* y);
+	}
 
 	/// <summary>
 	/// Request that the size of a window's client area be set.
@@ -1162,12 +1122,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowSize(Window* window, int width, int height)
 	{
-		return _PInvokeSetWindowSize(window, width, height);
-	}
+		return _PInvoke(window, width, height);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowSize")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowSize(Window* window, int width, int height);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int width, int height);
+	}
 
 	/// <summary>
 	/// Get the size of a window's client area.
@@ -1183,13 +1142,12 @@ unsafe partial class SDL
 	{
 		fixed (int* w = &width, h = &height)
 		{
-			return _PInvokeGetWindowSize(window, w, h);
+			return _PInvoke(window, w, h);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowSize")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetWindowSize(Window* window, int* width, int* height);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int* width, int* height);
+	}
 
 	/// <summary>
 	/// Get the size of a window's borders (decorations) around the client area.
@@ -1207,13 +1165,12 @@ unsafe partial class SDL
 	{
 		fixed (int* t = &top, l = &left, b = &bottom, r = &right)
 		{
-			return _PInvokeGetWindowBordersSize(window, t, l, b, r);
+			return _PInvoke(window, t, l, b, r);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowBordersSize")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetWindowBordersSize(Window* window, int* top, int* left, int* bottom, int* right);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowBordersSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int* top, int* left, int* bottom, int* right);
+	}
 
 	/// <summary>
 	/// Get the size of a window's client area, in pixels.
@@ -1229,13 +1186,12 @@ unsafe partial class SDL
 	{
 		fixed (int* w = &width, h = &height)
 		{
-			return _PInvokeGetWindowSizeInPixels(window, w, h);
+			return _PInvoke(window, w, h);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowSizeInPixels")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetWindowSizeInPixels(Window* window, int* width, int* height);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowSizeInPixels", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int* width, int* height);
+	}
 
 	/// <summary>
 	/// Set the minimum size of a window's client area.
@@ -1249,12 +1205,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowMinimumSize(Window* window, int minW, int minH)
 	{
-		return _PInvokeSetWindowMinimumSize(window, minW, minH);
-	}
+		return _PInvoke(window, minW, minH);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowMinimumSize")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowMinimumSize(Window* window, int minW, int minH);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowMinimumSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int minW, int minH);
+	}
 
 	/// <summary>
 	/// Get the minimum size of a window's client area.
@@ -1270,13 +1225,12 @@ unsafe partial class SDL
 	{
 		fixed (int* w = &width, h = &height)
 		{
-			return _PInvokeGetWindowMinimumSize(widow, w, h);
+			return _PInvoke(widow, w, h);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowMinimumSize")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetWindowMinimumSize(Window* window, int* width, int* height);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowMinimumSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int* width, int* height);
+	}
 
 	/// <summary>
 	/// Set the maximum size of a window's client area.
@@ -1290,12 +1244,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowMaximumSize(Window* window, int maxW, int maxH)
 	{
-		return _PInvokeSetWindowMaximumSize(window, maxW, maxH);
-	}
+		return _PInvoke(window, maxW, maxH);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowMaximumSize")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowMaximumSize(Window* window, int maxW, int maxH);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowMaximumSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int maxW, int maxH);
+	}
 
 	/// <summary>
 	/// Get the maximum size of a window's client area.
@@ -1311,13 +1264,12 @@ unsafe partial class SDL
 	{
 		fixed (int* w = &width, h = &height)
 		{
-			return _PInvokeGetWindowMaximumSize(window, w, h);
+			return _PInvoke(window, w, h);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowMaximumSize")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetWindowMaximumSize(Window* window, int* width, int* height);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowMaximumSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int* width, int* height);
+	}
 
 	/// <summary>
 	/// Set the border state of a window.
@@ -1330,12 +1282,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowBordered(Window* window, bool bordered)
 	{
-		return _PInvokeSetWindowBordered(window, bordered ? 1 : 0);
-	}
+		return _PInvoke(window, bordered ? 1 : 0);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowBordered")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowBordered(Window* window, int bordered);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowBordered", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int bordered);
+	}
 
 	/// <summary>
 	/// Set the user-resizable state of a window.
@@ -1348,12 +1299,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowResizable(Window* window, bool resizable)
 	{
-		return _PInvokeSetWindowResizable(window, resizable ? 1 : 0);
-	}
+		return _PInvoke(window, resizable ? 1 : 0);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowResizable")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowResizable(Window* window, int resizable);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowResizable", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int resizable);
+	}
 
 	/// <summary>
 	/// Set the window to always be above the others.
@@ -1366,12 +1316,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowAlwaysOnTop(Window* window, bool onTop)
 	{
-		return _PInvokeSetWindowAlwaysOnTop(window, onTop ? 1 : 0);
-	}
+		return _PInvoke(window, onTop ? 1 : 0);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowAlwaysOnTop")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowAlwaysOnTop(Window* window, int onTop);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowAlwaysOnTop", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int onTop);
+	}
 
 	/// <summary>
 	/// Show a window.
@@ -1383,12 +1332,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int ShowWindow(Window* window)
 	{
-		return _PInvokeShowWindow(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ShowWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeShowWindow(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_ShowWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Hide a window.
@@ -1400,12 +1348,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int HideWindow(Window* window)
 	{
-		return _PInvokeHideWindow(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_HideWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeHideWindow(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_HideWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Raise a window above other windows and set the input focus.
@@ -1417,12 +1364,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int RaiseWindow(Window* window)
 	{
-		return _PInvokeRaiseWindow(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RaiseWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeRaiseWindow(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_RaiseWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Request that the window be made as large as possible.
@@ -1434,12 +1380,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int MaximizeWindow(Window* window)
 	{
-		return _PInvokeMaximizeWindow(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_MaximizeWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeMaximizeWindow(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_MaximizeWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Request that the window be minimized to an iconic representation.
@@ -1451,12 +1396,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int MinimizeWindow(Window* window)
 	{
-		return _PInvokeMinimizeWindow(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_MinimizeWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeMinimizeWindow(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_MinimizeWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Request that the size and position of a minimized or maximized window be restored.
@@ -1468,12 +1412,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int RestoreWindow(Window* window)
 	{
-		return _PInvokeRestoreWindow(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RestoreWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeRestoreWindow(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_RestoreWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Request that the window's fullscreen state be changed.
@@ -1486,12 +1429,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowFullscreen(Window* window, bool fullscreen)
 	{
-		return _PInvokeSetWindowFullscreen(window, fullscreen ? 1 : 0);
-	}
+		return _PInvoke(window, fullscreen ? 1 : 0);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowFullscreen")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowFullscreen(Window* window, int fullscreen);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowFullscreen", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int fullscreen);
+	}
 
 	/// <summary>
 	/// Block until any pending window state is finalized.
@@ -1503,12 +1445,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success, a positive value if the operation timed out before the window was in the requested state, or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SyncWindow(Window* window)
 	{
-		return _PInvokeSyncWindow(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SyncWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSyncWindow(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_SyncWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Return whether the window has a surface associated with it.
@@ -1520,12 +1461,11 @@ unsafe partial class SDL
 	/// <returns> True if there is a surface associated with the window, or false otherwise. </returns>
 	public static bool WindowHasSurface(Window* window)
 	{
-		return _PInvokeWindowHasSurface(window) == 1;
-	}
+		return _PInvoke(window) == 1;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_WindowHasSurface")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeWindowHasSurface(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_WindowHasSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Get the SDL surface associated with the window.
@@ -1537,12 +1477,11 @@ unsafe partial class SDL
 	/// <returns> The surface associated with the window, or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static Surface* GetWindowSurface(Window* window)
 	{
-		return _PInvokeGetWindowSurface(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowSurface")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Surface* _PInvokeGetWindowSurface(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Surface* _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Copy the window surface to the screen.
@@ -1554,12 +1493,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int UpdateWindowSurface(Window* window)
 	{
-		return _PInvokeUpdateWindowSurface(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateWindowSurface")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeUpdateWindowSurface(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_UpdateWindowSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Copy areas of the window surface to the screen.
@@ -1574,13 +1512,12 @@ unsafe partial class SDL
 	{
 		fixed (Rect* r = rects)
 		{
-			return _PInvokeUpdateWindowSurfaceRects(window, r, rects.Length);
+			return _PInvoke(window, r, rects.Length);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateWindowSurfaceRects")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeUpdateWindowSurfaceRects(Window* window, Rect* rects, int numRects);
+		[DllImport(LibraryName, EntryPoint = "SDL_UpdateWindowSurfaceRects", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, Rect* rects, int numRects);
+	}
 
 	/// <summary>
 	/// Destroy the surface associated with the window.
@@ -1592,12 +1529,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int DestroyWindowSurface(Window* window)
 	{
-		return _PInvokeDestroyWindowSurface(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_DestroyWindowSurface")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeDestroyWindowSurface(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_DestroyWindowSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Set a window's keyboard grab mode.
@@ -1610,12 +1546,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowKeyboardGrab(Window* window, bool grabbed)
 	{
-		return _PInvokeSetWindowKeyboardGrab(window, grabbed ? 1 : 0);
-	}
+		return _PInvoke(window, grabbed ? 1 : 0);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowKeyboardGrab")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowKeyboardGrab(Window* window, int grabbed);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowKeyboardGrab", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int grabbed);
+	}
 
 	/// <summary>
 	/// Set a window's mouse grab mode.
@@ -1628,12 +1563,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowMouseGrab(Window* window, bool grabbed)
 	{
-		return _PInvokeSetWindowMouseGrab(window, grabbed ? 1 : 0);
-	}
+		return _PInvoke(window, grabbed ? 1 : 0);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowMouseGrab")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowMouseGrab(Window* window, int grabbed);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowMouseGrab", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int grabbed);
+	}
 
 	/// <summary>
 	/// Get a window's keyboard grab mode.
@@ -1645,12 +1579,11 @@ unsafe partial class SDL
 	/// <returns> True if keyboard is grabbed, and false otherwise. </returns>
 	public static bool GetWindowKeyboardGrab(Window* window)
 	{
-		return _PInvokeGetWindowKeyboardGrab(window) == 1;
-	}
+		return _PInvoke(window) == 1;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowKeyboardGrab")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetWindowKeyboardGrab(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowKeyboardGrab", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Get a window's mouse grab mode.
@@ -1662,12 +1595,11 @@ unsafe partial class SDL
 	/// <returns> True if keyboard is grabbed, and false otherwise. </returns>
 	public static bool GetWindowMouseGrab(Window* window)
 	{
-		return _PInvokeGetWindowMouseGrab(window) == 1;
-	}
+		return _PInvoke(window) == 1;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowMouseGrab")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetWindowMouseGrab(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowMouseGrab", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Get the window that currently has an input grab enabled.
@@ -1678,12 +1610,11 @@ unsafe partial class SDL
 	/// <returns> The window if input is grabbed or null otherwise. </returns>
 	public static Window* GetGrabbedWindow()
 	{
-		return _PInvokeGetGrabbedWindow();
-	}
+		return _PInvoke();
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGrabbedWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Window* _PInvokeGetGrabbedWindow();
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGrabbedWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Window* _PInvoke();
+	}
 
 	/// <summary>
 	/// Confines the cursor to the specified area of a window.
@@ -1701,14 +1632,13 @@ unsafe partial class SDL
 		if (rect.HasValue)
 		{
 			Rect r = rect.Value;
-			return _PInvokeSetWindowMouseRect(window, &r);
+			return _PInvoke(window, &r);
 		}
-		return _PInvokeSetWindowMouseRect(window, null);
-	}
+		return _PInvoke(window, null);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowMouseRect")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowMouseRect(Window* window, Rect* rect);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowMouseRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, Rect* rect);
+	}
 
 	/// <summary>
 	/// Get the mouse confinement rectangle of a window.
@@ -1720,17 +1650,16 @@ unsafe partial class SDL
 	/// <returns> The mouse confinement rectangle of a window, or null if there isn't one. </returns>
 	public static Rect? GetWindowMouseRect(Window* window)
 	{
-		Rect* r = _PInvokeGetWindowMouseRect(window);
+		Rect* r = _PInvoke(window);
 		if (r != null)
 		{
 			return *r;
 		}
 		return null;
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowMouseRect")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Rect* _PInvokeGetWindowMouseRect(void* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowMouseRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Rect* _PInvoke(void* window);
+	}
 
 	/// <summary>
 	/// Set the opacity for a window.
@@ -1743,12 +1672,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowOpacity(Window* window, float opacity)
 	{
-		return _PInvokeSetWindowOpacity(window, opacity);
-	}
+		return _PInvoke(window, opacity);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowOpacity")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowOpacity(Window* window, float opacity);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowOpacity", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, float opacity);
+	}
 
 	/// <summary>
 	/// Get the opacity of a window.
@@ -1763,13 +1691,12 @@ unsafe partial class SDL
 	{
 		fixed (float* o = &opacity)
 		{
-			return _PInvokeGetWindowOpacity(window, o);
+			return _PInvoke(window, o);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowOpacity")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetWindowOpacity(Window* window, float* opacity);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowOpacity", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, float* opacity);
+	}
 
 	/// <summary>
 	/// Set the window as a modal to a parent window.
@@ -1782,12 +1709,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowModalFor(Window* modalWindow, Window* parentWindow)
 	{
-		return _PInvokeSetWindowModalFor(modalWindow, parentWindow);
-	}
+		return _PInvoke(modalWindow, parentWindow);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowModalFor")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowModalFor(Window* modalWindow, Window* parentWindow);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowModalFor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* modalWindow, Window* parentWindow);
+	}
 
 	/// <summary>
 	/// Explicitly set input focus to the window.
@@ -1799,12 +1725,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowInputFocus(Window* window)
 	{
-		return _PInvokeSetWindowInputFocus(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowInputFocus")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowInputFocus(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowInputFocus", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Set whether the window may have input focus.
@@ -1817,12 +1742,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowFocusable(Window* window, bool focusable)
 	{
-		return _PInvokeSetWindowFocusable(window, focusable ? 1 : 0);
-	}
+		return _PInvoke(window, focusable ? 1 : 0);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowFocusable")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowFocusable(Window* window, int focusable);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowFocusable", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int focusable);
+	}
 
 	/// <summary>
 	/// Display the system-level window menu.
@@ -1836,12 +1760,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int ShowWindowSystemMenu(Window* window, int x, int y)
 	{
-		return _PInvokeShowWindowSystemMenu(window, x, y);
-	}
+		return _PInvoke(window, x, y);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ShowWindowSystemMenu")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeShowWindowSystemMenu(Window* window, int x, int y);
+		[DllImport(LibraryName, EntryPoint = "SDL_ShowWindowSystemMenu", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, int x, int y);
+	}
 
 	// ADDME:SDL_HitTest
 	// ADDME:SDL_HitTestResult
@@ -1860,14 +1783,13 @@ unsafe partial class SDL
 	{
 		if (shape is not null)
 		{
-			return _PInvokeSetWindowShape(window, shape);
+			return _PInvoke(window, shape);
 		}
-		return _PInvokeSetWindowShape(window, null);
-	}
+		return _PInvoke(window, null);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowShape")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetWindowShape(Window* window, Surface* shape);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowShape", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, Surface* shape);
+	}
 
 	/// <summary>
 	/// Request a window to demand attention from the user.
@@ -1880,12 +1802,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int FlashWindow(Window* window, FlashOperation operation)
 	{
-		return _PInvokeFlashWindow(window, operation);
-	}
+		return _PInvoke(window, operation);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_FlashWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeFlashWindow(Window* window, FlashOperation operation);
+		[DllImport(LibraryName, EntryPoint = "SDL_FlashWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window, FlashOperation operation);
+	}
 
 	/// <summary>
 	/// Destroy a window.
@@ -1896,12 +1817,11 @@ unsafe partial class SDL
 	/// <param name="window"> The window to destroy. </param>
 	public static void DestroyWindow(Window* window)
 	{
-		_PInvokeDestroyWindow(window);
-	}
+		_PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_DestroyWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeDestroyWindow(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_DestroyWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Check whether the screensaver is currently enabled.
@@ -1912,12 +1832,11 @@ unsafe partial class SDL
 	/// <returns> True if the screensaver is enabled, false if it is disabled. </returns>
 	public static bool ScreenSaverEnabled()
 	{
-		return _PInvokeScreenSaverEnabled() == 1;
-	}
+		return _PInvoke() == 1;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ScreenSaverEnabled")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeScreenSaverEnabled();
+		[DllImport(LibraryName, EntryPoint = "SDL_ScreenSaverEnabled", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke();
+	}
 
 	/// <summary>
 	/// Allow the screen to be blanked by a screen saver.
@@ -1928,12 +1847,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int EnableScreenSaver()
 	{
-		return _PInvokeEnableScreenSaver();
-	}
+		return _PInvoke();
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_EnableScreenSaver")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeEnableScreenSaver();
+		[DllImport(LibraryName, EntryPoint = "SDL_EnableScreenSaver", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke();
+	}
 
 	/// <summary>
 	/// Prevent the screen from being blanked by a screen saver.
@@ -1944,12 +1862,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int DisableScreenSaver()
 	{
-		return _PInvokeDisableScreenSaver();
-	}
+		return _PInvoke();
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_DisableScreenSaver")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeDisableScreenSaver();
+		[DllImport(LibraryName, EntryPoint = "SDL_DisableScreenSaver", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke();
+	}
 
 	/// <summary>
 	/// Used to indicate that you don't care what the window position is.

@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.Text;
 
 namespace SDL3;
@@ -42,7 +41,7 @@ unsafe partial class SDL
 		public const string RENDERER_VULKAN_SURFACE_NUMBER = "SDL.renderer.vulkan.surface";
 		public const string RENDERER_VULKAN_PHYSICAL_DEVICE_POINTER = "SDL.renderer.vulkan.physical_device";
 		public const string RENDERER_VULKAN_DEVICE_POINTER = "SDL.renderer.vulkan.device";
-		public const string RENDERER_VULKAN_GRAPHICS_QUEUE_FAMILY_INDEX_NUMBER= "SDL.renderer.vulkan.graphics_queue_family_index";
+		public const string RENDERER_VULKAN_GRAPHICS_QUEUE_FAMILY_INDEX_NUMBER = "SDL.renderer.vulkan.graphics_queue_family_index";
 		public const string RENDERER_VULKAN_PRESENT_QUEUE_FAMILY_INDEX_NUMBER = "SDL.renderer.vulkan.present_queue_family_index";
 		public const string RENDERER_VULKAN_SWAPCHAIN_IMAGE_COUNT_NUMBER = "SDL.renderer.vulkan.swapchain_image_count";
 
@@ -127,7 +126,7 @@ unsafe partial class SDL
 		public readonly string Name => Marshal.PtrToStringUTF8((nint)_name)!;
 
 		private readonly byte* _name;
-		
+
 		/// <summary>
 		/// The number of available texture formats.
 		/// </summary>
@@ -244,12 +243,11 @@ unsafe partial class SDL
 	/// <returns> A number >= 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetNumRenderDrivers()
 	{
-		return _PInvokeGetNumRenderDrivers();
-	}
+		return _PInvoke();
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetNumRenderDrivers")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetNumRenderDrivers();
+		[DllImport(LibraryName, EntryPoint = "SDL_GetNumRenderDrivers", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke();
+	}
 
 	/// <summary>
 	/// Use this function to get the name of a built in 2D rendering driver.
@@ -261,12 +259,11 @@ unsafe partial class SDL
 	/// <returns> The name of the rendering driver at the requested index, or null if an invalid index was specified. </returns>
 	public static string? GetRenderDriver(int index)
 	{
-		return Marshal.PtrToStringUTF8((nint)_PInvokeGetRenderDriver(index));
-	}
+		return Marshal.PtrToStringUTF8((nint)_PInvoke(index));
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderDriver")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial byte* _PInvokeGetRenderDriver(int index);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderDriver", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern byte* _PInvoke(int index);
+	}
 
 	/// <summary>
 	/// Create a window and default renderer.
@@ -289,15 +286,14 @@ unsafe partial class SDL
 			{
 				fixed (Renderer** r = &renderer)
 				{
-					return _PInvokeCreateWindowAndRenderer(t, width, height, windowFlags, w, r);
+					return _PInvoke(t, width, height, windowFlags, w, r);
 				}
 			}
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateWindowAndRenderer")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeCreateWindowAndRenderer(byte* title, int width, int height, WindowFlags windowFlags, Window** window, Renderer** renderer);
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateWindowAndRenderer", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(byte* title, int width, int height, WindowFlags windowFlags, Window** window, Renderer** renderer);
+	}
 
 	/// <summary>
 	/// Create a 2D rendering context for a window.
@@ -314,15 +310,14 @@ unsafe partial class SDL
 		{
 			fixed (byte* n = Encoding.UTF8.GetBytes(name))
 			{
-				return _PInvokeCreateRenderer(window, n);
+				return _PInvoke(window, n);
 			}
 		}
-		return _PInvokeCreateRenderer(window, null);
-	}
+		return _PInvoke(window, null);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateRenderer")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Renderer* _PInvokeCreateRenderer(Window* window, byte* name);
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateRenderer", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Renderer* _PInvoke(Window* window, byte* name);
+	}
 
 	/// <summary>
 	/// Create a 2D rendering context for a window, with the specified properties.
@@ -336,12 +331,11 @@ unsafe partial class SDL
 	/// <returns> A valid rendering context or null if there was an error; call <see cref="GetError"/> for more information. </returns>
 	public static Renderer* CreateRendererWithProperties(PropertiesId props)
 	{
-		return _PInvokeCreateRendererWithProperties(props);
-	}
+		return _PInvoke(props);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateRendererWithProperties")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Renderer* _PInvokeCreateRendererWithProperties(PropertiesId props);
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateRendererWithProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Renderer* _PInvoke(PropertiesId props);
+	}
 
 	/// <summary>
 	/// Create a 2D software rendering context for a surface.
@@ -353,12 +347,11 @@ unsafe partial class SDL
 	/// <returns> A valid rendering context or null if there was an error; call <see cref="GetError"/> for more information. </returns>
 	public static Renderer* CreateSoftwareRenderer(Surface* surface)
 	{
-		return _PInvokeCreateSoftwareRenderer(surface);
-	}
+		return _PInvoke(surface);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateSoftwareRenderer")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Renderer* _PInvokeCreateSoftwareRenderer(Surface* surface);
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateSoftwareRenderer", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Renderer* _PInvoke(Surface* surface);
+	}
 
 	/// <summary>
 	/// Get the renderer associated with a window.
@@ -370,12 +363,11 @@ unsafe partial class SDL
 	/// <returns> The rendering context on success or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static Renderer* GetRenderer(Window* window)
 	{
-		return _PInvokeGetRenderer(window);
-	}
+		return _PInvoke(window);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderer")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Renderer* _PInvokeGetRenderer(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderer", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Renderer* _PInvoke(Window* window);
+	}
 
 	/// <summary>
 	/// Get the window associated with a renderer.
@@ -387,12 +379,11 @@ unsafe partial class SDL
 	/// <returns> The window on success or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static Window* GetRenderWindow(Renderer* renderer)
 	{
-		return _PInvokeGetRenderWindow(renderer);
-	}
+		return _PInvoke(renderer);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Window* _PInvokeGetRenderWindow(Renderer* renderer);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Window* _PInvoke(Renderer* renderer);
+	}
 
 	/// <summary>
 	/// Get information about a rendering context.
@@ -407,13 +398,12 @@ unsafe partial class SDL
 	{
 		fixed (RendererInfo* i = &info)
 		{
-			return _PInvokeGetRendererInfo(renderer, i);
+			return _PInvoke(renderer, i);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRendererInfo")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetRendererInfo(Renderer* renderer, RendererInfo* info);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRendererInfo", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Renderer* renderer, RendererInfo* info);
+	}
 
 	/// <summary>
 	/// Get the properties associated with a renderer.
@@ -427,12 +417,11 @@ unsafe partial class SDL
 	/// <returns> A valid property id on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PropertiesId GetRendererProperties(Renderer* renderer)
 	{
-		return _PInvokeGetRendererProperties(renderer);
-	}
+		return _PInvoke(renderer);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRendererProperties")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial PropertiesId _PInvokeGetRendererProperties(Renderer* renderer);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRendererProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern PropertiesId _PInvoke(Renderer* renderer);
+	}
 
 	/// <summary>
 	/// Get the output size in pixels of a rendering context.
@@ -448,13 +437,12 @@ unsafe partial class SDL
 	{
 		fixed (int* w = &width, h = &height)
 		{
-			return _PInvokeGetRenderOutputSize(renderer, w, h);
+			return _PInvoke(renderer, w, h);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderOutputSize")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetRenderOutputSize(Renderer* renderer, int* width, int* height);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderOutputSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Renderer* renderer, int* width, int* height);
+	}
 
 	/// <summary>
 	/// Get the current output size in pixels of a rendering context.
@@ -470,13 +458,12 @@ unsafe partial class SDL
 	{
 		fixed (int* w = &width, h = &height)
 		{
-			return _PInvokeGetCurrentRenderOutputSize(renderer, w, h);
+			return _PInvoke(renderer, w, h);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentRenderOutputSize")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetCurrentRenderOutputSize(Renderer* renderer, int* width, int* height);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentRenderOutputSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Renderer* renderer, int* width, int* height);
+	}
 
 	/// <summary>
 	/// Create a texture for a rendering context.
@@ -492,12 +479,11 @@ unsafe partial class SDL
 	/// <returns> A pointer to the created texture or null if no rendering context was active, the format was unsupported, or the width or height were out of range; call <see cref="GetError"/> for more information. </returns>
 	public static Texture* CreateTexture(Renderer* renderer, PixelFormatValue format, TextureAccess access, int width, int height)
 	{
-		return _PInvokeCreateTexture(renderer, format, access, width, height);
-	}
+		return _PInvoke(renderer, format, access, width, height);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateTexture")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Texture* _PInvokeCreateTexture(Renderer* renderer, PixelFormatValue format, TextureAccess access, int width, int height);
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateTexture", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Texture* _PInvoke(Renderer* renderer, PixelFormatValue format, TextureAccess access, int width, int height);
+	}
 
 	/// <summary>
 	/// Create a texture from an existing surface.
@@ -510,12 +496,11 @@ unsafe partial class SDL
 	/// <returns> The created texture or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static Texture* CreateTextureFromSurface(Renderer* renderer, Surface* surface)
 	{
-		return _PInvokeCreateTextureFromSurface(renderer, surface);
-	}
+		return _PInvoke(renderer, surface);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateTextureFromSurface")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Texture* _PInvokeCreateTextureFromSurface(Renderer* renderer, Surface* surface);
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateTextureFromSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Texture* _PInvoke(Renderer* renderer, Surface* surface);
+	}
 
 	/// <summary>
 	/// Create a texture for a rendering context with the specified properties.
@@ -530,12 +515,11 @@ unsafe partial class SDL
 	/// <returns> a pointer to the created texture or null if no rendering context was active, the format was unsupported, or the width or height were out of range; call <see cref="GetError"/> for more information. </returns>
 	public static Texture* CreateTextureWithProperties(Renderer* renderer, PropertiesId props)
 	{
-		return _PInvokeCreateTextureWithProperties(renderer, props);
-	}
+		return _PInvoke(renderer, props);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateTextureWithProperties")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Texture* _PInvokeCreateTextureWithProperties(Renderer* renderer, PropertiesId props);
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateTextureWithProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Texture* _PInvoke(Renderer* renderer, PropertiesId props);
+	}
 
 	/// <summary>
 	/// Get the properties associated with a texture.
@@ -549,12 +533,11 @@ unsafe partial class SDL
 	/// <returns> A valid property id on success or 0 on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PropertiesId GetTextureProperties(Texture* texture)
 	{
-		return _PInvokeGetTextureProperties(texture);
-	}
+		return _PInvoke(texture);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureProperties")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial PropertiesId _PInvokeGetTextureProperties(Texture* texture);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern PropertiesId _PInvoke(Texture* texture);
+	}
 
 	/// <summary>
 	/// Get the renderer that created a <see cref="Texture"/>.
@@ -566,12 +549,11 @@ unsafe partial class SDL
 	/// <returns> A pointer to the SDL_Renderer that created the texture, or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static Renderer* GetRendererFromTexture(Texture* texture)
 	{
-		return _PInvokeGetRendererFromTexture(texture);
-	}
+		return _PInvoke(texture);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRendererFromTexture")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Renderer* _PInvokeGetRendererFromTexture(Texture* texture);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRendererFromTexture", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Renderer* _PInvoke(Texture* texture);
+	}
 
 	/// <summary>
 	/// Query the attributes of a texture.
@@ -593,15 +575,14 @@ unsafe partial class SDL
 			{
 				fixed (int* w = &width, h = &height)
 				{
-					return _PInvokeQueryTexture(texture, f, a, w, h);
+					return _PInvoke(texture, f, a, w, h);
 				}
 			}
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_QueryTexture")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeQueryTexture(Texture* texture, PixelFormatValue* format, TextureAccess* access, int* width, int* height);
+		[DllImport(LibraryName, EntryPoint = "SDL_QueryTexture", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, PixelFormatValue* format, TextureAccess* access, int* width, int* height);
+	}
 
 	/// <summary>
 	/// Set an additional color value multiplied into render copy operations.
@@ -616,12 +597,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetTextureColorMod(Texture* texture, byte r, byte g, byte b)
 	{
-		return _PInvokeSetTextureColorMod(texture, r, g, b);
-	}
+		return _PInvoke(texture, r, g, b);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextureColorMod")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetTextureColorMod(Texture* texture, byte r, byte g, byte b);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureColorMod", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, byte r, byte g, byte b);
+	}
 
 	/// <summary>
 	/// Set an additional color value multiplied into render copy operations.
@@ -636,12 +616,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetTextureColorMod(Texture* texture, float r, float g, float b)
 	{
-		return _PInvokeSetTextureColorModFloat(texture, r, g, b);
-	}
+		return _PInvoke(texture, r, g, b);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextureColorModFloat")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetTextureColorModFloat(Texture* texture, float r, float g, float b);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureColorModFloat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, float r, float g, float b);
+	}
 
 	/// <summary>
 	/// Get the additional color value multiplied into render copy operations.
@@ -658,13 +637,12 @@ unsafe partial class SDL
 	{
 		fixed (byte* rr = &r, gg = &g, bb = &b)
 		{
-			return _PInvokeGetTextureColorMod(texture, rr, gg, bb);
+			return _PInvoke(texture, rr, gg, bb);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureColorMod")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetTextureColorMod(Texture* texture, byte* r, byte* g, byte* b);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureColorMod", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, byte* r, byte* g, byte* b);
+	}
 
 	/// <summary>
 	/// Get the additional color value multiplied into render copy operations.
@@ -681,13 +659,12 @@ unsafe partial class SDL
 	{
 		fixed (float* rr = &r, gg = &g, bb = &b)
 		{
-			return _PInvokeGetTextureColorModFloat(texture, rr, gg, bb);
+			return _PInvoke(texture, rr, gg, bb);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureColorModFloat")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetTextureColorModFloat(Texture* texture, float* r, float* g, float* b);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureColorModFloat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, float* r, float* g, float* b);
+	}
 
 	/// <summary>
 	/// Set an additional alpha value multiplied into render copy operations.
@@ -700,12 +677,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetTextureAlphaMod(Texture* texture, byte alpha)
 	{
-		return _PInvokeSetTextureAlphaMod(texture, alpha);
-	}
+		return _PInvoke(texture, alpha);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextureAlphaMod")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetTextureAlphaMod(Texture* texture, byte alpha);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureAlphaMod", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, byte alpha);
+	}
 
 	/// <summary>
 	/// Set an additional alpha value multiplied into render copy operations.
@@ -718,12 +694,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetTextureAlphaMod(Texture* texture, float alpha)
 	{
-		return _PInvokeSetTextureAlphaModFloat(texture, alpha);
-	}
+		return _PInvoke(texture, alpha);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextureAlphaModFloat")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetTextureAlphaModFloat(Texture* texture, float alpha);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureAlphaModFloat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, float alpha);
+	}
 
 	/// <summary>
 	/// Get the additional alpha value multiplied into render copy operations.
@@ -738,13 +713,12 @@ unsafe partial class SDL
 	{
 		fixed (byte* a = &alpha)
 		{
-			return _PInvokeGetTextureAlphaMod(texture, a);
+			return _PInvoke(texture, a);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureAlphaMod")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetTextureAlphaMod(Texture* texture, byte* alpha);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureAlphaMod", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, byte* alpha);
+	}
 
 	/// <summary>
 	/// Get the additional alpha value multiplied into render copy operations.
@@ -759,13 +733,12 @@ unsafe partial class SDL
 	{
 		fixed (float* a = &alpha)
 		{
-			return _PInvokeGetTextureAlphaModFloat(texture, a);
+			return _PInvoke(texture, a);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureAlphaModFloat")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetTextureAlphaModFloat(Texture* texture, float* alpha);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureAlphaModFloat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, float* alpha);
+	}
 
 	/// <summary>
 	/// Set the blend mode for a texture, used by <see cref="FIXME:SDL_RenderTexture"/>.
@@ -778,12 +751,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetTextureBlendMode(Texture* texture, BlendMode blendMode)
 	{
-		return _PInvokeSetTextureBlendMode(texture, blendMode);
-	}
+		return _PInvoke(texture, blendMode);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextureBlendMode")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetTextureBlendMode(Texture* texture, BlendMode blendMode);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureBlendMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, BlendMode blendMode);
+	}
 
 	/// <summary>
 	/// Get the blend mode used for texture copy operations.
@@ -798,13 +770,12 @@ unsafe partial class SDL
 	{
 		fixed (BlendMode* b = &blendMode)
 		{
-			return _PInvokeGetTextureBlendMode(texture, b);
+			return _PInvoke(texture, b);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureBlendMode")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetTextureBlendMode(Texture* texture, BlendMode* blendMode);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureBlendMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, BlendMode* blendMode);
+	}
 
 	/// <summary>
 	/// Set the scale mode used for texture scale operations.
@@ -817,12 +788,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetTextureScaleMode(Texture* texture, ScaleMode scaleMode)
 	{
-		return _PInvokeSetTextureScaleMode(texture, scaleMode);
-	}
+		return _PInvoke(texture, scaleMode);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextureScaleMode")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetTextureScaleMode(Texture* texture, ScaleMode scaleMode);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureScaleMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, ScaleMode scaleMode);
+	}
 
 	/// <summary>
 	/// Get the scale mode used for texture scale operations.
@@ -837,13 +807,12 @@ unsafe partial class SDL
 	{
 		fixed (ScaleMode* s = &scaleMode)
 		{
-			return _PInvokeGetTextureScaleMode(texture, s);
+			return _PInvoke(texture, s);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureScaleMode")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetTextureScaleMode(Texture* texture, ScaleMode* scaleMode);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureScaleMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, ScaleMode* scaleMode);
+	}
 
 	/// <summary>
 	/// Update the given texture rectangle with new pixel data.
@@ -863,15 +832,14 @@ unsafe partial class SDL
 			if (rect.HasValue)
 			{
 				Rect r = rect.Value;
-				return _PInvokeUpdateTexture(texture, &r, p, pitch);
+				return _PInvoke(texture, &r, p, pitch);
 			}
-			return _PInvokeUpdateTexture(texture, null, p, pitch);
+			return _PInvoke(texture, null, p, pitch);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateTexture")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeUpdateTexture(Texture* texture, Rect* rect, uint* pixels, int pitch);
+		[DllImport(LibraryName, EntryPoint = "SDL_UpdateTexture", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, Rect* rect, uint* pixels, int pitch);
+	}
 
 	/// <summary>
 	/// Update a rectangle within a planar YV12 or IYUV texture with new pixel data.
@@ -895,15 +863,14 @@ unsafe partial class SDL
 			if (rect.HasValue)
 			{
 				Rect r = rect.Value;
-				return _PInvokeUpdateYUVTexture(texture, &r, y, yPitch, u, uPitch, v, vPitch);
+				return _PInvoke(texture, &r, y, yPitch, u, uPitch, v, vPitch);
 			}
-			return _PInvokeUpdateYUVTexture(texture, null, y, yPitch, u, uPitch, v, vPitch);
+			return _PInvoke(texture, null, y, yPitch, u, uPitch, v, vPitch);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateYUVTexture")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeUpdateYUVTexture(Texture* texture, Rect* rect, byte* yPlane, int yPitch, byte* uPlane, int uPitch, byte* vPlane, int vPitch);
+		[DllImport(LibraryName, EntryPoint = "SDL_UpdateYUVTexture", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, Rect* rect, byte* yPlane, int yPitch, byte* uPlane, int uPitch, byte* vPlane, int vPitch);
+	}
 
 	/// <summary>
 	/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.
@@ -925,15 +892,14 @@ unsafe partial class SDL
 			if (rect.HasValue)
 			{
 				Rect r = rect.Value;
-				return _PInvokeUpdateNVTexture(texture, &r, y, yPitch, uv, uvPitch);
+				return _PInvoke(texture, &r, y, yPitch, uv, uvPitch);
 			}
-			return _PInvokeUpdateNVTexture(texture, null, y, yPitch, uv, uvPitch);
+			return _PInvoke(texture, null, y, yPitch, uv, uvPitch);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateNVTexture")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeUpdateNVTexture(Texture* texture, Rect* rect, byte* yPlane, int yPitch, byte* uvPlane, int uvPitch);
+		[DllImport(LibraryName, EntryPoint = "SDL_UpdateNVTexture", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, Rect* rect, byte* yPlane, int yPitch, byte* uvPlane, int uvPitch);
+	}
 
 	/// <summary>
 	/// Lock a portion of the texture for <b>write-only</b> pixel access.
@@ -955,16 +921,15 @@ unsafe partial class SDL
 				if (rect.HasValue)
 				{
 					Rect r = rect.Value;
-					return _PInvokeLockTexture(texture, &r, p, i);
+					return _PInvoke(texture, &r, p, i);
 				}
-				return _PInvokeLockTexture(texture, null, p, i);
+				return _PInvoke(texture, null, p, i);
 			}
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_LockTexture")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeLockTexture(Texture* texture, Rect* rect, uint** pixels, int* pitch);
+		[DllImport(LibraryName, EntryPoint = "SDL_LockTexture", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, Rect* rect, uint** pixels, int* pitch);
+	}
 
 	/// <summary>
 	/// Lock a portion of the texture for <b>write-only</b> pixel access, and expose it as a SDL surface.
@@ -983,15 +948,14 @@ unsafe partial class SDL
 			if (rect.HasValue)
 			{
 				Rect r = rect.Value;
-				return _PInvokeLockTextureToSurface(texture, &r, s);
+				return _PInvoke(texture, &r, s);
 			}
-			return _PInvokeLockTextureToSurface(texture, null, s);
+			return _PInvoke(texture, null, s);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_LockTextureToSurface")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeLockTextureToSurface(Texture* texture, Rect* rect, Surface** surface);
+		[DllImport(LibraryName, EntryPoint = "SDL_LockTextureToSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Texture* texture, Rect* rect, Surface** surface);
+	}
 
 	/// <summary>
 	/// Unlock a texture, uploading the changes to video memory, if needed.
@@ -1002,12 +966,11 @@ unsafe partial class SDL
 	/// <param name="texture"> A texture locked by <see cref="LockTexture"/> </param>
 	public static void UnlockTexture(Texture* texture)
 	{
-		_PInvokeUnlockTexture(texture);
-	}
+		_PInvoke(texture);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_UnlockTexture")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeUnlockTexture(Texture* texture);
+		[DllImport(LibraryName, EntryPoint = "SDL_UnlockTexture", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void _PInvoke(Texture* texture);
+	}
 
 	/// <summary>
 	/// Set a texture as the current rendering target.
@@ -1020,12 +983,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetRenderTarget(Renderer* renderer, Texture* texture)
 	{
-		return _PInvokeSetRenderTarget(renderer, texture);
-	}
+		return _PInvoke(renderer, texture);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderTarget")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetRenderTarget(Renderer* renderer, Texture* texture);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderTarget", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Renderer* renderer, Texture* texture);
+	}
 
 	/// <summary>
 	/// Get the current render target.
@@ -1037,12 +999,11 @@ unsafe partial class SDL
 	/// <returns> The current render target or null for the default render target. </returns>
 	public static Texture* GetRenderTarget(Renderer* renderer)
 	{
-		return _PInvokeGetRenderTarget(renderer);
-	}
+		return _PInvoke(renderer);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderTarget")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Texture* _PInvokeGetRenderTarget(Renderer* renderer);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderTarget", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Texture* _PInvoke(Renderer* renderer);
+	}
 
 	/// <summary>
 	/// Set a device independent resolution and presentation mode for rendering.
@@ -1058,12 +1019,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetRenderLogicalPresentation(Renderer* renderer, int width, int height, RendererLogicalPresentation mode, ScaleMode scaleMode)
 	{
-		return _PInvokeSetRenderLogicalPresentation(renderer, width, height, mode, scaleMode);
-	}
+		return _PInvoke(renderer, width, height, mode, scaleMode);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderLogicalPresentation")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetRenderLogicalPresentation(Renderer* renderer, int width, int height, RendererLogicalPresentation mode, ScaleMode scaleMode);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderLogicalPresentation", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Renderer* renderer, int width, int height, RendererLogicalPresentation mode, ScaleMode scaleMode);
+	}
 
 	/// <summary>
 	/// Get device independent resolution and presentation mode for rendering.
@@ -1085,15 +1045,14 @@ unsafe partial class SDL
 			{
 				fixed (ScaleMode* s = &scaleMode)
 				{
-					return _PInvokeGetRenderLogicalPresentation(renderer, w, h, m, s);
+					return _PInvoke(renderer, w, h, m, s);
 				}
 			}
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderLogicalPresentation")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetRenderLogicalPresentation(Renderer* renderer, int* width, int* height, RendererLogicalPresentation* mode, ScaleMode* scaleMode);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderLogicalPresentation", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Renderer* renderer, int* width, int* height, RendererLogicalPresentation* mode, ScaleMode* scaleMode);
+	}
 
 	/// <summary>
 	/// Get a point in render coordinates when given a point in window coordinates.
@@ -1111,13 +1070,12 @@ unsafe partial class SDL
 	{
 		fixed (float* xx = &x, yy = &y)
 		{
-			return _PInvokeRenderCoordinatesFromWindow(renderer, windowX, windowY, xx, yy);
+			return _PInvoke(renderer, windowX, windowY, xx, yy);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderCoordinatesFromWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeRenderCoordinatesFromWindow(Renderer* renderer, float windowX, float windowY, float* x, float* y);
+		[DllImport(LibraryName, EntryPoint = "SDL_RenderCoordinatesFromWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Renderer* renderer, float windowX, float windowY, float* x, float* y);
+	}
 
 	/// <summary>
 	/// Get a point in window coordinates when given a point in render coordinates.
@@ -1135,13 +1093,12 @@ unsafe partial class SDL
 	{
 		fixed (float* wx = &windowX, wy = &windowY)
 		{
-			return _PInvokeRenderCoordinatesToWindow(renderer, x, y, wx, wy);
+			return _PInvoke(renderer, x, y, wx, wy);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderCoordinatesToWindow")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeRenderCoordinatesToWindow(Renderer* renderer, float x, float y, float* windowX, float* windowY);
+		[DllImport(LibraryName, EntryPoint = "SDL_RenderCoordinatesToWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Renderer* renderer, float x, float y, float* windowX, float* windowY);
+	}
 
 	// this function below is the bane of my existence (because of it i have to implement SDL_event.h
 	// [that uses literally like >90% of the SDL library {i have to write bindings for all of that ;_;}]).

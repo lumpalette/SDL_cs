@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace SDL3;
@@ -19,155 +18,155 @@ unsafe partial class SDL
 	public static class PixelFormatEnum
 	{
 		public static PixelFormatValue Unknown => new();
-		
+
 		public static PixelFormatValue Index1LSB => new(PixelType.Index1, BitmapOrder.Order4321, PackedLayout.None, 1, 0);
-		
+
 		public static PixelFormatValue Index1MSB => new(PixelType.Index1, BitmapOrder.Order1234, PackedLayout.None, 1, 0);
-		
+
 		public static PixelFormatValue Index2LSB => new(PixelType.Index2, BitmapOrder.Order4321, PackedLayout.None, 2, 0);
-		
+
 		public static PixelFormatValue Index2MSB => new(PixelType.Index2, BitmapOrder.Order1234, PackedLayout.None, 2, 0);
-		
+
 		public static PixelFormatValue Index4LSB => new(PixelType.Index4, BitmapOrder.Order4321, PackedLayout.None, 4, 0);
-		
+
 		public static PixelFormatValue Index4MSB => new(PixelType.Index4, BitmapOrder.Order1234, PackedLayout.None, 4, 0);
-		
+
 		public static PixelFormatValue Index8 => new(PixelType.Index8, BitmapOrder.None, PackedLayout.None, 8, 1);
-		
+
 		public static PixelFormatValue RGB332 => new(PixelType.Packed8, PackedOrder.XRGB, PackedLayout.Layout332, 8, 1);
-		
+
 		public static PixelFormatValue XRGB4444 => new(PixelType.Packed16, PackedOrder.XRGB, PackedLayout.Layout4444, 12, 2);
-		
+
 		public static PixelFormatValue RGB444 => XRGB4444;
-		
+
 		public static PixelFormatValue XBGR4444 => new(PixelType.Packed16, PackedOrder.XBGR, PackedLayout.Layout4444, 12, 2);
-		
+
 		public static PixelFormatValue BGR444 => XBGR4444;
-		
+
 		public static PixelFormatValue XRGB1555 => new(PixelType.Packed16, PackedOrder.XRGB, PackedLayout.Layout1555, 15, 2);
-		
+
 		public static PixelFormatValue RGB555 => XRGB1555;
-		
+
 		public static PixelFormatValue XBGR1555 => new(PixelType.Packed16, PackedOrder.XBGR, PackedLayout.Layout1555, 15, 2);
-		
+
 		public static PixelFormatValue BGR555 => XBGR1555;
-		
+
 		public static PixelFormatValue ARGB4444 => new(PixelType.Packed16, PackedOrder.ARGB, PackedLayout.Layout4444, 16, 2);
-		
+
 		public static PixelFormatValue RGBA4444 => new(PixelType.Packed16, PackedOrder.RGBA, PackedLayout.Layout4444, 16, 2);
-		
+
 		public static PixelFormatValue ABGR4444 => new(PixelType.Packed16, PackedOrder.ABGR, PackedLayout.Layout4444, 16, 2);
-		
+
 		public static PixelFormatValue BGRA4444 => new(PixelType.Packed16, PackedOrder.BGRA, PackedLayout.Layout4444, 16, 2);
-		
+
 		public static PixelFormatValue ARGB1555 => new(PixelType.Packed16, PackedOrder.ARGB, PackedLayout.Layout1555, 16, 2);
-		
+
 		public static PixelFormatValue RGBA5551 => new(PixelType.Packed16, PackedOrder.RGBA, PackedLayout.Layout5551, 16, 2);
-		
+
 		public static PixelFormatValue ABGR1555 => new(PixelType.Packed16, PackedOrder.ABGR, PackedLayout.Layout1555, 16, 2);
-		
+
 		public static PixelFormatValue BGRA5551 => new(PixelType.Packed16, PackedOrder.BGRA, PackedLayout.Layout5551, 16, 2);
-		
+
 		public static PixelFormatValue RGB565 => new(PixelType.Packed16, PackedOrder.XRGB, PackedLayout.Layout565, 16, 2);
-		
+
 		public static PixelFormatValue BGR565 => new(PixelType.Packed16, PackedOrder.XBGR, PackedLayout.Layout565, 16, 2);
-		
+
 		public static PixelFormatValue RGB24 => new(PixelType.ArrayU8, ArrayOrder.RGB, PackedLayout.None, 24, 3);
-		
+
 		public static PixelFormatValue BGR24 => new(PixelType.ArrayU8, ArrayOrder.BGR, PackedLayout.None, 24, 3);
-		
+
 		public static PixelFormatValue XRGB8888 => new(PixelType.Packed32, PackedOrder.XRGB, PackedLayout.Layout8888, 24, 4);
-		
+
 		public static PixelFormatValue RGBX8888 => new(PixelType.Packed32, PackedOrder.RGBX, PackedLayout.Layout8888, 24, 4);
-		
+
 		public static PixelFormatValue XBGR8888 => new(PixelType.Packed32, PackedOrder.XBGR, PackedLayout.Layout8888, 24, 4);
-		
+
 		public static PixelFormatValue BGRX8888 => new(PixelType.Packed32, PackedOrder.BGRX, PackedLayout.Layout8888, 24, 4);
-		
+
 		public static PixelFormatValue ARGB8888 => new(PixelType.Packed32, PackedOrder.ARGB, PackedLayout.Layout8888, 32, 4);
-		
+
 		public static PixelFormatValue RGBA8888 => new(PixelType.Packed32, PackedOrder.RGBA, PackedLayout.Layout8888, 32, 4);
-		
+
 		public static PixelFormatValue ABGR8888 => new(PixelType.Packed32, PackedOrder.ABGR, PackedLayout.Layout8888, 32, 4);
-		
+
 		public static PixelFormatValue BGRA8888 => new(PixelType.Packed32, PackedOrder.BGRA, PackedLayout.Layout8888, 32, 4);
-		
+
 		public static PixelFormatValue XRGB2101010 => new(PixelType.Packed32, PackedOrder.XRGB, PackedLayout.Layout2101010, 32, 4);
-		
+
 		public static PixelFormatValue XBGR2101010 => new(PixelType.Packed32, PackedOrder.XBGR, PackedLayout.Layout2101010, 32, 4);
-		
+
 		public static PixelFormatValue ARGB2101010 => new(PixelType.Packed32, PackedOrder.ARGB, PackedLayout.Layout2101010, 32, 4);
-		
+
 		public static PixelFormatValue ABGR2101010 => new(PixelType.Packed32, PackedOrder.ABGR, PackedLayout.Layout2101010, 32, 4);
-		
+
 		public static PixelFormatValue RGB48 => new(PixelType.ArrayU16, ArrayOrder.RGB, PackedLayout.None, 48, 6);
-		
+
 		public static PixelFormatValue BGR48 => new(PixelType.ArrayU16, ArrayOrder.BGR, PackedLayout.None, 48, 6);
-		
+
 		public static PixelFormatValue RGBA64 => new(PixelType.ArrayU16, ArrayOrder.RGBA, PackedLayout.None, 64, 8);
-		
+
 		public static PixelFormatValue ARGB64 => new(PixelType.ArrayU16, ArrayOrder.ARGB, PackedLayout.None, 64, 8);
-		
+
 		public static PixelFormatValue BGRA64 => new(PixelType.ArrayU16, ArrayOrder.BGRA, PackedLayout.None, 64, 8);
-		
+
 		public static PixelFormatValue ABGR64 => new(PixelType.ArrayU16, ArrayOrder.ABGR, PackedLayout.None, 64, 8);
-		
+
 		public static PixelFormatValue RGB48Float => new(PixelType.ArrayF16, ArrayOrder.RGB, PackedLayout.None, 64, 8);
-		
+
 		public static PixelFormatValue BGR48Float => new(PixelType.ArrayF16, ArrayOrder.BGR, PackedLayout.None, 64, 8);
-		
+
 		public static PixelFormatValue RGBA64Float => new(PixelType.ArrayF16, ArrayOrder.RGBA, PackedLayout.None, 64, 8);
-		
+
 		public static PixelFormatValue ARGB64Float => new(PixelType.ArrayF16, ArrayOrder.ARGB, PackedLayout.None, 64, 8);
-		
+
 		public static PixelFormatValue BGRA64Float => new(PixelType.ArrayF16, ArrayOrder.BGRA, PackedLayout.None, 64, 8);
-		
+
 		public static PixelFormatValue ABGR64Float => new(PixelType.ArrayF16, ArrayOrder.ABGR, PackedLayout.None, 64, 8);
-		
+
 		public static PixelFormatValue RGB96Float => new(PixelType.ArrayF32, ArrayOrder.RGB, PackedLayout.None, 96, 12);
-		
+
 		public static PixelFormatValue BGR96Float => new(PixelType.ArrayF32, ArrayOrder.BGR, PackedLayout.None, 96, 12);
-		
+
 		public static PixelFormatValue RGBA128Float => new(PixelType.ArrayF32, ArrayOrder.RGBA, PackedLayout.None, 128, 16);
-		
+
 		public static PixelFormatValue ARGB128Float => new(PixelType.ArrayF32, ArrayOrder.ARGB, PackedLayout.None, 128, 16);
-		
+
 		public static PixelFormatValue BGRA128Float => new(PixelType.ArrayF32, ArrayOrder.BGRA, PackedLayout.None, 128, 16);
-		
+
 		public static PixelFormatValue ABGR128Float => new(PixelType.ArrayF32, ArrayOrder.ABGR, PackedLayout.None, 128, 16);
-		
+
 		public static PixelFormatValue RGBA32 => BitConverter.IsLittleEndian ? ABGR8888 : RGBA8888;
-		
+
 		public static PixelFormatValue ARGB32 => BitConverter.IsLittleEndian ? BGRA8888 : ARGB8888;
-		
+
 		public static PixelFormatValue BGRA32 => BitConverter.IsLittleEndian ? ARGB8888 : BGRA8888;
-		
+
 		public static PixelFormatValue ABGR32 => BitConverter.IsLittleEndian ? RGBA8888 : ABGR8888;
-		
+
 		public static PixelFormatValue RGBX32 => BitConverter.IsLittleEndian ? XBGR8888 : XRGB8888;
-		
+
 		public static PixelFormatValue XRGB32 => BitConverter.IsLittleEndian ? BGRX8888 : RGBX8888;
-		
+
 		public static PixelFormatValue BGRX32 => BitConverter.IsLittleEndian ? XRGB8888 : BGRX8888;
-		
+
 		public static PixelFormatValue XBGR32 => BitConverter.IsLittleEndian ? RGBX8888 : XBGR8888;
-		
+
 		public static PixelFormatValue YV12 => new((byte)'Y', (byte)'V', (byte)'1', (byte)'2');
-		
+
 		public static PixelFormatValue IYUV => new((byte)'I', (byte)'Y', (byte)'U', (byte)'V');
-		
+
 		public static PixelFormatValue YUY2 => new((byte)'Y', (byte)'U', (byte)'Y', (byte)'2');
-		
+
 		public static PixelFormatValue UYVY => new((byte)'U', (byte)'Y', (byte)'V', (byte)'Y');
-		
+
 		public static PixelFormatValue YVYU => new((byte)'Y', (byte)'V', (byte)'Y', (byte)'U');
-		
+
 		public static PixelFormatValue NV12 => new((byte)'N', (byte)'V', (byte)'1', (byte)'2');
-		
+
 		public static PixelFormatValue NV21 => new((byte)'N', (byte)'V', (byte)'2', (byte)'1');
-		
+
 		public static PixelFormatValue P010 => new((byte)'P', (byte)'0', (byte)'1', (byte)'0');
-		
+
 		public static PixelFormatValue ExternalOES => new((byte)'O', (byte)'E', (byte)'S', (byte)' ');
 	}
 
@@ -342,9 +341,9 @@ unsafe partial class SDL
 		}
 
 		private readonly Color* _colors;
-		
+
 		private readonly uint _version;
-		
+
 		private readonly int _refCount;
 	}
 
@@ -440,7 +439,7 @@ unsafe partial class SDL
 		public readonly byte AShift;
 
 		private readonly int _refCount;
-		
+
 		private readonly PixelFormat* _next;
 	}
 
@@ -1017,7 +1016,7 @@ unsafe partial class SDL
 	{
 		return (byte)(((format.Value) >> 28) & 0x0F);
 	}
-	 
+
 	[Macro]
 	public static PixelType PIXEL_TYPE(PixelFormatValue format)
 	{
@@ -1171,12 +1170,11 @@ unsafe partial class SDL
 	/// <returns> The human readable name of the specified pixel format or "SDL_PIXELFORMAT_UNKNOWN" if the format isn't recognized. </returns>
 	public static string GetPixelFormatName(PixelFormatValue format)
 	{
-		return Marshal.PtrToStringUTF8((nint)_PInvokeGetPixelFormatName(format))!;
-	}
+		return Marshal.PtrToStringUTF8((nint)_PInvoke(format))!;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPixelFormatName")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial byte* _PInvokeGetPixelFormatName(PixelFormatValue format);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetPixelFormatName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern byte* _PInvoke(PixelFormatValue format);
+	}
 
 	/// <summary>
 	/// Convert a pixel format value to a bpp value and RGBA masks.
@@ -1197,14 +1195,13 @@ unsafe partial class SDL
 		{
 			fixed (uint* r = &rMask, g = &gMask, b = &bMask, a = &aMask)
 			{
-				return _PInvokeGetMasksForPixelFormatValue(format, bb, r, g, b, a) == 1;
+				return _PInvoke(format, bb, r, g, b, a) == 1;
 			}
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMasksForPixelFormatEnum")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetMasksForPixelFormatValue(PixelFormatValue format, int* bpp, uint* rMask, uint* gMask, uint* bMask, uint* aMask);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetMasksForPixelFormatEnum", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(PixelFormatValue format, int* bpp, uint* rMask, uint* gMask, uint* bMask, uint* aMask);
+	}
 
 	/// <summary>
 	/// Convert a bpp value and RGBA masks to a pixel format value.
@@ -1220,12 +1217,11 @@ unsafe partial class SDL
 	/// <returns> The <see cref="PixelFormatValue"/> value corresponding to the format masks, or <see cref="PixelFormatEnum.Unknown"/> if there isn't a match. </returns>
 	public static PixelFormatValue GetPixelFormatValueForMasks(int bpp, uint rMask, uint gMask, uint bMask, uint aMask)
 	{
-		return _PInvokeGetPixelFormatValueForMasks(bpp, rMask, gMask, bMask, aMask);
-	}
+		return _PInvoke(bpp, rMask, gMask, bMask, aMask);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPixelFormatEnumForMasks")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial PixelFormatValue _PInvokeGetPixelFormatValueForMasks(int bpp, uint rMask, uint gMask, uint bMask, uint aMask);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetPixelFormatEnumForMasks", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern PixelFormatValue _PInvoke(int bpp, uint rMask, uint gMask, uint bMask, uint aMask);
+	}
 
 	/// <summary>
 	/// Create a <see cref="PixelFormat"/> structure corresponding to a pixel format.
@@ -1237,12 +1233,11 @@ unsafe partial class SDL
 	/// <returns> The new <see cref="PixelFormat"/> structure on success or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PixelFormat* CreatePixelFormat(PixelFormatValue format)
 	{
-		return _PInvokeCreatePixelFormat(format);
-	}
+		return _PInvoke(format);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_CreatePixelFormat")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial PixelFormat* _PInvokeCreatePixelFormat(PixelFormatValue format);
+		[DllImport(LibraryName, EntryPoint = "SDL_CreatePixelFormat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern PixelFormat* _PInvoke(PixelFormatValue format);
+	}
 
 	/// <summary>
 	/// Free a <see cref="PixelFormat"/> structure allocated by <see cref="CreatePixelFormat"/>.
@@ -1253,12 +1248,11 @@ unsafe partial class SDL
 	/// <param name="format"> The <see cref="PixelFormat"/> structure to free. </param>
 	public static void DestroyPixelFormat(PixelFormat* format)
 	{
-		_PInvokeDestroyPixelFormat(format);
-	}
+		_PInvoke(format);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_DestroyPixelFormat")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeDestroyPixelFormat(PixelFormat* format);
+		[DllImport(LibraryName, EntryPoint = "SDL_DestroyPixelFormat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void _PInvoke(PixelFormat* format);
+	}
 
 	/// <summary>
 	/// Create a <see cref="Palette"/> structure with the specified number of color entries.
@@ -1270,12 +1264,11 @@ unsafe partial class SDL
 	/// <returns> A new <see cref="Palette"/> structure on success or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static Palette* CreatePalette(int nColors)
 	{
-		return _PInvokeCreatePalette(nColors);
-	}
+		return _PInvoke(nColors);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_CreatePalette")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Palette* _PInvokeCreatePalette(int nColors);
+		[DllImport(LibraryName, EntryPoint = "SDL_CreatePalette", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Palette* _PInvoke(int nColors);
+	}
 
 	/// <summary>
 	/// Set the palette for a pixel format structure.
@@ -1288,12 +1281,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetPixelFormatPalette(PixelFormat* format, Palette* palette)
 	{
-		return _PInvokeSetPixelFormatPalette(format, palette);
-	}
+		return _PInvoke(format, palette);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetPixelFormatPalette")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetPixelFormatPalette(PixelFormat* format, Palette* palette);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetPixelFormatPalette", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(PixelFormat* format, Palette* palette);
+	}
 
 	/// <summary>
 	/// Set a range of colors in a palette.
@@ -1311,13 +1303,12 @@ unsafe partial class SDL
 		// i don't think this is the right way of doing this... oh well! it works, right???
 		fixed (Color* c = colors)
 		{
-			return _PInvokeSetPaletteColors(palette, c, firstColor, nColors);
+			return _PInvoke(palette, c, firstColor, nColors);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetPaletteColors")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetPaletteColors(Palette* palette, Color* colors, int firstColor, int nColors);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetPaletteColors", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Palette* palette, Color* colors, int firstColor, int nColors);
+	}
 
 	/// <summary>
 	/// Free a <see cref="Palette"/> structure created with <see cref="CreatePalette"/>.
@@ -1328,12 +1319,11 @@ unsafe partial class SDL
 	/// <param name="palette"> The <see cref="Palette"/> structure to be freed. </param>
 	public static void DestroyPalette(Palette* palette)
 	{
-		_PInvokeDestroyPalette(palette);
-	}
+		_PInvoke(palette);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_DestroyPalette")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeDestroyPalette(Palette* palette);
+		[DllImport(LibraryName, EntryPoint = "SDL_DestroyPalette", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void _PInvoke(Palette* palette);
+	}
 
 	/// <summary>
 	/// Map an RGB triple to an opaque pixel value for a given pixel format.
@@ -1348,12 +1338,11 @@ unsafe partial class SDL
 	/// <returns> A pixel value. </returns>
 	public static uint MapRGB(PixelFormat* format, byte r, byte g, byte b)
 	{
-		return _PInvokeMapRGB(format, r, g, b);
-	}
+		return _PInvoke(format, r, g, b);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_MapRGB")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial uint _PInvokeMapRGB(PixelFormat* format, byte r, byte g, byte b);
+		[DllImport(LibraryName, EntryPoint = "SDL_MapRGB", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern uint _PInvoke(PixelFormat* format, byte r, byte g, byte b);
+	}
 
 	/// <summary>
 	/// Map an RGBA quadruple to a pixel value for a given pixel format.
@@ -1369,12 +1358,11 @@ unsafe partial class SDL
 	/// <returns> A pixel value. </returns>
 	public static uint MapRGBA(PixelFormat* format, byte r, byte g, byte b, byte a)
 	{
-		return _PInvokeMapRGBA(format, r, g, b, a);
-	}
+		return _PInvoke(format, r, g, b, a);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_MapRGBA")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial uint _PInvokeMapRGBA(PixelFormat* format, byte r, byte g, byte b, byte a);
+		[DllImport(LibraryName, EntryPoint = "SDL_MapRGBA", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern uint _PInvoke(PixelFormat* format, byte r, byte g, byte b, byte a);
+	}
 
 	/// <summary>
 	/// Get RGB values from a pixel in the specified format.
@@ -1391,13 +1379,12 @@ unsafe partial class SDL
 	{
 		fixed (byte* rr = &r, gg = &g, bb = &b)
 		{
-			_PInvokeGetRGB(pixel, format, rr, gg, bb);
+			_PInvoke(pixel, format, rr, gg, bb);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRGBA")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeGetRGB(uint pixel, PixelFormat* format, byte* r, byte* g, byte* b);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRGBA", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void _PInvoke(uint pixel, PixelFormat* format, byte* r, byte* g, byte* b);
+	}
 
 	/// <summary>
 	/// Get RGBA values from a pixel in the specified format.
@@ -1415,13 +1402,12 @@ unsafe partial class SDL
 	{
 		fixed (byte* rr = &r, gg = &g, bb = &b, aa = &a)
 		{
-			_PInvokeGetRGBA(pixel, format, rr, gg, bb, aa);
+			_PInvoke(pixel, format, rr, gg, bb, aa);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRGBA")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeGetRGBA(uint pixel, PixelFormat* format, byte* r, byte* g, byte* b, byte* a);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRGBA", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void _PInvoke(uint pixel, PixelFormat* format, byte* r, byte* g, byte* b, byte* a);
+	}
 
 	/// <summary>
 	/// No transparency.

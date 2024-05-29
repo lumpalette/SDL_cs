@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.Text;
 
 namespace SDL3;
@@ -194,12 +193,11 @@ unsafe partial class SDL
 	/// <returns> The new <see cref="Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
 	public static Surface* CreateSurface(int width, int height, PixelFormatValue format)
 	{
-		return _PInvokeCreateSurface(width, height, format);
-	}
+		return _PInvoke(width, height, format);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateSurface")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Surface* _PInvokeCreateSurface(int width, int height, PixelFormatValue format);
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Surface* _PInvoke(int width, int height, PixelFormatValue format);
+	}
 
 	/// <summary>
 	/// Allocate a new RGB surface with a specific pixel format and existing pixel data.
@@ -220,13 +218,12 @@ unsafe partial class SDL
 			// i'm not sure if the garbage collector messes up the 'pixels' managed array, because the documentation for
 			// this function says that no copy of the pixel data is made. if the managed array gets destroyed from memory
 			// by the gc, then it would also affect the C side, right? help
-			return _PInvokeCreateSurfaceFrom(p, width, height, pitch, format);
+			return _PInvoke(p, width, height, pitch, format);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateSurfaceFrom")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Surface* _PInvokeCreateSurfaceFrom(uint* pixels, int width, int height, int pitch, PixelFormatValue format);
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateSurfaceFrom", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Surface* _PInvoke(uint* pixels, int width, int height, int pitch, PixelFormatValue format);
+	}
 
 	/// <summary>
 	/// Free an RGB surface.
@@ -241,12 +238,11 @@ unsafe partial class SDL
 		{
 			return;
 		}
-		_PInvokeDestroySurface(surface);
-	}
+		_PInvoke(surface);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_DestroySurface")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeDestroySurface(Surface* surface);
+		[DllImport(LibraryName, EntryPoint = "SDL_DestroySurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void _PInvoke(Surface* surface);
+	}
 
 	/// <summary>
 	/// Get the properties associated with a surface.
@@ -260,12 +256,11 @@ unsafe partial class SDL
 	/// <returns> A valid property id on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static PropertiesId GetSurfaceProperties(Surface* surface)
 	{
-		return _PInvokeGetSurfaceProperties(surface);
-	}
+		return _PInvoke(surface);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceProperties")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial PropertiesId _PInvokeGetSurfaceProperties(Surface* surface);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSurfaceProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern PropertiesId _PInvoke(Surface* surface);
+	}
 
 	/// <summary>
 	/// Set the colorspace used by a surface.
@@ -278,12 +273,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetSurfaceColorspace(Surface* surface, ColorspaceValue colorspace)
 	{
-		return _PInvokeSetSurfaceColorspace(surface, colorspace);
-	}
+		return _PInvoke(surface, colorspace);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorspace")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetSurfaceColorspace(Surface* surface, ColorspaceValue colorspace);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorspace", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, ColorspaceValue colorspace);
+	}
 
 	/// <summary>
 	/// Get the colorspace used by a surface.
@@ -298,13 +292,12 @@ unsafe partial class SDL
 	{
 		fixed (ColorspaceValue* c = &colorspace)
 		{
-			return _PInvokeGetSurfaceColorspace(surface, c);
+			return _PInvoke(surface, c);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorspace")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetSurfaceColorspace(Surface* surface, ColorspaceValue* colorspace);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorspace", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, ColorspaceValue* colorspace);
+	}
 
 	/// <summary>
 	/// Set the palette used by a surface.
@@ -317,12 +310,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetSurfacePalette(Surface* surface, Palette* palette)
 	{
-		return _PInvokeSetSurfacePalette(surface, palette);
-	}
+		return _PInvoke(surface, palette);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfacePalette")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetSurfacePalette(Surface* surface, Palette* palette);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetSurfacePalette", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, Palette* palette);
+	}
 
 	/// <summary>
 	/// Set up a surface for directly accessing the pixels.
@@ -334,12 +326,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int LockSurface(Surface* surface)
 	{
-		return _PInvokeLockSurface(surface);
-	}
+		return _PInvoke(surface);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_LockSurface")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeLockSurface(Surface* surface);
+		[DllImport(LibraryName, EntryPoint = "SDL_LockSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface);
+	}
 
 	/// <summary>
 	/// Release a surface after directly accessing the pixels.
@@ -350,12 +341,11 @@ unsafe partial class SDL
 	/// <param name="surface"> The <see cref="Surface"/> structure to be unlocked. </param>
 	public static void UnlockSurface(Surface* surface)
 	{
-		_PInvokeUnlockSurface(surface);
-	}
+		_PInvoke(surface);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_UnlockSurface")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeUnlockSurface(Surface* surface);
+		[DllImport(LibraryName, EntryPoint = "SDL_UnlockSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void _PInvoke(Surface* surface);
+	}
 
 	// i'll rather die than having to implement IO shit, so i'll just skip the IO stream functions LOL
 	// ADDME: IO shit (probably not)
@@ -372,13 +362,12 @@ unsafe partial class SDL
 	{
 		fixed (byte* f = Encoding.UTF8.GetBytes(file))
 		{
-			return _PInvokeLoadBMP(f);
+			return _PInvoke(f);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_LoadBMP")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Surface* _PInvokeLoadBMP(byte* file);
+		[DllImport(LibraryName, EntryPoint = "SDL_LoadBMP", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Surface* _PInvoke(byte* file);
+	}
 
 	/// <summary>
 	/// Save a surface to a file.
@@ -393,13 +382,12 @@ unsafe partial class SDL
 	{
 		fixed (byte* f = Encoding.UTF8.GetBytes(file))
 		{
-			return _PInvokeSaveBMP(surface, f);
+			return _PInvoke(surface, f);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SaveBMP")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSaveBMP(Surface* surface, byte* file);
+		[DllImport(LibraryName, EntryPoint = "SDL_SaveBMP", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, byte* file);
+	}
 
 	/// <summary>
 	/// Set the RLE acceleration hint for a surface.
@@ -412,12 +400,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetSurfaceRLE(Surface* surface, bool enable)
 	{
-		return _PInvokeSetSurfaceRLE(surface, enable ? 1 : 0);
-	}
+		return _PInvoke(surface, enable ? 1 : 0);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceRLE")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetSurfaceRLE(Surface* surface, int flag);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetSurfaceRLE", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, int flag);
+	}
 
 	/// <summary>
 	/// Returns whether the surface is RLE enabled.
@@ -429,12 +416,11 @@ unsafe partial class SDL
 	/// <returns> True if the surface has RLE enabled, false otherwise. </returns>
 	public static bool SurfaceHasRLE(Surface* surface)
 	{
-		return _PInvokeSurfaceHasRLE(surface) == 1;
-	}
+		return _PInvoke(surface) == 1;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SurfaceHasRLE")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSurfaceHasRLE(Surface* surface);
+		[DllImport(LibraryName, EntryPoint = "SDL_SurfaceHasRLE", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface);
+	}
 
 	/// <summary>
 	/// Set the color key (transparent pixel) in a surface.
@@ -448,12 +434,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetSurfaceColorKey(Surface* surface, bool enable, uint key)
 	{
-		return _PInvokeSetSurfaceColorKey(surface, enable ? 1 : 0, key);
-	}
+		return _PInvoke(surface, enable ? 1 : 0, key);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorKey")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetSurfaceColorKey(Surface* surface, int enable, uint key);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorKey", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, int enable, uint key);
+	}
 
 	/// <summary>
 	/// Returns whether the surface has a color key.
@@ -465,12 +450,11 @@ unsafe partial class SDL
 	/// <returns> True if the surface has a color key, otherwise false. </returns>
 	public static bool SurfaceHasColorKey(Surface* surface)
 	{
-		return _PInvokeSurfaceHasColorKey(surface) == 1;
-	}
+		return _PInvoke(surface) == 1;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SurfaceHasColorKey")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSurfaceHasColorKey(Surface* surface);
+		[DllImport(LibraryName, EntryPoint = "SDL_SurfaceHasColorKey", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface);
+	}
 
 	/// <summary>
 	/// Get the color key (transparent pixel) for a surface.
@@ -485,13 +469,12 @@ unsafe partial class SDL
 	{
 		fixed (uint* k = &key)
 		{
-			return _PInvokeGetSurfaceColorKey(surface, k);
+			return _PInvoke(surface, k);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorKey")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetSurfaceColorKey(Surface* surface, uint* key);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorKey", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, uint* key);
+	}
 
 	/// <summary>
 	/// Set an additional color value multiplied into blit operations.
@@ -506,12 +489,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetSurfaceColorMod(Surface* surface, byte r, byte g, byte b)
 	{
-		return _PInvokeSetSurfaceColorMod(surface, r, g, b);
-	}
+		return _PInvoke(surface, r, g, b);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorMod")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetSurfaceColorMod(Surface* surface, byte r, byte g, byte b);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorMod", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, byte r, byte g, byte b);
+	}
 
 	/// <summary>
 	/// Get the additional color value multiplied into blit operations.
@@ -528,13 +510,12 @@ unsafe partial class SDL
 	{
 		fixed (byte* rr = &r, gg = &g, bb = &b)
 		{
-			return _PInvokeGetSurfaceColorMod(surface, rr, gg, bb);
+			return _PInvoke(surface, rr, gg, bb);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorMod")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetSurfaceColorMod(Surface* surface, byte* r, byte* g, byte* b);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorMod", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, byte* r, byte* g, byte* b);
+	}
 
 	/// <summary>
 	/// Set an additional alpha value used in blit operations.
@@ -547,12 +528,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetSurfaceAlphaMod(Surface* surface, byte alpha)
 	{
-		return _PInvokeSetSurfaceAlphaMod(surface, alpha);
-	}
+		return _PInvoke(surface, alpha);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceAlphaMod")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetSurfaceAlphaMod(Surface* surface, byte alpha);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetSurfaceAlphaMod", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, byte alpha);
+	}
 
 	/// <summary>
 	/// Get the additional alpha value used in blit operations.
@@ -567,13 +547,12 @@ unsafe partial class SDL
 	{
 		fixed (byte* a = &alpha)
 		{
-			return _PInvokeGetSurfaceAlphaMod(surface, a);
+			return _PInvoke(surface, a);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceAlphaMod")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetSurfaceAlphaMod(Surface* surface, byte* alpha);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSurfaceAlphaMod", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, byte* alpha);
+	}
 
 	/// <summary>
 	/// Set the blend mode used for blit operations.
@@ -586,12 +565,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetSurfaceBlendMode(Surface* surface, BlendMode blendMode)
 	{
-		return _PInvokeSetSurfaceBlendMode(surface, blendMode);
-	}
+		return _PInvoke(surface, blendMode);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceBlendMode")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetSurfaceBlendMode(Surface* surface, BlendMode blendMode);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetSurfaceBlendMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, BlendMode blendMode);
+	}
 
 	/// <summary>
 	/// Get the blend mode used for blit operations.
@@ -606,13 +584,12 @@ unsafe partial class SDL
 	{
 		fixed (BlendMode* b = &blendMode)
 		{
-			return _PInvokeGetSurfaceBlendMode(surface, b);
+			return _PInvoke(surface, b);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceBlendMode")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetSurfaceBlendMode(Surface* surface, BlendMode* blendMode);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSurfaceBlendMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, BlendMode* blendMode);
+	}
 
 	/// <summary>
 	/// Set the clipping rectangle for a surface.
@@ -628,14 +605,13 @@ unsafe partial class SDL
 		if (rect.HasValue)
 		{
 			Rect r = rect.Value;
-			return _PInvokeSetSurfaceClipRect(surface, &r) == 1;
+			return _PInvoke(surface, &r) == 1;
 		}
-		return _PInvokeSetSurfaceClipRect(surface, null) == 1;
-	}
+		return _PInvoke(surface, null) == 1;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceClipRect")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetSurfaceClipRect(Surface* surface, Rect* rect);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetSurfaceClipRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, Rect* rect);
+	}
 
 	/// <summary>
 	/// Get the clipping rectangle for a surface.
@@ -650,13 +626,12 @@ unsafe partial class SDL
 	{
 		fixed (Rect* r = &rect)
 		{
-			return _PInvokeGetSurfaceClipRect(surface, r);
+			return _PInvoke(surface, r);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceClipRect")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeGetSurfaceClipRect(Surface* surface, Rect* rect);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSurfaceClipRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, Rect* rect);
+	}
 
 	/// <summary>
 	/// Flip a surface vertically or horizontally.
@@ -669,12 +644,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int FlipSurface(Surface* surface, FlipMode flip)
 	{
-		return _PInvokeFlipSurface(surface, flip);
-	}
+		return _PInvoke(surface, flip);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_FlipSurface")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeFlipSurface(Surface* surface, FlipMode flip);
+		[DllImport(LibraryName, EntryPoint = "SDL_FlipSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, FlipMode flip);
+	}
 
 	/// <summary>
 	/// Creates a new surface identical to the existing surface.
@@ -686,12 +660,11 @@ unsafe partial class SDL
 	/// <returns> A copy of the surface, or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static Surface* DuplicateSurface(Surface* surface)
 	{
-		return _PInvokeDuplicateSurface(surface);
-	}
+		return _PInvoke(surface);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_DuplicateSurface")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Surface* _PInvokeDuplicateSurface(Surface* surface);
+		[DllImport(LibraryName, EntryPoint = "SDL_DuplicateSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Surface* _PInvoke(Surface* surface);
+	}
 
 	/// <summary>
 	/// Copy an existing surface to a new surface of the specified format.
@@ -704,12 +677,11 @@ unsafe partial class SDL
 	/// <returns> The new <see cref="Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
 	public static Surface* ConvertSurfaceFormat(Surface* surface, PixelFormat* format)
 	{
-		return _PInvokeConvertSurfaceFormat(surface, format);
-	}
+		return _PInvoke(surface, format);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertSurface")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Surface* _PInvokeConvertSurfaceFormat(Surface* surface, PixelFormat* format);
+		[DllImport(LibraryName, EntryPoint = "SDL_ConvertSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Surface* _PInvoke(Surface* surface, PixelFormat* format);
+	}
 
 	/// <summary>
 	/// Copy an existing surface to a new surface of the specified format.
@@ -725,12 +697,11 @@ unsafe partial class SDL
 		// i think ConvertSurface and ConvertSurfaceFormat were meant to be overloadings, but since C doesn't have
 		// function overloading, they just created two functions instead. also, this function name is more accurate
 		// (for both cases) to what the function does haha.
-		return _PInvokeConvertSurfaceFormat(surface, format);
-	}
+		return _PInvoke(surface, format);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertSurfaceFormat")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Surface* _PInvokeConvertSurfaceFormat(Surface* surface, PixelFormatValue format);
+		[DllImport(LibraryName, EntryPoint = "SDL_ConvertSurfaceFormat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Surface* _PInvoke(Surface* surface, PixelFormatValue format);
+	}
 
 	/// <summary>
 	/// Copy an existing surface to a new surface of the specified format and colorspace.
@@ -745,12 +716,11 @@ unsafe partial class SDL
 	/// <returns> The new <see cref="Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
 	public static Surface* ConvertSurfaceFormatAndColorspace(Surface* surface, PixelFormatValue format, ColorspaceValue colorspace, PropertiesId props)
 	{
-		return _PInvokeConvertSurfaceFormatAndColorspace(surface, format, colorspace, props);
-	}
+		return _PInvoke(surface, format, colorspace, props);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertSurfaceFormatAndColorspace")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Surface* _PInvokeConvertSurfaceFormatAndColorspace(Surface* surface, PixelFormatValue format, ColorspaceValue colorspace, PropertiesId props);
+		[DllImport(LibraryName, EntryPoint = "SDL_ConvertSurfaceFormatAndColorspace", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Surface* _PInvoke(Surface* surface, PixelFormatValue format, ColorspaceValue colorspace, PropertiesId props);
+	}
 
 	/// <summary>
 	/// Copy a block of pixels of one format to another format.
@@ -773,13 +743,12 @@ unsafe partial class SDL
 		dst = new uint[src.Length];
 		fixed (uint* s = src, d = dst)
 		{
-			return _PInvokeConvertPixels(width, height, srcFormat, s, srcPitch, dstFormat, d, dstPitch);
+			return _PInvoke(width, height, srcFormat, s, srcPitch, dstFormat, d, dstPitch);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertPixels")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeConvertPixels(int width, int height, PixelFormatValue srcFormat, uint* src, int srcPitch, PixelFormatValue dstFormat, uint* dst, int dstPitch);
+		[DllImport(LibraryName, EntryPoint = "SDL_ConvertPixels", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(int width, int height, PixelFormatValue srcFormat, uint* src, int srcPitch, PixelFormatValue dstFormat, uint* dst, int dstPitch);
+	}
 
 	/// <summary>
 	/// Copy a block of pixels of one format and colorspace to another format and colorspace.
@@ -805,13 +774,12 @@ unsafe partial class SDL
 		dst = new uint[src.Length];
 		fixed (uint* s = src, d = dst)
 		{
-			return _PInvokeConvertPixelsAndColorspace(width, height, srcFormat, srcColorspace, srcProps, s, srcPitch, dstFormat, dstColorspace, dstProps, d, dstPitch);
+			return _PInvoke(width, height, srcFormat, srcColorspace, srcProps, s, srcPitch, dstFormat, dstColorspace, dstProps, d, dstPitch);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertPixelsAndColorspace")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeConvertPixelsAndColorspace(int width, int height, PixelFormatValue srcFormat, ColorspaceValue srcColorspace, PropertiesId srcProps, uint* src, int srcPitch, PixelFormatValue dstFormat, ColorspaceValue dstColorspace, PropertiesId dstProps, uint* dst, int dstPitch); // wtf with this function.
+		[DllImport(LibraryName, EntryPoint = "SDL_ConvertPixelsAndColorspace", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(int width, int height, PixelFormatValue srcFormat, ColorspaceValue srcColorspace, PropertiesId srcProps, uint* src, int srcPitch, PixelFormatValue dstFormat, ColorspaceValue dstColorspace, PropertiesId dstProps, uint* dst, int dstPitch); // wtf with this function.
+	}
 
 	/// <summary>
 	/// Premultiply the alpha on a block of pixels.
@@ -833,13 +801,12 @@ unsafe partial class SDL
 		dst = new uint[src.Length];
 		fixed (uint* s = src, d = dst)
 		{
-			return _PInvokePremultiplyAlpha(width, height, srcFormat, s, srcPitch, dstFormat, d, dstPitch);
+			return _PInvoke(width, height, srcFormat, s, srcPitch, dstFormat, d, dstPitch);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_PremultiplyAlpha")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokePremultiplyAlpha(int width, int height, PixelFormatValue srcFormat, uint* src, int srcPitch, PixelFormatValue dstFormat, uint* dst, int dstPitch);
+		[DllImport(LibraryName, EntryPoint = "SDL_PremultiplyAlpha", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(int width, int height, PixelFormatValue srcFormat, uint* src, int srcPitch, PixelFormatValue dstFormat, uint* dst, int dstPitch);
+	}
 
 	/// <summary>
 	/// Perform a fast fill of a rectangle with a specific color.
@@ -856,14 +823,13 @@ unsafe partial class SDL
 		if (rect.HasValue)
 		{
 			Rect r = rect.Value;
-			return _PInvokeFillSurfaceRect(dst, &r, color);
+			return _PInvoke(dst, &r, color);
 		}
-		return _PInvokeFillSurfaceRect(dst, null, color);
-	}
+		return _PInvoke(dst, null, color);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_FillSurfaceRect")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeFillSurfaceRect(Surface* dst, Rect* rect, uint color);
+		[DllImport(LibraryName, EntryPoint = "SDL_FillSurfaceRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* dst, Rect* rect, uint color);
+	}
 
 	/// <summary>
 	/// Perform a fast fill of a set of rectangles with a specific color.
@@ -879,13 +845,12 @@ unsafe partial class SDL
 	{
 		fixed (Rect* r = rects)
 		{
-			return _PInvokeFillSurfaceRects(dst, r, color);
+			return _PInvoke(dst, r, color);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_FillSurfaceRects")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeFillSurfaceRects(Surface* dst, Rect* rects, uint color);
+		[DllImport(LibraryName, EntryPoint = "SDL_FillSurfaceRects", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* dst, Rect* rects, uint color);
+	}
 
 	/// <summary>
 	/// Performs a fast blit from the source surface to the destination surface.
@@ -903,14 +868,13 @@ unsafe partial class SDL
 		if (srcRect.HasValue)
 		{
 			Rect s = srcRect.Value;
-			return _PInvokeBlitSurface(src, &s, dst, &dstRect);
+			return _PInvoke(src, &s, dst, &dstRect);
 		}
-		return _PInvokeBlitSurface(src, null, dst, &dstRect);
-	}
+		return _PInvoke(src, null, dst, &dstRect);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurface")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeBlitSurface(Surface* src, Rect* srcRect, Surface* dst, Rect* dstRect);
+		[DllImport(LibraryName, EntryPoint = "SDL_BlitSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* src, Rect* srcRect, Surface* dst, Rect* dstRect);
+	}
 
 	/// <summary>
 	/// Perform low-level surface blitting only.
@@ -928,14 +892,13 @@ unsafe partial class SDL
 		if (srcRect.HasValue)
 		{
 			Rect s = srcRect.Value;
-			return _PInvokeBlitSurfaceUnchecked(src, &s, dst, &dstRect);
+			return _PInvoke(src, &s, dst, &dstRect);
 		}
-		return _PInvokeBlitSurfaceUnchecked(src, null, dst, &dstRect);
-	}
+		return _PInvoke(src, null, dst, &dstRect);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceUnchecked")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeBlitSurfaceUnchecked(Surface* src, Rect* srcRect, Surface* dst, Rect* dstRect);
+		[DllImport(LibraryName, EntryPoint = "SDL_BlitSurfaceUnchecked", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* src, Rect* srcRect, Surface* dst, Rect* dstRect);
+	}
 
 	/// <summary>
 	/// Perform stretch blit between two surfaces of the same format.
@@ -951,12 +914,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SoftStretch(Surface* src, Rect srcRect, Surface* dst, Rect dstRect, ScaleMode scaleMode)
 	{
-		return _PInvokeSoftStretch(src, &srcRect, dst, &dstRect, scaleMode);
-	}
+		return _PInvoke(src, &srcRect, dst, &dstRect, scaleMode);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SoftStretch")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSoftStretch(Surface* src, Rect* srcRect, Surface* dst, Rect* dstRect, ScaleMode scaleMode);
+		[DllImport(LibraryName, EntryPoint = "SDL_SoftStretch", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* src, Rect* srcRect, Surface* dst, Rect* dstRect, ScaleMode scaleMode);
+	}
 
 	/// <summary>
 	/// Perform a scaled blit to a destination surface, which may be of a different format.
@@ -972,12 +934,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int BlitSurfaceScaled(Surface* src, Rect srcRect, Surface* dst, Rect dstRect, ScaleMode scaleMode)
 	{
-		return _PInvokeBlitSurfaceScaled(src, &srcRect, dst, &dstRect, scaleMode);
-	}
+		return _PInvoke(src, &srcRect, dst, &dstRect, scaleMode);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceScaled")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeBlitSurfaceScaled(Surface* src, Rect* srcRect, Surface* dst, Rect* dstRect, ScaleMode scaleMode);
+		[DllImport(LibraryName, EntryPoint = "SDL_BlitSurfaceScaled", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* src, Rect* srcRect, Surface* dst, Rect* dstRect, ScaleMode scaleMode);
+	}
 
 	/// <summary>
 	/// Perform low-level surface scaled blitting only.
@@ -993,12 +954,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int BlitSurfaceUncheckedScaled(Surface* src, Rect srcRect, Surface* dst, Rect dstRect, ScaleMode scaleMode)
 	{
-		return _PInvokeBlitSurfaceUncheckedScaled(src, &srcRect, dst, &dstRect, scaleMode);
-	}
+		return _PInvoke(src, &srcRect, dst, &dstRect, scaleMode);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceUncheckedScaled")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeBlitSurfaceUncheckedScaled(Surface* src, Rect* srcRect, Surface* dst, Rect* dstRect, ScaleMode scaleMode);
+		[DllImport(LibraryName, EntryPoint = "SDL_BlitSurfaceUncheckedScaled", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* src, Rect* srcRect, Surface* dst, Rect* dstRect, ScaleMode scaleMode);
+	}
 
 	/// <summary>
 	/// Retrieves a single pixel from a surface.
@@ -1018,11 +978,10 @@ unsafe partial class SDL
 	{
 		fixed (byte* rr = &r, gg = &g, bb = &b, aa = &a)
 		{
-			return _PInvokeReadSurfacePixel(surface, x, y, rr, gg, bb, aa);
+			return _PInvoke(surface, x, y, rr, gg, bb, aa);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ReadSurfacePixel")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeReadSurfacePixel(Surface* surface, int x, int y, byte* r, byte* g, byte* b, byte* a);
+		[DllImport(LibraryName, EntryPoint = "SDL_ReadSurfacePixel", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Surface* surface, int x, int y, byte* r, byte* g, byte* b, byte* a);
+	}
 }

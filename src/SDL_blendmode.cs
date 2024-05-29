@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace SDL3;
 
@@ -176,10 +174,9 @@ unsafe partial class SDL
 	/// <returns> A <see cref="BlendMode"/> that represents the chosen factors and operations. </returns>
 	public static BlendMode ComposeCustomBlendMode(BlendFactor srcColorFactor, BlendFactor dstColorFactor, BlendOperation colorOperation, BlendFactor srcAlphaFactor, BlendFactor dstAlphaFactor, BlendOperation alphaOperation)
 	{
-		return _PInvokeComposeCustomBlendMode(srcColorFactor, dstColorFactor, colorOperation, srcAlphaFactor, BlendFactor.DstAlpha, alphaOperation);
-	}
+		return _PInvoke(srcColorFactor, dstColorFactor, colorOperation, srcAlphaFactor, BlendFactor.DstAlpha, alphaOperation);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ComposeCustomBlendMode")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial BlendMode _PInvokeComposeCustomBlendMode(BlendFactor srcColorFactor, BlendFactor dstColorFactor, BlendOperation colorOperation, BlendFactor srcAlphaFactor, BlendFactor dstAlphaFactor, BlendOperation alphaOperation);
+		[DllImport(LibraryName, EntryPoint = "SDL_ComposeCustomBlendMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern BlendMode _PInvoke(BlendFactor srcColorFactor, BlendFactor dstColorFactor, BlendOperation colorOperation, BlendFactor srcAlphaFactor, BlendFactor dstAlphaFactor, BlendOperation alphaOperation);
+	}
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace SDL3;
 
@@ -37,12 +35,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int Init(InitFlags flags)
 	{
-		return _PInvokeInit(flags);
-	}
+		return _PInvoke(flags);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_Init")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeInit(InitFlags flags);
+		[DllImport(LibraryName, EntryPoint = "SDL_Init", CallingConvention = CallingConvention.Cdecl)]
+		static extern int _PInvoke(InitFlags flags);
+	}
 
 	/// <summary>
 	/// Compatibility function to initialize the SDL library.
@@ -54,12 +51,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int InitSubSystem(InitFlags flags)
 	{
-		return _PInvokeInitSubSystem(flags);
-	}
+		return _PInvoke(flags);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_InitSubSystem")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeInitSubSystem(InitFlags flags);
+		[DllImport(LibraryName, EntryPoint = "SDL_InitSubSystem", CallingConvention = CallingConvention.Cdecl)]
+		static extern int _PInvoke(InitFlags flags);
+	}
 
 	/// <summary>
 	/// Shut down specific SDL subsystems.
@@ -70,12 +66,11 @@ unsafe partial class SDL
 	/// <param name="flags"> Any of the flags used by <see cref="Init"/>; see <see cref="Init"/> for details. </param>
 	public static void QuitSubSystem(InitFlags flags)
 	{
-		_PInvokeQuitSubSystem(flags);
-	}
+		_PInvoke(flags);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_QuitSubSystem")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeQuitSubSystem(InitFlags flags);
+		[DllImport(LibraryName, EntryPoint = "SDL_QuitSubSystem", CallingConvention = CallingConvention.Cdecl)]
+		static extern void _PInvoke(InitFlags flags);
+	}
 
 	/// <summary>
 	/// Get a mask of the specified subsystems which are currently initialized.
@@ -87,12 +82,11 @@ unsafe partial class SDL
 	/// <returns> A mask of all initialized subsystems if <paramref name="flags"/> is 0, otherwise it returns the initialization status of the specified subsystems. </returns>
 	public static InitFlags WasInit(InitFlags flags)
 	{
-		return _PInvokeWasInit(flags);
-	}
+		return _PInvoke(flags);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_WasInit")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial InitFlags _PInvokeWasInit(InitFlags flags);
+		[DllImport(LibraryName, EntryPoint = "SDL_WasInit", CallingConvention = CallingConvention.Cdecl)]
+		static extern InitFlags _PInvoke(InitFlags flags);
+	}
 
 	/// <summary>
 	/// Clean up all initialized subsystems.
@@ -102,10 +96,9 @@ unsafe partial class SDL
 	/// </remarks>
 	public static void Quit()
 	{
-		_PInvokeQuit();
-	}
+		_PInvoke();
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_Quit")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeQuit();
+		[DllImport(LibraryName, EntryPoint = "SDL_Quit", CallingConvention = CallingConvention.Cdecl)]
+		static extern void _PInvoke();
+	}
 }

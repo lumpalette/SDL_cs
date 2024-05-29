@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.Text;
 
 namespace SDL3;
@@ -70,12 +69,11 @@ unsafe partial class SDL
 	/// <returns> True if a keyboard is connected, false otherwise. </returns>
 	public static bool HasKeyboard()
 	{
-		return _PInvokeHasKeyboard() == 1;
-	}
+		return _PInvoke() == 1;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_HasKeyboard")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeHasKeyboard();
+		[DllImport(LibraryName, EntryPoint = "SDL_HasKeyboard", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke();
+	}
 
 	/// <summary>
 	/// Get a list of currently connected keyboards.
@@ -89,7 +87,7 @@ unsafe partial class SDL
 	{
 		fixed (int* c = &count)
 		{
-			KeyboardId* k = _PInvokeGetKeyboards(c);
+			KeyboardId* k = _PInvoke(c);
 			if (k is null)
 			{
 				return null;
@@ -102,11 +100,10 @@ unsafe partial class SDL
 			_PInvokeFree(k);
 			return keyboards;
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboards")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial KeyboardId* _PInvokeGetKeyboards(int* count);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetKeyboards", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern KeyboardId* _PInvoke(int* count);
+	}
 
 	/// <summary>
 	/// Get the name of a keyboard.
@@ -118,12 +115,11 @@ unsafe partial class SDL
 	/// <returns> The name of the selected keyboard, or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static string? GetKeyboardInstanceName(KeyboardId keyboardId)
 	{
-		return Marshal.PtrToStringUTF8((nint)_PInvokeGetKeyboardInstanceName(keyboardId));
-	}
+		return Marshal.PtrToStringUTF8((nint)_PInvoke(keyboardId));
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardInstanceName")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial byte* _PInvokeGetKeyboardInstanceName(KeyboardId keyboardId);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetKeyboardInstanceName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern byte* _PInvoke(KeyboardId keyboardId);
+	}
 
 	/// <summary>
 	/// Query the window which currently has keyboard focus.
@@ -134,12 +130,11 @@ unsafe partial class SDL
 	/// <returns> The window with keyboard focus. </returns>
 	public static Window* GetKeyboardFocus()
 	{
-		return _PInvokeGetKeyboardFocus();
-	}
+		return _PInvoke();
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardFocus")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Window* _PInvokeGetKeyboardFocus();
+		[DllImport(LibraryName, EntryPoint = "SDL_GetKeyboardFocus", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Window* _PInvoke();
+	}
 
 	/// <summary>
 	/// Get a snapshot of the current state of the keyboard.
@@ -153,13 +148,12 @@ unsafe partial class SDL
 	{
 		fixed (int* n = &numKeys)
 		{
-			return _PInvokeGetKeyboardState(n);
+			return _PInvoke(n);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardState")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial byte* _PInvokeGetKeyboardState(int* numKeys);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetKeyboardState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern byte* _PInvoke(int* numKeys);
+	}
 
 	/// <summary>
 	/// Clear the state of the keyboard.
@@ -169,12 +163,11 @@ unsafe partial class SDL
 	/// </remarks>
 	public static void ResetKeyboard()
 	{
-		_PInvokeResetKeyboard();
-	}
+		_PInvoke();
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ResetKeyboard")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeResetKeyboard();
+		[DllImport(LibraryName, EntryPoint = "SDL_ResetKeyboard", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void _PInvoke();
+	}
 
 	/// <summary>
 	/// Get the current key modifier state for the keyboard.
@@ -185,12 +178,11 @@ unsafe partial class SDL
 	/// <returns> An OR'd combination of the modifier keys for the keyboard. See <see cref="Keymod"/> for details. </returns>
 	public static Keymod GetModState()
 	{
-		return _PInvokeGetModState();
-	}
+		return _PInvoke();
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetModState")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Keymod _PInvokeGetModState();
+		[DllImport(LibraryName, EntryPoint = "SDL_GetModState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Keymod _PInvoke();
+	}
 
 	/// <summary>
 	/// Set the current key modifier state for the keyboard.
@@ -201,12 +193,11 @@ unsafe partial class SDL
 	/// <param name="modState"> The desired <see cref="Keymod"/> for the keyboard. </param>
 	public static void SetModState(Keymod modState)
 	{
-		_PInvokeSetModState(modState);
-	}
+		_PInvoke(modState);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetModState")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeSetModState(Keymod modState);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetModState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void _PInvoke(Keymod modState);
+	}
 
 	/// <summary>
 	/// Get the key code corresponding to the given scancode according to the current keyboard layout.
@@ -218,12 +209,11 @@ unsafe partial class SDL
 	/// <returns> The <see cref="Keycode"/> that corresponds to the given <see cref="Scancode"/>. </returns>
 	public static Keycode GetKeyFromScancode(Scancode scancode)
 	{
-		return _PInvokeGetKeyFromScancode(scancode);
-	}
+		return _PInvoke(scancode);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyFromScancode")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Keycode _PInvokeGetKeyFromScancode(Scancode scancode);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetKeyFromScancode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Keycode _PInvoke(Scancode scancode);
+	}
 
 	/// <summary>
 	/// Get the scancode corresponding to the given key code according to the current keyboard layout.
@@ -235,12 +225,11 @@ unsafe partial class SDL
 	/// <returns> The <see cref="Scancode"/> that corresponds to the given <see cref="Keycode"/>. </returns>
 	public static Scancode GetScancodeFromKey(Keycode key)
 	{
-		return _PInvokeGetScancodeFromKey(key);
-	}
+		return _PInvoke(key);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetScancodeFromKey")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Scancode _PInvokeGetScancodeFromKey(Keycode key);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetScancodeFromKey", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Scancode _PInvoke(Keycode key);
+	}
 
 	/// <summary>
 	/// Get a human-readable name for a scancode.
@@ -252,12 +241,11 @@ unsafe partial class SDL
 	/// <returns> The name for the scancode. If the scancode doesn't have a name this function returns an empty string. </returns>
 	public static string GetScancodeName(Scancode scancode)
 	{
-		return Marshal.PtrToStringUTF8((nint)_PInvokeGetScancodeName(scancode))!;
-	}
+		return Marshal.PtrToStringUTF8((nint)_PInvoke(scancode))!;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetScancodeName")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial byte* _PInvokeGetScancodeName(Scancode scancode);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetScancodeName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern byte* _PInvoke(Scancode scancode);
+	}
 
 	/// <summary>
 	/// Get a scancode from a human-readable name.
@@ -271,13 +259,12 @@ unsafe partial class SDL
 	{
 		fixed (byte* n = Encoding.UTF8.GetBytes(name))
 		{
-			return _PInvokeGetScancodeFromName(n);
+			return _PInvoke(n);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetScancodeFromName")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Scancode _PInvokeGetScancodeFromName(byte* name);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetScancodeFromName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Scancode _PInvoke(byte* name);
+	}
 
 	/// <summary>
 	/// Get a human-readable name for a key.
@@ -289,12 +276,11 @@ unsafe partial class SDL
 	/// <returns> The name of the key. If the key doesn't have a name, this function returns an empty string. </returns>
 	public static string GetKeyName(Keycode key)
 	{
-		return Marshal.PtrToStringUTF8((nint)_PInvokeGetKeyName(key))!;
-	}
+		return Marshal.PtrToStringUTF8((nint)_PInvoke(key))!;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyName")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial byte* _PInvokeGetKeyName(Keycode key);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetKeyName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern byte* _PInvoke(Keycode key);
+	}
 
 	/// <summary>
 	/// Get a key code from a human-readable name.
@@ -308,13 +294,12 @@ unsafe partial class SDL
 	{
 		fixed (byte* n = Encoding.UTF8.GetBytes(name))
 		{
-			return _PInvokeGetKeyFromName(n);
+			return _PInvoke(n);
 		}
-	}
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyFromName")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial Keycode _PInvokeGetKeyFromName(byte* name);
+		[DllImport(LibraryName, EntryPoint = "SDL_GetKeyFromName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Keycode _PInvoke(byte* name);
+	}
 
 	/// <summary>
 	/// Start accepting Unicode text input events.
@@ -324,12 +309,11 @@ unsafe partial class SDL
 	/// </remarks>
 	public static void StartTextInput()
 	{
-		_PInvokeStartTextInput();
-	}
+		_PInvoke();
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_StartTextInput")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeStartTextInput();
+		[DllImport(LibraryName, EntryPoint = "SDL_StartTextInput", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void _PInvoke();
+	}
 
 	/// <summary>
 	/// Check whether or not Unicode text input events are enabled.
@@ -340,12 +324,11 @@ unsafe partial class SDL
 	/// <returns> True if text input events are enabled else false. </returns>
 	public static bool TextInputActive()
 	{
-		return _PInvokeTextInputActive() == 1;
-	}
+		return _PInvoke() == 1;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_TextInputActive")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeTextInputActive();
+		[DllImport(LibraryName, EntryPoint = "SDL_TextInputActive", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke();
+	}
 
 	/// <summary>
 	/// Stop receiving any text input events.
@@ -355,12 +338,11 @@ unsafe partial class SDL
 	/// </remarks>
 	public static void StopTextInput()
 	{
-		_PInvokeStopTextInput();
-	}
+		_PInvoke();
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_StopTextInput")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeStopTextInput();
+		[DllImport(LibraryName, EntryPoint = "SDL_StopTextInput", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void _PInvoke();
+	}
 
 	/// <summary>
 	/// Dismiss the composition window/IME without disabling the subsystem.
@@ -370,12 +352,11 @@ unsafe partial class SDL
 	/// </remarks>
 	public static void ClearComposition()
 	{
-		_PInvokeClearComposition();
-	}
+		_PInvoke();
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ClearComposition")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial void _PInvokeClearComposition();
+		[DllImport(LibraryName, EntryPoint = "SDL_ClearComposition", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void _PInvoke();
+	}
 
 	/// <summary>
 	/// Set the rectangle used to type Unicode text inputs.
@@ -390,14 +371,13 @@ unsafe partial class SDL
 		if (rect.HasValue)
 		{
 			Rect r = rect.Value;
-			return _PInvokeSetTextInputRect(&r);
+			return _PInvoke(&r);
 		}
-		return _PInvokeSetTextInputRect(null);
-	}
+		return _PInvoke(null);
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextInputRect")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeSetTextInputRect(Rect* rect);
+		[DllImport(LibraryName, EntryPoint = "SDL_SetTextInputRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Rect* rect);
+	}
 
 	/// <summary>
 	/// Check whether the platform has screen keyboard support.
@@ -408,12 +388,11 @@ unsafe partial class SDL
 	/// <returns> True if the platform has some screen keyboard support or false if not. </returns>
 	public static bool HasScreenKeyboardSupport()
 	{
-		return _PInvokeHasScreenKeyboardSupport() == 1;
-	}
+		return _PInvoke() == 1;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_HasScreenKeyboardSupport")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeHasScreenKeyboardSupport();
+		[DllImport(LibraryName, EntryPoint = "SDL_HasScreenKeyboardSupport", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke();
+	}
 
 	/// <summary>
 	/// Check whether the screen keyboard is shown for given window.
@@ -425,10 +404,9 @@ unsafe partial class SDL
 	/// <returns> True if screen keyboard is shown or false if not. </returns>
 	public static bool ScreenKeyboardShown(Window* window)
 	{
-		return _PInvokeScreenKeyboardShown(window) == 1;
-	}
+		return _PInvoke(window) == 1;
 
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ScreenKeyboardShown")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	private static partial int _PInvokeScreenKeyboardShown(Window* window);
+		[DllImport(LibraryName, EntryPoint = "SDL_ScreenKeyboardShown", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(Window* window);
+	}
 }
