@@ -351,7 +351,7 @@ unsafe partial class SDL
 	}
 
 	[Macro]
-	public static Keycode SCANCODE_TO_KEYCODE(Scancode scancode)
+	public static Keycode ScancodeToKeycode(Scancode scancode)
 	{
 		return (Keycode)((uint)scancode | SCANCODE_MASK);
 	}

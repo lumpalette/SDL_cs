@@ -41,7 +41,7 @@ unsafe partial class SDL
 		public const string WINDOW_CREATE_WAYLAND_WL_SURFACE_POINTER = "wayland.wl_surface";
 		public const string WINDOW_CREATE_WIN32_HWND_POINTER = "win32.hwnd";
 		public const string WINDOW_CREATE_WIN32_PIXEL_FORMAT_HWND_POINTER = "win32.pixel_format_hwnd";
-		public const string WINDOW_CREATE_X11_WINDOW_Number = "x11.window";
+		public const string WINDOW_CREATE_X11_WINDOW_NUMBER = "x11.window";
 
 		// GetWindowProperties()
 		public const string WINDOW_SHAPE_POINTER = "SDL.window.shape";
@@ -389,27 +389,27 @@ unsafe partial class SDL
 	}
 
 	[Macro]
-	public static uint WINDOWPOS_UNDEFINED_DISPLAY(int x)
+	public static uint GetWindowPosUndefinedDisplay(uint displayIndex)
 	{
-		return (uint)(WINDOWPOS_UNDEFINED_MASK | x);
+		return WindowPosUndefinedMask | displayIndex;
 	}
 
 	[Macro]
-	public static bool IS_WINDOWPOS_UNDEFINED(int x)
+	public static bool IsWindowPosUndefined(uint position)
 	{
-		return (x & 0xFFFF0000) == WINDOWPOS_UNDEFINED_MASK;
+		return (position & 0xFFFF0000) == WindowPosUndefinedMask;
 	}
 
 	[Macro]
-	public static uint WINDOWPOS_CENTERED_DISPLAY(int x)
+	public static uint GetWindowPosCenteredDisplay(uint displayIndex)
 	{
-		return (uint)(WINDOWPOS_CENTERED_MASK | x);
+		return WindowPosCenteredMask | displayIndex;
 	}
 
 	[Macro]
-	public static bool IS_WINDOWPOS_CENTERED(int x)
+	public static bool IsWindowPosCentered(uint position)
 	{
-		return (x & 0xFFFF0000) == WINDOWPOS_CENTERED_MASK;
+		return (position & 0xFFFF0000) == WindowPosCenteredMask;
 	}
 
 	/// <summary>
@@ -1078,8 +1078,8 @@ unsafe partial class SDL
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowPosition">here</see>.
 	/// </remarks>
 	/// <param name="window"> The window to reposition. </param>
-	/// <param name="x"> The x coordinate of the window, or <see cref="WINDOWPOS_CENTERED"/> or <see cref="WINDOWPOS_UNDEFINED"/>. </param>
-	/// <param name="y"> The y coordinate of the window, or <see cref="WINDOWPOS_CENTERED"/> or <see cref="WINDOWPOS_UNDEFINED"/>. </param>
+	/// <param name="x"> The x coordinate of the window, or <see cref="WindowPosCentered"/> or <see cref="WindowPosUndefined"/>. </param>
+	/// <param name="y"> The y coordinate of the window, or <see cref="WindowPosCentered"/> or <see cref="WindowPosUndefined"/>. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowPosition(Window* window, int x, int y)
 	{
@@ -1871,13 +1871,14 @@ unsafe partial class SDL
 	/// <summary>
 	/// Used to indicate that you don't care what the window position is.
 	/// </summary>
-	public const uint WINDOWPOS_UNDEFINED = WINDOWPOS_UNDEFINED_MASK;
+	public static uint WindowPosUndefined => GetWindowPosUndefinedDisplay(0);
 
 	/// <summary>
 	/// Used to indicate that the window position should be centered.
 	/// </summary>
-	public const uint WINDOWPOS_CENTERED = WINDOWPOS_CENTERED_MASK;
+	public static uint WindowPosCentered => GetWindowPosCenteredDisplay(0);
 
-	private const uint WINDOWPOS_UNDEFINED_MASK = 0x1FFF0000u;
-	private const uint WINDOWPOS_CENTERED_MASK = 0x2FFF0000u;
+	public const uint WindowPosUndefinedMask = 0x1FFF0000u;
+
+	public const uint WindowPosCenteredMask = 0x2FFF0000u;
 }

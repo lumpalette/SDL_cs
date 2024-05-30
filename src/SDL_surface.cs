@@ -176,7 +176,7 @@ unsafe partial class SDL
 	/// <param name="surface"> (Ref) The <see cref="Surface"/> structure to evaluate. </param>
 	/// <returns> True if <paramref name="surface"/> needs to be locked, otherwise false. </returns>
 	[Macro]
-	public static bool MUST_LOCK_SURFACE(Surface* surface)
+	public static bool MustLockSurface(Surface* surface)
 	{
 		return (surface->Flags & SurfaceFlags.RleAccel) != 0;
 	}

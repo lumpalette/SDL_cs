@@ -6,7 +6,7 @@ namespace SDL3;
 unsafe partial class SDL
 {
 	[Macro]
-	public static uint FOURCC(byte a, byte b, byte c, byte d)
+	public static uint FourCC(byte a, byte b, byte c, byte d)
 	{
 		return (uint)(a | (b << 8) | (c << 16) | (d << 24));
 	}

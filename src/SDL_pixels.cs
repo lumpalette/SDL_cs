@@ -496,7 +496,7 @@ unsafe partial class SDL
 		/// <param name="d"> The four character. </param>
 		public PixelFormatValue(byte a, byte b, byte c, byte d)
 		{
-			Value = FOURCC(a, b, c, d);
+			Value = FourCC(a, b, c, d);
 		}
 
 		internal PixelFormatValue(uint value)
@@ -829,7 +829,7 @@ unsafe partial class SDL
 		/// <summary>
 		/// SMPTE ST 240M.
 		/// </summary>
-		SMPTE240 = 7,
+		Smpte240 = 7,
 
 		/// <summary>
 		/// Linear.
@@ -933,7 +933,7 @@ unsafe partial class SDL
 		/// <summary>
 		/// SMPTE 240M.
 		/// </summary>
-		SMPTE240 = 7,
+		Smpte240 = 7,
 
 		/// <summary>
 		/// YCgCo.
@@ -953,7 +953,7 @@ unsafe partial class SDL
 		/// <summary>
 		/// SMPTE ST 2085.
 		/// </summary>
-		SMPTE2085 = 11,
+		Smpte2085 = 11,
 
 		/// <summary>
 		/// Chromaticity-derived non-constant luminance.
@@ -1004,39 +1004,39 @@ unsafe partial class SDL
 	}
 
 	[Macro]
-	public static byte PIXEL_FLAG(PixelFormatValue format)
+	public static byte GetPixelFlag(PixelFormatValue format)
 	{
 		return (byte)(((format.Value) >> 28) & 0x0F);
 	}
 
 	[Macro]
-	public static PixelType PIXEL_TYPE(PixelFormatValue format)
+	public static PixelType GetPixelType(PixelFormatValue format)
 	{
 		return (PixelType)((format.Value >> 24) & 0x0F);
 	}
 
 	[Macro]
-	public static byte PIXEL_ORDER(PixelFormatValue format)
+	public static byte GetPixelOrder(PixelFormatValue format)
 	{
 		return (byte)((format.Value >> 20) & 0x0F);
 	}
 
 	[Macro]
-	public static PackedLayout PIXEL_LAYOUT(PixelFormatValue format)
+	public static PackedLayout GetPixelLayout(PixelFormatValue format)
 	{
 		return (PackedLayout)((format.Value >> 16) & 0x0F);
 	}
 
 	[Macro]
-	public static byte BITS_PER_PIXEL(PixelFormatValue format)
+	public static byte GetBitsPerPixel(PixelFormatValue format)
 	{
 		return (byte)((format.Value >> 8) & 0xFF);
 	}
 
 	[Macro]
-	public static byte BYTES_PER_PIXEL(PixelFormatValue format)
+	public static byte GetBytesPerPixel(PixelFormatValue format)
 	{
-		if (IS_PIXELFORMAT_FOURCC(format))
+		if (IsPixelFormatFourCC(format))
 		{
 			return (byte)(((format == PixelFormatEnum.YUY2) || (format == PixelFormatEnum.UYVY) || (format == PixelFormatEnum.YVYU) || (format == PixelFormatEnum.P010)) ? 2 : 1);
 		}
@@ -1044,112 +1044,112 @@ unsafe partial class SDL
 	}
 
 	[Macro]
-	public static bool IS_PIXELFORMAT_INDEXED(PixelFormatValue format)
+	public static bool IsPixelFormatIndexed(PixelFormatValue format)
 	{
-		return (!IS_PIXELFORMAT_FOURCC(format)) && ((PIXEL_TYPE(format) == PixelType.Index1) || (PIXEL_TYPE(format) == PixelType.Index2) || (PIXEL_TYPE(format) == PixelType.Index4) || (PIXEL_TYPE(format) == PixelType.Index8));
+		return (!IsPixelFormatFourCC(format)) && ((GetPixelType(format) == PixelType.Index1) || (GetPixelType(format) == PixelType.Index2) || (GetPixelType(format) == PixelType.Index4) || (GetPixelType(format) == PixelType.Index8));
 	}
 
 	[Macro]
-	public static bool IS_PIXELFORMAT_PACKED(PixelFormatValue format)
+	public static bool IsPixelFormatPacked(PixelFormatValue format)
 	{
-		return (!IS_PIXELFORMAT_FOURCC(format)) && ((PIXEL_TYPE(format) == PixelType.Packed8) || (PIXEL_TYPE(format) == PixelType.Packed16) || (PIXEL_TYPE(format) == PixelType.Packed32));
+		return (!IsPixelFormatFourCC(format)) && ((GetPixelType(format) == PixelType.Packed8) || (GetPixelType(format) == PixelType.Packed16) || (GetPixelType(format) == PixelType.Packed32));
 	}
 
 	[Macro]
-	public static bool IS_PIXELFORMAT_ARRAY(PixelFormatValue format)
+	public static bool IsPixelFormatArray(PixelFormatValue format)
 	{
-		return (!IS_PIXELFORMAT_FOURCC(format)) && ((PIXEL_TYPE(format) == PixelType.ArrayU8) || (PIXEL_TYPE(format) == PixelType.ArrayU16) || (PIXEL_TYPE(format) == PixelType.ArrayU32) || (PIXEL_TYPE(format) == PixelType.ArrayF16) || (PIXEL_TYPE(format) == PixelType.ArrayF32));
+		return (!IsPixelFormatFourCC(format)) && ((GetPixelType(format) == PixelType.ArrayU8) || (GetPixelType(format) == PixelType.ArrayU16) || (GetPixelType(format) == PixelType.ArrayU32) || (GetPixelType(format) == PixelType.ArrayF16) || (GetPixelType(format) == PixelType.ArrayF32));
 	}
 
 	[Macro]
-	public static bool IS_PIXELFORMAT_ALPHA(PixelFormatValue format)
+	public static bool IsPixelFormatAlpha(PixelFormatValue format)
 	{
-		var order = (PackedOrder)PIXEL_ORDER(format);
-		return IS_PIXELFORMAT_PACKED(format) && ((order == PackedOrder.ARGB) || (order == PackedOrder.RGBA) || (order == PackedOrder.ABGR) || (order == PackedOrder.BGRA));
+		var order = (PackedOrder)GetPixelOrder(format);
+		return IsPixelFormatPacked(format) && ((order == PackedOrder.ARGB) || (order == PackedOrder.RGBA) || (order == PackedOrder.ABGR) || (order == PackedOrder.BGRA));
 	}
 
 	[Macro]
-	public static bool IS_PIXELFORMAT_10BIT(PixelFormatValue format)
+	public static bool IsPixelFormat10Bit(PixelFormatValue format)
 	{
-		return (!IS_PIXELFORMAT_FOURCC(format)) && ((PIXEL_TYPE(format) == PixelType.Packed32) || (PIXEL_LAYOUT(format) == PackedLayout.Layout2101010));
+		return (!IsPixelFormatFourCC(format)) && ((GetPixelType(format) == PixelType.Packed32) || (GetPixelLayout(format) == PackedLayout.Layout2101010));
 	}
 
 	[Macro]
-	public static bool IS_PIXELFORMAT_FLOAT(PixelFormatValue format)
+	public static bool IsPixelFormatFloat(PixelFormatValue format)
 	{
-		return (!IS_PIXELFORMAT_FOURCC(format)) && ((PIXEL_TYPE(format) == PixelType.ArrayF16) || (PIXEL_TYPE(format) == PixelType.ArrayF32));
+		return (!IsPixelFormatFourCC(format)) && ((GetPixelType(format) == PixelType.ArrayF16) || (GetPixelType(format) == PixelType.ArrayF32));
 	}
 
 	[Macro]
-	public static bool IS_PIXELFORMAT_FOURCC(PixelFormatValue format)
+	public static bool IsPixelFormatFourCC(PixelFormatValue format)
 	{
-		return (format != PixelFormatEnum.Unknown) && (PIXEL_FLAG(format) != 1);
+		return (format != PixelFormatEnum.Unknown) && (GetPixelFlag(format) != 1);
 	}
 
 	[Macro]
-	public static ColorType COLORSPACE_TYPE(ColorspaceValue colorspace)
+	public static ColorType GetColorspaceType(ColorspaceValue colorspace)
 	{
 		return (ColorType)((colorspace.Value >> 28) & 0x0F);
 	}
 
 	[Macro]
-	public static ColorRange COLORSPACE_RANGE(ColorspaceValue colorspace)
+	public static ColorRange GetColorspaceRange(ColorspaceValue colorspace)
 	{
 		return (ColorRange)((colorspace.Value >> 24) & 0x0F);
 	}
 
 	[Macro]
-	public static ChromaLocation COLORSPACE_CHROMA(ColorspaceValue colorspace)
+	public static ChromaLocation GetColorspaceChroma(ColorspaceValue colorspace)
 	{
 		return (ChromaLocation)((colorspace.Value >> 20) & 0x0F);
 	}
 
 	[Macro]
-	public static ColorPrimaries COLORSPACE_PRIMARIES(ColorspaceValue colorspace)
+	public static ColorPrimaries GetColorspacePrimaries(ColorspaceValue colorspace)
 	{
 		return (ColorPrimaries)((colorspace.Value >> 10) & 0x1F);
 	}
 
 	[Macro]
-	public static TransferCharacteristics COLORSPACE_TRANSFER(ColorspaceValue colorspace)
+	public static TransferCharacteristics GetColorspaceTransfer(ColorspaceValue colorspace)
 	{
 		return (TransferCharacteristics)((colorspace.Value >> 5) & 0x1F);
 	}
 
 	[Macro]
-	public static MatrixCoefficients COLORSPACE_MATRIX(ColorspaceValue colorspace)
+	public static MatrixCoefficients GetColorspaceMatrix(ColorspaceValue colorspace)
 	{
 		return (MatrixCoefficients)(colorspace.Value & 0x1F);
 	}
 
 	[Macro]
-	public static bool IS_COLORSPACE_MATRIX_BT601(ColorspaceValue colorspace)
+	public static bool IsColorspaceMatrixBT601(ColorspaceValue colorspace)
 	{
-		return (COLORSPACE_MATRIX(colorspace) == MatrixCoefficients.BT601) || (COLORSPACE_MATRIX(colorspace) == MatrixCoefficients.BT470BG);
+		return (GetColorspaceMatrix(colorspace) == MatrixCoefficients.BT601) || (GetColorspaceMatrix(colorspace) == MatrixCoefficients.BT470BG);
 	}
 
 	[Macro]
-	public static bool IS_COLORSPACE_MATRIX_BT709(ColorspaceValue colorspace)
+	public static bool IsColorspaceMatrixBT709(ColorspaceValue colorspace)
 	{
-		return COLORSPACE_MATRIX(colorspace) == MatrixCoefficients.BT709;
+		return GetColorspaceMatrix(colorspace) == MatrixCoefficients.BT709;
 	}
 
 	[Macro]
-	public static bool IS_COLORSPACE_MATRIX_BT2020_NCL(ColorspaceValue colorspace)
+	public static bool IsColorspaceMatrixBT2020Ncl(ColorspaceValue colorspace)
 	{
-		return COLORSPACE_MATRIX(colorspace) == MatrixCoefficients.BT2020NCL;
+		return GetColorspaceMatrix(colorspace) == MatrixCoefficients.BT2020NCL;
 	}
 
 	[Macro]
-	public static bool IS_COLORSPACE_LIMITED_RANGE(ColorspaceValue colorspace)
+	public static bool IsColorspaceLimitedRange(ColorspaceValue colorspace)
 	{
-		return COLORSPACE_RANGE(colorspace) != ColorRange.Full;
+		return GetColorspaceRange(colorspace) != ColorRange.Full;
 	}
 
 	[Macro]
-	public static bool IS_COLORSPACE_FULLRANGE(ColorspaceValue colorspace)
+	public static bool IsColorspaceFullRange(ColorspaceValue colorspace)
 	{
-		return COLORSPACE_RANGE(colorspace) == ColorRange.Full;
+		return GetColorspaceRange(colorspace) == ColorRange.Full;
 	}
 
 	/// <summary>
