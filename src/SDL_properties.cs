@@ -10,6 +10,9 @@ unsafe partial class SDL
 	/// <summary>
 	/// A collection of strings for properties' names used by various SDL systems.
 	/// </summary>
+	/// <remarks>
+	/// The properties are defined in alphabetical order.
+	/// </remarks>
 	public static partial class PropConsts { }
 
 	/// <summary>

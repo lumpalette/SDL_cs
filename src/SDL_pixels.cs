@@ -1404,10 +1404,10 @@ unsafe partial class SDL
 	/// <summary>
 	/// No transparency.
 	/// </summary>
-	public const int ALPHA_OPAQUE = 255;
+	public const int AlphaOpaque = 255;
 
 	/// <summary>
 	/// Full transparency.
 	/// </summary>
-	public const int ALPHA_TRANSPARENT = 0;
+	public const int AlphaTransparent = 0;
 }

@@ -9,69 +9,69 @@ unsafe partial class SDL
 	partial class PropConsts
 	{
 		// CreateWindowWithProperties()
-		public const string WINDOW_CREATE_ALWAYS_ON_TOP_BOOLEAN = "always_on_top";
-		public const string WINDOW_CREATE_BORDERLESS_BOOLEAN = "borderless";
-		public const string WINDOW_CREATE_FOCUSABLE_BOOLEAN = "focusable";
-		public const string WINDOW_CREATE_EXTERNAL_GRAPHICS_CONTEXT_BOOLEAN = "external_graphics_context";
-		public const string WINDOW_CREATE_FULLSCREEN_BOOLEAN = "fullscreen";
-		public const string WINDOW_CREATE_HEIGHT_NUMBER = "height";
-		public const string WINDOW_CREATE_HIDDEN_BOOLEAN = "hidden";
-		public const string WINDOW_CREATE_HIGH_PIXEL_DENSITY_BOOLEAN = "high_pixel_density";
-		public const string WINDOW_CREATE_MAXIMIZED_BOOLEAN = "maximized";
-		public const string WINDOW_CREATE_MENU_BOOLEAN = "menu";
-		public const string WINDOW_CREATE_METAL_BOOLEAN = "metal";
-		public const string WINDOW_CREATE_MINIMIZED_BOOLEAN = "minimized";
-		public const string WINDOW_CREATE_MODAL_BOOLEAN = "modal";
-		public const string WINDOW_CREATE_MOUSE_GRABBED_BOOLEAN = "mouse_grabbed";
-		public const string WINDOW_CREATE_OPENGL_BOOLEAN = "opengl";
-		public const string WINDOW_CREATE_PARENT_POINTER = "parent";
-		public const string WINDOW_CREATE_RESIZABLE_BOOLEAN = "resizable";
-		public const string WINDOW_CREATE_TITLE_STRING = "title";
-		public const string WINDOW_CREATE_TRANSPARENT_BOOLEAN = "transparent";
-		public const string WINDOW_CREATE_TOOLTIP_BOOLEAN = "tooltip";
-		public const string WINDOW_CREATE_UTILITY_BOOLEAN = "utility";
-		public const string WINDOW_CREATE_VULKAN_BOOLEAN = "vulkan";
-		public const string WINDOW_CREATE_WIDTH_NUMBER = "width";
-		public const string WINDOW_CREATE_X_NUMBER = "x";
-		public const string WINDOW_CREATE_Y_NUMBER = "y";
-		public const string WINDOW_CREATE_COCOA_WINDOW_POINTER = "cocoa.window";
-		public const string WINDOW_CREATE_COCOA_VIEW_POINTER = "cocoa.view";
-		public const string WINDOW_CREATE_WAYLAND_SURFACE_ROLE_CUSTOM_BOOLEAN = "wayland.surface_role_custom";
-		public const string WINDOW_CREATE_WWAYLAND_CREATE_EGL_WINDOW_BOOLEAN = "wayland.create_egl_window";
-		public const string WINDOW_CREATE_WAYLAND_WL_SURFACE_POINTER = "wayland.wl_surface";
-		public const string WINDOW_CREATE_WIN32_HWND_POINTER = "win32.hwnd";
-		public const string WINDOW_CREATE_WIN32_PIXEL_FORMAT_HWND_POINTER = "win32.pixel_format_hwnd";
-		public const string WINDOW_CREATE_X11_WINDOW_NUMBER = "x11.window";
+		public const string WindowCreateBooleanAlwaysOnTop = "always_on_top";
+		public const string WindowCreateBooleanBorderless = "borderless";
+		public const string WindowCreateBooleanCreateEGLWindow = "wayland.create_egl_window";
+		public const string WindowCreateBooleanExternalGraphicsContext = "external_graphics_context";
+		public const string WindowCreateBooleanFocusable = "focusable";
+		public const string WindowCreateBooleanFullscreen = "fullscreen";
+		public const string WindowCreateBooleanHidden = "hidden";
+		public const string WindowCreateBooleanHighPixelDensity = "high_pixel_density";
+		public const string WindowCreateBooleanMaximized = "maximized";
+		public const string WindowCreateBooleanMenu = "menu";
+		public const string WindowCreateBooleanMetal = "metal";
+		public const string WindowCreateBooleanMinimized = "minimized";
+		public const string WindowCreateBooleanModal = "modal";
+		public const string WindowCreateBooleanMouseGrabbed = "mouse_grabbed";
+		public const string WindowCreateBooleanOpenGL = "opengl";
+		public const string WindowCreateBooleanResizable = "resizable";
+		public const string WindowCreateBooleanTooltip = "tooltip";
+		public const string WindowCreateBooleanTransparent = "transparent";
+		public const string WindowCreateBooleanUtility = "utility";
+		public const string WindowCreateBooleanVulkan = "vulkan";
+		public const string WindowCreateBooleanWaylandSurfaceRoleCustom = "wayland.surface_role_custom";
+		public const string WindowCreateNumberHeight = "height";
+		public const string WindowCreateNumberWidth = "width";
+		public const string WindowCreateNumberX = "x";
+		public const string WindowCreateNumberX11Window = "x11.window";
+		public const string WindowCreateNumberY = "y";
+		public const string WindowCreatePointerCocoaView = "cocoa.view";
+		public const string WindowCreatePointerCocoaWindow = "cocoa.window";
+		public const string WindowCreatePointerParent = "parent";
+		public const string WindowCreatePointerWaylandWLSurface = "wayland.wl_surface";
+		public const string WindowCreatePointerWin32Hwnd = "win32.hwnd";
+		public const string WindowCreatePointerWin32PixelFormatHwnd = "win32.pixel_format_hwnd";
+		public const string WindowCreateStringTitle = "title";
 
 		// GetWindowProperties()
-		public const string WINDOW_SHAPE_POINTER = "SDL.window.shape";
-		public const string WINDOW_ANDROID_WINDOW_POINTER = "SDL.window.android.window";
-		public const string WINDOW_ANDROID_SURFACE_POINTER = "SDL.window.android.surface";
-		public const string WINDOW_UIKIT_WINDOW_POINTER = "SDL.window.uikit.window";
-		public const string WINDOW_UIKIT_METAL_VIEW_TAG_NUMBER = "SDL.window.uikit.metal_view_tag";
-		public const string WINDOW_KMSDRM_DEVICE_INDEX_NUMBER = "SDL.window.kmsdrm.dev_index";
-		public const string WINDOW_KMSDRM_DRM_FD_NUMBER = "SDL.window.kmsdrm.drm_fd";
-		public const string WINDOW_KMSDRM_GBM_DEVICE_POINTER = "SDL.window.kmsdrm.gbm_dev";
-		public const string WINDOW_COCOA_WINDOW_POINTER = "SDL.window.cocoa.window";
-		public const string WINDOW_COCOA_METAL_VIEW_TAG_NUMBER = "SDL.window.cocoa.metal_view_tag";
-		public const string WINDOW_VIVANTE_DISPLAY_POINTER = "SDL.window.vivante.display";
-		public const string WINDOW_VIVANTE_WINDOW_POINTER = "SDL.window.vivante.window";
-		public const string WINDOW_VIVANTE_SURFACE_POINTER = "SDL.window.vivante.surface";
-		public const string WINDOW_WINRT_WINDOW_POINTER = "SDL.window.winrt.window";
-		public const string WINDOW_WIN32_HWND_POINTER = "SDL.window.win32.hwnd";
-		public const string WINDOW_WIN32_HDC_POINTER = "SDL.window.win32.hdc";
-		public const string WINDOW_WIN32_INSTANCE_POINTER = "SDL.window.win32.instance";
-		public const string WINDOW_WAYLAND_DISPLAY_POINTER = "SDL.window.wayland.display";
-		public const string WINDOW_WAYLAND_SURFACE_POINTER = "SDL.window.wayland.surface";
-		public const string WINDOW_WAYLAND_EGL_WINDOW_POINTER = "SDL.window.wayland.egl_window";
-		public const string WINDOW_WAYLAND_XDG_SURFACE_POINTER = "SDL.window.wayland.xdg_surface";
-		public const string WINDOW_WAYLAND_XDG_TOPLEVEL_POINTER = "SDL.window.wayland.xdg_toplevel";
-		public const string WINDOW_WAYLAND_XDG_TOPLEVEL_EXPORT_HANDLE_STRING = "SDL.window.wayland.xdg_toplevel_export_handle";
-		public const string WINDOW_WAYLAND_XDG_POPUP_POINTER = "SDL.window.wayland.xdg_popup";
-		public const string WINDOW_WAYLAND_XDG_POSITIONER_POINTER = "SDL.window.wayland.xdg_positioner";
-		public const string WINDOW_X11_DISPLAY_POINTER = "SDL.window.x11.display";
-		public const string WINDOW_X11_SCREEN_NUMBER = "SDL.window.x11.screen";
-		public const string WINDOW_X11_WINDOW_NUMBER = "SDL.window.x11.window";
+		public const string WindowPointerShape = "SDL.window.shape";
+		public const string WindowPointerAndroidWindow = "SDL.window.android.window";
+		public const string WindowPointerAndroidSurface = "SDL.window.android.surface";
+		public const string WindowPointerUIKitWindow = "SDL.window.uikit.window";
+		public const string WindowNumberUIKitMetalViewTag = "SDL.window.uikit.metal_view_tag";
+		public const string WindowNumberKmsDrmDeviceIndex = "SDL.window.kmsdrm.dev_index";
+		public const string WindowNumberKmsDrmDrmFD = "SDL.window.kmsdrm.drm_fd";
+		public const string WindowPointerKmsDrmGBMDevice = "SDL.window.kmsdrm.gbm_dev";
+		public const string WindowPointerCocoaWindow = "SDL.window.cocoa.window";
+		public const string WindowNumberCocoaMetalViewTag = "SDL.window.cocoa.metal_view_tag";
+		public const string WindowPointerVivanteDisplay = "SDL.window.vivante.display";
+		public const string WindowPointerVivanteWindow = "SDL.window.vivante.window";
+		public const string WindowPointerVivanteSurface = "SDL.window.vivante.surface";
+		public const string WindowPointerWinRTWindow = "SDL.window.winrt.window";
+		public const string WindowPointerWin32Hwnd = "SDL.window.win32.hwnd";
+		public const string WindowPointerWin32HDC = "SDL.window.win32.hdc";
+		public const string WindowPointerWin32Instance = "SDL.window.win32.instance";
+		public const string WindowPointerWaylandDisplay = "SDL.window.wayland.display";
+		public const string WindowPointerWaylandSurface = "SDL.window.wayland.surface";
+		public const string WindowPointerWaylandEGLWindow = "SDL.window.wayland.egl_window";
+		public const string WindowPointerWaylandXDGSurface = "SDL.window.wayland.xdg_surface";
+		public const string WindowPointerWaylandXDGTopLevel = "SDL.window.wayland.xdg_toplevel";
+		public const string WindowStringWaylandXDGTopLevelExportHandle = "SDL.window.wayland.xdg_toplevel_export_handle";
+		public const string WindowPointerWaylandXDGPopup = "SDL.window.wayland.xdg_popup";
+		public const string WindowPointerWaylandXDGPositioner = "SDL.window.wayland.xdg_positioner";
+		public const string WindowPointerX11Display = "SDL.window.x11.display";
+		public const string WindowNumberX11Screen = "SDL.window.x11.screen";
+		public const string WindowNumberX11Window = "SDL.window.x11.window";
 	}
 
 	/// <summary>
@@ -922,7 +922,7 @@ unsafe partial class SDL
 	/// Create a window with the specified properties.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'WINDOW_CREATE_' as a prefix.
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'WindowCreate' as a prefix.
 	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_CreateWindowWithProperties">here</see>.
 	/// </remarks>
@@ -962,7 +962,7 @@ unsafe partial class SDL
 	/// <returns> The window associated with <paramref name="id"/> or null if it doesn't exist; call <see cref="GetError"/> for more information. </returns>
 	public static Window* GetWindowFromId(WindowId id)
 	{
-		return GetWindowFromId(id);
+		return _PInvoke(id);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowFromID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern Window* _PInvoke(WindowId id);
@@ -988,7 +988,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a window.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'WINDOW_' as a prefix.
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'Window' as a prefix.
 	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowProperties">here</see>.
 	/// </remarks>

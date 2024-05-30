@@ -156,7 +156,7 @@ unsafe partial class SDL
 		public KeyboardId Which;
 
 		/// <summary>
-		/// Can be <see cref="PRESSED"/> or <see cref="RELEASED"/>.
+		/// Can be <see cref="Pressed"/> or <see cref="Released"/>.
 		/// </summary>
 		public byte State;
 
@@ -867,10 +867,10 @@ unsafe partial class SDL
 	/// <summary>
 	/// Keyboard/mouse released state.
 	/// </summary>
-	public const int RELEASED = 0;
+	public const int Released = 0;
 
 	/// <summary>
 	/// Keyboard/mouse pressed state.
 	/// </summary>
-	public const int PRESSED = 1;
+	public const int Pressed = 1;
 }

@@ -9,10 +9,10 @@ unsafe partial class SDL
 	partial class PropConsts
 	{
 		// GetSurfaceProperties()
-		public const string SURFACE_COLORSPACE_NUMBER = "SDL.surface.colorspace";
-		public const string SURFACE_SDR_WHITE_POINT_FLOAT = "SDL.surface.SDR_white_point";
-		public const string SURFACE_HDR_HEADROOM_FLOAT = "SDL.surface.HDR_headroom";
-		public const string SURFACE_TONEMAP_OPERATOR_STRING = "SDL.surface.tonemap";
+		public const string SurfaceFloatHdrHeadroom = "SDL.surface.HDR_headroom";
+		public const string SurfaceFloatSDRWhitePoint = "SDL.surface.SDR_white_point";
+		public const string SurfaceNumberColorspace = "SDL.surface.colorspace";
+		public const string SurfaceStringTonemapOperator = "SDL.surface.tonemap";
 	}
 
 	/// <summary>
