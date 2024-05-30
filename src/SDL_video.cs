@@ -8,7 +8,7 @@ unsafe partial class SDL
 {
 	partial class PropConsts
 	{
-		// CreateWindowWithProperties()
+		// CreateWindow() - WithProperties overload.
 		public const string WindowCreateBooleanAlwaysOnTop = "always_on_top";
 		public const string WindowCreateBooleanBorderless = "borderless";
 		public const string WindowCreateBooleanCreateEGLWindow = "wayland.create_egl_window";
@@ -886,7 +886,7 @@ unsafe partial class SDL
 	/// <param name="height"> The height of the window. </param>
 	/// <param name="flags"> Zero or more <see cref="WindowFlags"/> OR'd together. </param>
 	/// <returns> The window that was created or null on failure; call <see cref="GetError"/> for more information. </returns>
-	public static Window* CreateWindow(string title, int width, int height, WindowFlags flags)
+	public static Window* CreateWindow(string title, int width, int height, WindowFlags flags) // CHECK:overload
 	{
 		fixed (byte* t = Encoding.UTF8.GetBytes(title))
 		{
@@ -895,6 +895,24 @@ unsafe partial class SDL
 
 		[DllImport(LibraryName, EntryPoint = "SDL_CreateWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern Window* _PInvoke(byte* title, int width, int height, WindowFlags flags);
+	}
+
+	/// <summary>
+	/// Create a window with the specified properties.
+	/// </summary>
+	/// <remarks>
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'WindowCreate' as a prefix.
+	/// <br/><br/>
+	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_CreateWindowWithProperties">here</see>.
+	/// </remarks>
+	/// <param name="props"> The properties to use. </param>
+	/// <returns> The window that was created or null on failure; call <see cref="GetError"/> for more information. </returns>
+	public static Window* CreateWindow(PropertiesId props) // CHECK:overload
+	{
+		return _PInvoke(props);
+
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateWindowWithProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern Window* _PInvoke(PropertiesId props);
 	}
 
 	/// <summary>
@@ -916,24 +934,6 @@ unsafe partial class SDL
 
 		[DllImport(LibraryName, EntryPoint = "SDL_CreatePopupWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern Window* _PInvoke(Window* parent, int offsetX, int offsetY, int width, int height, uint flags);
-	}
-
-	/// <summary>
-	/// Create a window with the specified properties.
-	/// </summary>
-	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'WindowCreate' as a prefix.
-	/// <br/><br/>
-	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_CreateWindowWithProperties">here</see>.
-	/// </remarks>
-	/// <param name="props"> The properties to use. </param>
-	/// <returns> The window that was created or null on failure; call <see cref="GetError"/> for more information. </returns>
-	public static Window* CreateWindowWithProperties(PropertiesId props)
-	{
-		return _PInvoke(props);
-
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateWindowWithProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern Window* _PInvoke(PropertiesId props);
 	}
 
 	/// <summary>

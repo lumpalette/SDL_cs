@@ -8,7 +8,7 @@ unsafe partial class SDL
 {
 	partial class PropConsts
 	{
-		// CreateRendererWithProperties()
+		// CreateRenderer() - WithProperties overload.
 		public const string RendererCreateNumberOutputColorspace = "output_colorspace";
 		public const string RendererCreateNumberPresentVSync = "present_vsync";
 		public const string RendererCreateNumberVulkanGraphicsQueueFamilyIndex = "vulkan.graphics_queue_family_index";
@@ -45,7 +45,7 @@ unsafe partial class SDL
 		public const string RendererPointerVulkanPhysicalDevice = "SDL.renderer.vulkan.physical_device";
 		public const string RendererStringName = "SDL.renderer.name";
 
-		// CreateTextureWithProperties()
+		// CreateTexture() - WithProperties overload.
 		public const string TextureCreateFloatHDRHeadroom = "HDR_headroom";
 		public const string TextureCreateFloatSDRWhitePoint = "SDR_white_point";
 		public const string TextureCreateNumberAccess = "access";
@@ -304,7 +304,7 @@ unsafe partial class SDL
 	/// <param name="window"> The window where rendering is displayed. </param>
 	/// <param name="name"> The name of the rendering driver to initialize, or null if it is not important. Defaults to null. </param>
 	/// <returns> A valid rendering context or null if there was an error; call <see cref="GetError"/> for more information. </returns>
-	public static Renderer* CreateRenderer(Window* window, string? name = null)
+	public static Renderer* CreateRenderer(Window* window, string? name = null)  // CHECK:overload
 	{
 		if (!string.IsNullOrWhiteSpace(name))
 		{
@@ -329,7 +329,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="props"> The properties to use. </param>
 	/// <returns> A valid rendering context or null if there was an error; call <see cref="GetError"/> for more information. </returns>
-	public static Renderer* CreateRendererWithProperties(PropertiesId props)
+	public static Renderer* CreateRenderer(PropertiesId props) // CHECK:overload
 	{
 		return _PInvoke(props);
 
@@ -477,7 +477,7 @@ unsafe partial class SDL
 	/// <param name="width"> The width of the texture in pixels. </param>
 	/// <param name="height"> The height of the texture in pixels. </param>
 	/// <returns> A pointer to the created texture or null if no rendering context was active, the format was unsupported, or the width or height were out of range; call <see cref="GetError"/> for more information. </returns>
-	public static Texture* CreateTexture(Renderer* renderer, PixelFormatValue format, TextureAccess access, int width, int height)
+	public static Texture* CreateTexture(Renderer* renderer, PixelFormatValue format, TextureAccess access, int width, int height) // CHECK:overload
 	{
 		return _PInvoke(renderer, format, access, width, height);
 
@@ -494,7 +494,7 @@ unsafe partial class SDL
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="surface"> the <see cref="Surface"/> structure containing pixel data used to fill the texture. </param>
 	/// <returns> The created texture or null on failure; call <see cref="GetError"/> for more information. </returns>
-	public static Texture* CreateTextureFromSurface(Renderer* renderer, Surface* surface)
+	public static Texture* CreateTexture(Renderer* renderer, Surface* surface) // CHECK:overload
 	{
 		return _PInvoke(renderer, surface);
 
@@ -513,7 +513,7 @@ unsafe partial class SDL
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="props"> The properties to use. </param>
 	/// <returns> a pointer to the created texture or null if no rendering context was active, the format was unsupported, or the width or height were out of range; call <see cref="GetError"/> for more information. </returns>
-	public static Texture* CreateTextureWithProperties(Renderer* renderer, PropertiesId props)
+	public static Texture* CreateTexture(Renderer* renderer, PropertiesId props) // CHECK:overload
 	{
 		return _PInvoke(renderer, props);
 

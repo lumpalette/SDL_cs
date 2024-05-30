@@ -191,7 +191,7 @@ unsafe partial class SDL
 	/// <param name="height"> The height of the surface. </param>
 	/// <param name="format"> The <see cref="PixelFormatValue"/> for the new surface's pixel format. </param>
 	/// <returns> The new <see cref="Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static Surface* CreateSurface(int width, int height, PixelFormatValue format)
+	public static Surface* CreateSurface(int width, int height, PixelFormatValue format) // CHECK:overload
 	{
 		return _PInvoke(width, height, format);
 
@@ -211,7 +211,7 @@ unsafe partial class SDL
 	/// <param name="pitch"> The number of bytes between each row, including padding </param>
 	/// <param name="format"> The pixel format value for the new surface's pixel format. </param>
 	/// <returns> The new <see cref="Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static Surface* CreateSurfaceFrom(uint[] pixels, int width, int height, int pitch, PixelFormatValue format)
+	public static Surface* CreateSurface(uint[] pixels, int width, int height, int pitch, PixelFormatValue format) // CHECK:overload
 	{
 		fixed (uint* p = pixels)
 		{
@@ -675,7 +675,7 @@ unsafe partial class SDL
 	/// <param name="surface"> The existing <see cref="Surface"/> structure to convert. </param>
 	/// <param name="format"> The <see cref="PixelFormat"/> structure that the new surface is optimized for. </param>
 	/// <returns> The new <see cref="Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static Surface* ConvertSurfaceFormat(Surface* surface, PixelFormat* format)
+	public static Surface* ConvertSurfaceFormat(Surface* surface, PixelFormat* format) // CHECK:overload
 	{
 		return _PInvoke(surface, format);
 
@@ -692,7 +692,7 @@ unsafe partial class SDL
 	/// <param name="surface"> The existing <see cref="Surface"/> structure to convert. </param>
 	/// <param name="format"> The new pixel format. </param>
 	/// <returns> The new <see cref="Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static Surface* ConvertSurfaceFormat(Surface* surface, PixelFormatValue format)
+	public static Surface* ConvertSurfaceFormat(Surface* surface, PixelFormatValue format) // CHECK:overload
 	{
 		// i think ConvertSurface and ConvertSurfaceFormat were meant to be overloadings, but since C doesn't have
 		// function overloading, they just created two functions instead. also, this function name is more accurate
