@@ -97,7 +97,7 @@ unsafe partial class SDL
 			{
 				keyboards[i] = k[i];
 			}
-			_PInvokeFree(k);
+			Free(k);
 			return keyboards;
 		}
 
