@@ -107,7 +107,7 @@ unsafe partial class SDL
 	public struct KeyboardDeviceEvent
 	{
 		/// <summary>
-		/// Can be <see cref="EventType.KeyboardAdded"/> or <see cref="EventType.KeyboardRemoved"/>.
+		/// Can be either <see cref="EventType.KeyboardAdded"/> or <see cref="EventType.KeyboardRemoved"/>.
 		/// </summary>
 		public EventType Type;
 
@@ -134,7 +134,7 @@ unsafe partial class SDL
 	public struct KeyboardEvent
 	{
 		/// <summary>
-		/// Can be <see cref="EventType.KeyDown"/> or <see cref="EventType.KeyUp"/>.
+		/// Can be either <see cref="EventType.KeyDown"/> or <see cref="EventType.KeyUp"/>.
 		/// </summary>
 		public EventType Type;
 
@@ -156,9 +156,9 @@ unsafe partial class SDL
 		public KeyboardId Which;
 
 		/// <summary>
-		/// Can be <see cref="Pressed"/> or <see cref="Released"/>.
+		/// Can be <see cref="InputState.Pressed"/> or <see cref="InputState.Released"/>.
 		/// </summary>
-		public byte State;
+		public InputState State;
 
 		/// <summary>
 		/// Non-zero if this is a key repeat.
@@ -250,6 +250,209 @@ unsafe partial class SDL
 		public readonly string Text => Marshal.PtrToStringUTF8((nint)_text)!;
 
 		private readonly byte* _text;
+	}
+
+	/// <summary>
+	/// Mouse device event structure (FIXME:event.mdevice.*).
+	/// </summary>
+	/// <remarks>
+	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_MouseDeviceEvent">here</see>.
+	/// </remarks>
+	[StructLayout(LayoutKind.Sequential)]
+	public struct MouseDeviceEvent
+	{
+		/// <summary>
+		/// Can be either <see cref="EventType.MouseAdded"/> or <see cref="EventType.MouseRemoved"/>.
+		/// </summary>
+		public EventType Type;
+
+		private readonly uint _reserved;
+
+		/// <summary>
+		/// In nanoseconds, populated using <see cref="FIXME:SDL_GetTicksNS()"/>.
+		/// </summary>
+		public ulong Timestamp;
+
+		/// <summary>
+		/// The mouse instance id.
+		/// </summary>
+		public MouseId Which;
+	}
+
+	/// <summary>
+	/// Mouse motion event structure (FIXME:event.motion.*).
+	/// </summary>
+	/// <remarks>
+	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_MouseMotionEvent">here</see>.
+	/// </remarks>
+	[StructLayout(LayoutKind.Sequential)]
+	public struct MouseMotionEvent
+	{
+		/// <summary>
+		/// Returns <see cref="EventType.MouseMotion"/>.
+		/// </summary>
+		public EventType Type;
+
+		private readonly uint _reserved;
+
+		/// <summary>
+		/// In nanoseconds, populated using <see cref="FIXME:SDL_GetTicksNS()"/>.
+		/// </summary>
+		public ulong Timestamp;
+
+		/// <summary>
+		/// The window with mouse focus, if any.
+		/// </summary>
+		public WindowId WindowId;
+
+		/// <summary>
+		/// The mouse instance id, <see cref="FIXME:SDL_TOUCH_MOUSEID"/>, or <see cref="FIXME:SDL_PEN_MOUSEID"/>.
+		/// </summary>
+		public MouseId Which;
+
+		/// <summary>
+		/// The current button state
+		/// </summary>
+		public MouseButtonFlags State;
+
+		/// <summary>
+		/// X coordinate, relative to window.
+		/// </summary>
+		public float X;
+
+		/// <summary>
+		/// Y coordinate, relative to window.
+		/// </summary>
+		public float Y;
+
+		/// <summary>
+		/// The relative motion in the X direction.
+		/// </summary>
+		public float XRelative;
+
+		/// <summary>
+		/// The relative motion in the Y direction.
+		/// </summary>
+		public float YRelative;
+	}
+
+	/// <summary>
+	/// Mouse button event structure (FIXME:event.button.*).
+	/// </summary>
+	/// <remarks>
+	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonEvent">here</see>.
+	/// </remarks>
+	[StructLayout(LayoutKind.Sequential)]
+	public struct MouseButtonEvent
+	{
+		/// <summary>
+		/// Can be either <see cref="EventType.MouseButtonDown"/> or <see cref="EventType.MouseButtonUp"/>.
+		/// </summary>
+		public EventType Type;
+
+		private readonly uint _reserved;
+
+		/// <summary>
+		/// In nanoseconds, populated using <see cref="FIXME:SDL_GetTicksNS()"/>.
+		/// </summary>
+		public ulong Timestamp;
+
+		/// <summary>
+		/// The window with mouse focus, if any.
+		/// </summary>
+		public WindowId WindowId;
+
+		/// <summary>
+		/// The mouse instance id, <see cref="FIXME:SDL_TOUCH_MOUSEID"/>, or <see cref="FIXME:SDL_PEN_MOUSEID"/>.
+		/// </summary>
+		public MouseId Which;
+
+		/// <summary>
+		/// The mouse button index.
+		/// </summary>
+		public MouseButtonId Button;
+
+		/// <summary>
+		/// Can be either <see cref="InputState.Pressed"/> or <see cref="InputState.Released"/>.
+		/// </summary>
+		public InputState State;
+
+		/// <summary>
+		/// 1 for single-click, 2 for double-click, etc.
+		/// </summary>
+		public byte Clicks;
+
+		private readonly byte _padding;
+
+		/// <summary>
+		/// X coordinate, relative to window.
+		/// </summary>
+		public float X;
+
+		/// <summary>
+		/// Y coordinate, relative to window.
+		/// </summary>
+		public float Y;
+	}
+
+	/// <summary>
+	/// Mouse wheel event structure (FIXME:event.wheel.*).
+	/// </summary>
+	/// <remarks>
+	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonEvent">here</see>.
+	/// </remarks>
+	[StructLayout(LayoutKind.Sequential)]
+	public struct MouseWheelEvent
+	{
+		/// <summary>
+		/// Returns <see cref="EventType.MouseWheel"/>.
+		/// </summary>
+		public EventType Type;
+
+		private readonly uint _reserved;
+
+		/// <summary>
+		/// In nanoseconds, populated using <see cref="FIXME:SDL_GetTicksNS()"/>.
+		/// </summary>
+		public ulong Timestamp;
+
+		/// <summary>
+		/// The window with mouse focus, if any.
+		/// </summary>
+		public WindowId WindowId;
+
+		/// <summary>
+		/// The mouse instance id, <see cref="FIXME:SDL_TOUCH_MOUSEID"/>, or <see cref="FIXME:SDL_PEN_MOUSEID"/>.
+		/// </summary>
+		public MouseId Which;
+
+		/// <summary>
+		/// The amount scrolled horizontally, positive to the right and negative to the left.
+		/// </summary>
+		public float X;
+
+		/// <summary>
+		/// The amount scrolled vertically, positive away from the user and negative toward the user.
+		/// </summary>
+		public float Y;
+
+		/// <summary>
+		/// Set to one value of the <see cref="MouseWheelDirection"/> enum.
+		/// </summary>
+		/// <remarks>
+		/// When it is <see cref="MouseWheelDirection.Flipped"/>, the values in X and Y will be opposite. Multiply by -1 to change them back.
+		/// </remarks>
+		public MouseWheelDirection Direction;
+
+		/// <summary>
+		/// X coordinate, relative to window.
+		/// </summary>
+		public float MouseX;
+
+		/// <summary>
+		/// Y coordinate, relative to window.
+		/// </summary>
+		public float MouseY;
 	}
 
 	/// <summary>
@@ -865,12 +1068,11 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// Keyboard/mouse released state.
+	/// General keyboard/mouse state definition.
 	/// </summary>
-	public const int Released = 0;
-
-	/// <summary>
-	/// Keyboard/mouse pressed state.
-	/// </summary>
-	public const int Pressed = 1;
+	public enum InputState : byte
+	{
+		Released,
+		Pressed
+	}
 }
