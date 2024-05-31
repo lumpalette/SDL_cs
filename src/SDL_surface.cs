@@ -16,7 +16,7 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// An opaque type used in <see cref="Surface"/>.
+	/// Describes how blit operations work internally. This structure is an opaque type.
 	/// </summary>
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_BlitMap">here</see>.

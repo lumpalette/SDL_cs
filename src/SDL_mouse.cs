@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Runtime.CompilerServices;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace SDL3;
@@ -8,35 +7,43 @@ namespace SDL3;
 unsafe partial class SDL
 {
 	/// <summary>
-	/// Represents an id for a mouse. This structure serves as a wrapper for an unsigned 32-bit integer.
+	/// Represents an id for a mouse. The structure is a wrapper for an unsigned 32-bit integer.
 	/// </summary>
-	public readonly struct MouseId
+	public readonly struct MouseId // CHECK:wrapper
 	{
 		internal MouseId(uint value)
 		{
-			Id = value;
+			_value = value;
 		}
 
-		/// <summary>
-		/// An invalid id for a mouse.
-		/// </summary>
-		/// <remarks>
-		/// This is used when a function that returns a <see cref="MouseId"/> instance fails.
-		/// </remarks>
-		public static MouseId Invalid => new();
+		/// <inheritdoc/>
+		public override bool Equals([NotNullWhen(true)] object? obj)
+		{
+			if (obj is MouseId cast)
+			{
+				return _value == cast._value;
+			}
+			return false;
+		}
 
-		/// <summary>
-		/// The id value, as an unsigned 32-bit integer.
-		/// </summary>
-		public readonly uint Id;
+		/// <inheritdoc/>
+		public override int GetHashCode()
+		{
+			return _value.GetHashCode();
+		}
+
+		public static explicit operator uint(MouseId x) => x._value;
+		public static explicit operator MouseId(uint x) => new(x);
+
+		public static bool operator ==(MouseId a, MouseId b) => a._value == b._value;
+		public static bool operator !=(MouseId a, MouseId b) => a._value != b._value;
+
+		private readonly uint _value;
 	}
 
 	/// <summary>
 	/// The representation of a cursor in SDL. This structure is an opaque type.
 	/// </summary>
-	/// <remarks>
-	/// Implementation dependent.
-	/// </remarks>
 	public struct Cursor;
 
 	/// <summary>
@@ -236,7 +243,7 @@ unsafe partial class SDL
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetMice">here</see>.
 	/// </remarks>
 	/// <param name="count"> Returns the number of mice returned </param>
-	/// <returns>  </returns>
+	/// <returns> An array of mouse instance ids or null on error; call <see cref="GetError"/> for more details. </returns>
 	public static MouseId[]? GetMice(out int count)
 	{
 		fixed (int* c = &count)

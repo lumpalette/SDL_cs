@@ -436,12 +436,12 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// A pixel format in numerical form. This structure serves as a wrapper for an unsigned 32-bit integer.
+	/// A pixel format in numerical form. The structure is a wrapper for an unsigned 32-bit integer.
 	/// </summary>
 	/// <remarks>
 	/// This structure represents a single entry of SDL_PixelFormatEnum; see <see cref="PixelFormatEnum"/> for more details.
 	/// </remarks>
-	public readonly struct PixelFormatValue
+	public readonly struct PixelFormatValue // CHECK:wrapper
 	{
 		private static uint CreateValue(PixelType type, byte order, PackedLayout layout, byte bits, byte bytes)
 		{
@@ -458,7 +458,7 @@ unsafe partial class SDL
 		/// <param name="bytes"> The number of bytes a pixel using this format uses. </param>
 		public PixelFormatValue(PixelType type, BitmapOrder order, PackedLayout layout, byte bits, byte bytes)
 		{
-			Value = CreateValue(type, (byte)order, layout, bits, bytes);
+			_value = CreateValue(type, (byte)order, layout, bits, bytes);
 		}
 
 		/// <summary>
@@ -471,7 +471,7 @@ unsafe partial class SDL
 		/// <param name="bytes"> The number of bytes a pixel using this format uses. </param>
 		public PixelFormatValue(PixelType type, ArrayOrder order, PackedLayout layout, byte bits, byte bytes)
 		{
-			Value = CreateValue(type, (byte)order, layout, bits, bytes);
+			_value = CreateValue(type, (byte)order, layout, bits, bytes);
 		}
 
 		/// <summary>
@@ -484,7 +484,7 @@ unsafe partial class SDL
 		/// <param name="bytes"> The number of bytes a pixel using this format uses. </param>
 		public PixelFormatValue(PixelType type, PackedOrder order, PackedLayout layout, byte bits, byte bytes)
 		{
-			Value = CreateValue(type, (byte)order, layout, bits, bytes);
+			_value = CreateValue(type, (byte)order, layout, bits, bytes);
 		}
 
 		/// <summary>
@@ -496,89 +496,89 @@ unsafe partial class SDL
 		/// <param name="d"> The four character. </param>
 		public PixelFormatValue(byte a, byte b, byte c, byte d)
 		{
-			Value = FourCC(a, b, c, d);
+			_value = FourCC(a, b, c, d);
 		}
 
 		internal PixelFormatValue(uint value)
 		{
-			Value = value;
+			_value = value;
 		}
 
-		/// <summary>
-		/// Compares another pixel format with this instance.
-		/// </summary>
-		/// <param name="obj"> The <see cref="PixelFormatValue"/> structure to compare with. </param>
-		/// <returns> True if both <see cref="PixelFormatValue"/> structures represent the same pixel format, otherwise false. </returns>
+		/// <inheritdoc/>
 		public override bool Equals([NotNullWhen(true)] object? obj)
 		{
-			if (obj is PixelFormatValue format)
+			if (obj is PixelFormatValue cast)
 			{
-				return Value == format.Value;
+				return _value == cast._value;
 			}
 			return false;
 		}
 
-		/// <summary>
-		/// Creates a hash from the pixel format's numerical value.
-		/// </summary>
-		/// <returns> A 32-bit integer representing the hash that was created. </returns>
+		/// <inheritdoc/>
 		public override int GetHashCode()
 		{
-			return HashCode.Combine(Value);
+			return _value.GetHashCode();
 		}
 
-		public static bool operator ==(PixelFormatValue a, PixelFormatValue b) => a.Value == b.Value;
-		public static bool operator !=(PixelFormatValue a, PixelFormatValue b) => a.Value != b.Value;
+		public static explicit operator uint(PixelFormatValue x) => x._value;
+		public static explicit operator PixelFormatValue(uint x) => new(x);
 
-		/// <summary>
-		/// The pixel format, represented as an unsigned 32-bit integer.
-		/// </summary>
-		public readonly uint Value;
+		public static bool operator ==(PixelFormatValue a, PixelFormatValue b) => a._value == b._value;
+		public static bool operator !=(PixelFormatValue a, PixelFormatValue b) => a._value != b._value;
+
+		private readonly uint _value;
 	}
 
 	/// <summary>
-	/// A colorspace represented in numerical form. This structure serves as a wrapper for an unsigned 32-bit integer.
+	/// A colorspace represented in numerical form. The structure is a wrapper for an unsigned 32-bit integer.
 	/// </summary>
 	/// <remarks>
 	/// This structure represents a single entry of the SDL_Colorspace enum; see <see cref="Colorspace"/> for more details.
 	/// </remarks>
-	public readonly struct ColorspaceValue(ColorType type, ColorRange range, ColorPrimaries primaries, TransferCharacteristics transfer, MatrixCoefficients matrix, ChromaLocation chroma)
+	public readonly struct ColorspaceValue // CHECK:wrapper
 	{
-		private static uint CreateValue(ColorType type, ColorRange range, ColorPrimaries primaries, TransferCharacteristics transfer, MatrixCoefficients matrix, ChromaLocation chroma)
+		/// <summary>
+		/// Instantiates a new <see cref="ColorspaceValue"/> with the given parameters.
+		/// </summary>
+		/// <param name="type"> The color type. </param>
+		/// <param name="range"> The color range, limited or full. </param>
+		/// <param name="primaries"> The color primaries. </param>
+		/// <param name="transfer"> The transfer characteristics. </param>
+		/// <param name="matrix"> The matrix coefficients. </param>
+		/// <param name="chroma"> The chroma location. </param>
+		public ColorspaceValue(ColorType type, ColorRange range, ColorPrimaries primaries, TransferCharacteristics transfer, MatrixCoefficients matrix, ChromaLocation chroma)
 		{
-			return (uint)(((byte)type << 28) | ((byte)range << 24) | ((byte)chroma << 20) | ((byte)primaries << 10) | ((byte)transfer << 5) | (byte)matrix);
+			_value = (uint)(((byte)type << 28) | ((byte)range << 24) | ((byte)chroma << 20) | ((byte)primaries << 10) | ((byte)transfer << 5) | (byte)matrix);
 		}
 
-		/// <summary>
-		/// Compares another colorspace with this instance.
-		/// </summary>
-		/// <param name="obj"> The <see cref="ColorspaceValue"/> structure to compare with. </param>
-		/// <returns> True if both <see cref="ColorspaceValue"/> structures represent the same colorspace, otherwise false. </returns>
+		internal ColorspaceValue(uint value)
+		{
+			_value = value;
+		}
+
+		/// <inheritdoc/>
 		public override bool Equals([NotNullWhen(true)] object? obj)
 		{
-			if (obj is ColorspaceValue colorspace)
+			if (obj is ColorspaceValue cast)
 			{
-				return Value == colorspace.Value;
+				return _value == cast._value;
 			}
 			return false;
 		}
 
-		/// <summary>
-		/// Creates a hash from the colorspace's numerical value.
-		/// </summary>
-		/// <returns> A 32-bit integer representing the hash that was created. </returns>
+		/// <inheritdoc/>
 		public override int GetHashCode()
 		{
-			return HashCode.Combine(Value);
+			return _value.GetHashCode();
 		}
 
-		public static bool operator ==(ColorspaceValue a, ColorspaceValue b) => a.Value == b.Value;
-		public static bool operator !=(ColorspaceValue a, ColorspaceValue b) => a.Value != b.Value;
+		public static explicit operator uint(ColorspaceValue x) => x._value;
+		public static explicit operator ColorspaceValue(uint x) => new(x);
 
-		/// <summary>
-		/// The colorspace value, represented as an unsigned 32-bit integer.
-		/// </summary>
-		public readonly uint Value = CreateValue(type, range, primaries, transfer, matrix, chroma);
+		public static bool operator ==(ColorspaceValue a, ColorspaceValue b) => a._value == b._value;
+		public static bool operator !=(ColorspaceValue a, ColorspaceValue b) => a._value != b._value;
+
+		private readonly uint _value;
 	}
 
 	/// <summary>
@@ -1006,31 +1006,31 @@ unsafe partial class SDL
 	[Macro]
 	public static byte GetPixelFlag(PixelFormatValue format)
 	{
-		return (byte)(((format.Value) >> 28) & 0x0F);
+		return (byte)((((uint)format) >> 28) & 0x0F);
 	}
 
 	[Macro]
 	public static PixelType GetPixelType(PixelFormatValue format)
 	{
-		return (PixelType)((format.Value >> 24) & 0x0F);
+		return (PixelType)(((uint)format >> 24) & 0x0F);
 	}
 
 	[Macro]
 	public static byte GetPixelOrder(PixelFormatValue format)
 	{
-		return (byte)((format.Value >> 20) & 0x0F);
+		return (byte)(((uint)format >> 20) & 0x0F);
 	}
 
 	[Macro]
 	public static PackedLayout GetPixelLayout(PixelFormatValue format)
 	{
-		return (PackedLayout)((format.Value >> 16) & 0x0F);
+		return (PackedLayout)(((uint)format >> 16) & 0x0F);
 	}
 
 	[Macro]
 	public static byte GetBitsPerPixel(PixelFormatValue format)
 	{
-		return (byte)((format.Value >> 8) & 0xFF);
+		return (byte)(((uint)format >> 8) & 0xFF);
 	}
 
 	[Macro]
@@ -1040,7 +1040,7 @@ unsafe partial class SDL
 		{
 			return (byte)(((format == PixelFormatEnum.YUY2) || (format == PixelFormatEnum.UYVY) || (format == PixelFormatEnum.YVYU) || (format == PixelFormatEnum.P010)) ? 2 : 1);
 		}
-		return (byte)((format.Value >> 0) & 0xFF);
+		return (byte)(((uint)format >> 0) & 0xFF);
 	}
 
 	[Macro]
@@ -1089,37 +1089,37 @@ unsafe partial class SDL
 	[Macro]
 	public static ColorType GetColorspaceType(ColorspaceValue colorspace)
 	{
-		return (ColorType)((colorspace.Value >> 28) & 0x0F);
+		return (ColorType)(((uint)colorspace >> 28) & 0x0F);
 	}
 
 	[Macro]
 	public static ColorRange GetColorspaceRange(ColorspaceValue colorspace)
 	{
-		return (ColorRange)((colorspace.Value >> 24) & 0x0F);
+		return (ColorRange)(((uint)colorspace >> 24) & 0x0F);
 	}
 
 	[Macro]
 	public static ChromaLocation GetColorspaceChroma(ColorspaceValue colorspace)
 	{
-		return (ChromaLocation)((colorspace.Value >> 20) & 0x0F);
+		return (ChromaLocation)(((uint)colorspace >> 20) & 0x0F);
 	}
 
 	[Macro]
 	public static ColorPrimaries GetColorspacePrimaries(ColorspaceValue colorspace)
 	{
-		return (ColorPrimaries)((colorspace.Value >> 10) & 0x1F);
+		return (ColorPrimaries)(((uint)colorspace >> 10) & 0x1F);
 	}
 
 	[Macro]
 	public static TransferCharacteristics GetColorspaceTransfer(ColorspaceValue colorspace)
 	{
-		return (TransferCharacteristics)((colorspace.Value >> 5) & 0x1F);
+		return (TransferCharacteristics)(((uint)colorspace >> 5) & 0x1F);
 	}
 
 	[Macro]
 	public static MatrixCoefficients GetColorspaceMatrix(ColorspaceValue colorspace)
 	{
-		return (MatrixCoefficients)(colorspace.Value & 0x1F);
+		return (MatrixCoefficients)((uint)colorspace & 0x1F);
 	}
 
 	[Macro]

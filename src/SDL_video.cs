@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace SDL3;
@@ -75,7 +76,7 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// The struct used as an opaque handle to a window.
+	/// The struct used as a handle to a window. This structure is an opaque type.
 	/// </summary>
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_Window">here</see>.
@@ -83,14 +84,36 @@ unsafe partial class SDL
 	public readonly struct Window;
 
 	/// <summary>
-	/// Represents an id for a display. This structure serves as a wrapper for an unsigned 32-bit integer.
+	/// Represents an id for a display. The structure is a wrapper for an unsigned 32-bit integer.
 	/// </summary>
-	public readonly struct DisplayId
+	public readonly struct DisplayId // CHECK:wrapper
 	{
 		internal DisplayId(uint value)
 		{
-			Id = value;
+			_value = value;
 		}
+		
+		/// <inheritdoc/>
+		public override bool Equals([NotNullWhen(true)] object? obj)
+		{
+			if (obj is DisplayId cast)
+			{
+				return _value == cast._value;
+			}
+			return false;
+		}
+
+		/// <inheritdoc/>
+		public override int GetHashCode()
+		{
+			return _value.GetHashCode();
+		}
+
+		public static explicit operator uint(DisplayId x) => x._value;
+		public static explicit operator DisplayId(uint x) => new(x);
+
+		public static bool operator ==(DisplayId a, DisplayId b) => a._value == b._value;
+		public static bool operator !=(DisplayId a, DisplayId b) => a._value != b._value;
 
 		/// <summary>
 		/// An invalid id for a display.
@@ -98,23 +121,42 @@ unsafe partial class SDL
 		/// <remarks>
 		/// This is used when a function that returns a <see cref="DisplayId"/> instance fails.
 		/// </remarks>
-		public static DisplayId Invalid => new();
+		public static DisplayId Invalid => new(0);
 
-		/// <summary>
-		/// The id value, as an unsigned 32-bit integer.
-		/// </summary>
-		public readonly uint Id;
+		private readonly uint _value;
 	}
 
 	/// <summary>
-	/// Represents the internal id of a window. This structure serves as a wrapper for an unsigned 32-bit integer.
+	/// Represents the internal id of a window. The structure is a wrapper for an unsigned 32-bit integer.
 	/// </summary>
-	public readonly struct WindowId
+	public readonly struct WindowId // CHECK:wrapper
 	{
 		internal WindowId(uint value)
 		{
-			Id = value;
+			_value = value;
 		}
+
+		/// <inheritdoc/>
+		public override bool Equals([NotNullWhen(true)] object? obj)
+		{
+			if (obj is WindowId cast)
+			{
+				return _value == cast._value;
+			}
+			return false;
+		}
+
+		/// <inheritdoc/>
+		public override int GetHashCode()
+		{
+			return _value.GetHashCode();
+		}
+
+		public static explicit operator uint(WindowId x) => x._value;
+		public static explicit operator WindowId(uint x) => new(x);
+
+		public static bool operator ==(WindowId a, WindowId b) => a._value == b._value;
+		public static bool operator !=(WindowId a, WindowId b) => a._value != b._value;
 
 		/// <summary>
 		/// An invalid id for a window.
@@ -122,12 +164,9 @@ unsafe partial class SDL
 		/// <remarks>
 		/// This is used when a function that returns a <see cref="WindowId"/> instance fails.
 		/// </remarks>
-		public static WindowId Invalid => new();
+		public static WindowId Invalid => new(0);
 
-		/// <summary>
-		/// The id value, as an unsigned 32-bit integer.
-		/// </summary>
-		public readonly uint Id;
+		private readonly uint _value;
 	}
 
 	/// <summary>
@@ -480,7 +519,7 @@ unsafe partial class SDL
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplays">here</see>.
 	/// </remarks>
 	/// <param name="count"> Returns the number of displays returned. </param>
-	/// <returns> An array of display instance IDs or null on error; call <see cref="GetError"/> for more information. </returns>
+	/// <returns> An array of display instance ids, or null on error; call <see cref="GetError"/> for more information. </returns>
 	public static DisplayId[]? GetDisplays(out int count)
 	{
 		fixed (int* c = &count)

@@ -16,24 +16,24 @@ unsafe partial class SDL
 	public static partial class PropConsts { }
 
 	/// <summary>
-	/// An id of a set of properties. This structure serves as a wrapper for an unsigned 32-bit integer.
+	/// An id of a set of properties. The structure is a wrapper for an unsigned 32-bit integer.
 	/// </summary>
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_PropertiesID">here</see>.
 	/// </remarks>
-	public readonly struct PropertiesId
+	public readonly struct PropertiesId // CHECK:wrapper
 	{
 		internal PropertiesId(uint value)
 		{
-			Id = value;
+			_value = value;
 		}
 
 		/// <inheritdoc/>
 		public override bool Equals([NotNullWhen(true)] object? obj)
 		{
-			if (obj is PropertiesId props)
+			if (obj is PropertiesId cast)
 			{
-				return Id == props.Id;
+				return _value == cast._value;
 			}
 			return false;
 		}
@@ -41,11 +41,8 @@ unsafe partial class SDL
 		/// <inheritdoc/>
 		public override int GetHashCode()
 		{
-			return HashCode.Combine(Id, base.GetHashCode());
+			return _value.GetHashCode();
 		}
-
-		public static bool operator ==(PropertiesId a, PropertiesId b) => a.Id == b.Id;
-		public static bool operator !=(PropertiesId a, PropertiesId b) => a.Id != b.Id;
 
 		/// <summary>
 		/// An id to an invalid set of properties.
@@ -56,10 +53,13 @@ unsafe partial class SDL
 		/// </remarks>
 		public static PropertiesId Invalid => new();
 
-		/// <summary>
-		/// The id value, as an unsigned 32-bit integer.
-		/// </summary>
-		public readonly uint Id;
+		public static explicit operator uint(PropertiesId x) => x._value;
+		public static explicit operator PropertiesId(uint x) => new(x);
+
+		public static bool operator ==(PropertiesId a, PropertiesId b) => a._value == b._value;
+		public static bool operator !=(PropertiesId a, PropertiesId b) => a._value != b._value;
+
+		private readonly uint _value;
 	}
 
 	/// <summary>

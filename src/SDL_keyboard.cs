@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace SDL3;
@@ -7,30 +8,41 @@ namespace SDL3;
 unsafe partial class SDL
 {
 	/// <summary>
-	/// Represents a unique id for a keyboard. This structure serves as a wrapper for an unsigned 32-bit integer.
+	/// Represents a unique id for a keyboard. The structure is a wrapper for an unsigned 32-bit integer.
 	/// </summary>
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_KeyboardID">here</see>.
 	/// </remarks>
-	public readonly struct KeyboardId
+	public readonly struct KeyboardId // CHECK:wrapper
 	{
 		internal KeyboardId(uint value)
 		{
-			Id = value;
+			_value = value;
 		}
 
-		/// <summary>
-		/// An invalid id for a keyboard.
-		/// </summary>
-		/// <remarks>
-		/// This is used when a function that returns a <see cref="KeyboardId"/> instance fails.
-		/// </remarks>
-		public static KeyboardId Invalid => new();
+		/// <inheritdoc/>
+		public override bool Equals([NotNullWhen(true)] object? obj)
+		{
+			if (obj is KeyboardId cast)
+			{
+				return _value == cast._value;
+			}
+			return false;
+		}
 
-		/// <summary>
-		/// The id value, as an unsigned 32-bit integer.
-		/// </summary>
-		public readonly uint Id;
+		/// <inheritdoc/>
+		public override int GetHashCode()
+		{
+			return _value.GetHashCode();
+		}
+
+		public static explicit operator uint(KeyboardId x) => x._value;
+		public static explicit operator KeyboardId(uint x) => new(x);
+
+		public static bool operator ==(KeyboardId a, KeyboardId b) => a._value == b._value;
+		public static bool operator !=(KeyboardId a, KeyboardId b) => a._value != b._value;
+
+		private readonly uint _value;
 	}
 
 	/// <summary>
@@ -82,7 +94,7 @@ unsafe partial class SDL
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboards">here</see>.
 	/// </remarks>
 	/// <param name="count"> Returns the number of keyboards returned. </param>
-	/// <returns> An array of keyboard instance IDs, or null on error; call <see cref="GetError"/> for more details. </returns>
+	/// <returns> An array of keyboard instance ids, or null on error; call <see cref="GetError"/> for more details. </returns>
 	public static KeyboardId[]? GetKeyboards(out int count)
 	{
 		fixed (int* c = &count)
