@@ -6,7 +6,7 @@ namespace SDL3;
 unsafe partial class SDL
 {
 	/// <summary>
-	/// Initialization flags for <see cref="Init"/> and/or <see cref="InitSubSystem"/>.
+	/// Initialization flags for <see cref="Init(InitFlags)"/> and/or <see cref="InitSubSystem(InitFlags)"/>.
 	/// </summary>
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_InitFlags">here</see>.
@@ -47,7 +47,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_InitSubSystem">here</see>.
 	/// </remarks>
-	/// <param name="flags"> Any of the flags used by <see cref="Init"/>; see <see cref="Init"/> for details. </param>
+	/// <param name="flags"> Any of the flags used by <see cref="Init(InitFlags)"/>; see <see cref="Init(InitFlags)"/> for details. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int InitSubSystem(InitFlags flags)
 	{
@@ -63,7 +63,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_QuitSubSystem">here</see>.
 	/// </remarks>
-	/// <param name="flags"> Any of the flags used by <see cref="Init"/>; see <see cref="Init"/> for details. </param>
+	/// <param name="flags"> Any of the flags used by <see cref="Init(InitFlags)"/>; see <see cref="Init(InitFlags)"/> for details. </param>
 	public static void QuitSubSystem(InitFlags flags)
 	{
 		_PInvoke(flags);
@@ -78,7 +78,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_WasInit">here</see>.
 	/// </remarks>
-	/// <param name="flags"> Any of the flags used by <see cref="Init"/>; see <see cref="Init"/> for details. </param>
+	/// <param name="flags"> Any of the flags used by <see cref="Init(InitFlags)"/>; see <see cref="Init(InitFlags)"/> for details. </param>
 	/// <returns> A mask of all initialized subsystems if <paramref name="flags"/> is 0, otherwise it returns the initialization status of the specified subsystems. </returns>
 	public static InitFlags WasInit(InitFlags flags)
 	{

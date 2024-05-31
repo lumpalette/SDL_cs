@@ -248,7 +248,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a surface.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'SURFACE_' as a prefix.
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'Surface' as a prefix.
 	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceProperties">here</see>.
 	/// </remarks>

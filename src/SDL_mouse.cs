@@ -40,7 +40,7 @@ unsafe partial class SDL
 	public struct Cursor;
 
 	/// <summary>
-	/// Cursor types for <see cref="FIXME:SDL_CreateSystemCursor()"/>.
+	/// Cursor types for <see cref="CreateCursor(SystemCursor)"/>.
 	/// </summary>
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_SystemCursor">here</see>.
@@ -173,7 +173,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">here</see>.
 	/// </remarks>
-	public enum MouseButtonId
+	public enum MouseButtonId : byte
 	{
 		/// <summary>
 		/// Left mouse button.
@@ -202,7 +202,7 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// A bitmask of pressed mouse buttons, as reported by <see cref="GetMouseState"/>, etc.
+	/// A bitmask of pressed mouse buttons, as reported by <see cref="GetMouseState(out float, out float)"/>, etc.
 	/// </summary>
 	[Flags]
 	public enum MouseButtonFlags : uint
@@ -221,8 +221,8 @@ unsafe partial class SDL
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_BUTTON">here</see>.
 	/// </remarks>
 	/// <param name="button"> The button, represented as a <see cref="MouseButtonId"/> value. </param>
-	/// <returns> A 32-bit button bitmask of <paramref name="button"/>. </returns>
-	public static MouseButtonFlags MOUSE_BUTTON(MouseButtonId button)
+	/// <returns> A value of <see cref="MouseButtonFlags"/>. </returns>
+	public static MouseButtonFlags GetMouseButtonFlags(MouseButtonId button)
 	{
 		return (MouseButtonFlags)(1u << ((int)button - 1));
 	}
@@ -331,7 +331,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="x"> Returns the current X coord relative to the desktop. </param>
 	/// <param name="y"> Returns the current X coord relative to the desktop. </param>
-	/// <returns> The current button state as a bitmask which can be tested using the <see cref="MOUSE_BUTTON"/> macros. </returns>
+	/// <returns> The current button state as a bitmask. </returns>
 	public static MouseButtonFlags GetGlobalMouseState(out float x, out float y)
 	{
 		fixed (float* xx = &x, yy = &y)

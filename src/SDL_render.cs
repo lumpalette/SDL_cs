@@ -323,7 +323,7 @@ unsafe partial class SDL
 	/// Create a 2D rendering context for a window, with the specified properties.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'RENDERER_CREATE_' as a prefix.
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'RendererCreate' as a prefix.
 	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_CreateRendererWithProperties">here</see>.
 	/// </remarks>
@@ -409,7 +409,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a renderer.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'RENDERER_' as a prefix.
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'Renderer' as a prefix.
 	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetRendererProperties">here</see>.
 	/// </remarks>
@@ -506,7 +506,7 @@ unsafe partial class SDL
 	/// Create a texture for a rendering context with the specified properties.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'TEXTURE_CREATE_' as a prefix.
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'TextureCreate' as a prefix.
 	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_CreateTextureWithProperties">here</see>.
 	/// </remarks>
@@ -525,7 +525,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a texture.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'TEXTURE_' as a prefix.
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'Texture' as a prefix.
 	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureProperties">here</see>.
 	/// </remarks>

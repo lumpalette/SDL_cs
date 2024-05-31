@@ -1303,7 +1303,7 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// Free a <see cref="Palette"/> structure created with <see cref="CreatePalette"/>.
+	/// Free a <see cref="Palette"/> structure created with <see cref="CreatePalette(int)"/>.
 	/// </summary>
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyPalette">here</see>.
