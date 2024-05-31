@@ -215,19 +215,6 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// Used as a mask when testing buttons in buttonstate.
-	/// </summary>
-	/// <remarks>
-	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_BUTTON">here</see>.
-	/// </remarks>
-	/// <param name="button"> The button, represented as a <see cref="MouseButtonId"/> value. </param>
-	/// <returns> A value of <see cref="MouseButtonFlags"/>. </returns>
-	public static MouseButtonFlags GetMouseButtonFlags(MouseButtonId button)
-	{
-		return (MouseButtonFlags)(1u << ((int)button - 1));
-	}
-
-	/// <summary>
 	/// Return whether a mouse is currently connected.
 	/// </summary>
 	/// <remarks>
