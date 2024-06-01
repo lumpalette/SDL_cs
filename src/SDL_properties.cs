@@ -13,7 +13,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The properties are defined in alphabetical order.
 	/// </remarks>
-	public static partial class PropConsts { }
+	public static partial class PropConsts;
 
 	/// <summary>
 	/// An id of a set of properties. The structure is a wrapper for an unsigned 32-bit integer.
@@ -21,7 +21,8 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_PropertiesID">here</see>.
 	/// </remarks>
-	public readonly struct PropertiesId // CHECK:wrapper
+	[Wrapper]
+	public readonly struct PropertiesId
 	{
 		internal PropertiesId(uint value)
 		{

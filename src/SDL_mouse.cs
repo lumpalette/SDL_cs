@@ -9,7 +9,8 @@ unsafe partial class SDL
 	/// <summary>
 	/// Represents an id for a mouse. The structure is a wrapper for an unsigned 32-bit integer.
 	/// </summary>
-	public readonly struct MouseId // CHECK:wrapper
+	[Wrapper]
+	public readonly struct MouseId
 	{
 		internal MouseId(uint value)
 		{
@@ -42,10 +43,10 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// The representation of a cursor in SDL. This structure is an opaque type.
+	/// The structure that represents a cursor in SDL. This structure is an opaque type.
 	/// </summary>
 	[Opaque]
-	public struct Cursor;
+	public readonly struct Cursor;
 
 	/// <summary>
 	/// Cursor types for <see cref="CreateCursor(SystemCursor)"/>.

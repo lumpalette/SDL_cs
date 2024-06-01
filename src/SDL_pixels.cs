@@ -441,7 +441,8 @@ unsafe partial class SDL
 	/// <remarks>
 	/// This structure represents a single entry of SDL_PixelFormatEnum; see <see cref="PixelFormatEnum"/> for more details.
 	/// </remarks>
-	public readonly struct PixelFormatValue // CHECK:wrapper
+	[Wrapper]
+	public readonly struct PixelFormatValue
 	{
 		private static uint CreateValue(PixelType type, byte order, PackedLayout layout, byte bits, byte bytes)
 		{
@@ -535,7 +536,8 @@ unsafe partial class SDL
 	/// <remarks>
 	/// This structure represents a single entry of the SDL_Colorspace enum; see <see cref="Colorspace"/> for more details.
 	/// </remarks>
-	public readonly struct ColorspaceValue // CHECK:wrapper
+	[Wrapper]
+	public readonly struct ColorspaceValue
 	{
 		/// <summary>
 		/// Instantiates a new <see cref="ColorspaceValue"/> with the given parameters.

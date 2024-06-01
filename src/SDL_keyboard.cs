@@ -13,7 +13,8 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_KeyboardID">here</see>.
 	/// </remarks>
-	public readonly struct KeyboardId // CHECK:wrapper
+	[Wrapper]
+	public readonly struct KeyboardId
 	{
 		internal KeyboardId(uint value)
 		{

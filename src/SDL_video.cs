@@ -87,7 +87,8 @@ unsafe partial class SDL
 	/// <summary>
 	/// Represents an id for a display. The structure is a wrapper for an unsigned 32-bit integer.
 	/// </summary>
-	public readonly struct DisplayId // CHECK:wrapper
+	[Wrapper]
+	public readonly struct DisplayId
 	{
 		internal DisplayId(uint value)
 		{
@@ -130,7 +131,8 @@ unsafe partial class SDL
 	/// <summary>
 	/// Represents the internal id of a window. The structure is a wrapper for an unsigned 32-bit integer.
 	/// </summary>
-	public readonly struct WindowId // CHECK:wrapper
+	[Wrapper]
+	public readonly struct WindowId
 	{
 		internal WindowId(uint value)
 		{
