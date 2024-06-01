@@ -46,12 +46,9 @@ unsafe partial class SDL
 		}
 
 		/// <summary>
-		/// An id to an invalid set of properties.
+		/// An invalid set of properties. Used when a function that returns a <see cref="PropertiesId"/> fails or when
+		/// you don't need/is not required to pass a set of properties to a function.
 		/// </summary>
-		/// <remarks>
-		/// Use this whenever you need to tell SDL that a set of properties is not required. This is also used when a function that
-		/// returns a <see cref="PropertiesId"/> instance fails.
-		/// </remarks>
 		public static PropertiesId Invalid => new();
 
 		public static explicit operator uint(PropertiesId x) => x._value;

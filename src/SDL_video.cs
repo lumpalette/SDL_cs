@@ -118,11 +118,8 @@ unsafe partial class SDL
 		public static bool operator !=(DisplayId a, DisplayId b) => a._value != b._value;
 
 		/// <summary>
-		/// An invalid id for a display.
+		/// An invalid id for a display. Used when a function that returns a <see cref="DisplayId"/> fails.
 		/// </summary>
-		/// <remarks>
-		/// This is used when a function that returns a <see cref="DisplayId"/> instance fails.
-		/// </remarks>
 		public static DisplayId Invalid => new(0);
 
 		private readonly uint _value;
@@ -162,11 +159,8 @@ unsafe partial class SDL
 		public static bool operator !=(WindowId a, WindowId b) => a._value != b._value;
 
 		/// <summary>
-		/// An invalid id for a window.
+		/// An invalid id for a window. Used when a function that returns a <see cref="WindowId"/> fails.
 		/// </summary>
-		/// <remarks>
-		/// This is used when a function that returns a <see cref="WindowId"/> instance fails.
-		/// </remarks>
 		public static WindowId Invalid => new(0);
 
 		private readonly uint _value;
