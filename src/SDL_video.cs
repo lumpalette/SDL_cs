@@ -81,6 +81,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_Window">here</see>.
 	/// </remarks>
+	[Opaque]
 	public readonly struct Window;
 
 	/// <summary>

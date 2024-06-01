@@ -44,6 +44,7 @@ unsafe partial class SDL
 	/// <summary>
 	/// The representation of a cursor in SDL. This structure is an opaque type.
 	/// </summary>
+	[Opaque]
 	public struct Cursor;
 
 	/// <summary>
