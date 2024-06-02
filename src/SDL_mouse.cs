@@ -57,17 +57,17 @@ unsafe partial class SDL
 	public enum SystemCursor
 	{
 		/// <summary>
-		/// Arrow.
+		/// Default cursor. Usually an arrow.
 		/// </summary>
-		Arrow,
+		Default,
 
 		/// <summary>
 		/// I-beam.
 		/// </summary>
-		IBeam,
+		Text,
 
 		/// <summary>
-		/// Wait.
+		/// Wait. Usually an hourglass or watch or spinning ball.
 		/// </summary>
 		Wait,
 
@@ -77,84 +77,84 @@ unsafe partial class SDL
 		Crosshair,
 
 		/// <summary>
-		/// Small wait cursor (or <see cref="Wait"/> if not available).
+		/// Program is busy but still interactive. Usually it's <see cref="Wait"/> with an arrow.
 		/// </summary>
-		WaitArrow,
+		Progress,
 
 		/// <summary>
 		/// Double arrow pointing northwest and southeast.
 		/// </summary>
-		SizeNorthwestSoutheast,
+		NorthwestSoutheastResize,
 
 		/// <summary>
 		/// Double arrow pointing northeast and southwest.
 		/// </summary>
-		SizeNortheastSouthwest,
+		NortheastSouthwestResize,
 
 		/// <summary>
 		/// Double arrow pointing west and east.
 		/// </summary>
-		SizeWeastEast,
+		EastWestResize,
 
 		/// <summary>
 		/// Double arrow pointing north and south.
 		/// </summary>
-		SizeNorthSouth,
+		NorthSouthResize,
 
 		/// <summary>
 		/// Four pointed arrow pointing north, south, east, and west.
 		/// </summary>
-		SizeAll,
+		Move,
 
 		/// <summary>
-		/// Slashed circle or crossbones.
+		/// Not permitted. Usually a slashed circle or crossbones.
 		/// </summary>
-		No, // wtf is this name.
+		NotAllowed, // that's better.
 
 		/// <summary>
-		/// Hand.
+		/// Pointer that indicates a link. Usually a pointing hand.
 		/// </summary>
-		Hand,
+		Pointer,
 
 		/// <summary>
-		/// Window resize top-left (or <see cref="SizeNorthwestSoutheast"/>).
+		/// Window resize top-left (or <see cref="NorthwestSoutheastResize"/>).
 		/// </summary>
-		WindowTopLeft,
+		NorthwestResize,
 
 		/// <summary>
-		/// Window resize top (or <see cref="SizeNorthSouth"/>).
+		/// Window resize top (or <see cref="NorthSouthResize"/>).
 		/// </summary>
-		WindowTop,
+		NorthResize,
 
 		/// <summary>
-		/// Window resize top-right (or <see cref="SizeNortheastSouthwest"/>)
+		/// Window resize top-right (or <see cref="NortheastSouthwestResize"/>)
 		/// </summary>
-		WindowTopRight,
+		NortheastResize,
 
 		/// <summary>
-		/// Window resize right (or <see cref="SizeWeastEast"/>).
+		/// Window resize right (or <see cref="EastWestResize"/>).
 		/// </summary>
-		WindowRight,
+		EastResize,
 
 		/// <summary>
-		/// Window resize bottom-right (or <see cref="SizeNorthwestSoutheast"/>)
+		/// Window resize bottom-right (or <see cref="NorthwestSoutheastResize"/>)
 		/// </summary>
-		WindowBottomRight,
+		SoutheastResize,
 
 		/// <summary>
-		/// Window resize bottom (or <see cref="SizeNorthSouth"/>).
+		/// Window resize bottom (or <see cref="NorthSouthResize"/>).
 		/// </summary>
-		WindowBottom,
+		SouthResize,
 
 		/// <summary>
-		/// Window resize bottom-left (or <see cref="SizeNortheastSouthwest"/>).
+		/// Window resize bottom-left (or <see cref="NortheastSouthwestResize"/>).
 		/// </summary>
-		WindowBottomLeft,
+		SouthwestResize,
 
 		/// <summary>
-		/// Window resize left (or <see cref="SizeWeastEast"/>). 
+		/// Window resize left (or <see cref="EastWestResize"/>). 
 		/// </summary>
-		WindowLeft
+		WestResize
 	}
 
 	/// <summary>
