@@ -178,7 +178,6 @@ unsafe partial class SDL
 	}
 
 	// ADDME:SDL_SetPropertyWithCleanup()
-
 	// ADDME:SDL_SetProperty()
 
 	/// <summary>

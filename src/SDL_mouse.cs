@@ -182,7 +182,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">here</see>.
 	/// </remarks>
-	public enum MouseButtonId : byte
+	public enum MouseButtonType : byte
 	{
 		/// <summary>
 		/// Left mouse button.
@@ -216,11 +216,11 @@ unsafe partial class SDL
 	[Flags]
 	public enum MouseButtonFlags : uint
 	{
-		Lmask = 1u << (MouseButtonId.Left - 1),
-		Mmask = 1u << (MouseButtonId.Middle - 1),
-		Rmask = 1u << (MouseButtonId.Right - 1),
-		X1mask = 1u << (MouseButtonId.X1 - 1),
-		X2mask = 1u << (MouseButtonId.X2 - 1)
+		Lmask = 1u << (MouseButtonType.Left - 1),
+		Mmask = 1u << (MouseButtonType.Middle - 1),
+		Rmask = 1u << (MouseButtonType.Right - 1),
+		X1mask = 1u << (MouseButtonType.X1 - 1),
+		X2mask = 1u << (MouseButtonType.X2 - 1)
 	}
 
 	/// <summary>

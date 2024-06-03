@@ -372,7 +372,7 @@ unsafe partial class SDL
 		/// <summary>
 		/// The mouse button index.
 		/// </summary>
-		public MouseButtonId Button;
+		public MouseButtonType Button;
 
 		/// <summary>
 		/// Can be either <see cref="InputState.Pressed"/> or <see cref="InputState.Released"/>.

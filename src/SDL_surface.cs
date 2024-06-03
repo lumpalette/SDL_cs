@@ -249,9 +249,9 @@ unsafe partial class SDL
 	/// Get the properties associated with a surface.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'Surface' as a prefix.
-	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceProperties">here</see>.
+	/// <br/><br/>
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'Surface' as a prefix.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="Surface"/> structure to query. </param>
 	/// <returns> A valid property id on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -349,7 +349,7 @@ unsafe partial class SDL
 	}
 
 	// i'll rather die than having to implement IO shit, so i'll just skip the IO stream functions LOL
-	// ADDME: IO shit (probably not)
+	// ADDME:SDL_LoadBMP_IO()
 
 	/// <summary>
 	/// Load a BMP image from a file.
@@ -369,6 +369,8 @@ unsafe partial class SDL
 		[DllImport(LibraryName, EntryPoint = "SDL_LoadBMP", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern Surface* _PInvoke(byte* file);
 	}
+
+	// ADDME:SDL_SaveBMP_IO()
 
 	/// <summary>
 	/// Save a surface to a file.
