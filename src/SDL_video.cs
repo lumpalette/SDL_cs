@@ -896,6 +896,28 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
+	/// Get the raw ICC profile data for the screen the window is currently on.
+	/// </summary>
+	/// <remarks>
+	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowICCProfile">here</see>.
+	/// <br/><br/>
+	/// The type of <paramref name="size"/> refers to a size_t instead of a pointer (I'm sorry).
+	/// </remarks>
+	/// <param name="window"> The window to query. </param>
+	/// <param name="size"> The size of the ICC profile. </param>
+	/// <returns> The raw ICC profile data on success or null on failure; call <see cref="GetError"/> for more information. </returns>
+	public static void* GetWindowICCProfile(Window* window, out nuint size) // i'm sorry.
+	{
+		fixed (nuint* s = &size)
+		{
+			return _PInvoke(window, s);
+		}
+
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowICCProfile", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void* _PInvoke(Window* window, nuint* size); // this shit looks and IS very cursed.
+	}
+
+	/// <summary>
 	/// Get the pixel format associated with the window.
 	/// </summary>
 	/// <remarks>
@@ -937,9 +959,9 @@ unsafe partial class SDL
 	/// Create a window with the specified properties.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'WindowCreate' as a prefix.
-	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_CreateWindowWithProperties">here</see>.
+	/// <br/><br/>
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'WindowCreate' as a prefix.
 	/// </remarks>
 	/// <param name="props"> The properties to use. </param>
 	/// <returns> The window that was created or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -980,7 +1002,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> The id of the window on success or <see cref="WindowId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
-	public static WindowId GetWindowId(Window* window)
+	public static WindowId GetWindowInstanceId(Window* window)
 	{
 		return _PInvoke(window);
 
@@ -996,7 +1018,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="id"> The id of the window. </param>
 	/// <returns> The window associated with <paramref name="id"/> or null if it doesn't exist; call <see cref="GetError"/> for more information. </returns>
-	public static Window* GetWindowFromId(WindowId id)
+	public static Window* GetWindowFromInstanceId(WindowId id)
 	{
 		return _PInvoke(id);
 
@@ -1024,9 +1046,9 @@ unsafe partial class SDL
 	/// Get the properties associated with a window.
 	/// </summary>
 	/// <remarks>
-	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'Window' as a prefix.
-	/// <br/><br/>
 	/// The official documentation for this symbol can be found <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowProperties">here</see>.
+	/// <br/><br/>
+	/// The properties' string values can be found in <see cref="PropConsts"/>; they have 'Window' as a prefix.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> A valid property id on success or <see cref="PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
