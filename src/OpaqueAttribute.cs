@@ -1,9 +1,10 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
-namespace SDL3;
+namespace SDL_cs;
 
 /// <summary>
-/// Indicates that this type is opaque in SDL.
+/// Indicates that a type is opaque in SDL.
 /// </summary>
 [AttributeUsage(AttributeTargets.Struct)]
 [EditorBrowsable(EditorBrowsableState.Never)]

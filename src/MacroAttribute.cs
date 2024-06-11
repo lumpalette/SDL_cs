@@ -1,9 +1,10 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
-namespace SDL3;
+namespace SDL_cs;
 
 /// <summary>
-/// Indicates that a method is defined as a macro in some SDL header.
+/// Indicates that some method is defined as a macro in some SDL header.
 /// </summary>
 [AttributeUsage(AttributeTargets.Method)]
 [EditorBrowsable(EditorBrowsableState.Never)]

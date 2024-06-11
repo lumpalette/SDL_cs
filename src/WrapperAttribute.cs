@@ -1,9 +1,10 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
-namespace SDL3;
+namespace SDL_cs;
 
 /// <summary>
-/// Indicates that this type is a wrapper for another type.
+/// Indicates that some type is a wrapper for another type.
 /// </summary>
 [AttributeUsage(AttributeTargets.Struct)]
 [EditorBrowsable(EditorBrowsableState.Never)]
