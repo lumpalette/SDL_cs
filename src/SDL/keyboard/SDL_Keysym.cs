@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// The SDL keysym structure, used in key events.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Keysym">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Keysym">here</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_Keysym

@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// The blend operation used when combining source and destination pixel components.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlendOperation">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlendOperation">here</see> for more details.
 /// </remarks>
 [Flags]
 public enum SDL_BlendOperation

@@ -10,7 +10,7 @@ unsafe partial class SDL
 	/// Add support for gamepads that SDL is unaware of or change the binding of an existing gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AddGamepadMapping">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AddGamepadMapping">here</see> for more details.
 	/// </remarks>
 	/// <param name="mapping"> The mapping string. </param>
 	/// <returns> 1 if a new mapping is added, 0 if an existing mapping is updated, -1 on error; call <see cref="GetError"/> for more information. </returns>
@@ -29,7 +29,7 @@ unsafe partial class SDL
 	/// Load a set of gamepad mappings from a file.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AddGamepadMappingsFromFile">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AddGamepadMappingsFromFile">here</see> for more details.
 	/// </remarks>
 	/// <param name="file"> The mappings file to load. </param>
 	/// <returns> the number of mappings added or -1 on error; call <see cref="GetError"/> for more information. </returns>
@@ -48,7 +48,7 @@ unsafe partial class SDL
 	/// Reinitialize the SDL mapping database to its initial state.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ReloadGamepadMappings">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ReloadGamepadMappings">here</see> for more details.
 	/// </remarks>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int ReloadGamepadMappings()
@@ -63,7 +63,7 @@ unsafe partial class SDL
 	/// Get the current gamepad mappings.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMappings">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMappings">here</see> for more details.
 	/// </remarks>
 	/// <param name="count"> Returns the number of mappings. </param>
 	/// <returns> An array of the mapping strings or null on error. </returns>
@@ -93,7 +93,7 @@ unsafe partial class SDL
 	/// Get the gamepad mapping string for a given GUID.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMappingForGUID">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMappingForGUID">here</see> for more details.
 	/// </remarks>
 	/// <param name="guid"> A structure containing the GUID for which a mapping is desired. </param>
 	/// <returns> A mapping string or null on error; call <see cref="GetError"/> for more information. </returns>
@@ -116,7 +116,7 @@ unsafe partial class SDL
 	/// Get the current mapping of a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMapping">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMapping">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad you want to get the current mapping for. </param>
 	/// <returns> A string that has the gamepad's mapping or null if no mapping is available; call <see cref="GetError"/> for more information. </returns>
@@ -139,7 +139,7 @@ unsafe partial class SDL
 	/// Set the current mapping of a joystick or gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetGamepadMapping">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetGamepadMapping">here</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <param name="mapping"></param>
@@ -156,7 +156,7 @@ unsafe partial class SDL
 	/// Return whether a gamepad is currently connected.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_HasGamepad">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_HasGamepad">here</see> for more details.
 	/// </remarks>
 	/// <returns> True if a gamepad is connected, false otherwise. </returns>
 	public static bool HasGamepad()
@@ -171,7 +171,7 @@ unsafe partial class SDL
 	/// Get a list of currently connected gamepads.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepads">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepads">here</see> for more details.
 	/// </remarks>
 	/// <param name="count"> Returns the number of gamepads. </param>
 	/// <returns> An array of joystick instance ids, or null on error; call <see cref="GetError"/> for more details. </returns>
@@ -201,7 +201,7 @@ unsafe partial class SDL
 	/// Check if the given joystick is supported by the gamepad interface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_IsGamepad">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_IsGamepad">here</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> True if the given joystick is supported by the gamepad interface, false if it isn't or it's an invalid index. </returns>
@@ -217,7 +217,7 @@ unsafe partial class SDL
 	/// Get the implementation dependent name of a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceName">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceName">here</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The name of the selected gamepad. If no name can be found, this function returns null; call <see cref="GetError"/> for more information. </returns>
@@ -233,7 +233,7 @@ unsafe partial class SDL
 	/// Get the implementation dependent path of a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstancePath">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstancePath">here</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The path of the selected gamepad. If no path can be found, this function returns null; call <see cref="GetError"/> for more information. </returns>
@@ -249,7 +249,7 @@ unsafe partial class SDL
 	/// Get the player index of a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstancePlayerIndex">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstancePlayerIndex">here</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The player index of a gamepad, or -1 if it's not available. </returns>
@@ -265,7 +265,7 @@ unsafe partial class SDL
 	/// Get the implementation-dependent GUID of a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceGUID">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceGUID">here</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The GUID of the selected gamepad. If called on an invalid index, this function returns a zero GUID. </returns>
@@ -281,7 +281,7 @@ unsafe partial class SDL
 	/// Get the USB vendor ID of a gamepad, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceVendor">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceVendor">here</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The USB vendor ID of the selected gamepad. If called on an invalid index, this function returns zero. </returns>
@@ -297,7 +297,7 @@ unsafe partial class SDL
 	/// Get the USB product ID of a gamepad, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceProduct">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceProduct">here</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The USB product ID of the selected gamepad. If called on an invalid index, this function returns zero. </returns>
@@ -313,7 +313,7 @@ unsafe partial class SDL
 	/// Get the product version of a gamepad, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceProductVersion">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceProductVersion">here</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The product version of the selected gamepad. If called on an invalid index, this function returns zero. </returns>
@@ -329,7 +329,7 @@ unsafe partial class SDL
 	/// Get the type of a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceType">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceType">here</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The gamepad type. </returns>
@@ -345,7 +345,7 @@ unsafe partial class SDL
 	/// Get the type of a gamepad, ignoring any mapping override.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRealGamepadInstanceType">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRealGamepadInstanceType">here</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The gamepad type. </returns>
@@ -361,7 +361,7 @@ unsafe partial class SDL
 	/// Get the mapping of a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceMapping">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceMapping">here</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The mapping string. Returns null if no mapping is available. </returns>
@@ -384,7 +384,7 @@ unsafe partial class SDL
 	/// Open a gamepad for use.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_OpenGamepad">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_OpenGamepad">here</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> A gamepad identifier or null if an error occurred; call <see cref="GetError"/> for more information. </returns>
@@ -400,7 +400,7 @@ unsafe partial class SDL
 	/// Get the <see cref="SDL_Gamepad"/> associated with a joystick instance ID, if it has been opened.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadFromInstanceID">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadFromInstanceID">here</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID of the gamepad. </param>
 	/// <returns> An <see cref="SDL_Gamepad"/> on success or null on failure or if it hasn't been opened yet; call <see cref="GetError"/> for more information. </returns>
@@ -416,7 +416,7 @@ unsafe partial class SDL
 	/// Get the <see cref="SDL_Gamepad"/> associated with a player index.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadFromPlayerIndex">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadFromPlayerIndex">here</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The player index, which different from the instance ID. </param>
 	/// <returns> The <see cref="SDL_Gamepad"/> associated with a player index. </returns>
@@ -432,7 +432,7 @@ unsafe partial class SDL
 	/// Get the properties associated with an opened gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadProperties">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadProperties">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> A gamepad identifier previously returned by <see cref="OpenGamepad(SDL_JoystickId)"/>. </param>
 	/// <returns> A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -448,7 +448,7 @@ unsafe partial class SDL
 	/// Get the instance ID of an opened gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceID">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceID">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> A gamepad identifier previously returned by <see cref="OpenGamepad(SDL_JoystickId)"/>. </param>
 	/// <returns> The instance ID of the specified gamepad on success or 0 on failure; call <see cref="GetError"/> for more information. </returns>
@@ -464,7 +464,7 @@ unsafe partial class SDL
 	/// Get the implementation-dependent name for an opened gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadName">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadName">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> A gamepad identifier previously returned by <see cref="OpenGamepad(SDL_JoystickId)"/>. </param>
 	/// <returns> The implementation dependent name for the gamepad, or null if there is no name or the identifier passed is invalid. </returns>
@@ -480,7 +480,7 @@ unsafe partial class SDL
 	/// Get the implementation-dependent path for an opened gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadPath">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadPath">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> A gamepad identifier previously returned by <see cref="OpenGamepad(SDL_JoystickId)"/>. </param>
 	/// <returns> The implementation dependent path for the gamepad, or null if there is no name or the identifier passed is invalid. </returns>
@@ -496,7 +496,7 @@ unsafe partial class SDL
 	/// Get the type of an opened gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadType">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadType">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad object to query. </param>
 	/// <returns> The gamepad type, or <see cref="SDL_GamepadType.Unknown"/> if it's not available. </returns>
@@ -512,7 +512,7 @@ unsafe partial class SDL
 	/// Get the type of an opened gamepad, ignoring any mapping override.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRealGamepadType">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRealGamepadType">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad object to query. </param>
 	/// <returns> The gamepad type, or <see cref="SDL_GamepadType.Unknown"/> if it's not available. </returns>
@@ -528,7 +528,7 @@ unsafe partial class SDL
 	/// Get the player index of an opened gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadPlayerIndex">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadPlayerIndex">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad object to query. </param>
 	/// <returns> The player index for gamepad, or -1 if it's not available. </returns>
@@ -544,7 +544,7 @@ unsafe partial class SDL
 	/// Set the player index of an opened gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetGamepadPlayerIndex">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetGamepadPlayerIndex">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad object to adjust. </param>
 	/// <param name="playerIndex"> Player index to assign to this gamepad, or -1 to clear the player index and turn off player LEDs. </param>
@@ -561,7 +561,7 @@ unsafe partial class SDL
 	/// Get the USB vendor ID of an opened gamepad, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadVendor">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadVendor">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad object to query. </param>
 	/// <returns> The USB vendor ID, or zero if unavailable. </returns>
@@ -577,7 +577,7 @@ unsafe partial class SDL
 	/// Get the USB product ID of an opened gamepad, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadProduct">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadProduct">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad object to query. </param>
 	/// <returns> The USB product ID, or zero if unavailable. </returns>
@@ -593,7 +593,7 @@ unsafe partial class SDL
 	/// Get the product version of an opened gamepad, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadProductVersion">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadProductVersion">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad object to query. </param>
 	/// <returns> The USB product version, or zero if unavailable. </returns>
@@ -609,7 +609,7 @@ unsafe partial class SDL
 	/// Get the firmware version of an opened gamepad, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadFirmwareVersion">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadFirmwareVersion">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad object to query. </param>
 	/// <returns> The gamepad firmware version, or zero if unavailable. </returns>
@@ -625,7 +625,7 @@ unsafe partial class SDL
 	/// Get the serial number of an opened gamepad, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadSerial">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadSerial">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad object to query. </param>
 	/// <returns> The serial number, or null if is not available. </returns>
@@ -641,7 +641,7 @@ unsafe partial class SDL
 	/// Get the Steam Input handle of an opened gamepad, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadSteamHandle">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadSteamHandle">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad object to query. </param>
 	/// <returns> The gamepad handle, or 0 if unavailable. </returns>
@@ -657,7 +657,7 @@ unsafe partial class SDL
 	/// Get the connection state of a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadConnectionState">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadConnectionState">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad object to query. </param>
 	/// <returns> The connection state on success or <see cref="SDL_JoystickConnectionState.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -673,7 +673,7 @@ unsafe partial class SDL
 	/// Get the battery state of a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadPowerInfo">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadPowerInfo">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad object to query. </param>
 	/// <param name="percent"> Returns the percentage of battery life left, between 0 and 100. This will return -1 if SDL can't determine a value or there is no battery. </param>
@@ -693,7 +693,7 @@ unsafe partial class SDL
 	/// Check if a gamepad has been opened and is currently connected.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadConnected">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadConnected">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> A gamepad identifier previously returned by <see cref="OpenGamepad(SDL_JoystickId)"/>. </param>
 	/// <returns> True if the gamepad has been opened and is currently connected, or false if not. </returns>
@@ -709,7 +709,7 @@ unsafe partial class SDL
 	/// Get the underlying joystick from a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadJoystick">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadJoystick">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad object that you want to get a joystick from. </param>
 	/// <returns> An <see cref="SDL_Joystick"/> object or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -725,7 +725,7 @@ unsafe partial class SDL
 	/// Set the state of gamepad event processing.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetGamepadEventsEnabled">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetGamepadEventsEnabled">here</see> for more details.
 	/// </remarks>
 	/// <param name="enabled"> Whether to process gamepad events or not. </param>
 	public static void SetGamepadEventsEnabled(bool enabled)
@@ -740,7 +740,7 @@ unsafe partial class SDL
 	/// Query the state of gamepad event processing.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadEventsEnabled">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadEventsEnabled">here</see> for more details.
 	/// </remarks>
 	/// <returns> True if gamepad events are being processed, false otherwise. </returns>
 	public static bool GamepadEventsEnabled()
@@ -755,7 +755,7 @@ unsafe partial class SDL
 	/// Get the SDL joystick layer bindings for a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadBindings">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadBindings">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> A gamepad. </param>
 	/// <param name="count"> Returns the number of bindings </param>
@@ -786,7 +786,7 @@ unsafe partial class SDL
 	/// Manually pump gamepad updates if not using the loop.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateGamepads">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateGamepads">here</see> for more details.
 	/// </remarks>
 	public static void UpdateGamepads()
 	{
@@ -800,7 +800,7 @@ unsafe partial class SDL
 	/// Convert a string into <see cref="SDL_GamepadType"/> enum.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadTypeFromString">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadTypeFromString">here</see> for more details.
 	/// </remarks>
 	/// <param name="str"> String representing a <see cref="SDL_GamepadType"/>. </param>
 	/// <returns> The <see cref="SDL_GamepadType"/> enum corresponding to the input string, or <see cref="SDL_GamepadType.Unknown"/> if no match was found. </returns>
@@ -819,7 +819,7 @@ unsafe partial class SDL
 	/// Convert from an <see cref="SDL_GamepadType"/> enum to a string.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadStringForType">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadStringForType">here</see> for more details.
 	/// </remarks>
 	/// <param name="type"> An enum value for a given <see cref="SDL_GamepadType"/>. </param>
 	/// <returns> A string for the given type, or null if an invalid type is specified. The string returned is of the format used by <see cref="SDL_Gamepad"/> mapping strings. </returns>
@@ -835,7 +835,7 @@ unsafe partial class SDL
 	/// Convert a string into <see cref="SDL_GamepadAxis"/> enum.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadAxisFromString">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadAxisFromString">here</see> for more details.
 	/// </remarks>
 	/// <param name="str"> String representing a <see cref="SDL_GamepadAxis"/>. </param>
 	/// <returns> The <see cref="SDL_GamepadAxis"/> enum corresponding to the input string, or <see cref="SDL_GamepadAxis.Invalid"/> if no match was found.  </returns>
@@ -854,7 +854,7 @@ unsafe partial class SDL
 	/// Convert from an SDL_GamepadAxis enum to a string.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadStringForAxis">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadStringForAxis">here</see> for more details.
 	/// </remarks>
 	/// <param name="axis"> An enum value for a given <see cref="SDL_GamepadAxis"/>. </param>
 	/// <returns> A string for the given axis, or null if an invalid axis is specified. The string returned is of the format used by <see cref="SDL_Gamepad"/> mapping strings. </returns>
@@ -870,7 +870,7 @@ unsafe partial class SDL
 	/// Query whether a gamepad has a given axis.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadHasAxis">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadHasAxis">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> A gamepad. </param>
 	/// <param name="axis"> An axis enum value (an <see cref="SDL_GamepadAxis"/> value). </param>
@@ -887,7 +887,7 @@ unsafe partial class SDL
 	/// Get the current state of an axis control on a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadAxis">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadAxis">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> A gamepad. </param>
 	/// <param name="axis"> An axis index (an <see cref="SDL_GamepadAxis"/> value). </param>
@@ -904,7 +904,7 @@ unsafe partial class SDL
 	/// Convert a string into an <see cref="SDL_GamepadButton"/> enum.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadButtonFromString">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadButtonFromString">here</see> for more details.
 	/// </remarks>
 	/// <param name="str"> String representing a <see cref="SDL_GamepadButton"/>. </param>
 	/// <returns> The <see cref="SDL_GamepadButton"/> enum corresponding to the input string, or <see cref="SDL_GamepadButton.Invalid"/> if no match was found. </returns>
@@ -923,7 +923,7 @@ unsafe partial class SDL
 	/// Convert from an SDL_GamepadButton enum to a string.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadStringForButton">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadStringForButton">here</see> for more details.
 	/// </remarks>
 	/// <param name="button"> An enum value for a given <see cref="SDL_GamepadButton"/>. </param>
 	/// <returns> A string for the given button, or null if an invalid button is specified. The string returned is of the format used by <see cref="SDL_Gamepad"/> mapping strings. </returns>
@@ -939,7 +939,7 @@ unsafe partial class SDL
 	/// Query whether a gamepad has a given button.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadHasButton">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadHasButton">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> A gamepad. </param>
 	/// <param name="button"> A button enum value (an <see cref="SDL_GamepadButton"/> value). </param>
@@ -956,7 +956,7 @@ unsafe partial class SDL
 	/// Get the current state of a button on a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadButton">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadButton">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> A gamepad. </param>
 	/// <param name="button"> A button index (one of the <see cref="SDL_GamepadButton"/> values). </param>
@@ -973,7 +973,7 @@ unsafe partial class SDL
 	/// Get the label of a button on a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadButtonLabelForType">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadButtonLabelForType">here</see> for more details.
 	/// </remarks>
 	/// <param name="type"> The type of gamepad to check. </param>
 	/// <param name="button"> A button index (one of the <see cref="SDL_GamepadButton"/> values). </param>
@@ -990,7 +990,7 @@ unsafe partial class SDL
 	/// Get the label of a button on a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadButtonLabel">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadButtonLabel">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> A gamepad. </param>
 	/// <param name="button"> A button index (one of the <see cref="SDL_GamepadButton"/> values). </param>
@@ -1007,7 +1007,7 @@ unsafe partial class SDL
 	/// Get the number of touchpads on a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumGamepadTouchpads">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumGamepadTouchpads">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> A gamepad. </param>
 	/// <returns> The number of touchpads. </returns>
@@ -1023,7 +1023,7 @@ unsafe partial class SDL
 	/// Get the number of supported simultaneous fingers on a touchpad on a game gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumGamepadTouchpadFingers">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumGamepadTouchpadFingers">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> A gamepad. </param>
 	/// <param name="touchpad"> A touchpad. </param>
@@ -1040,7 +1040,7 @@ unsafe partial class SDL
 	/// Return whether a gamepad has a particular sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadHasSensor">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadHasSensor">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad to query. </param>
 	/// <param name="type"> The type of sensor to query. </param>
@@ -1057,7 +1057,7 @@ unsafe partial class SDL
 	/// Set whether data reporting for a gamepad sensor is enabled.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetGamepadSensorEnabled">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetGamepadSensorEnabled">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad to update. </param>
 	/// <param name="type"> The type of sensor to enable/disable. </param>
@@ -1075,7 +1075,7 @@ unsafe partial class SDL
 	/// Query whether sensor data reporting is enabled for a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadSensorEnabled">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadSensorEnabled">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad to query. </param>
 	/// <param name="type"> The type of sensor to query. </param>
@@ -1092,7 +1092,7 @@ unsafe partial class SDL
 	/// Get the data rate (number of events per second) of a gamepad sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadSensorDataRate">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadSensorDataRate">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad to query. </param>
 	/// <param name="type"> The type of sensor to query. </param>
@@ -1109,7 +1109,7 @@ unsafe partial class SDL
 	/// Get the current state of a gamepad sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadSensorData">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadSensorData">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad to query. </param>
 	/// <param name="type"> The type of sensor to query. </param>
@@ -1134,7 +1134,7 @@ unsafe partial class SDL
 	/// Start a rumble effect on a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RumbleGamepad">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RumbleGamepad">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad to vibrate. </param>
 	/// <param name="lowFrequencyRumble"> The intensity of the low frequency (left) rumble motor, from 0 to 0xFFFF. </param>
@@ -1153,7 +1153,7 @@ unsafe partial class SDL
 	/// Start a rumble effect in the gamepad's triggers.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RumbleGamepadTriggers">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RumbleGamepadTriggers">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad to vibrate. </param>
 	/// <param name="leftRumble"> The intensity of the left trigger rumble motor, from 0 to 0xFFFF. </param>
@@ -1172,7 +1172,7 @@ unsafe partial class SDL
 	/// Update a gamepad's LED color.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetGamepadLED">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetGamepadLED">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad to update. </param>
 	/// <param name="red"> The intensity of the red LED. </param>
@@ -1191,7 +1191,7 @@ unsafe partial class SDL
 	/// Send a gamepad specific effect packet.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SendGamepadEffect">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SendGamepadEffect">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad to affect. </param>
 	/// <param name="data"> The data to send to the gamepad. </param>
@@ -1209,7 +1209,7 @@ unsafe partial class SDL
 	/// Close a gamepad previously opened with <see cref="OpenGamepad(SDL_JoystickId)"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CloseGamepad">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CloseGamepad">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> A gamepad identifier previously returned by <see cref="OpenGamepad(SDL_JoystickId)"/>. </param>
 	public static void CloseGamepad(SDL_Gamepad* gamepad)
@@ -1224,7 +1224,7 @@ unsafe partial class SDL
 	/// Return the sfSymbolsName for a given button on a gamepad on Apple platforms.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadAppleSFSymbolsNameForButton">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadAppleSFSymbolsNameForButton">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad to query. </param>
 	/// <param name="button"> A button on the gamepad. </param>
@@ -1241,7 +1241,7 @@ unsafe partial class SDL
 	/// Return the sfSymbolsName for a given axis on a gamepad on Apple platforms.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadAppleSFSymbolsNameForAxis">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadAppleSFSymbolsNameForAxis">here</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad"> The gamepad to query. </param>
 	/// <param name="axis"> An axis on the gamepad. </param>

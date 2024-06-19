@@ -4,7 +4,7 @@
 /// The SDL keyboard scancode representation.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Scancode">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Scancode">here</see> for more details.
 /// </remarks>
 public enum SDL_Scancode
 {

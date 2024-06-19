@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Mouse button event structure (FIXME:event.button.*).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonEvent">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonEvent">here</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_MouseButtonEvent

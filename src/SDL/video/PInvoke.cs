@@ -34,7 +34,7 @@ unsafe partial class SDL
 	/// Get the number of video drivers compiled into SDL.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumVideoDrivers">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumVideoDrivers">here</see> for more details.
 	/// </remarks>
 	/// <returns> A number >= 1 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetNumVideoDrivers()
@@ -49,7 +49,7 @@ unsafe partial class SDL
 	/// Get the name of a built in video driver.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetVideoDriver">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetVideoDriver">here</see> for more details.
 	/// </remarks>
 	/// <param name="index"> The index of a video driver. </param>
 	/// <returns> The name of the video driver with the given <paramref name="index"/>. </returns>
@@ -65,7 +65,7 @@ unsafe partial class SDL
 	/// Get the name of the currently initialized video driver.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentVideoDriver">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentVideoDriver">here</see> for more details.
 	/// </remarks>
 	/// <returns> The name of the current video driver or null if no driver has been initialized. </returns>
 	public static string? GetCurrentVideoDriver()
@@ -80,7 +80,7 @@ unsafe partial class SDL
 	/// Get the current system theme.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSystemTheme">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSystemTheme">here</see> for more details.
 	/// </remarks>
 	/// <returns> The current system theme, light, dark, or unknown. </returns>
 	public static SDL_SystemTheme GetSystemTheme()
@@ -95,7 +95,7 @@ unsafe partial class SDL
 	/// Get a list of currently connected displays.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplays">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplays">here</see> for more details.
 	/// </remarks>
 	/// <param name="count"> Returns the number of displays returned. </param>
 	/// <returns> An array of display instance ids, or null on error; call <see cref="GetError"/> for more information. </returns>
@@ -125,7 +125,7 @@ unsafe partial class SDL
 	/// Return the primary display.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPrimaryDisplay">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPrimaryDisplay">here</see> for more details.
 	/// </remarks>
 	/// <returns> The instance ID of the primary display on success or <see cref="SDL_DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static SDL_DisplayId GetPrimaryDisplay()
@@ -140,7 +140,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a display.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayProperties">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayProperties">here</see> for more details.
 	/// </remarks>
 	/// <param name="displayId"> The instance ID of the display to query. </param>
 	/// <returns> A valid property ID on success or <see cref="SDL_DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -156,7 +156,7 @@ unsafe partial class SDL
 	/// Get the name of a display.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayName">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayName">here</see> for more details.
 	/// </remarks>
 	/// <param name="displayId"> The instance ID of the display to query. </param>
 	/// <returns> The name of a display or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -172,7 +172,7 @@ unsafe partial class SDL
 	/// Get the desktop area represented by a display.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayBounds">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayBounds">here</see> for more details.
 	/// </remarks>
 	/// <param name="displayId"> The instance ID of the display to query. </param>
 	/// <param name="rect"> Returns the <see cref="SDL_Rect"/> structure filled in with the display bounds. </param>
@@ -192,7 +192,7 @@ unsafe partial class SDL
 	/// Get the usable desktop area represented by a display, in screen coordinates.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayUsableBounds">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayUsableBounds">here</see> for more details.
 	/// </remarks>
 	/// <param name="displayId"> The instance ID of the display to query. </param>
 	/// <param name="rect"> Returns the <see cref="SDL_Rect"/> structure filled in with the display bounds </param>
@@ -212,7 +212,7 @@ unsafe partial class SDL
 	/// Get the orientation of a display when it is unrotated.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetNaturalDisplayOrientation">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetNaturalDisplayOrientation">here</see> for more details.
 	/// </remarks>
 	/// <param name="displayId"> The instance ID of the display to query. </param>
 	/// <returns> The <see cref="SDL_DisplayOrientation"/> enum value of the display, or <see cref="SDL_DisplayOrientation.Unknown"/> if it isn't available. </returns>
@@ -228,7 +228,7 @@ unsafe partial class SDL
 	/// Get the orientation of a display.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentDisplayOrientation">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentDisplayOrientation">here</see> for more details.
 	/// </remarks>
 	/// <param name="displayId"> The instance ID of the display to query. </param>
 	/// <returns> The <see cref="SDL_DisplayOrientation"/> enum value of the display, or <see cref="SDL_DisplayOrientation.Unknown"/> if it isn't available. </returns>
@@ -244,7 +244,7 @@ unsafe partial class SDL
 	/// Get the content scale of a display.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayContentScale">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayContentScale">here</see> for more details.
 	/// </remarks>
 	/// <param name="displayId"> The instance ID of the display to query. </param>
 	/// <returns> The content scale of the display, or 0.0f on error; call <see cref="GetError"/> for more details. </returns>
@@ -260,7 +260,7 @@ unsafe partial class SDL
 	/// Get a list of fullscreen display modes available on a display.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetFullscreenDisplayModes">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetFullscreenDisplayModes">here</see> for more details.
 	/// </remarks>
 	/// <param name="displayId"> The instance ID of the display to query. </param>
 	/// <param name="count"> Returns the number of display modes returned. </param>
@@ -291,7 +291,7 @@ unsafe partial class SDL
 	/// Get the closest match to the requested display mode.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetClosestFullscreenDisplayMode">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetClosestFullscreenDisplayMode">here</see> for more details.
 	/// </remarks>
 	/// <param name="displayId"> The instance ID of the display to query. </param>
 	/// <param name="width"> The width in pixels of the desired display mode. </param>
@@ -316,7 +316,7 @@ unsafe partial class SDL
 	/// Get information about the desktop's display mode.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDesktopDisplayMode">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDesktopDisplayMode">here</see> for more details.
 	/// </remarks>
 	/// <param name="displayId"> The instance ID of the display to query </param>
 	/// <returns> The desktop display mode or null on error; call <see cref="GetError"/> for more information. </returns>
@@ -337,7 +337,7 @@ unsafe partial class SDL
 	/// Get information about the current display mode.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentDisplayMode">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentDisplayMode">here</see> for more details.
 	/// </remarks>
 	/// <param name="displayId"> The instance ID of the display to query. </param>
 	/// <returns> The desktop display mode or null on error; call <see cref="GetError"/> for more information. </returns>
@@ -358,7 +358,7 @@ unsafe partial class SDL
 	/// Get the display containing a point.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayForPoint">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayForPoint">here</see> for more details.
 	/// </remarks>
 	/// <param name="point"> The point to query. </param>
 	/// <returns> The instance ID of the display containing the point or <see cref="SDL_DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -374,7 +374,7 @@ unsafe partial class SDL
 	/// Get the display primarily containing a rect.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayForRect">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayForRect">here</see> for more details.
 	/// </remarks>
 	/// <param name="rect"> The rect to query. </param>
 	/// <returns> The instance ID of the display entirely containing the rect or closest to the center of the rect on success or <see cref="SDL_DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -390,7 +390,7 @@ unsafe partial class SDL
 	/// Get the display associated with a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayForWindow">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayForWindow">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> The instance ID of the display containing the center of the window on success or 0 on failure; call <see cref="GetError"/> for more information. </returns>
@@ -406,7 +406,7 @@ unsafe partial class SDL
 	/// Get the pixel density of a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowPixelDensity">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowPixelDensity">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> The pixel density or 0.0f on failure; call <see cref="GetError"/> for more information. </returns>
@@ -422,7 +422,7 @@ unsafe partial class SDL
 	/// Get the content display scale relative to a window's pixel size.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowDisplayScale">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowDisplayScale">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> The display scale, or 0 on failure; call <see cref="GetError"/> for more information. </returns>
@@ -438,7 +438,7 @@ unsafe partial class SDL
 	/// Set the display mode to use when a window is visible and fullscreen.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowFullscreenMode">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowFullscreenMode">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to affect. </param>
 	/// <param name="displayMode"> The display mode to use, which can be null for borderless fullscreen desktop mode, or one of the fullscreen modes returned by <see cref="GetFullscreenDisplayModes"/> to set an exclusive fullscreen mode. </param>
@@ -460,7 +460,7 @@ unsafe partial class SDL
 	/// Query the display mode to use when a window is visible at fullscreen.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowFullscreenMode">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowFullscreenMode">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> The exclusive fullscreen mode to use or null for borderless fullscreen desktop mode. </returns>
@@ -481,7 +481,7 @@ unsafe partial class SDL
 	/// Get the raw ICC profile data for the screen the window is currently on.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowICCProfile">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowICCProfile">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <param name="size"> The size of the ICC profile. </param>
@@ -501,23 +501,23 @@ unsafe partial class SDL
 	/// Get the pixel format associated with the window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowPixelFormat">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowPixelFormat">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> The pixel format of the window on success or <see cref="SDL_PixelFormatEnum.Unknown"/> on failure; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_PixelFormatValue GetWindowPixelFormat(SDL_Window* window)
+	public static SDL_PixelFormatEnum GetWindowPixelFormat(SDL_Window* window)
 	{
 		return _PInvoke(window);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowPixelFormat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern SDL_PixelFormatValue _PInvoke(SDL_Window* window);
+		static extern SDL_PixelFormatEnum _PInvoke(SDL_Window* window);
 	}
 
 	/// <summary>
 	/// Create a window with the specified dimensions and flags.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateWindow">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateWindow">here</see> for more details.
 	/// </remarks>
 	/// <param name="title"> The title of the window. </param>
 	/// <param name="width"> The width of the window. </param>
@@ -539,7 +539,7 @@ unsafe partial class SDL
 	/// Create a window with the specified properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateWindowWithProperties">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateWindowWithProperties">here</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to use. </param>
 	/// <returns> The window that was created or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -555,7 +555,7 @@ unsafe partial class SDL
 	/// Create a child popup window of the specified parent window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreatePopupWindow">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreatePopupWindow">here</see> for more details.
 	/// </remarks>
 	/// <param name="parent"> The parent of the window, must not be null. </param>
 	/// <param name="offsetX"> The x x of the popup window relative to the origin of the parent window. </param>
@@ -576,7 +576,7 @@ unsafe partial class SDL
 	/// Get the numeric ID of a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowID">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowID">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> The ID of the window on success or <see cref="SDL_WindowId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -592,7 +592,7 @@ unsafe partial class SDL
 	/// Get a window from a stored ID.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowFromID">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowFromID">here</see> for more details.
 	/// </remarks>
 	/// <param name="id"> The ID of the window. </param>
 	/// <returns> The window associated with <paramref name="id"/> or null if it doesn't exist; call <see cref="GetError"/> for more information. </returns>
@@ -608,7 +608,7 @@ unsafe partial class SDL
 	/// Get parent of a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowParent">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowParent">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> The parent of the window on success or null if the window has no parent. </returns>
@@ -624,7 +624,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowProperties">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowProperties">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -640,7 +640,7 @@ unsafe partial class SDL
 	/// Get the window flags.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowFlags">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowFlags">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query </param>
 	/// <returns> A mask of the <see cref="SDL_WindowFlags"/> associated with <paramref name="window"/>. </returns>
@@ -656,7 +656,7 @@ unsafe partial class SDL
 	/// Set the title of a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowTitle">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowTitle">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to change. </param>
 	/// <param name="title"> The desired window title. </param>
@@ -676,7 +676,7 @@ unsafe partial class SDL
 	/// Get the title of a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowTitle">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowTitle">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> The title of the window or an empty string if there is no title. </returns>
@@ -692,7 +692,7 @@ unsafe partial class SDL
 	/// Set the icon for a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowIcon">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowIcon">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to change. </param>
 	/// <param name="surface"> An <see cref="SDL_Surface"/> structure containing the icon for the window. </param>
@@ -709,7 +709,7 @@ unsafe partial class SDL
 	/// Request that the window's x be set.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowPosition">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowPosition">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to reposition. </param>
 	/// <param name="x"> The x coordinate of the window, or <see cref="WindowPosCentered"/> or <see cref="WindowPosUndefined"/>. </param>
@@ -727,7 +727,7 @@ unsafe partial class SDL
 	/// Get the x of a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowPosition">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowPosition">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <param name="x"> Returns the x x of the window. </param>
@@ -748,7 +748,7 @@ unsafe partial class SDL
 	/// Request that the size of a window's client area be set.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowSize">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowSize">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to change. </param>
 	/// <param name="width"> The width of the window, must be &gt; 0. </param>
@@ -766,7 +766,7 @@ unsafe partial class SDL
 	/// Get the size of a window's client area.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowSize">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowSize">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query the width and height from. </param>
 	/// <param name="width"> Returns the width of the window. </param>
@@ -787,7 +787,7 @@ unsafe partial class SDL
 	/// Get the size of a window's borders (decorations) around the client area.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowBordersSize">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowBordersSize">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query the size values of the border (decorations) from. </param>
 	/// <param name="top"> Returns the size of the top border. </param>
@@ -810,7 +810,7 @@ unsafe partial class SDL
 	/// Get the size of a window's client area, in pixels.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowSizeInPixels">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowSizeInPixels">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window from which the drawable size should be queried. </param>
 	/// <param name="width"> Returns the width in pixels. </param>
@@ -831,7 +831,7 @@ unsafe partial class SDL
 	/// Set the minimum size of a window's client area.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowMinimumSize">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowMinimumSize">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to change. </param>
 	/// <param name="minW"> The minimum width of the window, or 0 for no limit. </param>
@@ -849,7 +849,7 @@ unsafe partial class SDL
 	/// Get the minimum size of a window's client area.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowMinimumSize">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowMinimumSize">here</see> for more details.
 	/// </remarks>
 	/// <param name="widow"> The window to query. </param>
 	/// <param name="width"> Returns the minimum width of the window. </param>
@@ -870,7 +870,7 @@ unsafe partial class SDL
 	/// Set the maximum size of a window's client area.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowMaximumSize">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowMaximumSize">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to change. </param>
 	/// <param name="maxW"> The maximum width of the window, or 0 for no limit. </param>
@@ -888,7 +888,7 @@ unsafe partial class SDL
 	/// Get the maximum size of a window's client area.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowMaximumSize">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowMaximumSize">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <param name="width"> Returns the maximum width of the window. </param>
@@ -909,7 +909,7 @@ unsafe partial class SDL
 	/// Set the border state of a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowBordered">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowBordered">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window of which to change the border state. </param>
 	/// <param name="bordered"> False to remove border, true to add border. </param>
@@ -926,7 +926,7 @@ unsafe partial class SDL
 	/// Set the user-resizable state of a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowResizable">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowResizable">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window of which to change the resizable state. </param>
 	/// <param name="resizable"> True to allow resizing, false to disallow. </param>
@@ -943,7 +943,7 @@ unsafe partial class SDL
 	/// Set the window to always be above the others.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowAlwaysOnTop">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowAlwaysOnTop">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window of which to change the always on top state. </param>
 	/// <param name="onTop"> True to set the window always on top, false to disable. </param>
@@ -960,7 +960,7 @@ unsafe partial class SDL
 	/// Show a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ShowWindow">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ShowWindow">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to show. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
@@ -976,7 +976,7 @@ unsafe partial class SDL
 	/// Hide a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_HideWindow">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_HideWindow">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to hide. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
@@ -992,7 +992,7 @@ unsafe partial class SDL
 	/// Raise a window above other windows and set the input focus.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RaiseWindow">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RaiseWindow">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to raise. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
@@ -1008,7 +1008,7 @@ unsafe partial class SDL
 	/// Request that the window be made as large as possible.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MaximizeWindow">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MaximizeWindow">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to maximize. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
@@ -1024,7 +1024,7 @@ unsafe partial class SDL
 	/// Request that the window be minimized to an iconic representation.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MinimizeWindow">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MinimizeWindow">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to minimize. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
@@ -1040,7 +1040,7 @@ unsafe partial class SDL
 	/// Request that the size and x of a minimized or maximized window be restored.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RestoreWindow">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RestoreWindow">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to restore. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
@@ -1056,7 +1056,7 @@ unsafe partial class SDL
 	/// Request that the window's fullscreen state be changed.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowFullscreen">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowFullscreen">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to change. </param>
 	/// <param name="fullscreen"> True for fullscreen mode, false for windowed mode. </param>
@@ -1073,7 +1073,7 @@ unsafe partial class SDL
 	/// Block until any pending window state is finalized.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SyncWindow">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SyncWindow">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window for which to wait for the pending state to be applied. </param>
 	/// <returns> 0 on success, a positive value if the operation timed out before the window was in the requested state, or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -1089,7 +1089,7 @@ unsafe partial class SDL
 	/// Return whether the window has a surface associated with it.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_WindowHasSurface">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_WindowHasSurface">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> True if there is a surface associated with the window, or false otherwise. </returns>
@@ -1105,7 +1105,7 @@ unsafe partial class SDL
 	/// Get the SDL surface associated with the window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowSurface">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowSurface">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> The surface associated with the window, or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -1121,7 +1121,7 @@ unsafe partial class SDL
 	/// Copy the window surface to the screen.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateWindowSurface">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateWindowSurface">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to update. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
@@ -1137,7 +1137,7 @@ unsafe partial class SDL
 	/// Copy areas of the window surface to the screen.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateWindowSurfaceRects">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateWindowSurfaceRects">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to update. </param>
 	/// <param name="rects"> An array of <see cref="SDL_Rect"/> structures representing areas of the surface to copy, in pixels. </param>
@@ -1157,7 +1157,7 @@ unsafe partial class SDL
 	/// Destroy the surface associated with the window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyWindowSurface">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyWindowSurface">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to update. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
@@ -1173,7 +1173,7 @@ unsafe partial class SDL
 	/// Set a window's keyboard grab mode.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowKeyboardGrab">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowKeyboardGrab">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window for which the keyboard grab mode should be set. </param>
 	/// <param name="grabbed"> This is true to grab keyboard, and false to release. </param>
@@ -1190,7 +1190,7 @@ unsafe partial class SDL
 	/// Set a window's mouse grab mode.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowMouseGrab">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowMouseGrab">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window for which the mouse grab mode should be set. </param>
 	/// <param name="grabbed"> This is true to grab mouse, and false to release. </param>
@@ -1207,7 +1207,7 @@ unsafe partial class SDL
 	/// Get a window's keyboard grab mode.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowKeyboardGrab">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowKeyboardGrab">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> True if keyboard is grabbed, and false otherwise. </returns>
@@ -1223,7 +1223,7 @@ unsafe partial class SDL
 	/// Get a window's mouse grab mode.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowMouseGrab">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowMouseGrab">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> True if keyboard is grabbed, and false otherwise. </returns>
@@ -1239,7 +1239,7 @@ unsafe partial class SDL
 	/// Get the window that currently has an input grab enabled.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGrabbedWindow">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGrabbedWindow">here</see> for more details.
 	/// </remarks>
 	/// <returns> The window if input is grabbed or null otherwise. </returns>
 	public static SDL_Window* GetGrabbedWindow()
@@ -1254,7 +1254,7 @@ unsafe partial class SDL
 	/// Confines the cursor to the specified area of a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowMouseRect">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowMouseRect">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window that will be associated with the barrier. </param>
 	/// <param name="rect"> A rectangle area in window-relative coordinates. If null, the barrier for the specified window will be destroyed. </param>
@@ -1278,7 +1278,7 @@ unsafe partial class SDL
 	/// Get the mouse confinement rectangle of a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowMouseRect">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowMouseRect">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> The mouse confinement rectangle of a window, or null if there isn't one. </returns>
@@ -1299,7 +1299,7 @@ unsafe partial class SDL
 	/// Set the opacity for a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowOpacity">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowOpacity">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window which will be made transparent or opaque. </param>
 	/// <param name="opacity"> The opacity value (0.0f - transparent, 1.0f - opaque). </param>
@@ -1316,7 +1316,7 @@ unsafe partial class SDL
 	/// Get the opacity of a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowOpacity">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowOpacity">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> the window to get the current opacity value from. </param>
 	/// <param name="opacity"> Returns the float filled in (0.0f - transparent, 1.0f - opaque). </param>
@@ -1336,7 +1336,7 @@ unsafe partial class SDL
 	/// Set the window as a modal to a parent window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowModalFor">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowModalFor">here</see> for more details.
 	/// </remarks>
 	/// <param name="modalWindow"> The window that should be set modal. </param>
 	/// <param name="parentWindow"> The parent window for the modal window. </param>
@@ -1353,7 +1353,7 @@ unsafe partial class SDL
 	/// Explicitly set input focus to the window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowInputFocus">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowInputFocus">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window that should get the input focus. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
@@ -1369,7 +1369,7 @@ unsafe partial class SDL
 	/// Set whether the window may have input focus.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowFocusable">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowFocusable">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to set focusable state. </param>
 	/// <param name="focusable"> True to allow input focus, false to not allow input focus. </param>
@@ -1386,7 +1386,7 @@ unsafe partial class SDL
 	/// Display the system-level window menu.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ShowWindowSystemMenu">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ShowWindowSystemMenu">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window for which the menu will be displayed. </param>
 	/// <param name="x"> The x coordinate of the menu, relative to the origin (top-left) of the client area. </param>
@@ -1400,15 +1400,15 @@ unsafe partial class SDL
 		static extern int _PInvoke(SDL_Window* window, int x, int y);
 	}
 
-	// ADDME:SDL_HitTest
-	// ADDME:SDL_HitTestResult
-	// ADDME:SDL_SetWindowHitTest()
+	// FIXME: implement SDL_HitTest
+	// FIXME: implement SDL_HitTestResult
+	// FIXME: implement SDL_SetWindowHitTest()
 
 	/// <summary>
 	/// Set the shape of a transparent window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowShape">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowShape">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window. </param>
 	/// <param name="shape"> The surface representing the shape of the window, or null to remove any current shape. </param>
@@ -1429,7 +1429,7 @@ unsafe partial class SDL
 	/// Request a window to demand attention from the user.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FlashWindow">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FlashWindow">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The <see cref="SDL_Window"/> to be flashed. </param>
 	/// <param name="operation"> The <see cref="SDL_FlashOperation"/> to perform. </param>
@@ -1446,7 +1446,7 @@ unsafe partial class SDL
 	/// Destroy a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyWindow">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyWindow">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to destroy. </param>
 	public static void DestroyWindow(SDL_Window* window)
@@ -1461,7 +1461,7 @@ unsafe partial class SDL
 	/// Check whether the screensaver is currently enabled.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ScreenSaverEnabled">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ScreenSaverEnabled">here</see> for more details.
 	/// </remarks>
 	/// <returns> True if the screensaver is enabled, false if it is disabled. </returns>
 	public static bool ScreenSaverEnabled()
@@ -1476,7 +1476,7 @@ unsafe partial class SDL
 	/// Allow the screen to be blanked by a screen saver.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_EnableScreenSaver">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_EnableScreenSaver">here</see> for more details.
 	/// </remarks>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int EnableScreenSaver()
@@ -1491,7 +1491,7 @@ unsafe partial class SDL
 	/// Prevent the screen from being blanked by a screen saver.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DisableScreenSaver">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DisableScreenSaver">here</see> for more details.
 	/// </remarks>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int DisableScreenSaver()

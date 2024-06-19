@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Joystick axis motion event structure (FIXME:event.jaxis.*)
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_JoyAxisEvent">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_JoyAxisEvent">here</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_JoystickAxisEvent

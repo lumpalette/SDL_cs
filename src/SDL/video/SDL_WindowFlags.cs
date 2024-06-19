@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// The flags on a window.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_WindowFlags">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_WindowFlags">here</see> for more details.
 /// </remarks>
 [Flags]
 public enum SDL_WindowFlags : uint

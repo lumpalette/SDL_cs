@@ -15,7 +15,7 @@ unsafe partial class SDL
 	/// Return whether a mouse is currently connected.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_HasMouse">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_HasMouse">here</see> for more details.
 	/// </remarks>
 	/// <returns> True if a mouse is connected, false otherwise. </returns>
 	public static bool HasMouse()
@@ -30,7 +30,7 @@ unsafe partial class SDL
 	/// Get a list of currently connected mice.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetMice">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetMice">here</see> for more details.
 	/// </remarks>
 	/// <param name="count"> Returns the number of mice returned </param>
 	/// <returns> An array of mouse instance ids or null on error; call <see cref="GetError"/> for more details. </returns>
@@ -60,7 +60,7 @@ unsafe partial class SDL
 	/// Get the name of a mouse.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetMouseInstanceName">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetMouseInstanceName">here</see> for more details.
 	/// </remarks>
 	/// <param name="mouseId"> The mouse instance ID. </param>
 	/// <returns> The name of the selected mouse, or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -76,7 +76,7 @@ unsafe partial class SDL
 	/// Get the window which currently has mouse focus.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetMouseFocus">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetMouseFocus">here</see> for more details.
 	/// </remarks>
 	/// <returns> The windows with mouse focus. </returns>
 	public static SDL_Window* GetMouseFocus()
@@ -91,7 +91,7 @@ unsafe partial class SDL
 	/// Retrieve the current state of the mouse.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetMouseState">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetMouseState">here</see> for more details.
 	/// </remarks>
 	/// <param name="x"> Returns the x coordinate of the mouse cursor position relative to the focus window. </param>
 	/// <param name="y"> Returns the y coordinate of the mouse cursor position relative to the focus window. </param>
@@ -111,7 +111,7 @@ unsafe partial class SDL
 	/// Get the current state of the mouse in relation to the desktop.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGlobalMouseState">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGlobalMouseState">here</see> for more details.
 	/// </remarks>
 	/// <param name="x"> Returns the current X coord relative to the desktop. </param>
 	/// <param name="y"> Returns the current X coord relative to the desktop. </param>
@@ -131,7 +131,7 @@ unsafe partial class SDL
 	/// Retrieve the relative state of the mouse.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRelativeMouseState">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRelativeMouseState">here</see> for more details.
 	/// </remarks>
 	/// <param name="x"> Returns the last recorded x coordinate of the mouse. </param>
 	/// <param name="y"> Returns the last recorded y coordinate of the mouse. </param>
@@ -151,7 +151,7 @@ unsafe partial class SDL
 	/// Move the mouse cursor to the given position within the window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_WarpMouseInWindows">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_WarpMouseInWindows">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to move the mouse into, or null for the current mouse focus. </param>
 	/// <param name="x"> The x coordinate within the window. </param>
@@ -168,7 +168,7 @@ unsafe partial class SDL
 	/// Move the mouse to the given position in global screen space.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_WarpMouseGlobal">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_WarpMouseGlobal">here</see> for more details.
 	/// </remarks>
 	/// <param name="x"> The x coordinate. </param>
 	/// <param name="y"> The y coordinate. </param>
@@ -184,7 +184,7 @@ unsafe partial class SDL
 	/// Set relative mouse mode.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetRelativeMouseMode">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetRelativeMouseMode">here</see> for more details.
 	/// </remarks>
 	/// <param name="enabled"> True to enable relative mode, false to disable. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -200,7 +200,7 @@ unsafe partial class SDL
 	/// Capture the mouse and to track input outside an SDL window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CaptureMouse">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CaptureMouse">here</see> for more details.
 	/// </remarks>
 	/// <param name="enabled"> True to enable capturing, false to disable. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -216,7 +216,7 @@ unsafe partial class SDL
 	/// Query whether relative mouse mode is enabled.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRelativeMouseMode">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRelativeMouseMode">here</see> for more details.
 	/// </remarks>
 	/// <returns> True if relative mode is enabled or false otherwise. </returns>
 	public static bool GetRelativeMouseMode()
@@ -231,7 +231,7 @@ unsafe partial class SDL
 	/// Create a cursor using the specified bitmap data and mask (in MSB format).
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateCursor">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateCursor">here</see> for more details.
 	/// </remarks>
 	/// <param name="data"> The color value for each pixel of the cursor. </param>
 	/// <param name="mask"> The mask value for each pixel of the cursor. </param>
@@ -255,7 +255,7 @@ unsafe partial class SDL
 	/// Create a color cursor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateColorCursor">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateColorCursor">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> An <see cref="SDL_Surface"/> structure representing the cursor image. </param>
 	/// <param name="hotX"> The x position of the cursor hot spot. </param>
@@ -274,7 +274,7 @@ unsafe partial class SDL
 	/// Create a system cursor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSystemCursor">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSystemCursor">here</see> for more details.
 	/// </remarks>
 	/// <param name="id"> An <see cref="SDL_SystemCursor"/> enum value. </param>
 	/// <returns> A cursor on success or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -290,7 +290,7 @@ unsafe partial class SDL
 	/// Set the active cursor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetCursor">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetCursor">here</see> for more details.
 	/// </remarks>
 	/// <param name="cursor"> A cursor to make active. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -306,7 +306,7 @@ unsafe partial class SDL
 	/// Get the active cursor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetCursor">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetCursor">here</see> for more details.
 	/// </remarks>
 	/// <returns> The active cursor or null if there is no mouse. </returns>
 	public static SDL_Cursor* GetCursor()
@@ -321,7 +321,7 @@ unsafe partial class SDL
 	/// Get the default cursor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDefaultCursor">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDefaultCursor">here</see> for more details.
 	/// </remarks>
 	/// <returns> The default cursor on success or null on failure. </returns>
 	public static SDL_Cursor* GetDefaultCursor()
@@ -336,7 +336,7 @@ unsafe partial class SDL
 	/// Free a previously-created cursor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyCursor">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyCursor">here</see> for more details.
 	/// </remarks>
 	/// <param name="cursor"> The cursor to free. </param>
 	public static void DestroyCursor(SDL_Cursor* cursor)
@@ -351,7 +351,7 @@ unsafe partial class SDL
 	/// Show the cursor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ShowCursor">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ShowCursor">here</see> for more details.
 	/// </remarks>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int ShowCursor()
@@ -366,7 +366,7 @@ unsafe partial class SDL
 	/// Hide the cursor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_HideCursor">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_HideCursor">here</see> for more details.
 	/// </remarks>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int HideCursor()
@@ -381,7 +381,7 @@ unsafe partial class SDL
 	/// Return whether the cursor is currently being shown.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CursorVisible">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CursorVisible">here</see> for more details.
 	/// </remarks>
 	/// <returns> True if the cursor is being shown, or false if the cursor is hidden. </returns>
 	public static bool CursorVisible()

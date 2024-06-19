@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Gamepad axis motion event structure (FIXME:event.gaxis.*).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadAxisEvent">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadAxisEvent">here</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_GamepadAxisEvent

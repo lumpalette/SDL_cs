@@ -10,7 +10,7 @@ unsafe partial class SDL
 	/// Return whether a keyboard is currently connected.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_HasKeyboard">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_HasKeyboard">here</see> for more details.
 	/// </remarks>
 	/// <returns> True if a keyboard is connected, false otherwise. </returns>
 	public static bool HasKeyboard()
@@ -25,7 +25,7 @@ unsafe partial class SDL
 	/// Get a list of currently connected keyboards.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboards">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboards">here</see> for more details.
 	/// </remarks>
 	/// <param name="count"> Returns the number of keyboards returned. </param>
 	/// <returns> An array of keyboard instance ids, or null on error; call <see cref="GetError"/> for more details. </returns>
@@ -55,7 +55,7 @@ unsafe partial class SDL
 	/// Get the name of a keyboard.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboardInstanceName">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboardInstanceName">here</see> for more details.
 	/// </remarks>
 	/// <param name="keyboardId"> The keyboard instance ID. </param>
 	/// <returns> The name of the selected keyboard, or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -71,7 +71,7 @@ unsafe partial class SDL
 	/// Query the window which currently has keyboard focus.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboardFocus">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboardFocus">here</see> for more details.
 	/// </remarks>
 	/// <returns> The window with keyboard focus. </returns>
 	public static SDL_Window* GetKeyboardFocus()
@@ -86,7 +86,7 @@ unsafe partial class SDL
 	/// Get a snapshot of the current state of the keyboard.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboardState">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboardState">here</see> for more details.
 	/// </remarks>
 	/// <param name="numKeys"> Returns the length of the returned. </param>
 	/// <returns> A pointer to an array of key states. </returns>
@@ -105,7 +105,7 @@ unsafe partial class SDL
 	/// Clear the state of the keyboard.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ResetKeyboard">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ResetKeyboard">here</see> for more details.
 	/// </remarks>
 	public static void ResetKeyboard()
 	{
@@ -119,7 +119,7 @@ unsafe partial class SDL
 	/// Get the current key modifier state for the keyboard.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetModState">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetModState">here</see> for more details.
 	/// </remarks>
 	/// <returns> An OR'd combination of the modifier keys for the keyboard. See <see cref="SDL_Keymod"/> for details. </returns>
 	public static SDL_Keymod GetModState()
@@ -134,7 +134,7 @@ unsafe partial class SDL
 	/// Set the current key modifier state for the keyboard.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetModState">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetModState">here</see> for more details.
 	/// </remarks>
 	/// <param name="modState"> The desired <see cref="SDL_Keymod"/> for the keyboard. </param>
 	public static void SetModState(SDL_Keymod modState)
@@ -149,7 +149,7 @@ unsafe partial class SDL
 	/// Get the key code corresponding to the given scancode according to the current keyboard layout.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyFromScancode">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyFromScancode">here</see> for more details.
 	/// </remarks>
 	/// <param name="scancode"> The desired <see cref="SDL_Scancode"/> to query. </param>
 	/// <returns> The <see cref="SDL_Keycode"/> that corresponds to the given <see cref="SDL_Scancode"/>. </returns>
@@ -165,7 +165,7 @@ unsafe partial class SDL
 	/// Get the scancode corresponding to the given key code according to the current keyboard layout.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetScancodeFromKey">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetScancodeFromKey">here</see> for more details.
 	/// </remarks>
 	/// <param name="key"> The desired <see cref="SDL_Keycode"/> to query </param>
 	/// <returns> The <see cref="SDL_Scancode"/> that corresponds to the given <see cref="SDL_Keycode"/>. </returns>
@@ -181,7 +181,7 @@ unsafe partial class SDL
 	/// Get a human-readable name for a scancode.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetScancodeName">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetScancodeName">here</see> for more details.
 	/// </remarks>
 	/// <param name="scancode"> The desired <see cref="SDL_Scancode"/> to query. </param>
 	/// <returns> The name for the scancode. If the scancode doesn't have a name this function returns an empty string. </returns>
@@ -197,7 +197,7 @@ unsafe partial class SDL
 	/// Get a scancode from a human-readable name.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetScancodeFromName">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetScancodeFromName">here</see> for more details.
 	/// </remarks>
 	/// <param name="name"> The human-readable scancode name. </param>
 	/// <returns> The <see cref="SDL_Scancode"/>, or <see cref="SDL_Scancode.Unknown"/> if the name wasn't recognized; call <see cref="GetError"/> for more information. </returns>
@@ -216,7 +216,7 @@ unsafe partial class SDL
 	/// Get a human-readable name for a key.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyName">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyName">here</see> for more details.
 	/// </remarks>
 	/// <param name="key"> The desired <see cref="SDL_Keycode"/> to query. </param>
 	/// <returns> The name of the key. If the key doesn't have a name, this function returns an empty string. </returns>
@@ -232,7 +232,7 @@ unsafe partial class SDL
 	/// Get a key code from a human-readable name.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyFromName">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyFromName">here</see> for more details.
 	/// </remarks>
 	/// <param name="name"> The human-readable key name. </param>
 	/// <returns> The <see cref="SDL_Keycode"/>, or <see cref="SDL_Keycode.Unknown"/> if the name wasn't recognized; call <see cref="GetError"/> for more information. </returns>
@@ -251,7 +251,7 @@ unsafe partial class SDL
 	/// Start accepting Unicode text input events.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_StartTextInput">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_StartTextInput">here</see> for more details.
 	/// </remarks>
 	public static void StartTextInput()
 	{
@@ -265,7 +265,7 @@ unsafe partial class SDL
 	/// Check whether or not Unicode text input events are enabled.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_TextInputActive">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_TextInputActive">here</see> for more details.
 	/// </remarks>
 	/// <returns> True if text input events are enabled else false. </returns>
 	public static bool TextInputActive()
@@ -280,7 +280,7 @@ unsafe partial class SDL
 	/// Stop receiving any text input events.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_StopTextInput">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_StopTextInput">here</see> for more details.
 	/// </remarks>
 	public static void StopTextInput()
 	{
@@ -294,7 +294,7 @@ unsafe partial class SDL
 	/// Dismiss the composition window/IME without disabling the subsystem.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ClearComposition">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ClearComposition">here</see> for more details.
 	/// </remarks>
 	public static void ClearComposition()
 	{
@@ -308,7 +308,7 @@ unsafe partial class SDL
 	/// Set the rectangle used to type Unicode text inputs.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextInputRect">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextInputRect">here</see> for more details.
 	/// </remarks>
 	/// <param name="rect"> The <see cref="SDL_Rect"/> structure representing the rectangle to receive text (ignored if null). </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -329,7 +329,7 @@ unsafe partial class SDL
 	/// Check whether the platform has screen keyboard support.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_HasScreenKeyboardSupport">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_HasScreenKeyboardSupport">here</see> for more details.
 	/// </remarks>
 	/// <returns> True if the platform has some screen keyboard support or false if not. </returns>
 	public static bool HasScreenKeyboardSupport()
@@ -344,7 +344,7 @@ unsafe partial class SDL
 	/// Check whether the screen keyboard is shown for given window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ScreenKeyboardShown">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ScreenKeyboardShown">here</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window for which screen keyboard should be queried. </param>
 	/// <returns> True if screen keyboard is shown or false if not. </returns>

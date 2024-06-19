@@ -5,7 +5,7 @@
 /// </summary>
 /// <remarks>
 /// The structure is a wrapper for an <see cref="SDL_Guid"/>. Refer to the official documentation
-/// <see href="https://wiki.libsdl.org/SDL3/SDL_JoystickGUID">here</see>.
+/// <see href="https://wiki.libsdl.org/SDL3/SDL_JoystickGUID">here</see> for more details.
 /// </remarks>
 [Wrapper]
 public readonly struct SDL_JoystickGuid
@@ -16,6 +16,7 @@ public readonly struct SDL_JoystickGuid
 	}
 
 	public static explicit operator SDL_Guid(SDL_JoystickGuid x) => x._value;
+
 	public static explicit operator SDL_JoystickGuid(SDL_Guid x) => new(x);
 
 	private readonly SDL_Guid _value;

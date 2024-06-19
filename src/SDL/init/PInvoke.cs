@@ -9,7 +9,7 @@ unsafe partial class SDL
 	/// Initialize the SDL library.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Init">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Init">here</see> for more details.
 	/// </remarks>
 	/// <param name="flags"> Subsystem initialization flags. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -25,7 +25,7 @@ unsafe partial class SDL
 	/// Compatibility function to initialize the SDL library.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_InitSubSystem">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_InitSubSystem">here</see> for more details.
 	/// </remarks>
 	/// <param name="flags"> Any of the flags used by <see cref="Init(SDL_InitFlags)"/>; see <see cref="Init(SDL_InitFlags)"/> for details. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -41,7 +41,7 @@ unsafe partial class SDL
 	/// Shut down specific SDL subsystems.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_QuitSubSystem">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_QuitSubSystem">here</see> for more details.
 	/// </remarks>
 	/// <param name="flags"> Any of the flags used by <see cref="Init(SDL_InitFlags)"/>; see <see cref="Init(SDL_InitFlags)"/> for details. </param>
 	public static void QuitSubSystem(SDL_InitFlags flags)
@@ -56,7 +56,7 @@ unsafe partial class SDL
 	/// Get a mask of the specified subsystems which are currently initialized.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_WasInit">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_WasInit">here</see> for more details.
 	/// </remarks>
 	/// <param name="flags"> Any of the flags used by <see cref="Init(SDL_InitFlags)"/>; see <see cref="Init(SDL_InitFlags)"/> for details. </param>
 	/// <returns> A mask of all initialized subsystems if <paramref name="flags"/> is 0, otherwise it returns the initialization status of the specified subsystems. </returns>
@@ -72,7 +72,7 @@ unsafe partial class SDL
 	/// Clean up all initialized subsystems.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Quit">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Quit">here</see> for more details.
 	/// </remarks>
 	public static void Quit()
 	{

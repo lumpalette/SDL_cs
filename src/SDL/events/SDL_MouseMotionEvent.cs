@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Mouse motion event structure (FIXME:event.motion.*).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MouseMotionEvent">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MouseMotionEvent">here</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_MouseMotionEvent

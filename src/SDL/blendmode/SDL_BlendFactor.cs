@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// The normalized factor used to multiply pixel components.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlendFactor">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlendFactor">here</see> for more details.
 /// </remarks>
 [Flags]
 public enum SDL_BlendFactor

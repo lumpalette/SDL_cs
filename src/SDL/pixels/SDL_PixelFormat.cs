@@ -6,15 +6,15 @@ namespace SDL_cs;
 /// Details about the format of a pixel.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">here</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public readonly unsafe struct SDL_PixelFormat
 {
 	/// <summary>
-	/// The <see cref="SDL_PixelFormatValue"/> the structure is describing.
+	/// The <see cref="SDL_PixelFormatEnum"/> the structure is describing.
 	/// </summary>
-	public readonly SDL_PixelFormatValue Format;
+	public readonly SDL_PixelFormatEnum Format;
 
 	/// <summary>
 	/// A palette structure associated with this pixel format, or null if the format doesn't have a palette.

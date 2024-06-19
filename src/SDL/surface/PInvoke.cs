@@ -24,25 +24,25 @@ unsafe partial class SDL
 	/// Allocate a new RGB surface with a specific pixel format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSurface">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSurface">here</see> for more details.
 	/// </remarks>
 	/// <param name="width"> The width of the surface. </param>
 	/// <param name="height"> The height of the surface. </param>
-	/// <param name="format"> The <see cref="SDL_PixelFormatValue"/> for the new surface's pixel format. </param>
+	/// <param name="format"> The <see cref="SDL_PixelFormatEnum"/> for the new surface's pixel format. </param>
 	/// <returns> The new <see cref="SDL_Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Surface* CreateSurface(int width, int height, SDL_PixelFormatValue format) // CHECK:overload
+	public static SDL_Surface* CreateSurface(int width, int height, SDL_PixelFormatEnum format) // CHECK:overload
 	{
 		return _PInvoke(width, height, format);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_CreateSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern SDL_Surface* _PInvoke(int width, int height, SDL_PixelFormatValue format);
+		static extern SDL_Surface* _PInvoke(int width, int height, SDL_PixelFormatEnum format);
 	}
 
 	/// <summary>
 	/// Allocate a new RGB surface with a specific pixel format and existing pixel data.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSurfaceFrom">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSurfaceFrom">here</see> for more details.
 	/// </remarks>
 	/// <param name="pixels"> The pixel data, represented as unsigned 32-bit integer array. </param>
 	/// <param name="width"> The width of the surface. </param>
@@ -50,7 +50,7 @@ unsafe partial class SDL
 	/// <param name="pitch"> The number of bytes between each row, including padding </param>
 	/// <param name="format"> The pixel format value for the new surface's pixel format. </param>
 	/// <returns> The new <see cref="SDL_Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Surface* CreateSurface(uint[] pixels, int width, int height, int pitch, SDL_PixelFormatValue format) // CHECK:overload
+	public static SDL_Surface* CreateSurface(uint[] pixels, int width, int height, int pitch, SDL_PixelFormatEnum format) // CHECK:overload
 	{
 		fixed (uint* p = pixels)
 		{
@@ -61,14 +61,14 @@ unsafe partial class SDL
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_CreateSurfaceFrom", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern SDL_Surface* _PInvoke(uint* pixels, int width, int height, int pitch, SDL_PixelFormatValue format);
+		static extern SDL_Surface* _PInvoke(uint* pixels, int width, int height, int pitch, SDL_PixelFormatEnum format);
 	}
 
 	/// <summary>
 	/// Free an RGB surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DestroySurface">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DestroySurface">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to free. It is safe to this be null. </param>
 	public static void DestroySurface(SDL_Surface* surface)
@@ -87,7 +87,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceProperties">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceProperties">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
 	/// <returns> A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -103,44 +103,44 @@ unsafe partial class SDL
 	/// Set the colorspace used by a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceColorspace">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceColorspace">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to update. </param>
-	/// <param name="colorspace"> An <see cref="SDL_ColorspaceValue"/> value describing the surface colorspace. </param>
+	/// <param name="colorspace"> An <see cref="SDL_Colorspace"/> value describing the surface colorspace. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int SetSurfaceColorspace(SDL_Surface* surface, SDL_ColorspaceValue colorspace)
+	public static int SetSurfaceColorspace(SDL_Surface* surface, SDL_Colorspace colorspace)
 	{
 		return _PInvoke(surface, colorspace);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorspace", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern int _PInvoke(SDL_Surface* surface, SDL_ColorspaceValue colorspace);
+		static extern int _PInvoke(SDL_Surface* surface, SDL_Colorspace colorspace);
 	}
 
 	/// <summary>
 	/// Get the colorspace used by a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorspace">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorspace">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
-	/// <param name="colorspace"> Returns the <see cref="SDL_ColorspaceValue"/> value describing the surface colorspace. </param>
+	/// <param name="colorspace"> Returns the <see cref="SDL_Colorspace"/> value describing the surface colorspace. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int GetSurfaceColorspace(SDL_Surface* surface, out SDL_ColorspaceValue colorspace)
+	public static int GetSurfaceColorspace(SDL_Surface* surface, out SDL_Colorspace colorspace)
 	{
-		fixed (SDL_ColorspaceValue* c = &colorspace)
+		fixed (SDL_Colorspace* c = &colorspace)
 		{
 			return _PInvoke(surface, c);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorspace", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern int _PInvoke(SDL_Surface* surface, SDL_ColorspaceValue* colorspace);
+		static extern int _PInvoke(SDL_Surface* surface, SDL_Colorspace* colorspace);
 	}
 
 	/// <summary>
 	/// Set the palette used by a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfacePalette">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfacePalette">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to update. </param>
 	/// <param name="palette"> The <see cref="SDL_Palette"/> structure to use. </param>
@@ -157,7 +157,7 @@ unsafe partial class SDL
 	/// Set up a surface for directly accessing the pixels.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_LockSurface">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_LockSurface">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to be locked. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -173,7 +173,7 @@ unsafe partial class SDL
 	/// Release a surface after directly accessing the pixels.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UnlockSurface">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UnlockSurface">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to be unlocked. </param>
 	public static void UnlockSurface(SDL_Surface* surface)
@@ -185,13 +185,13 @@ unsafe partial class SDL
 	}
 
 	// i'll rather die than having to implement IO shit, so i'll just skip the IO stream functions LOL
-	// ADDME:SDL_LoadBMP_IO()
+	// FIXME: implement SDL_LoadBMP_IO()
 
 	/// <summary>
 	/// Load a BMP image from a file.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_LoadBMP">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_LoadBMP">here</see> for more details.
 	/// </remarks>
 	/// <param name="file"> The BMP file to load. </param>
 	/// <returns> A pointer to a new <see cref="SDL_Surface"/> structure or null if there was an error; call <see cref="GetError"/> for more information. </returns>
@@ -206,13 +206,13 @@ unsafe partial class SDL
 		static extern SDL_Surface* _PInvoke(byte* file);
 	}
 
-	// ADDME:SDL_SaveBMP_IO()
+	// FIXME: implement SDL_SaveBMP_IO()
 
 	/// <summary>
 	/// Save a surface to a file.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SaveBMP">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SaveBMP">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure containing the image to be saved. </param>
 	/// <param name="file"> A file to save to. </param>
@@ -232,7 +232,7 @@ unsafe partial class SDL
 	/// Set the RLE acceleration hint for a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceRLE">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceRLE">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to optimize. </param>
 	/// <param name="enable"> True to enable RLE acceleration, otherwise false. </param>
@@ -249,7 +249,7 @@ unsafe partial class SDL
 	/// Returns whether the surface is RLE enabled.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceHasRLE">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceHasRLE">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
 	/// <returns> True if the surface has RLE enabled, false otherwise. </returns>
@@ -265,7 +265,7 @@ unsafe partial class SDL
 	/// Set the color key (transparent pixel) in a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceHasRLE">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceHasRLE">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to update. </param>
 	/// <param name="enable"> True to enable color key, false to disable color key. </param>
@@ -283,7 +283,7 @@ unsafe partial class SDL
 	/// Returns whether the surface has a color key.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceHasColorKey">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceHasColorKey">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
 	/// <returns> True if the surface has a color key, otherwise false. </returns>
@@ -299,7 +299,7 @@ unsafe partial class SDL
 	/// Get the color key (transparent pixel) for a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorKey">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorKey">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
 	/// <param name="key"> Returns the transparent pixel. </param>
@@ -319,7 +319,7 @@ unsafe partial class SDL
 	/// Set an additional color value multiplied into blit operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceColorMod">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceColorMod">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to update. </param>
 	/// <param name="r"> The red color value multiplied into blit operations. </param>
@@ -338,7 +338,7 @@ unsafe partial class SDL
 	/// Get the additional color value multiplied into blit operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorMod">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorMod">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
 	/// <param name="r"> Returns the current red color value. </param>
@@ -360,7 +360,7 @@ unsafe partial class SDL
 	/// Set an additional alpha value used in blit operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceAlphaMod">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceAlphaMod">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to update. </param>
 	/// <param name="alpha"> The alpha value multiplied into blit operations. </param>
@@ -377,7 +377,7 @@ unsafe partial class SDL
 	/// Get the additional alpha value used in blit operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceAlphaMod">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceAlphaMod">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
 	/// <param name="alpha"> Returns the current alpha value. </param>
@@ -397,7 +397,7 @@ unsafe partial class SDL
 	/// Set the blend mode used for blit operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceBlendMode">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceBlendMode">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to update. </param>
 	/// <param name="blendMode"> The <see cref="SDL_BlendMode"/> to use for blit blending. </param>
@@ -414,7 +414,7 @@ unsafe partial class SDL
 	/// Get the blend mode used for blit operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceBlendMode">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceBlendMode">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
 	/// <param name="blendMode"> Returns the current <see cref="SDL_BlendMode"/>. </param>
@@ -434,7 +434,7 @@ unsafe partial class SDL
 	/// Set the clipping rectangle for a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceClipRect">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceClipRect">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to be clipped. </param>
 	/// <param name="rect"> The <see cref="SDL_Rect"/> structure representing the clipping rectangle, or null to disable clipping. </param>
@@ -456,7 +456,7 @@ unsafe partial class SDL
 	/// Get the clipping rectangle for a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceClipRect">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceClipRect">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure representing the surface to be clipped. </param>
 	/// <param name="rect"> Returns An <see cref="SDL_Rect"/> structure representing the clipping rectangle for the surface. </param>
@@ -476,7 +476,7 @@ unsafe partial class SDL
 	/// Flip a surface vertically or horizontally.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FlipSurface">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FlipSurface">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The surface to flip. </param>
 	/// <param name="flip"> The direction to flip. </param>
@@ -493,7 +493,7 @@ unsafe partial class SDL
 	/// Creates a new surface identical to the existing surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DuplicateSurface">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DuplicateSurface">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The surface to duplicate. </param>
 	/// <returns> A copy of the surface, or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -509,7 +509,7 @@ unsafe partial class SDL
 	/// Copy an existing surface to a new surface of the specified format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurface">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurface">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The existing <see cref="SDL_Surface"/> structure to convert. </param>
 	/// <param name="format"> The <see cref="SDL_PixelFormat"/> structure that the new surface is optimized for. </param>
@@ -526,12 +526,12 @@ unsafe partial class SDL
 	/// Copy an existing surface to a new surface of the specified format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurfaceFormat">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurfaceFormat">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The existing <see cref="SDL_Surface"/> structure to convert. </param>
 	/// <param name="format"> The new pixel format. </param>
 	/// <returns> The new <see cref="SDL_Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Surface* ConvertSurfaceFormat(SDL_Surface* surface, SDL_PixelFormatValue format) // CHECK:overload
+	public static SDL_Surface* ConvertSurfaceFormat(SDL_Surface* surface, SDL_PixelFormatEnum format) // CHECK:overload
 	{
 		// i think ConvertSurface and ConvertSurfaceFormat were meant to be overloadings, but since C doesn't have
 		// function overloading, they just created two functions instead. also, this function name is more accurate
@@ -539,44 +539,44 @@ unsafe partial class SDL
 		return _PInvoke(surface, format);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_ConvertSurfaceFormat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern SDL_Surface* _PInvoke(SDL_Surface* surface, SDL_PixelFormatValue format);
+		static extern SDL_Surface* _PInvoke(SDL_Surface* surface, SDL_PixelFormatEnum format);
 	}
 
 	/// <summary>
 	/// Copy an existing surface to a new surface of the specified format and colorspace.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurfaceFormatAndColorspace">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurfaceFormatAndColorspace">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The existing <see cref="SDL_Surface"/> structure to convert. </param>
 	/// <param name="format"> The new pixel format. </param>
 	/// <param name="colorspace"> The new colorspace. </param>
 	/// <param name="props"> An <see cref="SDL_PropertiesId"/> with additional color properties, or <see cref="SDL_PropertiesId.Invalid"/>. </param>
 	/// <returns> The new <see cref="SDL_Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Surface* ConvertSurfaceFormatAndColorspace(SDL_Surface* surface, SDL_PixelFormatValue format, SDL_ColorspaceValue colorspace, SDL_PropertiesId props)
+	public static SDL_Surface* ConvertSurfaceFormatAndColorspace(SDL_Surface* surface, SDL_PixelFormatEnum format, SDL_Colorspace colorspace, SDL_PropertiesId props)
 	{
 		return _PInvoke(surface, format, colorspace, props);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_ConvertSurfaceFormatAndColorspace", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern SDL_Surface* _PInvoke(SDL_Surface* surface, SDL_PixelFormatValue format, SDL_ColorspaceValue colorspace, SDL_PropertiesId props);
+		static extern SDL_Surface* _PInvoke(SDL_Surface* surface, SDL_PixelFormatEnum format, SDL_Colorspace colorspace, SDL_PropertiesId props);
 	}
 
 	/// <summary>
 	/// Copy a block of pixels of one format to another format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertPixels">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertPixels">here</see> for more details.
 	/// </remarks>
 	/// <param name="width"> The width of the block to copy, in pixels. </param>
 	/// <param name="height"> The height of the block to copy, in pixels. </param>
-	/// <param name="srcFormat"> An <see cref="SDL_PixelFormatValue"/> value of the <paramref name="src"/> pixels format. </param>
+	/// <param name="srcFormat"> An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="src"/> pixels format. </param>
 	/// <param name="src"> The source pixels, as an unsigned 32-bit integers array. </param>
 	/// <param name="srcPitch"> The pitch of the source pixels, in bytes. </param>
-	/// <param name="dstFormat"> An <see cref="SDL_PixelFormatValue"/> value of the <paramref name="dst"/> pixels format. </param>
+	/// <param name="dstFormat"> An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="dst"/> pixels format. </param>
 	/// <param name="dst"> Returns the new pixel data, as an unsigned 32-bit integer array. </param>
 	/// <param name="srcPitch"> The pitch of the destination pixels, in bytes. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int ConvertPixels(int width, int height, SDL_PixelFormatValue srcFormat, uint[] src, int srcPitch, SDL_PixelFormatValue dstFormat, out uint[] dst, int dstPitch)
+	public static int ConvertPixels(int width, int height, SDL_PixelFormatEnum srcFormat, uint[] src, int srcPitch, SDL_PixelFormatEnum dstFormat, out uint[] dst, int dstPitch)
 	{
 		// somehow this shit works.
 		dst = new uint[src.Length];
@@ -586,29 +586,29 @@ unsafe partial class SDL
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_ConvertPixels", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern int _PInvoke(int width, int height, SDL_PixelFormatValue srcFormat, uint* src, int srcPitch, SDL_PixelFormatValue dstFormat, uint* dst, int dstPitch);
+		static extern int _PInvoke(int width, int height, SDL_PixelFormatEnum srcFormat, uint* src, int srcPitch, SDL_PixelFormatEnum dstFormat, uint* dst, int dstPitch);
 	}
 
 	/// <summary>
 	/// Copy a block of pixels of one format and colorspace to another format and colorspace.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertPixelsAndColorspace">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertPixelsAndColorspace">here</see> for more details.
 	/// </remarks>
 	/// <param name="width"> The width of the block to copy, in pixels. </param>
 	/// <param name="height"> The height of the block to copy, in pixels. </param>
-	/// <param name="srcFormat"> An <see cref="SDL_PixelFormatValue"/> value of the <paramref name="src"/> pixels format. </param>
-	/// <param name="srcColorspace"> An <see cref="SDL_ColorspaceValue"/> value describing the colorspace of the <paramref name="src"/> pixels. </param>
+	/// <param name="srcFormat"> An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="src"/> pixels format. </param>
+	/// <param name="srcColorspace"> An <see cref="SDL_Colorspace"/> value describing the colorspace of the <paramref name="src"/> pixels. </param>
 	/// <param name="srcProps"> An <see cref="SDL_PropertiesId"/> with additional source color properties, or <see cref="SDL_PropertiesId.Invalid"/>. </param>
 	/// <param name="src"> The source pixels, as an unsigned 32-bit integers array. </param>
 	/// <param name="srcPitch"> The pitch of the source pixels, in bytes. </param>
-	/// <param name="dstFormat"> An <see cref="SDL_PixelFormatValue"/> value of the <paramref name="dst"/> pixels format. </param>
-	/// <param name="dstColorspace"> An <see cref="SDL_ColorspaceValue"/> value describing the colorspace of the <paramref name="dst"/> pixels. </param>
+	/// <param name="dstFormat"> An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="dst"/> pixels format. </param>
+	/// <param name="dstColorspace"> An <see cref="SDL_Colorspace"/> value describing the colorspace of the <paramref name="dst"/> pixels. </param>
 	/// <param name="dstProps"> An <see cref="SDL_PropertiesId"/> with additional destination color properties, or <see cref="SDL_PropertiesId.Invalid"/>. </param>
 	/// <param name="dst"> Returns the new pixel data, as an unsigned 32-bit integer array. </param>
 	/// <param name="srcPitch"> The pitch of the destination pixels, in bytes. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int ConvertPixelsAndColorspace(int width, int height, SDL_PixelFormatValue srcFormat, SDL_ColorspaceValue srcColorspace, SDL_PropertiesId srcProps, uint[] src, int srcPitch, SDL_PixelFormatValue dstFormat, SDL_ColorspaceValue dstColorspace, SDL_PropertiesId dstProps, out uint[] dst, int dstPitch)
+	public static int ConvertPixelsAndColorspace(int width, int height, SDL_PixelFormatEnum srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, uint[] src, int srcPitch, SDL_PixelFormatEnum dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, out uint[] dst, int dstPitch)
 	{
 		dst = new uint[src.Length];
 		fixed (uint* s = src, d = dst)
@@ -617,25 +617,25 @@ unsafe partial class SDL
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_ConvertPixelsAndColorspace", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern int _PInvoke(int width, int height, SDL_PixelFormatValue srcFormat, SDL_ColorspaceValue srcColorspace, SDL_PropertiesId srcProps, uint* src, int srcPitch, SDL_PixelFormatValue dstFormat, SDL_ColorspaceValue dstColorspace, SDL_PropertiesId dstProps, uint* dst, int dstPitch); // wtf with this function.
+		static extern int _PInvoke(int width, int height, SDL_PixelFormatEnum srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, uint* src, int srcPitch, SDL_PixelFormatEnum dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, uint* dst, int dstPitch); // wtf with this function.
 	}
 
 	/// <summary>
 	/// Premultiply the alpha on a block of pixels.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PremultiplyAlpha">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PremultiplyAlpha">here</see> for more details.
 	/// </remarks>
 	/// <param name="width"> The width of the block to convert, in pixels. </param>
 	/// <param name="height"> The height of the block to convert, in pixels. </param>
-	/// <param name="srcFormat"> An <see cref="SDL_PixelFormatValue"/> value of the <paramref name="src"/> pixels format. </param>
+	/// <param name="srcFormat"> An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="src"/> pixels format. </param>
 	/// <param name="src"> The source pixels, as an unsigned 32-bit integers array. </param>
 	/// <param name="srcPitch"> The pitch of the source pixels, in bytes. </param>
-	/// <param name="srcFormat"> An <see cref="SDL_PixelFormatValue"/> value of the <paramref name="dst"/> pixels format. </param>
+	/// <param name="srcFormat"> An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="dst"/> pixels format. </param>
 	/// <param name="dst"> Returns the premultiplied pixel data, as an unsigned 32-bit integer array. </param>
 	/// <param name="srcPitch"> The pitch of the destination pixels, in bytes. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int PremultiplyAlpha(int width, int height, SDL_PixelFormatValue srcFormat, uint[] src, int srcPitch, SDL_PixelFormatValue dstFormat, out uint[] dst, int dstPitch)
+	public static int PremultiplyAlpha(int width, int height, SDL_PixelFormatEnum srcFormat, uint[] src, int srcPitch, SDL_PixelFormatEnum dstFormat, out uint[] dst, int dstPitch)
 	{
 		dst = new uint[src.Length];
 		fixed (uint* s = src, d = dst)
@@ -644,14 +644,14 @@ unsafe partial class SDL
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_PremultiplyAlpha", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern int _PInvoke(int width, int height, SDL_PixelFormatValue srcFormat, uint* src, int srcPitch, SDL_PixelFormatValue dstFormat, uint* dst, int dstPitch);
+		static extern int _PInvoke(int width, int height, SDL_PixelFormatEnum srcFormat, uint* src, int srcPitch, SDL_PixelFormatEnum dstFormat, uint* dst, int dstPitch);
 	}
 
 	/// <summary>
 	/// Perform a fast fill of a rectangle with a specific color.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FillSurfaceRect">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FillSurfaceRect">here</see> for more details.
 	/// </remarks>
 	/// <param name="dst"> The <see cref="SDL_Surface"/> structure that is the drawing target. </param>
 	/// <param name="rect"> The <see cref="SDL_Rect"/> structure representing the rectangle to fill, or null to fill the entire surface. </param>
@@ -674,7 +674,7 @@ unsafe partial class SDL
 	/// Perform a fast fill of a set of rectangles with a specific color.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FillSurfaceRects">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FillSurfaceRects">here</see> for more details.
 	/// </remarks>
 	/// <param name="dst"> The <see cref="SDL_Surface"/> structure that is the drawing target. </param>
 	/// <param name="rects"> An array of <see cref="SDL_Rect"/>s representing the rectangles to fill. </param>
@@ -695,7 +695,7 @@ unsafe partial class SDL
 	/// Performs a fast blit from the source surface to the destination surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurface">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurface">here</see> for more details.
 	/// </remarks>
 	/// <param name="src"> The <see cref="SDL_Surface"/> structure to be copied from. </param>
 	/// <param name="srcRect"> The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or null to copy the entire surface. </param>
@@ -719,7 +719,7 @@ unsafe partial class SDL
 	/// Perform low-level surface blitting only.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceUnchecked">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceUnchecked">here</see> for more details.
 	/// </remarks>
 	/// <param name="src"> The <see cref="SDL_Surface"/> structure to be copied from. </param>
 	/// <param name="srcRect"> The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or null to copy the entire surface. </param>
@@ -743,7 +743,7 @@ unsafe partial class SDL
 	/// Perform stretch blit between two surfaces of the same format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SoftStretch">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SoftStretch">here</see> for more details.
 	/// </remarks>
 	/// <param name="src"> The <see cref="SDL_Surface"/> structure to be copied from. </param>
 	/// <param name="srcRect"> The <see cref="SDL_Rect"/> structure representing the rectangle to be copied. </param>
@@ -763,7 +763,7 @@ unsafe partial class SDL
 	/// Perform a scaled blit to a destination surface, which may be of a different format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceScaled">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceScaled">here</see> for more details.
 	/// </remarks>
 	/// <param name="src"> The <see cref="SDL_Surface"/> structure to be copied from. </param>
 	/// <param name="srcRect"> The <see cref="SDL_Rect"/> structure representing the rectangle to be copied. </param>
@@ -783,7 +783,7 @@ unsafe partial class SDL
 	/// Perform low-level surface scaled blitting only.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceUncheckedScaled">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceUncheckedScaled">here</see> for more details.
 	/// </remarks>
 	/// <param name="src"> The <see cref="SDL_Surface"/> structure to be copied from. </param>
 	/// <param name="srcRect"> The <see cref="SDL_Rect"/> structure representing the rectangle to be copied. </param>
@@ -803,7 +803,7 @@ unsafe partial class SDL
 	/// Retrieves a single pixel from a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ReadSurfacePixel">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ReadSurfacePixel">here</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The surface to read. </param>
 	/// <param name="x"> The horizontal coordinate, 0 &lt;= x &lt; width. </param>

@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// A collection of pixels used in software blitting.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Surface">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Surface">here</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public unsafe readonly struct SDL_Surface

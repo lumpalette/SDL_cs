@@ -8,7 +8,7 @@ namespace SDL_cs;
 /// </summary>
 /// <remarks>
 /// The structure is a wrapper for an unsigned 32-bit integer. Refer to the official documentation
-/// <see href="https://wiki.libsdl.org/SDL3/SDL_SensorID">here</see>.
+/// <see href="https://wiki.libsdl.org/SDL3/SDL_SensorID">here</see> for more details.
 /// </remarks>
 [Wrapper]
 public readonly struct SDL_SensorId
@@ -35,13 +35,15 @@ public readonly struct SDL_SensorId
 	}
 
 	public static explicit operator uint(SDL_SensorId x) => x._value;
+
 	public static explicit operator SDL_SensorId(uint x) => new(x);
 
 	public static bool operator ==(SDL_SensorId a, SDL_SensorId b) => a._value == b._value;
+
 	public static bool operator !=(SDL_SensorId a, SDL_SensorId b) => a._value != b._value;
 
 	/// <summary>
-	/// An invalid sensor ID. Used when a function that returns An <see cref="SDL_SensorId"/> fails.
+	/// An invalid sensor ID. Used when a function that returns an <see cref="SDL_SensorId"/> fails.
 	/// </summary>
 	public static SDL_SensorId Invalid => new(0);
 

@@ -4,7 +4,7 @@
 /// The list of buttons available on a gamepad
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadButton">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadButton">here</see> for more details.
 /// </remarks>
 public enum SDL_GamepadButton : sbyte
 {

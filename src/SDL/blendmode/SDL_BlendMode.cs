@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// An enumeration of blend modes used in drawing operations.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlendMode">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlendMode">here</see> for more details.
 /// </remarks>
 [Flags]
 public enum SDL_BlendMode

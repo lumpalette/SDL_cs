@@ -8,7 +8,7 @@ namespace SDL_cs;
 /// </summary>
 /// <remarks>
 /// The structure is a wrapper for an unsigned 32-bit integer. Refer to the official documentation
-/// <see href="https://wiki.libsdl.org/SDL3/SDL_KeyboardID">here</see>.
+/// <see href="https://wiki.libsdl.org/SDL3/SDL_KeyboardID">here</see> for more details.
 /// </remarks>
 [Wrapper]
 public readonly struct SDL_KeyboardId
@@ -35,9 +35,11 @@ public readonly struct SDL_KeyboardId
 	}
 
 	public static explicit operator uint(SDL_KeyboardId x) => x._value;
+
 	public static explicit operator SDL_KeyboardId(uint x) => new(x);
 
 	public static bool operator ==(SDL_KeyboardId a, SDL_KeyboardId b) => a._value == b._value;
+
 	public static bool operator !=(SDL_KeyboardId a, SDL_KeyboardId b) => a._value != b._value;
 
 	private readonly uint _value;

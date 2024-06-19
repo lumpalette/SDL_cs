@@ -9,7 +9,7 @@ unsafe partial class SDL
 	/// Get the current power supply details.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPowerInfo">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPowerInfo">here</see> for more details.
 	/// </remarks>
 	/// <param name="seconds"> Returns the seconds of battery life left. This will return -1 if SDL can't determine a value or there is no battery. </param>
 	/// <param name="percent"> Returns the percentage of battery life left, between 0 and 100. This will return -1 if SDL can't determine a value or there is no battery. </param>

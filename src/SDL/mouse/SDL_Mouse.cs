@@ -33,9 +33,11 @@ public readonly struct SDL_MouseId
 	}
 
 	public static explicit operator uint(SDL_MouseId x) => x._value;
+
 	public static explicit operator SDL_MouseId(uint x) => new(x);
 
 	public static bool operator ==(SDL_MouseId a, SDL_MouseId b) => a._value == b._value;
+
 	public static bool operator !=(SDL_MouseId a, SDL_MouseId b) => a._value != b._value;
 
 	private readonly uint _value;

@@ -4,7 +4,7 @@
 /// The SDL virtual key representation.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Keycode">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Keycode">here</see> for more details.
 /// </remarks>
 public enum SDL_Keycode : uint
 {

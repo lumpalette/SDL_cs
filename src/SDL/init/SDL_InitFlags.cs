@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Initialization flags for <see cref="SDL.Init(SDL_InitFlags)"/> and/or <see cref="SDL.InitSubSystem(SDL_InitFlags)"/>.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_InitFlags">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_InitFlags">here</see> for more details.
 /// </remarks>
 [Flags]
 public enum SDL_InitFlags : uint

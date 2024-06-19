@@ -8,4 +8,4 @@ namespace SDL_cs;
 /// </summary>
 [AttributeUsage(AttributeTargets.Struct)]
 [EditorBrowsable(EditorBrowsableState.Never)]
-public class WrapperAttribute : Attribute;
+public sealed class WrapperAttribute : Attribute;

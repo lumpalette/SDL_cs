@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// A bitmask of pressed mouse buttons, as reported by <see cref="GetMouseState(out float, out float)"/>, etc.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">here</see> for more details.
 /// </remarks>
 [Flags]
 public enum SDL_MouseButtonFlags : uint

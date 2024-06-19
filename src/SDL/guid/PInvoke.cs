@@ -10,7 +10,7 @@ unsafe partial class SDL
 	/// Get a string representation for a given <see cref="SDL_Guid"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GUIDToString">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GUIDToString">here</see> for more details.
 	/// </remarks>
 	/// <param name="guid"> The <see cref="SDL_Guid"/> you wish to convert to string. </param>
 	/// <param name="pszGuid"> Returns the converted string. </param>
@@ -32,7 +32,7 @@ unsafe partial class SDL
 	/// Convert a GUID string into an <see cref="SDL_Guid"/> structure.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GUIDFromString">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GUIDFromString">here</see> for more details.
 	/// </remarks>
 	/// <param name="pchGuid"> String containing a representation of a GUID. </param>
 	/// <returns> An <see cref="SDL_Guid"/> structure. </returns>

@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Keyboard device event structure (FIXME:event.kdevice.*).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_KeyboardDeviceEvent">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_KeyboardDeviceEvent">here</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_KeyboardDeviceEvent

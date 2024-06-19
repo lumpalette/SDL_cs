@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// The structure that defines a point using floating point values.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FPoint">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FPoint">here</see> for more details.
 /// </remarks>
 /// <param name="x"> The x coordinate. </param>
 /// <param name="y"> The y coordinate. </param>

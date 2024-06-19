@@ -8,7 +8,7 @@ unsafe partial class SDL
 	/// </summary>
 	/// <remarks>
 	/// This is not inlined, as C# does not support inline functions. Refer to the official documentation
-	/// <see href="https://wiki.libsdl.org/SDL3/SDL_PointInRect">here</see>.
+	/// <see href="https://wiki.libsdl.org/SDL3/SDL_PointInRect">here</see> for more details.
 	/// </remarks>
 	/// <param name="p"> The point to test. </param>
 	/// <param name="r"> The rectangle to test. </param>
@@ -23,7 +23,7 @@ unsafe partial class SDL
 	/// </summary>
 	/// <remarks>
 	/// This is not inlined, as C# does not support inline functions. Refer to the official documentation
-	/// <see href="https://wiki.libsdl.org/SDL3/SDL_RectEmpty">here</see>.
+	/// <see href="https://wiki.libsdl.org/SDL3/SDL_RectEmpty">here</see> for more details.
 	/// </remarks>
 	/// <param name="r"> The rectangle to test. </param>
 	/// <returns> True if the rectangle is "empty" (has zero or negative area), false otherwise. </returns>

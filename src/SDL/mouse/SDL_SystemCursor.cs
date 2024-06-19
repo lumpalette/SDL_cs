@@ -4,7 +4,7 @@
 /// Cursor types for <see cref="SDL.CreateCursor(SDL_SystemCursor)"/>.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SystemCursor">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SystemCursor">here</see> for more details.
 /// </remarks>
 public enum SDL_SystemCursor
 {
@@ -14,7 +14,7 @@ public enum SDL_SystemCursor
 	Default,
 
 	/// <summary>
-	/// Text selection. Usually an I-beam
+	/// Text selection. Usually an I-beam.
 	/// </summary>
 	Text,
 
@@ -69,42 +69,42 @@ public enum SDL_SystemCursor
 	Pointer,
 
 	/// <summary>
-	/// Window resize top-left (or <see cref="NWSEResize"/>).
+	/// Window resize top-left. This may be a single arrow or a double arrow like <see cref="NWSEResize"/>.
 	/// </summary>
 	NWResize,
 
 	/// <summary>
-	/// Window resize top (or <see cref="NSResize"/>).
+	/// Window resize top. May be <see cref="NSResize"/>.
 	/// </summary>
 	NResize,
 
 	/// <summary>
-	/// Window resize top-right (or <see cref="NESWResize"/>)
+	/// Window resize top-right. May be <see cref="NESWResize"/>.
 	/// </summary>
 	NEResize,
 
 	/// <summary>
-	/// Window resize right (or <see cref="EWResize"/>).
+	/// Window resize right. May be <see cref="EWResize"/>.
 	/// </summary>
 	EResize,
 
 	/// <summary>
-	/// Window resize bottom-right (or <see cref="NWSEResize"/>)
+	/// Window resize bottom-right. May be <see cref="NWSEResize"/>.
 	/// </summary>
 	SEResize,
 
 	/// <summary>
-	/// Window resize bottom (or <see cref="NSResize"/>).
+	/// Window resize bottom. May be <see cref="NSResize"/>.
 	/// </summary>
 	SResize,
 
 	/// <summary>
-	/// Window resize bottom-left (or <see cref="NESWResize"/>).
+	/// Window resize bottom-left. May be <see cref="NESWResize"/>.
 	/// </summary>
 	SW,
 
 	/// <summary>
-	/// Window resize left (or <see cref="EWResize"/>). 
+	/// Window resize left. May be <see cref="EWResize"/>.
 	/// </summary>
 	WResize
 }

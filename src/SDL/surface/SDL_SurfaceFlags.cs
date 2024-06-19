@@ -3,10 +3,10 @@
 namespace SDL_cs;
 
 /// <summary>
-/// The flags on An <see cref="SDL_Surface"/>.
+/// The flags on an <see cref="SDL_Surface"/>.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceFlags">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceFlags">here</see> for more details.
 /// </remarks>
 [Flags]
 public enum SDL_SurfaceFlags : uint

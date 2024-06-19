@@ -33,13 +33,15 @@ public readonly struct SDL_WindowId
 	}
 
 	public static explicit operator uint(SDL_WindowId x) => x._value;
+	
 	public static explicit operator SDL_WindowId(uint x) => new(x);
 
 	public static bool operator ==(SDL_WindowId a, SDL_WindowId b) => a._value == b._value;
+	
 	public static bool operator !=(SDL_WindowId a, SDL_WindowId b) => a._value != b._value;
 
 	/// <summary>
-	/// An invalid ID for a window. Used when a function that returns An <see cref="SDL_WindowId"/> fails.
+	/// An invalid ID for a window. Used when a function that returns an <see cref="SDL_WindowId"/> fails.
 	/// </summary>
 	public static SDL_WindowId Invalid => new(0);
 

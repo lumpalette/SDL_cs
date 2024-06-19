@@ -4,7 +4,7 @@
 /// The access pattern allowed for a texture.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_TextureAccess">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_TextureAccess">here</see> for more details.
 /// </remarks>
 public enum SDL_TextureAccess
 {

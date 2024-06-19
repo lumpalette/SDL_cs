@@ -4,7 +4,7 @@
 /// The chroma sample location.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ChromaLocation">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ChromaLocation">here</see> for more details.
 /// </remarks>
 public enum SDL_ChromaLocation
 {

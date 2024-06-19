@@ -7,7 +7,7 @@ namespace SDL_cs;
 /// </summary>
 /// <remarks>
 /// The structure is a wrapper for an unsigned 32-bit integer. Refer to the official documentation
-/// <see href="https://wiki.libsdl.org/SDL3/SDL_JoystickID">here</see>.
+/// <see href="https://wiki.libsdl.org/SDL3/SDL_JoystickID">here</see> for more details.
 /// </remarks>
 [Wrapper]
 public readonly struct SDL_JoystickId
@@ -34,9 +34,11 @@ public readonly struct SDL_JoystickId
 	}
 
 	public static explicit operator uint(SDL_JoystickId x) => x._value;
+
 	public static explicit operator SDL_JoystickId(uint x) => new(x);
 
 	public static bool operator ==(SDL_JoystickId a, SDL_JoystickId b) => a._value == b._value;
+
 	public static bool operator !=(SDL_JoystickId a, SDL_JoystickId b) => a._value != b._value;
 
 	/// <summary>

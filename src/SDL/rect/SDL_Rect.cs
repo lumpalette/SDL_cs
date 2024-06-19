@@ -8,7 +8,7 @@ namespace SDL_cs;
 /// A rectangle, with the origin at the upper left using integers.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Rect">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Rect">here</see> for more details.
 /// </remarks>
 /// <param name="x"> The x coordinate of the origin. </param>
 /// <param name="y"> The y coordinate of the origin. </param>
@@ -34,6 +34,7 @@ public struct SDL_Rect(int x, int y, int width, int height)
 	}
 
 	public static bool operator ==(SDL_Rect a, SDL_Rect b) => (a.X == b.X) && (a.Y == b.Y) && (a.Width == b.Width) && (a.Height == b.Height);
+
 	public static bool operator !=(SDL_Rect a, SDL_Rect b) => (a.X != b.X) || (a.Y != b.Y) || (a.Width != b.Width) || (a.Height != b.Height);
 
 	public static explicit operator SDL_Rect(SDL_FRect r) => new((int)r.X, (int)r.Y, (int)r.Width, (int)r.Height);

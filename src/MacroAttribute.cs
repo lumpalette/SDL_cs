@@ -8,4 +8,4 @@ namespace SDL_cs;
 /// </summary>
 [AttributeUsage(AttributeTargets.Method)]
 [EditorBrowsable(EditorBrowsableState.Never)]
-public class MacroAttribute : Attribute;
+public sealed class MacroAttribute : Attribute;

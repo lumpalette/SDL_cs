@@ -9,7 +9,7 @@ unsafe partial class SDL
 	/// Compose a custom blend mode for renderers.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ComposeCustomBlendMode">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ComposeCustomBlendMode">here</see> for more details.
 	/// </remarks>
 	/// <param name="srcColorFactor"> The <see cref="SDL_BlendFactor"/> applied to the red, green, and blue components of the source pixels. </param>
 	/// <param name="dstColorFactor"> The <see cref="SDL_BlendFactor"/> applied to the red, green, and blue components of the destination pixels. </param>
