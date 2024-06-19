@@ -9,6 +9,7 @@ namespace SDL_cs;
 /// The structure is a wrapper for an unsigned 32-bit integer. Refer to the official documentation
 /// <see href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceID">here</see> for more details.
 /// </remarks>
+[Wrapper]
 public readonly struct SDL_AudioDeviceId
 {
 	internal SDL_AudioDeviceId(uint value)

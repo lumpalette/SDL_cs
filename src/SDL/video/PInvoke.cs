@@ -362,9 +362,12 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="point"> The point to query. </param>
 	/// <returns> The instance ID of the display containing the point or <see cref="SDL_DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_DisplayId GetDisplayForPoint(SDL_Point point)
+	public static SDL_DisplayId GetDisplayForPoint(ref SDL_Point point)
 	{
-		return _PInvoke(&point);
+		fixed (SDL_Point* p = &point)
+		{
+			return _PInvoke(p);
+		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayForPoint", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern SDL_DisplayId _PInvoke(SDL_Point* point);
@@ -378,9 +381,12 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="rect"> The rect to query. </param>
 	/// <returns> The instance ID of the display entirely containing the rect or closest to the center of the rect on success or <see cref="SDL_DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_DisplayId GetDisplayForRect(SDL_Rect rect)
+	public static SDL_DisplayId GetDisplayForRect(ref SDL_Rect rect)
 	{
-		return _PInvoke(&rect);
+		fixed (SDL_Rect* r = &rect)
+		{
+			return _PInvoke(r);
+		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayForRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern SDL_DisplayId _PInvoke(SDL_Rect* rect);
@@ -443,7 +449,7 @@ unsafe partial class SDL
 	/// <param name="window"> The window to affect. </param>
 	/// <param name="displayMode"> The display mode to use, which can be null for borderless fullscreen desktop mode, or one of the fullscreen modes returned by <see cref="GetFullscreenDisplayModes"/> to set an exclusive fullscreen mode. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int SetWindowFullscreenMode(SDL_Window* window, SDL_DisplayMode? displayMode)
+	public static int SetWindowFullscreenMode(SDL_Window* window, ref SDL_DisplayMode? displayMode)
 	{
 		if (displayMode.HasValue)
 		{
@@ -1259,7 +1265,7 @@ unsafe partial class SDL
 	/// <param name="window"> The window that will be associated with the barrier. </param>
 	/// <param name="rect"> A rectangle area in window-relative coordinates. If null, the barrier for the specified window will be destroyed. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
-	public static int SetWindowMouseRect(SDL_Window* window, SDL_Rect? rect)
+	public static int SetWindowMouseRect(SDL_Window* window, ref SDL_Rect? rect)
 	{
 		// "the barrier [...] will be destroyed" undertale reference???
 		// anyway more boring pinvoke shit.

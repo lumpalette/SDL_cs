@@ -585,7 +585,7 @@ unsafe partial class SDL
 	/// <param name="pixels"> The raw pixel data in the format of the texture. </param>
 	/// <param name="pitch"> The number of bytes in a row of pixel data, including padding between lines. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int UpdateTexture(SDL_Texture* texture, SDL_Rect? rect, uint[] pixels, int pitch)
+	public static int UpdateTexture(SDL_Texture* texture, ref SDL_Rect? rect, uint[] pixels, int pitch)
 	{
 		fixed (uint* p = pixels)
 		{
@@ -616,7 +616,7 @@ unsafe partial class SDL
 	/// <param name="vPlane"> The raw pixel data for the V plane. </param>
 	/// <param name="vPitch"> The number of bytes between rows of pixel data for the V plane. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int UpdateYUVTexture(SDL_Texture* texture, SDL_Rect? rect, byte[] yPlane, int yPitch, byte[] uPlane, int uPitch, byte[] vPlane, int vPitch)
+	public static int UpdateYUVTexture(SDL_Texture* texture, ref SDL_Rect? rect, byte[] yPlane, int yPitch, byte[] uPlane, int uPitch, byte[] vPlane, int vPitch)
 	{
 		fixed (byte* y = yPlane, u = uPlane, v = vPlane)
 		{
@@ -645,7 +645,7 @@ unsafe partial class SDL
 	/// <param name="uvPlane"> The raw pixel data for the UV plane. </param>
 	/// <param name="uvPitch"> The number of bytes between rows of pixel data for the UV plane. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int UpdateUpdateNVTexture(SDL_Texture* texture, SDL_Rect? rect, byte[] yPlane, int yPitch, byte[] uvPlane, int uvPitch)
+	public static int UpdateUpdateNVTexture(SDL_Texture* texture, ref SDL_Rect? rect, byte[] yPlane, int yPitch, byte[] uvPlane, int uvPitch)
 	{
 		fixed (byte* y = yPlane, uv = uvPlane)
 		{
@@ -672,7 +672,7 @@ unsafe partial class SDL
 	/// <param name="pixels"> Returns an array representing the locked pixels, appropriately offset by the locked area. </param>
 	/// <param name="pitch"> Returns the pitch of the locked pixels; the pitch is the length of one row in bytes. </param>
 	/// <returns> 0 on success or a negative error code if the texture is not valid or was not created with <see cref="SDL_TextureAccess.Streaming"/>; call <see cref="GetError"/> for more information. </returns>
-	public static int LockTexture(SDL_Texture* texture, SDL_Rect? rect, out uint* pixels, out int pitch)
+	public static int LockTexture(SDL_Texture* texture, ref SDL_Rect? rect, out uint* pixels, out int pitch)
 	{
 		fixed (uint** p = &pixels)
 		{
@@ -701,7 +701,7 @@ unsafe partial class SDL
 	/// <param name="rect"> The rectangle to lock for access. If the rect is null, the entire texture will be locked. </param>
 	/// <param name="surface"> Returns the SDL surface representing the locked area. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int LockTextureToSurface(SDL_Texture* texture, SDL_Rect? rect, out SDL_Surface* surface)
+	public static int LockTextureToSurface(SDL_Texture* texture, ref SDL_Rect? rect, out SDL_Surface* surface)
 	{
 		fixed (SDL_Surface** s = &surface)
 		{

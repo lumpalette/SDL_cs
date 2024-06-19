@@ -439,7 +439,7 @@ unsafe partial class SDL
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to be clipped. </param>
 	/// <param name="rect"> The <see cref="SDL_Rect"/> structure representing the clipping rectangle, or null to disable clipping. </param>
 	/// <returns> True if the rectangle intersects the surface, otherwise false and blits will be completely clipped. </returns>
-	public static bool SetSurfaceClipRect(SDL_Surface* surface, SDL_Rect? rect)
+	public static bool SetSurfaceClipRect(SDL_Surface* surface, ref SDL_Rect? rect)
 	{
 		if (rect.HasValue)
 		{
@@ -553,7 +553,7 @@ unsafe partial class SDL
 	/// <param name="colorspace"> The new colorspace. </param>
 	/// <param name="props"> An <see cref="SDL_PropertiesId"/> with additional color properties, or <see cref="SDL_PropertiesId.Invalid"/>. </param>
 	/// <returns> The new <see cref="SDL_Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Surface* ConvertSurfaceFormatAndColorspace(SDL_Surface* surface, SDL_PixelFormatEnum format, SDL_Colorspace colorspace, SDL_PropertiesId props)
+	public static SDL_Surface* ConvertSurfaceFormat(SDL_Surface* surface, SDL_PixelFormatEnum format, SDL_Colorspace colorspace, SDL_PropertiesId props) // CHECK:overload
 	{
 		return _PInvoke(surface, format, colorspace, props);
 
@@ -576,7 +576,7 @@ unsafe partial class SDL
 	/// <param name="dst"> Returns the new pixel data, as an unsigned 32-bit integer array. </param>
 	/// <param name="srcPitch"> The pitch of the destination pixels, in bytes. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int ConvertPixels(int width, int height, SDL_PixelFormatEnum srcFormat, uint[] src, int srcPitch, SDL_PixelFormatEnum dstFormat, out uint[] dst, int dstPitch)
+	public static int ConvertPixels(int width, int height, SDL_PixelFormatEnum srcFormat, uint[] src, int srcPitch, SDL_PixelFormatEnum dstFormat, out uint[] dst, int dstPitch)  // CHECK:overload
 	{
 		// somehow this shit works.
 		dst = new uint[src.Length];
@@ -608,7 +608,7 @@ unsafe partial class SDL
 	/// <param name="dst"> Returns the new pixel data, as an unsigned 32-bit integer array. </param>
 	/// <param name="srcPitch"> The pitch of the destination pixels, in bytes. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int ConvertPixelsAndColorspace(int width, int height, SDL_PixelFormatEnum srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, uint[] src, int srcPitch, SDL_PixelFormatEnum dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, out uint[] dst, int dstPitch)
+	public static int ConvertPixels(int width, int height, SDL_PixelFormatEnum srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, uint[] src, int srcPitch, SDL_PixelFormatEnum dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, out uint[] dst, int dstPitch) // CHECK:overload
 	{
 		dst = new uint[src.Length];
 		fixed (uint* s = src, d = dst)
@@ -657,7 +657,7 @@ unsafe partial class SDL
 	/// <param name="rect"> The <see cref="SDL_Rect"/> structure representing the rectangle to fill, or null to fill the entire surface. </param>
 	/// <param name="color"> The color to fill with. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int FillSurfaceRect(SDL_Surface* dst, SDL_Rect? rect, uint color)
+	public static int FillSurfaceRect(SDL_Surface* dst, ref SDL_Rect? rect, uint color)
 	{
 		if (rect.HasValue)
 		{
@@ -702,14 +702,18 @@ unsafe partial class SDL
 	/// <param name="dst"> The <see cref="SDL_Surface"/> structure that is the blit target. </param>
 	/// <param name="dstRect"> The <see cref="SDL_Rect"/> structure representing the x and y position in the destination surface. On input the width and height are ignored (taken from <paramref name="srcRect"/>), and on output this is filled in with the actual rectangle used after clipping. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int BlitSurface(SDL_Surface* src, SDL_Rect? srcRect, SDL_Surface* dst, SDL_Rect dstRect)
+	public static int BlitSurface(SDL_Surface* src, ref SDL_Rect? srcRect, SDL_Surface* dst, ref SDL_Rect dstRect)
 	{
+		SDL_Rect* s = null;
 		if (srcRect.HasValue)
 		{
-			SDL_Rect s = srcRect.Value;
-			return _PInvoke(src, &s, dst, &dstRect);
+			SDL_Rect value = srcRect.Value;
+			s = &value;
 		}
-		return _PInvoke(src, null, dst, &dstRect);
+		fixed (SDL_Rect* d = &dstRect)
+		{
+			return _PInvoke(src, s, dst, d);
+		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_BlitSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern int _PInvoke(SDL_Surface* src, SDL_Rect* srcRect, SDL_Surface* dst, SDL_Rect* dstRect);
@@ -726,14 +730,18 @@ unsafe partial class SDL
 	/// <param name="dst"> The <see cref="SDL_Surface"/> structure that is the blit target. </param>
 	/// <param name="dstRect"> The <see cref="SDL_Rect"/> structure representing the x and y position in the destination surface. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int BlitSurfaceUnchecked(SDL_Surface* src, SDL_Rect? srcRect, SDL_Surface* dst, SDL_Rect dstRect)
+	public static int BlitSurfaceUnchecked(SDL_Surface* src, ref SDL_Rect? srcRect, SDL_Surface* dst, ref SDL_Rect dstRect)
 	{
+		SDL_Rect* s = null;
 		if (srcRect.HasValue)
 		{
-			SDL_Rect s = srcRect.Value;
-			return _PInvoke(src, &s, dst, &dstRect);
+			SDL_Rect value = srcRect.Value;
+			s = &value;
 		}
-		return _PInvoke(src, null, dst, &dstRect);
+		fixed (SDL_Rect* d = &dstRect)
+		{
+			return _PInvoke(src, s, dst, d);
+		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_BlitSurfaceUnchecked", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern int _PInvoke(SDL_Surface* src, SDL_Rect* srcRect, SDL_Surface* dst, SDL_Rect* dstRect);
@@ -751,9 +759,12 @@ unsafe partial class SDL
 	/// <param name="dstRect"> The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface. </param>
 	/// <param name="scaleMode"> Scale algorithm to be used. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int SoftStretch(SDL_Surface* src, SDL_Rect srcRect, SDL_Surface* dst, SDL_Rect dstRect, SDL_ScaleMode scaleMode)
+	public static int SoftStretch(SDL_Surface* src, ref SDL_Rect srcRect, SDL_Surface* dst, ref SDL_Rect dstRect, SDL_ScaleMode scaleMode)
 	{
-		return _PInvoke(src, &srcRect, dst, &dstRect, scaleMode);
+		fixed (SDL_Rect* s = &srcRect, d = &dstRect)
+		{
+			return _PInvoke(src, s, dst, d, scaleMode);
+		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_SoftStretch", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern int _PInvoke(SDL_Surface* src, SDL_Rect* srcRect, SDL_Surface* dst, SDL_Rect* dstRect, SDL_ScaleMode scaleMode);
@@ -771,9 +782,12 @@ unsafe partial class SDL
 	/// <param name="dstRect"> The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface, filled with the actual rectangle used after clipping. </param>
 	/// <param name="scaleMode"> the <see cref="SDL_ScaleMode"/> to be used. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int BlitSurfaceScaled(SDL_Surface* src, SDL_Rect srcRect, SDL_Surface* dst, SDL_Rect dstRect, SDL_ScaleMode scaleMode)
+	public static int BlitSurfaceScaled(SDL_Surface* src, ref SDL_Rect srcRect, SDL_Surface* dst, ref SDL_Rect dstRect, SDL_ScaleMode scaleMode)
 	{
-		return _PInvoke(src, &srcRect, dst, &dstRect, scaleMode);
+		fixed (SDL_Rect* s = &srcRect, d = &dstRect)
+		{
+			return _PInvoke(src, s, dst, d, scaleMode);
+		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_BlitSurfaceScaled", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern int _PInvoke(SDL_Surface* src, SDL_Rect* srcRect, SDL_Surface* dst, SDL_Rect* dstRect, SDL_ScaleMode scaleMode);
@@ -791,9 +805,12 @@ unsafe partial class SDL
 	/// <param name="dstRect"> The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface. </param>
 	/// <param name="scaleMode"> Scale algorithm to be used. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int BlitSurfaceUncheckedScaled(SDL_Surface* src, SDL_Rect srcRect, SDL_Surface* dst, SDL_Rect dstRect, SDL_ScaleMode scaleMode)
+	public static int BlitSurfaceUncheckedScaled(SDL_Surface* src, ref SDL_Rect srcRect, SDL_Surface* dst, ref SDL_Rect dstRect, SDL_ScaleMode scaleMode)
 	{
-		return _PInvoke(src, &srcRect, dst, &dstRect, scaleMode);
+		fixed (SDL_Rect* s = &srcRect, d = &dstRect)
+		{
+			return _PInvoke(src, s, dst, d, scaleMode);
+		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_BlitSurfaceUncheckedScaled", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern int _PInvoke(SDL_Surface* src, SDL_Rect* srcRect, SDL_Surface* dst, SDL_Rect* dstRect, SDL_ScaleMode scaleMode);

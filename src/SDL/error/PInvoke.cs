@@ -26,6 +26,21 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
+	/// Set an error indicating that memory allocation failed.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_OutOfMemory">here</see>.
+	/// </remarks>
+	/// <returns> -1. </returns>
+	public static int OutOfMemory()
+	{
+		return _PInvoke();
+
+		[DllImport(LibraryName, EntryPoint = "SDL_OutOfMemory", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke();
+	}
+
+	/// <summary>
 	/// Retrieve a message about the last error that occurred on the current thread.
 	/// </summary>
 	/// <remarks>
