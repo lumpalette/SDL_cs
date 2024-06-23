@@ -188,9 +188,9 @@ unsafe partial class SDL
 	/// <returns> An array of device instance IDs, or null on error; call <see cref="GetError"/> for more details. </returns>
 	public static SDL_AudioDeviceId[]? GetAudioPlaybackDevices(out int count)
 	{
-		fixed (int* c = &count)
+		fixed (int* countPtr = &count)
 		{
-			SDL_AudioDeviceId* d = _PInvoke(c);
+			SDL_AudioDeviceId* d = _PInvoke(countPtr);
 			if (d is null)
 			{
 				return null;
@@ -233,11 +233,11 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetAudioDeviceFormat(SDL_AudioDeviceId deviceId, out SDL_AudioSpec spec, out int sampleFrames)
 	{
-		fixed (SDL_AudioSpec* s = &spec)
+		fixed (SDL_AudioSpec* specPtr = &spec)
 		{
-			fixed (int* p = &sampleFrames)
+			fixed (int* sampleFramesPtr = &sampleFrames)
 			{
-				return _PInvoke(deviceId, s, p);
+				return _PInvoke(deviceId, specPtr, sampleFramesPtr);
 			}
 		}
 
@@ -254,14 +254,9 @@ unsafe partial class SDL
 	/// <param name="deviceId"> The device instance id to open, or <see cref="SDL_AudioDeviceId.DefaultPlayback"/> or <see cref="SDL_AudioDeviceId.DefaultRecording"/> for the most reasonable default device. </param>
 	/// <param name="spec"> The requested device configuration. Can be null to use reasonable defaults. </param>
 	/// <returns> The device ID on success, <see cref="InvalidAudioDevice"/> on error; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_AudioDeviceId OpenAudioDevice(SDL_AudioDeviceId deviceId, ref SDL_AudioSpec? spec)
+	public static SDL_AudioDeviceId OpenAudioDevice(SDL_AudioDeviceId deviceId, SDL_AudioSpec* spec)
 	{
-		if (spec.HasValue)
-		{
-			SDL_AudioSpec s = spec.Value;
-			return _PInvoke(deviceId, &s);
-		}
-		return _PInvoke(deviceId, null);
+		return _PInvoke(deviceId, spec);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_OpenAudioDevice", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern SDL_AudioDeviceId _PInvoke(SDL_AudioDeviceId deviceId, SDL_AudioSpec* spec);
@@ -273,7 +268,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PauseAudioDevice">here</see> for more details.
 	/// </remarks>
-	/// <param name="deviceId"> A device opened by <see cref="OpenAudioDevice(SDL_AudioDeviceId, ref SDL_AudioSpec?)"/>. </param>
+	/// <param name="device"> A device opened by <see cref="OpenAudioDevice(SDL_AudioDeviceId, SDL_AudioSpec*)"/>. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int PauseAudioDevice(SDL_AudioDeviceId device)
 	{
@@ -289,7 +284,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ResumeAudioDevice">here</see> for more details.
 	/// </remarks>
-	/// <param name="device"> A device opened by <see cref="OpenAudioDevice(SDL_AudioDeviceId, ref SDL_AudioSpec?)"/>. </param>
+	/// <param name="device"> A device opened by <see cref="OpenAudioDevice(SDL_AudioDeviceId, SDL_AudioSpec*)"/>. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int ResumeAudioDevice(SDL_AudioDeviceId device)
 	{
@@ -305,7 +300,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AudioDevicePaused">here</see> for more details.
 	/// </remarks>
-	/// <param name="device"> A device opened by <see cref="OpenAudioDevice(SDL_AudioDeviceId, ref SDL_AudioSpec?)"/>. </param>
+	/// <param name="device"> A device opened by <see cref="OpenAudioDevice(SDL_AudioDeviceId, SDL_AudioSpec*)"/>. </param>
 	/// <returns> True if device is valid and paused, false otherwise. </returns>
 	public static bool AudioDevicePaused(SDL_AudioDeviceId device)
 	{
@@ -321,7 +316,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CloseAudioDevice">here</see> for more details.
 	/// </remarks>
-	/// <param name="device"> An audio device ID previously returned by <see cref="OpenAudioDevice(SDL_AudioDeviceId, ref SDL_AudioSpec?)"/>. </param>
+	/// <param name="device"> An audio device ID previously returned by <see cref="OpenAudioDevice(SDL_AudioDeviceId, SDL_AudioSpec*)"/>. </param>
 	public static void CloseAudioDevice(SDL_AudioDeviceId device)
 	{
 		_PInvoke(device);
@@ -341,9 +336,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success, -1 on error; call <see cref="GetError"/> for more information. </returns>
 	public static int BindAudioStreams(SDL_AudioDeviceId deviceId, SDL_AudioStream*[] streams)
 	{
-		fixed (SDL_AudioStream** s = streams)
+		fixed (SDL_AudioStream** streamsPtr = streams)
 		{
-			return _PInvoke(deviceId, s, streams.Length);
+			return _PInvoke(deviceId, streamsPtr, streams.Length);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_BindAudioStreams", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -376,9 +371,9 @@ unsafe partial class SDL
 	/// <param name="streams"> An array of audio streams to unbind. </param>
 	public static void UnbindAudioStreams(SDL_AudioStream*[] streams)
 	{
-		fixed (SDL_AudioStream** s = streams)
+		fixed (SDL_AudioStream** streamsPtr = streams)
 		{
-			_PInvoke(s, streams.Length);
+			_PInvoke(streamsPtr, streams.Length);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_UnbindAudioStreams", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -425,12 +420,9 @@ unsafe partial class SDL
 	/// <param name="srcSpec"> The format details of the input audio. </param>
 	/// <param name="dstSpec"> The format details of the output audio. </param>
 	/// <returns> A new audio stream on success, or null on failure. </returns>
-	public static SDL_AudioStream* CreateAudioStream(ref SDL_AudioSpec srcSpec, ref SDL_AudioSpec dstSpec)
+	public static SDL_AudioStream* CreateAudioStream(SDL_AudioSpec* srcSpec, SDL_AudioSpec* dstSpec)
 	{
-		fixed (SDL_AudioSpec* s = &srcSpec, d = &dstSpec)
-		{
-			return _PInvoke(s, d);
-		}
+		return _PInvoke(srcSpec, dstSpec);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_CreateAudioStream", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern SDL_AudioStream* _PInvoke(SDL_AudioSpec* srcSpec, SDL_AudioSpec* dstSpec);
@@ -464,9 +456,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success, or -1 on error. </returns>
 	public static int GetAudioStreamFormat(SDL_AudioStream* stream, out SDL_AudioSpec srcSpec, out SDL_AudioSpec dstSpec)
 	{
-		fixed (SDL_AudioSpec* s = &srcSpec, d = &dstSpec)
+		fixed (SDL_AudioSpec* srcSpecPtr = &srcSpec, dstSpecPtr = &dstSpec)
 		{
-			return _PInvoke(stream, s, d);
+			return _PInvoke(stream, srcSpecPtr, dstSpecPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetAudioStreamFormat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -483,21 +475,9 @@ unsafe partial class SDL
 	/// <param name="srcSpec"> The new format of the audio input; if null, it is not changed. </param>
 	/// <param name="dstSpec"> The new format of the audio output; if null, it is not changed. </param>
 	/// <returns> 0 on success, or -1 on error. </returns>
-	public static int SetAudioStreamFormat(SDL_AudioStream* stream, ref SDL_AudioSpec? srcSpec, ref SDL_AudioSpec? dstSpec)
+	public static int SetAudioStreamFormat(SDL_AudioStream* stream, SDL_AudioSpec* srcSpec, SDL_AudioSpec* dstSpec)
 	{
-		SDL_AudioSpec* s = null;
-		if (srcSpec.HasValue)
-		{
-			SDL_AudioSpec value = srcSpec.Value;
-			s = &value;
-		}
-		SDL_AudioSpec* d = null;
-		if (srcSpec.HasValue)
-		{
-			SDL_AudioSpec value = srcSpec.Value;
-			d = &value;
-		}
-		return _PInvoke(stream, s, d);
+		return _PInvoke(stream, srcSpec, dstSpec);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_SetAudioStreamFormat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern int _PInvoke(SDL_AudioStream* stream, SDL_AudioSpec* srcSpec, SDL_AudioSpec* dstSpec);
@@ -763,14 +743,9 @@ unsafe partial class SDL
 	/// <param name="callback"> A callback where the app will provide new data for playback, or receive new data for recording. Can be null, in which case the app will need to call <see cref="PutAudioStreamData"/> or <see cref="GetAudioStreamData"/> as necessary. </param>
 	/// <param name="userData"> App-controlled pointer passed to callback. Can be null. Ignored if <paramref name="callback"/> is null. </param>
 	/// <returns> An audio stream on success, ready to use. Null on error; call <see cref="GetError"/> for more information. When done with this stream, call <see cref="DestroyAudioStream(SDL_AudioStream*)"/> to free resources and close the device. </returns>
-	public static SDL_AudioStream* OpenAudioDeviceStream(SDL_AudioDeviceId deviceId, ref SDL_AudioSpec? spec, SDL_AudioStreamCallback callback, void* userData)
+	public static SDL_AudioStream* OpenAudioDeviceStream(SDL_AudioDeviceId deviceId, SDL_AudioSpec* spec, SDL_AudioStreamCallback callback, void* userData)
 	{
-		if (spec.HasValue)
-		{
-			SDL_AudioSpec s = spec.Value;
-			return _PInvoke(deviceId, &s, callback, userData);
-		}
-		return _PInvoke(deviceId, null, callback, userData);
+		return _PInvoke(deviceId, spec, callback, userData);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_OpenAudioDeviceStream", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern SDL_AudioStream* _PInvoke(SDL_AudioDeviceId deviceId, SDL_AudioSpec* spec, SDL_AudioStreamCallback callback, void* userData);
@@ -819,18 +794,18 @@ unsafe partial class SDL
 	public static int LoadWav(string path, out SDL_AudioSpec spec, out byte* audioBuffer, out uint audioLength)
 	{
 		// e
-		fixed (byte* p = Encoding.UTF8.GetBytes(path))
+		fixed (byte* pathPtr = Encoding.UTF8.GetBytes(path))
 		{
 			// h
-			fixed (SDL_AudioSpec* s = &spec)
+			fixed (SDL_AudioSpec* specPtr = &spec)
 			{
 				// w
-				fixed (byte** b = &audioBuffer)
+				fixed (byte** audioBufferPtr = &audioBuffer)
 				{
 					// e
-					fixed (uint* l = &audioLength)
+					fixed (uint* audioLengthPtr = &audioLength)
 					{
-						return _PInvoke(p, s, b, l);
+						return _PInvoke(pathPtr, specPtr, audioBufferPtr, audioLengthPtr);
 					}
 				}
 			}
@@ -874,16 +849,13 @@ unsafe partial class SDL
 	/// <param name="dstData"> Returns a pointer to converted audio data, which should be freed with <see cref="Free(void*)"/>. On error, it will be null. </param>
 	/// <param name="dstLength"> Returns the len of <paramref name="dstData"/>. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int ConvertAudioSamples(ref SDL_AudioSpec srcSpec, byte* srcData, int srcLength, ref SDL_AudioSpec dstSpec, out byte* dstData, out int dstLength)
+	public static int ConvertAudioSamples(SDL_AudioSpec* srcSpec, byte* srcData, int srcLength, SDL_AudioSpec* dstSpec, out byte* dstData, out int dstLength)
 	{
-		fixed (byte** dst = &dstData)
+		fixed (byte** dstDataPtr = &dstData)
 		{
-			fixed (int* l = &dstLength)
+			fixed (int* dstLengthPtr = &dstLength)
 			{
-				fixed (SDL_AudioSpec* s = &srcSpec, d = &dstSpec)
-				{
-					return _PInvoke(s, srcData, srcLength, d, dst, l);
-				}
+				return _PInvoke(srcSpec, srcData, srcLength, dstSpec, dstDataPtr, dstLengthPtr);
 			}
 		}
 

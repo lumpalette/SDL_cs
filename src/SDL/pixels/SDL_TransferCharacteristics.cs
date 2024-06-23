@@ -91,7 +91,7 @@ public enum SDL_TransferCharacteristics
 	/// <summary>
 	/// SMPTE ST 428-1
 	/// </summary>
-	SMPTE428 = 17,
+	Smpte428 = 17,
 
 	/// <summary>
 	/// RIB STD-B67, known as "hybrid log-gamma" (HLG).

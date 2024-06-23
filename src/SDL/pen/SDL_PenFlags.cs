@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Pen flags. These share a bitmask space with <see cref="SDL_MouseButton"/> and friends.
+/// Pen flags. These share a bitmask space with <see cref="SDL_MouseButton"/>.
 /// </summary>
 [Flags]
 public enum SDL_PenFlags : byte

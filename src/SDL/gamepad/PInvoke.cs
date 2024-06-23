@@ -16,9 +16,9 @@ unsafe partial class SDL
 	/// <returns> 1 if a new mapping is added, 0 if an existing mapping is updated, -1 on error; call <see cref="GetError"/> for more information. </returns>
 	public static int AddGamepadMapping(string mapping)
 	{
-		fixed (byte* m = Encoding.UTF8.GetBytes(mapping))
+		fixed (byte* mappingPtr = Encoding.UTF8.GetBytes(mapping))
 		{
-			return _PInvoke(m);
+			return _PInvoke(mappingPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_AddGamepadMapping", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -35,9 +35,9 @@ unsafe partial class SDL
 	/// <returns> the number of mappings added or -1 on error; call <see cref="GetError"/> for more information. </returns>
 	public static int AddGamepadMappingsFromFile(string file)
 	{
-		fixed (byte* f = Encoding.UTF8.GetBytes(file))
+		fixed (byte* filePtr = Encoding.UTF8.GetBytes(file))
 		{
-			return _PInvoke(f);
+			return _PInvoke(filePtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_AddGamepadMappingsFromFile", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -69,19 +69,19 @@ unsafe partial class SDL
 	/// <returns> An array of the mapping strings or null on error. </returns>
 	public static string[]? GetGamepadMappings(out int count)
 	{
-		fixed (int* c = &count)
+		fixed (int* countPtr = &count)
 		{
-			byte** m = _PInvoke(c);
-			if (m is null)
+			byte** mappingsPtr = _PInvoke(countPtr);
+			if (mappingsPtr is null)
 			{
 				return null;
 			}
 			string[] mappings = new string[count];
 			for (int i = 0; i < count; i++)
 			{
-				mappings[i] = Marshal.PtrToStringUTF8((nint)m[i])!; // i'll assume this cannot be null.
+				mappings[i] = Marshal.PtrToStringUTF8((nint)mappingsPtr[i])!; // i'll assume this cannot be null.
 			}
-			Free(m);
+			Free(mappingsPtr);
 			return mappings;
 		}
 
@@ -177,19 +177,19 @@ unsafe partial class SDL
 	/// <returns> An array of joystick instance ids, or null on error; call <see cref="GetError"/> for more details. </returns>
 	public static SDL_JoystickId[]? GetGamepads(out int count)
 	{
-		fixed (int* c = &count)
+		fixed (int* countPtr = &count)
 		{
-			SDL_JoystickId* g = _PInvoke(c);
-			if (g is null)
+			SDL_JoystickId* gamepadsPtr = _PInvoke(countPtr);
+			if (gamepadsPtr is null)
 			{
 				return null;
 			}
 			SDL_JoystickId[] gamepads = new SDL_JoystickId[count];
 			for (int i = 0; i < count; i++)
 			{
-				gamepads[i] = g[i];
+				gamepads[i] = gamepadsPtr[i];
 			}
-			Free(g);
+			Free(gamepadsPtr);
 			return gamepads;
 		}
 
@@ -680,9 +680,9 @@ unsafe partial class SDL
 	/// <returns> The current battery state. </returns>
 	public static SDL_PowerState GetGamepadPowerInfo(SDL_Gamepad* gamepad, out int percent)
 	{
-		fixed (int* p = &percent)
+		fixed (int* percentPtr = &percent)
 		{
-			return _PInvoke(gamepad, p);
+			return _PInvoke(gamepad, percentPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadPowerInfo", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -762,19 +762,19 @@ unsafe partial class SDL
 	/// <returns> An array of bindings, or null on error; call <see cref="GetError"/> for more details. </returns>
 	public static SDL_GamepadBinding[]? GetGamepadBindings(SDL_Gamepad* gamepad, out int count)
 	{
-		fixed (int* c = &count)
+		fixed (int* countPtr = &count)
 		{
-			SDL_GamepadBinding** b = _PInvoke(gamepad, c);
-			if (b is null)
+			SDL_GamepadBinding** bindingsPtr = _PInvoke(gamepad, countPtr);
+			if (bindingsPtr is null)
 			{
 				return null;
 			}
 			SDL_GamepadBinding[] bindings = new SDL_GamepadBinding[count];
 			for (int i = 0; i < count; i++)
 			{
-				bindings[i] = *b[i];
+				bindings[i] = *bindingsPtr[i];
 			}
-			Free(b);
+			Free(bindingsPtr);
 			return bindings;
 		}
 
@@ -806,9 +806,9 @@ unsafe partial class SDL
 	/// <returns> The <see cref="SDL_GamepadType"/> enum corresponding to the input string, or <see cref="SDL_GamepadType.Unknown"/> if no match was found. </returns>
 	public static SDL_GamepadType GetGamepadTypeFromString(string str)
 	{
-		fixed (byte* s = Encoding.UTF8.GetBytes(str))
+		fixed (byte* strPtr = Encoding.UTF8.GetBytes(str))
 		{
-			return _PInvoke(s);
+			return _PInvoke(strPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadTypeFromString", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -841,9 +841,9 @@ unsafe partial class SDL
 	/// <returns> The <see cref="SDL_GamepadAxis"/> enum corresponding to the input string, or <see cref="SDL_GamepadAxis.Invalid"/> if no match was found.  </returns>
 	public static SDL_GamepadAxis GetGamepadAxisFromString(string str)
 	{
-		fixed (byte* s = Encoding.UTF8.GetBytes(str))
+		fixed (byte* strPtr = Encoding.UTF8.GetBytes(str))
 		{
-			return _PInvoke(s);
+			return _PInvoke(strPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadAxisFromString", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -910,9 +910,9 @@ unsafe partial class SDL
 	/// <returns> The <see cref="SDL_GamepadButton"/> enum corresponding to the input string, or <see cref="SDL_GamepadButton.Invalid"/> if no match was found. </returns>
 	public static SDL_GamepadButton GetGamepadButtonFromString(string str)
 	{
-		fixed (byte* s = Encoding.UTF8.GetBytes(str))
+		fixed (byte* strPtr = Encoding.UTF8.GetBytes(str))
 		{
-			return _PInvoke(s);
+			return _PInvoke(strPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadButtonFromString", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -1114,20 +1114,16 @@ unsafe partial class SDL
 	/// <param name="gamepad"> The gamepad to query. </param>
 	/// <param name="type"> The type of sensor to query. </param>
 	/// <param name="data"> Returns the current sensor state. </param>
-	/// <param name="numValues"> Returns the number of values to write to data. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int GetGamepadSensorData(SDL_Gamepad* gamepad, SDL_SensorType type, out float[] data, out int numValues)
+	public static int GetGamepadSensorData(SDL_Gamepad* gamepad, SDL_SensorType type, out float[] data)
 	{
-		fixed (float* d = data)
+		fixed (float* dataPtr = data)
 		{
-			fixed (int* n = &numValues)
-			{
-				return _PInvoke(gamepad, type, d, n);
-			}
+			return _PInvoke(gamepad, type, dataPtr, data.Length);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadSensorData", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern int _PInvoke(SDL_Gamepad* gamepad, SDL_SensorType type, float* data, int* numValues);
+		static extern int _PInvoke(SDL_Gamepad* gamepad, SDL_SensorType type, float* data, int numValues);
 	}
 
 	/// <summary>

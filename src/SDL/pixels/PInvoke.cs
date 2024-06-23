@@ -197,11 +197,11 @@ unsafe partial class SDL
 	/// <returns> True on success or false if the conversion wasn't possible; call <see cref="GetError"/> for more information. </returns>
 	public static bool GetMasksForPixelFormatValue(SDL_PixelFormatEnum format, out int bpp, out uint rMask, out uint gMask, out uint bMask, out uint aMask)
 	{
-		fixed (int* bb = &bpp)
+		fixed (int* bppPtr = &bpp)
 		{
-			fixed (uint* r = &rMask, g = &gMask, b = &bMask, a = &aMask)
+			fixed (uint* rMaskPtr = &rMask, gMaskPtr = &gMask, bMaskPtr = &bMask, aPtr = &aMask)
 			{
-				return _PInvoke(format, bb, r, g, b, a) == 1;
+				return _PInvoke(format, bppPtr, rMaskPtr, gMaskPtr, bMaskPtr, aPtr) == 1;
 			}
 		}
 
@@ -307,9 +307,9 @@ unsafe partial class SDL
 	public static int SetPaletteColors(SDL_Palette* palette, SDL_Color[] colors, int firstColor, int nColors)
 	{
 		// i don't think this is the right way of doing this... oh well! it works, right???
-		fixed (SDL_Color* c = colors)
+		fixed (SDL_Color* colorsPtr = colors)
 		{
-			return _PInvoke(palette, c, firstColor, nColors);
+			return _PInvoke(palette, colorsPtr, firstColor, nColors);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_SetPaletteColors", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -383,9 +383,9 @@ unsafe partial class SDL
 	/// <param name="b"> Returns the blue component of <paramref name="pixel"/>. </param>
 	public static void GetRGB(uint pixel, SDL_PixelFormat* format, out byte r, out byte g, out byte b)
 	{
-		fixed (byte* rr = &r, gg = &g, bb = &b)
+		fixed (byte* rPtr = &r, gPtr = &g, bPtr = &b)
 		{
-			_PInvoke(pixel, format, rr, gg, bb);
+			_PInvoke(pixel, format, rPtr, gPtr, bPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetRGBA", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -406,9 +406,9 @@ unsafe partial class SDL
 	/// <param name="a"> Returns the alpha component of <paramref name="pixel"/>. </param>
 	public static void GetRGBA(uint pixel, SDL_PixelFormat* format, out byte r, out byte g, out byte b, out byte a)
 	{
-		fixed (byte* rr = &r, gg = &g, bb = &b, aa = &a)
+		fixed (byte* rPtr = &r, gPtr = &g, bPtr = &b, aPtr = &a)
 		{
-			_PInvoke(pixel, format, rr, gg, bb, aa);
+			_PInvoke(pixel, format, rPtr, gPtr, bPtr, aPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetRGBA", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]

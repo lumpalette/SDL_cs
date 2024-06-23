@@ -36,9 +36,9 @@ unsafe partial class SDL
 	/// <returns> An array of mouse instance ids or null on error; call <see cref="GetError"/> for more details. </returns>
 	public static SDL_MouseId[]? GetMice(out int count)
 	{
-		fixed (int* c = &count)
+		fixed (int* countPtr = &count)
 		{
-			SDL_MouseId* m = _PInvoke(c);
+			SDL_MouseId* m = _PInvoke(countPtr);
 			if (m is null)
 			{
 				return null;
@@ -98,9 +98,9 @@ unsafe partial class SDL
 	/// <returns> A 32-bit button bitmask of the current button state. </returns>
 	public static SDL_MouseButtonFlags GetMouseState(out float x, out float y)
 	{
-		fixed (float* xx = &x, yy = &y)
+		fixed (float* xPtr = &x, yPtr = &y)
 		{
-			return _PInvoke(xx, yy);
+			return _PInvoke(xPtr, yPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetMouseState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -118,9 +118,9 @@ unsafe partial class SDL
 	/// <returns> The current button state as a bitmask. </returns>
 	public static SDL_MouseButtonFlags GetGlobalMouseState(out float x, out float y)
 	{
-		fixed (float* xx = &x, yy = &y)
+		fixed (float* xPtr = &x, yPtr = &y)
 		{
-			return _PInvoke(xx, yy);
+			return _PInvoke(xPtr, yPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetGlobalMouseState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -138,9 +138,9 @@ unsafe partial class SDL
 	/// <returns> A 32-bit button bitmask of the relative button state. </returns>
 	public static SDL_MouseButtonFlags GetRelativeMouseState(out float x, out float y)
 	{
-		fixed (float* xx = &x, yy = &y)
+		fixed (float* xPtr = &x, yPtr = &y)
 		{
-			return _PInvoke(xx, yy);
+			return _PInvoke(xPtr, yPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetRelativeMouseState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -242,9 +242,9 @@ unsafe partial class SDL
 	/// <returns> A new cursor with the specified parameters on success or null on failure; call <see cref="GetError"/> for more information. </returns>
 	public static SDL_Cursor* CreateCursor(byte[] data, byte[] mask, int width, int height, int hotX, int hotY) // CHECK:overload
 	{
-		fixed (byte* d = data, m = mask)
+		fixed (byte* dataPtr = data, maskPtr = mask)
 		{
-			return _PInvoke(d, m, width, height, hotX, hotY);
+			return _PInvoke(dataPtr, maskPtr, width, height, hotX, hotY);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_CreateCursor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]

@@ -31,19 +31,19 @@ unsafe partial class SDL
 	/// <returns> An array of keyboard instance ids, or null on error; call <see cref="GetError"/> for more details. </returns>
 	public static SDL_KeyboardId[]? GetKeyboards(out int count)
 	{
-		fixed (int* c = &count)
+		fixed (int* countPtr = &count)
 		{
-			SDL_KeyboardId* k = _PInvoke(c);
-			if (k is null)
+			SDL_KeyboardId* keyboardsPtr = _PInvoke(countPtr);
+			if (keyboardsPtr is null)
 			{
 				return null;
 			}
 			SDL_KeyboardId[] keyboards = new SDL_KeyboardId[count];
 			for (int i = 0; i < count; i++)
 			{
-				keyboards[i] = k[i];
+				keyboards[i] = keyboardsPtr[i];
 			}
-			Free(k);
+			Free(keyboardsPtr);
 			return keyboards;
 		}
 
@@ -92,9 +92,9 @@ unsafe partial class SDL
 	/// <returns> A pointer to an array of key states. </returns>
 	public static byte* GetKeyboardState(out int numKeys)
 	{
-		fixed (int* n = &numKeys)
+		fixed (int* numKeysPtr = &numKeys)
 		{
-			return _PInvoke(n);
+			return _PInvoke(numKeysPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetKeyboardState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -203,9 +203,9 @@ unsafe partial class SDL
 	/// <returns> The <see cref="SDL_Scancode"/>, or <see cref="SDL_Scancode.Unknown"/> if the name wasn't recognized; call <see cref="GetError"/> for more information. </returns>
 	public static SDL_Scancode GetScancodeFromName(string name)
 	{
-		fixed (byte* n = Encoding.UTF8.GetBytes(name))
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return _PInvoke(n);
+			return _PInvoke(namePtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetScancodeFromName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -238,9 +238,9 @@ unsafe partial class SDL
 	/// <returns> The <see cref="SDL_Keycode"/>, or <see cref="SDL_Keycode.Unknown"/> if the name wasn't recognized; call <see cref="GetError"/> for more information. </returns>
 	public static SDL_Keycode GetKeyFromName(string name)
 	{
-		fixed (byte* n = Encoding.UTF8.GetBytes(name))
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return _PInvoke(n);
+			return _PInvoke(namePtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetKeyFromName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]

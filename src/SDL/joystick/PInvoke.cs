@@ -501,9 +501,9 @@ unsafe partial class SDL
 	/// <param name="crc16"> Returns a CRC used to distinguish different products with the same VID/PID, or 0 if not available. </param>
 	public static void GetJoystickGuidInfo(SDL_JoystickGuid guid, out ushort vendor, out ushort product, out ushort version, out ushort crc16)
 	{
-		fixed (ushort* v = &vendor, p = &product, e = &version, c = &crc16)
+		fixed (ushort* vendorPtr = &vendor, productPtr = &product, versionPtr = &version, crc16Ptr = &crc16)
 		{
-			_PInvoke(guid, v, p, e, c);
+			_PInvoke(guid, vendorPtr, productPtr, versionPtr, crc16Ptr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickGUIDInfo", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -679,9 +679,9 @@ unsafe partial class SDL
 	/// <returns> True if this axis has any initial value, or false if not. </returns>
 	public static bool GetJoystickAxisInitialState(SDL_Joystick* joystick, int axis, out short state)
 	{
-		fixed (short* s = &state)
+		fixed (short* statePtr = &state)
 		{
-			return _PInvoke(joystick, axis, s) == 1;
+			return _PInvoke(joystick, axis, statePtr) == 1;
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickAxisInitialState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -701,9 +701,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetJoystickBall(SDL_Joystick* joystick, int ball, out int dx, out int dy)
 	{
-		fixed (int* x = &dx, y = &dy)
+		fixed (int* dxPtr = &dx, dyPtr = &dy)
 		{
-			return _PInvoke(joystick, ball, x, y);
+			return _PInvoke(joystick, ball, dxPtr, dyPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickAxisInitialState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -861,9 +861,9 @@ unsafe partial class SDL
 	/// <returns> The current battery state or <see cref="SDL_PowerState.Error"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static SDL_PowerState GetJoystickPowerInfo(SDL_Joystick* joystick, out int percent)
 	{
-		fixed (int* p = &percent)
+		fixed (int* percentPtr = &percent)
 		{
-			return _PInvoke(joystick, p);
+			return _PInvoke(joystick, percentPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickPowerInfo", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]

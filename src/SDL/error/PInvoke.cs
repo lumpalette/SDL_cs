@@ -16,9 +16,9 @@ unsafe partial class SDL
 	/// <returns> Always -1. </returns>
 	public static int SetError(string msg)
 	{
-		fixed (byte* m = Encoding.UTF8.GetBytes(msg))
+		fixed (byte* msgPtr = Encoding.UTF8.GetBytes(msg))
 		{
-			return _PInvoke(m);
+			return _PInvoke(msgPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_SetError", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]

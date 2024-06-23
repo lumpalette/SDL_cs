@@ -38,9 +38,9 @@ unsafe partial class SDL
 	/// <returns> An <see cref="SDL_Guid"/> structure. </returns>
 	public static SDL_Guid GuidFromString(string pchGuid)
 	{
-		fixed (byte* g = Encoding.UTF8.GetBytes(pchGuid))
+		fixed (byte* pchGuidPtr = Encoding.UTF8.GetBytes(pchGuid))
 		{
-			return _PInvoke(g);
+			return _PInvoke(pchGuidPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GUIDFromString", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]

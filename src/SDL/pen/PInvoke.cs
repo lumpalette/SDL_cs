@@ -27,19 +27,19 @@ unsafe partial class SDL
 	/// <returns> An array of <see cref="SDL_PenId"/> values, or null on error. On a null return, <see cref="GetError"/> is set. </returns>
 	public static SDL_PenId[]? GetPens(out int count)
 	{
-		fixed (int* c = &count)
+		fixed (int* countPtr = &count)
 		{
-			SDL_PenId* p = _PInvoke(c);
-			if (p is null)
+			SDL_PenId* pensPtr = _PInvoke(countPtr);
+			if (pensPtr is null)
 			{
 				return null;
 			}
 			SDL_PenId[] pens = new SDL_PenId[count];
 			for (int i = 0; i < count; i++)
 			{
-				pens[i] = p[i];
+				pens[i] = pensPtr[i];
 			}
-			Free(p);
+			Free(pensPtr);
 			return pens;
 		}
 
@@ -64,9 +64,9 @@ unsafe partial class SDL
 	/// </returns>
 	public static uint GetPenStatus(SDL_PenId penId, out float x, out float y, out float[] axes)
 	{
-		fixed (float* xx = &x, yy = &y, a = axes)
+		fixed (float* xPtr = &x, yPtr = &y, axesPtr = axes)
 		{
-			return _PInvoke(penId, xx, yy, a, (ulong)axes.LongLength);
+			return _PInvoke(penId, xPtr, yPtr, axesPtr, (ulong)axes.LongLength);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetPenStatus", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -90,7 +90,7 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// Retrieves a human-readable description for a <see cref="SDL_PenId"/>.
+	/// Retrieves axesPtr human-readable description for a <see cref="SDL_PenId"/>.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPenName">here</see> for more details.
@@ -116,9 +116,9 @@ unsafe partial class SDL
 	/// <returns> A set of capability flags, cf. <see cref="PenCapability(uint)"/>. </returns>
 	public static SDL_PenCapabilityFlags GetPenCapabilities(SDL_PenId penId, out SDL_PenCapabilityInfo capabilities)
 	{
-		fixed (SDL_PenCapabilityInfo* c = &capabilities)
+		fixed (SDL_PenCapabilityInfo* capabilitiesPtr = &capabilities)
 		{
-			return _PInvoke(penId, c);
+			return _PInvoke(penId, capabilitiesPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetPenCapabilities", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
