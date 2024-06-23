@@ -6,6 +6,18 @@ namespace SDL_cs;
 unsafe partial class SDL
 {
 	[Macro]
+	public static SDL_PixelFormatEnum DefinePixelFourCC(byte a, byte b, byte c, byte d)
+	{
+		return new SDL_PixelFormatEnum(a, b, c, d);
+	}
+
+	[Macro]
+	public static SDL_PixelFormatEnum DefinePixelFormat(SDL_PixelType type, byte order, SDL_PackedLayout layout, byte bits, byte bytes)
+	{
+		return new SDL_PixelFormatEnum(type, order, layout, bits, bytes);
+	}
+
+	[Macro]
 	public static byte PixelFlag(SDL_PixelFormatEnum format)
 	{
 		return (byte)((((uint)format) >> 28) & 0x0F);

@@ -3,8 +3,11 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Gamepad touchpad event structure (FIXME:event.gtouchpad.*).
+/// Gamepad touchpad event structure (<see cref="SDL_Event.GamepadTouchpad"/>).
 /// </summary>
+/// <remarks>
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadTouchpadEvent">here</see> for more details.
+/// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_GamepadTouchpadEvent
 {

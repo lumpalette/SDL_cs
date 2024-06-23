@@ -68,6 +68,19 @@ public readonly struct SDL_PixelFormatEnum
 	}
 
 	/// <summary>
+	/// Instantiates a new <see cref="SDL_PixelFormatEnum"/>, without a specific order type.
+	/// </summary>
+	/// <param name="type"> The pixel type. </param>
+	/// <param name="order"> The format's order. </param>
+	/// <param name="layout"> The format layout. </param>
+	/// <param name="bits"> The number of bits a pixel using this format uses. </param>
+	/// <param name="bytes"> The number of bytes a pixel using this format uses. </param>
+	public SDL_PixelFormatEnum(SDL_PixelType type, byte order, SDL_PackedLayout layout, byte bits, byte bytes)
+	{
+		_value = CreateValue(type, order, layout, bits, bytes);
+	}
+
+	/// <summary>
 	/// Instantiates a new <see cref="SDL_PixelFormatEnum"/> using a FourCC.
 	/// </summary>
 	/// <param name="a"> The first character. </param>

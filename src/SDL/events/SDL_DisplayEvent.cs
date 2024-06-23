@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Display state change event data (FIXME:event.display.*).
+/// Display state change event data (<see cref="SDL_Event.Display"/>).
 /// </summary>
 /// <remarks>
 /// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DisplayEvent">here</see> for more details.

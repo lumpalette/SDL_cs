@@ -29,7 +29,7 @@ unsafe partial class SDL
 	/// Set an error indicating that memory allocation failed.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_OutOfMemory">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_OutOfMemory">here</see> for more details.
 	/// </remarks>
 	/// <returns> -1. </returns>
 	public static int OutOfMemory()

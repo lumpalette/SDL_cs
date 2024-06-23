@@ -34,7 +34,7 @@ public enum SDL_ColorPrimaries
 	BT470BG = 5,
 
 	/// <summary>
-	/// ITU-R BT.601-7 525.
+	/// ITU-R BT.601-7 525, SMPTE 170M.
 	/// </summary>
 	BT601 = 6,
 

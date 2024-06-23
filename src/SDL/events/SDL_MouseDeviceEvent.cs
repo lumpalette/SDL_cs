@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Mouse device event structure (FIXME:event.mdevice.*).
+/// Mouse device event structure (<see cref="SDL_Event.MouseDevice"/>).
 /// </summary>
 /// <remarks>
 /// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MouseDeviceEvent">here</see> for more details.

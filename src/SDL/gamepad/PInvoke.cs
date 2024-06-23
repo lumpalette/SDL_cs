@@ -1253,10 +1253,4 @@ unsafe partial class SDL
 		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadAppleSFSymbolsNameForAxis", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern byte* _PInvoke(SDL_Gamepad* gamepad, SDL_GamepadAxis axis);
 	}
-
-	public const string PropGamepadCapMonoLedBoolean = PropJoystickCapMonoLedBoolean;
-	public const string PropGamepadCapRGBLedBoolean = PropJoystickCapRGBLedBoolean;
-	public const string PropGamepadCapPlayerLedBoolean = PropJoystickCapPlayerLedBoolean;
-	public const string PropGamepadCapRumbleBoolean = PropJoystickCapRumbleBoolean;
-	public const string PropGamepadCapTriggerRumbleBoolean = PropJoystickCapTriggerRumbleBoolean;
 }

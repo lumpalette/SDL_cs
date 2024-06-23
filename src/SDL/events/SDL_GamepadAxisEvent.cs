@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Gamepad axis motion event structure (FIXME:event.gaxis.*).
+/// Gamepad axis motion event structure (<see cref="SDL_Event.GamepadAxis"/>).
 /// </summary>
 /// <remarks>
 /// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadAxisEvent">here</see> for more details.

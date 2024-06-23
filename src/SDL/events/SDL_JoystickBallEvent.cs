@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Joystick trackball motion event structure (FIXME:event.jball.*).
+/// Joystick trackball motion event structure (<see cref="SDL_Event.JoystickBall"/>).
 /// </summary>
 /// <remarks>
 /// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_JoyBallEvent">here</see> for more details.

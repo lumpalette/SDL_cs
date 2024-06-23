@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Keyboard button event structure (FIXME:event.key.*)
+/// Keyboard button event structure (<see cref="SDL_Event.Keyboard"/>).
 /// </summary>
 /// <remarks>
 /// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_KeyboardEvent">here</see> for more details.

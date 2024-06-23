@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Keyboard text editing event structure (FIXME:event.edit.*).
+/// Keyboard text editing event structure (<see cref="SDL_Event.TextEditing"/>).
 /// </summary>
 /// <remarks>
 /// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_TextEditingEvent">here</see> for more details.

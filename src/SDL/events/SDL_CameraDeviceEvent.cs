@@ -5,10 +5,10 @@ namespace SDL_cs;
 // FIXME: write the SDL_camera.h binding.
 
 /// <summary>
-/// Camera device event structure (FIXME:event.cdevice.*).
+/// Camera device event structure (<see cref="SDL_Event.CameraDevice"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CameraDeviceEvent">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CameraDeviceEvent">here</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_CameraDeviceEvent

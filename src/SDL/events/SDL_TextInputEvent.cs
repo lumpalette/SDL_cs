@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Keyboard text input event structure (FIXME:event.text.*).
+/// Keyboard text input event structure (<see cref="SDL_Event.TextInput"/>).
 /// </summary>
 /// <remarks>
 /// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_TextInputEvent">here</see> for more details.

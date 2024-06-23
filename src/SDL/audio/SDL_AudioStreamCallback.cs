@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// A callback that fires when data passes through an <see cref="SDL_AudioStream"/>.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AudioStreamCallback">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AudioStreamCallback">here</see> for more details.
 /// </remarks>
 /// <param name="userData"> An opaque pointer provided by the app for their personal use. </param>
 /// <param name="stream"> The SDL audio stream associated with this callback. </param>

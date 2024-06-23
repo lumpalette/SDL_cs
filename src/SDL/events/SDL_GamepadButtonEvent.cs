@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Gamepad button event structure (FIXME:event.gbutton.*).
+/// Gamepad button event structure (<see cref="SDL_Event.GamepadButton"/>).
 /// </summary>
 /// <remarks>
 /// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadButtonEvent">here</see> for more details.

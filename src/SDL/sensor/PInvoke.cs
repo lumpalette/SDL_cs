@@ -199,7 +199,7 @@ unsafe partial class SDL
 	/// Get the current state of an opened sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorData">here</see>.
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorData">here</see> for more details.
 	/// </remarks>
 	/// <param name="sensor"> The <see cref="SDL_Sensor"/> object to query. </param>
 	/// <param name="data"> Returns the current sensor state. </param>

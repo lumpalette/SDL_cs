@@ -890,10 +890,4 @@ unsafe partial class SDL
 	/// Set max recognized G-force from accelerometer.
 	/// </summary>
 	public const float IPhoneMaxGForce = 5.0f;
-
-	public const string PropJoystickCapMonoLedBoolean = "SDL.joystick.cap.mono_led";
-	public const string PropJoystickCapPlayerLedBoolean = "SDL.joystick.cap.player_led";
-	public const string PropJoystickCapRGBLedBoolean = "SDL.joystick.cap.rgb_led";
-	public const string PropJoystickCapRumbleBoolean = "SDL.joystick.cap.rumble";
-	public const string PropJoystickCapTriggerRumbleBoolean = "SDL.joystick.cap.trigger_rumble";
 }

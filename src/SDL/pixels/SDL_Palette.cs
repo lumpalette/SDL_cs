@@ -19,21 +19,7 @@ public unsafe readonly struct SDL_Palette
 	/// <summary>
 	/// An array of <see cref="SDL_Color"/> structures representing this palette, <see cref="NColors"/> long.
 	/// </summary>
-	public readonly SDL_Color[] Colors
-	{
-		// it's easier to use this way, i guess
-		get
-		{
-			SDL_Color[] colors = new SDL_Color[NColors];
-			for (int i = 0; i < NColors; i++)
-			{
-				colors[i] = _colors[i];
-			}
-			return colors;
-		}
-	}
-
-	private readonly SDL_Color* _colors;
+	public readonly SDL_Color* Colors;
 
 	private readonly uint _version;
 

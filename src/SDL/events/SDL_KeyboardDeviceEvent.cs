@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Keyboard device event structure (FIXME:event.kdevice.*).
+/// Keyboard device event structure (<see cref="SDL_Event.KeyboardDevice"/>).
 /// </summary>
 /// <remarks>
 /// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_KeyboardDeviceEvent">here</see> for more details.

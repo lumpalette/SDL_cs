@@ -1,0 +1,87 @@
+﻿namespace SDL_cs;
+
+partial class SDL_Prop
+{
+	public const string RendererCreateNameString = "name";
+	public const string RendererCreateOutputColorspaceNumber = "output_colorspace";
+	public const string RendererCreatePresentVSyncNumber = "present_vsync";
+	public const string RendererCreateSurfacePointer = "surface";
+	public const string RendererCreateVulkanDevicePointer = "vulkan.device";
+	public const string RendererCreateVulkanGraphicsQueueFamilyIndexNumber = "vulkan.graphics_queue_family_index";
+	public const string RendererCreateVulkanInstancePointer = "vulkan.instance";
+	public const string RendererCreateVulkanPhysicalDevicePointer = "vulkan.physical_device";
+	public const string RendererCreateVulkanPresentQueueFamilyIndexNumber = "vulkan.present_queue_family_index";
+	public const string RendererCreateVulkanSurfaceNumber = "vulkan.surface";
+	public const string RendererCreateWindowPointer = "window";
+
+	public const string RendederWindowPointer = "SDL.renderer.window";
+	public const string RendererD3d11DevicePointer = "SDL.renderer.d3d11.device";
+	public const string RendererD3d11SwapchainPointer = "SDL.renderer.d3d11.swap_chain";
+	public const string RendererD3d12CommandQueuePointer = "SDL.renderer.d3d12.command_queue";
+	public const string RendererD3d12DevicePointer = "SDL.renderer.d3d12.device";
+	public const string RendererD3d12SwapchainPointer = "SDL.renderer.d3d12.swap_chain";
+	public const string RendererD3d9DevicePointer = "SDL.renderer.d3d9.device";
+	public const string RendererHdrEnabledBoolean = "SDL.renderer.HDR_enabled";
+	public const string RendererHdrHeadroomFloat = "SDL.renderer.HDR_headroom";
+	public const string RendererMaxTextureSizeNumber = "SDL.renderer.max_texture_size";
+	public const string RendererNameString = "SDL.renderer.name";
+	public const string RendererOutputColorspaceNumber = "SDL.renderer.output_colorspace";
+	public const string RendererSdrWhitePointFloat = "SDL.renderer.SDR_white_point";
+	public const string RendererSurfacePointer = "SDL.renderer.surface";
+	public const string RendererTextureFormatsPointer = "SDL.renderer.texture_formats";
+	public const string RendererVSyncNumber = "SDL.renderer.vsync";
+	public const string RendererVulkanDevicePointer = "SDL.renderer.vulkan.device";
+	public const string RendererVulkanGraphicsQueueFamilyIndexNumber = "SDL.renderer.vulkan.graphics_queue_family_index";
+	public const string RendererVulkanInstancePointer = "SDL.renderer.vulkan.instance";
+	public const string RendererVulkanPhysicalDevicePointer = "SDL.renderer.vulkan.physical_device";
+	public const string RendererVulkanPresentQueueFamilyIndexNumber = "SDL.renderer.vulkan.present_queue_family_index";
+	public const string RendererVulkanSurfaceNumber = "SDL.renderer.vulkan.surface";
+	public const string RendererVulkanSwapchainImageCountNumber = "SDL.renderer.vulkan.swapchain_image_count";
+
+	public const string TextureCreateAccessNumber = "access";
+	public const string TextureCreateColorspaceNumber = "colorspace";
+	public const string TextureCreateD3d11TexturePointer = "d3d11.texture";
+	public const string TextureCreateD3d11TextureUPointer = "d3d11.texture_u";
+	public const string TextureCreateD3d11TextureVPointer = "d3d11.texture_v";
+	public const string TextureCreateD3d12TexturePointer = "d3d12.texture";
+	public const string TextureCreateD3d12TextureUPointer = "d3d12.texture_u";
+	public const string TextureCreateD3d12TextureVPointer = "d3d12.texture_v";
+	public const string TextureCreateFormatNumber = "format";
+	public const string TextureCreateHdrHeadroomFloat = "HDR_headroom";
+	public const string TextureCreateHeightNumber = "height";
+	public const string TextureCreateMetalPixelBufferPointer = "metal.pixelbuffer";
+	public const string TextureCreateOpenGLES2TextureNumber = "opengles2.texture";
+	public const string TextureCreateOpenGLES2TextureUNumber = "opengles2.texture_u";
+	public const string TextureCreateOpenGLES2TextureUVNumber = "opengles2.texture_uv";
+	public const string TextureCreateOpenGLES2TextureVNumber = "opengles2.texture_v";
+	public const string TextureCreateOpenGLTextureNumber = "opengl.texture";
+	public const string TextureCreateOpenGLTextureUNumber = "opengl.texture_u";
+	public const string TextureCreateOpenGLTextureUVNumber = "opengl.texture_uv";
+	public const string TextureCreateOpenGLTextureVNumber = "opengl.texture_v";
+	public const string TextureCreateSdrWhitePointFloat = "SDR_white_point";
+	public const string TextureCreateVulkanTextureNumber = "vulkan.texture";
+	public const string TextureCreateWidthNumber = "width";
+
+	public const string TextureColorspaceNumber = "SDL.texture.colorspace";
+	public const string TextureD3d11TexturePointer = "SDL.texture.d3d11.texture";
+	public const string TextureD3d11TextureUPointer = "SDL.texture.d3d11.texture_u";
+	public const string TextureD3d11TextureVPointer = "SDL.texture.d3d11.texture_v";
+	public const string TextureD3d12TexturePointer = "SDL.texture.d3d12.texture";
+	public const string TextureD3d12TextureUPointer = "SDL.texture.d3d12.texture_u";
+	public const string TextureD3d12TextureVPointer = "SDL.texture.d3d12.texture_v";
+	public const string TextureHdrHeadroomFloat = "SDL.texture.HDR_headroom";
+	public const string TextureOpenGLES2TextureNumber = "SDL.texture.opengles2.texture";
+	public const string TextureOpenGLES2TextureTargetNumber = "SDL.texture.opengles2.target";
+	public const string TextureOpenGLES2TextureUNumber = "SDL.texture.opengles2.texture_u";
+	public const string TextureOpenGLES2TextureUVNumber = "SDL.texture.opengles2.texture_uv";
+	public const string TextureOpenGLES2TextureVNumber = "SDL.texture.opengles2.texture_v";
+	public const string TextureOpenGLTexHFloat = "SDL.texture.opengl.tex_h";
+	public const string TextureOpenGLTextureNumber = "SDL.texture.opengl.texture";
+	public const string TextureOpenGLTextureTargetNumber = "SDL.texture.opengl.target";
+	public const string TextureOpenGLTextureUNumber = "SDL.texture.opengl.texture_u";
+	public const string TextureOpenGLTextureUVNumber = "SDL.texture.opengl.texture_uv";
+	public const string TextureOpenGLTextureVNumber = "SDL.texture.opengl.texture_v";
+	public const string TextureOpenGLTexWFloat = "SDL.texture.opengl.tex_w";
+	public const string TextureSdrWhitePointFloat = "SDL.texture.SDR_white_point";
+	public const string TextureVulkanTextureNumber = "SDL.texture.vulkan.texture";
+}

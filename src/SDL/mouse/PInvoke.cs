@@ -6,9 +6,9 @@ namespace SDL_cs;
 unsafe partial class SDL
 {
 	[Macro]
-	public static SDL_MouseButtonFlags Button(int x)
+	public static uint Button(int x)
 	{
-		return (SDL_MouseButtonFlags)(1u << (x - 1));
+		return 1u << (x - 1);
 	}
 
 	/// <summary>

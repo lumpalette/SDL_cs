@@ -4,7 +4,7 @@
 /// A structure that encodes the stable unique ID for a joystick device.
 /// </summary>
 /// <remarks>
-/// The structure is a wrapper for an <see cref="SDL_Guid"/>. Refer to the official documentation
+/// This structure is a wrapper for an <see cref="SDL_Guid"/>. Refer to the official documentation
 /// <see href="https://wiki.libsdl.org/SDL3/SDL_JoystickGUID">here</see> for more details.
 /// </remarks>
 [Wrapper]

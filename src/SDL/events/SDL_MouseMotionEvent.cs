@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Mouse motion event structure (FIXME:event.motion.*).
+/// Mouse motion event structure (<see cref="SDL_Event.MouseMotion"/>).
 /// </summary>
 /// <remarks>
 /// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MouseMotionEvent">here</see> for more details.

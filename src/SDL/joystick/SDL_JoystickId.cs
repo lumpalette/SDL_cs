@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Represents a unique ID for a joystick.
 /// </summary>
 /// <remarks>
-/// The structure is a wrapper for an unsigned 32-bit integer. Refer to the official documentation
+/// This structure is a wrapper for an unsigned 32-bit integer. Refer to the official documentation
 /// <see href="https://wiki.libsdl.org/SDL3/SDL_JoystickID">here</see> for more details.
 /// </remarks>
 [Wrapper]
@@ -40,11 +40,6 @@ public readonly struct SDL_JoystickId
 	public static bool operator ==(SDL_JoystickId a, SDL_JoystickId b) => a._value == b._value;
 
 	public static bool operator !=(SDL_JoystickId a, SDL_JoystickId b) => a._value != b._value;
-
-	/// <summary>
-	/// An invalid ID for a joystick. Used when a function that returns an <see cref="SDL_JoystickId"/> fails.
-	/// </summary>
-	public static SDL_JoystickId Invalid => new(0);
 
 	private readonly uint _value;
 }

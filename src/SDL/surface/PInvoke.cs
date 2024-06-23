@@ -840,9 +840,4 @@ unsafe partial class SDL
 		[DllImport(LibraryName, EntryPoint = "SDL_ReadSurfacePixel", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern int _PInvoke(SDL_Surface* surface, int x, int y, byte* r, byte* g, byte* b, byte* a);
 	}
-
-	public const string PropSurfaceFloatHdrHeadroom = "SDL.surface.HDR_headroom";
-	public const string PropSurfaceFloatSdrWhitePoint = "SDL.surface.SDR_white_point";
-	public const string PropSurfaceNumberColorspace = "SDL.surface.colorspace";
-	public const string PropSurfaceStringTonemapOperator = "SDL.surface.tonemap";
 }

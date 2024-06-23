@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Window state change event data (FIXME:event.window.*).
+/// Window state change event data (<see cref="SDL_Event.Window"/>).
 /// </summary>
 /// <remarks>
 /// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_WindowEvent">here</see> for more details.

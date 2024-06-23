@@ -7,7 +7,7 @@ namespace SDL_cs;
 /// lifetime of the application.
 /// </summary>
 /// <remarks>
-/// The structure is a wrapper for an unsigned 32-bit integer. Refer to the official documentation
+/// This structure is a wrapper for an unsigned 32-bit integer. Refer to the official documentation
 /// <see href="https://wiki.libsdl.org/SDL3/SDL_SensorID">here</see> for more details.
 /// </remarks>
 [Wrapper]

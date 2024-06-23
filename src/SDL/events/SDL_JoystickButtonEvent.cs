@@ -3,8 +3,11 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Joystick button event structure (FIXME:event.jbutton.*)
+/// Joystick button event structure (<see cref="SDL_Event.JoystickButton"/>)
 /// </summary>
+/// <remarks>
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_JoyButtonEvent">here</see> for more details.
+/// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_JoystickButtonEvent
 {

@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Represents the ID for a display.
 /// </summary>
 /// <remarks>
-/// The structure is a wrapper for an unsigned 32-bit integer.
+/// This structure is a wrapper for an unsigned 32-bit integer.
 /// </remarks>
 [Wrapper]
 public readonly struct SDL_DisplayId

@@ -2,8 +2,11 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Gamepad sensor event structure (FIXME:event.gsensor.*).
+/// Gamepad sensor event structure (<see cref="SDL_Event.GamepadSensor"/>).
 /// </summary>
+/// <remarks>
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadSensorEvent">here</see> for more details.
+/// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SDL_GamepadSensorEvent
 {
@@ -32,20 +35,7 @@ public unsafe struct SDL_GamepadSensorEvent
 	/// <summary>
 	/// Up to 3 values from the sensor.
 	/// </summary>
-	public readonly float[] Data
-	{
-		get
-		{
-			float[] data = new float[3];
-			for (int i = 0; i < 3; i++)
-			{
-				data[i] = _data[i];
-			}
-			return data;
-		}
-	}
-
-	private fixed float _data[3];
+	public fixed float Data[3];
 
 	/// <summary>
 	/// The timestamp of the sensor reading in nanoseconds, not necessarily synchronized with the system clock.

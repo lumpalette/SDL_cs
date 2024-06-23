@@ -12,10 +12,9 @@ namespace SDL_cs;
 public struct SDL_CommonEvent
 {
 	/// <summary>
-	/// Event type, shared with all events, an unsigned 32-bit integer to cover user events which are not in the <see cref="SDL_EventType"/>
-	/// enumeration.
+	/// Event type, shared with all events.
 	/// </summary>
-	public uint Type;
+	public SDL_EventType Type;
 
 	private readonly uint _reserved;
 

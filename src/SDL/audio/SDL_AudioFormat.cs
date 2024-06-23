@@ -9,7 +9,7 @@ namespace SDL_cs;
 /// <remarks>
 /// <para>
 /// All the available formats are defined as static properties that return <see cref="SDL_AudioFormat"/> structures.
-/// The structure itself represents those formats.
+/// The structure itself represents a single audio format.
 /// </para>
 /// <para>
 /// The structure is a wrapper for an unsigned 32-bit integer. Refer to the official documentation

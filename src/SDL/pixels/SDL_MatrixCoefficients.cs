@@ -24,7 +24,7 @@ public enum SDL_MatrixCoefficients
 	Unspecified = 2,
 
 	/// <summary>
-	/// US FCC.
+	/// US FCC Title 47.
 	/// </summary>
 	FCC = 4,
 

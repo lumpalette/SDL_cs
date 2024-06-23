@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Represents a unique ID for a finger.
 /// </summary>
 /// <remarks>
-/// The structure is a wrapper for an unsigned 64-bit integer.
+/// This structure is a wrapper for an unsigned 64-bit integer.
 /// </remarks>
 [Wrapper]
 public readonly struct SDL_FingerId
@@ -31,11 +31,6 @@ public readonly struct SDL_FingerId
 	{
 		return _value.GetHashCode();
 	}
-
-	/// <summary>
-	/// An invalid finger ID. Used when a function that returns an <see cref="SDL_FingerId"/> fails.
-	/// </summary>
-	public static SDL_FingerId Invalid => new();
 
 	public static explicit operator ulong(SDL_FingerId x) => x._value;
 

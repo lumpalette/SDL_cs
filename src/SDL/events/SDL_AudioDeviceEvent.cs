@@ -3,10 +3,10 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Audio device event structure (FIXME:event.adevice.*).
+/// Audio device event structure (<see cref="SDL_Event.AudioDevice"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceEvent">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceEvent">here</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_AudioDeviceEvent

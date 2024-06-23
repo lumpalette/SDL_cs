@@ -4,7 +4,7 @@
 /// Data about a single finger in a multitouch event.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Finger">here</see>.
+/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Finger">here</see> for more details.
 /// </remarks>
 public struct /* kid named */ SDL_Finger
 {

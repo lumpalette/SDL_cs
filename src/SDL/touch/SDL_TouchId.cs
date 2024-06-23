@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Represents a unique ID for a touch device.
 /// </summary>
 /// <remarks>
-/// The structure is a wrapper for an unsigned 64-bit integer.
+/// This structure is a wrapper for an unsigned 64-bit integer.
 /// </remarks>
 [Wrapper]
 public readonly struct SDL_TouchId
@@ -31,11 +31,6 @@ public readonly struct SDL_TouchId
 	{
 		return _value.GetHashCode();
 	}
-
-	/// <summary>
-	/// An invalid touch device ID. Used when a function that returns an <see cref="SDL_TouchId"/> fails.
-	/// </summary>
-	public static SDL_TouchId Invalid => new();
 
 	public static explicit operator ulong(SDL_TouchId x) => x._value;
 

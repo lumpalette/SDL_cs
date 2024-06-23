@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Joystick axis motion event structure (FIXME:event.jaxis.*)
+/// Joystick axis motion event structure (<see cref="SDL_Event.JoystickAxis"/>).
 /// </summary>
 /// <remarks>
 /// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_JoyAxisEvent">here</see> for more details.

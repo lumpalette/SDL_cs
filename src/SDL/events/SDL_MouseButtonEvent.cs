@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Mouse button event structure (FIXME:event.button.*).
+/// Mouse button event structure (<see cref="SDL_Event.MouseButton"/>).
 /// </summary>
 /// <remarks>
 /// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonEvent">here</see> for more details.
