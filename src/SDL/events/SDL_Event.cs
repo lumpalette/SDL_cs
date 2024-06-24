@@ -8,7 +8,7 @@ namespace SDL_cs;
 /// <remarks>
 /// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Event">here</see> for more details.
 /// </remarks>
-[StructLayout(LayoutKind.Explicit)]
+[Union, StructLayout(LayoutKind.Explicit)]
 public unsafe struct SDL_Event
 {
 	/// <summary>

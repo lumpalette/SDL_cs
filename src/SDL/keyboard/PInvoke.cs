@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace SDL_cs;
@@ -146,19 +147,53 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
+	/// Get the key code corresponding to the given scancode according to a default en_US keyboard layout.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDefaultKeyFromScancode">here</see> for more details.
+	/// </remarks>
+	/// <param name="scancode"> The desired <see cref="SDL_Scancode"/> to query. </param>
+	/// <returns> The <see cref="SDL_Keycode"/> that corresponds to the given <see cref="SDL_Scancode"/>. </returns>
+	public static SDL_Keycode GetDefaultKeyFromScancode(SDL_Scancode scancode)
+	{
+		return _PInvoke(scancode);
+
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDefaultKeyFromScancode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern SDL_Keycode _PInvoke(SDL_Scancode scancode);
+	}
+
+	/// <summary>
 	/// Get the key code corresponding to the given scancode according to the current keyboard layout.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyFromScancode">here</see> for more details.
 	/// </remarks>
 	/// <param name="scancode"> The desired <see cref="SDL_Scancode"/> to query. </param>
+	/// <param name="modState"> The modifier state to use when translating the scancode to a keycode. </param>
 	/// <returns> The <see cref="SDL_Keycode"/> that corresponds to the given <see cref="SDL_Scancode"/>. </returns>
-	public static SDL_Keycode GetKeyFromScancode(SDL_Scancode scancode)
+	public static SDL_Keycode GetKeyFromScancode(SDL_Scancode scancode, SDL_Keymod modState)
 	{
-		return _PInvoke(scancode);
+		return _PInvoke(scancode, modState);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetKeyFromScancode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern SDL_Keycode _PInvoke(SDL_Scancode scancode);
+		static extern SDL_Keycode _PInvoke(SDL_Scancode scancode, SDL_Keymod modState);
+	}
+
+	/// <summary>
+	/// Get the scancode corresponding to the given key code according to a default en_US keyboard layout.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDefaultScancodeFromKey">here</see> for more details.
+	/// </remarks>
+	/// <param name="key"> The desired <see cref="SDL_Keycode"/> to query. </param>
+	/// <param name="modState"> The modifier state that would be used when the scancode generates this key. </param>
+	/// <returns> The <see cref="SDL_Scancode"/> that corresponds to the given <see cref="SDL_Keycode"/>. </returns>
+	public static SDL_Scancode GetDefaultScancodeFromKey(SDL_Keycode key, SDL_Keymod modState)
+	{
+		return _PInvoke(key, &modState);
+
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDefaultScancodeFromKey", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern SDL_Scancode _PInvoke(SDL_Keycode key, SDL_Keymod* modState);
 	}
 
 	/// <summary>
@@ -168,13 +203,34 @@ unsafe partial class SDL
 	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetScancodeFromKey">here</see> for more details.
 	/// </remarks>
 	/// <param name="key"> The desired <see cref="SDL_Keycode"/> to query </param>
+	/// <param name="modState"> The modifier state that would be used when the scancode generates this key. </param>
 	/// <returns> The <see cref="SDL_Scancode"/> that corresponds to the given <see cref="SDL_Keycode"/>. </returns>
-	public static SDL_Scancode GetScancodeFromKey(SDL_Keycode key)
+	public static SDL_Scancode GetScancodeFromKey(SDL_Keycode key, SDL_Keymod modState)
 	{
-		return _PInvoke(key);
+		return _PInvoke(key, &modState);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetScancodeFromKey", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern SDL_Scancode _PInvoke(SDL_Keycode key);
+		static extern SDL_Scancode _PInvoke(SDL_Keycode key, SDL_Keymod* modState);
+	}
+
+	/// <summary>
+	/// Set a human-readable name for a scancode.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetScancodeName">here</see> for more details.
+	/// </remarks>
+	/// <param name="scancode"> The desired <see cref="SDL_Scancode"/>. </param>
+	/// <param name="name"> The name to use for the scancode. </param>
+	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
+	public static int SetScancodeName(SDL_Scancode scancode, string name)
+	{
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
+		{
+			return _PInvoke(scancode, namePtr);
+		}
+
+		[DllImport(LibraryName, EntryPoint = "SDL_SetScancodeName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(SDL_Scancode scancode, byte* name);
 	}
 
 	/// <summary>

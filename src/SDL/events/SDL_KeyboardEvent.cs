@@ -34,6 +34,26 @@ public struct SDL_KeyboardEvent
 	public SDL_KeyboardId Which;
 
 	/// <summary>
+	/// SDL physical key code.
+	/// </summary>
+	public SDL_Scancode Scancode;
+
+	/// <summary>
+	/// SDL virtual key code.
+	/// </summary>
+	public SDL_Keycode Key;
+
+	/// <summary>
+	/// Current key modifiers.
+	/// </summary>
+	public SDL_Keymod Mod;
+
+	/// <summary>
+	/// The platform dependent scancode for this event.
+	/// </summary>
+	public ushort Raw;
+
+	/// <summary>
 	/// Can be <see cref="SDL_InputState.Pressed"/> or <see cref="SDL_InputState.Released"/>.
 	/// </summary>
 	public SDL_InputState State;
@@ -42,13 +62,4 @@ public struct SDL_KeyboardEvent
 	/// Non-zero if this is a key repeat.
 	/// </summary>
 	public byte Repeat;
-
-	private readonly byte _padding;
-
-	private readonly byte _padding1;
-
-	/// <summary>
-	/// The key that was pressed or released.
-	/// </summary>
-	public SDL_Keysym Keysym;
 }
