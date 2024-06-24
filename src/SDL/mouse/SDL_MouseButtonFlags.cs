@@ -11,9 +11,9 @@ namespace SDL_cs;
 [Flags]
 public enum SDL_MouseButtonFlags : uint
 {
-	LMask = 1u << (SDL_MouseButton.Left - 1),
-	MMask = 1u << (SDL_MouseButton.Middle - 1),
-	RMask = 1u << (SDL_MouseButton.Right - 1),
-	X1Mask = 1u << (SDL_MouseButton.X1 - 1),
-	X2Mask = 1u << (SDL_MouseButton.X2 - 1),
+	Left = 1u << (SDL_MouseButton.Left - 1),
+	Middle = 1u << (SDL_MouseButton.Middle - 1),
+	Right = 1u << (SDL_MouseButton.Right - 1),
+	X1 = 1u << (SDL_MouseButton.X1 - 1),
+	X2 = 1u << (SDL_MouseButton.X2 - 1),
 }

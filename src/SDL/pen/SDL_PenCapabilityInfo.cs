@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// Pen capabilities, as reported by FIXME:SDL_GetPenCapabilities().
+/// Pen capabilities, as reported by <see cref="SDL.GetPenCapabilities(SDL_PenId, out SDL_PenCapabilityInfo)"/>.
 /// </summary>
 /// <remarks>
 /// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PenCapabilityInfo">here</see> for more details.
@@ -12,7 +12,7 @@ namespace SDL_cs;
 public struct SDL_PenCapabilityInfo
 {
 	/// <summary>
-	/// Physical maximum tilt angle, for XTilt and YTilt, or <see cref="SDL.PenInfoUnknown"/>.
+	/// Physical maximum tilt angle, for XTilt and YTilt, or <see cref="Unknown"/>.
 	/// </summary>
 	/// <remarks>
 	/// Pens cannot typically tilt all the way to 90 degrees, so this value is usually less than 90.0f.
@@ -25,7 +25,12 @@ public struct SDL_PenCapabilityInfo
 	public uint WacomId;
 
 	/// <summary>
-	/// Number of pen buttons (not counting the pen tip), or <see cref="SDL.PenInfoUnknown"/>.
+	/// Number of pen buttons (not counting the pen tip), or <see cref="Unknown"/>.
 	/// </summary>
 	public sbyte NumButtons;
+
+	/// <summary>
+	/// Marks unknown information when querying the pen.
+	/// </summary>
+	public const int Unknown = -1;
 }

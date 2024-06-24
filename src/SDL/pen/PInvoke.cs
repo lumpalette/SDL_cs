@@ -14,7 +14,7 @@ unsafe partial class SDL
 	[Macro]
 	public static SDL_PenCapabilityFlags PenAxisCapability(uint axis)
 	{
-		return PenCapability(axis + (uint)SDL_PenFlags.AxisBitOffset);
+		return PenCapability(axis + PenFlagAxisBitOffset);
 	}
 
 	/// <summary>
@@ -59,8 +59,8 @@ unsafe partial class SDL
 	/// <param name="axes"> Returns the axis information. The axes are in the same order as <see cref="SDL_PenAxis"/>. </param>
 	/// <returns>
 	/// A bit mask with the current pen button states (<see cref="SDL_MouseButtonFlags.ButtonLMask"/>, etc.), possibly
-	/// <see cref="SDL_PenCapabilityFlags.DownMask"/>, and exactly one of <see cref="SDL_PenCapabilityFlags.InkMask"/> or
-	/// <see cref="SDL_PenCapabilityFlags.EraserMask"/>, or 0 on error (see <see cref="GetError"/>).
+	/// <see cref="SDL_PenCapabilityFlags.Down"/>, and exactly one of <see cref="SDL_PenCapabilityFlags.Ink"/> or
+	/// <see cref="SDL_PenCapabilityFlags.Eraser"/>, or 0 on error (see <see cref="GetError"/>).
 	/// </returns>
 	public static uint GetPenStatus(SDL_PenId penId, out float x, out float y, out float[] axes)
 	{
@@ -146,8 +146,8 @@ unsafe partial class SDL
 	/// </summary>
 	public static SDL_MouseId PenMouseId => new(uint.MaxValue - 2);
 
-	/// <summary>
-	/// Marks unknown information when querying the pen.
-	/// </summary>
-	public const int PenInfoUnknown = -1;
+	public const int PenFlagDownBitIndex = 13;
+	public const int PenFlagInkBitIndex = 14;
+	public const int PenFlagEraserBitIndex = 15;
+	public const int PenFlagAxisBitOffset = 16;
 }

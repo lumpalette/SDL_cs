@@ -78,6 +78,12 @@ public unsafe struct SDL_Event
 	public SDL_MouseButtonEvent MouseButton;
 
 	/// <summary>
+	/// Mouse wheel event data.
+	/// </summary>
+	[FieldOffset(0)]
+	public SDL_MouseWheelEvent MouseWheel;
+
+	/// <summary>
 	/// Joystick device change event data.
 	/// </summary>
 	[FieldOffset(0)]

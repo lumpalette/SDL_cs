@@ -18,7 +18,7 @@ public unsafe struct SDL_GamepadSensorEvent
 	private readonly uint _reserved;
 
 	/// <summary>
-	/// In nanoseconds, populated using <see cref="FIXME:SDL_GetTicksNS()"/>.
+	/// In nanoseconds, populated using <see cref="SDL.GetTicksNs"/>.
 	/// </summary>
 	public ulong Timestamp;
 

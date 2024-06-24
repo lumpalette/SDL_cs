@@ -14,49 +14,52 @@ public enum SDL_PenCapabilityFlags : uint
 	/// <summary>
 	/// Pen tip is currently touching the drawing surface.
 	/// </summary>
-	DownMask = 1u << SDL_PenFlags.DownBitIndex,
+	Down = 1u << SDL.PenFlagDownBitIndex,
 
 	/// <summary>
-	/// Pen has a regular drawing tip (FIXME:SDL_GetPenCapabilities). For events (FIXME:SDL_PenButtonEvent,
-	/// FIXME:SDL_PenMotionEvent, FIXME:SDL_GetPenStatus) this flag is mutually exclusive with <see cref="PenEraserMask"/>.
+	/// Pen has a regular drawing tip (<see cref="SDL.GetPenCapabilities(SDL_PenId, out SDL_PenCapabilityInfo)"/>). For events
+	/// (<see cref="SDL_PenButtonEvent"/>, <see cref="SDL_PenMotionEvent"/>,
+	/// <see cref="SDL.GetPenStatus(SDL_PenId, out float, out float, out float[])"/>) this flag is mutually exclusive with
+	/// <see cref="Eraser"/>.
 	/// </summary>
-	InkMask = 1u << SDL_PenFlags.InkBitIndex,
+	Ink = 1u << SDL.PenFlagInkBitIndex,
 
 	/// <summary>
-	/// Pen has an eraser tip (FIXME:SDL_GetPenCapabilities) or is being used as eraser (FIXME:SDL_PenButtonEvent,
-	/// FIXME:SDL_PenMotionEvent, FIXME:SDL_GetPenStatus).
+	/// Pen has an eraser tip (<see cref="SDL.GetPenCapabilities(SDL_PenId, out SDL_PenCapabilityInfo)"/>) or is being used as
+	/// eraser (<see cref="SDL_PenButtonEvent"/>, <see cref="SDL_PenMotionEvent"/>,
+	/// <see cref="SDL.GetPenStatus(SDL_PenId, out float, out float, out float[])"/>).
 	/// </summary>
-	EraserMask = 1u << SDL_PenFlags.EraserBitIndex,
+	Eraser = 1u << SDL.PenFlagEraserBitIndex,
 
 	/// <summary>
 	/// Pen provides pressure information in axis <see cref="SDL_PenAxis.Pressure"/>.
 	/// </summary>
-	AxisPressureMask = 1u << (SDL_PenAxis.Pressure + SDL_PenFlags.AxisBitOffset),
+	AxisPressure = 1u << (SDL_PenAxis.Pressure + SDL.PenFlagAxisBitOffset),
 
 	/// <summary>
 	/// Pen provides horizontal tilt information in axis <see cref="SDL_PenAxis.XTilt"/>.
 	/// </summary>
-	AxisXTiltMask = 1u << (SDL_PenAxis.XTilt + SDL_PenFlags.AxisBitOffset),
+	AxisXTilt = 1u << (SDL_PenAxis.XTilt + SDL.PenFlagAxisBitOffset),
 
 	/// <summary>
 	/// Pen provides vertical tilt information in axis <see cref="SDL_PenAxis.YTilt"/>.
 	/// </summary>
-	AxisYTiltMask = 1u << (SDL_PenAxis.YTilt + SDL_PenFlags.AxisBitOffset),
+	AxisYTilt = 1u << (SDL_PenAxis.YTilt + SDL.PenFlagAxisBitOffset),
 
 	/// <summary>
 	/// Pen provides distance to drawing tablet in <see cref="SDL_PenAxis.Distance"/>.
 	/// </summary>
-	AxisDistanceMask = 1u << (SDL_PenAxis.Distance + SDL_PenFlags.AxisBitOffset),
+	AxisDistance = 1u << (SDL_PenAxis.Distance + SDL.PenFlagAxisBitOffset),
 
 	/// <summary>
 	/// Pen provides barrel rotation information in axis <see cref="SDL_PenAxis.Rotation"/>.
 	/// </summary>
-	AxisRotationMask = 1u << (SDL_PenAxis.Rotation + SDL_PenFlags.AxisBitOffset),
+	AxisRotation = 1u << (SDL_PenAxis.Rotation + SDL.PenFlagAxisBitOffset),
 
 	/// <summary>
 	/// Pen provides slider/finger wheel or similar in axis <see cref="SDL_PenAxis.Slider"/>
 	/// </summary>
-	AxisSliderMask = 1u << (SDL_PenAxis.Slider + SDL_PenFlags.AxisBitOffset),
+	AxisSlider = 1u << (SDL_PenAxis.Slider + SDL.PenFlagAxisBitOffset),
 
-	AxisBidirectionalMasks = AxisXTiltMask | AxisYTiltMask
+	AxisBidirectional = AxisXTilt | AxisYTilt
 }

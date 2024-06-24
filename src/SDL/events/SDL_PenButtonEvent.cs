@@ -19,7 +19,7 @@ public unsafe struct SDL_PenButtonEvent
 	private readonly uint _reserved;
 
 	/// <summary>
-	/// In nanoseconds, populated using <see cref="FIXME:SDL_GetTicksNS()"/>.
+	/// In nanoseconds, populated using <see cref="SDL.GetTicksNs"/>.
 	/// </summary>
 	public ulong Timestamp;
 
@@ -44,8 +44,8 @@ public unsafe struct SDL_PenButtonEvent
 	public SDL_InputState State;
 
 	/// <summary>
-	/// Pen button masks. <see cref="SDL_PenCapabilityFlags.DownMask"/> is set if the pen is touching the surface, and
-	/// <see cref="SDL_PenCapabilityFlags.EraserMask"/> is set if the pen is (used as) an eraser.
+	/// Pen button masks. <see cref="SDL_PenCapabilityFlags.Down"/> is set if the pen is touching the surface, and
+	/// <see cref="SDL_PenCapabilityFlags.Eraser"/> is set if the pen is (used as) an eraser.
 	/// </summary>
 	public ushort PenState;
 

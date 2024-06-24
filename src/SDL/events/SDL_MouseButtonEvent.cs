@@ -19,7 +19,7 @@ public struct SDL_MouseButtonEvent
 	private readonly uint _reserved;
 
 	/// <summary>
-	/// In nanoseconds, populated using <see cref="FIXME:SDL_GetTicksNS()"/>.
+	/// In nanoseconds, populated using <see cref="SDL.GetTicksNs"/>.
 	/// </summary>
 	public ulong Timestamp;
 
@@ -29,7 +29,7 @@ public struct SDL_MouseButtonEvent
 	public SDL_WindowId WindowId;
 
 	/// <summary>
-	/// The mouse instance ID, <see cref="FIXME:SDL_TOUCH_MOUSEID"/>, or <see cref="FIXME:SDL_PEN_MOUSEID"/>.
+	/// The mouse instance ID, <see cref="SDL.TouchMouseId"/>, or <see cref="SDL.PenMouseId"/>.
 	/// </summary>
 	public SDL_MouseId Which;
 
