@@ -240,7 +240,7 @@ unsafe partial class SDL
 	/// <param name="hotX"> The x-axis offset from the left of the cursor image to the mouse x position, in the range of 0 to <paramref name="width"/> - 1. </param>
 	/// <param name="hotY"> The y-axis offset from the top of the cursor image to the mouse y position, in the range of 0 to <paramref name="height"/> - 1. </param>
 	/// <returns> A new cursor with the specified parameters on success or null on failure; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Cursor* CreateCursor(byte[] data, byte[] mask, int width, int height, int hotX, int hotY) // CHECK:overload
+	public static SDL_Cursor* CreateCursor(byte[] data, byte[] mask, int width, int height, int hotX, int hotY)
 	{
 		fixed (byte* dataPtr = data, maskPtr = mask)
 		{
@@ -261,7 +261,7 @@ unsafe partial class SDL
 	/// <param name="hotX"> The x position of the cursor hot spot. </param>
 	/// <param name="hotY"> The y position of the cursor hot spot. </param>
 	/// <returns> The new cursor on success or null on failure; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Cursor* CreateCursor(SDL_Surface* surface, int hotX, int hotY) // CHECK:overload
+	public static SDL_Cursor* CreateColorCursor(SDL_Surface* surface, int hotX, int hotY)
 	{
 		// i'm not sure if an overload is appropiate here, but i'll leave it like this for now.
 		return _PInvoke(surface, hotX, hotY);
@@ -278,7 +278,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="id"> An <see cref="SDL_SystemCursor"/> enum value. </param>
 	/// <returns> A cursor on success or null on failure; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Cursor* CreateCursor(SDL_SystemCursor id) // CHECK:overload
+	public static SDL_Cursor* CreateSystemCursor(SDL_SystemCursor id)
 	{
 		return _PInvoke(id);
 

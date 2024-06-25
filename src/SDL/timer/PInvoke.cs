@@ -105,7 +105,7 @@ unsafe partial class SDL
 	/// <param name="callback"> The <see cref="SDL_TimerMsCallback"/> function to call when the specified <paramref name="intervalMs"/> elapses. </param>
 	/// <param name="userData"> A pointer that is passed to <paramref name="callback"/>. </param>
 	/// <returns> A timer ID or 0 if an error occurs; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_TimerId SDL_AddTimerMs(uint intervalMs, SDL_TimerMsCallback callback, void* userData)
+	public static SDL_TimerId AddTimerMs(uint intervalMs, SDL_TimerMsCallback callback, void* userData)
 	{
 		return _PInvoke(intervalMs, callback, userData);
 
@@ -123,7 +123,7 @@ unsafe partial class SDL
 	/// <param name="callback"> The <see cref="SDL_TimerNsCallback"/> function to call when the specified <paramref name="intervalNs"/> elapses. </param>
 	/// <param name="userData"> A pointer that is passed to <paramref name="callback"/>. </param>
 	/// <returns> A timer ID or 0 if an error occurs; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_TimerId SDL_AddTimerNs(ulong intervalNs, SDL_TimerNsCallback callback, void* userData)
+	public static SDL_TimerId AddTimerNs(ulong intervalNs, SDL_TimerNsCallback callback, void* userData)
 	{
 		return _PInvoke(intervalNs, callback, userData);
 

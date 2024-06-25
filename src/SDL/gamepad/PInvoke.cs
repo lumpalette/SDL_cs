@@ -978,7 +978,7 @@ unsafe partial class SDL
 	/// <param name="type"> The type of gamepad to check. </param>
 	/// <param name="button"> A button index (one of the <see cref="SDL_GamepadButton"/> values). </param>
 	/// <returns> The <see cref="SDL_GamepadButtonLabel"/> enum corresponding to the button label. </returns>
-	public static SDL_GamepadButtonLabel GetGamepadButtonLabel(SDL_GamepadType type, SDL_GamepadButton button) // CHECK:overload
+	public static SDL_GamepadButtonLabel GetGamepadButtonLabelForType(SDL_GamepadType type, SDL_GamepadButton button)
 	{
 		return _PInvoke(type, button);
 
@@ -995,7 +995,7 @@ unsafe partial class SDL
 	/// <param name="gamepad"> A gamepad. </param>
 	/// <param name="button"> A button index (one of the <see cref="SDL_GamepadButton"/> values). </param>
 	/// <returns> The <see cref="SDL_GamepadButtonLabel"/> enum corresponding to the button label. </returns>
-	public static SDL_GamepadButtonLabel GetGamepadButtonLabel(SDL_Gamepad* gamepad, SDL_GamepadButton button) // CHECK:overload
+	public static SDL_GamepadButtonLabel GetGamepadButtonLabel(SDL_Gamepad* gamepad, SDL_GamepadButton button)
 	{
 		return _PInvoke(gamepad, button);
 

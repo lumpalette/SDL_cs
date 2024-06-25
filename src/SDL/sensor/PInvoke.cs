@@ -15,9 +15,9 @@ unsafe partial class SDL
 	/// <returns> An array of sensor instance ids, or null on error; call <see cref="GetError"/> for more details. </returns>
 	public static SDL_SensorId[]? GetSensors(out int count)
 	{
-		fixed (int* c = &count)
+		fixed (int* countPtr = &count)
 		{
-			SDL_SensorId* s = _PInvoke(c);
+			SDL_SensorId* s = _PInvoke(countPtr);
 			if (s is null)
 			{
 				return null;
@@ -206,9 +206,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>F
 	public static int GetSensorData(SDL_Sensor* sensor, ref float[] data)
 	{
-		fixed (float* d = data)
+		fixed (float* dataPtr = data)
 		{
-			return _PInvoke(sensor, d, data.Length);
+			return _PInvoke(sensor, dataPtr, data.Length);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorData", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]

@@ -62,6 +62,7 @@ partial class SDL_Prop
 	public const string TextureCreateVulkanTextureNumber = "vulkan.texture";
 	public const string TextureCreateWidthNumber = "width";
 
+	public const string TextureAccessNumber = "SDL.texture.access";
 	public const string TextureColorspaceNumber = "SDL.texture.colorspace";
 	public const string TextureD3d11TexturePointer = "SDL.texture.d3d11.texture";
 	public const string TextureD3d11TextureUPointer = "SDL.texture.d3d11.texture_u";
@@ -69,7 +70,9 @@ partial class SDL_Prop
 	public const string TextureD3d12TexturePointer = "SDL.texture.d3d12.texture";
 	public const string TextureD3d12TextureUPointer = "SDL.texture.d3d12.texture_u";
 	public const string TextureD3d12TextureVPointer = "SDL.texture.d3d12.texture_v";
+	public const string TextureFormatNumber = "SDL.texture.format";
 	public const string TextureHdrHeadroomFloat = "SDL.texture.HDR_headroom";
+	public const string TextureHeightNumber = "SDL.texture.height";
 	public const string TextureOpenGLES2TextureNumber = "SDL.texture.opengles2.texture";
 	public const string TextureOpenGLES2TextureTargetNumber = "SDL.texture.opengles2.target";
 	public const string TextureOpenGLES2TextureUNumber = "SDL.texture.opengles2.texture_u";
@@ -84,4 +87,5 @@ partial class SDL_Prop
 	public const string TextureOpenGLTexWFloat = "SDL.texture.opengl.tex_w";
 	public const string TextureSdrWhitePointFloat = "SDL.texture.SDR_white_point";
 	public const string TextureVulkanTextureNumber = "SDL.texture.vulkan.texture";
+	public const string TextureWidthNumber = "SDL.texture.width";
 }

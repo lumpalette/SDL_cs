@@ -15,9 +15,9 @@ unsafe partial class SDL
 	/// <returns> An array of touch device IDs, or null on error; call <see cref="GetError"/> for more details. </returns>
 	public static SDL_TouchId[]? GetTouchDevices(out int count)
 	{
-		fixed (int* c = &count)
+		fixed (int* countPtr = &count)
 		{
-			SDL_TouchId* d = _PInvoke(c);
+			SDL_TouchId* d = _PInvoke(countPtr);
 			if (d is null)
 			{
 				return null;
@@ -78,9 +78,9 @@ unsafe partial class SDL
 	/// <returns> An array of <see cref="SDL_Finger"/> structures, or null on error; call <see cref="GetError"/> for more details. </returns>
 	public static SDL_Finger[]? GetTouchFingers(SDL_TouchId touchId, out int count)
 	{
-		fixed (int* c = &count)
+		fixed (int* countPtr = &count)
 		{
-			SDL_Finger** f = _PInvoke(touchId, c);
+			SDL_Finger** f = _PInvoke(touchId, countPtr);
 			if (f is null)
 			{
 				return null;

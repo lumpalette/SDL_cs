@@ -368,14 +368,9 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="rect"> The <see cref="SDL_Rect"/> structure representing the rectangle to receive text (ignored if null). </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int SetTextInputRect(SDL_Rect? rect)
+	public static int SetTextInputRect(SDL_Rect* rect)
 	{
-		if (rect.HasValue)
-		{
-			SDL_Rect r = rect.Value;
-			return _PInvoke(&r);
-		}
-		return _PInvoke(null);
+		return _PInvoke(rect);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_SetTextInputRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern int _PInvoke(SDL_Rect* rect);

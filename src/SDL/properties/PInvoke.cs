@@ -84,8 +84,49 @@ unsafe partial class SDL
 		static extern void _PInvoke(SDL_PropertiesId props);
 	}
 
-	// FIXME: implement SDL_SetPropertyWithCleanup()
-	// FIXME: implement SDL_SetProperty()
+	/// <summary>
+	/// Set a property on a set of properties with a cleanup function that is called when the property is deleted.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetPropertyWithCleanup">here</see> for more details.
+	/// </remarks>
+	/// <param name="props"> The properties to modify. </param>
+	/// <param name="name"> The name of the property to modify. </param>
+	/// <param name="value"> The new value of the property, or null to delete the property. </param>
+	/// <param name="cleanup"> The function to call when this property is deleted, or null if no cleanup is necessary. </param>
+	/// <param name="userData"> A pointer that is passed to the cleanup function. </param>
+	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
+	public static int SetPropertyWithCleanup(SDL_PropertiesId props, string name, void* value, SDL_CleanupPropertyCallback cleanup, void* userData)
+	{
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
+		{
+			return _PInvoke(props, namePtr, value, cleanup, userData);
+		}
+
+		[DllImport(LibraryName, EntryPoint = "SDL_SetPropertyWithCleanup", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(SDL_PropertiesId props, byte* name, void* value, SDL_CleanupPropertyCallback cleanup, void* userData);
+	}
+
+	/// <summary>
+	/// Set a property on a set of properties.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetProperty">here</see> for more details.
+	/// </remarks>
+	/// <param name="props"> The properties to modify. </param>
+	/// <param name="name"> The name of the property to modify. </param>
+	/// <param name="value"> The new value of the property, or null to delete the property. </param>
+	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
+	public static int SetProperty(SDL_PropertiesId props, string name, void* value)
+	{
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
+		{
+			return _PInvoke(props, namePtr, value);
+		}
+
+		[DllImport(LibraryName, EntryPoint = "SDL_SetProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(SDL_PropertiesId props, byte* name, void* value);
+	}
 
 	/// <summary>
 	/// Set a string property on a set of properties.
@@ -99,9 +140,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetStringProperty(SDL_PropertiesId props, string name, string? value)
 	{
-		fixed (byte* n = Encoding.UTF8.GetBytes(name), v = (value is not null) ? Encoding.UTF8.GetBytes(value) : null)
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name), valuePtr = (value is not null) ? Encoding.UTF8.GetBytes(value) : null)
 		{
-			return _PInvoke(props, n, v);
+			return _PInvoke(props, namePtr, valuePtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_SetStringProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -120,9 +161,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetNumberProperty(SDL_PropertiesId props, string name, long value)
 	{
-		fixed (byte* n = Encoding.UTF8.GetBytes(name))
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return _PInvoke(props, n, value);
+			return _PInvoke(props, namePtr, value);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_SetNumberProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -141,9 +182,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetFloatProperty(SDL_PropertiesId props, string name, float value)
 	{
-		fixed (byte* n = Encoding.UTF8.GetBytes(name))
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return _PInvoke(props, n, value);
+			return _PInvoke(props, namePtr, value);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_SetFloatProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -162,9 +203,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SetBooleanProperty(SDL_PropertiesId props, string name, bool value)
 	{
-		fixed (byte* n = Encoding.UTF8.GetBytes(name))
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return _PInvoke(props, n, value ? 1 : 0);
+			return _PInvoke(props, namePtr, value ? 1 : 0);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_SetBooleanProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -182,9 +223,9 @@ unsafe partial class SDL
 	/// <returns> True if the property exists, or false if it doesn't. </returns>
 	public static bool HasProperty(SDL_PropertiesId props, string name)
 	{
-		fixed (byte* n = Encoding.UTF8.GetBytes(name))
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return _PInvoke(props, n) == 1;
+			return _PInvoke(props, namePtr) == 1;
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_HasProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -202,16 +243,35 @@ unsafe partial class SDL
 	/// <returns> The type of the property, or <see cref="SDL_PropertyType.Invalid"/> if it is not set. </returns>
 	public static SDL_PropertyType GetPropertyType(SDL_PropertiesId props, string name)
 	{
-		fixed (byte* n = Encoding.UTF8.GetBytes(name))
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return _PInvoke(props, n);
+			return _PInvoke(props, namePtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetPropertyType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern SDL_PropertyType _PInvoke(SDL_PropertiesId props, byte* name);
 	}
 
-	// FIXME: implement SDL_GetProperty()
+	/// <summary>
+	/// Get a property on a set of properties.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetProperty">here</see> for more details.
+	/// </remarks>
+	/// <param name="props"> The properties to query. </param>
+	/// <param name="name"> The name of the property to query. </param>
+	/// <param name="defaultValue"> The default value of the property. Defaults to null. </param>
+	/// <returns> The value of the property, or <paramref name="defaultValue"/> if it is not set or not a pointer property. </returns>
+	public static void* GetProperty(SDL_PropertiesId props, string name, void* defaultValue = null)
+	{
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
+		{
+			return _PInvoke(props, namePtr, defaultValue);
+		}
+
+		[DllImport(LibraryName, EntryPoint = "SDL_GetProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern void* _PInvoke(SDL_PropertiesId props, byte* name, void* defaultValue);
+	}
 
 	/// <summary>
 	/// Get a string property on a set of properties.
@@ -225,9 +285,9 @@ unsafe partial class SDL
 	/// <returns> The value of the property, or <paramref name="defaultValue"/> if it is not set or not a string property. </returns>
 	public static string GetStringProperty(SDL_PropertiesId props, string name, string defaultValue = "")
 	{
-		fixed (byte* n = Encoding.UTF8.GetBytes(name), v = Encoding.UTF8.GetBytes(defaultValue))
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name), defaultValuePtr = Encoding.UTF8.GetBytes(defaultValue))
 		{
-			return Marshal.PtrToStringUTF8((nint)_PInvoke(props, n, v))!;
+			return Marshal.PtrToStringUTF8((nint)_PInvoke(props, namePtr, defaultValuePtr))!;
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetStringProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -246,9 +306,9 @@ unsafe partial class SDL
 	/// <returns> The value of the property, or <paramref name="defaultValue"/> if it is not set or not a number property. </returns>
 	public static long GetNumberProperty(SDL_PropertiesId props, string name, long defaultValue = 0)
 	{
-		fixed (byte* n = Encoding.UTF8.GetBytes(name))
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return _PInvoke(props, n, defaultValue);
+			return _PInvoke(props, namePtr, defaultValue);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetNumberProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -263,13 +323,13 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="props"> The properties to query. </param>
 	/// <param name="name"> The name of the property to query. </param>
-	/// <param name="defaultValue"> The default value of the property. Defaults to 0. </param>
+	/// <param name="defaultValue"> The default value of the property. Defaults to 0.0f. </param>
 	/// <returns> The value of the property, or <paramref name="defaultValue"/> if it is not set or not a float property. </returns>
 	public static float GetFloatProperty(SDL_PropertiesId props, string name, float defaultValue = 0f)
 	{
-		fixed (byte* n = Encoding.UTF8.GetBytes(name))
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return _PInvoke(props, n, defaultValue);
+			return _PInvoke(props, namePtr, defaultValue);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetFloatProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -288,9 +348,9 @@ unsafe partial class SDL
 	/// <returns> The value of the property, or <paramref name="defaultValue"/> if it is not set or not a boolean property. </returns>
 	public static bool GetBooleanProperty(SDL_PropertiesId props, string name, bool defaultValue = false)
 	{
-		fixed (byte* n = Encoding.UTF8.GetBytes(name))
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return _PInvoke(props, n, defaultValue ? 1 : 0) == 1;
+			return _PInvoke(props, namePtr, defaultValue ? 1 : 0) == 1;
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetBooleanProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -308,16 +368,32 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int ClearProperty(SDL_PropertiesId props, string name)
 	{
-		fixed (byte* n = Encoding.UTF8.GetBytes(name))
+		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return _PInvoke(props, n);
+			return _PInvoke(props, namePtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_ClearProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern int _PInvoke(SDL_PropertiesId props, byte* name);
 	}
 
-	// FIXME: implement SDL_EnumerateProperties()
+	/// <summary>
+	/// Enumerate the properties on a set of properties.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_EnumerateProperties">here</see> for more details.
+	/// </remarks>
+	/// <param name="props"> The properties to query. </param>
+	/// <param name="callback"> The function to call for each property. </param>
+	/// <param name="userData"> A pointer that is passed to <paramref name="callback"/>. </param>
+	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
+	public static int EnumerateProperties(SDL_PropertiesId props, SDL_EnumeratePropertiesCallback callback, void* userData)
+	{
+		return _PInvoke(props, callback, userData);
+
+		[DllImport(LibraryName, EntryPoint = "SDL_EnumerateProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		static extern int _PInvoke(SDL_PropertiesId props, SDL_EnumeratePropertiesCallback callback, void* userData);
+	}
 
 	/// <summary>
 	/// Destroy a set of properties.

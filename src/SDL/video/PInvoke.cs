@@ -98,12 +98,12 @@ unsafe partial class SDL
 	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplays">here</see> for more details.
 	/// </remarks>
 	/// <param name="count"> Returns the number of displays returned. </param>
-	/// <returns> An array of display instance ids, or null on error; call <see cref="GetError"/> for more information. </returns>
+	/// <returns> An array of display instance IDs, or null on error; call <see cref="GetError"/> for more information. </returns>
 	public static SDL_DisplayId[]? GetDisplays(out int count)
 	{
-		fixed (int* c = &count)
+		fixed (int* countPtr = &count)
 		{
-			SDL_DisplayId* d = _PInvoke(c);
+			SDL_DisplayId* d = _PInvoke(countPtr);
 			if (d is null)
 			{
 				return null;
@@ -179,9 +179,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetDisplayBounds(SDL_DisplayId displayId, out SDL_Rect rect)
 	{
-		fixed (SDL_Rect* r = &rect)
+		fixed (SDL_Rect* rectPtr = &rect)
 		{
-			return _PInvoke(displayId, r);
+			return _PInvoke(displayId, rectPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayBounds", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -199,9 +199,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetDisplayUsableBounds(SDL_DisplayId displayId, out SDL_Rect rect)
 	{
-		fixed (SDL_Rect* r = &rect)
+		fixed (SDL_Rect* rectPtr = &rect)
 		{
-			return _PInvoke(displayId, r);
+			return _PInvoke(displayId, rectPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayUsableBounds", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -267,9 +267,9 @@ unsafe partial class SDL
 	/// <returns> An array of display modes or null on error; call <see cref="GetError"/> for more details. </returns>
 	public static SDL_DisplayMode[]? GetFullscreenDisplayModes(SDL_DisplayId displayId, out int count)
 	{
-		fixed (int* c = &count)
+		fixed (int* countPtr = &count)
 		{
-			SDL_DisplayMode** d = _PInvoke(displayId, c);
+			SDL_DisplayMode** d = _PInvoke(displayId, countPtr);
 			if (d is null)
 			{
 				return null;
@@ -299,14 +299,10 @@ unsafe partial class SDL
 	/// <param name="refreshRate"> The refresh rate of the desired display mode, or 0.0f for the desktop refresh rate. </param>
 	/// <param name="includeHighDensityModes"> Include high density modes in the search. </param>
 	/// <returns> The closest display mode equal to or larger than the desired mode, or null on error; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_DisplayMode? GetClosestFullscreenDisplayMode(SDL_DisplayId displayId, int width, int height, float refreshRate, bool includeHighDensityModes)
+	public static SDL_DisplayMode* GetClosestFullscreenDisplayMode(SDL_DisplayId displayId, int width, int height, float refreshRate, bool includeHighDensityModes)
 	{
-		SDL_DisplayMode* d = _PInvoke(displayId, width, height, refreshRate, includeHighDensityModes ? 1 : 0);
-		if (d is null)
-		{
-			return null;
-		}
-		return *d;
+		return _PInvoke(displayId, width, height, refreshRate, includeHighDensityModes ? 1 : 0);
+		
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetClosestFullscreenDisplayMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern SDL_DisplayMode* _PInvoke(SDL_DisplayId displayId, int width, int height, float refreshRate, int includeHighDensityModes);
@@ -320,14 +316,9 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="displayId"> The instance ID of the display to query </param>
 	/// <returns> The desktop display mode or null on error; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_DisplayMode? GetDesktopDisplayMode(SDL_DisplayId displayId)
+	public static SDL_DisplayMode* GetDesktopDisplayMode(SDL_DisplayId displayId)
 	{
-		SDL_DisplayMode* d = _PInvoke(displayId);
-		if (d is null)
-		{
-			return null;
-		}
-		return *d;
+		return _PInvoke(displayId);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetDesktopDisplayMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern SDL_DisplayMode* _PInvoke(SDL_DisplayId displayId);
@@ -341,14 +332,9 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="displayId"> The instance ID of the display to query. </param>
 	/// <returns> The desktop display mode or null on error; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_DisplayMode? GetCurrentDisplayMode(SDL_DisplayId displayId)
+	public static SDL_DisplayMode* GetCurrentDisplayMode(SDL_DisplayId displayId)
 	{
-		SDL_DisplayMode* d = _PInvoke(displayId);
-		if (d is null)
-		{
-			return null;
-		}
-		return *d;
+		return _PInvoke(displayId);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern SDL_DisplayMode* _PInvoke(SDL_DisplayId displayId);
@@ -459,14 +445,9 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> The exclusive fullscreen mode to use or null for borderless fullscreen desktop mode. </returns>
-	public static SDL_DisplayMode? GetWindowFullscreenMode(SDL_Window* window)
+	public static SDL_DisplayMode* GetWindowFullscreenMode(SDL_Window* window)
 	{
-		SDL_DisplayMode* d = _PInvoke(window);
-		if (d is null)
-		{
-			return null;
-		}
-		return *d;
+		return _PInvoke(window);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowFullscreenMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern SDL_DisplayMode* _PInvoke(SDL_Window* window);
@@ -481,15 +462,15 @@ unsafe partial class SDL
 	/// <param name="window"> The window to query. </param>
 	/// <param name="size"> The size of the ICC profile. </param>
 	/// <returns> The raw ICC profile data on success or null on failure; call <see cref="GetError"/> for more information. </returns>
-	public static void* GetWindowICCProfile(SDL_Window* window, out ulong size)
+	public static void* GetWindowICCProfile(SDL_Window* window, out nuint size)
 	{
-		fixed (ulong* s = &size)
+		fixed (nuint* sizePtr = &size)
 		{
-			return _PInvoke(window, s);
+			return _PInvoke(window, sizePtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowICCProfile", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern void* _PInvoke(SDL_Window* window, ulong* size); // this shit looks and IS very cursed.
+		static extern void* _PInvoke(SDL_Window* window, nuint* size); // this shit looks and IS very cursed.
 	}
 
 	/// <summary>
@@ -519,11 +500,11 @@ unsafe partial class SDL
 	/// <param name="height"> The height of the window. </param>
 	/// <param name="flags"> Zero or more <see cref="SDL_WindowFlags"/> OR'd together. </param>
 	/// <returns> The window that was created or null on failure; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Window* CreateWindow(string title, int width, int height, SDL_WindowFlags flags) // CHECK:overload
+	public static SDL_Window* CreateWindow(string title, int width, int height, SDL_WindowFlags flags)
 	{
-		fixed (byte* t = Encoding.UTF8.GetBytes(title))
+		fixed (byte* titlePtr = Encoding.UTF8.GetBytes(title))
 		{
-			return _PInvoke(t, width, height, flags);
+			return _PInvoke(titlePtr, width, height, flags);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_CreateWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -538,7 +519,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="props"> The properties to use. </param>
 	/// <returns> The window that was created or null on failure; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Window* CreateWindow(SDL_PropertiesId props) // CHECK:overload
+	public static SDL_Window* CreateWindowWithProperties(SDL_PropertiesId props)
 	{
 		return _PInvoke(props);
 
@@ -658,9 +639,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowTitle(SDL_Window* window, string title)
 	{
-		fixed (byte* t = Encoding.UTF8.GetBytes(title))
+		fixed (byte* titlePtr = Encoding.UTF8.GetBytes(title))
 		{
-			return _PInvoke(window, t);
+			return _PInvoke(window, titlePtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowTitle", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -730,9 +711,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int GetWindowPosition(SDL_Window* window, out int x, out int y)
 	{
-		fixed (int* xx = &x, yy = &y)
+		fixed (int* xPtr = &x, yPtr = &y)
 		{
-			return _PInvoke(window, xx, yy);
+			return _PInvoke(window, xPtr, yPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowPosition", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -769,9 +750,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int GetWindowSize(SDL_Window* window, out int width, out int height)
 	{
-		fixed (int* w = &width, h = &height)
+		fixed (int* widthPtr = &width, heightPtr = &height)
 		{
-			return _PInvoke(window, w, h);
+			return _PInvoke(window, widthPtr, heightPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -792,9 +773,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int GetWindowBordersSize(SDL_Window* window, out int top, out int left, out int bottom, out int right)
 	{
-		fixed (int* t = &top, l = &left, b = &bottom, r = &right)
+		fixed (int* topPtr = &top, leftPtr = &left, bottomPtr = &bottom, rightPtr = &right)
 		{
-			return _PInvoke(window, t, l, b, r);
+			return _PInvoke(window, topPtr, leftPtr, bottomPtr, rightPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowBordersSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -813,9 +794,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int GetWindowSizeInPixels(SDL_Window* window, out int width, out int height)
 	{
-		fixed (int* w = &width, h = &height)
+		fixed (int* widthPtr = &width, heightPtr = &height)
 		{
-			return _PInvoke(window, w, h);
+			return _PInvoke(window, widthPtr, heightPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowSizeInPixels", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -852,9 +833,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int GetWindowMinimumSize(SDL_Window* widow, out int width, out int height)
 	{
-		fixed (int* w = &width, h = &height)
+		fixed (int* widthPtr = &width, heightPtr = &height)
 		{
-			return _PInvoke(widow, w, h);
+			return _PInvoke(widow, widthPtr, heightPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowMinimumSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -891,9 +872,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int GetWindowMaximumSize(SDL_Window* window, out int width, out int height)
 	{
-		fixed (int* w = &width, h = &height)
+		fixed (int* widthPtr = &width, heightPtr = &height)
 		{
-			return _PInvoke(window, w, h);
+			return _PInvoke(window, widthPtr, heightPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowMaximumSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -1139,9 +1120,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int UpdateWindowSurfaceRects(SDL_Window* window, SDL_Rect[] rects)
 	{
-		fixed (SDL_Rect* r = rects)
+		fixed (SDL_Rect* rectsPtr = rects)
 		{
-			return _PInvoke(window, r, rects.Length);
+			return _PInvoke(window, rectsPtr, rects.Length);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_UpdateWindowSurfaceRects", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -1272,14 +1253,9 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> The mouse confinement rectangle of a window, or null if there isn't one. </returns>
-	public static SDL_Rect? GetWindowMouseRect(SDL_Window* window)
+	public static SDL_Rect* GetWindowMouseRect(SDL_Window* window)
 	{
-		SDL_Rect* r = _PInvoke(window);
-		if (r != null)
-		{
-			return *r;
-		}
-		return null;
+		return _PInvoke(window);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowMouseRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern SDL_Rect* _PInvoke(void* window);
@@ -1313,9 +1289,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int GetWindowOpacity(SDL_Window* window, out float opacity)
 	{
-		fixed (float* o = &opacity)
+		fixed (float* opacityPtr = &opacity)
 		{
-			return _PInvoke(window, o);
+			return _PInvoke(window, opacityPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowOpacity", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]

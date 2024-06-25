@@ -3,7 +3,7 @@
 namespace SDL_cs;
 
 /// <summary>
-/// A unique identifier for a pen within a session.
+/// SDL pen instance IDs.
 /// </summary>
 /// <remarks>
 /// This structure is a wrapper for an unsigned 32-bit integer.

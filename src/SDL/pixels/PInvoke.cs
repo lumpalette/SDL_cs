@@ -418,10 +418,10 @@ unsafe partial class SDL
 	/// <summary>
 	/// No transparency.
 	/// </summary>
-	public const int AlphaOpaque = 255;
+	public const byte AlphaOpaque = 255;
 
 	/// <summary>
 	/// Full transparency.
 	/// </summary>
-	public const int AlphaTransparent = 0;
+	public const byte AlphaTransparent = 0;
 }

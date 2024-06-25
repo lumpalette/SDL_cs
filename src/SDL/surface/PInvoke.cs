@@ -30,7 +30,7 @@ unsafe partial class SDL
 	/// <param name="height"> The height of the surface. </param>
 	/// <param name="format"> The <see cref="SDL_PixelFormatEnum"/> for the new surface's pixel format. </param>
 	/// <returns> The new <see cref="SDL_Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Surface* CreateSurface(int width, int height, SDL_PixelFormatEnum format) // CHECK:overload
+	public static SDL_Surface* CreateSurface(int width, int height, SDL_PixelFormatEnum format)
 	{
 		return _PInvoke(width, height, format);
 
@@ -44,21 +44,15 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSurfaceFrom">here</see> for more details.
 	/// </remarks>
-	/// <param name="pixels"> The pixel data, represented as unsigned 32-bit integer array. </param>
+	/// <param name="pixels"> A pointer to existing pixel data. </param>
 	/// <param name="width"> The width of the surface. </param>
 	/// <param name="height"> The height of the surface. </param>
 	/// <param name="pitch"> The number of bytes between each row, including padding </param>
 	/// <param name="format"> The pixel format value for the new surface's pixel format. </param>
 	/// <returns> The new <see cref="SDL_Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Surface* CreateSurface(uint[] pixels, int width, int height, int pitch, SDL_PixelFormatEnum format) // CHECK:overload
+	public static SDL_Surface* CreateSurfaceFrom(void* pixels, int width, int height, int pitch, SDL_PixelFormatEnum format)
 	{
-		fixed (uint* p = pixels)
-		{
-			// i'm not sure if the garbage collector messes up the 'pixels' managed array, because the documentation for
-			// this function says that no copy of the pixel data is made. if the managed array gets destroyed from memory
-			// by the gc, then it would also affect the C side, right? help
-			return _PInvoke(p, width, height, pitch, format);
-		}
+		return _PInvoke(pixels, width, height, pitch, format);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_CreateSurfaceFrom", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern SDL_Surface* _PInvoke(uint* pixels, int width, int height, int pitch, SDL_PixelFormatEnum format);
@@ -127,9 +121,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetSurfaceColorspace(SDL_Surface* surface, out SDL_Colorspace colorspace)
 	{
-		fixed (SDL_Colorspace* c = &colorspace)
+		fixed (SDL_Colorspace* colorspacePtr = &colorspace)
 		{
-			return _PInvoke(surface, c);
+			return _PInvoke(surface, colorspacePtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorspace", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -197,9 +191,9 @@ unsafe partial class SDL
 	/// <returns> A pointer to a new <see cref="SDL_Surface"/> structure or null if there was an error; call <see cref="GetError"/> for more information. </returns>
 	public static SDL_Surface* LoadBMP(string file)
 	{
-		fixed (byte* f = Encoding.UTF8.GetBytes(file))
+		fixed (byte* filePtr = Encoding.UTF8.GetBytes(file))
 		{
-			return _PInvoke(f);
+			return _PInvoke(filePtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_LoadBMP", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -219,9 +213,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int SaveBMP(SDL_Surface* surface, string file)
 	{
-		fixed (byte* f = Encoding.UTF8.GetBytes(file))
+		fixed (byte* filePtr = Encoding.UTF8.GetBytes(file))
 		{
-			return _PInvoke(surface, f);
+			return _PInvoke(surface, filePtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_SaveBMP", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -306,9 +300,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetSurfaceColorKey(SDL_Surface* surface, out uint key)
 	{
-		fixed (uint* k = &key)
+		fixed (uint* keyPtr = &key)
 		{
-			return _PInvoke(surface, k);
+			return _PInvoke(surface, keyPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorKey", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -347,9 +341,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetSurfaceColorMod(SDL_Surface* surface, out byte r, out byte g, out byte b)
 	{
-		fixed (byte* rr = &r, gg = &g, bb = &b)
+		fixed (byte* rPtr = &r, gPtr = &g, bPtr = &b)
 		{
-			return _PInvoke(surface, rr, gg, bb);
+			return _PInvoke(surface, rPtr, gPtr, bPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorMod", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -384,9 +378,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetSurfaceAlphaMod(SDL_Surface* surface, out byte alpha)
 	{
-		fixed (byte* a = &alpha)
+		fixed (byte* alphaPtr = &alpha)
 		{
-			return _PInvoke(surface, a);
+			return _PInvoke(surface, alphaPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetSurfaceAlphaMod", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -421,9 +415,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetSurfaceBlendMode(SDL_Surface* surface, out SDL_BlendMode blendMode)
 	{
-		fixed (SDL_BlendMode* b = &blendMode)
+		fixed (SDL_BlendMode* blendModePtr = &blendMode)
 		{
-			return _PInvoke(surface, b);
+			return _PInvoke(surface, blendModePtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetSurfaceBlendMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -458,9 +452,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetSurfaceClipRect(SDL_Surface* surface, out SDL_Rect rect)
 	{
-		fixed (SDL_Rect* r = &rect)
+		fixed (SDL_Rect* rectPtr = &rect)
 		{
-			return _PInvoke(surface, r);
+			return _PInvoke(surface, rectPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetSurfaceClipRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -509,7 +503,7 @@ unsafe partial class SDL
 	/// <param name="surface"> The existing <see cref="SDL_Surface"/> structure to convert. </param>
 	/// <param name="format"> The <see cref="SDL_PixelFormat"/> structure that the new surface is optimized for. </param>
 	/// <returns> The new <see cref="SDL_Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Surface* ConvertSurfaceFormat(SDL_Surface* surface, SDL_PixelFormat* format) // CHECK:overload
+	public static SDL_Surface* ConvertSurface(SDL_Surface* surface, SDL_PixelFormat* format)
 	{
 		return _PInvoke(surface, format);
 
@@ -526,11 +520,8 @@ unsafe partial class SDL
 	/// <param name="surface"> The existing <see cref="SDL_Surface"/> structure to convert. </param>
 	/// <param name="format"> The new pixel format. </param>
 	/// <returns> The new <see cref="SDL_Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Surface* ConvertSurfaceFormat(SDL_Surface* surface, SDL_PixelFormatEnum format) // CHECK:overload
+	public static SDL_Surface* ConvertSurfaceFormat(SDL_Surface* surface, SDL_PixelFormatEnum format)
 	{
-		// i think ConvertSurface and ConvertSurfaceFormat were meant to be overloadings, but since C doesn't have
-		// function overloading, they just created two functions instead. also, this function name is more accurate
-		// (for both cases) to what the function does haha.
 		return _PInvoke(surface, format);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_ConvertSurfaceFormat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -548,7 +539,7 @@ unsafe partial class SDL
 	/// <param name="colorspace"> The new colorspace. </param>
 	/// <param name="props"> An <see cref="SDL_PropertiesId"/> with additional color properties, or <see cref="SDL_PropertiesId.Invalid"/>. </param>
 	/// <returns> The new <see cref="SDL_Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Surface* ConvertSurfaceFormat(SDL_Surface* surface, SDL_PixelFormatEnum format, SDL_Colorspace colorspace, SDL_PropertiesId props) // CHECK:overload
+	public static SDL_Surface* ConvertSurfaceFormatAndColorspace(SDL_Surface* surface, SDL_PixelFormatEnum format, SDL_Colorspace colorspace, SDL_PropertiesId props)
 	{
 		return _PInvoke(surface, format, colorspace, props);
 
@@ -565,23 +556,18 @@ unsafe partial class SDL
 	/// <param name="width"> The width of the block to copy, in pixels. </param>
 	/// <param name="height"> The height of the block to copy, in pixels. </param>
 	/// <param name="srcFormat"> An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="src"/> pixels format. </param>
-	/// <param name="src"> The source pixels, as an unsigned 32-bit integers array. </param>
+	/// <param name="src"> A pointer to the source pixels. </param>
 	/// <param name="srcPitch"> The pitch of the source pixels, in bytes. </param>
 	/// <param name="dstFormat"> An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="dst"/> pixels format. </param>
-	/// <param name="dst"> Returns the new pixel data, as an unsigned 32-bit integer array. </param>
+	/// <param name="dst"> A pointer to be filled in with new pixel data. </param>
 	/// <param name="srcPitch"> The pitch of the destination pixels, in bytes. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int ConvertPixels(int width, int height, SDL_PixelFormatEnum srcFormat, uint[] src, int srcPitch, SDL_PixelFormatEnum dstFormat, out uint[] dst, int dstPitch)  // CHECK:overload
+	public static int ConvertPixels(int width, int height, SDL_PixelFormatEnum srcFormat, void* src, int srcPitch, SDL_PixelFormatEnum dstFormat, void* dst, int dstPitch)
 	{
-		// somehow this shit works.
-		dst = new uint[src.Length];
-		fixed (uint* s = src, d = dst)
-		{
-			return _PInvoke(width, height, srcFormat, s, srcPitch, dstFormat, d, dstPitch);
-		}
+		return _PInvoke(width, height, srcFormat, src, srcPitch, dstFormat, dst, dstPitch);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_ConvertPixels", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern int _PInvoke(int width, int height, SDL_PixelFormatEnum srcFormat, uint* src, int srcPitch, SDL_PixelFormatEnum dstFormat, uint* dst, int dstPitch);
+		static extern int _PInvoke(int width, int height, SDL_PixelFormatEnum srcFormat, void* src, int srcPitch, SDL_PixelFormatEnum dstFormat, void* dst, int dstPitch);
 	}
 
 	/// <summary>
@@ -595,24 +581,20 @@ unsafe partial class SDL
 	/// <param name="srcFormat"> An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="src"/> pixels format. </param>
 	/// <param name="srcColorspace"> An <see cref="SDL_Colorspace"/> value describing the colorspace of the <paramref name="src"/> pixels. </param>
 	/// <param name="srcProps"> An <see cref="SDL_PropertiesId"/> with additional source color properties, or <see cref="SDL_PropertiesId.Invalid"/>. </param>
-	/// <param name="src"> The source pixels, as an unsigned 32-bit integers array. </param>
+	/// <param name="src"> A pointer to the source pixels. </param>
 	/// <param name="srcPitch"> The pitch of the source pixels, in bytes. </param>
 	/// <param name="dstFormat"> An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="dst"/> pixels format. </param>
 	/// <param name="dstColorspace"> An <see cref="SDL_Colorspace"/> value describing the colorspace of the <paramref name="dst"/> pixels. </param>
 	/// <param name="dstProps"> An <see cref="SDL_PropertiesId"/> with additional destination color properties, or <see cref="SDL_PropertiesId.Invalid"/>. </param>
-	/// <param name="dst"> Returns the new pixel data, as an unsigned 32-bit integer array. </param>
+	/// <param name="dst"> A pointer to be filled in with new pixel data. </param>
 	/// <param name="srcPitch"> The pitch of the destination pixels, in bytes. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int ConvertPixels(int width, int height, SDL_PixelFormatEnum srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, uint[] src, int srcPitch, SDL_PixelFormatEnum dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, out uint[] dst, int dstPitch) // CHECK:overload
+	public static int ConvertPixelsAndColorspace(int width, int height, SDL_PixelFormatEnum srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, void* src, int srcPitch, SDL_PixelFormatEnum dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, void* dst, int dstPitch)
 	{
-		dst = new uint[src.Length];
-		fixed (uint* s = src, d = dst)
-		{
-			return _PInvoke(width, height, srcFormat, srcColorspace, srcProps, s, srcPitch, dstFormat, dstColorspace, dstProps, d, dstPitch);
-		}
+		return _PInvoke(width, height, srcFormat, srcColorspace, srcProps, src, srcPitch, dstFormat, dstColorspace, dstProps, dst, dstPitch);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_ConvertPixelsAndColorspace", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern int _PInvoke(int width, int height, SDL_PixelFormatEnum srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, uint* src, int srcPitch, SDL_PixelFormatEnum dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, uint* dst, int dstPitch); // wtf with this function.
+		static extern int _PInvoke(int width, int height, SDL_PixelFormatEnum srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, void* src, int srcPitch, SDL_PixelFormatEnum dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, void* dst, int dstPitch); // wtf with this function.
 	}
 
 	/// <summary>
@@ -624,22 +606,18 @@ unsafe partial class SDL
 	/// <param name="width"> The width of the block to convert, in pixels. </param>
 	/// <param name="height"> The height of the block to convert, in pixels. </param>
 	/// <param name="srcFormat"> An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="src"/> pixels format. </param>
-	/// <param name="src"> The source pixels, as an unsigned 32-bit integers array. </param>
+	/// <param name="src"> a pointer to the source pixels. </param>
 	/// <param name="srcPitch"> The pitch of the source pixels, in bytes. </param>
 	/// <param name="srcFormat"> An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="dst"/> pixels format. </param>
-	/// <param name="dst"> Returns the premultiplied pixel data, as an unsigned 32-bit integer array. </param>
+	/// <param name="dst"> A pointer to be filled in with premultiplied pixel data. </param>
 	/// <param name="srcPitch"> The pitch of the destination pixels, in bytes. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int PremultiplyAlpha(int width, int height, SDL_PixelFormatEnum srcFormat, uint[] src, int srcPitch, SDL_PixelFormatEnum dstFormat, out uint[] dst, int dstPitch)
+	public static int PremultiplyAlpha(int width, int height, SDL_PixelFormatEnum srcFormat, void* src, int srcPitch, SDL_PixelFormatEnum dstFormat, void* dst, int dstPitch)
 	{
-		dst = new uint[src.Length];
-		fixed (uint* s = src, d = dst)
-		{
-			return _PInvoke(width, height, srcFormat, s, srcPitch, dstFormat, d, dstPitch);
-		}
+		return _PInvoke(width, height, srcFormat, src, srcPitch, dstFormat, dst, dstPitch);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_PremultiplyAlpha", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern int _PInvoke(int width, int height, SDL_PixelFormatEnum srcFormat, uint* src, int srcPitch, SDL_PixelFormatEnum dstFormat, uint* dst, int dstPitch);
+		static extern int _PInvoke(int width, int height, SDL_PixelFormatEnum srcFormat, void* src, int srcPitch, SDL_PixelFormatEnum dstFormat, void* dst, int dstPitch);
 	}
 
 	/// <summary>
@@ -672,9 +650,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int FillSurfaceRects(SDL_Surface* dst, SDL_Rect[] rects, uint color)
 	{
-		fixed (SDL_Rect* r = rects)
+		fixed (SDL_Rect* rectsPtr = rects)
 		{
-			return _PInvoke(dst, r, color);
+			return _PInvoke(dst, rectsPtr, color);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_FillSurfaceRects", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -795,9 +773,9 @@ unsafe partial class SDL
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int ReadSurfacePixel(SDL_Surface* surface, int x, int y, out byte r, out byte g, out byte b, out byte a)
 	{
-		fixed (byte* rr = &r, gg = &g, bb = &b, aa = &a)
+		fixed (byte* rPtr = &r, gPtr = &g, bPtr = &b, aPtr = &a)
 		{
-			return _PInvoke(surface, x, y, rr, gg, bb, aa);
+			return _PInvoke(surface, x, y, rPtr, gPtr, bPtr, aPtr);
 		}
 
 		[DllImport(LibraryName, EntryPoint = "SDL_ReadSurfacePixel", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
