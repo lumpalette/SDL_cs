@@ -8,6 +8,11 @@ namespace SDL_cs;
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_InitFlags">documentation</see> for more details.
 /// </remarks>
+/// <seealso cref="SDL.Init(SDL_InitFlags)"/>
+/// <seealso cref="SDL.Quit"/>
+/// <seealso cref="SDL.InitSubSystem(SDL_InitFlags)"/>
+/// <seealso cref="SDL.QuitSubSystem(SDL_InitFlags)"/>
+/// <seealso cref="SDL.WasInit(SDL_InitFlags)"/>
 [Flags]
 public enum SDL_InitFlags : uint
 {
