@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-namespace SDL_cs;
+﻿namespace SDL_cs;
 
 // SDL_init.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_init.h.
 unsafe partial class SDL
@@ -18,10 +16,7 @@ unsafe partial class SDL
 	/// <seealso cref="WasInit(SDL_InitFlags)"/>
 	public static int Init(SDL_InitFlags flags)
 	{
-		return SDL_Init(flags);
-
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern int SDL_Init(SDL_InitFlags flags);
+		return PInvoke.SDL_Init(flags);
 	}
 
 	/// <summary>
@@ -37,10 +32,7 @@ unsafe partial class SDL
 	/// <seealso cref="QuitSubSystem(SDL_InitFlags)"/>
 	public static int InitSubSystem(SDL_InitFlags flags)
 	{
-		return SDL_InitSubSystem(flags);
-
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern int SDL_InitSubSystem(SDL_InitFlags flags);
+		return PInvoke.SDL_InitSubSystem(flags);
 	}
 
 	/// <summary>
@@ -54,10 +46,7 @@ unsafe partial class SDL
 	/// <seealso cref="Quit"/>
 	public static void QuitSubSystem(SDL_InitFlags flags)
 	{
-		SDL_QuitSubSystem(flags);
-
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern void SDL_QuitSubSystem(SDL_InitFlags flags);
+		PInvoke.SDL_QuitSubSystem(flags);
 	}
 
 	/// <summary>
@@ -72,10 +61,7 @@ unsafe partial class SDL
 	/// <seealso cref="InitSubSystem(SDL_InitFlags)"/>
 	public static SDL_InitFlags WasInit(SDL_InitFlags flags)
 	{
-		return SDL_WasInit(flags);
-
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern SDL_InitFlags SDL_WasInit(SDL_InitFlags flags);
+		return PInvoke.SDL_WasInit(flags);
 	}
 
 	/// <summary>
@@ -88,9 +74,6 @@ unsafe partial class SDL
 	/// <seealso cref="QuitSubSystem(SDL_InitFlags)"/>
 	public static void Quit()
 	{
-		SDL_Quit();
-
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern void SDL_Quit();
+		PInvoke.SDL_Quit();
 	}
 }
