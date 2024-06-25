@@ -12,27 +12,27 @@ namespace SDL_cs;
 public enum SDL_BlendOperation
 {
 	/// <summary>
-	/// <c>dst + src</c>. Supported by all renderers.
+	/// <c>dst + src</c>: supported by all renderers.
 	/// </summary>
 	Add = 0x1,
 
 	/// <summary>
-	/// <c>src - dst</c>. Supported by D3D9, D3D11, OpenGL, OpenGLES.
+	/// <c>src - dst</c>: supported by D3D9, D3D11, OpenGL, OpenGLES.
 	/// </summary>
 	Subtract = 0x2,
 
 	/// <summary>
-	/// <c>dst - src</c>. Supported by D3D9, D3D11, OpenGL, OpenGLES.
+	/// <c>dst - src</c>: supported by D3D9, D3D11, OpenGL, OpenGLES.
 	/// </summary>
 	RevSubtract = 0x3,
 
 	/// <summary>
-	/// <c>min(dst, src)</c>. Supported by D3D9, D3D11.
+	/// <c>min(dst, src)</c>: supported by D3D9, D3D11.
 	/// </summary>
 	Minimum = 0x4,
 
 	/// <summary>
-	/// <c>max(dst, src)</c>. Supported by D3D9, D3D11.
+	/// <c>max(dst, src)</c>: supported by D3D9, D3D11.
 	/// </summary>
 	Maximum = 0x5,
 }

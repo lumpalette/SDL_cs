@@ -27,7 +27,7 @@ public enum SDL_BlendFactor
 	SrcColor = 0x3,
 
 	/// <summary>
-	/// <c>[1 - srcR, 1 - srcG, 1 - srcB, 1 - srcA]</c>
+	/// <c>[1-srcR, 1-srcG, 1-srcB, 1-srcA]</c>
 	/// </summary>
 	OneMinusSrcColor = 0x4,
 
@@ -37,7 +37,7 @@ public enum SDL_BlendFactor
 	SrcAlpha = 0x5,
 
 	/// <summary>
-	/// <c>[1 - srcA, 1 - srcA, 1 - srcA, 1 - srcA]</c>
+	/// <c>[1-srcA, 1-srcA, 1-srcA, 1-srcA]</c>
 	/// </summary>
 	OneMinusSrcAlpha = 0x6,
 
@@ -47,7 +47,7 @@ public enum SDL_BlendFactor
 	DstColor = 0x7,
 
 	/// <summary>
-	/// <c>[1 - dstR, 1 - dstG, 1 - dstB, 1 - dstA]</c>
+	/// <c>[1-dstR, 1-dstG, 1-dstB, 1-dstA]</c>
 	/// </summary>
 	OneMinusDstColor = 0x8,
 
@@ -57,7 +57,7 @@ public enum SDL_BlendFactor
 	DstAlpha = 0x9,
 
 	/// <summary>
-	/// <c>[1 - dstA, 1 - dstA, 1 - dstA, 1 - dstA]</c>
+	/// <c>[1-dstA, 1-dstA, 1-dstA, 1-dstA]</c>
 	/// </summary>
 	OneMinusDstAlpha = 0xA
 }
