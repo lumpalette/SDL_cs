@@ -12,17 +12,16 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetError">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="msg"> The error message. </param>
-	/// <returns> Always -1. </returns>
-	public static int SetError(string msg)
+	/// <param name="fmt">The error message.</param>
+	/// <returns>Always -1.</returns>
+	/// <seealso cref="ClearError"/>
+	/// <seealso cref="GetError"/>
+	public static int SetError(string fmt)
 	{
-		fixed (byte* msgPtr = Encoding.UTF8.GetBytes(msg))
+		fixed (byte* fmtPtr = Encoding.UTF8.GetBytes(fmt))
 		{
-			return _PInvoke(msgPtr);
+			return PInvoke.SDL_SetError(fmtPtr);
 		}
-
-		[DllImport(LibraryName, EntryPoint = "SDL_SetError", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern int _PInvoke(byte* fmt);
 	}
 
 	/// <summary>
@@ -31,13 +30,10 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OutOfMemory">documentation</see> for more details.
 	/// </remarks>
-	/// <returns> -1. </returns>
+	/// <returns>-1.</returns>
 	public static int OutOfMemory()
 	{
-		return _PInvoke();
-
-		[DllImport(LibraryName, EntryPoint = "SDL_OutOfMemory", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern int _PInvoke();
+		return PInvoke.SDL_OutOfMemory();
 	}
 
 	/// <summary>
@@ -46,13 +42,12 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetError">documentation</see> for more details.
 	/// </remarks>
-	/// <returns> A message with information about the specific error that occurred, or an empty string if there hasn't been an error message set since the last call to <see cref="ClearError"/>. </returns>
+	/// <returns>A message with information about the specific error that occurred, or an empty string if there hasn't been an error message set since the last call to <see cref="ClearError"/>.</returns>
+	/// <seealso cref="ClearError"/>
+	/// <seealso cref="SetError(string)"/>
 	public static string GetError()
 	{
-		return Marshal.PtrToStringUTF8((nint)_PInvoke())!;
-
-		[DllImport(LibraryName, EntryPoint = "SDL_GetError", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern byte* _PInvoke();
+		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetError())!;
 	}
 
 	/// <summary>
@@ -61,11 +56,11 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ClearError">documentation</see> for more details.
 	/// </remarks>
-	public static void ClearError()
+	/// <returns>0</returns>
+	/// <seealso cref="GetError"/>
+	/// <seealso cref="SetError(string)"/>
+	public static int ClearError()
 	{
-		_PInvoke();
-
-		[DllImport(LibraryName, EntryPoint = "SDL_ClearError", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern void _PInvoke();
+		return PInvoke.SDL_ClearError();
 	}
 }
