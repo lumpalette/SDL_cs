@@ -9,8 +9,8 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Init">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="flags"> Subsystem initialization flags. </param>
-	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <param name="flags">Subsystem initialization flags.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	/// <seealso cref="InitSubSystem(SDL_InitFlags)"/>
 	/// <seealso cref="Quit"/>
 	/// <seealso cref="WasInit(SDL_InitFlags)"/>
@@ -25,8 +25,8 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_InitSubSystem">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="flags"> Any of the flags used by <see cref="Init(SDL_InitFlags)"/>; see <see cref="Init(SDL_InitFlags)"/> for details. </param>
-	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <param name="flags">Any of the flags used by <see cref="Init(SDL_InitFlags)"/>; see <see cref="Init(SDL_InitFlags)"/> for details.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	/// <seealso cref="Init(SDL_InitFlags)"/>
 	/// <seealso cref="Quit"/>
 	/// <seealso cref="QuitSubSystem(SDL_InitFlags)"/>
@@ -41,7 +41,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_QuitSubSystem">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="flags"> Any of the flags used by <see cref="Init(SDL_InitFlags)"/>; see <see cref="Init(SDL_InitFlags)"/> for details. </param>
+	/// <param name="flags">Any of the flags used by <see cref="Init(SDL_InitFlags)"/>; see <see cref="Init(SDL_InitFlags)"/> for details.</param>
 	/// <seealso cref="InitSubSystem(SDL_InitFlags)"/>
 	/// <seealso cref="Quit"/>
 	public static void QuitSubSystem(SDL_InitFlags flags)
@@ -55,8 +55,8 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WasInit">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="flags"> Any of the flags used by <see cref="Init(SDL_InitFlags)"/>; see <see cref="Init(SDL_InitFlags)"/> for details. </param>
-	/// <returns> A mask of all initialized subsystems if <paramref name="flags"/> is 0, otherwise it returns the initialization status of the specified subsystems. </returns>
+	/// <param name="flags">Any of the flags used by <see cref="Init(SDL_InitFlags)"/>; see <see cref="Init(SDL_InitFlags)"/> for details.</param>
+	/// <returns>A mask of all initialized subsystems if <paramref name="flags"/> is 0, otherwise it returns the initialization status of the specified subsystems.</returns>
 	/// <seealso cref="Init(SDL_InitFlags)"/>
 	/// <seealso cref="InitSubSystem(SDL_InitFlags)"/>
 	public static SDL_InitFlags WasInit(SDL_InitFlags flags)

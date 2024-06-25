@@ -12,10 +12,12 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GUIDToString">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="guid"> The <see cref="SDL_Guid"/> you wish to convert to string. </param>
-	/// <param name="pszGuid"> Returns the converted string. </param>
-	/// <param name="cbGuid"> The number of characters that <paramref name="pszGuid"/> should have. The minimum and default value is 33. </param>
-	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <param name="guid">The <see cref="SDL_Guid"/> you wish to convert to string.</param>
+	/// <param name="pszGuid">Returns the converted string.</param>
+	/// <param name="cbGuid">The number of characters that <paramref name="pszGuid"/> should have. The minimum and default value is 33.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <seealso cref="GuidToString(SDL_Guid, byte*, int)"/>
+	/// <seealso cref="GuidFromString(string)"/>
 	public static int GuidToString(SDL_Guid guid, out string? pszGuid, int cbGuid = 33)
 	{
 		byte* buffer = stackalloc byte[cbGuid];
@@ -30,10 +32,12 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GUIDToString">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="guid"> The <see cref="SDL_Guid"/> you wish to convert to string. </param>
-	/// <param name="pszGuid"> Buffer in which to write the ASCII string. The buffer needs to have a size of at least 33 bytes. </param>
-	/// <param name="cbGuid"> The size of <paramref name="pszGuid"/>. The minimum and default value is 33. </param>
-	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <param name="guid">The <see cref="SDL_Guid"/> you wish to convert to string.</param>
+	/// <param name="pszGuid">Buffer in which to write the ASCII string. The buffer needs to have a size of at least 33 bytes.</param>
+	/// <param name="cbGuid">The size of <paramref name="pszGuid"/>. The minimum and default value is 33.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <seealso cref="GuidToString(SDL_Guid, out string?, int)"/>
+	/// <seealso cref="GuidFromString(byte*)"/>
 	public static int GuidToString(SDL_Guid guid, byte* pszGuid, int cbGuid = 33)
 	{
 		return PInvoke.SDL_GUIDToString(guid, pszGuid, cbGuid);
@@ -45,8 +49,10 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GUIDFromString">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="pchGuid"> String containing a representation of a GUID. </param>
-	/// <returns> An <see cref="SDL_Guid"/> structure. </returns>
+	/// <param name="pchGuid">String containing a representation of a GUID.</param>
+	/// <returns>An <see cref="SDL_Guid"/> structure.</returns>
+	/// <seealso cref="GuidFromString(byte*)"/>
+	/// <seealso cref="GuidToString(SDL_Guid, out string?, int)"/>
 	public static SDL_Guid GuidFromString(string pchGuid)
 	{
 		fixed (byte* pchGuidPtr = Encoding.UTF8.GetBytes(pchGuid))
@@ -61,8 +67,10 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GUIDFromString">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="pchGuid"> String containing an ASCII representation of a GUID. </param>
-	/// <returns> An <see cref="SDL_Guid"/> structure. </returns>
+	/// <param name="pchGuid">String containing an ASCII representation of a GUID.</param>
+	/// <returns>An <see cref="SDL_Guid"/> structure.</returns>
+	/// <seealso cref="GuidFromString(string)"/>
+	/// <seealso cref="GuidToString(SDL_Guid, byte*, int)"/>
 	public static SDL_Guid GuidFromString(byte* pchGuid)
 	{
 		return PInvoke.SDL_GUIDFromString(pchGuid);

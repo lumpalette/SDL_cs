@@ -8,4 +8,16 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <NoWarn>1701;1702;SYSLIB1054;</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <NoWarn>1701;1702;SYSLIB1054;</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="src\SDL\___CLEANING\" />
+  </ItemGroup>
+
 </Project>
