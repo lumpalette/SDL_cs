@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Joysick battery level change event structure (<see cref="SDL_Event.JoystickBattery"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_JoyBatteryEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_JoyBatteryEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_JoystickBatteryEvent

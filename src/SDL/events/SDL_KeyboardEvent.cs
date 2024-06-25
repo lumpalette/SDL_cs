@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Keyboard button event structure (<see cref="SDL_Event.Keyboard"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_KeyboardEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_KeyboardEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_KeyboardEvent

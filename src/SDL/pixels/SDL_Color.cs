@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// A structure that represents a color as RGBA components.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Color">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Color">documentation</see> for more details.
 /// </remarks>
 /// <param name="r"> The red component. </param>
 /// <param name="g"> The green component. </param>

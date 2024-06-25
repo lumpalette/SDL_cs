@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// The structure that defines a display mode.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DisplayMode">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DisplayMode">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public unsafe readonly struct SDL_DisplayMode

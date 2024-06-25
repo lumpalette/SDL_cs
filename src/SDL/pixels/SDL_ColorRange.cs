@@ -4,7 +4,7 @@
 /// The color range, as described by <see href="https://www.itu.int/rec/R-REC-BT.2100-2-201807-I/en"/>.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ColorRange">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ColorRange">documentation</see> for more details.
 /// </remarks>
 public enum SDL_ColorRange
 {

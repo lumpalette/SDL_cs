@@ -4,7 +4,7 @@
 /// The basic state for the system's power supply.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PowerState">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PowerState">documentation</see> for more details.
 /// </remarks>
 public enum SDL_PowerState
 {

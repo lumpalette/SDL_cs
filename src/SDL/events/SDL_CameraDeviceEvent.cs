@@ -8,7 +8,7 @@ namespace SDL_cs;
 /// Camera device event structure (<see cref="SDL_Event.CameraDevice"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CameraDeviceEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CameraDeviceEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_CameraDeviceEvent

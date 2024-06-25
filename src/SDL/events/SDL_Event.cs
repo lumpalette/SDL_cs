@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// The structure for all events in SDL.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Event">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Event">documentation</see> for more details.
 /// </remarks>
 [Union, StructLayout(LayoutKind.Explicit)]
 public unsafe struct SDL_Event

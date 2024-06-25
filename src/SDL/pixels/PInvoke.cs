@@ -170,7 +170,7 @@ unsafe partial class SDL
 	/// Get the human readable name of a pixel format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPixelFormatName">here</see>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPixelFormatName">here</see>
 	/// </remarks>
 	/// <param name="format"> The pixel format to query. </param>
 	/// <returns> The human readable name of the specified pixel format or "SDL_PIXELFORMAT_UNKNOWN" if the format isn't recognized. </returns>
@@ -186,7 +186,7 @@ unsafe partial class SDL
 	/// Convert a pixel format value to a bpp value and RGBA masks.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetMasksForPixelFormatEnum">here</see>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMasksForPixelFormatEnum">here</see>
 	/// </remarks>
 	/// <param name="format"> One of the static properties in <see cref="SDL_PixelFormatEnum"/>. </param>
 	/// <param name="bpp"> Returns a bits per pixel value; usually 15, 16, or 32. </param>
@@ -213,7 +213,7 @@ unsafe partial class SDL
 	/// Convert a bpp value and RGBA masks to a pixel format value.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPixelFormatEnumForMasks">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPixelFormatEnumForMasks">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="bpp"> A bits per pixel value; usually 15, 16, or 32 </param>
 	/// <param name="rMask"> The red mask for the format. </param>
@@ -233,7 +233,7 @@ unsafe partial class SDL
 	/// Create An <see cref="SDL_PixelFormat"/> structure corresponding to a pixel format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreatePixelFormat">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreatePixelFormat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="format"> One of the static properties in <see cref="SDL_PixelFormatEnum"/>. </param>
 	/// <returns> The new <see cref="SDL_PixelFormat"/> structure on success or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -249,7 +249,7 @@ unsafe partial class SDL
 	/// Free An <see cref="SDL_PixelFormat"/> structure allocated by <see cref="CreatePixelFormat"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyPixelFormat">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyPixelFormat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="format"> The <see cref="SDL_PixelFormat"/> structure to free. </param>
 	public static void DestroyPixelFormat(SDL_PixelFormat* format)
@@ -264,7 +264,7 @@ unsafe partial class SDL
 	/// Create An <see cref="SDL_Palette"/> structure with the specified number of color entries.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreatePalette">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreatePalette">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="nColors"> Represents the number of color entries in the color palette. </param>
 	/// <returns> A new <see cref="SDL_Palette"/> structure on success or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -280,7 +280,7 @@ unsafe partial class SDL
 	/// Set the palette for a pixel format structure.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetPixelFormatPalette">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetPixelFormatPalette">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="format"> The <see cref="SDL_PixelFormat"/> structure that will use the palette. </param>
 	/// <param name="palette"> The <see cref="SDL_Palette"/> structure that will be used. </param>
@@ -297,7 +297,7 @@ unsafe partial class SDL
 	/// Set a range of colors in a palette.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetPaletteColors">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetPaletteColors">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="palette"> The <see cref="SDL_Palette"/> structure to modify. </param>
 	/// <param name="colors"> An array of <see cref="SDL_Color"/> structures to copy into the palette. </param>
@@ -320,7 +320,7 @@ unsafe partial class SDL
 	/// Free An <see cref="SDL_Palette"/> structure created with <see cref="CreatePalette(int)"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyPalette">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyPalette">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="palette"> The <see cref="SDL_Palette"/> structure to be freed. </param>
 	public static void DestroyPalette(SDL_Palette* palette)
@@ -335,7 +335,7 @@ unsafe partial class SDL
 	/// Map an RGB triple to an opaque pixel value for a given pixel format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MapRGB">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MapRGB">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="format"> An <see cref="SDL_PixelFormat"/> structure describing the pixel format. </param>
 	/// <param name="r"> The red component of the pixel in the range 0-255. </param>
@@ -354,7 +354,7 @@ unsafe partial class SDL
 	/// Map an RGBA quadruple to a pixel value for a given pixel format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MapRGBA">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MapRGBA">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="format"> An <see cref="SDL_PixelFormat"/> structure describing the pixel format. </param>
 	/// <param name="r"> The red component of the pixel in the range 0-255. </param>
@@ -374,7 +374,7 @@ unsafe partial class SDL
 	/// Get RGB values from a pixel in the specified format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRGB">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRGB">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="pixel"> A pixel value. </param>
 	/// <param name="format"> An <see cref="SDL_PixelFormat"/> structure describing the pixel format. </param>
@@ -396,7 +396,7 @@ unsafe partial class SDL
 	/// Get RGBA values from a pixel in the specified format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRGBA">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRGBA">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="pixel"> A pixel value. </param>
 	/// <param name="format"> An <see cref="SDL_PixelFormat"/> structure describing the pixel format. </param>

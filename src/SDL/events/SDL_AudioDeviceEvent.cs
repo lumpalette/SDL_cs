@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Audio device event structure (<see cref="SDL_Event.AudioDevice"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_AudioDeviceEvent

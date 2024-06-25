@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Mouse wheel event structure (<see cref="SDL_Event.MouseWheel"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_MouseWheelEvent

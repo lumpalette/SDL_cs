@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Joystick hat position change event structure (<see cref="SDL_Event.JoystickHat"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_JoyHatEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_JoyHatEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_JoystickHatEvent

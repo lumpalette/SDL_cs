@@ -9,7 +9,7 @@ unsafe partial class SDL
 	/// Get a list of currently connected sensors.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensors">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensors">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count"> Returns the number of sensors. </param>
 	/// <returns> An array of sensor instance ids, or null on error; call <see cref="GetError"/> for more details. </returns>
@@ -39,7 +39,7 @@ unsafe partial class SDL
 	/// Get the implementation dependent name of a sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorInstanceName">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorInstanceName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensorId"> The sensor instance ID. </param>
 	/// <returns> The sensor name, or null if <paramref name="sensorId"/> is not valid. </returns>
@@ -55,7 +55,7 @@ unsafe partial class SDL
 	/// Get the type of a sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorInstanceType">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorInstanceType">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensorId"> The sensor instance ID. </param>
 	/// <returns> The <see cref="SDL_SensorType"/>, or <see cref="SDL_SensorType.Invalid"/> if <paramref name="sensorId"/> is not valid. </returns>
@@ -71,7 +71,7 @@ unsafe partial class SDL
 	/// Get the platform dependent type of a sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorInstanceNonPortableType">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorInstanceNonPortableType">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensorId"> The sensor instance ID. </param>
 	/// <returns> The sensor platform dependent type, or -1 if <paramref name="sensorId"/> is not valid. </returns>
@@ -87,7 +87,7 @@ unsafe partial class SDL
 	/// Open a sensor for use.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_OpenSensor">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenSensor">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensorId"> The sensor instance ID. </param>
 	/// <returns> An <see cref="SDL_Sensor"/> object, or null if an error occurred. </returns>
@@ -103,7 +103,7 @@ unsafe partial class SDL
 	/// Return the <see cref="SDL_Sensor"/> associated with an instance ID.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorFromInstanceID">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorFromInstanceID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensorId"> The sensor instance ID. </param>
 	/// <returns> An <see cref="SDL_Sensor"/> object. </returns>
@@ -119,7 +119,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorProperties">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensor"> The <see cref="SDL_Sensor"/> object to query. </param>
 	/// <returns> A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -135,7 +135,7 @@ unsafe partial class SDL
 	/// Get the implementation dependent name of a sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorName">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensor"> The <see cref="SDL_Sensor"/> object to query. </param>
 	/// <returns> The sensor name, or null if <paramref name="sensor"/> is null. </returns>
@@ -151,7 +151,7 @@ unsafe partial class SDL
 	/// Get the type of a sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorType">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorType">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensor"> The <see cref="SDL_Sensor"/> object to query. </param>
 	/// <returns> The <see cref="SDL_SensorType"/>, or <see cref="SDL_SensorType.Invalid"/> if <paramref name="sensor"/> is null. </returns>
@@ -167,7 +167,7 @@ unsafe partial class SDL
 	/// Get the platform dependent type of a sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorNonPortableType">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorNonPortableType">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensor"> The <see cref="SDL_Sensor"/> object to query. </param>
 	/// <returns> The sensor platform dependent type, or -1 if <paramref name="sensor"/> is null. </returns>
@@ -183,7 +183,7 @@ unsafe partial class SDL
 	/// Get the instance ID of a sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorInstanceID">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorInstanceID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensor"> The <see cref="SDL_Sensor"/> object to query. </param>
 	/// <returns> The sensor instance ID, or <see cref="SDL_SensorId.Invalid"/> if <paramref name="sensor"/> is null. </returns>
@@ -199,7 +199,7 @@ unsafe partial class SDL
 	/// Get the current state of an opened sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorData">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorData">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensor"> The <see cref="SDL_Sensor"/> object to query. </param>
 	/// <param name="data"> Returns the current sensor state. </param>
@@ -219,7 +219,7 @@ unsafe partial class SDL
 	/// Close a sensor previously opened with <see cref="OpenSensor(SDL_SensorId)"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CloseSensor">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CloseSensor">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensor"> The <see cref="Sensor"/> object to close. </param>
 	public static void CloseSensor(SDL_Sensor* sensor)
@@ -234,7 +234,7 @@ unsafe partial class SDL
 	/// Update the current state of the open sensors.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateSensors">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateSensors">documentation</see> for more details.
 	/// </remarks>
 	public static void UpdateSensors()
 	{
@@ -248,7 +248,7 @@ unsafe partial class SDL
 	/// A constant to represent standard gravity for accelerometer sensors.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_STANDARD_GRAVITY">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_STANDARD_GRAVITY">documentation</see> for more details.
 	/// </remarks>
 	public const float StandardGravity = 9.80665f;
 }

@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Joystick trackball motion event structure (<see cref="SDL_Event.JoystickBall"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_JoyBallEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_JoyBallEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_JoystickBallEvent

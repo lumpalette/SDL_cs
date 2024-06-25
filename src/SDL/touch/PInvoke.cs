@@ -9,7 +9,7 @@ unsafe partial class SDL
 	/// Get a list of registered touch devices.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDevices">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDevices">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count"> Returns the number of devices. </param>
 	/// <returns> An array of touch device IDs, or null on error; call <see cref="GetError"/> for more details. </returns>
@@ -39,7 +39,7 @@ unsafe partial class SDL
 	/// Get the touch device name as reported from the driver.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDeviceName">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDeviceName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="touchId"> The touch device instance ID. </param>
 	/// <returns> Touch device name, or null on error; call <see cref="GetError"/> for more details. </returns>
@@ -55,7 +55,7 @@ unsafe partial class SDL
 	/// Get the type of the given touch device.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDeviceType">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDeviceType">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="touchId"> The touch device instance ID. </param>
 	/// <returns> The touch device type. </returns>
@@ -71,7 +71,7 @@ unsafe partial class SDL
 	/// Get a list of active fingers for a given touch device.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchFingers">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchFingers">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="touchId"> The touch device instance ID. </param>
 	/// <param name="count"> Returns the number of fingers. </param>

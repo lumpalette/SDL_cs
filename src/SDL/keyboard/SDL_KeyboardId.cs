@@ -8,7 +8,7 @@ namespace SDL_cs;
 /// </summary>
 /// <remarks>
 /// This structure is a wrapper for an unsigned 32-bit integer. Refer to the official documentation
-/// <see href="https://wiki.libsdl.org/SDL3/SDL_KeyboardID">here</see> for more details.
+/// <see href="https://wiki.libsdl.org/SDL3/SDL_KeyboardID">documentation</see> for more details.
 /// </remarks>
 [Wrapper]
 public readonly struct SDL_KeyboardId

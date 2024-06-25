@@ -9,7 +9,7 @@ unsafe partial class SDL
 	/// Pump the event loop, gathering events from the input devices.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PumpEvents">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PumpEvents">documentation</see> for more details.
 	/// </remarks>
 	public static void PumpEvents()
 	{
@@ -23,7 +23,7 @@ unsafe partial class SDL
 	/// Check the event queue for messages and optionally return them.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PeepEvents">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PeepEvents">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="events"> Returns an array containing the retrieved events, may be null to leave the events in the queue and return the number of events that would have been stored. </param>
 	/// <param name="numEvents"> If <paramref name="action"/> is <see cref="SDL_EventAction.AddEvent"/>, the number of events to add back to the event queue; if <paramref name="action"/> is <see cref="SDL_EventAction.PeekEvent"/> or <see cref="SDL_EventAction.GetEvent"/>, the maximum number of events to retrieve. </param>
@@ -46,7 +46,7 @@ unsafe partial class SDL
 	/// Check for the existence of a certain event type in the event queue.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_HasEvent">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HasEvent">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="type"> The type of event to be queried; see <see cref="SDL_EventType"/> for details. </param>
 	/// <returns> True if events matching <paramref name="type"/> are present, or false if events matching <paramref name="type"/> are not present. </returns>
@@ -62,7 +62,7 @@ unsafe partial class SDL
 	/// Clear events of a specific type from the event queue.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FlushEvent">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FlushEvent">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="type"> The type of event to be cleared; see <see cref="SDL_EventType"/> for details. </param>
 	public static void FlushEvent(SDL_EventType type)
@@ -77,7 +77,7 @@ unsafe partial class SDL
 	/// Clear events of a range of types from the event queue.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FlushEvents">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FlushEvents">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="minType"> The low end of event type to be cleared, inclusive; see <see cref="SDL_EventType"/> for details. </param>
 	/// <param name="maxType"> The high end of event type to be cleared, inclusive; see <see cref="SDL_EventType"/> for details. </param>
@@ -93,7 +93,7 @@ unsafe partial class SDL
 	/// Poll for currently pending events.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PollEvent">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PollEvent">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="e"> The <see cref="SDL_Event"/> structure to be filled with the next event from the queue, or null. </param>
 	/// <returns> True if this got an event or false if there are none available. </returns>
@@ -109,7 +109,7 @@ unsafe partial class SDL
 	/// Wait indefinitely for the next available event.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_WaitEvent">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WaitEvent">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="e"> The <see cref="SDL_Event"/> structure to be filled with the next event from the queue, or null. </param>
 	/// <returns> True on success or false if there was an error while waiting for events; call <see cref="GetError"/> for more information </returns>
@@ -125,7 +125,7 @@ unsafe partial class SDL
 	/// Wait until the specified timeout (in milliseconds) for the next available event.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_WaitEventTimeout">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WaitEventTimeout">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="e"> The <see cref="SDL_Event"/> structure to be filled in with the next event from the queue, or null. </param>
 	/// <param name="timeoutMs"> The maximum number of milliseconds to wait for the next available event. </param>
@@ -142,7 +142,7 @@ unsafe partial class SDL
 	/// Add an event to the event queue.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PushEvent">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PushEvent">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="e"> The <see cref="SDL_Event"/> to be added to the queue. </param>
 	/// <returns> 1 on success, 0 if the event was filtered, or a negative error code on failure; call <see cref="GetError"/> for more information. A common reason for error is the event queue being full. </returns>
@@ -158,7 +158,7 @@ unsafe partial class SDL
 	/// Set up a filter to process all events before they change internal state and are posted to the internal event queue.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetEventFilter">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetEventFilter">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="filter"> An <see cref="SDL_EventFilterCallback"/> function to call when an event happens. </param>
 	/// <param name="userData"> A pointer that is passed to <paramref name="filter"/>. </param>
@@ -174,7 +174,7 @@ unsafe partial class SDL
 	/// Query the current event filter.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetEventFilter">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetEventFilter">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="filter"> Returns the current callback function. </param>
 	/// <param name="userData"> Returns the pointer that is passed to the current event filter. </param>
@@ -202,7 +202,7 @@ unsafe partial class SDL
 	/// Add a callback to be triggered when an event is added to the event queue.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AddEventWatch">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AddEventWatch">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="filter"> An <see cref="SDL_EventFilterCallback"/> function to call when an event happens. </param>
 	/// <param name="userData"> A pointer that is passed to <paramref name="filter"/>. </param>
@@ -219,7 +219,7 @@ unsafe partial class SDL
 	/// Remove an event watch callback added with <see cref="AddEventWatch(SDL_EventFilterCallback, void*)"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DelEventWatch">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DelEventWatch">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="filter"> The function originally passed to <see cref="AddEventWatch(SDL_EventFilterCallback, void*)"/>. </param>
 	/// <param name="userData"> The pointer originally passed to <see cref="AddEventWatch(SDL_EventFilterCallback, void*)"/>. </param>
@@ -235,7 +235,7 @@ unsafe partial class SDL
 	/// Run a specific filter function on the current event queue, removing any events for which the filter returns 0.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FilterEvents">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FilterEvents">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="filter"> The <see cref="SDL_EventFilterCallback"/> function to call when an event happens. </param>
 	/// <param name="userData"> A pointer that is passed to <paramref name="filter"/>. </param>
@@ -251,7 +251,7 @@ unsafe partial class SDL
 	/// Set the state of processing events by type.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetEventEnabled">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetEventEnabled">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="type"> The type of event; see <see cref="SDL_EventType"/> for details. </param>
 	/// <param name="enabled"> Whether to process the event or not. </param>
@@ -267,7 +267,7 @@ unsafe partial class SDL
 	/// Query the state of processing events by type.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_EventEnabled">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_EventEnabled">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="type"> The type of event; see <see cref="SDL_EventType"/> for details. </param>
 	/// <returns> True if the event is being processed, false otherwise. </returns>
@@ -283,7 +283,7 @@ unsafe partial class SDL
 	/// Allocate a set of user-defined events, and return the beginning event.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RegisterEvents">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RegisterEvents">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="numEvents"> The number of events to be allocated. </param>
 	/// <returns> The beginning event number, or <see cref="SDL_EventType.First"/> if <paramref name="numEvents"/> is invalid or if there are not enough user-defined events left. </returns>
@@ -299,7 +299,7 @@ unsafe partial class SDL
 	/// Allocate dynamic memory for an SDL event.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AllocateEventMemory">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AllocateEventMemory">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="size"> The amount of memory to allocate. </param>
 	/// <returns> A pointer to the memory allocated or null on failure; call <see cref="GetError"/> for more information. </returns>

@@ -4,7 +4,7 @@
 /// Cursor types for <see cref="SDL.CreateCursor(SDL_SystemCursor)"/>.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SystemCursor">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SystemCursor">documentation</see> for more details.
 /// </remarks>
 public enum SDL_SystemCursor
 {

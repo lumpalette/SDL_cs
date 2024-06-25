@@ -4,7 +4,7 @@
 /// The different sensors defined by SDL.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SensorType">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SensorType">documentation</see> for more details.
 /// </remarks>
 public enum SDL_SensorType
 {

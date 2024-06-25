@@ -4,7 +4,7 @@
 /// Display orientation values; the way a display is rotated.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DisplayOrientation">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DisplayOrientation">documentation</see> for more details.
 /// </remarks>
 public enum SDL_DisplayOrientation
 {

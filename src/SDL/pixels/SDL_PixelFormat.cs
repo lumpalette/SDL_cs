@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Details about the format of a pixel.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public readonly unsafe struct SDL_PixelFormat

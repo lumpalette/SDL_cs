@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// An event triggered when the clipboard contents have changed (<see cref="SDL_Event.Clipboard"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ClipboardEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ClipboardEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_ClipboardEvent

@@ -13,7 +13,7 @@ unsafe partial class SDL
 	/// Locking for atomic access to the joystick API.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_LockJoysticks">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_LockJoysticks">documentation</see> for more details.
 	/// </remarks>
 	public static void LockJoysticks()
 	{
@@ -27,7 +27,7 @@ unsafe partial class SDL
 	/// Unlocking for atomic access to the joystick API.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UnlockJoysticks">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UnlockJoysticks">documentation</see> for more details.
 	/// </remarks>
 	public static void UnlockJoysticks()
 	{
@@ -41,7 +41,7 @@ unsafe partial class SDL
 	/// Return whether a joystick is currently connected.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_HasJoysticks">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HasJoysticks">documentation</see> for more details.
 	/// </remarks>
 	/// <returns> True if a joystick is connected, false otherwise. </returns>
 	public static bool HasJoysticks()
@@ -56,7 +56,7 @@ unsafe partial class SDL
 	/// Get a list of currently connected joysticks.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoysticks">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoysticks">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count"> Returns the number of joysticks. </param>
 	/// <returns> An array of joystick instance ids, or null on error; <see cref="GetError"/> for more details. </returns>
@@ -86,7 +86,7 @@ unsafe partial class SDL
 	/// Get the implementation dependent name of a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceName">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The name of the selected joystick. If no name can be found, this function returns null; call <see cref="GetError"/> for more information. </returns>
@@ -102,7 +102,7 @@ unsafe partial class SDL
 	/// Get the implementation dependent path of a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstancePath">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstancePath">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The path of the selected joystick. If no path can be found, this function returns null; call <see cref="GetError"/> for more information. </returns>
@@ -118,7 +118,7 @@ unsafe partial class SDL
 	/// Get the player index of a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstancePlayerIndex">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstancePlayerIndex">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The player index of a joystick, or -1 if it's not available. </returns>
@@ -134,7 +134,7 @@ unsafe partial class SDL
 	/// Get the implementation-dependent GUID of a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceGUID">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceGUID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The GUID of the selected joystick. If called with an invalid <paramref name="joystickId"/>, this function returns a zero GUID. </returns>
@@ -150,7 +150,7 @@ unsafe partial class SDL
 	/// Get the USB vendor ID of a joystick, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceVendor">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceVendor">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The USB vendor ID of the selected joystick. If called with an invalid <paramref name="joystickId"/>, this function returns 0. </returns>
@@ -166,7 +166,7 @@ unsafe partial class SDL
 	/// Get the USB product ID of a joystick, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceProduct">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceProduct">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The USB product ID of the selected joystick. If called with an invalid <paramref name="joystickId"/>, this function returns 0. </returns>
@@ -182,7 +182,7 @@ unsafe partial class SDL
 	/// Get the product version of a joystick, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceProductVersion">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceProductVersion">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> the product version of the selected joystick. If called with an invalid <paramref name="joystickId"/>, this function returns 0. </returns>
@@ -198,7 +198,7 @@ unsafe partial class SDL
 	/// Get the type of a joystick, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceType">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceType">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> The <see cref="SDL_JoystickType"/> of the selected joystick. If called with an invalid <paramref name="joystickId"/>, this function returns <see cref="SDL_JoystickType.Unknown"/>. </returns>
@@ -214,7 +214,7 @@ unsafe partial class SDL
 	/// Open a joystick for use.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_OpenJoystick">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenJoystick">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The joystick instance ID. </param>
 	/// <returns> A joystick identifier or null if an error occurred; call <see cref="GetError"/> for more information. </returns>
@@ -230,7 +230,7 @@ unsafe partial class SDL
 	/// Get the <see cref="SDL_Joystick"/> associated with an instance ID, if it has been opened.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickFromInstanceID">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickFromInstanceID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystickId"> The instance ID to get the <see cref="SDL_JoystickId"/> for. </param>
 	/// <returns> An <see cref="SDL_Joystick"/> on success or null on failure or if it hasn't been opened yet; call <see cref="GetError"/> for more information. </returns>
@@ -246,7 +246,7 @@ unsafe partial class SDL
 	/// Get the <see cref="SDL_Joystick"/> associated with a player index.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickFromPlayerIndex">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickFromPlayerIndex">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="playerIndex"> The player index to get the <see cref="SDL_Joystick"/> for. </param>
 	/// <returns> An <see cref="SDL_Joystick"/> on success or null on failure or if it hasn't been opened yet; call <see cref="GetError"/> for more information. </returns>
@@ -272,7 +272,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickProperties">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -288,7 +288,7 @@ unsafe partial class SDL
 	/// Get the implementation dependent name of a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickName">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> The name of the selected joystick. If no name can be found, this function returns null; call <see cref="GetError"/> for more information. </returns>
@@ -304,7 +304,7 @@ unsafe partial class SDL
 	/// Get the implementation dependent path of a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickPath">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickPath">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> The path of the selected joystick. If no path can be found, this function returns null; call <see cref="GetError"/> for more information. </returns>
@@ -320,7 +320,7 @@ unsafe partial class SDL
 	/// Get the player index of an opened joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickPlayerIndex">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickPlayerIndex">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> The player index, or -1 if it's not available. </returns>
@@ -336,7 +336,7 @@ unsafe partial class SDL
 	/// Set the player index of an opened joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetJoystickPlayerIndex">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetJoystickPlayerIndex">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <param name="playerIndex"> Player index to assign to this joystick, or -1 to clear the player index and turn off player LEDs. </param>
@@ -353,7 +353,7 @@ unsafe partial class SDL
 	/// Get the implementation-dependent GUID for the joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickGUID">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickGUID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> The GUID of the given joystick. If called on an invalid index, this function returns a zero GUID; call <see cref="GetError"/> for more information. </returns>
@@ -369,7 +369,7 @@ unsafe partial class SDL
 	/// Get the USB vendor ID of an opened joystick, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickVendor">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickVendor">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> The USB vendor ID of the selected joystick, or 0 if unavailable. </returns>
@@ -385,7 +385,7 @@ unsafe partial class SDL
 	/// Get the USB product ID of an opened joystick, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickProduct">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickProduct">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> The USB product ID of the selected joystick, or 0 if unavailable. </returns>
@@ -401,7 +401,7 @@ unsafe partial class SDL
 	/// Get the product version of an opened joystick, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickProductVersion">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickProductVersion">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> The product version of the selected joystick, or 0 if unavailable. </returns>
@@ -417,7 +417,7 @@ unsafe partial class SDL
 	/// Get the firmware version of an opened joystick, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickFirmwareVersion">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickFirmwareVersion">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> The firmware version of the selected joystick, or 0 if unavailable. </returns>
@@ -433,7 +433,7 @@ unsafe partial class SDL
 	/// Get the serial number of an opened joystick, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickSerial">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickSerial">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> The serial number of the selected joystick, or null if unavailable. </returns>
@@ -449,7 +449,7 @@ unsafe partial class SDL
 	/// Get the type of an opened joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickType">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickType">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> The <see cref="SDL_JoystickType"/> of the selected joystick. </returns>
@@ -465,7 +465,7 @@ unsafe partial class SDL
 	/// Get an ASCII string representation for a given <see cref="SDL_JoystickGuid"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickGUIDString">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickGUIDString">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="guid"> The <see cref="SDL_JoystickGuid"/> you wish to convert to string. </param>
 	/// <param name="pszGuid"> Returns the converted string. </param>
@@ -480,7 +480,7 @@ unsafe partial class SDL
 	/// Convert a GUID string into a SDL_JoystickGUID structure.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickGUIDFromString">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickGUIDFromString">documentation</see> for more details.
 	/// </remarks>
 	/// <returns> An <see cref="SDL_JoystickGuid"/> structure. </returns>
 	public static SDL_JoystickGuid GetJoystickGuidFromString(string pchGuid)
@@ -492,7 +492,7 @@ unsafe partial class SDL
 	/// Get the device information encoded in an <see cref="SDL_JoystickGuid"/> structure.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickGUIDInfo">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickGUIDInfo">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="guid"> The <see cref="SDL_JoystickGuid"/> you wish to get info about. </param>
 	/// <param name="vendor"> Returns the the device VID, or 0 if not available. </param>
@@ -514,7 +514,7 @@ unsafe partial class SDL
 	/// Get the status of a specified joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_JoystickConnected">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_JoystickConnected">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The joystick to query. </param>
 	/// <returns> True if the joystick has been opened, false if it has not; call <see cref="GetError"/> for more information. </returns>
@@ -530,7 +530,7 @@ unsafe partial class SDL
 	/// Get the instance ID of an opened joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceID">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> The instance ID of the specified joystick on success or 0 on failure; call <see cref="GetError"/> for more information. </returns>
@@ -546,7 +546,7 @@ unsafe partial class SDL
 	/// Get the number of general axis controls on a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumJoystickAxes">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumJoystickAxes">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> The number of axis controls/number of axes on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -562,7 +562,7 @@ unsafe partial class SDL
 	/// Get the number of trackballs on a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumJoystickBalls">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumJoystickBalls">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> The number of trackballs on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -578,7 +578,7 @@ unsafe partial class SDL
 	/// Get the number of POV hats on a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumJoystickHats">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumJoystickHats">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> The number of POV hats on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -594,7 +594,7 @@ unsafe partial class SDL
 	/// Get the number of buttons on a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumJoystickButtons">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumJoystickButtons">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>. </param>
 	/// <returns> The number of buttons on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -610,7 +610,7 @@ unsafe partial class SDL
 	/// Set the state of joystick event processing.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetJoystickEventsEnabled">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetJoystickEventsEnabled">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="enabled"> Whether to process joystick events or not. </param>
 	public static void SetJoystickEventsEnabled(bool enabled)
@@ -625,7 +625,7 @@ unsafe partial class SDL
 	/// Query the state of joystick event processing.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_JoystickEventsEnabled">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_JoystickEventsEnabled">documentation</see> for more details.
 	/// </remarks>
 	/// <returns> True if joystick events are being processed, false otherwise. </returns>
 	public static bool JoystickEventsEnabled()
@@ -640,7 +640,7 @@ unsafe partial class SDL
 	/// Update the current state of the open joysticks.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateJoysticks">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateJoysticks">documentation</see> for more details.
 	/// </remarks>
 	public static void UpdateJoysticks()
 	{
@@ -654,7 +654,7 @@ unsafe partial class SDL
 	/// Get the current state of an axis control on a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickAxis">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickAxis">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> An <see cref="SDL_Joystick"/> structure containing joystick information. </param>
 	/// <param name="axis"> The axis to query; the axis indices start at index 0. </param>
@@ -671,7 +671,7 @@ unsafe partial class SDL
 	/// Get the initial state of an axis control on a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickAxisInitialState">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickAxisInitialState">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> An <see cref="SDL_Joystick"/> structure containing joystick information. </param>
 	/// <param name="axis"> The axis to query; the axis indices start at index 0. </param>
@@ -692,7 +692,7 @@ unsafe partial class SDL
 	/// Get the ball axis change since the last poll.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickBall">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickBall">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The <see cref="SDL_Joystick"/> to query. </param>
 	/// <param name="ball"> The ball index to query; ball indices start at index 0. </param>
@@ -714,7 +714,7 @@ unsafe partial class SDL
 	/// Get the current state of a POV hat on a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickHat">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickHat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> An <see cref="SDL_Joystick"/> structure containing joystick information. </param>
 	/// <param name="hat"> The hat index to get the state from; indices start at index 0. </param>
@@ -731,7 +731,7 @@ unsafe partial class SDL
 	/// Get the current state of a button on a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickButton">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickButton">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> An <see cref="SDL_Joystick"/> structure containing joystick information. </param>
 	/// <param name="button"> The button index to get the state from; indices start at index 0. </param>
@@ -748,7 +748,7 @@ unsafe partial class SDL
 	/// Start a rumble effect.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RumbleJoystick">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RumbleJoystick">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The joystick to vibrate. </param>
 	/// <param name="lowFrequencyRumble"> The intensity of the low frequency (left) rumble motor, from 0 to 0xFFFF. </param>
@@ -767,7 +767,7 @@ unsafe partial class SDL
 	/// Start a rumble effect in the joystick's triggers.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RumbleJoystickTriggers">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RumbleJoystickTriggers">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The joystick to vibrate </param>
 	/// <param name="leftRumble"> The intensity of the left trigger rumble motor, from 0 to 0xFFFF. </param>
@@ -786,7 +786,7 @@ unsafe partial class SDL
 	/// Update a joystick's LED color.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetJoystickLED">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetJoystickLED">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The joystick to update. </param>
 	/// <param name="red"> The intensity of the red LED. </param>
@@ -805,7 +805,7 @@ unsafe partial class SDL
 	/// Send a joystick specific effect packet.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SendJoystickEffect">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SendJoystickEffect">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The joystick to affect. </param>
 	/// <param name="data"> The data to send to the joystick. </param>
@@ -823,7 +823,7 @@ unsafe partial class SDL
 	/// Close a joystick previously opened with <see cref="OpenJoystick(SDL_JoystickId)"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CloseJoystick">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CloseJoystick">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The joystick device to close. </param>
 	public static void CloseJoystick(SDL_Joystick* joystick)
@@ -838,7 +838,7 @@ unsafe partial class SDL
 	/// Get the connection state of a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickConnectionState">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickConnectionState">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The joystick to query. </param>
 	/// <returns> The connection state on success or <see cref="SDL_JoystickConnectionState.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -854,7 +854,7 @@ unsafe partial class SDL
 	/// Get the battery state of a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickPowerInfo">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickPowerInfo">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick"> The joystick to query. </param>
 	/// <param name="percent"> Returns the percentage of battery life left, between 0 and 100. This will return -1 if SDL can't determine a value or there is no battery. </param>
@@ -874,7 +874,7 @@ unsafe partial class SDL
 	/// The largest value an <see cref="SDL_Joystick"/>'s axis can report.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_JOYSTICK_AXIS_MAX">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_JOYSTICK_AXIS_MAX">documentation</see> for more details.
 	/// </remarks>
 	public const short JoystickAxisMax = short.MaxValue;
 
@@ -882,7 +882,7 @@ unsafe partial class SDL
 	/// The smallest value an <see cref="SDL_Joystick"/>'s axis can report.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_JOYSTICK_AXIS_MIN">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_JOYSTICK_AXIS_MIN">documentation</see> for more details.
 	/// </remarks>
 	public const short JoystickAxisMin = short.MinValue;
 

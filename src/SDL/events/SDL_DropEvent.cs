@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// An event used to drop text or request a file open by the system (<see cref="SDL_Event.Drop"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DropEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DropEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SDL_DropEvent

@@ -4,7 +4,7 @@
 /// Standard gamepad types.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadType">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadType">documentation</see> for more details.
 /// </remarks>
 public enum SDL_GamepadType
 {

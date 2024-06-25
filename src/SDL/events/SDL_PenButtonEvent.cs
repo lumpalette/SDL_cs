@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Pressure-sensitive pen button event structure (<see cref="SDL_Event.PenButton"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PenButtonEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PenButtonEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SDL_PenButtonEvent

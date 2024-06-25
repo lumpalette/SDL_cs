@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Gamepad axis motion event structure (<see cref="SDL_Event.GamepadAxis"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadAxisEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadAxisEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_GamepadAxisEvent

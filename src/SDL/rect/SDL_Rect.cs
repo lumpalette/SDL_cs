@@ -8,7 +8,7 @@ namespace SDL_cs;
 /// A rectangle, with the origin at the upper left using integers.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Rect">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Rect">documentation</see> for more details.
 /// </remarks>
 /// <param name="x"> The x coordinate of the origin. </param>
 /// <param name="y"> The y coordinate of the origin. </param>

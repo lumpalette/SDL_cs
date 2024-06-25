@@ -17,7 +17,7 @@ namespace SDL_cs;
 /// </para>
 /// <para>
 /// The structure is a wrapper for an unsigned 32-bit integer. Refer to the official documentation
-/// <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormatEnum">here</see> for more details.
+/// <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormatEnum">documentation</see> for more details.
 /// </para>
 /// </remarks>
 [Wrapper]

@@ -5,7 +5,7 @@ namespace SDL_cs;
 /// Gamepad sensor event structure (<see cref="SDL_Event.GamepadSensor"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadSensorEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadSensorEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SDL_GamepadSensorEvent

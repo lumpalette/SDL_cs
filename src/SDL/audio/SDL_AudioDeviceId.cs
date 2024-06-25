@@ -7,7 +7,7 @@ namespace SDL_cs;
 /// </summary>
 /// <remarks>
 /// This structure is a wrapper for an unsigned 32-bit integer. Refer to the official documentation
-/// <see href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceID">here</see> for more details.
+/// <see href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceID">documentation</see> for more details.
 /// </remarks>
 [Wrapper]
 public readonly struct SDL_AudioDeviceId
@@ -50,7 +50,7 @@ public readonly struct SDL_AudioDeviceId
 	/// A value used to request a default playback audio device.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK">documentation</see> for more details.
 	/// </remarks>
 	public static SDL_AudioDeviceId DefaultPlayback => new(0xFFFFFFFF);
 
@@ -58,7 +58,7 @@ public readonly struct SDL_AudioDeviceId
 	/// A value used to request a default recording audio device.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_DEVICE_DEFAULT_RECORDING">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_DEVICE_DEFAULT_RECORDING">documentation</see> for more details.
 	/// </remarks>
 	public static SDL_AudioDeviceId DefaultRecording => new(0xFFFFFFFE);
 

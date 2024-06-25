@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// A user-defined event type (<see cref="SDL_Event.User"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UserEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UserEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SDL_UserEvent

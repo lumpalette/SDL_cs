@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// The flags on an <see cref="SDL_Surface"/>.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceFlags">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceFlags">documentation</see> for more details.
 /// </remarks>
 [Flags]
 public enum SDL_SurfaceFlags : uint

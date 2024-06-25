@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Pen capabilities, as reported by <see cref="SDL.GetPenCapabilities(SDL_PenId, out SDL_PenCapabilityInfo)"/>.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PenCapabilityInfo">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PenCapabilityInfo">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_PenCapabilityInfo

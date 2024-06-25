@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Gamepad device event structure (<see cref="SDL_Event.GamepadDevice"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadDeviceEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadDeviceEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_GamepadDeviceEvent

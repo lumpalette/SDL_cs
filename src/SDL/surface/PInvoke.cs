@@ -10,7 +10,7 @@ unsafe partial class SDL
 	/// Evaluates to true if the surface needs to be locked before access.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MUSTLOCK">here</see>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MUSTLOCK">here</see>
 	/// </remarks>
 	/// <param name="surface"> (Ref) The <see cref="SDL_Surface"/> structure to evaluate. </param>
 	/// <returns> True if <paramref name="surface"/> needs to be locked, otherwise false. </returns>
@@ -24,7 +24,7 @@ unsafe partial class SDL
 	/// Allocate a new RGB surface with a specific pixel format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSurface">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSurface">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="width"> The width of the surface. </param>
 	/// <param name="height"> The height of the surface. </param>
@@ -42,7 +42,7 @@ unsafe partial class SDL
 	/// Allocate a new RGB surface with a specific pixel format and existing pixel data.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSurfaceFrom">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSurfaceFrom">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="pixels"> A pointer to existing pixel data. </param>
 	/// <param name="width"> The width of the surface. </param>
@@ -62,7 +62,7 @@ unsafe partial class SDL
 	/// Free an RGB surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DestroySurface">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DestroySurface">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to free. It is safe to this be null. </param>
 	public static void DestroySurface(SDL_Surface* surface)
@@ -81,7 +81,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceProperties">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
 	/// <returns> A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -97,7 +97,7 @@ unsafe partial class SDL
 	/// Set the colorspace used by a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceColorspace">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceColorspace">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to update. </param>
 	/// <param name="colorspace"> An <see cref="SDL_Colorspace"/> value describing the surface colorspace. </param>
@@ -114,7 +114,7 @@ unsafe partial class SDL
 	/// Get the colorspace used by a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorspace">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorspace">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
 	/// <param name="colorspace"> Returns the <see cref="SDL_Colorspace"/> value describing the surface colorspace. </param>
@@ -134,7 +134,7 @@ unsafe partial class SDL
 	/// Set the palette used by a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfacePalette">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfacePalette">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to update. </param>
 	/// <param name="palette"> The <see cref="SDL_Palette"/> structure to use. </param>
@@ -151,7 +151,7 @@ unsafe partial class SDL
 	/// Set up a surface for directly accessing the pixels.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_LockSurface">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_LockSurface">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to be locked. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -167,7 +167,7 @@ unsafe partial class SDL
 	/// Release a surface after directly accessing the pixels.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UnlockSurface">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UnlockSurface">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to be unlocked. </param>
 	public static void UnlockSurface(SDL_Surface* surface)
@@ -185,7 +185,7 @@ unsafe partial class SDL
 	/// Load a BMP image from a file.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_LoadBMP">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_LoadBMP">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="file"> The BMP file to load. </param>
 	/// <returns> A pointer to a new <see cref="SDL_Surface"/> structure or null if there was an error; call <see cref="GetError"/> for more information. </returns>
@@ -206,7 +206,7 @@ unsafe partial class SDL
 	/// Save a surface to a file.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SaveBMP">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SaveBMP">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure containing the image to be saved. </param>
 	/// <param name="file"> A file to save to. </param>
@@ -226,7 +226,7 @@ unsafe partial class SDL
 	/// Set the RLE acceleration hint for a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceRLE">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceRLE">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to optimize. </param>
 	/// <param name="enable"> True to enable RLE acceleration, otherwise false. </param>
@@ -243,7 +243,7 @@ unsafe partial class SDL
 	/// Returns whether the surface is RLE enabled.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceHasRLE">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceHasRLE">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
 	/// <returns> True if the surface has RLE enabled, false otherwise. </returns>
@@ -259,7 +259,7 @@ unsafe partial class SDL
 	/// Set the color key (transparent pixel) in a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceHasRLE">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceHasRLE">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to update. </param>
 	/// <param name="enable"> True to enable color key, false to disable color key. </param>
@@ -277,7 +277,7 @@ unsafe partial class SDL
 	/// Returns whether the surface has a color key.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceHasColorKey">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceHasColorKey">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
 	/// <returns> True if the surface has a color key, otherwise false. </returns>
@@ -293,7 +293,7 @@ unsafe partial class SDL
 	/// Get the color key (transparent pixel) for a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorKey">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorKey">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
 	/// <param name="key"> Returns the transparent pixel. </param>
@@ -313,7 +313,7 @@ unsafe partial class SDL
 	/// Set an additional color value multiplied into blit operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceColorMod">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceColorMod">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to update. </param>
 	/// <param name="r"> The red color value multiplied into blit operations. </param>
@@ -332,7 +332,7 @@ unsafe partial class SDL
 	/// Get the additional color value multiplied into blit operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorMod">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorMod">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
 	/// <param name="r"> Returns the current red color value. </param>
@@ -354,7 +354,7 @@ unsafe partial class SDL
 	/// Set an additional alpha value used in blit operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceAlphaMod">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceAlphaMod">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to update. </param>
 	/// <param name="alpha"> The alpha value multiplied into blit operations. </param>
@@ -371,7 +371,7 @@ unsafe partial class SDL
 	/// Get the additional alpha value used in blit operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceAlphaMod">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceAlphaMod">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
 	/// <param name="alpha"> Returns the current alpha value. </param>
@@ -391,7 +391,7 @@ unsafe partial class SDL
 	/// Set the blend mode used for blit operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceBlendMode">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceBlendMode">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to update. </param>
 	/// <param name="blendMode"> The <see cref="SDL_BlendMode"/> to use for blit blending. </param>
@@ -408,7 +408,7 @@ unsafe partial class SDL
 	/// Get the blend mode used for blit operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceBlendMode">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceBlendMode">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
 	/// <param name="blendMode"> Returns the current <see cref="SDL_BlendMode"/>. </param>
@@ -428,7 +428,7 @@ unsafe partial class SDL
 	/// Set the clipping rectangle for a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceClipRect">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceClipRect">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to be clipped. </param>
 	/// <param name="rect"> The <see cref="SDL_Rect"/> structure representing the clipping rectangle, or null to disable clipping. </param>
@@ -445,7 +445,7 @@ unsafe partial class SDL
 	/// Get the clipping rectangle for a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceClipRect">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceClipRect">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure representing the surface to be clipped. </param>
 	/// <param name="rect"> Returns An <see cref="SDL_Rect"/> structure representing the clipping rectangle for the surface. </param>
@@ -465,7 +465,7 @@ unsafe partial class SDL
 	/// Flip a surface vertically or horizontally.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FlipSurface">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FlipSurface">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The surface to flip. </param>
 	/// <param name="flip"> The direction to flip. </param>
@@ -482,7 +482,7 @@ unsafe partial class SDL
 	/// Creates a new surface identical to the existing surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DuplicateSurface">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DuplicateSurface">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The surface to duplicate. </param>
 	/// <returns> A copy of the surface, or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -498,7 +498,7 @@ unsafe partial class SDL
 	/// Copy an existing surface to a new surface of the specified format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurface">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurface">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The existing <see cref="SDL_Surface"/> structure to convert. </param>
 	/// <param name="format"> The <see cref="SDL_PixelFormat"/> structure that the new surface is optimized for. </param>
@@ -515,7 +515,7 @@ unsafe partial class SDL
 	/// Copy an existing surface to a new surface of the specified format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurfaceFormat">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurfaceFormat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The existing <see cref="SDL_Surface"/> structure to convert. </param>
 	/// <param name="format"> The new pixel format. </param>
@@ -532,7 +532,7 @@ unsafe partial class SDL
 	/// Copy an existing surface to a new surface of the specified format and colorspace.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurfaceFormatAndColorspace">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurfaceFormatAndColorspace">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The existing <see cref="SDL_Surface"/> structure to convert. </param>
 	/// <param name="format"> The new pixel format. </param>
@@ -551,7 +551,7 @@ unsafe partial class SDL
 	/// Copy a block of pixels of one format to another format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertPixels">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertPixels">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="width"> The width of the block to copy, in pixels. </param>
 	/// <param name="height"> The height of the block to copy, in pixels. </param>
@@ -574,7 +574,7 @@ unsafe partial class SDL
 	/// Copy a block of pixels of one format and colorspace to another format and colorspace.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertPixelsAndColorspace">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertPixelsAndColorspace">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="width"> The width of the block to copy, in pixels. </param>
 	/// <param name="height"> The height of the block to copy, in pixels. </param>
@@ -601,7 +601,7 @@ unsafe partial class SDL
 	/// Premultiply the alpha on a block of pixels.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PremultiplyAlpha">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PremultiplyAlpha">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="width"> The width of the block to convert, in pixels. </param>
 	/// <param name="height"> The height of the block to convert, in pixels. </param>
@@ -624,7 +624,7 @@ unsafe partial class SDL
 	/// Perform a fast fill of a rectangle with a specific color.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FillSurfaceRect">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FillSurfaceRect">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="dst"> The <see cref="SDL_Surface"/> structure that is the drawing target. </param>
 	/// <param name="rect"> The <see cref="SDL_Rect"/> structure representing the rectangle to fill, or null to fill the entire surface. </param>
@@ -642,7 +642,7 @@ unsafe partial class SDL
 	/// Perform a fast fill of a set of rectangles with a specific color.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FillSurfaceRects">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FillSurfaceRects">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="dst"> The <see cref="SDL_Surface"/> structure that is the drawing target. </param>
 	/// <param name="rects"> An array of <see cref="SDL_Rect"/>s representing the rectangles to fill. </param>
@@ -663,7 +663,7 @@ unsafe partial class SDL
 	/// Performs a fast blit from the source surface to the destination surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurface">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurface">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="src"> The <see cref="SDL_Surface"/> structure to be copied from. </param>
 	/// <param name="srcRect"> The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or null to copy the entire surface. </param>
@@ -682,7 +682,7 @@ unsafe partial class SDL
 	/// Perform low-level surface blitting only.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceUnchecked">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceUnchecked">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="src"> The <see cref="SDL_Surface"/> structure to be copied from. </param>
 	/// <param name="srcRect"> The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or null to copy the entire surface. </param>
@@ -701,7 +701,7 @@ unsafe partial class SDL
 	/// Perform stretch blit between two surfaces of the same format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SoftStretch">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SoftStretch">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="src"> The <see cref="SDL_Surface"/> structure to be copied from. </param>
 	/// <param name="srcRect"> The <see cref="SDL_Rect"/> structure representing the rectangle to be copied. </param>
@@ -721,7 +721,7 @@ unsafe partial class SDL
 	/// Perform a scaled blit to a destination surface, which may be of a different format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceScaled">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceScaled">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="src"> The <see cref="SDL_Surface"/> structure to be copied from. </param>
 	/// <param name="srcRect"> The <see cref="SDL_Rect"/> structure representing the rectangle to be copied. </param>
@@ -741,7 +741,7 @@ unsafe partial class SDL
 	/// Perform low-level surface scaled blitting only.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceUncheckedScaled">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceUncheckedScaled">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="src"> The <see cref="SDL_Surface"/> structure to be copied from. </param>
 	/// <param name="srcRect"> The <see cref="SDL_Rect"/> structure representing the rectangle to be copied. </param>
@@ -761,7 +761,7 @@ unsafe partial class SDL
 	/// Retrieves a single pixel from a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ReadSurfacePixel">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ReadSurfacePixel">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The surface to read. </param>
 	/// <param name="x"> The horizontal coordinate, 0 &lt;= x &lt; width. </param>

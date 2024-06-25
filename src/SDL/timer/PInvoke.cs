@@ -9,7 +9,7 @@ unsafe partial class SDL
 	/// Get the number of milliseconds since SDL library initialization.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetTicks">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTicks">documentation</see> for more details.
 	/// </remarks>
 	/// <returns> An unsigned 64-bit value representing the number of milliseconds since the SDL library initialized. </returns>
 	public static ulong GetTicksMs()
@@ -24,7 +24,7 @@ unsafe partial class SDL
 	/// Get the number of nanoseconds since SDL library initialization.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetTicksNS">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTicksNS">documentation</see> for more details.
 	/// </remarks>
 	/// <returns> An unsigned 64-bit value representing the number of nanoseconds since the SDL library initialized. </returns>
 	public static ulong GetTicksNs()
@@ -39,7 +39,7 @@ unsafe partial class SDL
 	/// Get the current value of the high resolution counter.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPerformanceCounter">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPerformanceCounter">documentation</see> for more details.
 	/// </remarks>
 	/// <returns> The current counter value. </returns>
 	public static ulong GetPerformanceCounter()
@@ -54,7 +54,7 @@ unsafe partial class SDL
 	/// Get the count per second of the high resolution counter.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPerformanceFrequency">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPerformanceFrequency">documentation</see> for more details.
 	/// </remarks>
 	/// <returns> A platform-specific count per second. </returns>
 	public static ulong GetPerformanceFrequency()
@@ -69,7 +69,7 @@ unsafe partial class SDL
 	/// Wait a specified number of milliseconds before returning.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_Delay">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Delay">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="ms"> The number of milliseconds to delay. </param>
 	public static void DelayMs(uint ms)
@@ -84,7 +84,7 @@ unsafe partial class SDL
 	/// Wait a specified number of nanoseconds before returning.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DelayNS">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DelayNS">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="ms"> The number of nanoseconds to delay. </param>
 	public static void DelayNs(ulong ns)
@@ -99,7 +99,7 @@ unsafe partial class SDL
 	/// Call a callback function at a future time.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AddTimer">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AddTimer">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="intervalMs"> The timer delay, in milliseconds, passed to <paramref name="callback"/>. </param>
 	/// <param name="callback"> The <see cref="SDL_TimerMsCallback"/> function to call when the specified <paramref name="intervalMs"/> elapses. </param>
@@ -117,7 +117,7 @@ unsafe partial class SDL
 	/// Call a callback function at a future time.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AddTimerNS">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AddTimerNS">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="intervalNs"> The timer delay, in nanoseconds, passed to <paramref name="callback"/>. </param>
 	/// <param name="callback"> The <see cref="SDL_TimerNsCallback"/> function to call when the specified <paramref name="intervalNs"/> elapses. </param>
@@ -135,7 +135,7 @@ unsafe partial class SDL
 	/// Remove a timer created with <see cref="SDL_AddTimerMs(uint, SDL_TimerMsCallback, void*)"/> or <see cref="SDL_AddTimerNs(ulong, SDL_TimerNsCallback, void*)"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RemoveTimer">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RemoveTimer">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="timerId"> The ID of the timer to remove. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>

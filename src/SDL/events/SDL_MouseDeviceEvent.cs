@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Mouse device event structure (<see cref="SDL_Event.MouseDevice"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MouseDeviceEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseDeviceEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_MouseDeviceEvent

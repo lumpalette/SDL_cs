@@ -21,7 +21,7 @@ unsafe partial class SDL
 	/// Retrieves all pens that are connected to the system.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPens">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPens">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count"> Returns the number of pens in the array. </param>
 	/// <returns> An array of <see cref="SDL_PenId"/> values, or null on error. On a null return, <see cref="GetError"/> is set. </returns>
@@ -51,7 +51,7 @@ unsafe partial class SDL
 	/// Retrieves the pen's current status.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPenStatus">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPenStatus">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="penId"> The pen to query. </param>
 	/// <param name="x"> Returns the pen x coordinate. </param>
@@ -77,7 +77,7 @@ unsafe partial class SDL
 	/// Retrieves the <see cref="SDL_Guid"/> for a given <see cref="SDL_PenId"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPenGUID">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPenGUID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="penId"> The pen to query. </param>
 	/// <returns> The corresponding pen GUID; persistent across multiple sessions. If <paramref name="penId"/> is <see cref="SDL_PenId.Invalid"/>, returns an all-zeroes GUID. </returns>
@@ -93,7 +93,7 @@ unsafe partial class SDL
 	/// Retrieves axesPtr human-readable description for a <see cref="SDL_PenId"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPenName">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPenName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="penId"> The pen to query. </param>
 	/// <returns> A string that contains the name of the pen, intended for human consumption. Returns null on error (cf.<see cref="GetError"/>). </returns>
@@ -109,7 +109,7 @@ unsafe partial class SDL
 	/// Retrieves capability flags for a given <see cref="SDL_PenId"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPenCapabilities">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPenCapabilities">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="penId"> The pen to query. </param>
 	/// <param name="capabilities"> Returns detail information about pen capabilities, such as the number of buttons. </param>
@@ -129,7 +129,7 @@ unsafe partial class SDL
 	/// Retrieves the pen type for a given <see cref="SDL_PenId"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPenType">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPenType">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="penId"> The pen to query. </param>
 	/// <returns> the corresponding pen type (cf. <see cref="SDL_PenSubtype"/>) or <see cref="SDL_PenSubtype.Unknown"/> on error. </returns>

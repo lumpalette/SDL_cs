@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Function prototype for the nanosecond timer callback function.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_NSTimerCallback">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_NSTimerCallback">documentation</see> for more details.
 /// </remarks>
 /// <param name="userData"> Sn arbitrary pointer provided by the app through <see cref="SDL.SDL_AddTimerNs(uint, SDL_TimerMsCallback, void*)"/>, for its own use. </param>
 /// <param name="timerId"> The current timer being processed. </param>

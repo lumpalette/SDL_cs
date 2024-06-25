@@ -4,7 +4,7 @@
 /// The color primaries, as described by <see href="https://www.itu.int/rec/T-REC-H.273-201612-S/en"/>.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ColorPrimaries">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ColorPrimaries">documentation</see> for more details.
 /// </remarks>
 public enum SDL_ColorPrimaries
 {

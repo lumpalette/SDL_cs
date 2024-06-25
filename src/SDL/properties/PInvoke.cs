@@ -10,7 +10,7 @@ unsafe partial class SDL
 	/// Get the global SDL properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetGlobalProperties">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGlobalProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <returns> A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static SDL_PropertiesId GetGlobalProperties()
@@ -25,7 +25,7 @@ unsafe partial class SDL
 	/// Create a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateProperties">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <returns> An ID for a new set of properties, or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
 	public static SDL_PropertiesId CreateProperties()
@@ -40,7 +40,7 @@ unsafe partial class SDL
 	/// Copy a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CopyProperties">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CopyProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="src"> The properties to copy. </param>
 	/// <param name="dst"> The destionation properties. </param>
@@ -57,7 +57,7 @@ unsafe partial class SDL
 	/// Lock a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_LockProperties">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_LockProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to lock. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -73,7 +73,7 @@ unsafe partial class SDL
 	/// Unlock a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UnlockProperties">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UnlockProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to unlock. </param>
 	public static void UnlockProperties(SDL_PropertiesId props)
@@ -88,7 +88,7 @@ unsafe partial class SDL
 	/// Set a property on a set of properties with a cleanup function that is called when the property is deleted.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetPropertyWithCleanup">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetPropertyWithCleanup">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to modify. </param>
 	/// <param name="name"> The name of the property to modify. </param>
@@ -111,7 +111,7 @@ unsafe partial class SDL
 	/// Set a property on a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetProperty">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetProperty">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to modify. </param>
 	/// <param name="name"> The name of the property to modify. </param>
@@ -132,7 +132,7 @@ unsafe partial class SDL
 	/// Set a string property on a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetStringProperty">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetStringProperty">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to modify. </param>
 	/// <param name="name"> The name of the property to modify. </param>
@@ -153,7 +153,7 @@ unsafe partial class SDL
 	/// Set an integer property on a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetNumberProperty">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetNumberProperty">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to modify. </param>
 	/// <param name="name"> The name of the property to modify. </param>
@@ -174,7 +174,7 @@ unsafe partial class SDL
 	/// Set a floating point property on a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetFloatProperty">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetFloatProperty">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to modify. </param>
 	/// <param name="name"> The name of the property to modify. </param>
@@ -195,7 +195,7 @@ unsafe partial class SDL
 	/// Set a boolean property on a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetBooleanProperty">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetBooleanProperty">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to modify. </param>
 	/// <param name="name"> The name of the property to modify. </param>
@@ -216,7 +216,7 @@ unsafe partial class SDL
 	/// Return whether a property exists in a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_HasProperty">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HasProperty">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to modify. </param>
 	/// <param name="name"> The name of the property to query. </param>
@@ -236,7 +236,7 @@ unsafe partial class SDL
 	/// Get the type of a property on a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetPropertyType">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPropertyType">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to query. </param>
 	/// <param name="name"> The name of the property to query. </param>
@@ -256,7 +256,7 @@ unsafe partial class SDL
 	/// Get a property on a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetProperty">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetProperty">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to query. </param>
 	/// <param name="name"> The name of the property to query. </param>
@@ -277,7 +277,7 @@ unsafe partial class SDL
 	/// Get a string property on a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetStringProperty">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetStringProperty">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to query. </param>
 	/// <param name="name"> The name of the property to query. </param>
@@ -298,7 +298,7 @@ unsafe partial class SDL
 	/// Get a number property on a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumberProperty">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumberProperty">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to query. </param>
 	/// <param name="name"> The name of the property to query. </param>
@@ -319,7 +319,7 @@ unsafe partial class SDL
 	/// Get a floating point property on a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetFloatProperty">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetFloatProperty">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to query. </param>
 	/// <param name="name"> The name of the property to query. </param>
@@ -340,7 +340,7 @@ unsafe partial class SDL
 	/// Get a boolean property on a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetBooleanProperty">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetBooleanProperty">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to query. </param>
 	/// <param name="name"> The name of the property to query. </param>
@@ -361,7 +361,7 @@ unsafe partial class SDL
 	/// Clear a property on a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ClearProperty">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ClearProperty">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to modify. </param>
 	/// <param name="name"> The name of the property to clear. </param>
@@ -381,7 +381,7 @@ unsafe partial class SDL
 	/// Enumerate the properties on a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_EnumerateProperties">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_EnumerateProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to query. </param>
 	/// <param name="callback"> The function to call for each property. </param>
@@ -399,7 +399,7 @@ unsafe partial class SDL
 	/// Destroy a set of properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyProperties">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to destroy. </param>
 	public static void DestroyProperties(SDL_PropertiesId props)

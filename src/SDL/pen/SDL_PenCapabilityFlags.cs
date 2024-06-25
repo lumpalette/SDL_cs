@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Pen capabilities reported by <see cref="SDL.GetPenCapabilities"/>.
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PenCapabilityFlags">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PenCapabilityFlags">documentation</see> for more details.
 /// </remarks>
 [Flags]
 public enum SDL_PenCapabilityFlags : uint

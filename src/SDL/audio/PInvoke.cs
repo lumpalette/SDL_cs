@@ -11,7 +11,7 @@ unsafe partial class SDL
 	/// Retrieve the size, in bits, from an <see cref="SDL_AudioFormat"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_BITSIZE">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_BITSIZE">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
 	/// <returns> Data size in bits. </returns>
@@ -25,7 +25,7 @@ unsafe partial class SDL
 	/// Retrieve the size, in bytes, from an <see cref="SDL_AudioFormat"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_BYTESIZE">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_BYTESIZE">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
 	/// <returns> Data size in bytes. </returns>
@@ -39,7 +39,7 @@ unsafe partial class SDL
 	/// Determine if an <see cref="SDL_AudioFormat"/> represents integer data.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISINT">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISINT">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
 	/// <returns> True if format is integer, false otherwise. </returns>
@@ -52,7 +52,7 @@ unsafe partial class SDL
 	/// Determine if an <see cref="SDL_AudioFormat"/> represents floating point data.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISFLOAT">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISFLOAT">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
 	/// <returns> True if format is floating point, false otherwise. </returns>
@@ -66,7 +66,7 @@ unsafe partial class SDL
 	/// Determine if an <see cref="SDL_AudioFormat"/> represents bigendian data.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISBIGENDIAN">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISBIGENDIAN">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
 	/// <returns> True if format is big endian, false otherwise. </returns>
@@ -80,7 +80,7 @@ unsafe partial class SDL
 	/// Determine if an <see cref="SDL_AudioFormat"/> represents littleendian data.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISLITTLEENDIAN">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISLITTLEENDIAN">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
 	/// <returns> True if format is little endian, false otherwise. </returns>
@@ -94,7 +94,7 @@ unsafe partial class SDL
 	/// Determine if an <see cref="SDL_AudioFormat"/> represents signed data.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISSIGNED">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISSIGNED">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
 	/// <returns> True if format is signed, false otherwise. </returns>
@@ -108,7 +108,7 @@ unsafe partial class SDL
 	/// Determine if an <see cref="SDL_AudioFormat"/> represents unsigned data.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISUNSIGNED">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISUNSIGNED">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
 	/// <returns> True if format is unsigned, false otherwise. </returns>
@@ -122,7 +122,7 @@ unsafe partial class SDL
 	/// Calculate the size of each audio frame (in bytes) from an <see cref="SDL_AudioSpec"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_FRAMESIZE">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_FRAMESIZE">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="x"> An <see cref="SDL_AudioSpec"/> to query. </param>
 	/// <returns> The number of bytes used per sample frame. </returns>
@@ -136,7 +136,7 @@ unsafe partial class SDL
 	/// Use this function to get the number of built-in audio drivers.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumAudioDrivers">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumAudioDrivers">documentation</see> for more details.
 	/// </remarks>
 	/// <returns> The number of built-in audio drivers. </returns>
 	public static int GetNumAudioDrivers()
@@ -151,7 +151,7 @@ unsafe partial class SDL
 	/// Use this function to get the name of a built in audio driver.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioDriver">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioDriver">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="index"> The index of the audio driver; the value ranges from 0 to <see cref="GetNumAudioDrivers"/> - 1. </param>
 	/// <returns> The name of the audio driver at the requested index, or null if an invalid index was specified. </returns>
@@ -167,7 +167,7 @@ unsafe partial class SDL
 	/// Get the name of the current audio driver.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentAudioDriver">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentAudioDriver">documentation</see> for more details.
 	/// </remarks>
 	/// <returns> The name of the current audio driver or null if no driver has been initialized. </returns>
 	public static string? GetCurrentAudioDriver()
@@ -182,7 +182,7 @@ unsafe partial class SDL
 	/// Get a list of currently-connected audio playback devices.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioPlaybackDevices">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioPlaybackDevices">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count"> Returns the number of devices </param>
 	/// <returns> An array of device instance IDs, or null on error; call <see cref="GetError"/> for more details. </returns>
@@ -212,7 +212,7 @@ unsafe partial class SDL
 	/// Get the human-readable name of a specific audio device.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioDeviceName">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioDeviceName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="deviceId"> The instance ID of the device to query. </param>
 	/// <returns> The name of the audio device, or null on error. </returns>
@@ -249,7 +249,7 @@ unsafe partial class SDL
 	/// Open a specific audio device.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_OpenAudioDevice">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenAudioDevice">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="deviceId"> The device instance id to open, or <see cref="SDL_AudioDeviceId.DefaultPlayback"/> or <see cref="SDL_AudioDeviceId.DefaultRecording"/> for the most reasonable default device. </param>
 	/// <param name="spec"> The requested device configuration. Can be null to use reasonable defaults. </param>
@@ -266,7 +266,7 @@ unsafe partial class SDL
 	/// Use this function to pause audio playback on a specified device.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PauseAudioDevice">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PauseAudioDevice">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="device"> A device opened by <see cref="OpenAudioDevice(SDL_AudioDeviceId, SDL_AudioSpec*)"/>. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -282,7 +282,7 @@ unsafe partial class SDL
 	/// Use this function to unpause audio playback on a specified device.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ResumeAudioDevice">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ResumeAudioDevice">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="device"> A device opened by <see cref="OpenAudioDevice(SDL_AudioDeviceId, SDL_AudioSpec*)"/>. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -298,7 +298,7 @@ unsafe partial class SDL
 	/// Use this function to query if an audio device is paused.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AudioDevicePaused">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioDevicePaused">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="device"> A device opened by <see cref="OpenAudioDevice(SDL_AudioDeviceId, SDL_AudioSpec*)"/>. </param>
 	/// <returns> True if device is valid and paused, false otherwise. </returns>
@@ -314,7 +314,7 @@ unsafe partial class SDL
 	/// Close a previously-opened audio device.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CloseAudioDevice">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CloseAudioDevice">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="device"> An audio device ID previously returned by <see cref="OpenAudioDevice(SDL_AudioDeviceId, SDL_AudioSpec*)"/>. </param>
 	public static void CloseAudioDevice(SDL_AudioDeviceId device)
@@ -329,7 +329,7 @@ unsafe partial class SDL
 	/// Bind a list of audio streams to an audio device.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BindAudioStreams">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BindAudioStreams">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="deviceId"> An audio device to bind a stream to. </param>
 	/// <param name="streams"> An array of audio streams to unbind. </param>
@@ -349,7 +349,7 @@ unsafe partial class SDL
 	/// Bind a single audio stream to an audio device.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_BindAudioStream">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BindAudioStream">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="deviceId"> An audio device to bind a stream to. </param>
 	/// <param name="stream"> An audio stream to bind to a device. </param>
@@ -366,7 +366,7 @@ unsafe partial class SDL
 	/// Unbind a list of audio streams from their audio devices.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UnbindAudioStreams">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UnbindAudioStreams">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="streams"> An array of audio streams to unbind. </param>
 	public static void UnbindAudioStreams(SDL_AudioStream*[] streams)
@@ -384,7 +384,7 @@ unsafe partial class SDL
 	/// Unbind a single audio stream from its audio device.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UnbindAudioStream">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UnbindAudioStream">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> An audio stream to unbind from a device. </param>
 	public static void UnbindAudioStream(SDL_AudioStream* stream)
@@ -399,7 +399,7 @@ unsafe partial class SDL
 	/// Query an audio stream for its currently-bound device.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamDevice">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamDevice">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The audio stream to query. </param>
 	/// <returns> The bound audio device, or <see cref="InvalidAudioDevice"/> if not bound or invalid. </returns>
@@ -415,7 +415,7 @@ unsafe partial class SDL
 	/// Create a new audio stream.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateAudioStream">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateAudioStream">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="srcSpec"> The format details of the input audio. </param>
 	/// <param name="dstSpec"> The format details of the output audio. </param>
@@ -432,7 +432,7 @@ unsafe partial class SDL
 	/// Get the properties associated with an audio stream.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamProperties">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The <see cref="SDL_AudioStream"/> to query. </param>
 	/// <returns> A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -448,7 +448,7 @@ unsafe partial class SDL
 	/// Query the current format of an audio stream.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamFormat">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamFormat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The <see cref="SDL_AudioStream"/> to query. </param>
 	/// <param name="srcSpec"> Returns the input audio format. </param>
@@ -469,7 +469,7 @@ unsafe partial class SDL
 	/// Change the input and output formats of an audio stream.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioStreamFormat">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioStreamFormat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The stream the format is being changed. </param>
 	/// <param name="srcSpec"> The new format of the audio input; if null, it is not changed. </param>
@@ -487,7 +487,7 @@ unsafe partial class SDL
 	/// Get the frequency ratio of an audio stream.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamFrequencyRatio">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamFrequencyRatio">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The <see cref="SDL_AudioStream"/> to query. </param>
 	/// <returns> The frequency ratio of the stream, or 0.0 on error. </returns>
@@ -503,7 +503,7 @@ unsafe partial class SDL
 	/// Change the frequency ratio of an audio stream.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioStreamFrequencyRatio">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioStreamFrequencyRatio">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The stream the frequency ratio is being changed. </param>
 	/// <param name="ratio"> The frequency ratio. 1.0 is normal speed. Must be between 0.01 and 100. </param>
@@ -520,7 +520,7 @@ unsafe partial class SDL
 	/// Add data to the stream.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PutAudioStreamData">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PutAudioStreamData">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The stream the audio data is being added to. </param>
 	/// <param name="buffer"> A pointer to the audio data to add. </param>
@@ -538,7 +538,7 @@ unsafe partial class SDL
 	/// Get converted/resampled data from the stream.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamData">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamData">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The stream the audio is being requested from. </param>
 	/// <param name="buffer"> A buffer to fill with audio data. </param>
@@ -556,7 +556,7 @@ unsafe partial class SDL
 	/// Get the number of converted/resampled bytes available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamAvailable">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamAvailable">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The audio stream to query. </param>
 	/// <returns> The number of converted/resampled bytes available. </returns>
@@ -572,7 +572,7 @@ unsafe partial class SDL
 	/// Get the number of bytes currently queued.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamQueued">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamQueued">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The audio stream to query. </param>
 	/// <returns> The number of bytes queued. </returns>
@@ -589,7 +589,7 @@ unsafe partial class SDL
 	/// made available immediately.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FlushAudioStream">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FlushAudioStream">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The audio stream to flush. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -605,7 +605,7 @@ unsafe partial class SDL
 	/// Clear any pending data in the stream.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ClearAudioStream">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ClearAudioStream">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The audio stream to clear. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -621,7 +621,7 @@ unsafe partial class SDL
 	/// Use this function to pause audio playback on the audio device associated with an audio stream.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PauseAudioStreamDevice">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PauseAudioStreamDevice">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The audio stream associated with the audio device to pause. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -637,7 +637,7 @@ unsafe partial class SDL
 	/// Use this function to unpause audio playback on the audio device associated with an audio stream.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ResumeAudioStreamDevice">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ResumeAudioStreamDevice">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The audio stream associated with the audio device to resume. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -653,7 +653,7 @@ unsafe partial class SDL
 	/// Lock an audio stream for serialized access.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_LockAudioStream">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_LockAudioStream">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The audio stream to lock. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -669,7 +669,7 @@ unsafe partial class SDL
 	/// Unlock an audio stream for serialized access.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UnlockAudioStream">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UnlockAudioStream">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The audio stream to unlock. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -685,7 +685,7 @@ unsafe partial class SDL
 	/// Set a callback that runs when data is requested from an audio stream.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioStreamGetCallback">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioStreamGetCallback">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The audio stream to set the new callback on. </param>
 	/// <param name="callback"> The new callback function to call when data is requested from the stream. </param>
@@ -703,7 +703,7 @@ unsafe partial class SDL
 	/// Set a callback that runs when data is added to an audio stream.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioStreamPutCallback">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioStreamPutCallback">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The audio stream to set the new callback on. </param>
 	/// <param name="callback"> The new callback function to call when data is added to the stream. </param>
@@ -721,7 +721,7 @@ unsafe partial class SDL
 	/// Free an audio stream.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyAudioStream">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyAudioStream">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream"> The audio stream to destroy. </param>
 	public static void DestroyAudioStream(SDL_AudioStream* stream)
@@ -736,7 +736,7 @@ unsafe partial class SDL
 	/// Convenience function for straightforward audio init for the common case.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_OpenAudioDeviceStream">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenAudioDeviceStream">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="deviceId"> An audio device to open, or <see cref="SDL_AudioDeviceId.DefaultPlayback"/> or <see cref="SDL_AudioDeviceId.DefaultRecording"/> </param>
 	/// <param name="spec"> The audio stream's data format. Can be null. </param>
@@ -755,7 +755,7 @@ unsafe partial class SDL
 	/// Set a callback that fires when data is about to be fed to an audio device.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioPostmixCallback">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioPostmixCallback">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="deviceId"> The ID of an opened audio device. </param>
 	/// <param name="callback"> A callback function to be called. Can be null. </param>
@@ -775,7 +775,7 @@ unsafe partial class SDL
 	/// Loads a WAV from a file path.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_LoadWAV">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_LoadWAV">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="path"> The file path of the WAV file to open. </param>
 	/// <param name="spec"> Returns an <see cref="SDL_AudioSpec"/> containing the WAVE data's format details on successful return. </param>
@@ -820,7 +820,7 @@ unsafe partial class SDL
 	/// </summary>
 	/// <remarks>
 	/// You need to provide a buffer of size <paramref name="length"/> to <paramref name="dst"/>. Refer to the official
-	/// documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MixAudio">here</see> for more details.
+	/// documentation <see href="https://wiki.libsdl.org/SDL3/SDL_MixAudio">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="dst"> The destination for the mixed audio.. </param>
 	/// <param name="src"> The source audio buffer to be mixed. </param>
@@ -840,7 +840,7 @@ unsafe partial class SDL
 	/// Convert some audio data of one format to another format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertAudioSamples">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertAudioSamples">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="srcSpec"> The format details of the input audio. </param>
 	/// <param name="srcData"> The audio data to be converted. </param>
@@ -867,7 +867,7 @@ unsafe partial class SDL
 	/// Get the appropriate memset value for silencing an audio format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetSilenceValueForFormat">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSilenceValueForFormat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="format"> The audio data format to query. </param>
 	/// <returns> A byte value that can be passed to memset. </returns>

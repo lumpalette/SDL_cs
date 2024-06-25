@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Pressure-sensitive pen motion/pressure/angle event structure (<see cref="SDL_Event.PenMotion"/>).
 /// </summary>
 /// <remarks>
-/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_PenMotionEvent">here</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PenMotionEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SDL_PenMotionEvent

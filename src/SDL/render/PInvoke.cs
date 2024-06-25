@@ -11,7 +11,7 @@ unsafe partial class SDL
 	/// Get the number of 2D rendering drivers available for the current display.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumRenderDrivers">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumRenderDrivers">documentation</see> for more details.
 	/// </remarks>
 	/// <returns> A number >= 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
 	public static int GetNumRenderDrivers()
@@ -26,7 +26,7 @@ unsafe partial class SDL
 	/// Use this function to get the name of a built in 2D rendering driver.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderDriver">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderDriver">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="index"> The index of the rendering driver; the value ranges from 0 to <see cref="GetNumRenderDrivers"/> - 1 </param>
 	/// <returns> The name of the rendering driver at the requested index, or null if an invalid index was specified. </returns>
@@ -42,7 +42,7 @@ unsafe partial class SDL
 	/// Create a window and default renderer.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateWindowAndRenderer">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateWindowAndRenderer">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="title"> The title of the window. </param>
 	/// <param name="width"> The width of the window. </param>
@@ -72,7 +72,7 @@ unsafe partial class SDL
 	/// Create a 2D rendering context for a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateRenderer">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateRenderer">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window where rendering is displayed. </param>
 	/// <param name="name"> The name of the rendering driver to initialize, or null if it is not important. Defaults to null. </param>
@@ -96,7 +96,7 @@ unsafe partial class SDL
 	/// Create a 2D rendering context for a window, with the specified properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateRendererWithProperties">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateRendererWithProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props"> The properties to use. </param>
 	/// <returns> A valid rendering context or null if there was an error; call <see cref="GetError"/> for more information. </returns>
@@ -112,7 +112,7 @@ unsafe partial class SDL
 	/// Create a 2D software rendering context for a surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSoftwareRenderer">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSoftwareRenderer">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface"> The <see cref="SDL_Surface"/> structure representing the surface where rendering is done. </param>
 	/// <returns> A valid rendering context or null if there was an error; call <see cref="GetError"/> for more information. </returns>
@@ -128,7 +128,7 @@ unsafe partial class SDL
 	/// Get the renderer associated with a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderer">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderer">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
 	/// <returns> The rendering context on success or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -144,7 +144,7 @@ unsafe partial class SDL
 	/// Get the window associated with a renderer.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderWindow">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderWindow">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The renderer to query. </param>
 	/// <returns> The window on success or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -160,7 +160,7 @@ unsafe partial class SDL
 	/// Get the name of a renderer.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRendererName">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRendererName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <returns> The name of the selected renderer, or null if the renderer is invalid. </returns>
@@ -176,7 +176,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a renderer.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRendererProperties">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRendererProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <returns> A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
@@ -192,7 +192,7 @@ unsafe partial class SDL
 	/// Get the output size in pixels of a rendering context.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderOutputSize">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderOutputSize">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="width"> Returns the width in pixels. </param>
@@ -213,7 +213,7 @@ unsafe partial class SDL
 	/// Get the current output size in pixels of a rendering context.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentRenderOutputSize">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentRenderOutputSize">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="width"> Returns the current width. </param>
@@ -234,7 +234,7 @@ unsafe partial class SDL
 	/// Create a texture for a rendering context.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateTexture">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateTexture">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="format"> One of the static properties in <see cref="SDL_PixelFormatEnum"/>. </param>
@@ -254,7 +254,7 @@ unsafe partial class SDL
 	/// Create a texture from an existing surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateTextureFromSurface">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateTextureFromSurface">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="surface"> the <see cref="SDL_Surface"/> structure containing pixel data used to fill the texture. </param>
@@ -271,7 +271,7 @@ unsafe partial class SDL
 	/// Create a texture for a rendering context with the specified properties.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_CreateTextureWithProperties">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateTextureWithProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="props"> The properties to use. </param>
@@ -288,7 +288,7 @@ unsafe partial class SDL
 	/// Get the properties associated with a texture.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureProperties">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to query. </param>
 	/// <returns> A valid property ID on success or 0 on failure; call <see cref="GetError"/> for more information. </returns>
@@ -304,7 +304,7 @@ unsafe partial class SDL
 	/// Get the renderer that created An <see cref="SDL_Texture"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRendererFromTexture">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRendererFromTexture">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to query. </param>
 	/// <returns> A pointer to the SDL_Renderer that created the texture, or null on failure; call <see cref="GetError"/> for more information. </returns>
@@ -320,7 +320,7 @@ unsafe partial class SDL
 	/// Get the size of a texture, as floating point values.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureSize">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureSize">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to query. </param>
 	/// <param name="width"> Returns the width of the texture in pixels. </param>
@@ -341,7 +341,7 @@ unsafe partial class SDL
 	/// Set an additional color value multiplied into render copy operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureColorMod">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureColorMod">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to update. </param>
 	/// <param name="r"> The red color value multiplied into copy operations. </param>
@@ -360,7 +360,7 @@ unsafe partial class SDL
 	/// Set an additional color value multiplied into render copy operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureColorModFloat">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureColorModFloat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to update. </param>
 	/// <param name="r"> The red color value multiplied into copy operations. </param>
@@ -379,7 +379,7 @@ unsafe partial class SDL
 	/// Get the additional color value multiplied into render copy operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureColorMod">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureColorMod">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to query. </param>
 	/// <param name="r"> Returns the current red color value. </param>
@@ -401,7 +401,7 @@ unsafe partial class SDL
 	/// Get the additional color value multiplied into render copy operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureColorModFloat">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureColorModFloat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to query. </param>
 	/// <param name="r"> Returns the current red color value. </param>
@@ -423,7 +423,7 @@ unsafe partial class SDL
 	/// Set an additional alpha value multiplied into render copy operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureAlphaMod">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureAlphaMod">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to update. </param>
 	/// <param name="alpha"> The source alpha value multiplied into copy operations. </param>
@@ -440,7 +440,7 @@ unsafe partial class SDL
 	/// Set an additional alpha value multiplied into render copy operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureAlphaMod">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureAlphaMod">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to update. </param>
 	/// <param name="alpha"> The source alpha value multiplied into copy operations. </param>
@@ -457,7 +457,7 @@ unsafe partial class SDL
 	/// Get the additional alpha value multiplied into render copy operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureAlphaMod">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureAlphaMod">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to query. </param>
 	/// <param name="alpha"> Returns the current alpha value. </param>
@@ -477,7 +477,7 @@ unsafe partial class SDL
 	/// Get the additional alpha value multiplied into render copy operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureAlphaMod">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureAlphaMod">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to query. </param>
 	/// <param name="alpha"> Returns the current alpha value. </param>
@@ -497,7 +497,7 @@ unsafe partial class SDL
 	/// Set the blend mode for a texture, used by <see cref="FIXME:SDL_RenderTexture"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureBlendMode">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureBlendMode">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to update. </param>
 	/// <param name="blendMode"> The <see cref="SDL_BlendMode"/> to use for texture blending. </param>
@@ -514,7 +514,7 @@ unsafe partial class SDL
 	/// Get the blend mode used for texture copy operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureBlendMode">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureBlendMode">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to query. </param>
 	/// <param name="blendMode"> Returns the current <see cref="SDL_BlendMode"/> </param>
@@ -534,7 +534,7 @@ unsafe partial class SDL
 	/// Set the scale mode used for texture scale operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureScaleMode">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureScaleMode">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to update. </param>
 	/// <param name="scaleMode"> The <see cref="SDL_ScaleMode"/> to use for texture scaling. </param>
@@ -551,7 +551,7 @@ unsafe partial class SDL
 	/// Get the scale mode used for texture scale operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureScaleMode">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureScaleMode">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to query. </param>
 	/// <param name="scaleMode"> Returns the current scale mode. </param>
@@ -571,7 +571,7 @@ unsafe partial class SDL
 	/// Update the given texture rectangle with new pixel data.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateTexture">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateTexture">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to update. </param>
 	/// <param name="rect"> An <see cref="SDL_Rect"/> structure representing the area to update, or null to update the entire texture. </param>
@@ -590,7 +590,7 @@ unsafe partial class SDL
 	/// Update a rectangle within a planar YV12 or IYUV texture with new pixel data.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateYUVTexture">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateYUVTexture">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to update. </param>
 	/// <param name="rect"> The rectangle of pixels to update, or null to update the entire texture. </param>
@@ -616,7 +616,7 @@ unsafe partial class SDL
 	/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateNVTexture">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateNVTexture">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to update. </param>
 	/// <param name="rect"> The rectangle of pixels to update, or null to update the entire texture. </param>
@@ -640,7 +640,7 @@ unsafe partial class SDL
 	/// Lock a portion of the texture for <b>write-only</b> pixel access.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_LockTexture">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_LockTexture">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to lock for access, which was created with <see cref="SDL_TextureAccess.Streaming"/>. </param>
 	/// <param name="rect"> An <see cref="SDL_Rect"/> structure representing the area to lock for access; null to lock the entire texture. </param>
@@ -665,7 +665,7 @@ unsafe partial class SDL
 	/// Lock a portion of the texture for <b>write-only</b> pixel access, and expose it as a SDL surface.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_LockTextureToSurface">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_LockTextureToSurface">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to lock for access, which was created with <see cref="SDL_TextureAccess.Streaming"/>. </param>
 	/// <param name="rect"> The rectangle to lock for access. If the rect is null, the entire texture will be locked. </param>
@@ -686,7 +686,7 @@ unsafe partial class SDL
 	/// Unlock a texture, uploading the changes to video memory, if needed.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_UnlockTexture">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UnlockTexture">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> A texture locked by <see cref="LockTexture"/> </param>
 	public static void UnlockTexture(SDL_Texture* texture)
@@ -701,7 +701,7 @@ unsafe partial class SDL
 	/// Set a texture as the current rendering target.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderTarget">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderTarget">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="texture"> The targeted texture, which must be created with the <see cref="SDL_TextureAccess.Target"/> flag, or null to render to the window instead of a texture. </param>
@@ -718,7 +718,7 @@ unsafe partial class SDL
 	/// Get the current render target.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderTarget">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderTarget">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <returns> The current render target or null for the default render target. </returns>
@@ -734,7 +734,7 @@ unsafe partial class SDL
 	/// Set a device independent resolution and presentation mode for rendering.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderLogicalPresentation">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderLogicalPresentation">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="width"> The width of the logical resolution. </param>
@@ -754,7 +754,7 @@ unsafe partial class SDL
 	/// Get device independent resolution and presentation mode for rendering.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderLogicalPresentation">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderLogicalPresentation">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="width"> Returns the width. </param>
@@ -783,7 +783,7 @@ unsafe partial class SDL
 	/// Get a point in render coordinates when given a point in window coordinates.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderCoordinatesFromWindow">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderCoordinatesFromWindow">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="windowX"> The x coordinate in window coordinates. </param>
@@ -806,7 +806,7 @@ unsafe partial class SDL
 	/// Get a point in window coordinates when given a point in render coordinates.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderCoordinatesToWindow">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderCoordinatesToWindow">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="x"> The x coordinate in render coordinates. </param>
@@ -832,7 +832,7 @@ unsafe partial class SDL
 	/// Convert the coordinates in an event to render coordinates.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertEventToRenderCoordinates">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertEventToRenderCoordinates">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="e"> The event to modify. </param>
@@ -851,7 +851,7 @@ unsafe partial class SDL
 	/// Set the drawing area for rendering on the current target.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderViewport">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderViewport">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="rect"> The <see cref="SDL_Rect"/> structure representing the drawing area, or null </param>
@@ -868,7 +868,7 @@ unsafe partial class SDL
 	/// Get the drawing area for the current target.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderViewport">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderViewport">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="rect"> Returns an <see cref="SDL_Rect"/> with the current drawing area. </param>
@@ -888,7 +888,7 @@ unsafe partial class SDL
 	/// Return whether an explicit rectangle was set as the viewport.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderViewportSet">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderViewportSet">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <returns> True if the viewport was set to a specific rectangle, or false if it was set to null (the entire target). </returns>
@@ -904,7 +904,7 @@ unsafe partial class SDL
 	/// Set the clip rectangle for rendering on the specified target.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderClipRect">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderClipRect">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="rect"> An <see cref="SDL_Rect"/> structure representing the clip area, relative to the viewport, or null to disable clipping. </param>
@@ -921,7 +921,7 @@ unsafe partial class SDL
 	/// Get the clip rectangle for the current target.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderClipRect">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderClipRect">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="rect"> An <see cref="SDL_Rect"/> structure filled in with the current clipping area or an empty rectangle if clipping is disabled. </param>
@@ -941,7 +941,7 @@ unsafe partial class SDL
 	/// Get whether clipping is enabled on the given renderer.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderClipEnabled">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderClipEnabled">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <returns> True if clipping is enabled or false if not. </returns>
@@ -957,7 +957,7 @@ unsafe partial class SDL
 	/// Set the drawing scale for rendering on the current target.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderScale">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderScale">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="scaleX"> The horizontal scaling factor. </param>
@@ -993,7 +993,7 @@ unsafe partial class SDL
 	/// Set the color used for drawing operations (Rect, Line and Clear).
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderDrawColor">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderDrawColor">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="r"> The red value used to draw on the rendering target. </param>
@@ -1013,7 +1013,7 @@ unsafe partial class SDL
 	/// Set the color used for drawing operations (Rect, Line and Clear).
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderDrawColor">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderDrawColor">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="r"> The red value used to draw on the rendering target. </param>
@@ -1033,7 +1033,7 @@ unsafe partial class SDL
 	/// Get the color used for drawing operations (Rect, Line and Clear).
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderDrawColor">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderDrawColor">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="r"> Returns the red value used to draw on the rendering target. </param>
@@ -1056,7 +1056,7 @@ unsafe partial class SDL
 	/// Get the color used for drawing operations (Rect, Line and Clear).
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderDrawColor">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderDrawColor">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="r"> Returns the red value used to draw on the rendering target. </param>
@@ -1079,7 +1079,7 @@ unsafe partial class SDL
 	/// Set the color scale used for render operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderColorScale">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderColorScale">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="scale"> The color scale value. </param>
@@ -1096,7 +1096,7 @@ unsafe partial class SDL
 	/// Get the color scale used for render operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderColorScale">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderColorScale">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="scale"> Returns the current color scale value. </param>
@@ -1116,7 +1116,7 @@ unsafe partial class SDL
 	/// Set the blend mode used for drawing operations (Fill and Line).
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderDrawBlendMode">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderDrawBlendMode">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="blendMode"> The <see cref="SDL_BlendMode"/> to use for blending. </param>
@@ -1133,7 +1133,7 @@ unsafe partial class SDL
 	/// Get the blend mode used for drawing operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderDrawBlendMode">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderDrawBlendMode">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="blendMode"> Returns the current <see cref="SDL_BlendMode"/>. </param>
@@ -1153,7 +1153,7 @@ unsafe partial class SDL
 	/// Clear the current rendering target with the drawing color.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderClear">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderClear">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -1169,7 +1169,7 @@ unsafe partial class SDL
 	/// Draw a point on the current rendering target at subpixel precision.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderPoint">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderPoint">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The renderer which should draw a point. </param>
 	/// <param name="x"> The x coordinate of the point. </param>
@@ -1204,7 +1204,7 @@ unsafe partial class SDL
 	/// Draw a line on the current rendering target at subpixel precision.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderLine">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderLine">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The renderer which should draw a line. </param>
 	/// <param name="x1"> The x coordinate of the start point. </param>
@@ -1224,7 +1224,7 @@ unsafe partial class SDL
 	/// Draw a series of connected lines on the current rendering target at subpixel precision.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderLines">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderLines">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The renderer which should draw multiple lines. </param>
 	/// <param name="points"> The points along the lines. </param>
@@ -1244,7 +1244,7 @@ unsafe partial class SDL
 	/// Draw a rectangle on the current rendering target at subpixel precision.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderRect">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderRect">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The renderer which should draw a rectangle. </param>
 	/// <param name="rect"> A pointer to the destination rectangle, or null to outline the entire rendering target. </param>
@@ -1261,7 +1261,7 @@ unsafe partial class SDL
 	/// Draw some number of rectangles on the current rendering target at subpixel precision.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderRects">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderRects">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The renderer which should draw multiple rectangles. </param>
 	/// <param name="rects"> An array of destination rectangles. </param>
@@ -1281,7 +1281,7 @@ unsafe partial class SDL
 	/// Fill a rectangle on the current rendering target with the drawing color at subpixel precision.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/RenderFillRect">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/RenderFillRect">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The renderer which should fill a rectangle. </param>
 	/// <param name="rect"> A pointer to the destination rectangle, or null for the entire rendering target. </param>
@@ -1298,7 +1298,7 @@ unsafe partial class SDL
 	/// Fill some number of rectangles on the current rendering target with the drawing color at subpixel precision.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderFillRects">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderFillRects">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The renderer which should fill multiple rectangles. </param>
 	/// <param name="rects"> A pointer to an array of destination rectangles. </param>
@@ -1318,7 +1318,7 @@ unsafe partial class SDL
 	/// Copy a portion of the texture to the current rendering target at subpixel precision.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTexture">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTexture">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The renderer which should copy parts of a texture. </param>
 	/// <param name="texture"> The source texture. </param>
@@ -1337,7 +1337,7 @@ unsafe partial class SDL
 	/// Copy a portion of the source texture to the current rendering target, with rotation and flipping, at subpixel precision.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTextureRotated">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTextureRotated">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The renderer which should copy parts of a texture. </param>
 	/// <param name="texture"> The source texture. </param>
@@ -1360,7 +1360,7 @@ unsafe partial class SDL
 	/// is done per vertex (SDL.SetTextureColorMod and SDL.SetTextureAlphaMod are ignored).
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderGeometry">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderGeometry">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="texture"> The SDL texture to use. Can be null. </param>
@@ -1392,7 +1392,7 @@ unsafe partial class SDL
 	/// Read pixels from the current rendering target.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderReadPixels">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderReadPixels">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="rect"> An <see cref="SDL_Rect"/> structure representing the area in pixels relative to the to current viewport, or null for the entire viewport. </param>
@@ -1409,7 +1409,7 @@ unsafe partial class SDL
 	/// Update the screen with any rendering performed since the previous call.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_RenderPresent">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderPresent">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -1425,7 +1425,7 @@ unsafe partial class SDL
 	/// Destroy the specified texture.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyTexture">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyTexture">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture"> The texture to destroy. </param>
 	public static void DestroyTexture(SDL_Texture* texture)
@@ -1440,7 +1440,7 @@ unsafe partial class SDL
 	/// Destroy the rendering context for a window and free associated textures.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyRenderer">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyRenderer">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	public static void DestroyRenderer(SDL_Renderer* renderer)
@@ -1455,7 +1455,7 @@ unsafe partial class SDL
 	/// Force the rendering context to flush any pending commands and state.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_FlushRenderer">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FlushRenderer">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
@@ -1471,7 +1471,7 @@ unsafe partial class SDL
 	/// Get the CAMetalLayer associated with the given Metal renderer.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderMetalLayer">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderMetalLayer">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The renderer to query. </param>
 	/// <returns> a CAMetalLayer* on success, or null if the renderer isn't a Metal renderer. </returns>
@@ -1487,7 +1487,7 @@ unsafe partial class SDL
 	/// Get the Metal command encoder for the current frame.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderMetalCommandEncoder">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderMetalCommandEncoder">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"></param>
 	/// <returns> An id&lt;MTLRenderCommandEncoder&gt; on success, or null if the renderer isn't a Metal renderer or there was an error. </returns>
@@ -1503,7 +1503,7 @@ unsafe partial class SDL
 	/// Add a set of synchronization semaphores for the current frame.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_AddVulkanRenderSemaphores">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AddVulkanRenderSemaphores">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
 	/// <param name="waitStageMask"> The VkPipelineStageFlags for the wait. </param>
@@ -1522,7 +1522,7 @@ unsafe partial class SDL
 	/// Toggle VSync of the given renderer.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderVSync">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderVSync">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The renderer to toggle. </param>
 	/// <param name="vsync"> The vertical refresh sync interval. </param>
@@ -1539,7 +1539,7 @@ unsafe partial class SDL
 	/// Get VSync of the given renderer.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderVSync">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderVSync">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The renderer to toggle. </param>
 	/// <param name="vsync"> Returns the current vertical refresh sync interval. See <see cref="SetRenderVSync(SDL_Renderer*, int)"/> for the meaning of the value. </param>
@@ -1559,7 +1559,7 @@ unsafe partial class SDL
 	/// The name of the software renderer.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official documentation <see href="https://wiki.libsdl.org/SDL3/SDL_SOFTWARE_RENDERER">here</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SOFTWARE_RENDERER">documentation</see> for more details.
 	/// </remarks>
 	public const string SoftwareRenderer = "software";
 
