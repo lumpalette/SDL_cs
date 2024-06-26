@@ -12,15 +12,6 @@ namespace SDL_cs;
 /// <param name="y">The y coordinate of the origin.</param>
 /// <param name="width">The width of this rectangle.</param>
 /// <param name="height">The height of this rectangle.</param>
-/// <seealso cref="SDL.RectEmpty(ref SDL_Rect)"/>
-/// <seealso cref="SDL.RectsEqual(ref SDL_Rect, ref SDL_Rect)"/>
-/// <seealso cref="SDL.HasRectIntersection(ref SDL_Rect, ref SDL_Rect)"/>
-/// <seealso cref="SDL.GetRectIntersection(ref SDL_Rect, ref SDL_Rect, out SDL_Rect)"/>
-/// <seealso cref="SDL.GetRectAndLineIntersection(ref SDL_Rect, ref int, ref int, ref int, ref int)"/>
-/// <seealso cref="SDL.GetRectAndLineIntersection(ref SDL_Rect, ref SDL_Point, ref SDL_Point)"/>
-/// <seealso cref="SDL.GetRectUnion(ref SDL_Rect, ref SDL_Rect, out SDL_Rect)"/>
-/// <seealso cref="SDL.GetRectEnclosingPoints(SDL_Point[], ref SDL_Rect, out SDL_Rect)"/>
-/// <seealso cref="SDL.PointInRect(ref SDL_Point, ref SDL_Rect)"/>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_Rect(int x, int y, int width, int height)
 {

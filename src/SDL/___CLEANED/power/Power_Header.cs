@@ -9,8 +9,8 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPowerInfo">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="seconds">Returns the seconds of battery life left. This will return -1 if SDL can't determine a value or there is no battery.</param>
-	/// <param name="percent">Returns the percentage of battery life left, between 0 and 100. This will return -1 if SDL can't determine a value or there is no battery.</param>
+	/// <param name="seconds">The seconds of battery life left. This will return -1 if SDL can't determine a value or there is no battery.</param>
+	/// <param name="percent">The percentage of battery life left, between 0 and 100. This will return -1 if SDL can't determine a value or there is no battery.</param>
 	/// <returns>The current battery state or <see cref="SDL_PowerState.Error"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_PowerState GetPowerInfo(out int seconds, out int percent)
 	{

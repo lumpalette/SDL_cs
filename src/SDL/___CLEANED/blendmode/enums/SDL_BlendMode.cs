@@ -8,7 +8,6 @@ namespace SDL_cs;
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlendMode">documentation</see> for more details.
 /// </remarks>
-/// <seealso cref="SDL.ComposeCustomBlendMode(SDL_BlendFactor, SDL_BlendFactor, SDL_BlendOperation, SDL_BlendFactor, SDL_BlendFactor, SDL_BlendOperation)"/>
 [Flags]
 public enum SDL_BlendMode : uint
 {

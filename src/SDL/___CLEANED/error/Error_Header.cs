@@ -14,8 +14,6 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="fmt">The error message.</param>
 	/// <returns>Always -1.</returns>
-	/// <seealso cref="ClearError"/>
-	/// <seealso cref="GetError"/>
 	public static int SetError(string fmt)
 	{
 		fixed (byte* fmtPtr = Encoding.UTF8.GetBytes(fmt))
@@ -43,8 +41,6 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetError">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>A message with information about the specific error that occurred, or an empty string if there hasn't been an error message set since the last call to <see cref="ClearError"/>.</returns>
-	/// <seealso cref="ClearError"/>
-	/// <seealso cref="SetError(string)"/>
 	public static string GetError()
 	{
 		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetError())!;
@@ -57,8 +53,6 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ClearError">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>0</returns>
-	/// <seealso cref="GetError"/>
-	/// <seealso cref="SetError(string)"/>
 	public static int ClearError()
 	{
 		return PInvoke.SDL_ClearError();

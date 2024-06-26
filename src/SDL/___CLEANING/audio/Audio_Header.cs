@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace SDL_cs;
@@ -13,12 +14,12 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_BITSIZE">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
-	/// <returns> Data size in bits. </returns>
+	/// <param name="x">An <see cref="SDL_AudioFormat"/>.</param>
+	/// <returns>Data size in bits.</returns>
 	[Macro]
 	public static ushort AudioBitSize(SDL_AudioFormat x)
 	{
-		return (ushort)((ushort)x & (ushort)SDL_AudioMask.BitSize);
+		return (ushort)((ushort)x & AudioMaskBitSize);
 	}
 
 	/// <summary>
@@ -27,8 +28,8 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_BYTESIZE">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
-	/// <returns> Data size in bytes. </returns>
+	/// <param name="x">An <see cref="SDL_AudioFormat"/>.</param>
+	/// <returns>Data size in bytes.</returns>
 	[Macro]
 	public static ushort AudioByteSize(SDL_AudioFormat x)
 	{
@@ -41,11 +42,11 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISINT">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
-	/// <returns> True if format is integer, false otherwise. </returns>
+	/// <param name="x">An <see cref="SDL_AudioFormat"/>.</param>
+	/// <returns>True if format is integer, false otherwise.</returns>
 	public static bool AudioIsInt(SDL_AudioFormat x)
 	{
-		return ((ushort)x & (ushort)SDL_AudioMask.Float) == 0;
+		return ((ushort)x & AudioMaskFloat) == 0;
 	}
 
 	/// <summary>
@@ -54,12 +55,12 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISFLOAT">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
-	/// <returns> True if format is floating point, false otherwise. </returns>
+	/// <param name="x">An <see cref="SDL_AudioFormat"/>.</param>
+	/// <returns>True if format is floating point, false otherwise.</returns>
 	[Macro]
 	public static bool AudioIsFloat(SDL_AudioFormat x)
 	{
-		return ((ushort)x & (ushort)SDL_AudioMask.Float) != 0;
+		return ((ushort)x & AudioMaskFloat) != 0;
 	}
 
 	/// <summary>
@@ -68,12 +69,12 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISBIGENDIAN">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
-	/// <returns> True if format is big endian, false otherwise. </returns>
+	/// <param name="x">An <see cref="SDL_AudioFormat"/>.</param>
+	/// <returns>True if format is big endian, false otherwise.</returns>
 	[Macro]
 	public static bool AudioIsBigEndian(SDL_AudioFormat x)
 	{
-		return ((ushort)x & (ushort)SDL_AudioMask.BigEndian) != 0;
+		return ((ushort)x & AudioMaskBigEndian) != 0;
 	}
 
 	/// <summary>
@@ -82,12 +83,12 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISLITTLEENDIAN">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
-	/// <returns> True if format is little endian, false otherwise. </returns>
+	/// <param name="x">An <see cref="SDL_AudioFormat"/>. </param>
+	/// <returns>True if format is little endian, false otherwise.</returns>
 	[Macro]
 	public static bool AudioIsLittleEndian(SDL_AudioFormat x)
 	{
-		return ((ushort)x & (ushort)SDL_AudioMask.BigEndian) == 0;
+		return ((ushort)x & AudioMaskBigEndian) == 0;
 	}
 
 	/// <summary>
@@ -96,12 +97,12 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISSIGNED">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
-	/// <returns> True if format is signed, false otherwise. </returns>
+	/// <param name="x">An <see cref="SDL_AudioFormat"/>.</param>
+	/// <returns>True if format is signed, false otherwise.</returns>
 	[Macro]
 	public static bool AudioIsSigned(SDL_AudioFormat x)
 	{
-		return ((ushort)x & (ushort)SDL_AudioMask.Signed) != 0;
+		return ((ushort)x & AudioMaskSigned) != 0;
 	}
 
 	/// <summary>
@@ -110,12 +111,12 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_ISUNSIGNED">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="x"> An <see cref="SDL_AudioFormat"/>. </param>
-	/// <returns> True if format is unsigned, false otherwise. </returns>
+	/// <param name="x">An <see cref="SDL_AudioFormat"/>.</param>
+	/// <returns>True if format is unsigned, false otherwise.</returns>
 	[Macro]
 	public static bool AudioIsUnsigned(SDL_AudioFormat x)
 	{
-		return ((ushort)x & (ushort)SDL_AudioMask.Signed) == 0;
+		return ((ushort)x & AudioMaskSigned) == 0;
 	}
 
 	/// <summary>
@@ -124,12 +125,12 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_FRAMESIZE">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="x"> An <see cref="SDL_AudioSpec"/> to query. </param>
-	/// <returns> The number of bytes used per sample frame. </returns>
+	/// <param name="x">An <see cref="SDL_AudioSpec"/> to query.</param>
+	/// <returns>The number of bytes used per sample frame.</returns>
 	[Macro]
-	public static ushort AudioFrameSize(SDL_AudioSpec x)
+	public static byte AudioFrameSize(SDL_AudioSpec x)
 	{
-		return (ushort)(AudioByteSize(x.Format) * x.Channels);
+		return (byte)(AudioByteSize(x.Format) * x.Channels);
 	}
 
 	/// <summary>
@@ -138,13 +139,10 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumAudioDrivers">documentation</see> for more details.
 	/// </remarks>
-	/// <returns> The number of built-in audio drivers. </returns>
+	/// <returns>The number of built-in audio drivers.</returns>
 	public static int GetNumAudioDrivers()
 	{
-		return _PInvoke();
-
-		[DllImport(LibraryName, EntryPoint = "SDL_GetNumAudioDrivers", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern int _PInvoke();
+		return PInvoke.SDL_GetNumAudioDrivers();
 	}
 
 	/// <summary>
@@ -153,14 +151,11 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioDriver">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="index"> The index of the audio driver; the value ranges from 0 to <see cref="GetNumAudioDrivers"/> - 1. </param>
-	/// <returns> The name of the audio driver at the requested index, or null if an invalid index was specified. </returns>
+	/// <param name="index">The index of the audio driver; the value ranges from 0 to <see cref="GetNumAudioDrivers"/> - 1.</param>
+	/// <returns>The name of the audio driver at the requested index, or null if an invalid index was specified.</returns>
 	public static string? GetAudioDriver(int index)
 	{
-		return Marshal.PtrToStringUTF8((nint)_PInvoke(index));
-
-		[DllImport(LibraryName, EntryPoint = "SDL_GetAudioDriver", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern byte* _PInvoke(int index);
+		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetAudioDriver(index));
 	}
 
 	/// <summary>
@@ -169,13 +164,10 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentAudioDriver">documentation</see> for more details.
 	/// </remarks>
-	/// <returns> The name of the current audio driver or null if no driver has been initialized. </returns>
+	/// <returns>The name of the current audio driver or null if no driver has been initialized.</returns>
 	public static string? GetCurrentAudioDriver()
 	{
-		return Marshal.PtrToStringUTF8((nint)_PInvoke());
-
-		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentAudioDriver", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern byte* _PInvoke();
+		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetCurrentAudioDriver());
 	}
 
 	/// <summary>
@@ -184,28 +176,25 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioPlaybackDevices">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="count"> Returns the number of devices </param>
-	/// <returns> An array of device instance IDs, or null on error; call <see cref="GetError"/> for more details. </returns>
+	/// <param name="count">The number of devices returned.</param>
+	/// <returns>An array of device instance IDs, or null on error; call <see cref="GetError"/> for more details.</returns>
 	public static SDL_AudioDeviceId[]? GetAudioPlaybackDevices(out int count)
 	{
 		fixed (int* countPtr = &count)
 		{
-			SDL_AudioDeviceId* d = _PInvoke(countPtr);
-			if (d is null)
+			var devicesPtr = PInvoke.SDL_GetAudioPlaybackDevices(countPtr);
+			if (devicesPtr is null)
 			{
 				return null;
 			}
-			SDL_AudioDeviceId[] devices = new SDL_AudioDeviceId[count];
+			var devices = new SDL_AudioDeviceId[count];
 			for (int i = 0; i < count; i++)
 			{
-				devices[i] = d[i];
+				devices[i] = devicesPtr[i];
 			}
-			Free(d);
+			Free(devicesPtr);
 			return devices;
 		}
-
-		[DllImport(LibraryName, EntryPoint = "SDL_GetAudioPlaybackDevices", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern SDL_AudioDeviceId* _PInvoke(int* count);
 	}
 
 	/// <summary>
@@ -214,35 +203,32 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioDeviceName">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="deviceId"> The instance ID of the device to query. </param>
-	/// <returns> The name of the audio device, or null on error. </returns>
-	public static string? GetAudioDeviceName(SDL_AudioDeviceId deviceId)
+	/// <param name="devId">The instance ID of the device to query.</param>
+	/// <returns>The name of the audio device, or null on error.</returns>
+	public static string? GetAudioDeviceName(SDL_AudioDeviceId devId)
 	{
-		return Marshal.PtrToStringUTF8((nint)_PInvoke(deviceId));
-
-		[DllImport(LibraryName, EntryPoint = "SDL_GetAudioDeviceName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern byte* _PInvoke(SDL_AudioDeviceId deviceId);
+		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetAudioDeviceName(devId));
 	}
 
 	/// <summary>
 	/// Get the current audio format of a specific audio device.
 	/// </summary>
-	/// <param name="deviceId"> The instance ID of the device to query. </param>
-	/// <param name="spec"> Returns the device details. </param>
-	/// <param name="sampleFrames"> Returns device buffer size, in sample frames. </param>
-	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
-	public static int GetAudioDeviceFormat(SDL_AudioDeviceId deviceId, out SDL_AudioSpec spec, out int sampleFrames)
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioDeviceFormat">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="devId">The instance ID of the device to query.</param>
+	/// <param name="spec">On return, will be filled with device details.</param>
+	/// <param name="sampleFrames">The device buffer size, in sample frames.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	public static int GetAudioDeviceFormat(SDL_AudioDeviceId devId, out SDL_AudioSpec spec, out int sampleFrames)
 	{
 		fixed (SDL_AudioSpec* specPtr = &spec)
 		{
 			fixed (int* sampleFramesPtr = &sampleFrames)
 			{
-				return _PInvoke(deviceId, specPtr, sampleFramesPtr);
+				return PInvoke.SDL_GetAudioDeviceFormat(devId, specPtr, sampleFramesPtr);
 			}
 		}
-
-		[DllImport(LibraryName, EntryPoint = "SDL_GetAudioDeviceFormat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern int _PInvoke(SDL_AudioDeviceId deviceId, SDL_AudioSpec* spec, int* sampleFrames);
 	}
 
 	/// <summary>
@@ -251,15 +237,29 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenAudioDevice">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="deviceId"> The device instance id to open, or <see cref="SDL_AudioDeviceId.DefaultPlayback"/> or <see cref="SDL_AudioDeviceId.DefaultRecording"/> for the most reasonable default device. </param>
-	/// <param name="spec"> The requested device configuration. Can be null to use reasonable defaults. </param>
-	/// <returns> The device ID on success, <see cref="InvalidAudioDevice"/> on error; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_AudioDeviceId OpenAudioDevice(SDL_AudioDeviceId deviceId, SDL_AudioSpec* spec)
+	/// <param name="devId">The device instance ID to open, or <see cref="AudioDeviceDefaultPlayback"/> or <see cref="AudioDeviceDefaultRecording"/> for the most reasonable default device.</param>
+	/// <param name="spec">The requested device configuration. Can be null to use reasonable defaults.</param>
+	/// <returns>The device ID on success, <see cref="InvalidAudioDevice"/> on error; call <see cref="GetError"/> for more information.</returns>
+	public static SDL_AudioDeviceId OpenAudioDevice(SDL_AudioDeviceId devId, ref SDL_AudioSpec spec)
 	{
-		return _PInvoke(deviceId, spec);
+		fixed (SDL_AudioSpec* specPtr = &spec)
+		{
+			return PInvoke.SDL_OpenAudioDevice(devId, specPtr);
+		}
+	}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_OpenAudioDevice", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-		static extern SDL_AudioDeviceId _PInvoke(SDL_AudioDeviceId deviceId, SDL_AudioSpec* spec);
+	/// <summary>
+	/// Open a specific audio device.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenAudioDevice">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="devId">The device instance ID to open, or <see cref="AudioDeviceDefaultPlayback"/> or <see cref="AudioDeviceDefaultRecording"/> for the most reasonable default device.</param>
+	/// <param name="spec">The requested device configuration. Can be null to use reasonable defaults.</param>
+	/// <returns>The device ID on success, <see cref="InvalidAudioDevice"/> on error; call <see cref="GetError"/> for more information.</returns>
+	public static SDL_AudioDeviceId OpenAudioDevice(SDL_AudioDeviceId devId, SDL_AudioSpec* spec)
+	{
+		return PInvoke.SDL_OpenAudioDevice(devId, spec);
 	}
 
 	/// <summary>
@@ -878,4 +878,116 @@ unsafe partial class SDL
 		[DllImport(LibraryName, EntryPoint = "SDL_GetSilenceValueForFormat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
 		static extern int _PInvoke(SDL_AudioFormat format);
 	}
+
+	/// <summary>
+	/// Unsigned 8-bit samples.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_AudioFormat AudioU8 => new(0x0008);
+
+	/// <summary>
+	/// Signed 8-bit samples.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_AudioFormat AudioS8 => new(0x8008);
+
+	/// <summary>
+	/// Signed 16-bit samples, in little endian.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_AudioFormat AudioS16LittleEndian => new(0x8010);
+
+	/// <summary>
+	/// Signed 16-bit samples, in big endian.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_AudioFormat AudioS16BigEndian => new(0x9010);
+
+	/// <summary>
+	/// 32-bit integer samples, in little endian.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_AudioFormat AudioS32LittleEndian => new(0x8020);
+
+	/// <summary>
+	/// 32-bit integer samples, in big endian.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_AudioFormat AudioS32BigEndian => new(0x9020);
+
+	/// <summary>
+	/// 32-bit floating point samples, in little endian.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_AudioFormat AudioF32LittleEndian => new(0x8120);
+
+	/// <summary>
+	/// 32-bit floating point samples, in big endian.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_AudioFormat AudioF32BigEndian => new(0x9120);
+
+	/// <summary>
+	/// Signed 16-bit samples.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_AudioFormat AudioS16 => BitConverter.IsLittleEndian ? AudioS16LittleEndian : AudioS16BigEndian;
+
+	/// <summary>
+	/// 32-bit integer samples.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_AudioFormat AudioS32 => BitConverter.IsLittleEndian ? AudioS32LittleEndian : AudioS32BigEndian;
+
+	/// <summary>
+	/// 32-bit floating point samples.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_AudioFormat AudioF32 => BitConverter.IsLittleEndian ? AudioF32LittleEndian : AudioF32BigEndian;
+
+	/// <summary>
+	/// A value used to request a default playback audio device.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_AudioDeviceId AudioDeviceDefaultPlayback => new(0xFFFFFFFF);
+
+	/// <summary>
+	/// A value used to request a default recording audio device.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_DEVICE_DEFAULT_RECORDING">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_AudioDeviceId AudioDeviceDefaultRecording => new(0xFFFFFFFE);
+
+	public const ushort AudioMaskBitSize = 0xFF;
+
+	public const ushort AudioMaskFloat = 1 << 8;
+
+	public const ushort AudioMaskBigEndian = 1 << 12;
+
+	public const ushort AudioMaskSigned = 1 << 15;
 }
