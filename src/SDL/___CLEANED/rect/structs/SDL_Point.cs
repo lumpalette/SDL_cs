@@ -8,8 +8,10 @@ namespace SDL_cs;
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Point">documentation</see> for more details.
 /// </remarks>
-/// <param name="x"> The x coordinate. </param>
-/// <param name="y"> The y coordinate. </param>
+/// <param name="x">The x coordinate.</param>
+/// <param name="y">The y coordinate.</param>
+/// <seealso cref="SDL.GetRectEnclosingPoints(SDL_Point[], ref SDL_Rect, out SDL_Rect)"/>
+/// <seealso cref="SDL.PointInRect(ref SDL_Point, ref SDL_Rect)"/>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_Point(int x, int y)
 {

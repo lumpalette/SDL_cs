@@ -12,7 +12,7 @@ unsafe partial class SDL
 	/// <summary>
 	/// Free memory allocated by SDL.
 	/// </summary>
-	/// <param name="mem"> A pointer to the memory to free. </param>
+	/// <param name="mem">A pointer to the memory to free.</param>
 	public static void Free(void* mem)
 	{
 		PInvoke.SDL_free(mem);

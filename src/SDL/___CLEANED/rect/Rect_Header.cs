@@ -100,6 +100,7 @@ unsafe partial class SDL
 	/// <param name="a">An <see cref="SDL_Rect"/> structure representing the first rectangle.</param>
 	/// <param name="b">An <see cref="SDL_Rect"/> structure representing the second rectangle.</param>
 	/// <returns>True if there is an intersection, false otherwise.</returns>
+	/// <seealso cref="GetRectIntersection(ref SDL_Rect, ref SDL_Rect, out SDL_Rect)"/>
 	public static bool HasRectIntersection(ref SDL_Rect a, ref SDL_Rect b)
 	{
 		fixed (SDL_Rect* aPtr = &a, bPtr = &b)
@@ -117,6 +118,7 @@ unsafe partial class SDL
 	/// <param name="a">An <see cref="SDL_FRect"/> structure representing the first rectangle.</param>
 	/// <param name="b">An <see cref="SDL_FRect"/> structure representing the second rectangle.</param>
 	/// <returns>True if there is an intersection, false otherwise.</returns>
+	/// <seealso cref="GetRectIntersection(ref SDL_FRect, ref SDL_FRect, out SDL_FRect)"/>
 	public static bool HasRectIntersection(ref SDL_FRect a, ref SDL_FRect b)
 	{
 		fixed (SDL_FRect* aPtr = &a, bPtr = &b)
@@ -135,6 +137,7 @@ unsafe partial class SDL
 	/// <param name="b">An <see cref="SDL_Rect"/> structure representing the second rectangle.</param>
 	/// <param name="result">An <see cref="SDL_Rect"/> structure filled in with the intersection of rectangles <paramref name="a"/> and <paramref name="b"/>.</param>
 	/// <returns>True if there is an intersection, false otherwise.</returns>
+	/// <seealso cref="HasRectIntersection(ref SDL_Rect, ref SDL_Rect)"/>
 	public static bool GetRectIntersection(ref SDL_Rect a, ref SDL_Rect b, out SDL_Rect result)
 	{
 		fixed (SDL_Rect* aPtr = &a, bPtr = &b, resultPtr = &result)
@@ -153,6 +156,7 @@ unsafe partial class SDL
 	/// <param name="b">An <see cref="SDL_FRect"/> structure representing the second rectangle.</param>
 	/// <param name="result">An <see cref="SDL_FRect"/> structure filled in with the intersection of rectangles <paramref name="a"/> and <paramref name="b"/>.</param>
 	/// <returns>True if there is an intersection, false otherwise.</returns>
+	/// <seealso cref="HasRectIntersection(ref SDL_FRect, ref SDL_FRect)"/>
 	public static bool GetRectIntersection(ref SDL_FRect a, ref SDL_FRect b, out SDL_FRect result)
 	{
 		fixed (SDL_FRect* aPtr = &a, bPtr = &b, resultPtr = &result)
@@ -189,7 +193,7 @@ unsafe partial class SDL
 	/// <param name="b">An <see cref="SDL_FRect"/> structure representing the second rectangle.</param>
 	/// <param name="result">An <see cref="SDL_FRect"/> structure filled in with the union of rectangles <paramref name="a"/> and <paramref name="b"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	public static int GetRectUnionFloat(ref SDL_FRect a, ref SDL_FRect b, out SDL_FRect result)
+	public static int GetRectUnion(ref SDL_FRect a, ref SDL_FRect b, out SDL_FRect result)
 	{
 		fixed (SDL_FRect* aPtr = &a, bPtr = &b, resultPtr = &result)
 		{
@@ -293,6 +297,7 @@ unsafe partial class SDL
 	/// <param name="x2">The ending X-coordinate of the line.</param>
 	/// <param name="y2">The ending Y-coordinate of the line.</param>
 	/// <returns>True if there is an intersection, false otherwise.</returns>
+	/// <seealso cref="GetRectAndLineIntersection(ref SDL_Rect, ref SDL_Point, ref SDL_Point)"/>
 	public static bool GetRectAndLineIntersection(ref SDL_Rect rect, ref int x1, ref int y1, ref int x2, ref int y2)
 	{
 		fixed (SDL_Rect* rectPtr = &rect)
@@ -314,6 +319,7 @@ unsafe partial class SDL
 	/// <param name="start">The starting point of the line.</param>
 	/// <param name="end">The ending point of the line.</param>
 	/// <returns>True if there is an intersection, false otherwise.</returns>
+	/// <seealso cref="GetRectAndLineIntersection(ref SDL_Rect, ref int, ref int, ref int, ref int)"/>
 	public static bool GetRectAndLineIntersection(ref SDL_Rect rect, ref SDL_Point start, ref SDL_Point end)
 	{
 		fixed (SDL_Rect* rectPtr = &rect)
@@ -337,6 +343,7 @@ unsafe partial class SDL
 	/// <param name="x2">The ending X-coordinate of the line.</param>
 	/// <param name="y2">The ending Y-coordinate of the line.</param>
 	/// <returns>True if there is an intersection, false otherwise.</returns>
+	/// <seealso cref="GetRectAndLineIntersection(ref SDL_FRect, ref SDL_FPoint, ref SDL_FPoint)"/>
 	public static bool GetRectAndLineIntersection(ref SDL_FRect rect, ref float x1, ref float y1, ref float x2, ref float y2)
 	{
 		fixed (SDL_FRect* rectPtr = &rect)
@@ -358,6 +365,7 @@ unsafe partial class SDL
 	/// <param name="start">The starting point of the line.</param>
 	/// <param name="end">The ending point of the line.</param>
 	/// <returns>True if there is an intersection, false otherwise.</returns>
+	/// <seealso cref="GetRectAndLineIntersection(ref SDL_FRect, ref float, ref float, ref float, ref float)"/>
 	public static bool GetRectAndLineIntersection(ref SDL_FRect rect, ref SDL_FPoint start, ref SDL_FPoint end)
 	{
 		fixed (SDL_FRect* rectPtr = &rect)
