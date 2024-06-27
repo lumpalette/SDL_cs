@@ -41,7 +41,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetNumVideoDrivers", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetNumVideoDrivers", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 
@@ -57,7 +57,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(index))!;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetVideoDriver", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetVideoDriver", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(int index);
 	}
 
@@ -72,7 +72,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke());
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentVideoDriver", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentVideoDriver", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke();
 	}
 
@@ -87,7 +87,7 @@ unsafe partial class SDL
 	{
 		return (SDL_SystemTheme)_PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetSystemTheme", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSystemTheme", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 
@@ -117,7 +117,7 @@ unsafe partial class SDL
 			return ids;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplays", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplays", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_DisplayId* _PInvoke(int* count);
 	}
 
@@ -132,7 +132,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetPrimaryDisplay", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetPrimaryDisplay", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_DisplayId _PInvoke();
 	}
 
@@ -148,7 +148,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(displayId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PropertiesId _PInvoke(SDL_DisplayId displayId);
 	}
 
@@ -164,7 +164,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(displayId));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayName", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_DisplayId displayId);
 	}
 
@@ -184,7 +184,7 @@ unsafe partial class SDL
 			return _PInvoke(displayId, rectPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayBounds", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayBounds", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_DisplayId displayId, SDL_Rect* rect);
 	}
 
@@ -204,7 +204,7 @@ unsafe partial class SDL
 			return _PInvoke(displayId, rectPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayUsableBounds", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayUsableBounds", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_DisplayId displayId, SDL_Rect* rect);
 	}
 
@@ -220,7 +220,7 @@ unsafe partial class SDL
 	{
 		return (SDL_DisplayOrientation)_PInvoke(displayId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetNaturalDisplayOrientation", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetNaturalDisplayOrientation", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_DisplayId displayId);
 	}
 
@@ -236,7 +236,7 @@ unsafe partial class SDL
 	{
 		return (SDL_DisplayOrientation)_PInvoke(displayId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayOrientation", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayOrientation", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_DisplayId displayId);
 	}
 
@@ -252,7 +252,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(displayId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayOrientation", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayOrientation", CallingConvention = CallingConvention.Cdecl)]
 		static extern float _PInvoke(SDL_DisplayId displayId);
 	}
 
@@ -283,7 +283,7 @@ unsafe partial class SDL
 			return modes;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetFullscreenDisplayModes", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetFullscreenDisplayModes", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_DisplayMode** _PInvoke(SDL_DisplayId displayId, int* count);
 	}
 
@@ -304,7 +304,7 @@ unsafe partial class SDL
 		return _PInvoke(displayId, width, height, refreshRate, includeHighDensityModes ? 1 : 0);
 		
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetClosestFullscreenDisplayMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetClosestFullscreenDisplayMode", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_DisplayMode* _PInvoke(SDL_DisplayId displayId, int width, int height, float refreshRate, int includeHighDensityModes);
 	}
 
@@ -320,7 +320,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(displayId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetDesktopDisplayMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDesktopDisplayMode", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_DisplayMode* _PInvoke(SDL_DisplayId displayId);
 	}
 
@@ -336,7 +336,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(displayId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayMode", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_DisplayMode* _PInvoke(SDL_DisplayId displayId);
 	}
 
@@ -352,7 +352,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(point);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayForPoint", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayForPoint", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_DisplayId _PInvoke(SDL_Point* point);
 	}
 
@@ -368,7 +368,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(rect);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayForRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayForRect", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_DisplayId _PInvoke(SDL_Rect* rect);
 	}
 
@@ -384,7 +384,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayForWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDisplayForWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_DisplayId _PInvoke(SDL_Window* window);
 	}
 
@@ -400,7 +400,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowPixelDensity", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowPixelDensity", CallingConvention = CallingConvention.Cdecl)]
 		static extern float _PInvoke(SDL_Window* window);
 	}
 
@@ -416,7 +416,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowDisplayScale", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowDisplayScale", CallingConvention = CallingConvention.Cdecl)]
 		static extern float _PInvoke(SDL_Window* window);
 	}
 
@@ -433,7 +433,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, mode);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowFullscreenMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowFullscreenMode", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, SDL_DisplayMode* mode);
 	}
 
@@ -449,7 +449,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowFullscreenMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowFullscreenMode", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_DisplayMode* _PInvoke(SDL_Window* window);
 	}
 
@@ -469,7 +469,7 @@ unsafe partial class SDL
 			return _PInvoke(window, sizePtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowICCProfile", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowICCProfile", CallingConvention = CallingConvention.Cdecl)]
 		static extern void* _PInvoke(SDL_Window* window, nuint* size); // this shit looks and IS very cursed.
 	}
 
@@ -485,7 +485,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowPixelFormat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowPixelFormat", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PixelFormatEnum _PInvoke(SDL_Window* window);
 	}
 
@@ -507,7 +507,7 @@ unsafe partial class SDL
 			return _PInvoke(titlePtr, width, height, flags);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Window* _PInvoke(byte* title, int width, int height, SDL_WindowFlags flags);
 	}
 
@@ -523,7 +523,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(props);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateWindowWithProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateWindowWithProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Window* _PInvoke(SDL_PropertiesId props);
 	}
 
@@ -544,7 +544,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(parent, offsetX, offsetY, width, height, (uint)flags);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreatePopupWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreatePopupWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Window* _PInvoke(SDL_Window* parent, int offsetX, int offsetY, int width, int height, uint flags);
 	}
 
@@ -560,7 +560,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowID", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_WindowId _PInvoke(SDL_Window* window);
 	}
 
@@ -576,7 +576,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(id);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowFromID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowFromID", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Window* _PInvoke(SDL_WindowId id);
 	}
 
@@ -592,7 +592,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowParent", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowParent", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Window* _PInvoke(SDL_Window* window);
 	}
 
@@ -608,7 +608,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PropertiesId _PInvoke(SDL_Window* window);
 	}
 
@@ -624,7 +624,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowFlags", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowFlags", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_WindowFlags _PInvoke(SDL_Window* window);
 	}
 
@@ -644,7 +644,7 @@ unsafe partial class SDL
 			return _PInvoke(window, titlePtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowTitle", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowTitle", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, byte* title);
 	}
 
@@ -660,7 +660,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(window))!;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowTitle", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowTitle", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_Window* window);
 	}
 
@@ -677,7 +677,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, surface);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowIcon", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowIcon", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, SDL_Surface* icon);
 	}
 
@@ -695,7 +695,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, x, y);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowPosition", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowPosition", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int x, int y);
 	}
 
@@ -716,7 +716,7 @@ unsafe partial class SDL
 			return _PInvoke(window, xPtr, yPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowPosition", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowPosition", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int* x, int* y);
 	}
 
@@ -734,7 +734,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, width, height);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowSize", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int width, int height);
 	}
 
@@ -755,7 +755,7 @@ unsafe partial class SDL
 			return _PInvoke(window, widthPtr, heightPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowSize", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int* width, int* height);
 	}
 
@@ -778,7 +778,7 @@ unsafe partial class SDL
 			return _PInvoke(window, topPtr, leftPtr, bottomPtr, rightPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowBordersSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowBordersSize", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int* top, int* left, int* bottom, int* right);
 	}
 
@@ -799,7 +799,7 @@ unsafe partial class SDL
 			return _PInvoke(window, widthPtr, heightPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowSizeInPixels", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowSizeInPixels", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int* width, int* height);
 	}
 
@@ -817,7 +817,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, minW, minH);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowMinimumSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowMinimumSize", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int minW, int minH);
 	}
 
@@ -838,7 +838,7 @@ unsafe partial class SDL
 			return _PInvoke(widow, widthPtr, heightPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowMinimumSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowMinimumSize", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int* width, int* height);
 	}
 
@@ -856,7 +856,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, maxW, maxH);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowMaximumSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowMaximumSize", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int maxW, int maxH);
 	}
 
@@ -877,7 +877,7 @@ unsafe partial class SDL
 			return _PInvoke(window, widthPtr, heightPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowMaximumSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowMaximumSize", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int* width, int* height);
 	}
 
@@ -894,7 +894,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, bordered ? 1 : 0);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowBordered", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowBordered", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int bordered);
 	}
 
@@ -911,7 +911,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, resizable ? 1 : 0);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowResizable", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowResizable", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int resizable);
 	}
 
@@ -928,7 +928,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, onTop ? 1 : 0);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowAlwaysOnTop", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowAlwaysOnTop", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int onTop);
 	}
 
@@ -944,7 +944,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_ShowWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_ShowWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window);
 	}
 
@@ -960,7 +960,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_HideWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_HideWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window);
 	}
 
@@ -976,7 +976,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_RaiseWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_RaiseWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window);
 	}
 
@@ -992,7 +992,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_MaximizeWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_MaximizeWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window);
 	}
 
@@ -1008,7 +1008,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_MinimizeWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_MinimizeWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window);
 	}
 
@@ -1024,7 +1024,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_RestoreWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_RestoreWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window);
 	}
 
@@ -1041,7 +1041,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, fullscreen ? 1 : 0);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowFullscreen", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowFullscreen", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int fullscreen);
 	}
 
@@ -1057,7 +1057,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SyncWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SyncWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window);
 	}
 
@@ -1073,7 +1073,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_WindowHasSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_WindowHasSurface", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window);
 	}
 
@@ -1089,7 +1089,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowSurface", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Surface* _PInvoke(SDL_Window* window);
 	}
 
@@ -1105,7 +1105,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_UpdateWindowSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_UpdateWindowSurface", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window);
 	}
 
@@ -1125,7 +1125,7 @@ unsafe partial class SDL
 			return _PInvoke(window, rectsPtr, rects.Length);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_UpdateWindowSurfaceRects", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_UpdateWindowSurfaceRects", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, SDL_Rect* rects, int numRects);
 	}
 
@@ -1141,7 +1141,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_DestroyWindowSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_DestroyWindowSurface", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window);
 	}
 
@@ -1158,7 +1158,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, grabbed ? 1 : 0);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowKeyboardGrab", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowKeyboardGrab", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int grabbed);
 	}
 
@@ -1175,7 +1175,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, grabbed ? 1 : 0);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowMouseGrab", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowMouseGrab", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int grabbed);
 	}
 
@@ -1191,7 +1191,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowKeyboardGrab", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowKeyboardGrab", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window);
 	}
 
@@ -1207,7 +1207,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowMouseGrab", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowMouseGrab", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window);
 	}
 
@@ -1222,7 +1222,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGrabbedWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGrabbedWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Window* _PInvoke();
 	}
 
@@ -1241,7 +1241,7 @@ unsafe partial class SDL
 		// anyway more boring pinvoke shit.
 		return _PInvoke(window, rect);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowMouseRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowMouseRect", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, SDL_Rect* rect);
 	}
 
@@ -1257,7 +1257,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowMouseRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowMouseRect", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Rect* _PInvoke(void* window);
 	}
 
@@ -1274,7 +1274,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, opacity);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowOpacity", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowOpacity", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, float opacity);
 	}
 
@@ -1294,7 +1294,7 @@ unsafe partial class SDL
 			return _PInvoke(window, opacityPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowOpacity", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowOpacity", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, float* opacity);
 	}
 
@@ -1311,7 +1311,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(modalWindow, parentWindow);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowModalFor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowModalFor", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* modalWindow, SDL_Window* parentWindow);
 	}
 
@@ -1327,7 +1327,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowInputFocus", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowInputFocus", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window);
 	}
 
@@ -1344,7 +1344,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, focusable ? 1 : 0);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowFocusable", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowFocusable", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int focusable);
 	}
 
@@ -1362,7 +1362,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, x, y);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_ShowWindowSystemMenu", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_ShowWindowSystemMenu", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, int x, int y);
 	}
 
@@ -1387,7 +1387,7 @@ unsafe partial class SDL
 		}
 		return _PInvoke(window, null);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowShape", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetWindowShape", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, SDL_Surface* shape);
 	}
 
@@ -1404,7 +1404,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window, operation);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_FlashWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_FlashWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Window* window, SDL_FlashOperation operation);
 	}
 
@@ -1419,7 +1419,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_DestroyWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_DestroyWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_Window* window);
 	}
 
@@ -1434,7 +1434,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke() == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_ScreenSaverEnabled", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_ScreenSaverEnabled", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 
@@ -1449,7 +1449,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_EnableScreenSaver", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_EnableScreenSaver", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 
@@ -1464,7 +1464,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_DisableScreenSaver", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_DisableScreenSaver", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 

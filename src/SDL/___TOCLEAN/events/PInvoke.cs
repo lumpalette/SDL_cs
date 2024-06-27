@@ -15,7 +15,7 @@ unsafe partial class SDL
 	{
 		_PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_PumpEvents", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_PumpEvents", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke();
 	}
 
@@ -38,7 +38,7 @@ unsafe partial class SDL
 			return _PInvoke(eventsPtr, numEvents, action, minType, maxType);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_PeepEvents", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_PeepEvents", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Event* events, int numEvents, SDL_EventAction action, SDL_EventType minType, SDL_EventType maxType);
 	}
 
@@ -54,7 +54,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(type) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_HasEvent", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_HasEvent", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_EventType type);
 	}
 
@@ -69,7 +69,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(type);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_FlushEvent", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_FlushEvent", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_EventType type);
 	}
 
@@ -85,7 +85,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(minType, maxType);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_FlushEvents", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_FlushEvents", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_EventType minType, SDL_EventType maxType);
 	}
 
@@ -101,7 +101,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(e) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_PollEvent", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_PollEvent", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Event* e);
 	}
 
@@ -117,7 +117,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(e) == 1;
 	
-		[DllImport(LibraryName, EntryPoint = "SDL_WaitEvent", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_WaitEvent", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Event* e);
 	}
 
@@ -134,7 +134,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(e, timeoutMs) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_WaitEventTimeout", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_WaitEventTimeout", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Event* e, int timeoutMs);
 	}
 
@@ -150,7 +150,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(e);
 		
-		[DllImport(LibraryName, EntryPoint = "SDL_PushEvent", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_PushEvent", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Event* e);
 	}
 
@@ -166,7 +166,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(filter, userData);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetEventFilter", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetEventFilter", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_EventFilterCallback filter, void* userData);
 	}
 
@@ -194,7 +194,7 @@ unsafe partial class SDL
 			return result == 1;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetEventFilter", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetEventFilter", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(void** filter, void** userdata);
 	}
 
@@ -211,7 +211,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(filter, userData);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_AddEventWatch", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_AddEventWatch", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_EventFilterCallback filter, void* userData);
 	}
 
@@ -227,7 +227,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(filter, userData);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_DelEventWatch", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_DelEventWatch", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_EventFilterCallback filter, void* userData);
 	}
 
@@ -243,7 +243,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(filter, userData);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_FilterEvents", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_FilterEvents", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_EventFilterCallback filter, void* userData);
 	}
 
@@ -259,7 +259,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(type, enabled ? 1 : 0);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetEventEnabled", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetEventEnabled", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_EventType type, int enabled);
 	}
 
@@ -275,7 +275,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(type) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_EventEnabled", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_EventEnabled", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_EventType type);
 	}
 
@@ -291,7 +291,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(numEvents);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_RegisterEvents", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_RegisterEvents", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_EventType _PInvoke(int numEvents);
 	}
 
@@ -307,7 +307,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(size);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_AllocateEventMemory", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_AllocateEventMemory", CallingConvention = CallingConvention.Cdecl)]
 		static extern void* _PInvoke(ulong size);
 	}
 }

@@ -18,7 +18,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetNumRenderDrivers", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetNumRenderDrivers", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 
@@ -34,7 +34,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(index));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderDriver", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderDriver", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(int index);
 	}
 
@@ -64,7 +64,7 @@ unsafe partial class SDL
 			}
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateWindowAndRenderer", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateWindowAndRenderer", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(byte* title, int width, int height, SDL_WindowFlags windowFlags, SDL_Window** window, SDL_Renderer** renderer);
 	}
 
@@ -88,7 +88,7 @@ unsafe partial class SDL
 		}
 		return _PInvoke(window, null);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateRenderer", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateRenderer", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Renderer* _PInvoke(SDL_Window* window, byte* name);
 	}
 
@@ -104,7 +104,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(props);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateRendererWithProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateRendererWithProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Renderer* _PInvoke(SDL_PropertiesId props);
 	}
 
@@ -120,7 +120,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(surface);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateSoftwareRenderer", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateSoftwareRenderer", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Renderer* _PInvoke(SDL_Surface* surface);
 	}
 
@@ -136,7 +136,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(window);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderer", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderer", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Renderer* _PInvoke(SDL_Window* window);
 	}
 
@@ -152,7 +152,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Window* _PInvoke(SDL_Renderer* renderer);
 	}
 
@@ -168,7 +168,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(renderer));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRendererName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRendererName", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_Renderer* renderer);
 	}
 
@@ -184,7 +184,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRendererProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRendererProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PropertiesId _PInvoke(SDL_Renderer* renderer);
 	}
 
@@ -205,7 +205,7 @@ unsafe partial class SDL
 			return _PInvoke(renderer, widthPtr, hPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderOutputSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderOutputSize", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, int* width, int* height);
 	}
 
@@ -226,7 +226,7 @@ unsafe partial class SDL
 			return _PInvoke(renderer, widthPtr, heightPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentRenderOutputSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetCurrentRenderOutputSize", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, int* width, int* height);
 	}
 
@@ -246,7 +246,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer, format, access, width, height);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateTexture", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateTexture", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Texture* _PInvoke(SDL_Renderer* renderer, SDL_PixelFormatEnum format, SDL_TextureAccess access, int width, int height);
 	}
 
@@ -263,7 +263,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer, surface);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateTextureFromSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateTextureFromSurface", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Texture* _PInvoke(SDL_Renderer* renderer, SDL_Surface* surface);
 	}
 
@@ -280,7 +280,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer, props);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateTextureWithProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateTextureWithProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Texture* _PInvoke(SDL_Renderer* renderer, SDL_PropertiesId props);
 	}
 
@@ -296,7 +296,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(texture);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PropertiesId _PInvoke(SDL_Texture* texture);
 	}
 
@@ -312,7 +312,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(texture);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRendererFromTexture", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRendererFromTexture", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Renderer* _PInvoke(SDL_Texture* texture);
 	}
 
@@ -333,7 +333,7 @@ unsafe partial class SDL
 			return _PInvoke(texture, widthPtr, heightPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureSize", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureSize", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, float* width, float* height);
 	}
 
@@ -352,7 +352,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(texture, r, g, b);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureColorMod", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureColorMod", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, byte r, byte g, byte b);
 	}
 
@@ -371,7 +371,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(texture, r, g, b);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureColorModFloat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureColorModFloat", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, float r, float g, float b);
 	}
 
@@ -393,7 +393,7 @@ unsafe partial class SDL
 			return _PInvoke(texture, rPtr, gPtr, bPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureColorMod", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureColorMod", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, byte* r, byte* g, byte* b);
 	}
 
@@ -415,7 +415,7 @@ unsafe partial class SDL
 			return _PInvoke(texture, rPtr, gPtr, bPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureColorModFloat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureColorModFloat", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, float* r, float* g, float* b);
 	}
 
@@ -432,7 +432,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(texture, alpha);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureAlphaMod", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureAlphaMod", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, byte alpha);
 	}
 
@@ -449,7 +449,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(texture, alpha);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureAlphaModFloat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureAlphaModFloat", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, float alpha);
 	}
 
@@ -469,7 +469,7 @@ unsafe partial class SDL
 			return _PInvoke(texture, alphaPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureAlphaMod", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureAlphaMod", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, byte* alpha);
 	}
 
@@ -489,7 +489,7 @@ unsafe partial class SDL
 			return _PInvoke(texture, alphaPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureAlphaModFloat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureAlphaModFloat", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, float* alpha);
 	}
 
@@ -506,7 +506,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(texture, blendMode);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureBlendMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureBlendMode", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, SDL_BlendMode blendMode);
 	}
 
@@ -526,7 +526,7 @@ unsafe partial class SDL
 			return _PInvoke(texture, blendModePtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureBlendMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureBlendMode", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, SDL_BlendMode* blendMode);
 	}
 
@@ -543,7 +543,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(texture, scaleMode);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureScaleMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetTextureScaleMode", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, SDL_ScaleMode scaleMode);
 	}
 
@@ -563,7 +563,7 @@ unsafe partial class SDL
 			return _PInvoke(texture, scaleModePtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureScaleMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTextureScaleMode", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, SDL_ScaleMode* scaleMode);
 	}
 
@@ -582,7 +582,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(texture, rect, pixels, pitch);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_UpdateTexture", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_UpdateTexture", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, SDL_Rect* rect, void* pixels, int pitch);
 	}
 
@@ -608,7 +608,7 @@ unsafe partial class SDL
 			return _PInvoke(texture, rect, yPlanePtr, yPitch, uPlanePtr, uPitch, vPlanePtr, vPitch);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_UpdateYUVTexture", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_UpdateYUVTexture", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, SDL_Rect* rect, byte* yPlane, int yPitch, byte* uPlane, int uPitch, byte* vPlane, int vPitch);
 	}
 
@@ -632,7 +632,7 @@ unsafe partial class SDL
 			return _PInvoke(texture, rect, yPlanePtr, yPitch, uvPlanePtr, uvPitch);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_UpdateNVTexture", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_UpdateNVTexture", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, SDL_Rect* rect, byte* yPlane, int yPitch, byte* uvPlane, int uvPitch);
 	}
 
@@ -657,7 +657,7 @@ unsafe partial class SDL
 			}
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_LockTexture", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_LockTexture", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, SDL_Rect* rect, void** pixels, int* pitch);
 	}
 
@@ -678,7 +678,7 @@ unsafe partial class SDL
 			return _PInvoke(texture, rect, surfacePtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_LockTextureToSurface", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_LockTextureToSurface", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Texture* texture, SDL_Rect* rect, SDL_Surface** surface);
 	}
 
@@ -693,7 +693,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(texture);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_UnlockTexture", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_UnlockTexture", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_Texture* texture);
 	}
 
@@ -710,7 +710,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer, texture);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderTarget", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderTarget", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, SDL_Texture* texture);
 	}
 
@@ -726,7 +726,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderTarget", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderTarget", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Texture* _PInvoke(SDL_Renderer* renderer);
 	}
 
@@ -746,7 +746,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer, width, height, mode, scaleMode);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderLogicalPresentation", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderLogicalPresentation", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, int width, int height, SDL_RendererLogicalPresentation mode, SDL_ScaleMode scaleMode);
 	}
 
@@ -775,7 +775,7 @@ unsafe partial class SDL
 			}
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderLogicalPresentation", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderLogicalPresentation", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, int* width, int* height, SDL_RendererLogicalPresentation* mode, SDL_ScaleMode* scaleMode);
 	}
 
@@ -798,7 +798,7 @@ unsafe partial class SDL
 			return _PInvoke(renderer, windowX, windowY, xPtr, yPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_RenderCoordinatesFromWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_RenderCoordinatesFromWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, float windowX, float windowY, float* x, float* y);
 	}
 
@@ -821,7 +821,7 @@ unsafe partial class SDL
 			return _PInvoke(renderer, x, y, windowXPtr, windowYPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_RenderCoordinatesToWindow", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_RenderCoordinatesToWindow", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, float x, float y, float* windowX, float* windowY);
 	}
 
@@ -841,7 +841,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer, e);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_ConvertEventToRenderCoordinates", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_ConvertEventToRenderCoordinates", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, SDL_Event* e);
 	}
 
@@ -860,7 +860,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer, rect);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderViewport", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderViewport", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, SDL_Rect* rect);
 	}
 
@@ -880,7 +880,7 @@ unsafe partial class SDL
 			return _PInvoke(renderer, rectPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderViewport", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderViewport", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, SDL_Rect* rect);
 	}
 
@@ -896,7 +896,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_RenderViewportSet", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_RenderViewportSet", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer);
 	}
 
@@ -913,7 +913,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer, rect);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderClipRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderClipRect", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, SDL_Rect* rect);
 	}
 
@@ -933,7 +933,7 @@ unsafe partial class SDL
 			return _PInvoke(renderer, rectPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderClipRect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderClipRect", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, SDL_Rect* rect);
 	}
 
@@ -949,7 +949,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_RenderClipEnabled", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_RenderClipEnabled", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer);
 	}
 
@@ -967,7 +967,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer, scaleX, scaleY);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderScale", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderScale", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, float scaleX, float scaleY);
 	}
 
@@ -985,7 +985,7 @@ unsafe partial class SDL
 			return _PInvoke(renderer, scaleXPtr, scaleYPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderScale", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderScale", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, float* scaleX, float* scaleY);
 	}
 
@@ -1005,7 +1005,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer, r, g, b, a);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderDrawColor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderDrawColor", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, byte r, byte g, byte b, byte a);
 	}
 
@@ -1025,7 +1025,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer, r, g, b, a);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderDrawColor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderDrawColor", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, float r, float g, float b, float a);
 	}
 
@@ -1048,7 +1048,7 @@ unsafe partial class SDL
 			return _PInvoke(renderer, rPtr, gPtr, bPtr, aPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderDrawColor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderDrawColor", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, byte* r, byte* g, byte* b, byte* a);
 	}
 
@@ -1071,7 +1071,7 @@ unsafe partial class SDL
 			return _PInvoke(renderer, rPtr, gPtr, bPtr, aPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderDrawColor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRenderDrawColor", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, float* r, float* g, float* b, float* a);
 	}
 
@@ -1088,7 +1088,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(renderer, scale);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderColorScale", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderColorScale", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, float scale);
 	}
 
@@ -1108,7 +1108,7 @@ unsafe partial class SDL
 			return _PInvoke(renderer, scalePtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderColorScale", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetRenderColorScale", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Renderer* renderer, float* scale);
 	}
 
@@ -1125,7 +1125,7 @@ unsafe partial class SDL
 	{
 		return SDL_SetRenderDrawBlendMode(renderer, blendMode);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_SetRenderDrawBlendMode(SDL_Renderer* renderer, SDL_BlendMode blendMode);
 	}
 
@@ -1145,7 +1145,7 @@ unsafe partial class SDL
 			return SDL_GetRenderDrawBlendMode(renderer, blendModePtr);
 		}
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_GetRenderDrawBlendMode(SDL_Renderer* renderer, SDL_BlendMode* blendMode);
 	}
 
@@ -1161,7 +1161,7 @@ unsafe partial class SDL
 	{
 		return SDL_RenderClear(renderer);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_RenderClear(SDL_Renderer* renderer);
 	}
 
@@ -1179,7 +1179,7 @@ unsafe partial class SDL
 	{
 		return SDL_RenderPoint(renderer, x, y);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_RenderPoint(SDL_Renderer* renderer, float x, float y);
 	}
 
@@ -1196,7 +1196,7 @@ unsafe partial class SDL
 			return SDL_RenderPoints(renderer, pointsPtr, points.Length);
 		}
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_RenderPoints(SDL_Renderer* renderer, SDL_FPoint* points, int count);
 	}
 
@@ -1216,7 +1216,7 @@ unsafe partial class SDL
 	{
 		return SDL_RenderLine(renderer, x1, y1, x2, y2);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_RenderLine(SDL_Renderer* renderer, float x1, float y1, float x2, float y2);
 	}
 
@@ -1236,7 +1236,7 @@ unsafe partial class SDL
 			return SDL_RenderLines(renderer, pointsPtr, points.Length);
 		}
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_RenderLines(SDL_Renderer* renderer, SDL_FPoint* points, int count);
 	}
 
@@ -1253,7 +1253,7 @@ unsafe partial class SDL
 	{
 		return SDL_RenderRect(renderer, rect);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_RenderRect(SDL_Renderer* renderer, SDL_FRect* rect);
 	}
 
@@ -1273,7 +1273,7 @@ unsafe partial class SDL
 			return SDL_RenderRects(renderer, rectsPtr, rects.Length);
 		}
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_RenderRects(SDL_Renderer* renderer, SDL_FRect* rects, int count);
 	}
 
@@ -1290,7 +1290,7 @@ unsafe partial class SDL
 	{
 		return SDL_RenderFillRect(renderer, rect);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_RenderFillRect(SDL_Renderer* renderer, SDL_FRect* rect);
 	}
 
@@ -1310,7 +1310,7 @@ unsafe partial class SDL
 			return SDL_RenderFillRects(renderer, rectsPtr, rects.Length);
 		}
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_RenderFillRects(SDL_Renderer* renderer, SDL_FRect* rects, int count);
 	}
 
@@ -1329,7 +1329,7 @@ unsafe partial class SDL
 	{
 		return SDL_RenderTexture(renderer, texture, srcRect, dstRect);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_RenderTexture(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, SDL_FRect* dstRect);
 	}
 
@@ -1351,7 +1351,7 @@ unsafe partial class SDL
 	{
 		return SDL_RenderTextureRotated(renderer, texture, srcRect, dstRect, angle, center, flip);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, SDL_FRect* dstRect, double angle, SDL_FPoint* center, SDL_FlipMode flip);
 	}
 
@@ -1381,7 +1381,7 @@ unsafe partial class SDL
 			return SDL_RenderGeometry(renderer, texture, verticesPtr, vertices.Length, null, 0);
 		}
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_RenderGeometry(SDL_Renderer* renderer, SDL_Texture* texture, SDL_Vertex* vertices, int numVertices, int* indices, int numIndices);
 	}
 
@@ -1401,7 +1401,7 @@ unsafe partial class SDL
 	{
 		return SDL_RenderReadPixels(renderer, rect);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Surface* SDL_RenderReadPixels(SDL_Renderer* renderer, SDL_Rect* rect);
 	}
 
@@ -1417,7 +1417,7 @@ unsafe partial class SDL
 	{
 		return SDL_RenderPresent(renderer);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_RenderPresent(SDL_Renderer* renderer);
 	}
 
@@ -1432,7 +1432,7 @@ unsafe partial class SDL
 	{
 		SDL_DestroyTexture(texture);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern void SDL_DestroyTexture(SDL_Texture* texture);
 	}
 
@@ -1447,7 +1447,7 @@ unsafe partial class SDL
 	{
 		SDL_DestroyRenderer(renderer);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern void SDL_DestroyRenderer(SDL_Renderer* renderer);
 	}
 
@@ -1463,7 +1463,7 @@ unsafe partial class SDL
 	{
 		return SDL_FlushRenderer(renderer);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_FlushRenderer(SDL_Renderer* renderer);
 	}
 
@@ -1479,7 +1479,7 @@ unsafe partial class SDL
 	{
 		return SDL_GetRenderMetalLayer(renderer);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern void* SDL_GetRenderMetalLayer(SDL_Renderer* renderer);
 	}
 
@@ -1495,7 +1495,7 @@ unsafe partial class SDL
 	{
 		return SDL_GetRenderMetalCommandEncoder(renderer);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern void* SDL_GetRenderMetalCommandEncoder(SDL_Renderer* renderer);
 	}
 
@@ -1514,7 +1514,7 @@ unsafe partial class SDL
 	{
 		return SDL_AddVulkanRenderSemaphores(renderer, waitStageMask, waitSemaphore, signalSemaphore);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_AddVulkanRenderSemaphores(SDL_Renderer* renderer, uint waitStageMask, long waitSemaphore, long signalSemaphore);
 	}
 
@@ -1531,7 +1531,7 @@ unsafe partial class SDL
 	{
 		return SDL_SetRenderVSync(renderer, vsync);
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_SetRenderVSync(SDL_Renderer* renderer, int vsync);
 	}
 
@@ -1551,7 +1551,7 @@ unsafe partial class SDL
 			return SDL_GetRenderVSync(renderer, vsyncPtr);
 		}
 
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 		static extern int SDL_GetRenderVSync(SDL_Renderer* renderer, int* vsync);
 	}
 

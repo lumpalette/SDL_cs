@@ -16,7 +16,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTicks", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTicks", CallingConvention = CallingConvention.Cdecl)]
 		static extern ulong _PInvoke();
 	}
 
@@ -31,7 +31,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTicksNS", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTicksNS", CallingConvention = CallingConvention.Cdecl)]
 		static extern ulong _PInvoke();
 	}
 
@@ -46,7 +46,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetPerformanceCounter", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetPerformanceCounter", CallingConvention = CallingConvention.Cdecl)]
 		static extern ulong _PInvoke();
 	}
 
@@ -61,7 +61,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetPerformanceFrequency", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetPerformanceFrequency", CallingConvention = CallingConvention.Cdecl)]
 		static extern ulong _PInvoke();
 	}
 
@@ -76,7 +76,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(ms);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_Delay", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_Delay", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(uint ms);
 	}
 
@@ -91,7 +91,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(ns);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_DelayNS", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_DelayNS", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(ulong ns);
 	}
 
@@ -109,7 +109,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(intervalMs, callback, userData);
 
-		[DllImport(LibraryName, EntryPoint = "FUNC", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "FUNC", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_TimerId _PInvoke(uint intervalMs, SDL_TimerMsCallback callback, void* userData);
 	}
 
@@ -127,7 +127,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(intervalNs, callback, userData);
 
-		[DllImport(LibraryName, EntryPoint = "FUNC", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "FUNC", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_TimerId _PInvoke(ulong intervalMs, SDL_TimerNsCallback callback, void* userData);
 	}
 
@@ -143,7 +143,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(timerId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_RemoveTimer", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_RemoveTimer", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_TimerId timerId);
 	}
 

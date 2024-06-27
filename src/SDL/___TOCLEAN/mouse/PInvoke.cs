@@ -22,7 +22,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke() == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_HasMouse", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_HasMouse", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 
@@ -52,7 +52,7 @@ unsafe partial class SDL
 			return mice;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetMice", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetMice", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_MouseId* _PInvoke(int* count);
 	}
 
@@ -68,7 +68,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(mouseId));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetMouseInstanceName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetMouseInstanceName", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_MouseId mouseId);
 	}
 
@@ -83,7 +83,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetMouseFocus", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetMouseFocus", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Window* _PInvoke();
 	}
 
@@ -103,7 +103,7 @@ unsafe partial class SDL
 			return _PInvoke(xPtr, yPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetMouseState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetMouseState", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_MouseButtonFlags _PInvoke(float* x, float* y);
 	}
 
@@ -123,7 +123,7 @@ unsafe partial class SDL
 			return _PInvoke(xPtr, yPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGlobalMouseState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGlobalMouseState", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_MouseButtonFlags _PInvoke(float* x, float* y);
 	}
 
@@ -143,7 +143,7 @@ unsafe partial class SDL
 			return _PInvoke(xPtr, yPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRelativeMouseState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRelativeMouseState", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_MouseButtonFlags _PInvoke(float* x, float* y);
 	}
 
@@ -160,7 +160,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(window, x, y);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_WarpMouseInWindows", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_WarpMouseInWindows", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_Window* window, float x, float y);
 	}
 
@@ -176,7 +176,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(x, y);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_WarpMouseGlobal", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_WarpMouseGlobal", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(float x, float y);
 	}
 
@@ -192,7 +192,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(enabled ? 1 : 0);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetRelativeMouseMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetRelativeMouseMode", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(int enabled);
 	}
 
@@ -208,7 +208,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(enabled ? 1 : 0);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CaptureMouse", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CaptureMouse", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(int enabled);
 	}
 
@@ -223,7 +223,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke() == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRelativeMouseMode", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRelativeMouseMode", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 
@@ -247,7 +247,7 @@ unsafe partial class SDL
 			return _PInvoke(dataPtr, maskPtr, width, height, hotX, hotY);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateCursor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateCursor", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Cursor* _PInvoke(byte* data, byte* mask, int width, int height, int hotX, int hotY);
 	}
 
@@ -266,7 +266,7 @@ unsafe partial class SDL
 		// i'm not sure if an overload is appropiate here, but i'll leave it like this for now.
 		return _PInvoke(surface, hotX, hotY);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateColorCursor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateColorCursor", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Cursor* _PInvoke(SDL_Surface* surface, int hotX, int hotY);
 	}
 
@@ -282,7 +282,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(id);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateSystemCursor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateSystemCursor", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Cursor* _PInvoke(SDL_SystemCursor id);
 	}
 
@@ -298,7 +298,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(cursor);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetCursor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetCursor", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Cursor* cursor);
 	}
 
@@ -313,7 +313,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetCursor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetCursor", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Cursor* _PInvoke();
 	}
 
@@ -328,7 +328,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetDefaultCursor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetDefaultCursor", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Cursor* _PInvoke();
 	}
 
@@ -343,7 +343,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(cursor);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_DestroyCursor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_DestroyCursor", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Cursor* _PInvoke(SDL_Cursor* cursor);
 	}
 
@@ -358,7 +358,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_ShowCursor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_ShowCursor", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 
@@ -373,7 +373,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_HideCursor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_HideCursor", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 
@@ -388,7 +388,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke() == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CursorVisible", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CursorVisible", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 }

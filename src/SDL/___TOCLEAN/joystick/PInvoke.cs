@@ -19,7 +19,7 @@ unsafe partial class SDL
 	{
 		_PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_LockJoysticks", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_LockJoysticks", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke();
 	}
 
@@ -33,7 +33,7 @@ unsafe partial class SDL
 	{
 		_PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_UnlockJoysticks", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_UnlockJoysticks", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke();
 	}
 
@@ -48,7 +48,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke() == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_HasJoysticks", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_HasJoysticks", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 
@@ -78,7 +78,7 @@ unsafe partial class SDL
 			return joysticks;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoysticks", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoysticks", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_JoystickId* _PInvoke(int* count);
 	}
 
@@ -94,7 +94,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(joystickId));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceName", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -110,7 +110,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(joystickId));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstancePath", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstancePath", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -126,7 +126,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstancePlayerIndex", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstancePlayerIndex", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -142,7 +142,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceGUID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceGUID", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_JoystickGuid _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -158,7 +158,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceVendor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceVendor", CallingConvention = CallingConvention.Cdecl)]
 		static extern ushort _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -174,7 +174,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceProduct", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceProduct", CallingConvention = CallingConvention.Cdecl)]
 		static extern ushort _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -190,7 +190,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceProductVersion", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceProductVersion", CallingConvention = CallingConvention.Cdecl)]
 		static extern ushort _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -206,7 +206,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceType", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_JoystickType _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -222,7 +222,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_OpenJoystick", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_OpenJoystick", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Joystick* _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -238,7 +238,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickFromInstanceID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickFromInstanceID", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Joystick* _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -254,7 +254,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(playerIndex);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickFromPlayerIndex", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickFromPlayerIndex", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Joystick* _PInvoke(int playerIndex);
 	}
 
@@ -280,7 +280,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PropertiesId _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -296,7 +296,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(joystick));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickName", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -312,7 +312,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(joystick));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickPath", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickPath", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -328,7 +328,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickPlayerIndex", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickPlayerIndex", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -345,7 +345,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick, playerIndex);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetJoystickPlayerIndex", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetJoystickPlayerIndex", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Joystick* joystick, int playerIndex);
 	}
 
@@ -361,7 +361,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickGUID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickGUID", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_JoystickGuid _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -377,7 +377,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickVendor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickVendor", CallingConvention = CallingConvention.Cdecl)]
 		static extern ushort _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -393,7 +393,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickProduct", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickProduct", CallingConvention = CallingConvention.Cdecl)]
 		static extern ushort _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -409,7 +409,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickProductVersion", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickProductVersion", CallingConvention = CallingConvention.Cdecl)]
 		static extern ushort _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -425,7 +425,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickFirmwareVersion", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickFirmwareVersion", CallingConvention = CallingConvention.Cdecl)]
 		static extern ushort _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -441,7 +441,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(joystick));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickSerial", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickSerial", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -457,7 +457,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickType", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_JoystickType _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -506,7 +506,7 @@ unsafe partial class SDL
 			_PInvoke(guid, vendorPtr, productPtr, versionPtr, crc16Ptr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickGUIDInfo", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickGUIDInfo", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_JoystickGuid joystick, ushort* vendor, ushort* product, ushort* version, ushort* crc16);
 	}
 
@@ -522,7 +522,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_JoystickConnected", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_JoystickConnected", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -538,7 +538,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceID", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_JoystickId _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -554,7 +554,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetNumJoystickAxes", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetNumJoystickAxes", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -570,7 +570,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetNumJoystickBalls", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetNumJoystickBalls", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -586,7 +586,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetNumJoystickHats", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetNumJoystickHats", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -602,7 +602,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetNumJoystickButtons", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetNumJoystickButtons", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -617,7 +617,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(enabled ? 1 : 0);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetJoystickEventsEnabled", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetJoystickEventsEnabled", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(int enabled);
 	}
 
@@ -632,7 +632,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke() == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_JoystickEventsEnabled", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_JoystickEventsEnabled", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 
@@ -646,7 +646,7 @@ unsafe partial class SDL
 	{
 		_PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_UpdateJoysticks", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_UpdateJoysticks", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke();
 	}
 
@@ -663,7 +663,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick, axis);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickAxis", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickAxis", CallingConvention = CallingConvention.Cdecl)]
 		static extern short _PInvoke(SDL_Joystick* joystick, int axis);
 	}
 
@@ -684,7 +684,7 @@ unsafe partial class SDL
 			return _PInvoke(joystick, axis, statePtr) == 1;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickAxisInitialState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickAxisInitialState", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Joystick* joystick, int axis, short* state);
 	}
 
@@ -706,7 +706,7 @@ unsafe partial class SDL
 			return _PInvoke(joystick, ball, dxPtr, dyPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickAxisInitialState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickAxisInitialState", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Joystick* joystick, int ball, int* dx, int* dy);
 	}
 
@@ -723,7 +723,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick, hat);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickHat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickHat", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_JoystickHatPosition _PInvoke(SDL_Joystick* joystick, int hat);
 	}
 
@@ -740,7 +740,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick, button);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickButton", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickButton", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte _PInvoke(SDL_Joystick* joystick, int button);
 	}
 
@@ -759,7 +759,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick, lowFrequencyRumble, highFrequencyRumble, durationMs);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_RumbleJoystick", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_RumbleJoystick", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Joystick* joystick, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs);
 	}
 
@@ -778,7 +778,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick, leftRumble, rightRumble, durationMs);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_RumbleJoystickTriggers", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_RumbleJoystickTriggers", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Joystick* joystick, ushort leftRumble, ushort rightRumble, uint durationMs);
 	}
 
@@ -797,7 +797,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick, red, green, blue);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetJoystickLED", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetJoystickLED", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Joystick* joystick, byte red, byte green, byte blue);
 	}
 
@@ -815,7 +815,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick, data, size);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SendJoystickEffect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SendJoystickEffect", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Joystick* joystick, void* data, int size);
 	}
 
@@ -830,7 +830,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(joystick);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CloseJoystick", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CloseJoystick", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -846,7 +846,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystick);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickConnectionState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickConnectionState", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_JoystickConnectionState _PInvoke(SDL_Joystick* joystick);
 	}
 
@@ -866,7 +866,7 @@ unsafe partial class SDL
 			return _PInvoke(joystick, percentPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickPowerInfo", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetJoystickPowerInfo", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PowerState _PInvoke(SDL_Joystick* joystick, int* percent);
 	}
 

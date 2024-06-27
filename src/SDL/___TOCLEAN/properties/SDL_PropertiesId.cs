@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// SDL properties ID.
 /// </summary>
 /// <remarks>
-/// This structure is a wrapper for an unsigned 32-bit integer. Refer to the official documentation
+/// This structure is a wrapper for an unsigned 32-bit integer. Refer to the official
 /// <see href="https://wiki.libsdl.org/SDL3/SDL_PropertiesID">documentation</see> for more details.
 /// </remarks>
 [Wrapper]

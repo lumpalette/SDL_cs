@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Represents a unique ID for a joystick.
 /// </summary>
 /// <remarks>
-/// This structure is a wrapper for an unsigned 32-bit integer. Refer to the official documentation
+/// This structure is a wrapper for an unsigned 32-bit integer. Refer to the official
 /// <see href="https://wiki.libsdl.org/SDL3/SDL_JoystickID">documentation</see> for more details.
 /// </remarks>
 [Wrapper]

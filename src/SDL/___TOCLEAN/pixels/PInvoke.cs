@@ -178,7 +178,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(format))!;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetPixelFormatName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetPixelFormatName", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_PixelFormatEnum format);
 	}
 
@@ -205,7 +205,7 @@ unsafe partial class SDL
 			}
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetMasksForPixelFormatEnum", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetMasksForPixelFormatEnum", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_PixelFormatEnum format, int* bpp, uint* rMask, uint* gMask, uint* bMask, uint* aMask);
 	}
 
@@ -225,7 +225,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(bpp, rMask, gMask, bMask, aMask);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetPixelFormatEnumForMasks", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetPixelFormatEnumForMasks", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PixelFormatEnum _PInvoke(int bpp, uint rMask, uint gMask, uint bMask, uint aMask);
 	}
 
@@ -241,7 +241,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(format);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreatePixelFormat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreatePixelFormat", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PixelFormat* _PInvoke(SDL_PixelFormatEnum format);
 	}
 
@@ -256,7 +256,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(format);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_DestroyPixelFormat", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_DestroyPixelFormat", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_PixelFormat* format);
 	}
 
@@ -272,7 +272,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(nColors);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreatePalette", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreatePalette", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Palette* _PInvoke(int nColors);
 	}
 
@@ -289,7 +289,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(format, palette);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetPixelFormatPalette", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetPixelFormatPalette", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_PixelFormat* format, SDL_Palette* palette);
 	}
 
@@ -312,7 +312,7 @@ unsafe partial class SDL
 			return _PInvoke(palette, colorsPtr, firstColor, nColors);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetPaletteColors", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetPaletteColors", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Palette* palette, SDL_Color* colors, int firstColor, int nColors);
 	}
 
@@ -327,7 +327,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(palette);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_DestroyPalette", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_DestroyPalette", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_Palette* palette);
 	}
 
@@ -346,7 +346,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(format, r, g, b);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_MapRGB", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_MapRGB", CallingConvention = CallingConvention.Cdecl)]
 		static extern uint _PInvoke(SDL_PixelFormat* format, byte r, byte g, byte b);
 	}
 
@@ -366,7 +366,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(format, r, g, b, a);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_MapRGBA", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_MapRGBA", CallingConvention = CallingConvention.Cdecl)]
 		static extern uint _PInvoke(SDL_PixelFormat* format, byte r, byte g, byte b, byte a);
 	}
 
@@ -388,7 +388,7 @@ unsafe partial class SDL
 			_PInvoke(pixel, format, rPtr, gPtr, bPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRGBA", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRGBA", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(uint pixel, SDL_PixelFormat* format, byte* r, byte* g, byte* b);
 	}
 
@@ -411,7 +411,7 @@ unsafe partial class SDL
 			_PInvoke(pixel, format, rPtr, gPtr, bPtr, aPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRGBA", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRGBA", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(uint pixel, SDL_PixelFormat* format, byte* r, byte* g, byte* b, byte* a);
 	}
 

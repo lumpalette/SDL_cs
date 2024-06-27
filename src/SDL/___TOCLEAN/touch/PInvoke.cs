@@ -31,7 +31,7 @@ unsafe partial class SDL
 			return devices;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTouchDevices", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTouchDevices", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_TouchId* _PInvoke(int* count);
 	}
 
@@ -47,7 +47,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(touchId));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceName", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_TouchId touchId);
 	}
 
@@ -63,7 +63,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(touchId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceType", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_TouchDeviceType _PInvoke(SDL_TouchId touchId);
 	}
 
@@ -94,7 +94,7 @@ unsafe partial class SDL
 			return fingers;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTouchFingers", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetTouchFingers", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Finger** _PInvoke(SDL_TouchId touchId, int* count);
 	}
 

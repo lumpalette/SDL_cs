@@ -31,7 +31,7 @@ unsafe partial class SDL
 			return sensors;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetSensors", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSensors", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_SensorId* _PInvoke(int* count);
 	}
 
@@ -47,7 +47,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(sensorId));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorInstanceName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorInstanceName", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_SensorId sensorId);
 	}
 
@@ -63,7 +63,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(sensorId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorInstanceType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorInstanceType", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_SensorType _PInvoke(SDL_SensorId sensorId);
 	}
 
@@ -79,7 +79,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(sensorId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorInstanceNonPortableType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorInstanceNonPortableType", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_SensorId sensorId);
 	}
 
@@ -95,7 +95,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(sensorId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_OpenSensor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_OpenSensor", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Sensor* _PInvoke(SDL_SensorId sensorId);
 	}
 
@@ -111,7 +111,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(sensorId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorFromInstanceID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorFromInstanceID", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Sensor* _PInvoke(SDL_SensorId sensorId);
 	}
 
@@ -127,7 +127,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(sensor);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PropertiesId _PInvoke(SDL_Sensor* sensor);
 	}
 
@@ -143,7 +143,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(sensor));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorName", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_Sensor* sensor);
 	}
 
@@ -159,7 +159,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(sensor);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorType", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_SensorType _PInvoke(SDL_Sensor* sensor);
 	}
 
@@ -175,7 +175,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(sensor);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorNonPortableType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorNonPortableType", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Sensor* sensor);
 	}
 
@@ -191,7 +191,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(sensor);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorInstanceID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorInstanceID", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_SensorId _PInvoke(SDL_Sensor* sensor);
 	}
 
@@ -211,7 +211,7 @@ unsafe partial class SDL
 			return _PInvoke(sensor, dataPtr, data.Length);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorData", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetSensorData", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Sensor* sensor, float* data, int numValues);
 	}
 
@@ -226,7 +226,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(sensor);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CloseSensor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CloseSensor", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_Sensor* sensor);
 	}
 
@@ -240,7 +240,7 @@ unsafe partial class SDL
 	{
 		_PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_UpdateSensors", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_UpdateSensors", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke();
 	}
 

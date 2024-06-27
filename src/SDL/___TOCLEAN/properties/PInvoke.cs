@@ -17,7 +17,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGlobalProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGlobalProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PropertiesId _PInvoke();
 	}
 
@@ -32,7 +32,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CreateProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PropertiesId _PInvoke();
 	}
 
@@ -49,7 +49,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(src, dst);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CopyProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CopyProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_PropertiesId src, SDL_PropertiesId dst);
 	}
 
@@ -65,7 +65,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(props);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_LockProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_LockProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_PropertiesId props);
 	}
 
@@ -80,7 +80,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(props);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_UnlockProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_UnlockProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_PropertiesId props);
 	}
 
@@ -103,7 +103,7 @@ unsafe partial class SDL
 			return _PInvoke(props, namePtr, value, cleanup, userData);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetPropertyWithCleanup", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetPropertyWithCleanup", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_PropertiesId props, byte* name, void* value, SDL_CleanupPropertyCallback cleanup, void* userData);
 	}
 
@@ -124,7 +124,7 @@ unsafe partial class SDL
 			return _PInvoke(props, namePtr, value);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetProperty", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_PropertiesId props, byte* name, void* value);
 	}
 
@@ -145,7 +145,7 @@ unsafe partial class SDL
 			return _PInvoke(props, namePtr, valuePtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetStringProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetStringProperty", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_PropertiesId props, byte* name, byte* value);
 	}
 
@@ -166,7 +166,7 @@ unsafe partial class SDL
 			return _PInvoke(props, namePtr, value);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetNumberProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetNumberProperty", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_PropertiesId props, byte* name, long value);
 	}
 
@@ -187,7 +187,7 @@ unsafe partial class SDL
 			return _PInvoke(props, namePtr, value);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetFloatProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetFloatProperty", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_PropertiesId props, byte* name, float value);
 	}
 
@@ -208,7 +208,7 @@ unsafe partial class SDL
 			return _PInvoke(props, namePtr, value ? 1 : 0);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetBooleanProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetBooleanProperty", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_PropertiesId props, byte* name, int value);
 	}
 
@@ -228,7 +228,7 @@ unsafe partial class SDL
 			return _PInvoke(props, namePtr) == 1;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_HasProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_HasProperty", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_PropertiesId props, byte* name);
 	}
 
@@ -248,7 +248,7 @@ unsafe partial class SDL
 			return _PInvoke(props, namePtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetPropertyType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetPropertyType", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PropertyType _PInvoke(SDL_PropertiesId props, byte* name);
 	}
 
@@ -269,7 +269,7 @@ unsafe partial class SDL
 			return _PInvoke(props, namePtr, defaultValue);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetProperty", CallingConvention = CallingConvention.Cdecl)]
 		static extern void* _PInvoke(SDL_PropertiesId props, byte* name, void* defaultValue);
 	}
 
@@ -290,7 +290,7 @@ unsafe partial class SDL
 			return Marshal.PtrToStringUTF8((nint)_PInvoke(props, namePtr, defaultValuePtr))!;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetStringProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetStringProperty", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_PropertiesId props, byte* name, byte* defaultValue);
 	}
 
@@ -311,7 +311,7 @@ unsafe partial class SDL
 			return _PInvoke(props, namePtr, defaultValue);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetNumberProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetNumberProperty", CallingConvention = CallingConvention.Cdecl)]
 		static extern long _PInvoke(SDL_PropertiesId props, byte* name, long defaultValue);
 	}
 
@@ -332,7 +332,7 @@ unsafe partial class SDL
 			return _PInvoke(props, namePtr, defaultValue);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetFloatProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetFloatProperty", CallingConvention = CallingConvention.Cdecl)]
 		static extern float _PInvoke(SDL_PropertiesId props, byte* name, float defaultValue);
 	}
 
@@ -353,7 +353,7 @@ unsafe partial class SDL
 			return _PInvoke(props, namePtr, defaultValue ? 1 : 0) == 1;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetBooleanProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetBooleanProperty", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_PropertiesId props, byte* name, int defaultValue);
 	}
 
@@ -373,7 +373,7 @@ unsafe partial class SDL
 			return _PInvoke(props, namePtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_ClearProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_ClearProperty", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_PropertiesId props, byte* name);
 	}
 
@@ -391,7 +391,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(props, callback, userData);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_EnumerateProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_EnumerateProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_PropertiesId props, SDL_EnumeratePropertiesCallback callback, void* userData);
 	}
 
@@ -406,7 +406,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(props);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_DestroyProperty", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_DestroyProperty", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_PropertiesId props);
 	}
 }

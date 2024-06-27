@@ -43,7 +43,7 @@ unsafe partial class SDL
 			return pens;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetPens", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetPens", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PenId* _PInvoke(int* count);
 	}
 
@@ -69,7 +69,7 @@ unsafe partial class SDL
 			return _PInvoke(penId, xPtr, yPtr, axesPtr, (ulong)axes.LongLength);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetPenStatus", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetPenStatus", CallingConvention = CallingConvention.Cdecl)]
 		static extern uint _PInvoke(SDL_PenId penId, float* x, float* y, float* axes, ulong numAxes);
 	}
 
@@ -85,7 +85,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(penId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetPenGUID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetPenGUID", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Guid _PInvoke(SDL_PenId penId);
 	}
 
@@ -101,7 +101,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(penId));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetPenName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetPenName", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_PenId penId);
 	}
 
@@ -121,7 +121,7 @@ unsafe partial class SDL
 			return _PInvoke(penId, capabilitiesPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetPenCapabilities", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetPenCapabilities", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PenCapabilityFlags _PInvoke(SDL_PenId penId, SDL_PenCapabilityInfo* capabilities);
 	}
 
@@ -137,7 +137,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(penId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetPenType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetPenType", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PenSubtype _PInvoke(SDL_PenId penId);
 	}
 

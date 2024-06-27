@@ -21,7 +21,7 @@ unsafe partial class SDL
 			return _PInvoke(mappingPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_AddGamepadMapping", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_AddGamepadMapping", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(byte* mapping);
 	}
 
@@ -40,7 +40,7 @@ unsafe partial class SDL
 			return _PInvoke(filePtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_AddGamepadMappingsFromFile", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_AddGamepadMappingsFromFile", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(byte* mapping);
 	}
 
@@ -55,7 +55,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_ReloadGamepadMappings", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_ReloadGamepadMappings", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 
@@ -85,7 +85,7 @@ unsafe partial class SDL
 			return mappings;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadMappings", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadMappings", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte** _PInvoke(int* count);
 	}
 
@@ -108,7 +108,7 @@ unsafe partial class SDL
 		}
 		return null;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadMappingForGUID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadMappingForGUID", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_JoystickGuid guid);
 	}
 
@@ -131,7 +131,7 @@ unsafe partial class SDL
 		}
 		return null;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadMapping", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadMapping", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -148,7 +148,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId, mapping);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetGamepadMapping", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetGamepadMapping", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_JoystickId joystickId, string mapping);
 	}
 
@@ -163,7 +163,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke() == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_HasGamepad", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_HasGamepad", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 
@@ -193,7 +193,7 @@ unsafe partial class SDL
 			return gamepads;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepads", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepads", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_JoystickId* _PInvoke(int* count);
 	}
 
@@ -209,7 +209,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_IsGamepad", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_IsGamepad", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -225,7 +225,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(joystickId));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceName", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -241,7 +241,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(joystickId));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstancePath", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstancePath", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -257,7 +257,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstancePlayerIndex", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstancePlayerIndex", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -273,7 +273,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceGUID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceGUID", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_JoystickGuid _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -289,7 +289,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceVendor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceVendor", CallingConvention = CallingConvention.Cdecl)]
 		static extern ushort _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -305,7 +305,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceProduct", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceProduct", CallingConvention = CallingConvention.Cdecl)]
 		static extern ushort _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -321,7 +321,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceProductVersion", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceProductVersion", CallingConvention = CallingConvention.Cdecl)]
 		static extern ushort _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -337,7 +337,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceType", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_GamepadType _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -353,7 +353,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRealGamepadInstanceType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRealGamepadInstanceType", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_GamepadType _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -376,7 +376,7 @@ unsafe partial class SDL
 		}
 		return null;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceMapping", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceMapping", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -392,7 +392,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_OpenGamepad", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_OpenGamepad", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Gamepad* _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -408,7 +408,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(joystickId);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadFromInstanceID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadFromInstanceID", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Gamepad* _PInvoke(SDL_JoystickId joystickId);
 	}
 
@@ -424,7 +424,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(playerIndex);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadFromPlayerIndex", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadFromPlayerIndex", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Gamepad* _PInvoke(int playerIndex);
 	}
 
@@ -440,7 +440,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadProperties", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadProperties", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PropertiesId _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -456,7 +456,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceID", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceID", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_JoystickId _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -472,7 +472,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(gamepad));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadName", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadName", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -488,7 +488,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(gamepad));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadPath", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadPath", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -504,7 +504,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadType", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_GamepadType _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -520,7 +520,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetRealGamepadType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetRealGamepadType", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_GamepadType _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -536,7 +536,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadPlayerIndex", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadPlayerIndex", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -553,7 +553,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetGamepadPlayerIndex", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetGamepadPlayerIndex", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -569,7 +569,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadVendor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadVendor", CallingConvention = CallingConvention.Cdecl)]
 		static extern ushort _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -585,7 +585,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadProduct", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadProduct", CallingConvention = CallingConvention.Cdecl)]
 		static extern ushort _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -601,7 +601,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadProductVersion", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadProductVersion", CallingConvention = CallingConvention.Cdecl)]
 		static extern ushort _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -617,7 +617,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadFirmwareVersion", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadFirmwareVersion", CallingConvention = CallingConvention.Cdecl)]
 		static extern ushort _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -633,7 +633,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(gamepad));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadSerial", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadSerial", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -649,7 +649,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadSteamHandle", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadSteamHandle", CallingConvention = CallingConvention.Cdecl)]
 		static extern ulong _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -665,7 +665,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadConnectionState", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadConnectionState", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_JoystickConnectionState _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -685,7 +685,7 @@ unsafe partial class SDL
 			return _PInvoke(gamepad, percentPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadPowerInfo", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadPowerInfo", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_PowerState _PInvoke(SDL_Gamepad* gamepad, int* percent);
 	}
 
@@ -701,7 +701,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GamepadConnected", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GamepadConnected", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -717,7 +717,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadJoystick", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadJoystick", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_Joystick* _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -732,7 +732,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(enabled ? 1 : 0);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetGamepadEventsEnabled", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetGamepadEventsEnabled", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(int enabled);
 	}
 
@@ -747,7 +747,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke() == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GamepadEventsEnabled", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GamepadEventsEnabled", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke();
 	}
 
@@ -778,7 +778,7 @@ unsafe partial class SDL
 			return bindings;
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadBindings", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadBindings", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_GamepadBinding** _PInvoke(SDL_Gamepad* gamepad, int* count);
 	}
 
@@ -792,7 +792,7 @@ unsafe partial class SDL
 	{
 		_PInvoke();
 
-		[DllImport(LibraryName, EntryPoint = "SDL_UpdateGamepads", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_UpdateGamepads", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke();
 	}
 
@@ -811,7 +811,7 @@ unsafe partial class SDL
 			return _PInvoke(strPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadTypeFromString", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadTypeFromString", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_GamepadType _PInvoke(byte* str);
 	}
 
@@ -827,7 +827,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(type));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadStringForType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadStringForType", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_GamepadType type);
 	}
 
@@ -846,7 +846,7 @@ unsafe partial class SDL
 			return _PInvoke(strPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadAxisFromString", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadAxisFromString", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_GamepadAxis _PInvoke(byte* str);
 	}
 
@@ -862,7 +862,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(axis));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadStringForAxis", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadStringForAxis", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_GamepadAxis axis);
 	}
 
@@ -879,7 +879,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad, axis) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GamepadHasAxis", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GamepadHasAxis", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Gamepad* gamepad, SDL_GamepadAxis axis);
 	}
 
@@ -896,7 +896,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad, axis);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadAxis", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadAxis", CallingConvention = CallingConvention.Cdecl)]
 		static extern short _PInvoke(SDL_Gamepad* gamepad, SDL_GamepadAxis axis);
 	}
 
@@ -915,7 +915,7 @@ unsafe partial class SDL
 			return _PInvoke(strPtr);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadButtonFromString", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadButtonFromString", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_GamepadButton _PInvoke(byte* str);
 	}
 
@@ -931,7 +931,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(button));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadStringForButton", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadStringForButton", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_GamepadButton button);
 	}
 
@@ -948,7 +948,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad, button) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GamepadHasButton", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GamepadHasButton", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Gamepad* gamepad, SDL_GamepadButton button);
 	}
 
@@ -965,7 +965,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad, button);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadButton", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadButton", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte _PInvoke(SDL_Gamepad* gamepad, SDL_GamepadButton button);
 	}
 
@@ -982,7 +982,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(type, button);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadButtonLabelForType", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadButtonLabelForType", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_GamepadButtonLabel _PInvoke(SDL_GamepadType type, SDL_GamepadButton button);
 	}
 
@@ -999,7 +999,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad, button);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadButtonLabel", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadButtonLabel", CallingConvention = CallingConvention.Cdecl)]
 		static extern SDL_GamepadButtonLabel _PInvoke(SDL_Gamepad* gamepad, SDL_GamepadButton button);
 	}
 
@@ -1015,7 +1015,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetNumGamepadTouchpads", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetNumGamepadTouchpads", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -1032,7 +1032,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad, touchpad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetNumGamepadTouchpadFingers", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetNumGamepadTouchpadFingers", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Gamepad* gamepad, int touchpad);
 	}
 
@@ -1049,7 +1049,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad, type) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GamepadHasSensor", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GamepadHasSensor", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Gamepad* gamepad, SDL_SensorType type);
 	}
 
@@ -1067,7 +1067,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad, type, enabled ? 1 : 0);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetGamepadSensorEnabled", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetGamepadSensorEnabled", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Gamepad* gamepad, SDL_SensorType type, int enabled);
 	}
 
@@ -1084,7 +1084,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad, type) == 1;
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GamepadSensorEnabled", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GamepadSensorEnabled", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Gamepad* gamepad, SDL_SensorType type);
 	}
 
@@ -1101,7 +1101,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad, type);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadSensorDataRate", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadSensorDataRate", CallingConvention = CallingConvention.Cdecl)]
 		static extern float _PInvoke(SDL_Gamepad* gamepad, SDL_SensorType type);
 	}
 
@@ -1122,7 +1122,7 @@ unsafe partial class SDL
 			return _PInvoke(gamepad, type, dataPtr, data.Length);
 		}
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadSensorData", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadSensorData", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Gamepad* gamepad, SDL_SensorType type, float* data, int numValues);
 	}
 
@@ -1141,7 +1141,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad, lowFrequencyRumble, highFrequencyRumble, durationMs);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_RumbleGamepad", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_RumbleGamepad", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Gamepad* gamepad, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs);
 	}
 
@@ -1160,7 +1160,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad, leftRumble, rightRumble, durationMs);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_RumbleGamepadTriggers", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_RumbleGamepadTriggers", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Gamepad* gamepad, ushort leftRumble, ushort rightRumble, uint durationMs);
 	}
 
@@ -1179,7 +1179,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad, red, green, blue);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SetGamepadLED", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SetGamepadLED", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Gamepad* gamepad, byte red, byte green, byte blue);
 	}
 
@@ -1197,7 +1197,7 @@ unsafe partial class SDL
 	{
 		return _PInvoke(gamepad, data, size);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_SendGamepadEffect", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_SendGamepadEffect", CallingConvention = CallingConvention.Cdecl)]
 		static extern int _PInvoke(SDL_Gamepad* gamepad, void* data, int size);
 	}
 
@@ -1212,7 +1212,7 @@ unsafe partial class SDL
 	{
 		_PInvoke(gamepad);
 
-		[DllImport(LibraryName, EntryPoint = "SDL_CloseGamepad", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_CloseGamepad", CallingConvention = CallingConvention.Cdecl)]
 		static extern void _PInvoke(SDL_Gamepad* gamepad);
 	}
 
@@ -1229,7 +1229,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(gamepad, button));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadAppleSFSymbolsNameForButton", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadAppleSFSymbolsNameForButton", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_Gamepad* gamepad, SDL_GamepadButton button);
 	}
 
@@ -1246,7 +1246,7 @@ unsafe partial class SDL
 	{
 		return Marshal.PtrToStringUTF8((nint)_PInvoke(gamepad, axis));
 
-		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadAppleSFSymbolsNameForAxis", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+		[DllImport(LibraryName, EntryPoint = "SDL_GetGamepadAppleSFSymbolsNameForAxis", CallingConvention = CallingConvention.Cdecl)]
 		static extern byte* _PInvoke(SDL_Gamepad* gamepad, SDL_GamepadAxis axis);
 	}
 }
