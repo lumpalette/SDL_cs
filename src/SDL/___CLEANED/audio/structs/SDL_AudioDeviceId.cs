@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// SDL Audio Device instance IDs.
 /// </summary>
 /// <remarks>
-/// This structure is a wrapper for an unsigned 32-bit integer. Refer to the official
+/// This structure is a wrapper for a 32-bit unsigned integer. Refer to the official
 /// <see href="https://wiki.libsdl.org/SDL3/SDL_AudioDeviceID">documentation</see> for more details.
 /// </remarks>
 [Wrapper]
@@ -40,7 +40,7 @@ public readonly struct SDL_AudioDeviceId
 	public static explicit operator uint(SDL_AudioDeviceId x) => x._value;
 
 	/// <summary>
-	/// Converts an unsigned 32-bit integer into an <see cref="SDL_AudioDeviceId"/> structure.
+	/// Converts a 32-bit unsigned integer into an <see cref="SDL_AudioDeviceId"/> structure.
 	/// </summary>
 	/// <param name="x">The value to convert.</param>
 	public static explicit operator SDL_AudioDeviceId(uint x) => new(x);

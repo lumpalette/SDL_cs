@@ -4,7 +4,7 @@
 unsafe partial class SDL
 {
 	/// <summary>
-	/// Define a four character code as an unsigned 32-bit integer.
+	/// Define a four character code as a 32-bit unsigned integer.
 	/// </summary>
 	/// <param name="a">1st byte of the code.</param>
 	/// <param name="b">2nd byte of the code.</param>

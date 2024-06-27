@@ -16,7 +16,7 @@ namespace SDL_cs;
 /// enum. The entries of the enum are defined as static properties that return <see cref="SDL_PixelFormatEnum"/> structures.
 /// </para>
 /// <para>
-/// The structure is a wrapper for an unsigned 32-bit integer. Refer to the official
+/// The structure is a wrapper for a 32-bit unsigned integer. Refer to the official
 /// <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormatEnum">documentation</see> for more details.
 /// </para>
 /// </remarks>

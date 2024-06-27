@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Audio format flags.
 /// </summary>
 /// <remarks>
-/// The structure is a wrapper for an unsigned 16-bit integer. Refer to the official
+/// The structure is a wrapper for a 16-bit unsigned integer. Refer to the official
 /// <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 /// </remarks>
 [Wrapper]
@@ -40,7 +40,7 @@ public readonly struct SDL_AudioFormat
 	public static explicit operator ushort(SDL_AudioFormat x) => x._value;
 
 	/// <summary>
-	/// Converts an unsigned 16-bit integer into an <see cref="SDL_AudioFormat"/> structure.
+	/// Converts a 16-bit unsigned integer into an <see cref="SDL_AudioFormat"/> structure.
 	/// </summary>
 	/// <param name="x">The value to convert.</param>
 	public static explicit operator SDL_AudioFormat(ushort x) => new(x);

@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Definition of the timer ID type.
 /// </summary>
 /// <remarks>
-/// This structure is a wrapper for an unsigned 32-bit integer. Refer to the official
+/// This structure is a wrapper for a 32-bit unsigned integer. Refer to the official
 /// <see href="https://wiki.libsdl.org/SDL3/SDL_TimerID">documentation</see> for more details.
 /// </remarks>
 [Wrapper]

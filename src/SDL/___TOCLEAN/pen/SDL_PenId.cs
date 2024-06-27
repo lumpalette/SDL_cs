@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// SDL pen instance IDs.
 /// </summary>
 /// <remarks>
-/// This structure is a wrapper for an unsigned 32-bit integer.
+/// This structure is a wrapper for a 32-bit unsigned integer.
 /// </remarks>
 [Wrapper]
 public readonly struct SDL_PenId

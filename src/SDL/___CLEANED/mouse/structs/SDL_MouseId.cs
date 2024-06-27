@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// SDL mouse instance ID.
 /// </summary>
 /// <remarks>
-/// This structure is a wrapper for an unsigned 32-bit integer.
+/// This structure is a wrapper for a 32-bit unsigned integer.
 /// </remarks>
 [Wrapper]
 public readonly struct SDL_MouseId
@@ -39,7 +39,7 @@ public readonly struct SDL_MouseId
 	public static explicit operator uint(SDL_MouseId x) => x._value;
 
 	/// <summary>
-	/// Converts an unsigned 32-bit integer into an <see cref="SDL_MouseId"/> structure.
+	/// Converts a 32-bit unsigned integer into an <see cref="SDL_MouseId"/> structure.
 	/// </summary>
 	/// <param name="x">The value to convert.</param>
 	public static explicit operator SDL_MouseId(uint x) => new(x);
