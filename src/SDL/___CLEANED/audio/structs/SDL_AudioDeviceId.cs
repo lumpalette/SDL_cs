@@ -48,21 +48,21 @@ public readonly struct SDL_AudioDeviceId
 	/// <summary>
 	/// Compares if two <see cref="SDL_AudioDeviceId"/> structures have the same numerical value.
 	/// </summary>
-	/// <param name="a">The <see cref="SDL_AudioDeviceId"/> on the left side of the comparison.</param>
-	/// <param name="b">The <see cref="SDL_AudioDeviceId"/> on the right side of the comparison.</param>
+	/// <param name="a">The <see cref="SDL_AudioDeviceId"/> at the left side of the comparison.</param>
+	/// <param name="b">The <see cref="SDL_AudioDeviceId"/> at the right side of the comparison.</param>
 	/// <returns>True if both <paramref name="a"/> and <paramref name="b"/> are the same, false otherwise.</returns>
 	public static bool operator ==(SDL_AudioDeviceId a, SDL_AudioDeviceId b) => a._value == b._value;
 
 	/// <summary>
 	/// Compares if two <see cref="SDL_AudioDeviceId"/> structures don't have the same numerical value.
 	/// </summary>
-	/// <param name="a">The <see cref="SDL_AudioDeviceId"/> on the left side of the comparison.</param>
-	/// <param name="b">The <see cref="SDL_AudioDeviceId"/> on the right side of the comparison.</param>
+	/// <param name="a">The <see cref="SDL_AudioDeviceId"/> at the left side of the comparison.</param>
+	/// <param name="b">The <see cref="SDL_AudioDeviceId"/> at the right side of the comparison.</param>
 	/// <returns>True if both <paramref name="a"/> and <paramref name="b"/> are not the same, false otherwise.</returns>
 	public static bool operator !=(SDL_AudioDeviceId a, SDL_AudioDeviceId b) => a._value != b._value;
 
 	/// <summary>
-	/// An invalid audio device ID. Used when a function that returns an <see cref="SDL_AudioDeviceId"/> fails.
+	/// An invalid/null audio device ID. Used when a function that returns an <see cref="SDL_AudioDeviceId"/> fails.
 	/// </summary>
 	public static SDL_AudioDeviceId Invalid => new(0);
 

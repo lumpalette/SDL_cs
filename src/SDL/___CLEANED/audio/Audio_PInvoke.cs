@@ -38,7 +38,7 @@ unsafe partial class PInvoke
 	public static extern int SDL_AudioDevicePaused(SDL_AudioDeviceId dev);
 
 	[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-	public static extern void SDL_CloseAudioDevice(SDL_AudioDeviceId device);
+	public static extern void SDL_CloseAudioDevice(SDL_AudioDeviceId devId);
 
 	[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 	public static extern int SDL_BindAudioStreams(SDL_AudioDeviceId devId, SDL_AudioStream** streams, int numStreams);

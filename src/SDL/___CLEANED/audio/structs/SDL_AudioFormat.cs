@@ -48,16 +48,16 @@ public readonly struct SDL_AudioFormat
 	/// <summary>
 	/// Compares if two <see cref="SDL_AudioFormat"/> structures have the same numerical value.
 	/// </summary>
-	/// <param name="a">The <see cref="SDL_AudioFormat"/> on the left side of the comparison.</param>
-	/// <param name="b">The <see cref="SDL_AudioFormat"/> on the right side of the comparison.</param>
+	/// <param name="a">The <see cref="SDL_AudioFormat"/> at the left side of the comparison.</param>
+	/// <param name="b">The <see cref="SDL_AudioFormat"/> at the right side of the comparison.</param>
 	/// <returns>True if both <paramref name="a"/> and <paramref name="b"/> are the same, false otherwise.</returns>
 	public static bool operator ==(SDL_AudioFormat a, SDL_AudioFormat b) => a._value == b._value;
 
 	/// <summary>
 	/// Compares if two <see cref="SDL_AudioFormat"/> structures don't have the same numerical value.
 	/// </summary>
-	/// <param name="a">The <see cref="SDL_AudioFormat"/> on the left side of the comparison.</param>
-	/// <param name="b">The <see cref="SDL_AudioFormat"/> on the right side of the comparison.</param>
+	/// <param name="a">The <see cref="SDL_AudioFormat"/> at the left side of the comparison.</param>
+	/// <param name="b">The <see cref="SDL_AudioFormat"/> at the right side of the comparison.</param>
 	/// <returns>True if both <paramref name="a"/> and <paramref name="b"/> are not the same, false otherwise.</returns>
 	public static bool operator !=(SDL_AudioFormat a, SDL_AudioFormat b) => a._value != b._value;
 

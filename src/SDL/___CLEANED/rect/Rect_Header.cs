@@ -204,7 +204,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRectEnclosingPoints">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="points">An array of <see cref="SDL_Point"/> structures representing points to be enclosed.</param>
-	/// <param name="clip">An <see cref="SDL_Rect"/> used for clipping or null to enclose all points.</param>
+	/// <param name="clip">An <see cref="SDL_Rect"/> used for clipping or <see langword="null"/> to enclose all points.</param>
 	/// <param name="result">An <see cref="SDL_Rect"/> structure filled in with the minimal enclosing rectangle.</param>
 	/// <returns>True if any points were enclosed or false if all the points were outside of the clipping rectangle.</returns>
 	public static bool GetRectEnclosingPoints(SDL_Point[] points, ref SDL_Rect clip, out SDL_Rect result)
@@ -225,7 +225,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRectEnclosingPoints">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="points">An array of <see cref="SDL_Point"/> structures representing points to be enclosed.</param>
-	/// <param name="clip">An <see cref="SDL_Rect"/> used for clipping or null to enclose all points.</param>
+	/// <param name="clip">An <see cref="SDL_Rect"/> used for clipping or <see langword="null"/> to enclose all points.</param>
 	/// <param name="result">An <see cref="SDL_Rect"/> structure filled in with the minimal enclosing rectangle.</param>
 	/// <returns>True if any points were enclosed or false if all the points were outside of the clipping rectangle.</returns>
 	public static bool GetRectEnclosingPoints(SDL_Point[] points, SDL_Rect* clip, out SDL_Rect result)
@@ -246,7 +246,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRectEnclosingPointsFloat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="points">An array of <see cref="SDL_FPoint"/> structures representing points to be enclosed.</param>
-	/// <param name="clip">An <see cref="SDL_FRect"/> used for clipping or null to enclose all points.</param>
+	/// <param name="clip">An <see cref="SDL_FRect"/> used for clipping or <see langword="null"/> to enclose all points.</param>
 	/// <param name="result">An <see cref="SDL_Rect"/> structure filled in with the minimal enclosing rectangle.</param>
 	/// <returns>True if any points were enclosed or false if all the points were outside of the clipping rectangle.</returns>
 	public static bool GetRectEnclosingPoints(SDL_FPoint[] points, ref SDL_FRect clip, out SDL_FRect result)
@@ -267,7 +267,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRectEnclosingPointsFloat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="points">An array of <see cref="SDL_FPoint"/> structures representing points to be enclosed.</param>
-	/// <param name="clip">An <see cref="SDL_FRect"/> used for clipping or null to enclose all points.</param>
+	/// <param name="clip">An <see cref="SDL_FRect"/> used for clipping or <see langword="null"/> to enclose all points.</param>
 	/// <param name="result">An <see cref="SDL_Rect"/> structure filled in with the minimal enclosing rectangle.</param>
 	/// <returns>True if any points were enclosed or false if all the points were outside of the clipping rectangle.</returns>
 	public static bool GetRectEnclosingPoints(SDL_FPoint[] points, SDL_FRect* clip, out SDL_FRect result)

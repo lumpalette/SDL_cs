@@ -36,7 +36,7 @@ public struct SDL_MouseButtonEvent
 	/// <summary>
 	/// The mouse button index.
 	/// </summary>
-	public SDL_MouseButton Button;
+	public byte Button;
 
 	/// <summary>
 	/// Can be either <see cref="SDL_InputState.Pressed"/> or <see cref="SDL_InputState.Released"/>.

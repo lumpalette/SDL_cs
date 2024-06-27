@@ -14,7 +14,7 @@ public enum SDL_MouseWheelDirection
 	Normal,
 
 	/// <summary>
-	/// The scroll direction is flipped / natural.
+	/// The scroll direction is flipped/natural.
 	/// </summary>
 	Flipped
 }
