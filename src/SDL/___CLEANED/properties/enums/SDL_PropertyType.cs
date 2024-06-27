@@ -1,7 +1,7 @@
 ﻿namespace SDL_cs;
 
 /// <summary>
-/// SDL property type.
+/// SDL property types.
 /// </summary>
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PropertyType">documentation</see> for more details.
@@ -24,7 +24,7 @@ public enum SDL_PropertyType
 	String,
 
 	/// <summary>
-	/// The property is a signed 64-bit integer.
+	/// The property is a 64-bit signed integer.
 	/// </summary>
 	Number,
 
