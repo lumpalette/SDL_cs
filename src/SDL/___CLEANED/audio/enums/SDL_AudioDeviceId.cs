@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace SDL_cs;
+﻿namespace SDL_cs;
 
 /// <summary>
 /// SDL Audio Device instance IDs.
