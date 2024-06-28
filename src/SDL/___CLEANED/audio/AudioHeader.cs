@@ -889,7 +889,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioFormat AudioU8 => new(0x0008);
+	public static SDL_AudioFormat AudioU8 => (SDL_AudioFormat)0x0008;
 
 	/// <summary>
 	/// Signed 8-bit samples.
@@ -897,7 +897,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioFormat AudioS8 => new(0x8008);
+	public static SDL_AudioFormat AudioS8 => (SDL_AudioFormat)0x8008;
 
 	/// <summary>
 	/// Signed 16-bit samples, in little endian.
@@ -905,7 +905,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioFormat AudioS16LittleEndian => new(0x8010);
+	public static SDL_AudioFormat AudioS16LittleEndian => (SDL_AudioFormat)0x8010;
 
 	/// <summary>
 	/// Signed 16-bit samples, in big endian.
@@ -913,7 +913,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioFormat AudioS16BigEndian => new(0x9010);
+	public static SDL_AudioFormat AudioS16BigEndian => (SDL_AudioFormat)0x9010;
 
 	/// <summary>
 	/// 32-bit integer samples, in little endian.
@@ -921,7 +921,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioFormat AudioS32LittleEndian => new(0x8020);
+	public static SDL_AudioFormat AudioS32LittleEndian => (SDL_AudioFormat)0x8020;
 
 	/// <summary>
 	/// 32-bit integer samples, in big endian.
@@ -929,7 +929,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioFormat AudioS32BigEndian => new(0x9020);
+	public static SDL_AudioFormat AudioS32BigEndian => (SDL_AudioFormat)0x9020;
 
 	/// <summary>
 	/// 32-bit floating point samples, in little endian.
@@ -937,7 +937,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioFormat AudioF32LittleEndian => new(0x8120);
+	public static SDL_AudioFormat AudioF32LittleEndian => (SDL_AudioFormat)0x8120;
 
 	/// <summary>
 	/// 32-bit floating point samples, in big endian.
@@ -945,7 +945,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioFormat AudioF32BigEndian => new(0x9120);
+	public static SDL_AudioFormat AudioF32BigEndian => (SDL_AudioFormat)0x9120;
 
 	/// <summary>
 	/// Signed 16-bit samples.
@@ -977,7 +977,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioDeviceId AudioDeviceDefaultPlayback => new(0xFFFFFFFF);
+	public static SDL_AudioDeviceId AudioDeviceDefaultPlayback => (SDL_AudioDeviceId)0xFFFFFFFF;
 
 	/// <summary>
 	/// A value used to request a default recording audio device.
@@ -985,7 +985,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_DEVICE_DEFAULT_RECORDING">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioDeviceId AudioDeviceDefaultRecording => new(0xFFFFFFFE);
+	public static SDL_AudioDeviceId AudioDeviceDefaultRecording => (SDL_AudioDeviceId)0xFFFFFFFE;
 
 	public const ushort AudioMaskBitSize = 0xFF;
 

@@ -4,8 +4,8 @@ using System.ComponentModel;
 namespace SDL_cs;
 
 /// <summary>
-/// Indicates that some type is defined as a typedef in SDL.
+/// Indicates that some enumerator is defined as a typedef in SDL.
 /// </summary>
-[AttributeUsage(AttributeTargets.Struct)]
+[AttributeUsage(AttributeTargets.Enum)]
 [EditorBrowsable(EditorBrowsableState.Never)]
 public sealed class TypedefAttribute : Attribute;

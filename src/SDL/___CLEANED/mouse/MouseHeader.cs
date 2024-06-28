@@ -372,7 +372,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_MouseButtonFlags ButtonLeftMask => new(Button(ButtonLeft));
+	public static SDL_MouseButtonFlags ButtonLeftMask => (SDL_MouseButtonFlags)Button(ButtonLeft);
 
 	/// <summary>
 	/// Middle mouse button mask.
@@ -380,7 +380,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_MouseButtonFlags ButtonMiddleMask => new(Button(ButtonMiddle));
+	public static SDL_MouseButtonFlags ButtonMiddleMask => (SDL_MouseButtonFlags)Button(ButtonMiddle);
 
 	/// <summary>
 	/// Right mouse button mask.
@@ -388,7 +388,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_MouseButtonFlags ButtonRightMask => new(Button(ButtonRight));
+	public static SDL_MouseButtonFlags ButtonRightMask => (SDL_MouseButtonFlags)Button(ButtonRight);
 
 	/// <summary>
 	/// Side mouse button 1 mask.
@@ -396,7 +396,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_MouseButtonFlags ButtonX1Mask => new(Button(ButtonX1));
+	public static SDL_MouseButtonFlags ButtonX1Mask => (SDL_MouseButtonFlags)Button(ButtonX1);
 
 	/// <summary>
 	/// Side mouse button 2 mask.
@@ -404,5 +404,5 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_MouseButtonFlags ButtonX2Mask => new(Button(ButtonX2));
+	public static SDL_MouseButtonFlags ButtonX2Mask => (SDL_MouseButtonFlags)Button(ButtonX2);
 }
