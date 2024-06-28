@@ -20,7 +20,7 @@ namespace SDL_cs;
 /// <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormatEnum">documentation</see> for more details.
 /// </para>
 /// </remarks>
-[Wrapper]
+[Typedef]
 public readonly struct SDL_PixelFormatEnum
 {
 	private static uint CreateValue(SDL_PixelType type, byte order, SDL_PackedLayout layout, byte bits, byte bytes)

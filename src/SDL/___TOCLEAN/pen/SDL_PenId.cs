@@ -8,7 +8,7 @@ namespace SDL_cs;
 /// <remarks>
 /// This structure is a wrapper for a 32-bit unsigned integer.
 /// </remarks>
-[Wrapper]
+[Typedef]
 public readonly struct SDL_PenId
 {
 	internal SDL_PenId(uint value)

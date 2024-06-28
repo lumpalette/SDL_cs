@@ -8,7 +8,7 @@ namespace SDL_cs;
 /// <remarks>
 /// This structure is a wrapper for a 32-bit unsigned integer.
 /// </remarks>
-[Wrapper]
+[Typedef]
 public readonly struct SDL_WindowId
 {
 	internal SDL_WindowId(uint value)

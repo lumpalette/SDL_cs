@@ -9,7 +9,7 @@ namespace SDL_cs;
 /// This structure is a wrapper for a 32-bit unsigned integer. Refer to the official
 /// <see href="https://wiki.libsdl.org/SDL3/SDL_TimerID">documentation</see> for more details.
 /// </remarks>
-[Wrapper]
+[Typedef]
 public readonly struct SDL_TimerId
 {
 	internal SDL_TimerId(uint value)

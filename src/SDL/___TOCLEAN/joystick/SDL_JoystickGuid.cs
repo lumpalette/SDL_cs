@@ -7,7 +7,7 @@
 /// This structure is a wrapper for an <see cref="SDL_Guid"/>. Refer to the official
 /// <see href="https://wiki.libsdl.org/SDL3/SDL_JoystickGUID">documentation</see> for more details.
 /// </remarks>
-[Wrapper]
+[Typedef]
 public readonly struct SDL_JoystickGuid
 {
 	internal SDL_JoystickGuid(SDL_Guid value)

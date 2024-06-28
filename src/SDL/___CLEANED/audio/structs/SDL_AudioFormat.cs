@@ -9,7 +9,7 @@ namespace SDL_cs;
 /// The structure is a wrapper for a 16-bit unsigned integer. Refer to the official
 /// <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 /// </remarks>
-[Wrapper]
+[Typedef]
 public readonly struct SDL_AudioFormat
 {
 	internal SDL_AudioFormat(ushort value)

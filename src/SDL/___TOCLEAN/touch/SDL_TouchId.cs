@@ -8,7 +8,7 @@ namespace SDL_cs;
 /// <remarks>
 /// This structure is a wrapper for an unsigned 64-bit integer.
 /// </remarks>
-[Wrapper]
+[Typedef]
 public readonly struct SDL_TouchId
 {
 	internal SDL_TouchId(ulong value)

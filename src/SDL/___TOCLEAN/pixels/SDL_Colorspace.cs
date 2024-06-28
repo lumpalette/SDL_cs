@@ -8,7 +8,7 @@ namespace SDL_cs;
 /// <remarks>
 /// To keep consistency with <see cref="SDL_PixelFormatEnum"/>, this symbol is defined in the same way. See its documentation for details.
 /// </remarks>
-[Wrapper]
+[Typedef]
 public readonly struct SDL_Colorspace
 {
 	/// <summary>
