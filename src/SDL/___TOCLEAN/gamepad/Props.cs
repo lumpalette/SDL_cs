@@ -1,6 +1,6 @@
 ﻿namespace SDL_cs;
 
-partial class SDL_Prop
+partial class Prop
 {
 	public const string GamepadCapMonoLedBoolean = JoystickCapMonoLedBoolean;
 	public const string GamepadCapRGBLedBoolean = JoystickCapRGBLedBoolean;

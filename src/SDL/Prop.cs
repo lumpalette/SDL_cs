@@ -3,4 +3,4 @@
 /// <summary>
 /// A collection of properties' string constants used in various SDL systems.
 /// </summary>
-public static partial class SDL_Prop;
+public static partial class Prop;

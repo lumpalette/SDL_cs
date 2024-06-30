@@ -1,6 +1,6 @@
 ﻿namespace SDL_cs;
 
-partial class SDL_Prop
+partial class Prop
 {
 	public const string RendererCreateNameString = "name";
 	public const string RendererCreateOutputColorspaceNumber = "output_colorspace";
