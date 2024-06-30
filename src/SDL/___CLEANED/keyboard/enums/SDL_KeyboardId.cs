@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace SDL_cs;
+﻿namespace SDL_cs;
 
 /// <summary>
 /// This is a unique ID for a keyboard for the time it is connected to the system, and is never reused for the

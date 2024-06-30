@@ -6,7 +6,7 @@
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MatrixCoefficients">documentation</see> for more details.
 /// </remarks>
-public enum SDL_MatrixCoefficients
+public enum SDL_MatrixCoefficients : byte
 {
 	/// <summary>
 	/// Identity matrix.
@@ -26,7 +26,7 @@ public enum SDL_MatrixCoefficients
 	/// <summary>
 	/// US FCC Title 47.
 	/// </summary>
-	FCC = 4,
+	Fcc = 4,
 
 	/// <summary>
 	/// ITU-R BT.470-6 System B, G / ITU-R BT.601-7 625, functionally the same as <see cref="BT601"/>.
@@ -49,12 +49,12 @@ public enum SDL_MatrixCoefficients
 	YCgCo = 8,
 
 	/// <summary>
-	/// BT.2020-2 non-constant luminance, BT.2100-0 YCbCr.
+	/// ITU-R BT.2020-2 non-constant luminance.
 	/// </summary>
-	BT2020NCL = 9,
+	BT2020Ncl = 9,
 
 	/// <summary>
-	/// BT.2020-2 constant luminance.
+	/// ITU-R BT.2020-2 constant luminance
 	/// </summary>
 	BT2020CL = 10,
 
@@ -66,12 +66,12 @@ public enum SDL_MatrixCoefficients
 	/// <summary>
 	/// Chromaticity-derived non-constant luminance.
 	/// </summary>
-	CromatDerivedNCL = 12,
+	CromaDerivedNcl = 12,
 
 	/// <summary>
 	/// Chromaticity-derived constant luminance.
 	/// </summary>
-	CromatDerivedCL = 13,
+	CromaDerivedCL = 13,
 
 	/// <summary>
 	/// BT.2100-0 ICtCp.

@@ -6,7 +6,7 @@
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_TransferCharacteristics">documentation</see> for more details.
 /// </remarks>
-public enum SDL_TransferCharacteristics
+public enum SDL_TransferCharacteristics : byte
 {
 	/// <summary>
 	/// Unknown.
@@ -61,7 +61,7 @@ public enum SDL_TransferCharacteristics
 	/// <summary>
 	/// IEC 61966-2-4.
 	/// </summary>
-	IEC61966 = 11,
+	Iec61966 = 11,
 
 	/// <summary>
 	/// ITU-R BT1361 Extended Colour Gamut.
@@ -96,7 +96,7 @@ public enum SDL_TransferCharacteristics
 	/// <summary>
 	/// RIB STD-B67, known as "hybrid log-gamma" (HLG).
 	/// </summary>
-	HGL = 18,
+	Hlg = 18,
 
 	/// <summary>
 	/// Custom.

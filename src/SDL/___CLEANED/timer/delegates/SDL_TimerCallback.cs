@@ -13,4 +13,4 @@ namespace SDL_cs;
 /// <param name="intervalMs">The current callback time interval, in miliseconds.</param>
 /// <returns>The new callback time interval, or 0 to disable further runs of the callback.</returns>
 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-public unsafe delegate uint SDL_MsTimerCallback(void* userData, SDL_TimerId timerId, uint intervalMs);
+public unsafe delegate uint SDL_TimerCallback(void* userData, SDL_TimerId timerId, uint intervalMs);

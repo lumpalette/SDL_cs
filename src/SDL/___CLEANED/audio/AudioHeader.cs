@@ -264,7 +264,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenAudioDevice">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="devId">The device instance ID to open, or <see cref="AudioDeviceDefaultPlayback"/> or <see cref="AudioDeviceDefaultRecording"/> for the most reasonable default device.</param>
+	/// <param name="devId">The device instance ID to open, or <see cref="SDL_AudioDeviceId.DefaultPlayback"/> or <see cref="SDL_AudioDeviceId.DefaultRecording"/> for the most reasonable default device.</param>
 	/// <param name="spec">The requested device configuration. Can be <see langword="null"/> to use reasonable defaults.</param>
 	/// <returns>The device ID on success, <see cref="SDL_AudioDeviceId.Invalid"/> on error; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_AudioDeviceId OpenAudioDevice(SDL_AudioDeviceId devId, ref SDL_AudioSpec spec)
@@ -281,7 +281,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenAudioDevice">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="devId">The device instance ID to open, or <see cref="AudioDeviceDefaultPlayback"/> or <see cref="AudioDeviceDefaultRecording"/> for the most reasonable default device.</param>
+	/// <param name="devId">The device instance ID to open, or <see cref="SDL_AudioDeviceId.DefaultPlayback"/> or <see cref="SDL_AudioDeviceId.DefaultRecording"/> for the most reasonable default device.</param>
 	/// <param name="spec">The requested device configuration. Can be <see langword="null"/> to use reasonable defaults.</param>
 	/// <returns>The device ID on success, <see cref="SDL_AudioDeviceId.Invalid"/> on error; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_AudioDeviceId OpenAudioDevice(SDL_AudioDeviceId devId, SDL_AudioSpec* spec)
@@ -738,7 +738,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenAudioDeviceStream">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="devId">An audio device to open, or <see cref="AudioDeviceDefaultPlayback"/> or <see cref="AudioDeviceDefaultRecording"/></param>
+	/// <param name="devId">An audio device to open, or <see cref="SDL_AudioDeviceId.DefaultPlayback"/> or <see cref="SDL_AudioDeviceId.DefaultRecording"/></param>
 	/// <param name="spec">The audio stream's data format. Can be <see langword="null"/>.</param>
 	/// <param name="callback">A callback where the app will provide new data for playback, or receive new data for recording. Can be <see langword="null"/>, in which case the app will need to call <see cref="PutAudioStreamData"/> or <see cref="GetAudioStreamData"/> as necessary.</param>
 	/// <param name="userData">App-controlled pointer passed to callback. Can be <see langword="null"/>. Ignored if <paramref name="callback"/> is <see langword="null"/>.</param>
@@ -757,7 +757,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenAudioDeviceStream">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="devId">An audio device to open, or <see cref="AudioDeviceDefaultPlayback"/> or <see cref="AudioDeviceDefaultRecording"/></param>
+	/// <param name="devId">An audio device to open, or <see cref="SDL_AudioDeviceId.DefaultPlayback"/> or <see cref="SDL_AudioDeviceId.DefaultRecording"/></param>
 	/// <param name="spec">The audio stream's data format. Can be <see langword="null"/>.</param>
 	/// <param name="callback">A callback where the app will provide new data for playback, or receive new data for recording. Can be <see langword="null"/>, in which case the app will need to call <see cref="PutAudioStreamData"/> or <see cref="GetAudioStreamData"/> as necessary.</param>
 	/// <param name="userData">App-controlled pointer passed to callback. Can be <see langword="null"/>. Ignored if <paramref name="callback"/> is <see langword="null"/>.</param>
@@ -884,76 +884,12 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// Unsigned 8-bit samples.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
-	/// </remarks>
-	public static SDL_AudioFormat AudioU8 => (SDL_AudioFormat)0x0008;
-
-	/// <summary>
-	/// Signed 8-bit samples.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
-	/// </remarks>
-	public static SDL_AudioFormat AudioS8 => (SDL_AudioFormat)0x8008;
-
-	/// <summary>
-	/// Signed 16-bit samples, in little endian.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
-	/// </remarks>
-	public static SDL_AudioFormat AudioS16LittleEndian => (SDL_AudioFormat)0x8010;
-
-	/// <summary>
-	/// Signed 16-bit samples, in big endian.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
-	/// </remarks>
-	public static SDL_AudioFormat AudioS16BigEndian => (SDL_AudioFormat)0x9010;
-
-	/// <summary>
-	/// 32-bit integer samples, in little endian.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
-	/// </remarks>
-	public static SDL_AudioFormat AudioS32LittleEndian => (SDL_AudioFormat)0x8020;
-
-	/// <summary>
-	/// 32-bit integer samples, in big endian.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
-	/// </remarks>
-	public static SDL_AudioFormat AudioS32BigEndian => (SDL_AudioFormat)0x9020;
-
-	/// <summary>
-	/// 32-bit floating point samples, in little endian.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
-	/// </remarks>
-	public static SDL_AudioFormat AudioF32LittleEndian => (SDL_AudioFormat)0x8120;
-
-	/// <summary>
-	/// 32-bit floating point samples, in big endian.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
-	/// </remarks>
-	public static SDL_AudioFormat AudioF32BigEndian => (SDL_AudioFormat)0x9120;
-
-	/// <summary>
 	/// Signed 16-bit samples.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioFormat AudioS16 => BitConverter.IsLittleEndian ? AudioS16LittleEndian : AudioS16BigEndian;
+	public static SDL_AudioFormat AudioFormatS16 => BitConverter.IsLittleEndian ? SDL_AudioFormat.S16LittleEndian : SDL_AudioFormat.S16BigEndian;
 
 	/// <summary>
 	/// 32-bit integer samples.
@@ -961,7 +897,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioFormat AudioS32 => BitConverter.IsLittleEndian ? AudioS32LittleEndian : AudioS32BigEndian;
+	public static SDL_AudioFormat AudioFormatS32 => BitConverter.IsLittleEndian ? SDL_AudioFormat.S32LittleEndian : SDL_AudioFormat.S32BigEndian;
 
 	/// <summary>
 	/// 32-bit floating point samples.
@@ -969,23 +905,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioFormat AudioF32 => BitConverter.IsLittleEndian ? AudioF32LittleEndian : AudioF32BigEndian;
-
-	/// <summary>
-	/// A value used to request a default playback audio device.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK">documentation</see> for more details.
-	/// </remarks>
-	public static SDL_AudioDeviceId AudioDeviceDefaultPlayback => (SDL_AudioDeviceId)0xFFFFFFFF;
-
-	/// <summary>
-	/// A value used to request a default recording audio device.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_DEVICE_DEFAULT_RECORDING">documentation</see> for more details.
-	/// </remarks>
-	public static SDL_AudioDeviceId AudioDeviceDefaultRecording => (SDL_AudioDeviceId)0xFFFFFFFE;
+	public static SDL_AudioFormat AudioFormatF32 => BitConverter.IsLittleEndian ? SDL_AudioFormat.F32LittleEndian : SDL_AudioFormat.F32BigEndian;
 
 	public const ushort AudioMaskBitSize = 0xFF;
 

@@ -23,7 +23,7 @@ unsafe partial class PInvoke
 	public static extern void SDL_DelayNS(ulong ns);
 
 	[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-	public static extern SDL_TimerId SDL_AddTimer(uint intervalMs, SDL_MsTimerCallback callback, void* userData);
+	public static extern SDL_TimerId SDL_AddTimer(uint intervalMs, SDL_TimerCallback callback, void* userData);
 
 	[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 	public static extern SDL_TimerId SDL_AddTimerNS(ulong intervalMs, SDL_NsTimerCallback callback, void* userData);

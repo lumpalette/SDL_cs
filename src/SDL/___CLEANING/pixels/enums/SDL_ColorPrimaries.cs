@@ -6,7 +6,7 @@
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ColorPrimaries">documentation</see> for more details.
 /// </remarks>
-public enum SDL_ColorPrimaries
+public enum SDL_ColorPrimaries : byte
 {
 	/// <summary>
 	/// Unknown.
@@ -56,7 +56,7 @@ public enum SDL_ColorPrimaries
 	/// <summary>
 	/// SMPTE ST 428-1.
 	/// </summary>
-	XYZ = 10,
+	Xyz = 10,
 
 	/// <summary>
 	/// SMPTE RP 431-2.
@@ -71,7 +71,7 @@ public enum SDL_ColorPrimaries
 	/// <summary>
 	/// EBU Tech. 3213-E.
 	/// </summary>
-	EBU3213 = 22,
+	Ebu3213 = 22,
 
 	/// <summary>
 	/// Custom.

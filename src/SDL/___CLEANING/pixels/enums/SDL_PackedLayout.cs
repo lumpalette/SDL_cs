@@ -6,12 +6,12 @@
 public enum SDL_PackedLayout : byte
 {
 	None,
-	Layout332,
-	Layout4444,
-	Layout1555,
-	Layout5551,
-	Layout565,
-	Layout8888,
-	Layout2101010,
-	Layout1010102
+	_332,
+	_4444,
+	_1555,
+	_5551,
+	_565,
+	_8888,
+	_2101010,
+	_1010102
 }

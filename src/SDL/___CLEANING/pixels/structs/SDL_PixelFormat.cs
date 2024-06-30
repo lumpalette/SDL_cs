@@ -9,7 +9,7 @@ namespace SDL_cs;
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
-public readonly unsafe struct SDL_PixelFormat
+public unsafe struct SDL_PixelFormat
 {
 	/// <summary>
 	/// The <see cref="SDL_PixelFormatEnum"/> the structure is describing.
@@ -31,8 +31,7 @@ public readonly unsafe struct SDL_PixelFormat
 	/// </summary>
 	public readonly byte BytesPerPixel;
 
-	private readonly byte _padding1;
-	private readonly byte _padding2;
+	private fixed byte _padding[2];
 
 	/// <summary>
 	/// A mask representing the location of the red component of the pixel.

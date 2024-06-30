@@ -6,7 +6,7 @@
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ColorRange">documentation</see> for more details.
 /// </remarks>
-public enum SDL_ColorRange
+public enum SDL_ColorRange : byte
 {
 	/// <summary>
 	/// Unknown.

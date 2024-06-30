@@ -6,6 +6,6 @@
 public enum SDL_BitmapOrder : byte
 {
 	None,
-	Order4321,
-	Order1234
+	_4321,
+	_1234
 }

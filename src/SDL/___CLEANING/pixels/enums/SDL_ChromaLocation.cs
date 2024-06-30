@@ -6,7 +6,7 @@
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ChromaLocation">documentation</see> for more details.
 /// </remarks>
-public enum SDL_ChromaLocation
+public enum SDL_ChromaLocation : byte
 {
 	/// <summary>
 	/// RGB, no chroma sampling

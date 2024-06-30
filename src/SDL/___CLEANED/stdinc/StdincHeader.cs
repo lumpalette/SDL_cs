@@ -6,10 +6,10 @@ unsafe partial class SDL
 	/// <summary>
 	/// Define a four character code as a 32-bit unsigned integer.
 	/// </summary>
-	/// <param name="a">1st byte of the code.</param>
-	/// <param name="b">2nd byte of the code.</param>
-	/// <param name="c">3rd byte of the code.</param>
-	/// <param name="d">4th byte of the code.</param>
+	/// <param name="a">1st character of the code.</param>
+	/// <param name="b">2nd character of the code.</param>
+	/// <param name="c">3rd character of the code.</param>
+	/// <param name="d">4th character of the code.</param>
 	/// <returns>A 32-bit code composed by 4 characters.</returns>
 	[Macro]
 	public static uint FourCC(byte a, byte b, byte c, byte d)

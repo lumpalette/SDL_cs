@@ -124,7 +124,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Delay">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="ms">The number of milliseconds to delay.</param>
-	public static void DelayMs(uint ms)
+	public static void Delay(uint ms)
 	{
 		PInvoke.SDL_Delay(ms);
 	}
@@ -148,10 +148,10 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AddTimer">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="intervalMs">The timer delay, in milliseconds, passed to <paramref name="callback"/>.</param>
-	/// <param name="callback">The <see cref="SDL_MsTimerCallback"/> function to call when the specified <paramref name="intervalMs"/> elapses.</param>
+	/// <param name="callback">The <see cref="SDL_TimerCallback"/> function to call when the specified <paramref name="intervalMs"/> elapses.</param>
 	/// <param name="userData">A pointer that is passed to <paramref name="callback"/>.</param>
 	/// <returns>A timer ID or <see cref="SDL_TimerId.Invalid"/> if an error occurs; call <see cref="GetError"/> for more information.</returns>
-	public static SDL_TimerId AddTimerMs(uint intervalMs, SDL_MsTimerCallback callback, void* userData)
+	public static SDL_TimerId AddTimer(uint intervalMs, SDL_TimerCallback callback, void* userData)
 	{
 		return PInvoke.SDL_AddTimer(intervalMs, callback, userData);
 	}
@@ -172,7 +172,7 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// Remove a timer created with <see cref="AddTimerMs(uint, SDL_MsTimerCallback, void*)"/> or <see cref="AddTimerNs(ulong, SDL_NsTimerCallback, void*)"/>.
+	/// Remove a timer created with <see cref="AddTimer(uint, SDL_TimerCallback, void*)"/> or <see cref="AddTimerNs(ulong, SDL_NsTimerCallback, void*)"/>.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RemoveTimer">documentation</see> for more details.
