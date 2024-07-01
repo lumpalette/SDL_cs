@@ -15,7 +15,7 @@ unsafe partial class SDL
 	/// <returns>True if a keyboard is connected, false otherwise.</returns>
 	public static bool HasKeyboard()
 	{
-		return PInvoke.SDL_HasKeyboard() == 1;
+		return SDL_PInvoke.SDL_HasKeyboard() == 1;
 	}
 
 	/// <summary>
@@ -30,7 +30,7 @@ unsafe partial class SDL
 	{
 		fixed (int* countPtr = &count)
 		{
-			var keyboardsPtr = PInvoke.SDL_GetKeyboards(countPtr);
+			var keyboardsPtr = SDL_PInvoke.SDL_GetKeyboards(countPtr);
 			if (keyboardsPtr is null)
 			{
 				return null;
@@ -55,7 +55,7 @@ unsafe partial class SDL
 	/// <returns>The name of the selected keyboard, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static string? GetKeyboardInstanceName(SDL_KeyboardId keyboardId)
 	{
-		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetKeyboardInstanceName(keyboardId));
+		return Marshal.PtrToStringUTF8((nint)SDL_PInvoke.SDL_GetKeyboardInstanceName(keyboardId));
 	}
 
 	/// <summary>
@@ -67,7 +67,7 @@ unsafe partial class SDL
 	/// <returns>The window with keyboard focus.</returns>
 	public static SDL_Window* GetKeyboardFocus()
 	{
-		return PInvoke.SDL_GetKeyboardFocus();
+		return SDL_PInvoke.SDL_GetKeyboardFocus();
 	}
 
 	/// <summary>
@@ -82,7 +82,7 @@ unsafe partial class SDL
 	{
 		fixed (int* numKeysPtr = &numKeys)
 		{
-			return PInvoke.SDL_GetKeyboardState(numKeysPtr);
+			return SDL_PInvoke.SDL_GetKeyboardState(numKeysPtr);
 		}
 	}
 
@@ -94,7 +94,7 @@ unsafe partial class SDL
 	/// </remarks>
 	public static void ResetKeyboard()
 	{
-		PInvoke.SDL_ResetKeyboard();
+		SDL_PInvoke.SDL_ResetKeyboard();
 	}
 
 	/// <summary>
@@ -106,7 +106,7 @@ unsafe partial class SDL
 	/// <returns>An OR'd combination of the modifier keys for the keyboard. See <see cref="SDL_Keymod"/> for details.</returns>
 	public static SDL_Keymod GetModState()
 	{
-		return PInvoke.SDL_GetModState();
+		return SDL_PInvoke.SDL_GetModState();
 	}
 
 	/// <summary>
@@ -118,7 +118,7 @@ unsafe partial class SDL
 	/// <param name="modState">The desired <see cref="SDL_Keymod"/> for the keyboard.</param>
 	public static void SetModState(SDL_Keymod modState)
 	{
-		PInvoke.SDL_SetModState(modState);
+		SDL_PInvoke.SDL_SetModState(modState);
 	}
 
 	/// <summary>
@@ -132,7 +132,7 @@ unsafe partial class SDL
 	/// <returns>The <see cref="SDL_Keycode"/> that corresponds to the given <see cref="SDL_Scancode"/>.</returns>
 	public static SDL_Keycode GetDefaultKeyFromScancode(SDL_Scancode scancode, SDL_Keymod modState)
 	{
-		return PInvoke.SDL_GetDefaultKeyFromScancode(scancode, modState);
+		return SDL_PInvoke.SDL_GetDefaultKeyFromScancode(scancode, modState);
 	}
 
 	/// <summary>
@@ -146,7 +146,7 @@ unsafe partial class SDL
 	/// <returns>The <see cref="SDL_Keycode"/> that corresponds to the given <see cref="SDL_Scancode"/>.</returns>
 	public static SDL_Keycode GetKeyFromScancode(SDL_Scancode scancode, SDL_Keymod modState)
 	{
-		return PInvoke.SDL_GetKeyFromScancode(scancode, modState);
+		return SDL_PInvoke.SDL_GetKeyFromScancode(scancode, modState);
 	}
 
 	/// <summary>
@@ -162,7 +162,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Keymod* modStatePtr = &modState)
 		{
-			return PInvoke.SDL_GetDefaultScancodeFromKey(key, modStatePtr);
+			return SDL_PInvoke.SDL_GetDefaultScancodeFromKey(key, modStatePtr);
 		}
 	}
 
@@ -177,7 +177,7 @@ unsafe partial class SDL
 	/// <returns>The <see cref="SDL_Scancode"/> that corresponds to the given <see cref="SDL_Keycode"/>.</returns>
 	public static SDL_Scancode GetDefaultScancodeFromKey(SDL_Keycode key, SDL_Keymod* modState)
 	{
-		return PInvoke.SDL_GetDefaultScancodeFromKey(key, modState);
+		return SDL_PInvoke.SDL_GetDefaultScancodeFromKey(key, modState);
 	}
 
 	/// <summary>
@@ -193,7 +193,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Keymod* modStatePtr = &modState)
 		{
-			return PInvoke.SDL_GetScancodeFromKey(key, modStatePtr);
+			return SDL_PInvoke.SDL_GetScancodeFromKey(key, modStatePtr);
 		}
 	}
 
@@ -208,7 +208,7 @@ unsafe partial class SDL
 	/// <returns>The <see cref="SDL_Scancode"/> that corresponds to the given <see cref="SDL_Keycode"/>.</returns>
 	public static SDL_Scancode GetScancodeFromKey(SDL_Keycode key, SDL_Keymod* modState)
 	{
-		return PInvoke.SDL_GetScancodeFromKey(key, modState);
+		return SDL_PInvoke.SDL_GetScancodeFromKey(key, modState);
 	}
 
 	/// <summary>
@@ -224,7 +224,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return PInvoke.SDL_SetScancodeName(scancode, namePtr);
+			return SDL_PInvoke.SDL_SetScancodeName(scancode, namePtr);
 		}
 	}
 
@@ -238,7 +238,7 @@ unsafe partial class SDL
 	/// <returns>The name for the scancode. If the scancode doesn't have a name this function returns an empty string.</returns>
 	public static string GetScancodeName(SDL_Scancode scancode)
 	{
-		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetScancodeName(scancode))!;
+		return Marshal.PtrToStringUTF8((nint)SDL_PInvoke.SDL_GetScancodeName(scancode))!;
 	}
 
 	/// <summary>
@@ -253,7 +253,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return PInvoke.SDL_GetScancodeFromName(namePtr);
+			return SDL_PInvoke.SDL_GetScancodeFromName(namePtr);
 		}
 	}
 
@@ -267,7 +267,7 @@ unsafe partial class SDL
 	/// <returns>The name of the key. If the key doesn't have a name, this function returns an empty string.</returns>
 	public static string GetKeyName(SDL_Keycode key)
 	{
-		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetKeyName(key))!;
+		return Marshal.PtrToStringUTF8((nint)SDL_PInvoke.SDL_GetKeyName(key))!;
 	}
 
 	/// <summary>
@@ -282,7 +282,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return PInvoke.SDL_GetKeyFromName(namePtr);
+			return SDL_PInvoke.SDL_GetKeyFromName(namePtr);
 		}
 	}
 
@@ -296,7 +296,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int StartTextInput(SDL_Window* window)
 	{
-		return PInvoke.SDL_StartTextInput(window);
+		return SDL_PInvoke.SDL_StartTextInput(window);
 	}
 
 	/// <summary>
@@ -309,7 +309,7 @@ unsafe partial class SDL
 	/// <returns>True if text input events are enabled else false.</returns>
 	public static bool TextInputActive(SDL_Window* window)
 	{
-		return PInvoke.SDL_TextInputActive(window) == 1;
+		return SDL_PInvoke.SDL_TextInputActive(window) == 1;
 	}
 
 	/// <summary>
@@ -322,7 +322,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int StopTextInput(SDL_Window* window)
 	{
-		return PInvoke.SDL_StopTextInput(window);
+		return SDL_PInvoke.SDL_StopTextInput(window);
 	}
 
 	/// <summary>
@@ -335,7 +335,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int ClearComposition(SDL_Window* window)
 	{
-		return PInvoke.SDL_ClearComposition(window);
+		return SDL_PInvoke.SDL_ClearComposition(window);
 	}
 
 	/// <summary>
@@ -351,7 +351,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Rect* rectPtr = &rect)
 		{
-			return PInvoke.SDL_SetTextInputRect(window, rectPtr);
+			return SDL_PInvoke.SDL_SetTextInputRect(window, rectPtr);
 		}
 	}
 
@@ -366,7 +366,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int SetTextInputRect(SDL_Window* window, SDL_Rect* rect)
 	{
-		return PInvoke.SDL_SetTextInputRect(window, rect);
+		return SDL_PInvoke.SDL_SetTextInputRect(window, rect);
 	}
 
 	/// <summary>
@@ -378,7 +378,7 @@ unsafe partial class SDL
 	/// <returns>True if the platform has some screen keyboard support or false if not.</returns>
 	public static bool HasScreenKeyboardSupport()
 	{
-		return PInvoke.SDL_HasScreenKeyboardSupport() == 1;
+		return SDL_PInvoke.SDL_HasScreenKeyboardSupport() == 1;
 	}
 
 	/// <summary>
@@ -391,6 +391,6 @@ unsafe partial class SDL
 	/// <returns>True if screen keyboard is shown or false if not.</returns>
 	public static bool ScreenKeyboardShown(SDL_Window* window)
 	{
-		return PInvoke.SDL_ScreenKeyboardShown(window) == 1;
+		return SDL_PInvoke.SDL_ScreenKeyboardShown(window) == 1;
 	}
 }

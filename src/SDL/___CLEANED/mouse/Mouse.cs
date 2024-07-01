@@ -20,7 +20,7 @@ unsafe partial class SDL
 	/// <returns>True if a mouse is connected, false otherwise.</returns>
 	public static bool HasMouse()
 	{
-		return PInvoke.SDL_HasMouse() == 1;
+		return SDL_PInvoke.SDL_HasMouse() == 1;
 	}
 
 	/// <summary>
@@ -35,7 +35,7 @@ unsafe partial class SDL
 	{
 		fixed (int* countPtr = &count)
 		{
-			var m = PInvoke.SDL_GetMice(countPtr);
+			var m = SDL_PInvoke.SDL_GetMice(countPtr);
 			if (m is null)
 			{
 				return null;
@@ -60,7 +60,7 @@ unsafe partial class SDL
 	/// <returns>The name of the selected mouse, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static string? GetMouseInstanceName(SDL_MouseId mouseId)
 	{
-		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetMouseInstanceName(mouseId));
+		return Marshal.PtrToStringUTF8((nint)SDL_PInvoke.SDL_GetMouseInstanceName(mouseId));
 	}
 
 	/// <summary>
@@ -72,7 +72,7 @@ unsafe partial class SDL
 	/// <returns>The windows with mouse focus.</returns>
 	public static SDL_Window* GetMouseFocus()
 	{
-		return PInvoke.SDL_GetMouseFocus();
+		return SDL_PInvoke.SDL_GetMouseFocus();
 	}
 
 	/// <summary>
@@ -88,7 +88,7 @@ unsafe partial class SDL
 	{
 		fixed (float* xPtr = &x, yPtr = &y)
 		{
-			return PInvoke.SDL_GetMouseState(xPtr, yPtr);
+			return SDL_PInvoke.SDL_GetMouseState(xPtr, yPtr);
 		}
 	}
 
@@ -105,7 +105,7 @@ unsafe partial class SDL
 	{
 		fixed (float* xPtr = &x, yPtr = &y)
 		{
-			return PInvoke.SDL_GetGlobalMouseState(xPtr, yPtr);
+			return SDL_PInvoke.SDL_GetGlobalMouseState(xPtr, yPtr);
 		}
 	}
 
@@ -122,7 +122,7 @@ unsafe partial class SDL
 	{
 		fixed (float* xPtr = &x, yPtr = &y)
 		{
-			return PInvoke.SDL_GetRelativeMouseState(xPtr, yPtr);
+			return SDL_PInvoke.SDL_GetRelativeMouseState(xPtr, yPtr);
 		}
 	}
 
@@ -137,7 +137,7 @@ unsafe partial class SDL
 	/// <param name="y">The y coordinate within the window.</param>
 	public static void WarpMouseInWindow(SDL_Window* window, float x, float y)
 	{
-		PInvoke.SDL_WarpMouseInWindow(window, x, y);
+		SDL_PInvoke.SDL_WarpMouseInWindow(window, x, y);
 	}
 
 	/// <summary>
@@ -151,7 +151,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int WarpMouseGlobal(float x, float y)
 	{
-		return PInvoke.SDL_WarpMouseGlobal(x, y);
+		return SDL_PInvoke.SDL_WarpMouseGlobal(x, y);
 	}
 
 	/// <summary>
@@ -164,7 +164,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int SetRelativeMouseMode(bool enabled)
 	{
-		return PInvoke.SDL_SetRelativeMouseMode(enabled ? 1 : 0);
+		return SDL_PInvoke.SDL_SetRelativeMouseMode(enabled ? 1 : 0);
 	}
 
 	/// <summary>
@@ -177,7 +177,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int CaptureMouse(bool enabled)
 	{
-		return PInvoke.SDL_CaptureMouse(enabled ? 1 : 0);
+		return SDL_PInvoke.SDL_CaptureMouse(enabled ? 1 : 0);
 	}
 
 	/// <summary>
@@ -189,7 +189,7 @@ unsafe partial class SDL
 	/// <returns>True if relative mode is enabled or false otherwise.</returns>
 	public static bool GetRelativeMouseMode()
 	{
-		return PInvoke.SDL_GetRelativeMouseMode() == 1;
+		return SDL_PInvoke.SDL_GetRelativeMouseMode() == 1;
 	}
 
 	/// <summary>
@@ -209,7 +209,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* dataPtr = data, maskPtr = mask)
 		{
-			return PInvoke.SDL_CreateCursor(dataPtr, maskPtr, width, height, hotX, hotY);
+			return SDL_PInvoke.SDL_CreateCursor(dataPtr, maskPtr, width, height, hotX, hotY);
 		}
 	}
 
@@ -225,7 +225,7 @@ unsafe partial class SDL
 	/// <returns>The new cursor on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_Cursor* CreateCursor(SDL_Surface* surface, int hotX, int hotY)
 	{
-		return PInvoke.SDL_CreateColorCursor(surface, hotX, hotY);
+		return SDL_PInvoke.SDL_CreateColorCursor(surface, hotX, hotY);
 	}
 
 	/// <summary>
@@ -238,7 +238,7 @@ unsafe partial class SDL
 	/// <returns>A cursor on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_Cursor* CreateCursor(SDL_SystemCursor id)
 	{
-		return PInvoke.SDL_CreateSystemCursor(id);
+		return SDL_PInvoke.SDL_CreateSystemCursor(id);
 	}
 
 	/// <summary>
@@ -251,7 +251,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int SetCursor(SDL_Cursor* cursor)
 	{
-		return PInvoke.SDL_SetCursor(cursor);
+		return SDL_PInvoke.SDL_SetCursor(cursor);
 	}
 
 	/// <summary>
@@ -263,7 +263,7 @@ unsafe partial class SDL
 	/// <returns>The active cursor or <see langword="null"/> if there is no mouse.</returns>
 	public static SDL_Cursor* GetCursor()
 	{
-		return PInvoke.SDL_GetCursor();
+		return SDL_PInvoke.SDL_GetCursor();
 	}
 
 	/// <summary>
@@ -275,7 +275,7 @@ unsafe partial class SDL
 	/// <returns>The default cursor on success or <see langword="null"/> on failure.</returns>
 	public static SDL_Cursor* GetDefaultCursor()
 	{
-		return PInvoke.SDL_GetDefaultCursor();
+		return SDL_PInvoke.SDL_GetDefaultCursor();
 	}
 
 	/// <summary>
@@ -287,7 +287,7 @@ unsafe partial class SDL
 	/// <param name="cursor">The cursor to free.</param>
 	public static void DestroyCursor(SDL_Cursor* cursor)
 	{
-		PInvoke.SDL_DestroyCursor(cursor);
+		SDL_PInvoke.SDL_DestroyCursor(cursor);
 	}
 
 	/// <summary>
@@ -299,7 +299,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int ShowCursor()
 	{
-		return PInvoke.SDL_ShowCursor();
+		return SDL_PInvoke.SDL_ShowCursor();
 	}
 
 	/// <summary>
@@ -311,7 +311,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int HideCursor()
 	{
-		return PInvoke.SDL_HideCursor();
+		return SDL_PInvoke.SDL_HideCursor();
 	}
 
 	/// <summary>
@@ -323,7 +323,7 @@ unsafe partial class SDL
 	/// <returns>True if the cursor is being shown, or false if the cursor is hidden.</returns>
 	public static bool CursorVisible()
 	{
-		return PInvoke.SDL_CursorVisible() == 1;
+		return SDL_PInvoke.SDL_CursorVisible() == 1;
 	}
 
 	/// <summary>

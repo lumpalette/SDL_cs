@@ -32,7 +32,7 @@ unsafe partial class SDL
 	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_Surface* CreateSurface(int width, int height, SDL_PixelFormatEnum format)
 	{
-		return PInvoke.SDL_CreateSurface(width, height, format);
+		return SDL_PInvoke.SDL_CreateSurface(width, height, format);
 	}
 
 	/// <summary>
@@ -49,7 +49,7 @@ unsafe partial class SDL
 	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_Surface* CreateSurface(void* pixels, int width, int height, int pitch, SDL_PixelFormatEnum format)
 	{
-		return PInvoke.SDL_CreateSurfaceFrom(pixels, width, height, pitch, format);
+		return SDL_PInvoke.SDL_CreateSurfaceFrom(pixels, width, height, pitch, format);
 	}
 
 	/// <summary>
@@ -61,7 +61,7 @@ unsafe partial class SDL
 	/// <param name="surface">The <see cref="SDL_Surface"/> to free.</param>
 	public static void DestroySurface(SDL_Surface* surface)
 	{
-		PInvoke.SDL_DestroySurface(surface);
+		SDL_PInvoke.SDL_DestroySurface(surface);
 	}
 
 	/// <summary>
@@ -74,7 +74,7 @@ unsafe partial class SDL
 	/// <returns>A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_PropertiesId GetSurfaceProperties(SDL_Surface* surface)
 	{
-		return PInvoke.SDL_GetSurfaceProperties(surface);
+		return SDL_PInvoke.SDL_GetSurfaceProperties(surface);
 	}
 
 	/// <summary>

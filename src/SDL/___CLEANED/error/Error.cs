@@ -18,7 +18,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* fmtPtr = Encoding.UTF8.GetBytes(fmt))
 		{
-			return PInvoke.SDL_SetError(fmtPtr);
+			return SDL_PInvoke.SDL_SetError(fmtPtr);
 		}
 	}
 
@@ -31,7 +31,7 @@ unsafe partial class SDL
 	/// <returns>-1.</returns>
 	public static int OutOfMemory()
 	{
-		return PInvoke.SDL_OutOfMemory();
+		return SDL_PInvoke.SDL_OutOfMemory();
 	}
 
 	/// <summary>
@@ -43,7 +43,7 @@ unsafe partial class SDL
 	/// <returns>A message with information about the specific error that occurred, or an empty string if there hasn't been an error message set since the last call to <see cref="ClearError"/>.</returns>
 	public static string GetError()
 	{
-		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetError())!;
+		return Marshal.PtrToStringUTF8((nint)SDL_PInvoke.SDL_GetError())!;
 	}
 
 	/// <summary>
@@ -55,6 +55,6 @@ unsafe partial class SDL
 	/// <returns>0</returns>
 	public static int ClearError()
 	{
-		return PInvoke.SDL_ClearError();
+		return SDL_PInvoke.SDL_ClearError();
 	}
 }

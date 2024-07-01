@@ -142,7 +142,7 @@ unsafe partial class SDL
 	/// <returns>The number of built-in audio drivers.</returns>
 	public static int GetNumAudioDrivers()
 	{
-		return PInvoke.SDL_GetNumAudioDrivers();
+		return SDL_PInvoke.SDL_GetNumAudioDrivers();
 	}
 
 	/// <summary>
@@ -155,7 +155,7 @@ unsafe partial class SDL
 	/// <returns>The name of the audio driver at the requested index, or <see langword="null"/> if an invalid index was specified.</returns>
 	public static string? GetAudioDriver(int index)
 	{
-		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetAudioDriver(index));
+		return Marshal.PtrToStringUTF8((nint)SDL_PInvoke.SDL_GetAudioDriver(index));
 	}
 
 	/// <summary>
@@ -167,7 +167,7 @@ unsafe partial class SDL
 	/// <returns>The name of the current audio driver or <see langword="null"/> if no driver has been initialized.</returns>
 	public static string? GetCurrentAudioDriver()
 	{
-		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetCurrentAudioDriver());
+		return Marshal.PtrToStringUTF8((nint)SDL_PInvoke.SDL_GetCurrentAudioDriver());
 	}
 
 	/// <summary>
@@ -182,7 +182,7 @@ unsafe partial class SDL
 	{
 		fixed (int* countPtr = &count)
 		{
-			var devicesPtr = PInvoke.SDL_GetAudioPlaybackDevices(countPtr);
+			var devicesPtr = SDL_PInvoke.SDL_GetAudioPlaybackDevices(countPtr);
 			if (devicesPtr is null)
 			{
 				return null;
@@ -209,7 +209,7 @@ unsafe partial class SDL
 	{
 		fixed (int* countPtr = &count)
 		{
-			var devicesPtr = PInvoke.SDL_GetAudioRecordingDevices(countPtr);
+			var devicesPtr = SDL_PInvoke.SDL_GetAudioRecordingDevices(countPtr);
 			if (devicesPtr is null)
 			{
 				return null;
@@ -234,7 +234,7 @@ unsafe partial class SDL
 	/// <returns>The name of the audio device, or <see langword="null"/> on error.</returns>
 	public static string? GetAudioDeviceName(SDL_AudioDeviceId devId)
 	{
-		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetAudioDeviceName(devId));
+		return Marshal.PtrToStringUTF8((nint)SDL_PInvoke.SDL_GetAudioDeviceName(devId));
 	}
 
 	/// <summary>
@@ -253,7 +253,7 @@ unsafe partial class SDL
 		{
 			fixed (int* sampleFramesPtr = &sampleFrames)
 			{
-				return PInvoke.SDL_GetAudioDeviceFormat(devId, specPtr, sampleFramesPtr);
+				return SDL_PInvoke.SDL_GetAudioDeviceFormat(devId, specPtr, sampleFramesPtr);
 			}
 		}
 	}
@@ -271,7 +271,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_AudioSpec* specPtr = &spec)
 		{
-			return PInvoke.SDL_OpenAudioDevice(devId, specPtr);
+			return SDL_PInvoke.SDL_OpenAudioDevice(devId, specPtr);
 		}
 	}
 
@@ -286,7 +286,7 @@ unsafe partial class SDL
 	/// <returns>The device ID on success, <see cref="SDL_AudioDeviceId.Invalid"/> on error; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_AudioDeviceId OpenAudioDevice(SDL_AudioDeviceId devId, SDL_AudioSpec* spec)
 	{
-		return PInvoke.SDL_OpenAudioDevice(devId, spec);
+		return SDL_PInvoke.SDL_OpenAudioDevice(devId, spec);
 	}
 
 	/// <summary>
@@ -299,7 +299,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int PauseAudioDevice(SDL_AudioDeviceId dev)
 	{
-		return PInvoke.SDL_PauseAudioDevice(dev);
+		return SDL_PInvoke.SDL_PauseAudioDevice(dev);
 	}
 
 	/// <summary>
@@ -312,7 +312,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int ResumeAudioDevice(SDL_AudioDeviceId dev)
 	{
-		return PInvoke.SDL_ResumeAudioDevice(dev);
+		return SDL_PInvoke.SDL_ResumeAudioDevice(dev);
 	}
 
 	/// <summary>
@@ -325,7 +325,7 @@ unsafe partial class SDL
 	/// <returns>True if device is valid and paused, false otherwise.</returns>
 	public static bool AudioDevicePaused(SDL_AudioDeviceId dev)
 	{
-		return PInvoke.SDL_AudioDevicePaused(dev) == 1;
+		return SDL_PInvoke.SDL_AudioDevicePaused(dev) == 1;
 	}
 
 	/// <summary>
@@ -337,7 +337,7 @@ unsafe partial class SDL
 	/// <param name="devId">An audio device ID previously returned by <see cref="OpenAudioDevice(SDL_AudioDeviceId, ref SDL_AudioSpec)"/>.</param>
 	public static void CloseAudioDevice(SDL_AudioDeviceId devId)
 	{
-		PInvoke.SDL_CloseAudioDevice(devId);
+		SDL_PInvoke.SDL_CloseAudioDevice(devId);
 	}
 
 	/// <summary>
@@ -353,7 +353,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_AudioStream** streamsPtr = streams)
 		{
-			return PInvoke.SDL_BindAudioStreams(devId, streamsPtr, streams.Length);
+			return SDL_PInvoke.SDL_BindAudioStreams(devId, streamsPtr, streams.Length);
 		}
 	}
 
@@ -368,7 +368,7 @@ unsafe partial class SDL
 	/// <returns>0 on success, -1 on error; call <see cref="GetError"/> for more information.</returns>
 	public static int BindAudioStream(SDL_AudioDeviceId deviceId, SDL_AudioStream* stream)
 	{
-		return PInvoke.SDL_BindAudioStream(deviceId, stream);
+		return SDL_PInvoke.SDL_BindAudioStream(deviceId, stream);
 	}
 
 	/// <summary>
@@ -382,7 +382,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_AudioStream** streamsPtr = streams)
 		{
-			PInvoke.SDL_UnbindAudioStreams(streamsPtr, streams.Length);
+			SDL_PInvoke.SDL_UnbindAudioStreams(streamsPtr, streams.Length);
 		}
 	}
 
@@ -395,7 +395,7 @@ unsafe partial class SDL
 	/// <param name="stream">An audio stream to unbind from a device.</param>
 	public static void UnbindAudioStream(SDL_AudioStream* stream)
 	{
-		PInvoke.SDL_UnbindAudioStream(stream);
+		SDL_PInvoke.SDL_UnbindAudioStream(stream);
 	}
 
 	/// <summary>
@@ -408,7 +408,7 @@ unsafe partial class SDL
 	/// <returns>The bound audio device, or <see cref="SDL_AudioDeviceId.Invalid"/> if not bound or invalid.</returns>
 	public static SDL_AudioDeviceId GetAudioStreamDevice(SDL_AudioStream* stream)
 	{
-		return PInvoke.SDL_GetAudioStreamDevice(stream);
+		return SDL_PInvoke.SDL_GetAudioStreamDevice(stream);
 	}
 
 	/// <summary>
@@ -424,7 +424,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_AudioSpec* srcSpecPtr = &srcSpec, dstSpecPtr = &dstSpec)
 		{
-			return PInvoke.SDL_CreateAudioStream(srcSpecPtr, dstSpecPtr);
+			return SDL_PInvoke.SDL_CreateAudioStream(srcSpecPtr, dstSpecPtr);
 		}
 	}
 
@@ -438,7 +438,7 @@ unsafe partial class SDL
 	/// <returns>A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_PropertiesId GetAudioStreamProperties(SDL_AudioStream* stream)
 	{
-		return PInvoke.SDL_GetAudioStreamProperties(stream);
+		return SDL_PInvoke.SDL_GetAudioStreamProperties(stream);
 	}
 
 	/// <summary>
@@ -455,7 +455,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_AudioSpec* srcSpecPtr = &srcSpec, dstSpecPtr = &dstSpec)
 		{
-			return PInvoke.SDL_GetAudioStreamFormat(stream, srcSpecPtr, dstSpecPtr);
+			return SDL_PInvoke.SDL_GetAudioStreamFormat(stream, srcSpecPtr, dstSpecPtr);
 		}
 	}
 
@@ -473,7 +473,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_AudioSpec* srcSpecPtr = &srcSpec, dstSpecPtr = &dstSpec)
 		{
-			return PInvoke.SDL_SetAudioStreamFormat(stream, srcSpecPtr, dstSpecPtr);
+			return SDL_PInvoke.SDL_SetAudioStreamFormat(stream, srcSpecPtr, dstSpecPtr);
 		}
 	}
 
@@ -491,7 +491,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_AudioSpec* dstSpecPtr = &dstSpec)
 		{
-			return PInvoke.SDL_SetAudioStreamFormat(stream, srcSpec, dstSpecPtr);
+			return SDL_PInvoke.SDL_SetAudioStreamFormat(stream, srcSpec, dstSpecPtr);
 		}
 	}
 
@@ -509,7 +509,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_AudioSpec* srcSpecPtr = &srcSpec)
 		{
-			return PInvoke.SDL_SetAudioStreamFormat(stream, srcSpecPtr, dstSpec);
+			return SDL_PInvoke.SDL_SetAudioStreamFormat(stream, srcSpecPtr, dstSpec);
 		}
 	}
 
@@ -525,7 +525,7 @@ unsafe partial class SDL
 	/// <returns>0 on success, or -1 on error.</returns>
 	public static int SetAudioStreamFormat(SDL_AudioStream* stream, SDL_AudioSpec* srcSpec, SDL_AudioSpec* dstSpec)
 	{
-		return PInvoke.SDL_SetAudioStreamFormat(stream, srcSpec, dstSpec);
+		return SDL_PInvoke.SDL_SetAudioStreamFormat(stream, srcSpec, dstSpec);
 	}
 
 	/// <summary>
@@ -538,7 +538,7 @@ unsafe partial class SDL
 	/// <returns>The frequency ratio of the stream, or 0 on error.</returns>
 	public static float GetAudioStreamFrequencyRatio(SDL_AudioStream* stream)
 	{
-		return PInvoke.SDL_GetAudioStreamFrequencyRatio(stream);
+		return SDL_PInvoke.SDL_GetAudioStreamFrequencyRatio(stream);
 	}
 
 	/// <summary>
@@ -552,7 +552,7 @@ unsafe partial class SDL
 	/// <returns>0 on success, or -1 on error.</returns>
 	public static int SetAudioStreamFrequencyRatio(SDL_AudioStream* stream, float ratio)
 	{
-		return PInvoke.SDL_SetAudioStreamFrequencyRatio(stream, ratio);
+		return SDL_PInvoke.SDL_SetAudioStreamFrequencyRatio(stream, ratio);
 	}
 
 	/// <summary>
@@ -567,7 +567,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int PutAudioStreamData(SDL_AudioStream* stream, void* buffer, int length)
 	{
-		return PInvoke.SDL_PutAudioStreamData(stream, buffer, length);
+		return SDL_PInvoke.SDL_PutAudioStreamData(stream, buffer, length);
 	}
 
 	/// <summary>
@@ -582,7 +582,7 @@ unsafe partial class SDL
 	/// <returns> The number of bytes read from the stream, or -1 on error. </returns>
 	public static int GetAudioStreamData(SDL_AudioStream* stream, void* buffer, int length)
 	{
-		return PInvoke.SDL_GetAudioStreamData(stream, buffer, length);
+		return SDL_PInvoke.SDL_GetAudioStreamData(stream, buffer, length);
 	}
 
 	/// <summary>
@@ -595,7 +595,7 @@ unsafe partial class SDL
 	/// <returns>The number of converted/resampled bytes available.</returns>
 	public static int GetAudioStreamAvailable(SDL_AudioStream* stream)
 	{
-		return PInvoke.SDL_GetAudioStreamAvailable(stream);
+		return SDL_PInvoke.SDL_GetAudioStreamAvailable(stream);
 	}
 
 	/// <summary>
@@ -608,7 +608,7 @@ unsafe partial class SDL
 	/// <returns>The number of bytes queued.</returns>
 	public static int GetAudioStreamQueued(SDL_AudioStream* stream)
 	{
-		return PInvoke.SDL_GetAudioStreamQueued(stream);
+		return SDL_PInvoke.SDL_GetAudioStreamQueued(stream);
 	}
 
 	/// <summary>
@@ -622,7 +622,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int FlushAudioStream(SDL_AudioStream* stream)
 	{
-		return PInvoke.SDL_FlushAudioStream(stream);
+		return SDL_PInvoke.SDL_FlushAudioStream(stream);
 	}
 
 	/// <summary>
@@ -635,7 +635,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int ClearAudioStream(SDL_AudioStream* stream)
 	{
-		return PInvoke.SDL_ClearAudioStream(stream);
+		return SDL_PInvoke.SDL_ClearAudioStream(stream);
 	}
 
 	/// <summary>
@@ -648,7 +648,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int PauseAudioStreamDevice(SDL_AudioStream* stream)
 	{
-		return PInvoke.SDL_PauseAudioStreamDevice(stream);
+		return SDL_PInvoke.SDL_PauseAudioStreamDevice(stream);
 	}
 
 	/// <summary>
@@ -661,7 +661,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int ResumeAudioStreamDevice(SDL_AudioStream* stream)
 	{
-		return PInvoke.SDL_ResumeAudioStreamDevice(stream);
+		return SDL_PInvoke.SDL_ResumeAudioStreamDevice(stream);
 	}
 
 	/// <summary>
@@ -674,7 +674,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int LockAudioStream(SDL_AudioStream* stream)
 	{
-		return PInvoke.SDL_LockAudioStream(stream);
+		return SDL_PInvoke.SDL_LockAudioStream(stream);
 	}
 
 	/// <summary>
@@ -687,7 +687,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int UnlockAudioStream(SDL_AudioStream* stream)
 	{
-		return PInvoke.SDL_UnlockAudioStream(stream);
+		return SDL_PInvoke.SDL_UnlockAudioStream(stream);
 	}
 
 	/// <summary>
@@ -702,7 +702,7 @@ unsafe partial class SDL
 	/// <returns>0 on success, -1 on error. This only fails if <paramref name="stream"/> is <see langword="null"/>.</returns>
 	public static int SetAudioStreamGetCallback(SDL_AudioStream* stream, SDL_AudioStreamCallback callback, void* userData)
 	{
-		return PInvoke.SDL_SetAudioStreamGetCallback(stream, callback, userData);
+		return SDL_PInvoke.SDL_SetAudioStreamGetCallback(stream, callback, userData);
 	}
 
 	/// <summary>
@@ -717,7 +717,7 @@ unsafe partial class SDL
 	/// <returns>0 on success, -1 on error. This only fails if <paramref name="stream"/> is <see langword="null"/>.</returns>
 	public static int SetAudioStreamPutCallback(SDL_AudioStream* stream, SDL_AudioStreamCallback callback, void* userData)
 	{
-		return PInvoke.SDL_SetAudioStreamPutCallback(stream, callback, userData);
+		return SDL_PInvoke.SDL_SetAudioStreamPutCallback(stream, callback, userData);
 	}
 
 	/// <summary>
@@ -729,7 +729,7 @@ unsafe partial class SDL
 	/// <param name="stream">The audio stream to destroy.</param>
 	public static void DestroyAudioStream(SDL_AudioStream* stream)
 	{
-		PInvoke.SDL_DestroyAudioStream(stream);
+		SDL_PInvoke.SDL_DestroyAudioStream(stream);
 	}
 
 	/// <summary>
@@ -747,7 +747,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_AudioSpec* specPtr = &spec)
 		{
-			return PInvoke.SDL_OpenAudioDeviceStream(devId, specPtr, callback, userData);
+			return SDL_PInvoke.SDL_OpenAudioDeviceStream(devId, specPtr, callback, userData);
 		}
 	}
 
@@ -764,7 +764,7 @@ unsafe partial class SDL
 	/// <returns>An audio stream ready to use on success, <see langword="null"/> on error; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_AudioStream* OpenAudioDeviceStream(SDL_AudioDeviceId devId, SDL_AudioSpec* spec, SDL_AudioStreamCallback? callback, void* userData)
 	{
-		return PInvoke.SDL_OpenAudioDeviceStream(devId, spec, callback, userData);
+		return SDL_PInvoke.SDL_OpenAudioDeviceStream(devId, spec, callback, userData);
 	}
 
 	/// <summary>
@@ -779,7 +779,7 @@ unsafe partial class SDL
 	/// <returns>0 on success, -1 on error; call <see cref="GetError"/> for more information.</returns>
 	public static int SetAudioPostmixCallback(SDL_AudioDeviceId devId, SDL_AudioPostmixCallback callback, void* userData)
 	{
-		return PInvoke.SDL_SetAudioPostmixCallback(devId, callback, userData);
+		return SDL_PInvoke.SDL_SetAudioPostmixCallback(devId, callback, userData);
 	}
 
 	// FIXME: implement SDL_LoadWAV_IO
@@ -818,7 +818,7 @@ unsafe partial class SDL
 					// e
 					fixed (uint* audioLengthPtr = &audioLength)
 					{
-						return PInvoke.SDL_LoadWAV(pathPtr, specPtr, audioBufferPtr, audioLengthPtr);
+						return SDL_PInvoke.SDL_LoadWAV(pathPtr, specPtr, audioBufferPtr, audioLengthPtr);
 					}
 				}
 			}
@@ -840,7 +840,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int MixAudio(byte* dst, byte* src, SDL_AudioFormat format, uint length, float volume)
 	{
-		return PInvoke.SDL_MixAudio(dst, src, format,length, volume);
+		return SDL_PInvoke.SDL_MixAudio(dst, src, format,length, volume);
 	}
 
 	/// <summary>
@@ -864,7 +864,7 @@ unsafe partial class SDL
 			{
 				fixed (SDL_AudioSpec* srcSpecPtr = &srcSpec, dstSpecPtr = &dstSpec)
 				{
-					return PInvoke.SDL_ConvertAudioSamples(srcSpecPtr, srcData, srcLength, dstSpecPtr, dstDataPtr, dstLengthPtr);
+					return SDL_PInvoke.SDL_ConvertAudioSamples(srcSpecPtr, srcData, srcLength, dstSpecPtr, dstDataPtr, dstLengthPtr);
 				}
 			}
 		}
@@ -880,7 +880,7 @@ unsafe partial class SDL
 	/// <returns>A byte value that can be passed to memset.</returns>
 	public static int GetSilenceValueForFormat(SDL_AudioFormat format)
 	{
-		return PInvoke.SDL_GetSilenceValueForFormat(format);
+		return SDL_PInvoke.SDL_GetSilenceValueForFormat(format);
 	}
 
 	/// <summary>

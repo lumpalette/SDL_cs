@@ -104,7 +104,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Rect* aPtr = &a, bPtr = &b)
 		{
-			return PInvoke.SDL_HasRectIntersection(aPtr, bPtr) == 1;
+			return SDL_PInvoke.SDL_HasRectIntersection(aPtr, bPtr) == 1;
 		}
 	}
 
@@ -121,7 +121,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_FRect* aPtr = &a, bPtr = &b)
 		{
-			return PInvoke.SDL_HasRectIntersectionFloat(aPtr, bPtr) == 1;
+			return SDL_PInvoke.SDL_HasRectIntersectionFloat(aPtr, bPtr) == 1;
 		}
 	}
 
@@ -139,7 +139,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Rect* aPtr = &a, bPtr = &b, resultPtr = &result)
 		{
-			return PInvoke.SDL_GetRectIntersection(aPtr, bPtr, resultPtr) == 1;
+			return SDL_PInvoke.SDL_GetRectIntersection(aPtr, bPtr, resultPtr) == 1;
 		}
 	}
 
@@ -157,7 +157,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_FRect* aPtr = &a, bPtr = &b, resultPtr = &result)
 		{
-			return PInvoke.SDL_GetRectIntersectionFloat(aPtr, bPtr, resultPtr) == 1;
+			return SDL_PInvoke.SDL_GetRectIntersectionFloat(aPtr, bPtr, resultPtr) == 1;
 		}
 	}
 
@@ -175,7 +175,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Rect* aPtr = &a, bPtr = &b, resultPtr = &result)
 		{
-			return PInvoke.SDL_GetRectUnion(aPtr, bPtr, resultPtr);
+			return SDL_PInvoke.SDL_GetRectUnion(aPtr, bPtr, resultPtr);
 		}
 	}
 
@@ -193,7 +193,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_FRect* aPtr = &a, bPtr = &b, resultPtr = &result)
 		{
-			return PInvoke.SDL_GetRectUnionFloat(aPtr, bPtr, resultPtr);
+			return SDL_PInvoke.SDL_GetRectUnionFloat(aPtr, bPtr, resultPtr);
 		}
 	}
 
@@ -213,7 +213,7 @@ unsafe partial class SDL
 		{
 			fixed (SDL_Rect* clipPtr = &clip, resultPtr = &result)
 			{
-				return PInvoke.SDL_GetRectEnclosingPoints(pointsPtr, points.Length, clipPtr, resultPtr) == 1;
+				return SDL_PInvoke.SDL_GetRectEnclosingPoints(pointsPtr, points.Length, clipPtr, resultPtr) == 1;
 			}
 		}
 	}
@@ -234,7 +234,7 @@ unsafe partial class SDL
 		{
 			fixed (SDL_Rect* resultPtr = &result)
 			{
-				return PInvoke.SDL_GetRectEnclosingPoints(pointsPtr, points.Length, clip, resultPtr) == 1;
+				return SDL_PInvoke.SDL_GetRectEnclosingPoints(pointsPtr, points.Length, clip, resultPtr) == 1;
 			}
 		}
 	}
@@ -255,7 +255,7 @@ unsafe partial class SDL
 		{
 			fixed (SDL_FRect* clipPtr = &clip, resultPtr = &result)
 			{
-				return PInvoke.SDL_GetRectEnclosingPointsFloat(pointsPtr, points.Length, clipPtr, resultPtr) == 1;
+				return SDL_PInvoke.SDL_GetRectEnclosingPointsFloat(pointsPtr, points.Length, clipPtr, resultPtr) == 1;
 			}
 		}
 	}
@@ -276,7 +276,7 @@ unsafe partial class SDL
 		{
 			fixed (SDL_FRect* resultPtr = &result)
 			{
-				return PInvoke.SDL_GetRectEnclosingPointsFloat(pointsPtr, points.Length, clip, resultPtr) == 1;
+				return SDL_PInvoke.SDL_GetRectEnclosingPointsFloat(pointsPtr, points.Length, clip, resultPtr) == 1;
 			}
 		}
 	}
@@ -299,7 +299,7 @@ unsafe partial class SDL
 		{
 			fixed (int* x1Ptr = &x1, y1Ptr = &y1, x2Ptr = &x2, y2Ptr = &y2)
 			{
-				return PInvoke.SDL_GetRectAndLineIntersection(rectPtr, x1Ptr, y1Ptr, x2Ptr, y2Ptr) == 1;
+				return SDL_PInvoke.SDL_GetRectAndLineIntersection(rectPtr, x1Ptr, y1Ptr, x2Ptr, y2Ptr) == 1;
 			}
 		}
 	}
@@ -320,7 +320,7 @@ unsafe partial class SDL
 		{
 			fixed (SDL_Point* startPtr = &start, endPtr = &end)
 			{
-				return PInvoke.SDL_GetRectAndLineIntersection(rectPtr, &startPtr->X, &startPtr->Y, &endPtr->X, &endPtr->Y) == 1;
+				return SDL_PInvoke.SDL_GetRectAndLineIntersection(rectPtr, &startPtr->X, &startPtr->Y, &endPtr->X, &endPtr->Y) == 1;
 			}
 		}
 	}
@@ -343,7 +343,7 @@ unsafe partial class SDL
 		{
 			fixed (float* x1Ptr = &x1, y1Ptr = &y1, x2Ptr = &x2, y2Ptr = &y2)
 			{
-				return PInvoke.SDL_GetRectAndLineIntersectionFloat(rectPtr, x1Ptr, y1Ptr, x2Ptr, y2Ptr) == 1;
+				return SDL_PInvoke.SDL_GetRectAndLineIntersectionFloat(rectPtr, x1Ptr, y1Ptr, x2Ptr, y2Ptr) == 1;
 			}
 		}
 	}
@@ -364,7 +364,7 @@ unsafe partial class SDL
 		{
 			fixed (SDL_FPoint* startPtr = &start, endPtr = &end)
 			{
-				return PInvoke.SDL_GetRectAndLineIntersectionFloat(rectPtr, &startPtr->X, &startPtr->Y, &endPtr->X, &endPtr->Y) == 1;
+				return SDL_PInvoke.SDL_GetRectAndLineIntersectionFloat(rectPtr, &startPtr->X, &startPtr->Y, &endPtr->X, &endPtr->Y) == 1;
 			}
 		}
 	}

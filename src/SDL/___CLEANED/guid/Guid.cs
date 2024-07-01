@@ -19,7 +19,7 @@ unsafe partial class SDL
 	public static int GuidToString(SDL_Guid guid, out string? pszGuid, int cbGuid = 33)
 	{
 		byte* buffer = stackalloc byte[cbGuid];
-		int result = PInvoke.SDL_GUIDToString(guid, buffer, cbGuid);
+		int result = SDL_PInvoke.SDL_GUIDToString(guid, buffer, cbGuid);
 		pszGuid = Marshal.PtrToStringUTF8((nint)buffer);
 		return result;
 	}
@@ -36,7 +36,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int GuidToString(SDL_Guid guid, byte* pszGuid, int cbGuid = 33)
 	{
-		return PInvoke.SDL_GUIDToString(guid, pszGuid, cbGuid);
+		return SDL_PInvoke.SDL_GUIDToString(guid, pszGuid, cbGuid);
 	}
 
 	/// <summary>
@@ -51,7 +51,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* pchGuidPtr = Encoding.UTF8.GetBytes(pchGuid))
 		{
-			return PInvoke.SDL_GUIDFromString(pchGuidPtr);
+			return SDL_PInvoke.SDL_GUIDFromString(pchGuidPtr);
 		}
 	}
 
@@ -65,6 +65,6 @@ unsafe partial class SDL
 	/// <returns>An <see cref="SDL_Guid"/> structure.</returns>
 	public static SDL_Guid GuidFromString(byte* pchGuid)
 	{
-		return PInvoke.SDL_GUIDFromString(pchGuid);
+		return SDL_PInvoke.SDL_GUIDFromString(pchGuid);
 	}
 }

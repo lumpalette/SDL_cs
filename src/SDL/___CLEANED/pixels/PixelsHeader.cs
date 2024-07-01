@@ -330,7 +330,7 @@ unsafe partial class SDL
 	/// <returns>The human readable name of the specified pixel format or "SDL_PIXELFORMAT_UNKNOWN" if the format isn't recognized.</returns>
 	public static string GetPixelFormatName(SDL_PixelFormatEnum format)
 	{
-		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetPixelFormatName(format))!;
+		return Marshal.PtrToStringUTF8((nint)SDL_PInvoke.SDL_GetPixelFormatName(format))!;
 	}
 
 	/// <summary>
@@ -352,7 +352,7 @@ unsafe partial class SDL
 		{
 			fixed (uint* rMaskPtr = &rMask, gMaskPtr = &gMask, bMaskPtr = &bMask, aPtr = &aMask)
 			{
-				return PInvoke.SDL_GetMasksForPixelFormatEnum(format, bppPtr, rMaskPtr, gMaskPtr, bMaskPtr, aPtr) == 1;
+				return SDL_PInvoke.SDL_GetMasksForPixelFormatEnum(format, bppPtr, rMaskPtr, gMaskPtr, bMaskPtr, aPtr) == 1;
 			}
 		}
 	}
@@ -371,7 +371,7 @@ unsafe partial class SDL
 	/// <returns>The <see cref="SDL_PixelFormatEnum"/> value corresponding to the format masks, or <see cref="SDL_PixelFormatEnum.Unknown"/> if there isn't a match.</returns>
 	public static SDL_PixelFormatEnum GetPixelFormatEnumForMasks(int bpp, uint rMask, uint gMask, uint bMask, uint aMask)
 	{
-		return PInvoke.SDL_GetPixelFormatEnumForMasks(bpp, rMask, gMask, bMask, aMask);
+		return SDL_PInvoke.SDL_GetPixelFormatEnumForMasks(bpp, rMask, gMask, bMask, aMask);
 	}
 
 	/// <summary>
@@ -384,7 +384,7 @@ unsafe partial class SDL
 	/// <returns>The new <see cref="SDL_PixelFormat"/> structure on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_PixelFormat* CreatePixelFormat(SDL_PixelFormatEnum format)
 	{
-		return PInvoke.SDL_CreatePixelFormat(format);
+		return SDL_PInvoke.SDL_CreatePixelFormat(format);
 	}
 
 	/// <summary>
@@ -396,7 +396,7 @@ unsafe partial class SDL
 	/// <param name="format">The <see cref="SDL_PixelFormat"/> structure to free.</param>
 	public static void DestroyPixelFormat(SDL_PixelFormat* format)
 	{
-		PInvoke.SDL_DestroyPixelFormat(format);
+		SDL_PInvoke.SDL_DestroyPixelFormat(format);
 	}
 
 	/// <summary>
@@ -409,7 +409,7 @@ unsafe partial class SDL
 	/// <returns>A new <see cref="SDL_Palette"/> structure on success or <see langword="null"/> on failure (e.g. if there wasn't enough memory); call <see cref="GetError"/> for more information.</returns>
 	public static SDL_Palette* CreatePalette(int nColors)
 	{
-		return PInvoke.SDL_CreatePalette(nColors);
+		return SDL_PInvoke.SDL_CreatePalette(nColors);
 	}
 
 	/// <summary>
@@ -423,7 +423,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int SetPixelFormatPalette(SDL_PixelFormat* format, SDL_Palette* palette)
 	{
-		return PInvoke.SDL_SetPixelFormatPalette(format, palette);
+		return SDL_PInvoke.SDL_SetPixelFormatPalette(format, palette);
 	}
 
 	/// <summary>
@@ -440,7 +440,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Color* colorsPtr = colors)
 		{
-			return PInvoke.SDL_SetPaletteColors(palette, colorsPtr, firstColor, colors.Length);
+			return SDL_PInvoke.SDL_SetPaletteColors(palette, colorsPtr, firstColor, colors.Length);
 		}
 	}
 
@@ -453,7 +453,7 @@ unsafe partial class SDL
 	/// <param name="palette">The <see cref="SDL_Palette"/> structure to be freed.</param>
 	public static void DestroyPalette(SDL_Palette* palette)
 	{
-		PInvoke.SDL_DestroyPalette(palette);
+		SDL_PInvoke.SDL_DestroyPalette(palette);
 	}
 
 	/// <summary>
@@ -469,7 +469,7 @@ unsafe partial class SDL
 	/// <returns>A pixel value.</returns>
 	public static uint MapRGB(SDL_PixelFormat* format, byte r, byte g, byte b)
 	{
-		return PInvoke.SDL_MapRGB(format, r, g, b);
+		return SDL_PInvoke.SDL_MapRGB(format, r, g, b);
 	}
 
 	/// <summary>
@@ -483,7 +483,7 @@ unsafe partial class SDL
 	/// <returns>A pixel value.</returns>
 	public static uint MapRGB(SDL_PixelFormat* format, SDL_Color color)
 	{
-		return PInvoke.SDL_MapRGB(format, color.R, color.G, color.B);
+		return SDL_PInvoke.SDL_MapRGB(format, color.R, color.G, color.B);
 	}
 
 	/// <summary>
@@ -500,7 +500,7 @@ unsafe partial class SDL
 	/// <returns>A pixel value.</returns>
 	public static uint MapRGBA(SDL_PixelFormat* format, byte r, byte g, byte b, byte a)
 	{
-		return PInvoke.SDL_MapRGBA(format, r, g, b, a);
+		return SDL_PInvoke.SDL_MapRGBA(format, r, g, b, a);
 	}
 
 	/// <summary>
@@ -514,7 +514,7 @@ unsafe partial class SDL
 	/// <returns>A pixel value.</returns>
 	public static uint MapRGBA(SDL_PixelFormat* format, SDL_Color color)
 	{
-		return PInvoke.SDL_MapRGBA(format, color.R, color.G, color.B, color.A);
+		return SDL_PInvoke.SDL_MapRGBA(format, color.R, color.G, color.B, color.A);
 	}
 
 	/// <summary>
@@ -532,7 +532,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* rPtr = &r, gPtr = &g, bPtr = &b)
 		{
-			PInvoke.SDL_GetRGB(pixel, format, rPtr, gPtr, bPtr);
+			SDL_PInvoke.SDL_GetRGB(pixel, format, rPtr, gPtr, bPtr);
 		}
 	}
 
@@ -550,7 +550,7 @@ unsafe partial class SDL
 		byte r;
 		byte g;
 		byte b;
-		PInvoke.SDL_GetRGB(pixel, format, &r, &g, &b);
+		SDL_PInvoke.SDL_GetRGB(pixel, format, &r, &g, &b);
 		color = new(r, g, b, AlphaOpaque);
 	}
 
@@ -570,7 +570,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* rPtr = &r, gPtr = &g, bPtr = &b, aPtr = &a)
 		{
-			PInvoke.SDL_GetRGBA(pixel, format, rPtr, gPtr, bPtr, aPtr);
+			SDL_PInvoke.SDL_GetRGBA(pixel, format, rPtr, gPtr, bPtr, aPtr);
 		}
 	}
 
@@ -589,7 +589,7 @@ unsafe partial class SDL
 		byte g;
 		byte b;
 		byte a;
-		PInvoke.SDL_GetRGBA(pixel, format, &r, &g, &b, &a);
+		SDL_PInvoke.SDL_GetRGBA(pixel, format, &r, &g, &b, &a);
 		color = new(r, g, b, a);
 	}
 

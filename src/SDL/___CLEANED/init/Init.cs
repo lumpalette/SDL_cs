@@ -13,7 +13,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int Init(SDL_InitFlags flags)
 	{
-		return PInvoke.SDL_Init(flags);
+		return SDL_PInvoke.SDL_Init(flags);
 	}
 
 	/// <summary>
@@ -26,7 +26,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int InitSubSystem(SDL_InitFlags flags)
 	{
-		return PInvoke.SDL_InitSubSystem(flags);
+		return SDL_PInvoke.SDL_InitSubSystem(flags);
 	}
 
 	/// <summary>
@@ -38,7 +38,7 @@ unsafe partial class SDL
 	/// <param name="flags">Any of the flags used by <see cref="Init(SDL_InitFlags)"/>; see <see cref="Init(SDL_InitFlags)"/> for details.</param>
 	public static void QuitSubSystem(SDL_InitFlags flags)
 	{
-		PInvoke.SDL_QuitSubSystem(flags);
+		SDL_PInvoke.SDL_QuitSubSystem(flags);
 	}
 
 	/// <summary>
@@ -51,7 +51,7 @@ unsafe partial class SDL
 	/// <returns>A mask of all initialized subsystems if <paramref name="flags"/> is 0, otherwise it returns the initialization status of the specified subsystems.</returns>
 	public static SDL_InitFlags WasInit(SDL_InitFlags flags)
 	{
-		return PInvoke.SDL_WasInit(flags);
+		return SDL_PInvoke.SDL_WasInit(flags);
 	}
 
 	/// <summary>
@@ -62,6 +62,6 @@ unsafe partial class SDL
 	/// </remarks>
 	public static void Quit()
 	{
-		PInvoke.SDL_Quit();
+		SDL_PInvoke.SDL_Quit();
 	}
 }

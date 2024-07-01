@@ -2,7 +2,7 @@
 
 namespace SDL_cs;
 
-unsafe partial class PInvoke
+unsafe partial class SDL_PInvoke
 {
 	[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 	public static extern byte* SDL_GetPixelFormatName(SDL_PixelFormatEnum format);

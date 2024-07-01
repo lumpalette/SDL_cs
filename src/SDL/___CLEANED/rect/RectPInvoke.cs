@@ -2,7 +2,7 @@
 
 namespace SDL_cs;
 
-unsafe partial class PInvoke
+unsafe partial class SDL_PInvoke
 {
 	[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 	public static extern int SDL_HasRectIntersection(SDL_Rect* a, SDL_Rect* b);

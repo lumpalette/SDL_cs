@@ -78,7 +78,7 @@ unsafe partial class SDL
 	/// <returns>An unsigned 64-bit value representing the number of milliseconds since the SDL library initialized.</returns>
 	public static ulong GetTicksMs()
 	{
-		return PInvoke.SDL_GetTicks();
+		return SDL_PInvoke.SDL_GetTicks();
 	}
 
 	/// <summary>
@@ -90,7 +90,7 @@ unsafe partial class SDL
 	/// <returns>An unsigned 64-bit value representing the number of nanoseconds since the SDL library initialized.</returns>
 	public static ulong GetTicksNs()
 	{
-		return PInvoke.SDL_GetTicksNS();
+		return SDL_PInvoke.SDL_GetTicksNS();
 	}
 
 	/// <summary>
@@ -102,7 +102,7 @@ unsafe partial class SDL
 	/// <returns>The current counter value.</returns>
 	public static ulong GetPerformanceCounter()
 	{
-		return PInvoke.SDL_GetPerformanceCounter();
+		return SDL_PInvoke.SDL_GetPerformanceCounter();
 	}
 
 	/// <summary>
@@ -114,7 +114,7 @@ unsafe partial class SDL
 	/// <returns> A platform-specific count per second. </returns>
 	public static ulong GetPerformanceFrequency()
 	{
-		return PInvoke.SDL_GetPerformanceFrequency();
+		return SDL_PInvoke.SDL_GetPerformanceFrequency();
 	}
 
 	/// <summary>
@@ -126,7 +126,7 @@ unsafe partial class SDL
 	/// <param name="ms">The number of milliseconds to delay.</param>
 	public static void Delay(uint ms)
 	{
-		PInvoke.SDL_Delay(ms);
+		SDL_PInvoke.SDL_Delay(ms);
 	}
 
 	/// <summary>
@@ -138,7 +138,7 @@ unsafe partial class SDL
 	/// <param name="ms">The number of nanoseconds to delay.</param>
 	public static void DelayNs(ulong ns)
 	{
-		PInvoke.SDL_DelayNS(ns);
+		SDL_PInvoke.SDL_DelayNS(ns);
 	}
 
 	/// <summary>
@@ -153,7 +153,7 @@ unsafe partial class SDL
 	/// <returns>A timer ID or <see cref="SDL_TimerId.Invalid"/> if an error occurs; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_TimerId AddTimer(uint intervalMs, SDL_TimerCallback callback, void* userData)
 	{
-		return PInvoke.SDL_AddTimer(intervalMs, callback, userData);
+		return SDL_PInvoke.SDL_AddTimer(intervalMs, callback, userData);
 	}
 
 	/// <summary>
@@ -168,7 +168,7 @@ unsafe partial class SDL
 	/// <returns>A timer ID or <see cref="SDL_TimerId.Invalid"/> if an error occurs; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_TimerId AddTimerNs(ulong intervalNs, SDL_NsTimerCallback callback, void* userData)
 	{
-		return PInvoke.SDL_AddTimerNS(intervalNs, callback, userData);
+		return SDL_PInvoke.SDL_AddTimerNS(intervalNs, callback, userData);
 	}
 
 	/// <summary>
@@ -181,7 +181,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int RemoveTimer(SDL_TimerId timerId)
 	{
-		return PInvoke.SDL_RemoveTimer(timerId);
+		return SDL_PInvoke.SDL_RemoveTimer(timerId);
 	}
 
 	/// <summary>

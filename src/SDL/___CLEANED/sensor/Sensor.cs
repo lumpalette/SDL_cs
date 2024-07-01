@@ -17,7 +17,7 @@ unsafe partial class SDL
 	{
 		fixed (int* countPtr = &count)
 		{
-			var s = PInvoke.SDL_GetSensors(countPtr);
+			var s = SDL_PInvoke.SDL_GetSensors(countPtr);
 			if (s is null)
 			{
 				return null;
@@ -42,7 +42,7 @@ unsafe partial class SDL
 	/// <returns>The sensor name, or <see langword="null"/> if <paramref name="sensorId"/> is not valid.</returns>
 	public static string? GetSensorInstanceName(SDL_SensorId sensorId)
 	{
-		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetSensorInstanceName(sensorId));
+		return Marshal.PtrToStringUTF8((nint)SDL_PInvoke.SDL_GetSensorInstanceName(sensorId));
 	}
 
 	/// <summary>
@@ -55,7 +55,7 @@ unsafe partial class SDL
 	/// <returns>The <see cref="SDL_SensorType"/>, or <see cref="SDL_SensorType.Invalid"/> if <paramref name="sensorId"/> is not valid.</returns>
 	public static SDL_SensorType GetSensorInstanceType(SDL_SensorId sensorId)
 	{
-		return PInvoke.SDL_GetSensorInstanceType(sensorId);
+		return SDL_PInvoke.SDL_GetSensorInstanceType(sensorId);
 	}
 
 	/// <summary>
@@ -68,7 +68,7 @@ unsafe partial class SDL
 	/// <returns>The sensor platform dependent type, or -1 if <paramref name="sensorId"/> is not valid.</returns>
 	public static int GetSensorInstanceNonPortableType(SDL_SensorId sensorId)
 	{
-		return PInvoke.SDL_GetSensorInstanceNonPortableType(sensorId);
+		return SDL_PInvoke.SDL_GetSensorInstanceNonPortableType(sensorId);
 	}
 
 	/// <summary>
@@ -81,7 +81,7 @@ unsafe partial class SDL
 	/// <returns>An <see cref="SDL_Sensor"/> object, or <see langword="null"/> if an error occurred.</returns>
 	public static SDL_Sensor* OpenSensor(SDL_SensorId sensorId)
 	{
-		return PInvoke.SDL_OpenSensor(sensorId);
+		return SDL_PInvoke.SDL_OpenSensor(sensorId);
 	}
 
 	/// <summary>
@@ -94,7 +94,7 @@ unsafe partial class SDL
 	/// <returns>An <see cref="SDL_Sensor"/> object.</returns>
 	public static SDL_Sensor* GetSensorFromInstanceId(SDL_SensorId sensorId)
 	{
-		return PInvoke.SDL_GetSensorFromInstanceID(sensorId);
+		return SDL_PInvoke.SDL_GetSensorFromInstanceID(sensorId);
 	}
 
 	/// <summary>
@@ -107,7 +107,7 @@ unsafe partial class SDL
 	/// <returns>A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_PropertiesId GetSensorProperties(SDL_Sensor* sensor)
 	{
-		return PInvoke.SDL_GetSensorProperties(sensor);
+		return SDL_PInvoke.SDL_GetSensorProperties(sensor);
 	}
 
 	/// <summary>
@@ -120,7 +120,7 @@ unsafe partial class SDL
 	/// <returns>The sensor name, or <see langword="null"/> if <paramref name="sensor"/> is <see langword="null"/>.</returns>
 	public static string? GetSensorName(SDL_Sensor* sensor)
 	{
-		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetSensorName(sensor));
+		return Marshal.PtrToStringUTF8((nint)SDL_PInvoke.SDL_GetSensorName(sensor));
 	}
 
 	/// <summary>
@@ -133,7 +133,7 @@ unsafe partial class SDL
 	/// <returns>The <see cref="SDL_SensorType"/>, or <see cref="SDL_SensorType.Invalid"/> if <paramref name="sensor"/> is null.</returns>
 	public static SDL_SensorType GetSensorType(SDL_Sensor* sensor)
 	{
-		return PInvoke.SDL_GetSensorType(sensor);
+		return SDL_PInvoke.SDL_GetSensorType(sensor);
 	}
 
 	/// <summary>
@@ -146,7 +146,7 @@ unsafe partial class SDL
 	/// <returns>The sensor platform dependent type, or -1 if <paramref name="sensor"/> is <see langword="null"/>.</returns>
 	public static int GetSensorNonPortableType(SDL_Sensor* sensor)
 	{
-		return PInvoke.SDL_GetSensorNonPortableType(sensor);
+		return SDL_PInvoke.SDL_GetSensorNonPortableType(sensor);
 	}
 
 	/// <summary>
@@ -159,7 +159,7 @@ unsafe partial class SDL
 	/// <returns>The sensor instance ID, or <see cref="SDL_SensorId.Invalid"/> if <paramref name="sensor"/> is <see langword="null"/>.</returns>
 	public static SDL_SensorId GetSensorInstanceId(SDL_Sensor* sensor)
 	{
-		return PInvoke.SDL_GetSensorInstanceID(sensor);
+		return SDL_PInvoke.SDL_GetSensorInstanceID(sensor);
 	}
 
 	/// <summary>
@@ -175,7 +175,7 @@ unsafe partial class SDL
 	{
 		fixed (float* dataPtr = data)
 		{
-			return PInvoke.SDL_GetSensorData(sensor, dataPtr, data.Length);
+			return SDL_PInvoke.SDL_GetSensorData(sensor, dataPtr, data.Length);
 		}
 	}
 
@@ -188,7 +188,7 @@ unsafe partial class SDL
 	/// <param name="sensor">The <see cref="SDL_Sensor"/> object to close.</param>
 	public static void CloseSensor(SDL_Sensor* sensor)
 	{
-		PInvoke.SDL_CloseSensor(sensor);
+		SDL_PInvoke.SDL_CloseSensor(sensor);
 	}
 
 	/// <summary>
@@ -199,7 +199,7 @@ unsafe partial class SDL
 	/// </remarks>
 	public static void UpdateSensors()
 	{
-		PInvoke.SDL_UpdateSensors();
+		SDL_PInvoke.SDL_UpdateSensors();
 	}
 
 	/// <summary>

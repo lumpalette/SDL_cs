@@ -23,6 +23,6 @@ unsafe partial class SDL
 	/// <param name="mem">A pointer to the memory to free.</param>
 	public static void Free(void* mem)
 	{
-		PInvoke.SDL_free(mem);
+		SDL_PInvoke.SDL_free(mem);
 	}
 }
