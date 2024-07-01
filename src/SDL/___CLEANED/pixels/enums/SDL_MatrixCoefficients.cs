@@ -26,7 +26,7 @@ public enum SDL_MatrixCoefficients : byte
 	/// <summary>
 	/// US FCC Title 47.
 	/// </summary>
-	Fcc = 4,
+	FCC = 4,
 
 	/// <summary>
 	/// ITU-R BT.470-6 System B, G / ITU-R BT.601-7 625, functionally the same as <see cref="BT601"/>.
@@ -51,7 +51,7 @@ public enum SDL_MatrixCoefficients : byte
 	/// <summary>
 	/// ITU-R BT.2020-2 non-constant luminance.
 	/// </summary>
-	BT2020Ncl = 9,
+	BT2020NCL = 9,
 
 	/// <summary>
 	/// ITU-R BT.2020-2 constant luminance
@@ -66,7 +66,7 @@ public enum SDL_MatrixCoefficients : byte
 	/// <summary>
 	/// Chromaticity-derived non-constant luminance.
 	/// </summary>
-	CromaDerivedNcl = 12,
+	CromaDerivedNCL = 12,
 
 	/// <summary>
 	/// Chromaticity-derived constant luminance.

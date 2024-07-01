@@ -295,7 +295,7 @@ unsafe partial class SDL
 	[Macro]
 	public static bool IsColorspaceMatrixBT2020Ncl(SDL_Colorspace x)
 	{
-		return ColorspaceMatrix(x) == SDL_MatrixCoefficients.BT2020Ncl;
+		return ColorspaceMatrix(x) == SDL_MatrixCoefficients.BT2020NCL;
 	}
 
 	/// <summary>

@@ -111,7 +111,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPerformanceFrequency">documentation</see> for more details.
 	/// </remarks>
-	/// <returns> A platform-specific count per second. </returns>
+	/// <returns>A platform-specific count per second.</returns>
 	public static ulong GetPerformanceFrequency()
 	{
 		return SDL_PInvoke.SDL_GetPerformanceFrequency();

@@ -579,7 +579,7 @@ unsafe partial class SDL
 	/// <param name="stream">The stream the audio is being requested from.</param>
 	/// <param name="buffer">A buffer to fill with audio data.</param>
 	/// <param name="length">The maximum number of bytes to fill.</param>
-	/// <returns> The number of bytes read from the stream, or -1 on error. </returns>
+	/// <returns>The number of bytes read from the stream, or -1 on error.</returns>
 	public static int GetAudioStreamData(SDL_AudioStream* stream, void* buffer, int length)
 	{
 		return SDL_PInvoke.SDL_GetAudioStreamData(stream, buffer, length);

@@ -49,12 +49,12 @@ public enum SDL_Keymod : uint
 	/// <summary>
 	/// The left GUI key (often the Windows key) is down.
 	/// </summary>
-	LeftGui = 0x0400u,
+	LeftGUI = 0x0400u,
 
 	/// <summary>
 	/// The left GUI key (often the Windows key) is down.
 	/// </summary>
-	RightGui = 0x0800u,
+	RightGUI = 0x0800u,
 
 	/// <summary>
 	/// The Num Lock key (may be located on an extended keypad) is down.
@@ -94,5 +94,5 @@ public enum SDL_Keymod : uint
 	/// <summary>
 	/// Any GUI key is down.
 	/// </summary>
-	Gui = LeftGui | RightGui,
+	GUI = LeftGUI | RightGUI,
 }

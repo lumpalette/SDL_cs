@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace SDL_cs;
+﻿namespace SDL_cs;
 
 /// <summary>
 /// A bitmask of pressed mouse buttons, as reported by <see cref="SDL.GetMouseState(out float, out float)"/>, etc.

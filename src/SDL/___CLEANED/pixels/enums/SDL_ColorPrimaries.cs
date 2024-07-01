@@ -56,7 +56,7 @@ public enum SDL_ColorPrimaries : byte
 	/// <summary>
 	/// SMPTE ST 428-1.
 	/// </summary>
-	Xyz = 10,
+	XYZ = 10,
 
 	/// <summary>
 	/// SMPTE RP 431-2.
@@ -71,7 +71,7 @@ public enum SDL_ColorPrimaries : byte
 	/// <summary>
 	/// EBU Tech. 3213-E.
 	/// </summary>
-	Ebu3213 = 22,
+	EBU3213 = 22,
 
 	/// <summary>
 	/// Custom.
