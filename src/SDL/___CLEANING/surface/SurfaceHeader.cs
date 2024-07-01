@@ -12,12 +12,12 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MUSTLOCK">here</see>
 	/// </remarks>
-	/// <param name="surface"> (Ref) The <see cref="SDL_Surface"/> structure to evaluate. </param>
-	/// <returns> True if <paramref name="surface"/> needs to be locked, otherwise false. </returns>
+	/// <param name="s">The <see cref="SDL_Surface"/> structure to evaluate.</param>
+	/// <returns>True if <paramref name="s"/> needs to be locked, otherwise false.</returns>
 	[Macro]
-	public static bool MustLock(SDL_Surface* surface)
+	public static bool MustLock(SDL_Surface* s)
 	{
-		return (surface->Flags & SDL_SurfaceFlags.RleAccel) != 0;
+		return (s->Flags & SDL_SurfaceFlags.RleAccel) != 0;
 	}
 
 	/// <summary>
@@ -26,16 +26,13 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSurface">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="width"> The width of the surface. </param>
-	/// <param name="height"> The height of the surface. </param>
-	/// <param name="format"> The <see cref="SDL_PixelFormatEnum"/> for the new surface's pixel format. </param>
-	/// <returns> The new <see cref="SDL_Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
+	/// <param name="width">The width of the surface.</param>
+	/// <param name="height">The height of the surface.</param>
+	/// <param name="format">The <see cref="SDL_PixelFormatEnum"/> for the new surface's pixel format.</param>
+	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_Surface* CreateSurface(int width, int height, SDL_PixelFormatEnum format)
 	{
-		return _PInvoke(width, height, format);
-
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateSurface", CallingConvention = CallingConvention.Cdecl)]
-		static extern SDL_Surface* _PInvoke(int width, int height, SDL_PixelFormatEnum format);
+		return PInvoke.SDL_CreateSurface(width, height, format);
 	}
 
 	/// <summary>
@@ -44,18 +41,15 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSurfaceFrom">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="pixels"> A pointer to existing pixel data. </param>
-	/// <param name="width"> The width of the surface. </param>
-	/// <param name="height"> The height of the surface. </param>
-	/// <param name="pitch"> The number of bytes between each row, including padding </param>
-	/// <param name="format"> The pixel format value for the new surface's pixel format. </param>
-	/// <returns> The new <see cref="SDL_Surface"/> structure that is created or null if it fails; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Surface* CreateSurfaceFrom(void* pixels, int width, int height, int pitch, SDL_PixelFormatEnum format)
+	/// <param name="pixels">A pointer to existing pixel data.</param>
+	/// <param name="width">The width of the surface.</param>
+	/// <param name="height">The height of the surface.</param>
+	/// <param name="pitch">The number of bytes between each row, including padding.</param>
+	/// <param name="format">The <see cref="SDL_PixelFormatEnum"/> for the new surface's pixel format.</param>
+	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
+	public static SDL_Surface* CreateSurface(void* pixels, int width, int height, int pitch, SDL_PixelFormatEnum format)
 	{
-		return _PInvoke(pixels, width, height, pitch, format);
-
-		[DllImport(LibraryName, EntryPoint = "SDL_CreateSurfaceFrom", CallingConvention = CallingConvention.Cdecl)]
-		static extern SDL_Surface* _PInvoke(uint* pixels, int width, int height, int pitch, SDL_PixelFormatEnum format);
+		return PInvoke.SDL_CreateSurfaceFrom(pixels, width, height, pitch, format);
 	}
 
 	/// <summary>
@@ -64,17 +58,10 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DestroySurface">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to free. It is safe to this be null. </param>
+	/// <param name="surface">The <see cref="SDL_Surface"/> to free.</param>
 	public static void DestroySurface(SDL_Surface* surface)
 	{
-		if (surface is null)
-		{
-			return;
-		}
-		_PInvoke(surface);
-
-		[DllImport(LibraryName, EntryPoint = "SDL_DestroySurface", CallingConvention = CallingConvention.Cdecl)]
-		static extern void _PInvoke(SDL_Surface* surface);
+		PInvoke.SDL_DestroySurface(surface);
 	}
 
 	/// <summary>
@@ -83,14 +70,11 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceProperties">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="surface"> The <see cref="SDL_Surface"/> structure to query. </param>
-	/// <returns> A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <param name="surface">The <see cref="SDL_Surface"/> structure to query.</param>
+	/// <returns>A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_PropertiesId GetSurfaceProperties(SDL_Surface* surface)
 	{
-		return _PInvoke(surface);
-
-		[DllImport(LibraryName, EntryPoint = "SDL_GetSurfaceProperties", CallingConvention = CallingConvention.Cdecl)]
-		static extern SDL_PropertiesId _PInvoke(SDL_Surface* surface);
+		return PInvoke.SDL_GetSurfaceProperties(surface);
 	}
 
 	/// <summary>

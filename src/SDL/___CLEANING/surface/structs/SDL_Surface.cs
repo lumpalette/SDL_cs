@@ -9,7 +9,7 @@ namespace SDL_cs;
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Surface">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
-public unsafe readonly struct SDL_Surface
+public unsafe struct SDL_Surface
 {
 	/// <summary>
 	/// Surface internal flags.
@@ -37,9 +37,9 @@ public unsafe readonly struct SDL_Surface
 	public readonly int Pitch;
 
 	/// <summary>
-	/// The pixel data flattened into a 1D array.
+	/// The pixel data, flattened into a 1D array.
 	/// </summary>
-	public readonly uint* Pixels;
+	public void* Pixels;
 
 	private readonly void* _reserved;
 

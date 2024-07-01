@@ -1,6 +1,6 @@
 ﻿namespace SDL_cs;
 
-partial class Prop
+partial class SDL_Prop
 {
 	public const string WindowCreateAlwaysOnTopBoolean = "always_on_top";
 	public const string WindowCreateBorderlessBoolean = "borderless";
