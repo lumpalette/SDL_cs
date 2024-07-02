@@ -11,18 +11,18 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDevices">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="count"> Returns the number of devices. </param>
-	/// <returns> An array of touch device IDs, or null on error; call <see cref="GetError"/> for more details. </returns>
+	/// <param name="count">The number of devices returned.</param>
+	/// <returns>An array of touch device IDs, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
 	public static SDL_TouchId[]? GetTouchDevices(out int count)
 	{
 		fixed (int* countPtr = &count)
 		{
-			SDL_TouchId* d = _PInvoke(countPtr);
+			var d = SDL_PInvoke.SDL_GetTouchDevices(countPtr);
 			if (d is null)
 			{
 				return null;
 			}
-			SDL_TouchId[] devices = new SDL_TouchId[count];
+			var devices = new SDL_TouchId[count];
 			for (int i = 0; i < count; i++)
 			{
 				devices[i] = d[i];
@@ -30,9 +30,6 @@ unsafe partial class SDL
 			Free(d);
 			return devices;
 		}
-
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTouchDevices", CallingConvention = CallingConvention.Cdecl)]
-		static extern SDL_TouchId* _PInvoke(int* count);
 	}
 
 	/// <summary>
@@ -41,14 +38,11 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDeviceName">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="touchId"> The touch device instance ID. </param>
-	/// <returns> Touch device name, or null on error; call <see cref="GetError"/> for more details. </returns>
+	/// <param name="touchId">The touch device instance ID.</param>
+	/// <returns>Touch device name, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
 	public static string? GetTouchDeviceName(SDL_TouchId touchId)
 	{
-		return Marshal.PtrToStringUTF8((nint)_PInvoke(touchId));
-
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceName", CallingConvention = CallingConvention.Cdecl)]
-		static extern byte* _PInvoke(SDL_TouchId touchId);
+		return Marshal.PtrToStringUTF8((nint)SDL_PInvoke.SDL_GetTouchDeviceName(touchId));
 	}
 
 	/// <summary>
@@ -57,14 +51,11 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDeviceType">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="touchId"> The touch device instance ID. </param>
-	/// <returns> The touch device type. </returns>
+	/// <param name="touchId">The touch device instance ID.</param>
+	/// <returns>The touch device type.</returns>
 	public static SDL_TouchDeviceType GetTouchDeviceType(SDL_TouchId touchId)
 	{
-		return _PInvoke(touchId);
-
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceType", CallingConvention = CallingConvention.Cdecl)]
-		static extern SDL_TouchDeviceType _PInvoke(SDL_TouchId touchId);
+		return SDL_PInvoke.SDL_GetTouchDeviceType(touchId);
 	}
 
 	/// <summary>
@@ -73,19 +64,19 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchFingers">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="touchId"> The touch device instance ID. </param>
-	/// <param name="count"> Returns the number of fingers. </param>
-	/// <returns> An array of <see cref="SDL_Finger"/> structures, or null on error; call <see cref="GetError"/> for more details. </returns>
+	/// <param name="touchId">The touch device instance ID.</param>
+	/// <param name="count">The number of fingers returned.</param>
+	/// <returns>An array of <see cref="SDL_Finger"/> structures, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
 	public static SDL_Finger[]? GetTouchFingers(SDL_TouchId touchId, out int count)
 	{
 		fixed (int* countPtr = &count)
 		{
-			SDL_Finger** f = _PInvoke(touchId, countPtr);
+			var f = SDL_PInvoke.SDL_GetTouchFingers(touchId, countPtr);
 			if (f is null)
 			{
 				return null;
 			}
-			SDL_Finger[] fingers = new SDL_Finger[count];
+			var fingers = new SDL_Finger[count];
 			for (int i = 0; i < count; i++)
 			{
 				fingers[i] = *f[i];
@@ -93,18 +84,33 @@ unsafe partial class SDL
 			Free(f);
 			return fingers;
 		}
-
-		[DllImport(LibraryName, EntryPoint = "SDL_GetTouchFingers", CallingConvention = CallingConvention.Cdecl)]
-		static extern SDL_Finger** _PInvoke(SDL_TouchId touchId, int* count);
 	}
 
 	/// <summary>
 	/// Used as the device ID for mouse events simulated with touch input.
 	/// </summary>
-	public static SDL_MouseId TouchMouseId => new(uint.MaxValue);
+	public static SDL_MouseId TouchMouseId
+	{
+		get
+		{
+			unchecked
+			{
+				return (SDL_MouseId)(-1);
+			}
+		}
+	}
 
 	/// <summary>
 	/// Used as the device ID for touch events simulated with mouse input.
 	/// </summary>
-	public static SDL_TouchId MouseTouchId => new(uint.MaxValue);
+	public static SDL_TouchId MouseTouchId
+	{
+		get
+		{
+			unchecked
+			{
+				return (SDL_TouchId)(-1);
+			}
+		}
+	}
 }

@@ -1,4 +1,6 @@
-﻿namespace SDL_cs;
+﻿using System.Runtime.InteropServices;
+
+namespace SDL_cs;
 
 /// <summary>
 /// Data about a single finger in a multitouch event.
@@ -6,6 +8,7 @@
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Finger">documentation</see> for more details.
 /// </remarks>
+[StructLayout(LayoutKind.Sequential)]
 public struct /* kid named */ SDL_Finger
 {
 	/// <summary>
