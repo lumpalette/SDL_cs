@@ -19,42 +19,42 @@ public enum SDL_Keymod : uint
 	/// <summary>
 	/// The left Shift key is down.
 	/// </summary>
-	LeftShift = 0x0001u,
+	LShift = 0x0001u,
 
 	/// <summary>
 	/// The left Shift key is down.
 	/// </summary>
-	RightShift = 0x0002u,
+	RShift = 0x0002u,
 
 	/// <summary>
 	/// The left Ctrl (Control) key is down.
 	/// </summary>
-	LeftCtrl = 0x0040u,
+	LCtrl = 0x0040u,
 
 	/// <summary>
 	/// The right Ctrl (Control) key is down.
 	/// </summary>
-	RightCtrl = 0x0080u,
+	RCtrl = 0x0080u,
 
 	/// <summary>
 	/// The left Alt key is down.
 	/// </summary>
-	LeftAlt = 0x0100u,
+	LAlt = 0x0100u,
 
 	/// <summary>
 	/// The right Alt key is down.
 	/// </summary>
-	RightAlt = 0x0200u,
+	RAlt = 0x0200u,
 
 	/// <summary>
 	/// The left GUI key (often the Windows key) is down.
 	/// </summary>
-	LeftGUI = 0x0400u,
+	LGUI = 0x0400u,
 
 	/// <summary>
 	/// The left GUI key (often the Windows key) is down.
 	/// </summary>
-	RightGUI = 0x0800u,
+	RGUI = 0x0800u,
 
 	/// <summary>
 	/// The Num Lock key (may be located on an extended keypad) is down.
@@ -79,20 +79,20 @@ public enum SDL_Keymod : uint
 	/// <summary>
 	/// Any Ctrl key is down.
 	/// </summary>
-	Ctrl = LeftCtrl | RightCtrl,
+	Ctrl = LCtrl | RCtrl,
 
 	/// <summary>
 	/// Any Shift key is down.
 	/// </summary>
-	Shift = LeftShift | RightShift,
+	Shift = LShift | RShift,
 
 	/// <summary>
 	/// Any Alt key is down.
 	/// </summary>
-	Alt = LeftAlt | RightAlt,
+	Alt = LAlt | RAlt,
 
 	/// <summary>
 	/// Any GUI key is down.
 	/// </summary>
-	GUI = LeftGUI | RightGUI,
+	GUI = LGUI | RGUI,
 }
