@@ -15,7 +15,7 @@ unsafe partial class SDL
 	/// <returns>A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_PropertiesId GetGlobalProperties()
 	{
-		return SDL_PInvoke.SDL_GetGlobalProperties();
+		return PInvoke.SDL_GetGlobalProperties();
 	}
 
 	/// <summary>
@@ -27,7 +27,7 @@ unsafe partial class SDL
 	/// <returns>An ID for a new set of properties, or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_PropertiesId CreateProperties()
 	{
-		return SDL_PInvoke.SDL_CreateProperties();
+		return PInvoke.SDL_CreateProperties();
 	}
 
 	/// <summary>
@@ -41,7 +41,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int CopyProperties(SDL_PropertiesId src, SDL_PropertiesId dst)
 	{
-		return SDL_PInvoke.SDL_CopyProperties(src, dst);
+		return PInvoke.SDL_CopyProperties(src, dst);
 	}
 
 	/// <summary>
@@ -54,7 +54,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int LockProperties(SDL_PropertiesId props)
 	{
-		return SDL_PInvoke.SDL_LockProperties(props);
+		return PInvoke.SDL_LockProperties(props);
 	}
 
 	/// <summary>
@@ -66,7 +66,7 @@ unsafe partial class SDL
 	/// <param name="props"> The properties to unlock. </param>
 	public static void UnlockProperties(SDL_PropertiesId props)
 	{
-		SDL_PInvoke.SDL_UnlockProperties(props);
+		PInvoke.SDL_UnlockProperties(props);
 	}
 
 	/// <summary>
@@ -85,7 +85,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return SDL_PInvoke.SDL_SetPropertyWithCleanup(props, namePtr, value, cleanup, userData);
+			return PInvoke.SDL_SetPropertyWithCleanup(props, namePtr, value, cleanup, userData);
 		}
 	}
 
@@ -103,7 +103,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return SDL_PInvoke.SDL_SetProperty(props, namePtr, value);
+			return PInvoke.SDL_SetProperty(props, namePtr, value);
 		}
 	}
 
@@ -121,7 +121,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name), valuePtr = (value is not null) ? Encoding.UTF8.GetBytes(value) : null)
 		{
-			return SDL_PInvoke.SDL_SetStringProperty(props, namePtr, valuePtr);
+			return PInvoke.SDL_SetStringProperty(props, namePtr, valuePtr);
 		}
 	}
 
@@ -139,7 +139,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return SDL_PInvoke.SDL_SetNumberProperty(props, namePtr, value);
+			return PInvoke.SDL_SetNumberProperty(props, namePtr, value);
 		}
 	}
 
@@ -157,7 +157,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return SDL_PInvoke.SDL_SetFloatProperty(props, namePtr, value);
+			return PInvoke.SDL_SetFloatProperty(props, namePtr, value);
 		}
 	}
 
@@ -175,7 +175,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return SDL_PInvoke.SDL_SetBooleanProperty(props, namePtr, value ? 1 : 0);
+			return PInvoke.SDL_SetBooleanProperty(props, namePtr, value ? 1 : 0);
 		}
 	}
 
@@ -192,7 +192,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return SDL_PInvoke.SDL_HasProperty(props, namePtr) == 1;
+			return PInvoke.SDL_HasProperty(props, namePtr) == 1;
 		}
 	}
 
@@ -209,7 +209,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return SDL_PInvoke.SDL_GetPropertyType(props, namePtr);
+			return PInvoke.SDL_GetPropertyType(props, namePtr);
 		}
 	}
 
@@ -227,7 +227,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return SDL_PInvoke.SDL_GetProperty(props, namePtr, defaultValue);
+			return PInvoke.SDL_GetProperty(props, namePtr, defaultValue);
 		}
 	}
 
@@ -245,7 +245,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name), defaultValuePtr = Encoding.UTF8.GetBytes(defaultValue))
 		{
-			return Marshal.PtrToStringUTF8((nint)SDL_PInvoke.SDL_GetStringProperty(props, namePtr, defaultValuePtr))!;
+			return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetStringProperty(props, namePtr, defaultValuePtr))!;
 		}
 	}
 
@@ -263,7 +263,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return SDL_PInvoke.SDL_GetNumberProperty(props, namePtr, defaultValue);
+			return PInvoke.SDL_GetNumberProperty(props, namePtr, defaultValue);
 		}
 	}
 
@@ -281,7 +281,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return SDL_PInvoke.SDL_GetFloatProperty(props, namePtr, defaultValue);
+			return PInvoke.SDL_GetFloatProperty(props, namePtr, defaultValue);
 		}
 	}
 
@@ -299,7 +299,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return SDL_PInvoke.SDL_GetBooleanProperty(props, namePtr, defaultValue ? 1 : 0) == 1;
+			return PInvoke.SDL_GetBooleanProperty(props, namePtr, defaultValue ? 1 : 0) == 1;
 		}
 	}
 
@@ -316,7 +316,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* namePtr = Encoding.UTF8.GetBytes(name))
 		{
-			return SDL_PInvoke.SDL_ClearProperty(props, namePtr);
+			return PInvoke.SDL_ClearProperty(props, namePtr);
 		}
 	}
 
@@ -332,7 +332,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int EnumerateProperties(SDL_PropertiesId props, SDL_EnumeratePropertiesCallback callback, void* userData)
 	{
-		return SDL_PInvoke.SDL_EnumerateProperties(props, callback, userData);
+		return PInvoke.SDL_EnumerateProperties(props, callback, userData);
 	}
 
 	/// <summary>
@@ -344,6 +344,6 @@ unsafe partial class SDL
 	/// <param name="props">The properties to destroy.</param>
 	public static void DestroyProperties(SDL_PropertiesId props)
 	{
-		SDL_PInvoke.SDL_DestroyProperties(props);
+		PInvoke.SDL_DestroyProperties(props);
 	}
 }

@@ -16,7 +16,7 @@ unsafe partial class SDL
 	{
 		fixed (int* s = &seconds, p = &percent)
 		{
-			return SDL_PInvoke.SDL_GetPowerInfo(s, p);
+			return PInvoke.SDL_GetPowerInfo(s, p);
 		}
 	}
 }

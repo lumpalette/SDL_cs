@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace SDL_cs;
 
@@ -9,7 +10,8 @@ namespace SDL_cs;
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioSpec">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
-public struct SDL_AudioSpec
+[NativeMarshalling(typeof(SDL_AudioSpecMarshaller))]
+public unsafe struct SDL_AudioSpec
 {
 	/// <summary>
 	/// Audio data format.
@@ -24,5 +26,15 @@ public struct SDL_AudioSpec
 	/// <summary>
 	/// Sample rate: sample frames per second.
 	/// </summary>
-	public int Freq;
+	public int Frequency;
+
+	/// <summary>
+	/// If false, ignore <see cref="ChannelMap"/> and use default order.
+	/// </summary>
+	public bool UseChannelMap;
+
+	/// <summary>
+	/// <see cref="Channels"/> items of channel order.
+	/// </summary>
+	public byte[] ChannelMap;
 }

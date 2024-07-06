@@ -11,7 +11,7 @@
 public enum SDL_SensorId : uint
 {
 	/// <summary>
-	/// An invalid sensor ID. Used when a function that returns an <see cref="SDL_SensorId"/> fails.
+	/// An invalid sensor ID.
 	/// </summary>
 	Invalid = 0
 }

@@ -10,7 +10,7 @@
 public enum SDL_AudioDeviceId : uint
 {
 	/// <summary>
-	/// An invalid/null audio device ID. Used when a function that returns an <see cref="SDL_AudioDeviceId"/> fails.
+	/// An invalid/null audio device ID.
 	/// </summary>
 	Invalid = 0,
 

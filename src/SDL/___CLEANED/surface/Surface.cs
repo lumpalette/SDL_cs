@@ -32,7 +32,7 @@ unsafe partial class SDL
 	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_Surface* CreateSurface(int width, int height, SDL_PixelFormatEnum format)
 	{
-		return SDL_PInvoke.SDL_CreateSurface(width, height, format);
+		return PInvoke.SDL_CreateSurface(width, height, format);
 	}
 
 	/// <summary>
@@ -49,7 +49,7 @@ unsafe partial class SDL
 	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_Surface* CreateSurface(void* pixels, int width, int height, int pitch, SDL_PixelFormatEnum format)
 	{
-		return SDL_PInvoke.SDL_CreateSurfaceFrom(pixels, width, height, pitch, format);
+		return PInvoke.SDL_CreateSurfaceFrom(pixels, width, height, pitch, format);
 	}
 
 	/// <summary>
@@ -61,7 +61,7 @@ unsafe partial class SDL
 	/// <param name="surface">The <see cref="SDL_Surface"/> to free.</param>
 	public static void DestroySurface(SDL_Surface* surface)
 	{
-		SDL_PInvoke.SDL_DestroySurface(surface);
+		PInvoke.SDL_DestroySurface(surface);
 	}
 
 	/// <summary>
@@ -74,7 +74,7 @@ unsafe partial class SDL
 	/// <returns>A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_PropertiesId GetSurfaceProperties(SDL_Surface* surface)
 	{
-		return SDL_PInvoke.SDL_GetSurfaceProperties(surface);
+		return PInvoke.SDL_GetSurfaceProperties(surface);
 	}
 
 	/// <summary>
@@ -88,7 +88,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int SetSurfaceColorspace(SDL_Surface* surface, SDL_Colorspace colorspace)
 	{
-		return SDL_PInvoke.SDL_SetSurfaceColorspace(surface, colorspace);
+		return PInvoke.SDL_SetSurfaceColorspace(surface, colorspace);
 	}
 
 	/// <summary>
@@ -104,7 +104,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Colorspace* colorspacePtr = &colorspace)
 		{
-			return SDL_PInvoke.SDL_GetSurfaceColorspace(surface, colorspacePtr);
+			return PInvoke.SDL_GetSurfaceColorspace(surface, colorspacePtr);
 		}
 	}
 
@@ -119,7 +119,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int SetSurfacePalette(SDL_Surface* surface, SDL_Palette* palette)
 	{
-		return SDL_PInvoke.SDL_SetSurfacePalette(surface, palette);
+		return PInvoke.SDL_SetSurfacePalette(surface, palette);
 	}
 
 	/// <summary>
@@ -132,7 +132,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int LockSurface(SDL_Surface* surface)
 	{
-		return SDL_PInvoke.SDL_LockSurface(surface);
+		return PInvoke.SDL_LockSurface(surface);
 	}
 
 	/// <summary>
@@ -144,7 +144,7 @@ unsafe partial class SDL
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to be unlocked.</param>
 	public static void UnlockSurface(SDL_Surface* surface)
 	{
-		SDL_PInvoke.SDL_UnlockSurface(surface);
+		PInvoke.SDL_UnlockSurface(surface);
 	}
 
 	// FIXME: implement SDL_LoadBMP_IO()
@@ -161,7 +161,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* filePtr = Encoding.UTF8.GetBytes(file))
 		{
-			return SDL_PInvoke.SDL_LoadBMP(filePtr);
+			return PInvoke.SDL_LoadBMP(filePtr);
 		}
 	}
 
@@ -180,7 +180,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* filePtr = Encoding.UTF8.GetBytes(file))
 		{
-			return SDL_PInvoke.SDL_SaveBMP(surface, filePtr);
+			return PInvoke.SDL_SaveBMP(surface, filePtr);
 		}
 	}
 
@@ -195,7 +195,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int SetSurfaceRLE(SDL_Surface* surface, bool enable)
 	{
-		return SDL_PInvoke.SDL_SetSurfaceRLE(surface, enable ? 1 : 0);
+		return PInvoke.SDL_SetSurfaceRLE(surface, enable ? 1 : 0);
 	}
 
 	/// <summary>
@@ -208,7 +208,7 @@ unsafe partial class SDL
 	/// <returns>True if the surface has RLE enabled, false otherwise.</returns>
 	public static bool SurfaceHasRLE(SDL_Surface* surface)
 	{
-		return SDL_PInvoke.SDL_SurfaceHasRLE(surface) == 1;
+		return PInvoke.SDL_SurfaceHasRLE(surface) == 1;
 	}
 
 	/// <summary>
@@ -223,7 +223,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int SetSurfaceColorKey(SDL_Surface* surface, bool enable, uint key)
 	{
-		return SDL_PInvoke.SDL_SetSurfaceColorKey(surface, enable ? 1 : 0, key);
+		return PInvoke.SDL_SetSurfaceColorKey(surface, enable ? 1 : 0, key);
 	}
 
 	/// <summary>
@@ -236,7 +236,7 @@ unsafe partial class SDL
 	/// <returns>True if the surface has a color key, false otherwise.</returns>
 	public static bool SurfaceHasColorKey(SDL_Surface* surface)
 	{
-		return SDL_PInvoke.SDL_SurfaceHasColorKey(surface) == 1;
+		return PInvoke.SDL_SurfaceHasColorKey(surface) == 1;
 	}
 
 	/// <summary>
@@ -252,7 +252,7 @@ unsafe partial class SDL
 	{
 		fixed (uint* keyPtr = &key)
 		{
-			return SDL_PInvoke.SDL_GetSurfaceColorKey(surface, keyPtr);
+			return PInvoke.SDL_GetSurfaceColorKey(surface, keyPtr);
 		}
 	}
 
@@ -269,7 +269,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int SetSurfaceColorMod(SDL_Surface* surface, byte r, byte g, byte b)
 	{
-		return SDL_PInvoke.SDL_SetSurfaceColorMod(surface, r, g, b);
+		return PInvoke.SDL_SetSurfaceColorMod(surface, r, g, b);
 	}
 
 	/// <summary>
@@ -287,7 +287,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* rPtr = &r, gPtr = &g, bPtr = &b)
 		{
-			return SDL_PInvoke.SDL_GetSurfaceColorMod(surface, rPtr, gPtr, bPtr);
+			return PInvoke.SDL_GetSurfaceColorMod(surface, rPtr, gPtr, bPtr);
 		}
 	}
 
@@ -302,7 +302,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int SetSurfaceAlphaMod(SDL_Surface* surface, byte alpha)
 	{
-		return SDL_PInvoke.SDL_SetSurfaceAlphaMod(surface, alpha);
+		return PInvoke.SDL_SetSurfaceAlphaMod(surface, alpha);
 	}
 
 	/// <summary>
@@ -318,7 +318,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* alphaPtr = &alpha)
 		{
-			return SDL_PInvoke.SDL_GetSurfaceAlphaMod(surface, alphaPtr);
+			return PInvoke.SDL_GetSurfaceAlphaMod(surface, alphaPtr);
 		}
 	}
 
@@ -333,7 +333,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int SetSurfaceBlendMode(SDL_Surface* surface, SDL_BlendMode blendMode)
 	{
-		return SDL_PInvoke.SDL_SetSurfaceBlendMode(surface, blendMode);
+		return PInvoke.SDL_SetSurfaceBlendMode(surface, blendMode);
 	}
 
 	/// <summary>
@@ -349,7 +349,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_BlendMode* blendModePtr = &blendMode)
 		{
-			return SDL_PInvoke.SDL_GetSurfaceBlendMode(surface, blendModePtr);
+			return PInvoke.SDL_GetSurfaceBlendMode(surface, blendModePtr);
 		}
 	}
 
@@ -366,7 +366,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Rect* rectPtr = &rect)
 		{
-			return SDL_PInvoke.SDL_SetSurfaceClipRect(surface, rectPtr) == 1;
+			return PInvoke.SDL_SetSurfaceClipRect(surface, rectPtr) == 1;
 		}
 	}
 
@@ -381,7 +381,7 @@ unsafe partial class SDL
 	/// <returns>True if the rectangle intersects the surface, otherwise false and blits will be completely clipped.</returns>
 	public static bool SetSurfaceClipRect(SDL_Surface* surface, SDL_Rect* rect)
 	{
-		return SDL_PInvoke.SDL_SetSurfaceClipRect(surface, rect) == 1;
+		return PInvoke.SDL_SetSurfaceClipRect(surface, rect) == 1;
 	}
 
 	/// <summary>
@@ -397,7 +397,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Rect* rectPtr = &rect)
 		{
-			return SDL_PInvoke.SDL_GetSurfaceClipRect(surface, rectPtr);
+			return PInvoke.SDL_GetSurfaceClipRect(surface, rectPtr);
 		}
 	}
 
@@ -412,7 +412,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int FlipSurface(SDL_Surface* surface, SDL_FlipMode flip)
 	{
-		return SDL_PInvoke.SDL_FlipSurface(surface, flip);
+		return PInvoke.SDL_FlipSurface(surface, flip);
 	}
 
 	/// <summary>
@@ -425,7 +425,7 @@ unsafe partial class SDL
 	/// <returns>A copy of the surface, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_Surface* DuplicateSurface(SDL_Surface* surface)
 	{
-		return SDL_PInvoke.SDL_DuplicateSurface(surface);
+		return PInvoke.SDL_DuplicateSurface(surface);
 	}
 
 	/// <summary>
@@ -439,7 +439,7 @@ unsafe partial class SDL
 	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_Surface* ConvertSurface(SDL_Surface* surface, SDL_PixelFormat* format)
 	{
-		return SDL_PInvoke.SDL_ConvertSurface(surface, format);
+		return PInvoke.SDL_ConvertSurface(surface, format);
 	}
 
 	/// <summary>
@@ -453,7 +453,7 @@ unsafe partial class SDL
 	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_Surface* ConvertSurface(SDL_Surface* surface, SDL_PixelFormatEnum format)
 	{
-		return SDL_PInvoke.SDL_ConvertSurfaceFormat(surface, format);
+		return PInvoke.SDL_ConvertSurfaceFormat(surface, format);
 	}
 
 	/// <summary>
@@ -469,7 +469,7 @@ unsafe partial class SDL
 	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_Surface* ConvertSurface(SDL_Surface* surface, SDL_PixelFormatEnum format, SDL_Colorspace colorspace, SDL_PropertiesId props)
 	{
-		return SDL_PInvoke.SDL_ConvertSurfaceFormatAndColorspace(surface, format, colorspace, props);
+		return PInvoke.SDL_ConvertSurfaceFormatAndColorspace(surface, format, colorspace, props);
 	}
 
 	/// <summary>
@@ -489,7 +489,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int ConvertPixels(int width, int height, SDL_PixelFormatEnum srcFormat, void* src, int srcPitch, SDL_PixelFormatEnum dstFormat, void* dst, int dstPitch)
 	{
-		return SDL_PInvoke.SDL_ConvertPixels(width, height, srcFormat, src, srcPitch, dstFormat, dst, dstPitch);
+		return PInvoke.SDL_ConvertPixels(width, height, srcFormat, src, srcPitch, dstFormat, dst, dstPitch);
 	}
 
 	/// <summary>
@@ -513,7 +513,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int ConvertPixels(int width, int height, SDL_PixelFormatEnum srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, void* src, int srcPitch, SDL_PixelFormatEnum dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, void* dst, int dstPitch)
 	{
-		return SDL_PInvoke.SDL_ConvertPixelsAndColorspace(width, height, srcFormat, srcColorspace, srcProps, src, srcPitch, dstFormat, dstColorspace, dstProps, dst, dstPitch);
+		return PInvoke.SDL_ConvertPixelsAndColorspace(width, height, srcFormat, srcColorspace, srcProps, src, srcPitch, dstFormat, dstColorspace, dstProps, dst, dstPitch);
 	}
 
 	/// <summary>
@@ -533,7 +533,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int PremultiplyAlpha(int width, int height, SDL_PixelFormatEnum srcFormat, void* src, int srcPitch, SDL_PixelFormatEnum dstFormat, void* dst, int dstPitch)
 	{
-		return SDL_PInvoke.SDL_PremultiplyAlpha(width, height, srcFormat, src, srcPitch, dstFormat, dst, dstPitch);
+		return PInvoke.SDL_PremultiplyAlpha(width, height, srcFormat, src, srcPitch, dstFormat, dst, dstPitch);
 	}
 
 	/// <summary>
@@ -550,7 +550,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Rect* rectPtr = &rect)
 		{
-			return SDL_PInvoke.SDL_FillSurfaceRect(dst, rectPtr, color);
+			return PInvoke.SDL_FillSurfaceRect(dst, rectPtr, color);
 		}
 	}
 
@@ -566,7 +566,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int FillSurfaceRect(SDL_Surface* dst, SDL_Rect* rect, uint color)
 	{
-		return SDL_PInvoke.SDL_FillSurfaceRect(dst, rect, color);
+		return PInvoke.SDL_FillSurfaceRect(dst, rect, color);
 	}
 
 	/// <summary>
@@ -583,7 +583,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Rect* rectsPtr = rects)
 		{
-			return SDL_PInvoke.SDL_FillSurfaceRects(dst, rectsPtr, rects.Length, color);
+			return PInvoke.SDL_FillSurfaceRects(dst, rectsPtr, rects.Length, color);
 		}
 	}
 
@@ -602,7 +602,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Rect* srcRectPtr = &srcRect, dstRectPtr = &dstRect)
 		{
-			return SDL_PInvoke.SDL_BlitSurface(src, srcRectPtr, dst, dstRectPtr);
+			return PInvoke.SDL_BlitSurface(src, srcRectPtr, dst, dstRectPtr);
 		}
 	}
 
@@ -619,7 +619,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int BlitSurface(SDL_Surface* src, SDL_Rect* srcRect, SDL_Surface* dst, SDL_Rect* dstRect)
 	{
-		return SDL_PInvoke.SDL_BlitSurface(src, srcRect, dst, dstRect);
+		return PInvoke.SDL_BlitSurface(src, srcRect, dst, dstRect);
 	}
 
 	/// <summary>
@@ -637,7 +637,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Rect* srcRectPtr = &srcRect, dstRectPtr = &dstRect)
 		{
-			return SDL_PInvoke.SDL_BlitSurfaceUnchecked(src, srcRectPtr, dst, dstRectPtr);
+			return PInvoke.SDL_BlitSurfaceUnchecked(src, srcRectPtr, dst, dstRectPtr);
 		}
 	}
 
@@ -654,7 +654,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int BlitSurfaceUnchecked(SDL_Surface* src, SDL_Rect* srcRect, SDL_Surface* dst, SDL_Rect* dstRect)
 	{
-		return SDL_PInvoke.SDL_BlitSurfaceUnchecked(src, srcRect, dst, dstRect);
+		return PInvoke.SDL_BlitSurfaceUnchecked(src, srcRect, dst, dstRect);
 	}
 
 	/// <summary>
@@ -673,7 +673,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Rect* srcRectPtr = &srcRect, dstRectPtr = &dstRect)
 		{
-			return SDL_PInvoke.SDL_SoftStretch(src, srcRectPtr, dst, dstRectPtr, scaleMode);
+			return PInvoke.SDL_SoftStretch(src, srcRectPtr, dst, dstRectPtr, scaleMode);
 		}
 	}
 
@@ -691,7 +691,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int SoftStretch(SDL_Surface* src, SDL_Rect* srcRect, SDL_Surface* dst, SDL_Rect* dstRect, SDL_ScaleMode scaleMode)
 	{
-		return SDL_PInvoke.SDL_SoftStretch(src, srcRect, dst, dstRect, scaleMode);
+		return PInvoke.SDL_SoftStretch(src, srcRect, dst, dstRect, scaleMode);
 	}
 
 	/// <summary>
@@ -710,7 +710,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Rect* srcRectPtr = &srcRect, dstRectPtr = &dstRect)
 		{
-			return SDL_PInvoke.SDL_BlitSurfaceScaled(src, srcRectPtr, dst, dstRectPtr, scaleMode);
+			return PInvoke.SDL_BlitSurfaceScaled(src, srcRectPtr, dst, dstRectPtr, scaleMode);
 		}
 	}
 
@@ -728,7 +728,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int BlitSurfaceScaled(SDL_Surface* src, SDL_Rect* srcRect, SDL_Surface* dst, SDL_Rect* dstRect, SDL_ScaleMode scaleMode)
 	{
-		return SDL_PInvoke.SDL_BlitSurfaceScaled(src, srcRect, dst, dstRect, scaleMode);
+		return PInvoke.SDL_BlitSurfaceScaled(src, srcRect, dst, dstRect, scaleMode);
 	}
 
 	/// <summary>
@@ -747,7 +747,7 @@ unsafe partial class SDL
 	{
 		fixed (SDL_Rect* srcRectPtr = &srcRect, dstRectPtr = &dstRect)
 		{
-			return SDL_PInvoke.SDL_BlitSurfaceUncheckedScaled(src, srcRectPtr, dst, dstRectPtr, scaleMode);
+			return PInvoke.SDL_BlitSurfaceUncheckedScaled(src, srcRectPtr, dst, dstRectPtr, scaleMode);
 		}
 	}
 
@@ -765,7 +765,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int BlitSurfaceUncheckedScaled(SDL_Surface* src, SDL_Rect* srcRect, SDL_Surface* dst, SDL_Rect* dstRect, SDL_ScaleMode scaleMode)
 	{
-		return SDL_PInvoke.SDL_BlitSurfaceUncheckedScaled(src, srcRect, dst, dstRect, scaleMode);
+		return PInvoke.SDL_BlitSurfaceUncheckedScaled(src, srcRect, dst, dstRect, scaleMode);
 	}
 
 	/// <summary>
@@ -786,7 +786,7 @@ unsafe partial class SDL
 	{
 		fixed (byte* rPtr = &r, gPtr = &g, bPtr = &b, aPtr = &a)
 		{
-			return SDL_PInvoke.SDL_ReadSurfacePixel(surface, x, y, rPtr, gPtr, bPtr, aPtr);
+			return PInvoke.SDL_ReadSurfacePixel(surface, x, y, rPtr, gPtr, bPtr, aPtr);
 		}
 	}
 
@@ -807,7 +807,7 @@ unsafe partial class SDL
 		byte g;
 		byte b;
 		byte a;
-		int result = SDL_PInvoke.SDL_ReadSurfacePixel(surface, x, y, &r, &g, &b, &a);
+		int result = PInvoke.SDL_ReadSurfacePixel(surface, x, y, &r, &g, &b, &a);
 		color = new(r, g, b, a);
 		return result;
 	}

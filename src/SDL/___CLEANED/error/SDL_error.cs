@@ -1,5 +1,5 @@
-﻿using System.Runtime.InteropServices;
-using System.Text;
+﻿using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace SDL_cs;
 
@@ -14,13 +14,9 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="fmt">The error message.</param>
 	/// <returns>Always -1.</returns>
-	public static int SetError(string fmt)
-	{
-		fixed (byte* fmtPtr = Encoding.UTF8.GetBytes(fmt))
-		{
-			return SDL_PInvoke.SDL_SetError(fmtPtr);
-		}
-	}
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetError", StringMarshalling = StringMarshalling.Utf8)]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int SetError(string fmt);
 
 	/// <summary>
 	/// Set an error indicating that memory allocation failed.
@@ -29,10 +25,9 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OutOfMemory">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>-1.</returns>
-	public static int OutOfMemory()
-	{
-		return SDL_PInvoke.SDL_OutOfMemory();
-	}
+	[LibraryImport(LibraryName, EntryPoint = "SDL_OutOfMemory")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int OutOfMemory();
 
 	/// <summary>
 	/// Retrieve a message about the last error that occurred on the current thread.
@@ -41,10 +36,9 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetError">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>A message with information about the specific error that occurred, or an empty string if there hasn't been an error message set since the last call to <see cref="ClearError"/>.</returns>
-	public static string GetError()
-	{
-		return Marshal.PtrToStringUTF8((nint)SDL_PInvoke.SDL_GetError())!;
-	}
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetError", StringMarshalling = StringMarshalling.Utf8)]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial string GetError();
 
 	/// <summary>
 	/// Clear any previous error message for this thread.
@@ -53,8 +47,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ClearError">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>0</returns>
-	public static int ClearError()
-	{
-		return SDL_PInvoke.SDL_ClearError();
-	}
+	[LibraryImport(LibraryName, EntryPoint = "SDL_ClearError")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int ClearError();
 }

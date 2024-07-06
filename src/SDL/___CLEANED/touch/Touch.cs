@@ -17,7 +17,7 @@ unsafe partial class SDL
 	{
 		fixed (int* countPtr = &count)
 		{
-			var d = SDL_PInvoke.SDL_GetTouchDevices(countPtr);
+			var d = PInvoke.SDL_GetTouchDevices(countPtr);
 			if (d is null)
 			{
 				return null;
@@ -42,7 +42,7 @@ unsafe partial class SDL
 	/// <returns>Touch device name, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
 	public static string? GetTouchDeviceName(SDL_TouchId touchId)
 	{
-		return Marshal.PtrToStringUTF8((nint)SDL_PInvoke.SDL_GetTouchDeviceName(touchId));
+		return Marshal.PtrToStringUTF8((nint)PInvoke.SDL_GetTouchDeviceName(touchId));
 	}
 
 	/// <summary>
@@ -55,7 +55,7 @@ unsafe partial class SDL
 	/// <returns>The touch device type.</returns>
 	public static SDL_TouchDeviceType GetTouchDeviceType(SDL_TouchId touchId)
 	{
-		return SDL_PInvoke.SDL_GetTouchDeviceType(touchId);
+		return PInvoke.SDL_GetTouchDeviceType(touchId);
 	}
 
 	/// <summary>
@@ -71,7 +71,7 @@ unsafe partial class SDL
 	{
 		fixed (int* countPtr = &count)
 		{
-			var f = SDL_PInvoke.SDL_GetTouchFingers(touchId, countPtr);
+			var f = PInvoke.SDL_GetTouchFingers(touchId, countPtr);
 			if (f is null)
 			{
 				return null;

@@ -10,8 +10,7 @@
 public enum SDL_PropertiesId : uint
 {
 	/// <summary>
-	/// An invalid set of properties. Used when a function that returns an <see cref="SDL_PropertiesId"/> fails or when
-	/// you don't need/is not required to pass a set of properties to a function.
+	/// An invalid set of properties.
 	/// </summary>
 	Invalid = 0
 }

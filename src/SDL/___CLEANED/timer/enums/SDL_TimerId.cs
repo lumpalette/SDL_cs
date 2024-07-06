@@ -10,7 +10,7 @@
 public enum SDL_TimerId : uint
 {
 	/// <summary>
-	/// An invalid timer ID. Used when a function that returns an <see cref="SDL_TimerId"/> fails.
+	/// An invalid timer ID.
 	/// </summary>
 	Invalid = 0
 }

@@ -6,7 +6,7 @@
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_JoystickType">documentation</see> for more details.
 /// </remarks>
-public enum SDL_JoystickType
+public enum SDL_JoystickType : ushort
 {
 	Unknown,
 	Gamepad,
@@ -17,5 +17,5 @@ public enum SDL_JoystickType
 	Guitar,
 	DrumKit,
 	ArcadePad,
-	Throttle // ??????????
+	Throttle
 }

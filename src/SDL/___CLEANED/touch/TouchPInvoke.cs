@@ -2,7 +2,7 @@
 
 namespace SDL_cs;
 
-unsafe partial class SDL_PInvoke
+unsafe partial class PInvoke
 {
 	[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
 	public static extern SDL_TouchId* SDL_GetTouchDevices(int* count);

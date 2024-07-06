@@ -2,6 +2,8 @@
 
 namespace SDL_cs;
 
+// TODO: check if this is correctly implemented.
+
 /// <summary>
 /// A callback that fires when data passes through an <see cref="SDL_AudioStream"/>.
 /// </summary>
@@ -13,4 +15,4 @@ namespace SDL_cs;
 /// <param name="additionalAmount">The amount of data, in bytes, that is needed right now.</param>
 /// <param name="totalAmount">The total amount of data requested, in bytes, that is requested or available.</param>
 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-public unsafe delegate void SDL_AudioStreamCallback(void* userData, SDL_AudioStream* stream, int additionalAmount, int totalAmount);
+public unsafe delegate void SDL_AudioStreamCallback(nint userData, SDL_AudioStream* stream, int additionalAmount, int totalAmount);
