@@ -3,7 +3,7 @@
 /// <summary>
 /// Packed component order, high bit -> low bit.
 /// </summary>
-public enum SDL_PackedOrder : byte
+public enum SDL_PackedOrder
 {
 	None,
 	XRGB,

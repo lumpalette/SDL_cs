@@ -15,7 +15,7 @@ public unsafe struct SDL_VirtualJoystickDesc
 	/// <summary>
 	/// A value from <see cref="SDL_JoystickType"/>.
 	/// </summary>
-	public SDL_JoystickType Type;
+	public ushort Type;
 
 	private readonly ushort _padding1;
 

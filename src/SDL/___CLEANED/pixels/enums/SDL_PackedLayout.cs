@@ -3,7 +3,7 @@
 /// <summary>
 /// Packed component layout.
 /// </summary>
-public enum SDL_PackedLayout : byte
+public enum SDL_PackedLayout
 {
 	None,
 	_332,

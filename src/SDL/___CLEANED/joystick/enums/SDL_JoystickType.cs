@@ -6,7 +6,7 @@
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_JoystickType">documentation</see> for more details.
 /// </remarks>
-public enum SDL_JoystickType : ushort
+public enum SDL_JoystickType
 {
 	Unknown,
 	Gamepad,

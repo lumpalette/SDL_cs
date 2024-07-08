@@ -3,7 +3,7 @@
 /// <summary>
 /// Pixel type.
 /// </summary>
-public enum SDL_PixelType : byte
+public enum SDL_PixelType
 {
 	Unknown,
 	Index1,

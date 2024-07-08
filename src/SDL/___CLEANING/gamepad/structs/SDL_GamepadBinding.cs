@@ -11,56 +11,12 @@ namespace SDL_cs;
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_GamepadBinding
 {
-	public SDL_GamepadType InputType;
-
-	public InputData Input;
-
-	public SDL_GamepadType OutputType;
-
-	public OutputData Output;
-
-	[Union, StructLayout(LayoutKind.Explicit)]
-	public struct InputData
+	[Union]
+	[StructLayout(LayoutKind.Explicit)]
+	public struct InputUnion
 	{
-		[FieldOffset(0)]
-		public int Button;
-
-		[FieldOffset(0)]
-		public AxisInfo Axis;
-
-		[FieldOffset(0)]
-		public HatInfo Hat;
-
 		[StructLayout(LayoutKind.Sequential)]
-		public struct AxisInfo
-		{
-			public int Axis;
-
-			public int AxisMin;
-
-			public int AxisMax;
-		}
-
-		[StructLayout(LayoutKind.Sequential)]
-		public struct HatInfo
-		{
-			public int Hat;
-
-			public int HatMask;
-		}
-	}
-
-	[Union, StructLayout(LayoutKind.Explicit)]
-	public struct OutputData
-	{
-		[FieldOffset(0)]
-		public SDL_GamepadButton Button;
-
-		[FieldOffset(0)]
-		public AxisInfo Axis;
-
-		[StructLayout(LayoutKind.Sequential)]
-		public struct AxisInfo
+		public struct AxisStruct
 		{
 			public SDL_GamepadAxis Axis;
 
@@ -68,5 +24,49 @@ public struct SDL_GamepadBinding
 
 			public int AxisMax;
 		}
+
+		[StructLayout(LayoutKind.Sequential)]
+		public struct HatStruct
+		{
+			public int Hat;
+
+			public int HatMask;
+		}
+
+		[FieldOffset(0)]
+		public SDL_GamepadButton Button;
+
+		[FieldOffset(0)]
+		public AxisStruct Axis;
+
+		[FieldOffset(0)]
+		public HatStruct Hat;
 	}
+
+	[Union]
+	[StructLayout(LayoutKind.Explicit)]
+	public struct OutputUnion
+	{
+		[StructLayout(LayoutKind.Sequential)]
+		public struct AxisStruct
+		{
+			public SDL_GamepadAxis Axis;
+
+			public int AxisMin;
+
+			public int AxisMax;
+		}
+
+		[FieldOffset(0)]
+		public SDL_GamepadButton Button;
+
+		[FieldOffset(0)]
+		public AxisStruct Axis;
+	}
+
+	public SDL_GamepadBindingType Type;
+
+	public InputUnion Input;
+
+	public OutputUnion Output;
 }

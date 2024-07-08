@@ -6,7 +6,7 @@
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadButton">documentation</see> for more details.
 /// </remarks>
-public enum SDL_GamepadButton : sbyte
+public enum SDL_GamepadButton
 {
 	/// <summary>
 	/// Invalid button.

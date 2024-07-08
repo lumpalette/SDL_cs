@@ -6,7 +6,7 @@
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ColorType">documentation</see> for more details.
 /// </remarks>
-public enum SDL_ColorType : byte
+public enum SDL_ColorType
 {
 	/// <summary>
 	/// Unknown color type.

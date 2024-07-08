@@ -6,7 +6,7 @@
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_TransferCharacteristics">documentation</see> for more details.
 /// </remarks>
-public enum SDL_TransferCharacteristics : byte
+public enum SDL_TransferCharacteristics
 {
 	/// <summary>
 	/// Unknown.

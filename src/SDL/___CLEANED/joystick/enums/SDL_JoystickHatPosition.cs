@@ -3,7 +3,7 @@
 /// <summary>
 /// The possible positions of a POV hat on a joystick.
 /// </summary>
-public enum SDL_JoystickHatPosition : uint
+public enum SDL_JoystickHatPosition : byte
 {
 	Centered = 0x00,
 	Up = 0x01,

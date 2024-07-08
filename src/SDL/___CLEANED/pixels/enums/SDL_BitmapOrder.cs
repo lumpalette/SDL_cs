@@ -3,7 +3,7 @@
 /// <summary>
 /// Bitmap pixel order, high bit -> low bit.
 /// </summary>
-public enum SDL_BitmapOrder : byte
+public enum SDL_BitmapOrder
 {
 	None,
 	_4321,
