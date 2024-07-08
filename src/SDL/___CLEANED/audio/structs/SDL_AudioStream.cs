@@ -1,4 +1,6 @@
-﻿namespace SDL_cs;
+﻿using System.Runtime.InteropServices;
+
+namespace SDL_cs;
 
 /// <summary>
 /// The opaque handle that represents an audio stream.
@@ -7,4 +9,5 @@
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioStream">documentation</see> for more details.
 /// </remarks>
 [Opaque]
-public struct SDL_AudioStream;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct SDL_AudioStream;

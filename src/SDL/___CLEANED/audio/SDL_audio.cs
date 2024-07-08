@@ -2,6 +2,9 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
+using System.Text;
+
+using SDL_AudioSpecUnmanaged = SDL_cs.SDL_AudioSpecMarshaller.SDL_AudioSpecUnmanaged;
 
 namespace SDL_cs;
 
@@ -18,10 +21,7 @@ unsafe partial class SDL
 	/// <param name="x">An <see cref="SDL_AudioFormat"/>.</param>
 	/// <returns>Data size in bits.</returns>
 	[Macro]
-	public static ushort AudioBitSize(SDL_AudioFormat x)
-	{
-		return (ushort)((ushort)x & AudioMaskBitSize);
-	}
+	public static ushort AudioBitSize(SDL_AudioFormat x) => (ushort)((ushort)x & AudioMaskBitSize);
 
 	/// <summary>
 	/// Retrieve the size, in bytes, from an <see cref="SDL_AudioFormat"/>.
@@ -32,10 +32,7 @@ unsafe partial class SDL
 	/// <param name="x">An <see cref="SDL_AudioFormat"/>.</param>
 	/// <returns>Data size in bytes.</returns>
 	[Macro]
-	public static ushort AudioByteSize(SDL_AudioFormat x)
-	{
-		return (ushort)(AudioBitSize(x) / 8);
-	}
+	public static ushort AudioByteSize(SDL_AudioFormat x) => (ushort)(AudioBitSize(x) / 8);
 
 	/// <summary>
 	/// Determine if an <see cref="SDL_AudioFormat"/> represents integer data.
@@ -45,10 +42,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="x">An <see cref="SDL_AudioFormat"/>.</param>
 	/// <returns>True if format is integer, false otherwise.</returns>
-	public static bool AudioIsInt(SDL_AudioFormat x)
-	{
-		return ((ushort)x & AudioMaskFloat) == 0;
-	}
+	public static bool AudioIsInt(SDL_AudioFormat x) => ((ushort)x & AudioMaskFloat) == 0;
 
 	/// <summary>
 	/// Determine if an <see cref="SDL_AudioFormat"/> represents floating point data.
@@ -59,10 +53,7 @@ unsafe partial class SDL
 	/// <param name="x">An <see cref="SDL_AudioFormat"/>.</param>
 	/// <returns>True if format is floating point, false otherwise.</returns>
 	[Macro]
-	public static bool AudioIsFloat(SDL_AudioFormat x)
-	{
-		return ((ushort)x & AudioMaskFloat) != 0;
-	}
+	public static bool AudioIsFloat(SDL_AudioFormat x) => ((ushort)x & AudioMaskFloat) != 0;
 
 	/// <summary>
 	/// Determine if an <see cref="SDL_AudioFormat"/> represents bigendian data.
@@ -73,10 +64,7 @@ unsafe partial class SDL
 	/// <param name="x">An <see cref="SDL_AudioFormat"/>.</param>
 	/// <returns>True if format is big endian, false otherwise.</returns>
 	[Macro]
-	public static bool AudioIsBigEndian(SDL_AudioFormat x)
-	{
-		return ((ushort)x & AudioMaskBigEndian) != 0;
-	}
+	public static bool AudioIsBigEndian(SDL_AudioFormat x) => ((ushort)x & AudioMaskBigEndian) != 0;
 
 	/// <summary>
 	/// Determine if an <see cref="SDL_AudioFormat"/> represents littleendian data.
@@ -87,10 +75,7 @@ unsafe partial class SDL
 	/// <param name="x">An <see cref="SDL_AudioFormat"/>. </param>
 	/// <returns>True if format is little endian, false otherwise.</returns>
 	[Macro]
-	public static bool AudioIsLittleEndian(SDL_AudioFormat x)
-	{
-		return ((ushort)x & AudioMaskBigEndian) == 0;
-	}
+	public static bool AudioIsLittleEndian(SDL_AudioFormat x) => ((ushort)x & AudioMaskBigEndian) == 0;
 
 	/// <summary>
 	/// Determine if an <see cref="SDL_AudioFormat"/> represents signed data.
@@ -101,10 +86,7 @@ unsafe partial class SDL
 	/// <param name="x">An <see cref="SDL_AudioFormat"/>.</param>
 	/// <returns>True if format is signed, false otherwise.</returns>
 	[Macro]
-	public static bool AudioIsSigned(SDL_AudioFormat x)
-	{
-		return ((ushort)x & AudioMaskSigned) != 0;
-	}
+	public static bool AudioIsSigned(SDL_AudioFormat x) => ((ushort)x & AudioMaskSigned) != 0;
 
 	/// <summary>
 	/// Determine if an <see cref="SDL_AudioFormat"/> represents unsigned data.
@@ -115,10 +97,7 @@ unsafe partial class SDL
 	/// <param name="x">An <see cref="SDL_AudioFormat"/>.</param>
 	/// <returns>True if format is unsigned, false otherwise.</returns>
 	[Macro]
-	public static bool AudioIsUnsigned(SDL_AudioFormat x)
-	{
-		return ((ushort)x & AudioMaskSigned) == 0;
-	}
+	public static bool AudioIsUnsigned(SDL_AudioFormat x) => ((ushort)x & AudioMaskSigned) == 0;
 
 	/// <summary>
 	/// Calculate the size of each audio frame (in bytes) from an <see cref="SDL_AudioSpec"/>.
@@ -129,10 +108,7 @@ unsafe partial class SDL
 	/// <param name="x">An <see cref="SDL_AudioSpec"/> to query.</param>
 	/// <returns>The number of bytes used per sample frame.</returns>
 	[Macro]
-	public static byte AudioFrameSize(SDL_AudioSpec x)
-	{
-		return (byte)(AudioByteSize(x.Format) * x.Channels);
-	}
+	public static byte AudioFrameSize(SDL_AudioSpec x) => (byte)(AudioByteSize(x.Format) * x.Channels);
 
 	/// <summary>
 	/// Use this function to get the number of built-in audio drivers.
@@ -314,7 +290,7 @@ unsafe partial class SDL
 	/// <returns>True if device is valid and paused, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AudioDevicePaused")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.Bool)]
+	[return: MarshalAs(UnmanagedType.I4)]
 	public static partial bool AudioDevicePaused(SDL_AudioDeviceId dev);
 
 	/// <summary>
@@ -704,7 +680,7 @@ unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int SetAudioPostmixCallback(SDL_AudioDeviceId devId, SDL_AudioPostmixCallback callback, nint userData);
 
-	// FIXME: implement SDL_LoadWAV_IO
+	// TODO: implement SDL_LoadWAV_IO
 
 	/// <summary>
 	/// Loads a WAV from a file path.
@@ -725,16 +701,20 @@ unsafe partial class SDL
 	/// </returns>
 	public static int LoadWAV(string path, out SDL_AudioSpec spec, out byte[]? audioBuffer, out uint audioLength)
 	{
-		fixed (byte* audioBufferPtr = audioBuffer)
+		fixed (byte* pathPtr = Encoding.UTF8.GetBytes(path))
 		fixed (uint* audioLengthPtr = &audioLength)
 		{
-			byte* pathPtr = Utf8StringMarshaller.ConvertToUnmanaged(path);
-			var specUnmanaged = new SDL_AudioSpecMarshaller.SDL_AudioSpecUnmanaged();
+			SDL_AudioSpecUnmanaged specUnmanaged = new();
+			byte* audioBufferPtr = null;
 			int result = SDL_LoadWAV(pathPtr, &specUnmanaged, &audioBufferPtr, audioLengthPtr);
 			if (result != -1)
 			{
 				spec = SDL_AudioSpecMarshaller.ManagedToUnmanagedOut.ConvertToManaged(specUnmanaged);
-				audioBuffer = ArrayMarshaller<byte, byte>.AllocateContainerForManagedElements(audioBufferPtr, (int)audioLength);
+				audioBuffer = new byte[audioLength];
+				for (int i = 0; i < audioLength; i++)
+				{
+					audioBuffer[i] = audioBufferPtr[i];
+				}
 				Free(audioBufferPtr);
 			}
 			Utf8StringMarshaller.Free(audioBufferPtr);
@@ -742,7 +722,7 @@ unsafe partial class SDL
 		}
 
 		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-		static extern int SDL_LoadWAV(byte* path, SDL_AudioSpecMarshaller.SDL_AudioSpecUnmanaged* spec, byte** audio_buf, uint* audio_len);
+		static extern int SDL_LoadWAV(byte* path, SDL_AudioSpecUnmanaged* spec, byte** audio_buf, uint* audio_len);
 	}
 
 	/// <summary>
@@ -760,11 +740,6 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_MixAudio")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int MixAudio([In, Out] byte[] dst, [In] byte[] src, SDL_AudioFormat format, uint length, float volume);
-
-
-	[LibraryImport(LibraryName, EntryPoint = "Func", StringMarshalling = StringMarshalling.Utf8)]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void Func(string ptr);
 
 	/// <summary>
 	/// Convert some audio data of one format to another format.
@@ -784,20 +759,24 @@ unsafe partial class SDL
 		fixed (byte* srcDataPtr = srcData)
 		fixed (int* dstLengthPtr = &dstLength)
 		{
-			SDL_AudioSpecMarshaller.SDL_AudioSpecUnmanaged srcSpecUnmanaged = SDL_AudioSpecMarshaller.ManagedToUnmanagedIn.ConvertToUnmanaged(srcSpec);
-			SDL_AudioSpecMarshaller.SDL_AudioSpecUnmanaged dstSpecUnmanaged = SDL_AudioSpecMarshaller.ManagedToUnmanagedIn.ConvertToUnmanaged(dstSpec);
-			byte* data = null;
-			int result = SDL_ConvertAudioSamples(&srcSpecUnmanaged, srcDataPtr, srcLength, &dstSpecUnmanaged, &data, dstLengthPtr);
+			SDL_AudioSpecUnmanaged srcSpecUnmanaged = SDL_AudioSpecMarshaller.ManagedToUnmanagedIn.ConvertToUnmanaged(srcSpec);
+			SDL_AudioSpecUnmanaged dstSpecUnmanaged = SDL_AudioSpecMarshaller.ManagedToUnmanagedIn.ConvertToUnmanaged(dstSpec);
+			byte* dstDataPtr = null;
+			int result = SDL_ConvertAudioSamples(&srcSpecUnmanaged, srcDataPtr, srcLength, &dstSpecUnmanaged, &dstDataPtr, dstLengthPtr);
 			if (result == 0)
 			{
-				dstData = ArrayMarshaller<byte, byte>.AllocateContainerForManagedElements(data, dstLength);
-				Free(data);
+				dstData = new byte[dstLength];
+				for (int i = 0; i < dstLength; i++)
+				{
+					dstData[i] = dstDataPtr[i];
+				}
+				Free(dstDataPtr);
 			}
 			return result;
 		}
 
 		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-		static extern int SDL_ConvertAudioSamples(SDL_AudioSpecMarshaller.SDL_AudioSpecUnmanaged* src_spec, byte* src_data, int src_len, SDL_AudioSpecMarshaller.SDL_AudioSpecUnmanaged* dst_spec, byte** dst_data, int* dst_len);
+		static extern int SDL_ConvertAudioSamples(SDL_AudioSpecUnmanaged* src_spec, byte* src_data, int src_len, SDL_AudioSpecUnmanaged* dst_spec, byte** dst_data, int* dst_len);
 	}
 
 	/// <summary>
@@ -836,16 +815,28 @@ unsafe partial class SDL
 	/// </remarks>
 	public static SDL_AudioFormat AudioFormatF32 => BitConverter.IsLittleEndian ? SDL_AudioFormat.F32LittleEndian : SDL_AudioFormat.F32BigEndian;
 
+	/// <summary>
+	/// Mask used to query the size of an <see cref="SDL_AudioFormat"/>.
+	/// </summary>
 	public const ushort AudioMaskBitSize = 0xFF;
 
+	/// <summary>
+	/// Mask used to determine if an <see cref="SDL_AudioFormat"/> has floating-point data.
+	/// </summary>
 	public const ushort AudioMaskFloat = 1 << 8;
 
+	/// <summary>
+	/// Mask used to determine if an <see cref="SDL_AudioFormat"/> is big-endian.
+	/// </summary>
 	public const ushort AudioMaskBigEndian = 1 << 12;
 
+	/// <summary>
+	/// Mask used to determine if an <see cref="SDL_AudioFormat"/> is signed.
+	/// </summary>
 	public const ushort AudioMaskSigned = 1 << 15;
 
 	/// <summary>
-	/// Maximum channels that an SDL_AudioSpec channel map can handle.
+	/// Maximum channels that an <see cref="SDL_AudioSpec"/> channel map can handle.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MAX_CHANNEL_MAP_SIZE">documentation</see> for more details.

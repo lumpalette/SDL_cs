@@ -4,7 +4,7 @@ using System.ComponentModel;
 namespace SDL_cs;
 
 /// <summary>
-/// Indicates that some method is defined as a macro in some SDL header.
+/// Indicates that a method is a <c>#define</c> macro.
 /// </summary>
 [AttributeUsage(AttributeTargets.Method)]
 [EditorBrowsable(EditorBrowsableState.Never)]

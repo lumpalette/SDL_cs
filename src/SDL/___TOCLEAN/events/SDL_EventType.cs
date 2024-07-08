@@ -110,10 +110,10 @@ public enum SDL_EventType : uint
 	/// <summary>
 	/// Display HDR properties have changed.
 	/// </summary>
-	DisplayHdrStateChanged,
+	DisplayHDRStateChanged,
 
 	DisplayFirst = DisplayOrientation,
-	DisplayLast = DisplayHdrStateChanged,
+	DisplayLast = DisplayHDRStateChanged,
 
 	#endregion
 

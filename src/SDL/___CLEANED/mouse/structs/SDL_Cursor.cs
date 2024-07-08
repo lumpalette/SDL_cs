@@ -1,7 +1,10 @@
-﻿namespace SDL_cs;
+﻿using System.Runtime.InteropServices;
+
+namespace SDL_cs;
 
 /// <summary>
 /// The structure that represents a cursor in SDL.
 /// </summary>
 [Opaque]
-public readonly struct SDL_Cursor;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct SDL_Cursor;

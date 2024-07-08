@@ -18,6 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="src\SDL\___CLEANING\" />
     <Folder Include="src\SDL\___TOCLEAN\pen\" />
   </ItemGroup>
 

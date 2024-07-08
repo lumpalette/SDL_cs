@@ -1,11 +1,14 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace SDL_cs;
 
 // SDL_guid.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_guid.h
 unsafe partial class SDL
 {
+	// TODO: Test if this can be implemented using the source generator.
+
 	/// <summary>
 	/// Get a string representation for a given <see cref="SDL_Guid"/>.
 	/// </summary>
@@ -18,15 +21,13 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	public static int GuidToString(SDL_Guid guid, out string? pszGuid, int cbGuid = 33)
 	{
-		// FIXME: test if this can be implemented using the source generator.
-		nint buffer = Marshal.AllocHGlobal(cbGuid);
+		byte* buffer = stackalloc byte[cbGuid];
 		int result = SDL_GUIDToString(guid, buffer, cbGuid);
-		pszGuid = Marshal.PtrToStringUTF8(buffer);
-		Marshal.FreeHGlobal(buffer);
+		pszGuid = Utf8StringMarshaller.ConvertToManaged(buffer);
 		return result;
 
 		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-		static extern int SDL_GUIDToString(SDL_Guid guid, nint pszGUID, int cbGUID);
+		static extern int SDL_GUIDToString(SDL_Guid guid, byte* pszGUID, int cbGUID);
 	}
 
 	/// <summary>

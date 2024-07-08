@@ -4,7 +4,7 @@ using System.ComponentModel;
 namespace SDL_cs;
 
 /// <summary>
-/// Indicates that a type is opaque in SDL.
+/// Indicates that a <see langword="struct"/> is opaque by design.
 /// </summary>
 [AttributeUsage(AttributeTargets.Struct)]
 [EditorBrowsable(EditorBrowsableState.Never)]

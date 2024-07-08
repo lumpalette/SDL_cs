@@ -1,4 +1,6 @@
-﻿namespace SDL_cs;
+﻿using System.Runtime.InteropServices;
+
+namespace SDL_cs;
 
 /// <summary>
 /// Describes how blit operations work internally.
@@ -7,4 +9,5 @@
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitMap">documentation</see> for more details.
 /// </remarks>
 [Opaque]
-public readonly struct SDL_BlitMap;
+[StructLayout(LayoutKind.Sequential)]
+public unsafe struct SDL_BlitMap;

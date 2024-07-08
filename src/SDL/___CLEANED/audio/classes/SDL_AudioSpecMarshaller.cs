@@ -1,12 +1,15 @@
-﻿using System.Runtime.InteropServices.Marshalling;
+﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace SDL_cs;
 
 [CustomMarshaller(typeof(SDL_AudioSpec), MarshalMode.ManagedToUnmanagedIn, typeof(ManagedToUnmanagedIn))]
+[CustomMarshaller(typeof(SDL_AudioSpec), MarshalMode.ManagedToUnmanagedRef, typeof(ManagedToUnmanagedRef))]
 [CustomMarshaller(typeof(SDL_AudioSpec), MarshalMode.ManagedToUnmanagedOut, typeof(ManagedToUnmanagedOut))]
 internal static unsafe class SDL_AudioSpecMarshaller
 {
 	// its true identity.
+	[StructLayout(LayoutKind.Sequential)]
 	public unsafe struct SDL_AudioSpecUnmanaged
 	{
 		public SDL_AudioFormat format;
@@ -24,7 +27,7 @@ internal static unsafe class SDL_AudioSpecMarshaller
 	{
 		public static SDL_AudioSpecUnmanaged ConvertToUnmanaged(SDL_AudioSpec managed)
 		{
-			var unmanaged = new SDL_AudioSpecUnmanaged()
+			SDL_AudioSpecUnmanaged unmanaged = new()
 			{
 				format = managed.Format,
 				channels = managed.Channels,
@@ -39,17 +42,53 @@ internal static unsafe class SDL_AudioSpecMarshaller
 		}
 	}
 
-	public static class ManagedToUnmanagedOut
+	public static class ManagedToUnmanagedRef
 	{
+		public static SDL_AudioSpecUnmanaged ConvertToUnmanaged(SDL_AudioSpec managed)
+		{
+			SDL_AudioSpecUnmanaged unmanaged = new()
+			{
+				format = managed.Format,
+				channels = managed.Channels,
+				freq = managed.Frequency,
+				use_channel_map = managed.UseChannelMap ? 1 : 0
+			};
+			for (int i = 0; i < SDL.MaxChannelMapSize; i++)
+			{
+				unmanaged.channel_map[i] = managed.ChannelMap[i];
+			}
+			return unmanaged;
+		}
+
 		public static SDL_AudioSpec ConvertToManaged(SDL_AudioSpecUnmanaged unmanaged)
 		{
-			var managed = new SDL_AudioSpec()
+			SDL_AudioSpec managed = new()
 			{
 				Format = unmanaged.format,
 				Channels = unmanaged.channels,
 				Frequency = unmanaged.freq,
 				UseChannelMap = unmanaged.use_channel_map == 1,
-				ChannelMap = new byte[16]
+				ChannelMap = new byte[SDL.MaxChannelMapSize]
+			};
+			for (int i = 0; i < SDL.MaxChannelMapSize; i++)
+			{
+				managed.ChannelMap[i] = unmanaged.channel_map[i];
+			}
+			return managed;
+		}
+	}
+
+	public static class ManagedToUnmanagedOut
+	{
+		public static SDL_AudioSpec ConvertToManaged(SDL_AudioSpecUnmanaged unmanaged)
+		{
+			SDL_AudioSpec managed = new()
+			{
+				Format = unmanaged.format,
+				Channels = unmanaged.channels,
+				Frequency = unmanaged.freq,
+				UseChannelMap = unmanaged.use_channel_map == 1,
+				ChannelMap = new byte[SDL.MaxChannelMapSize]
 			};
 			for (int i = 0; i < SDL.MaxChannelMapSize; i++)
 			{

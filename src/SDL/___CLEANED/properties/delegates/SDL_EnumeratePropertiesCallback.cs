@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace SDL_cs;
 
@@ -10,6 +11,6 @@ namespace SDL_cs;
 /// </remarks>
 /// <param name="userData">An app-defined pointer passed to the callback.</param>
 /// <param name="props">The <see cref="SDL_PropertiesId"/> that is being enumerated.</param>
-/// <param name="name">The next property name in the enumeration. Use <see cref="Marshal.PtrToStringUTF8(nint)"/> to convert the pointer into a C# string.</param>
+/// <param name="name">The next property name in the enumeration.</param>
 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-public unsafe delegate void SDL_EnumeratePropertiesCallback(void* userData, SDL_PropertiesId props, byte* name);
+public unsafe delegate void SDL_EnumeratePropertiesCallback(nint userData, SDL_PropertiesId props, [MarshalUsing(typeof(Utf8StringMarshaller))] string name);

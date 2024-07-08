@@ -15,7 +15,7 @@ unsafe partial class SDL
 	/// <returns>True if a keyboard is connected, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasKeyboard")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.Bool)]
+	[return: MarshalAs(UnmanagedType.I4)]
 	public static partial bool HasKeyboard();
 
 	/// <summary>
@@ -76,7 +76,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboardState">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="numKeys">The length of the returned array.</param>
+	/// <param name="numKeys">The numKeys of the returned array.</param>
 	/// <returns>A pointer to an array of key states.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardState")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -194,7 +194,7 @@ unsafe partial class SDL
 
 	// FIXME: The source generator implements the function below in a way that the memory used to marshal 'name' is automatically
 	// released befre the function returns. The native function, for some reason, does not copy that memory, meaning that this
-	// function immediatly fails after returning (I think it silently fails, the worst of all LMAO). Figure out a solution later.
+	// function immediatly fails after returning (I think it silently fails, worst of all LMAO). Figure out a solution later.
 
 	/// <summary>
 	/// Set a human-readable name for a scancode.
@@ -279,7 +279,7 @@ unsafe partial class SDL
 	/// <returns>True if text input events are enabled else false.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_TextInputActive")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.Bool)]
+	[return: MarshalAs(UnmanagedType.I4)]
 	public static partial bool TextInputActive(SDL_Window* window);
 
 	/// <summary>
@@ -341,7 +341,7 @@ unsafe partial class SDL
 	/// <returns>True if the platform has some screen keyboard support or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasScreenKeyboardSupport")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.Bool)]
+	[return: MarshalAs(UnmanagedType.I4)]
 	public static partial bool HasScreenKeyboardSupport();
 
 	/// <summary>
@@ -354,6 +354,6 @@ unsafe partial class SDL
 	/// <returns>True if screen keyboard is shown or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ScreenKeyboardShown")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.Bool)]
+	[return: MarshalAs(UnmanagedType.I4)]
 	public static partial bool ScreenKeyboardShown(SDL_Window* window);
 }

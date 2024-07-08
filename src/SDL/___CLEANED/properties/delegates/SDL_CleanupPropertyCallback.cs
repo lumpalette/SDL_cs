@@ -11,4 +11,4 @@ namespace SDL_cs;
 /// <param name="userData">An app-defined pointer passed to the callback.</param>
 /// <param name="value">The pointer assigned to the property to clean up.</param>
 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-public unsafe delegate void SDL_CleanupPropertyCallback(void* userData, void* value);
+public unsafe delegate void SDL_CleanupPropertyCallback(nint userData, nint value);

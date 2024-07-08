@@ -8,6 +8,7 @@ namespace SDL_cs;
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SurfaceFlags">documentation</see> for more details.
 /// </remarks>
+[Typedef]
 [Flags]
 public enum SDL_SurfaceFlags : uint
 {

@@ -14,10 +14,10 @@ public unsafe readonly struct SDL_Palette
 	/// <summary>
 	/// Number of elements in <see cref="Colors"/>.
 	/// </summary>
-	public readonly int NColors;
+	public readonly int NumColors;
 
 	/// <summary>
-	/// An array of <see cref="SDL_Color"/> structures representing this palette, <see cref="NColors"/> long.
+	/// An array of <see cref="SDL_Color"/> structures representing this palette, <see cref="NumColors"/> long.
 	/// </summary>
 	public readonly SDL_Color* Colors;
 

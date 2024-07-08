@@ -4,7 +4,7 @@ using System.ComponentModel;
 namespace SDL_cs;
 
 /// <summary>
-/// Indicates that some enumerator is defined as a typedef in SDL.
+/// Indicates that an <see langword="enum"/> or <see langword="struct"/> is a typedef.
 /// </summary>
 [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Struct)]
 [EditorBrowsable(EditorBrowsableState.Never)]

@@ -4,7 +4,7 @@ using System.ComponentModel;
 namespace SDL_cs;
 
 /// <summary>
-/// Indicates that some type is defined as a union in SDL.
+/// Indicates that a <see langword="struct"/> is a union.
 /// </summary>
 [AttributeUsage(AttributeTargets.Struct)]
 [EditorBrowsable(EditorBrowsableState.Never)]
