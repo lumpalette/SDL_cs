@@ -79,7 +79,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetPropertyWithCleanup", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetProperty(SDL_PropertiesId props, string name, nint value, SDL_CleanupPropertyCallback cleanup, nint userData);
+	public static partial int SetPropertyWithCleanup(SDL_PropertiesId props, string name, nint value, SDL_CleanupPropertyCallback cleanup, nint userData);
 
 	/// <summary>
 	/// Set a property on a set of properties.
@@ -107,7 +107,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetStringProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetProperty(SDL_PropertiesId props, string name, string? value);
+	public static partial int SetStringProperty(SDL_PropertiesId props, string name, string? value);
 
 	/// <summary>
 	/// Set an integer property on a set of properties.
@@ -121,7 +121,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetNumberProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetProperty(SDL_PropertiesId props, string name, long value);
+	public static partial int SetNumberProperty(SDL_PropertiesId props, string name, long value);
 
 	/// <summary>
 	/// Set a floating point property on a set of properties.
@@ -135,7 +135,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetFloatProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetProperty(SDL_PropertiesId props, string name, float value);
+	public static partial int SetFloatProperty(SDL_PropertiesId props, string name, float value);
 
 	/// <summary>
 	/// Set a boolean property on a set of properties.
@@ -149,7 +149,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetBooleanProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetProperty(SDL_PropertiesId props, string name, [MarshalAs(UnmanagedType.I4)] bool value);
+	public static partial int SetBooleanProperty(SDL_PropertiesId props, string name, [MarshalAs(UnmanagedType.I4)] bool value);
 
 	/// <summary>
 	/// Return whether a property exists in a set of properties.
@@ -204,7 +204,7 @@ unsafe partial class SDL
 	/// <returns>The value of the property, or <paramref name="defaultValue"/> if it is not set or not a string property.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetStringProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial string GetProperty(SDL_PropertiesId props, string name, string defaultValue = "");
+	public static partial string GetStringProperty(SDL_PropertiesId props, string name, string defaultValue = "");
 
 	/// <summary>
 	/// Get a number property on a set of properties.
@@ -232,7 +232,7 @@ unsafe partial class SDL
 	/// <returns>The value of the property, or <paramref name="defaultValue"/> if it is not set or not a float property.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetFloatProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial float GetProperty(SDL_PropertiesId props, string name, float defaultValue = 0f);
+	public static partial float GetFloatProperty(SDL_PropertiesId props, string name, float defaultValue = 0f);
 
 	/// <summary>
 	/// Get a boolean property on a set of properties.
@@ -247,7 +247,7 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetBooleanProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(UnmanagedType.I4)]
-	public static partial bool GetProperty(SDL_PropertiesId props, string name, [MarshalAs(UnmanagedType.I4)] bool defaultValue = false);
+	public static partial bool GetBooleanProperty(SDL_PropertiesId props, string name, [MarshalAs(UnmanagedType.I4)] bool defaultValue = false);
 
 	/// <summary>
 	/// Clear a property on a set of properties.

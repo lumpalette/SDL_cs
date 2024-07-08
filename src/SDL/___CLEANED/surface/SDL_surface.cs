@@ -49,7 +49,7 @@ unsafe partial class SDL
 	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateSurfaceFrom")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Surface* CreateSurface([In] byte[]? pixels, int width, int height, int pitch, SDL_PixelFormatEnum format);
+	public static partial SDL_Surface* CreateSurfaceFrom([In] byte[]? pixels, int width, int height, int pitch, SDL_PixelFormatEnum format);
 
 	/// <summary>
 	/// Free an RGB surface.
@@ -94,7 +94,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorspace">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to query.</param>
-	/// <param name="colorspace">An <see cref="SDL_Colorspace"/> value describing the surface colorspace.</param>
+	/// <param name="colorspace">A pointer filled in with an <see cref="SDL_Colorspace"/> value describing the surface colorspace.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorspace")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -201,7 +201,7 @@ unsafe partial class SDL
 	/// <param name="enable">True to enable color key, false to disable color key.</param>
 	/// <param name="key">The transparent pixel.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SurfaceHasRLE")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int SetSurfaceColorKey(SDL_Surface* surface, [MarshalAs(UnmanagedType.I4)] bool flag, uint key);
 
@@ -225,7 +225,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorKey">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to query.</param>
-	/// <param name="key">The transparent pixel.</param>
+	/// <param name="key">A pointer filled in with the transparent pixel.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -253,9 +253,9 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceColorMod">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to query.</param>
-	/// <param name="r">The current red color value.</param>
-	/// <param name="g">The current green color value.</param>
-	/// <param name="b">The current blue color value.</param>
+	/// <param name="r">A pointer filled in with the current red color value.</param>
+	/// <param name="g">A pointer filled in with the current green color value.</param>
+	/// <param name="b">A pointer filled in with the current blue color value.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -281,7 +281,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceAlphaMod">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to query.</param>
-	/// <param name="alpha">The current alpha value.</param>
+	/// <param name="alpha">A pointer filled in with the current alpha value.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceAlphaMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -307,7 +307,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfaceBlendMode">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to query.</param>
-	/// <param name="blendMode">The current <see cref="SDL_BlendMode"/>.</param>
+	/// <param name="blendMode">A pointer filled in with the current <see cref="SDL_BlendMode"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceBlendMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -403,7 +403,7 @@ unsafe partial class SDL
 	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertSurfaceFormat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Surface* ConvertSurface(SDL_Surface* surface, SDL_PixelFormatEnum format);
+	public static partial SDL_Surface* ConvertSurfaceFormat(SDL_Surface* surface, SDL_PixelFormatEnum format);
 
 	/// <summary>
 	/// Copy an existing surface to a new surface of the specified format and colorspace.
@@ -418,7 +418,7 @@ unsafe partial class SDL
 	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertSurfaceFormatAndColorspace")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Surface* ConvertSurface(SDL_Surface* surface, SDL_PixelFormatEnum format, SDL_Colorspace colorspace, SDL_PropertiesId props);
+	public static partial SDL_Surface* ConvertSurfaceFormatAndColorspace(SDL_Surface* surface, SDL_PixelFormatEnum format, SDL_Colorspace colorspace, SDL_PropertiesId props);
 
 	/// <summary>
 	/// Copy a block of pixels of one format to another format.
@@ -460,7 +460,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertPixelsAndColorspace")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ConvertPixels(int width, int height, SDL_PixelFormatEnum srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, [In] byte[] src, int srcPitch, SDL_PixelFormatEnum dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, [In, Out] byte[] dst, int dstPitch);
+	public static partial int ConvertPixelsAndColorspace(int width, int height, SDL_PixelFormatEnum srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, [In] byte[] src, int srcPitch, SDL_PixelFormatEnum dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, [In, Out] byte[] dst, int dstPitch);
 
 	/// <summary>
 	/// Premultiply the alpha on a block of pixels.
@@ -641,30 +641,12 @@ unsafe partial class SDL
 	/// <param name="surface">The surface to read.</param>
 	/// <param name="x">The horizontal coordinate, 0 &lt;= x &lt; width.</param>
 	/// <param name="y">The vertical coordinate, 0 &lt;= y &lt; height.</param>
-	/// <param name="r">The red channel, 0-255.</param>
-	/// <param name="g">The green channel, 0-255.</param>
-	/// <param name="b">The blue channel, 0-255.</param>
-	/// <param name="a">The alpha channel, 0-255.</param>
+	/// <param name="r">A pointer filled in with the red channel, 0-255.</param>
+	/// <param name="g">A pointer filled in with the green channel, 0-255.</param>
+	/// <param name="b">A pointer filled in with the blue channel, 0-255.</param>
+	/// <param name="a">A pointer filled in with the alpha channel, 0-255.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ReadSurfacePixel")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int ReadSurfacePixel(SDL_Surface* surface, int x, int y, out byte r, out byte g, out byte b, out byte a);
-
-	/// <summary>
-	/// Retrieves a single pixel from a surface.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ReadSurfacePixel">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="surface">The surface to read.</param>
-	/// <param name="x">The horizontal coordinate, 0 &lt;= x &lt; width.</param>
-	/// <param name="y">The vertical coordinate, 0 &lt;= y &lt; height.</param>
-	/// <param name="color">The pixel color.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	public static int ReadSurfacePixel(SDL_Surface* surface, int x, int y, out SDL_Color color)
-	{
-		color = new();
-		int result = ReadSurfacePixel(surface, x, y, out color.R, out color.G, out color.B, out color.A);
-		return result;
-	}
 }

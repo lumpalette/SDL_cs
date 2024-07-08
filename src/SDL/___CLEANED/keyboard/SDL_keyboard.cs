@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace SDL_cs;
 
@@ -24,28 +25,11 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboards">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="count">The number of keyboards returned.</param>
-	/// <returns>An array of keyboard instance IDs, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
-	public static SDL_KeyboardId[]? GetKeyboards(out int count)
-	{
-		fixed (int* countPtr = &count)
-		{
-			SDL_KeyboardId[]? keyboards = null;
-			SDL_KeyboardId* keyboardsPtr = SDL_GetKeyboards(countPtr);
-			if (keyboardsPtr is not null)
-			{
-				keyboards = new SDL_KeyboardId[count];
-				for (int i = 0; i < count; i++)
-				{
-					keyboards[i] = keyboardsPtr[i];
-				}
-			}
-			return keyboards;
-		}
-
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-		static extern SDL_KeyboardId* SDL_GetKeyboards(int* count);
-	}
+	/// <param name="count">A pointer filled in with the number of keyboards returned.</param>
+	/// <returns>A 0 terminated array of keyboards instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboards")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_KeyboardId* GetKeyboards(out int count);
 
 	/// <summary>
 	/// Get the name of a keyboard.
@@ -76,11 +60,11 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboardState">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="numKeys">The numKeys of the returned array.</param>
+	/// <param name="numKeys">Receives the length of the returned array.</param>
 	/// <returns>A pointer to an array of key states.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardState")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial nint GetKeyboardState(out int numKeys);
+	public static partial byte* GetKeyboardState(out int numKeys);
 
 	/// <summary>
 	/// Clear the state of the keyboard.
@@ -147,7 +131,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDefaultScancodeFromKey">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="key">The desired <see cref="SDL_Keycode"/> to query.</param>
-	/// <param name="modState">The modifier state that would be used when the scancode generates this key, may be <see cref="nint.Zero"/>.</param>
+	/// <param name="modState">A pointer to the modifier state that would be used when the scancode generates this key, may be <see cref="nint.Zero"/>.</param>
 	/// <returns>The <see cref="SDL_Scancode"/> that corresponds to the given <see cref="SDL_Keycode"/>.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDefaultScancodeFromKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -173,7 +157,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetScancodeFromKey">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="key">The desired <see cref="SDL_Keycode"/> to query.</param>
-	/// <param name="modState">The modifier state that would be used when the scancode generates this key, may be <see cref="nint.Zero"/>.</param>
+	/// <param name="modState">A pointer to the modifier state that would be used when the scancode generates this key, may be <see cref="nint.Zero"/>.</param>
 	/// <returns>The <see cref="SDL_Scancode"/> that corresponds to the given <see cref="SDL_Keycode"/>.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetScancodeFromKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -192,10 +176,6 @@ unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Scancode GetScancodeFromKey(SDL_Keycode key, nint modState);
 
-	// FIXME: The source generator implements the function below in a way that the memory used to marshal 'name' is automatically
-	// released befre the function returns. The native function, for some reason, does not copy that memory, meaning that this
-	// function immediatly fails after returning (I think it silently fails, worst of all LMAO). Figure out a solution later.
-
 	/// <summary>
 	/// Set a human-readable name for a scancode.
 	/// </summary>
@@ -203,12 +183,12 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetScancodeName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="scancode">The desired <see cref="SDL_Scancode"/>.</param>
-	/// <param name="name">The name to use for the scancode.</param>
+	/// <param name="name">The name to use for the scancode as UTF-8. The string is not copied, so the pointer given to this function must stay valid while SDL is being used.<br/>Use <see cref="Utf16StringMarshaller.ConvertToUnmanaged(string?)"/> and <see cref="Utf8StringMarshaller.Free(byte*)"/> to manually manage the string memory.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetScancodeName", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetScancodeName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetScancodeName(SDL_Scancode scancode, string name);
-
+	public static partial int SetScancodeName(SDL_Scancode scancode, byte* name);
+	
 	/// <summary>
 	/// Get a human-readable name for a scancode.
 	/// </summary>

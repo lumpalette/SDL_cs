@@ -12,8 +12,8 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPowerInfo">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="seconds">The seconds of battery life left. This will return -1 if SDL can't determine a value or there is no battery.</param>
-	/// <param name="percent">The percentage of battery life left, between 0 and 100. This will return -1 if SDL can't determine a value or there is no battery.</param>
+	/// <param name="seconds">A pointer filled in with the seconds of battery life left. This will be filled in with -1 if we can't determine a value or there is no battery.</param>
+	/// <param name="percent">A pointer filled in with the percentage of battery life left, between 0 and 100. This will be filled in with -1 we can't determine a value or there is no battery.</param>
 	/// <returns>The current battery state or <see cref="SDL_PowerState.Error"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPowerInfo")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]

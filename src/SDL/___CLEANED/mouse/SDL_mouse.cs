@@ -27,29 +27,11 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMice">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="count">The number of mice returned.</param>
-	/// <returns>An array of mouse instance ids or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
-	public static SDL_MouseId[]? GetMice(out int count)
-	{
-		fixed (int* countPtr = &count)
-		{
-			SDL_MouseId[]? mice = null;
-			SDL_MouseId* micePtr = SDL_GetMice(countPtr);
-			if (micePtr is not null)
-			{
-				mice = new SDL_MouseId[count];
-				for (int i = 0; i < count; i++)
-				{
-					mice[i] = micePtr[i];
-				}
-				Free(micePtr);
-			}
-			return mice;
-		}
-
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-		static extern SDL_MouseId* SDL_GetMice(int* count);
-	}
+	/// <param name="count">A pointer filled in with the number of mice returned.</param>
+	/// <returns>A 0 terminated array of mouse instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMice")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_MouseId* GetMice(out int count);
 
 	/// <summary>
 	/// Get the name of a mouse.
@@ -204,7 +186,7 @@ unsafe partial class SDL
 	/// <returns>The new cursor on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateColorCursor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Cursor* CreateCursor(SDL_Surface* surface, int hotX, int hotY);
+	public static partial SDL_Cursor* CreateColorCursor(SDL_Surface* surface, int hotX, int hotY);
 
 	/// <summary>
 	/// Create a system cursor.
@@ -216,7 +198,7 @@ unsafe partial class SDL
 	/// <returns>A cursor on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateSystemCursor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Cursor* CreateCursor(SDL_SystemCursor id);
+	public static partial SDL_Cursor* CreateSystemCursor(SDL_SystemCursor id);
 
 	/// <summary>
 	/// Set the active cursor.

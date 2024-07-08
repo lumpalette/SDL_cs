@@ -30,7 +30,7 @@ unsafe partial class SDL
 	/// <param name="p">The point to test.</param>
 	/// <param name="r">The rectangle to test.</param>
 	/// <returns>True if <paramref name="p"/> is contained by <paramref name="r"/>, false otherwise.</returns>
-	public static bool PointInRect(in SDL_FPoint p, in SDL_FRect r)
+	public static bool PointInRectFloat(in SDL_FPoint p, in SDL_FRect r)
 	{
 		return (p.X >= r.X) && (p.X < (r.X + r.Width)) && (p.Y >= r.Y) && (p.Y < (r.Y + r.Height));
 	}
@@ -58,7 +58,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="r">The rectangle to test.</param>
 	/// <returns>True if the rectangle is "empty" (has zero or negative area), false otherwise.</returns>
-	public static bool RectEmpty(in SDL_FRect r)
+	public static bool RectEmptyFloat(in SDL_FRect r)
 	{
 		return (r.Width <= 0f) && (r.Height <= 0f);
 	}
@@ -78,6 +78,20 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
+	/// Determine whether two floating point rectangles are equal, within a default epsilon.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RectsEqualFloat">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="a">The first rectangle to test.</param>
+	/// <param name="b">The second rectangle to test.</param>
+	/// <returns>True if the rectangles are equal, false otherwise.</returns>
+	public static bool RectsEqualFloat(in SDL_FRect a, in SDL_FRect b)
+	{
+		return RectsEqualEpsilon(a, b, FloatEpsilon);
+	}
+
+	/// <summary>
 	/// Determine whether two floating point rectangles are equal, within some given epsilon.
 	/// </summary>
 	/// <remarks>
@@ -85,9 +99,9 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="a">The first rectangle to test.</param>
 	/// <param name="b">The second rectangle to test.</param>
-	/// <param name="epsilon">The epsilon value for comparison. Defaults to <see cref="float.Epsilon"/>.</param>
+	/// <param name="epsilon">The epsilon value for comparison. Defaults to <see cref="FloatEpsilon"/>.</param>
 	/// <returns>True if the rectangles are equal, false otherwise.</returns>
-	public static bool RectsEqual(in SDL_FRect a, in SDL_FRect b, float epsilon = float.Epsilon)
+	public static bool RectsEqualEpsilon(in SDL_FRect a, in SDL_FRect b, float epsilon = FloatEpsilon)
 	{
 		return (Math.Abs(a.X - b.X) <= epsilon) && (Math.Abs(a.Y - b.Y) <= epsilon)
 			&& (Math.Abs(a.Width - b.Width) <= epsilon) && (Math.Abs(a.Height - b.Height) <= epsilon);
@@ -119,7 +133,7 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasRectIntersectionFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(UnmanagedType.I4)]
-	public static partial bool HasRectIntersection(in SDL_FRect a, in SDL_FRect b);
+	public static partial bool HasRectIntersectionFloat(in SDL_FRect a, in SDL_FRect b);
 
 	/// <summary>
 	/// Calculate the intersection of two rectangles.
@@ -149,7 +163,7 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectIntersectionFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(UnmanagedType.I4)]
-	public static partial bool GetRectIntersection(in SDL_FRect a, in SDL_FRect b, out SDL_FRect result);
+	public static partial bool GetRectIntersectionFloat(in SDL_FRect a, in SDL_FRect b, out SDL_FRect result);
 
 	/// <summary>
 	/// Calculate the union of two rectangles.
@@ -177,7 +191,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectUnionFloat", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRectUnion(in SDL_FRect a, in SDL_FRect b, out SDL_FRect result);
+	public static partial int GetRectUnionFloat(in SDL_FRect a, in SDL_FRect b, out SDL_FRect result);
 
 	/// <summary>
 	/// Calculate a minimal rectangle enclosing a set of points.
@@ -225,7 +239,7 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectEnclosingPointsFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(UnmanagedType.I4)]
-	public static partial bool GetRectEnclosingPoints([In] SDL_FPoint[] points, int count, in SDL_FRect clip, out SDL_FRect result);
+	public static partial bool GetRectEnclosingPointsFloat([In] SDL_FPoint[] points, int count, in SDL_FRect clip, out SDL_FRect result);
 
 	/// <summary>
 	/// Calculate a minimal rectangle enclosing a set of points with float precision.
@@ -241,7 +255,7 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectEnclosingPointsFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(UnmanagedType.I4)]
-	public static partial bool GetRectEnclosingPoints([In] SDL_FPoint[] points, int count, nint clip, out SDL_FRect result);
+	public static partial bool GetRectEnclosingPointsFloat([In] SDL_FPoint[] points, int count, nint clip, out SDL_FRect result);
 
 	/// <summary>
 	/// Calculate the intersection of a rectangle and line segment.
@@ -250,10 +264,10 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRectAndLineIntersection">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="rect">An <see cref="SDL_Rect"/> structure representing the rectangle to intersect.</param>
-	/// <param name="x1">The starting X-coordinate of the line.</param>
-	/// <param name="y1">The starting Y-coordinate of the line.</param>
-	/// <param name="x2">The ending X-coordinate of the line.</param>
-	/// <param name="y2">The ending Y-coordinate of the line.</param>
+	/// <param name="x1">A pointer to the starting X-coordinate of the line.</param>
+	/// <param name="y1">A pointer to the starting Y-coordinate of the line.</param>
+	/// <param name="x2">A pointer to the ending X-coordinate of the line.</param>
+	/// <param name="y2">A pointer to the ending Y-coordinate of the line.</param>
 	/// <returns>True if there is an intersection, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectAndLineIntersection")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -261,49 +275,19 @@ unsafe partial class SDL
 	public static partial bool GetRectAndLineIntersection(in SDL_Rect rect, ref int x1, ref int y1, ref int x2, ref int y2);
 
 	/// <summary>
-	/// Calculate the intersection of a rectangle and line segment.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRectAndLineIntersection">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="rect">An <see cref="SDL_Rect"/> structure representing the rectangle to intersect.</param>
-	/// <param name="start">The starting point of the line.</param>
-	/// <param name="end">The ending point of the line.</param>
-	/// <returns>True if there is an intersection, false otherwise.</returns>
-	public static bool GetRectAndLineIntersection(in SDL_Rect rect, ref SDL_Point start, ref SDL_Point end)
-	{
-		return GetRectAndLineIntersection(in rect, ref start.X, ref start.Y, ref end.X, ref end.Y);
-	}
-
-	/// <summary>
 	/// Calculate the intersection of a rectangle and line segment with float precision.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRectAndLineIntersectionFloat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="rect">An <see cref="SDL_FRect"/> structure representing the rectangle to intersect.</param>
-	/// <param name="x1">The starting X-coordinate of the line.</param>
-	/// <param name="y1">The starting Y-coordinate of the line.</param>
-	/// <param name="x2">The ending X-coordinate of the line.</param>
-	/// <param name="y2">The ending Y-coordinate of the line.</param>
+	/// <param name="x1">A pointer to the starting X-coordinate of the line.</param>
+	/// <param name="y1">A pointer to the starting Y-coordinate of the line.</param>
+	/// <param name="x2">A pointer to the ending X-coordinate of the line.</param>
+	/// <param name="y2">A pointer to the ending Y-coordinate of the line.</param>
 	/// <returns>True if there is an intersection, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectAndLineIntersection")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(UnmanagedType.I4)]
-	public static partial bool GetRectAndLineIntersection(in SDL_FRect rect, ref float x1, ref float y1, ref float x2, ref float y2);
-
-	/// <summary>
-	/// Calculate the intersection of a rectangle and line segment with float precision.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRectAndLineIntersectionFloat">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="rect">An <see cref="SDL_FRect"/> structure representing the rectangle to intersect.</param>
-	/// <param name="start">The starting point of the line.</param>
-	/// <param name="end">The ending point of the line.</param>
-	/// <returns>True if there is an intersection, false otherwise.</returns>
-	public static bool GetRectAndLineIntersection(ref SDL_FRect rect, ref SDL_FPoint start, ref SDL_FPoint end)
-	{
-		return GetRectAndLineIntersection(in rect, ref start.X, ref start.Y, ref end.X, ref end.Y);
-	}
+	public static partial bool GetRectAndLineIntersectionFloat(in SDL_FRect rect, ref float x1, ref float y1, ref float x2, ref float y2);
 }

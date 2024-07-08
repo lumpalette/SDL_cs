@@ -108,10 +108,10 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="format">One of the <see cref="SDL_PixelFormatEnum"/> values.</param>
 	/// <param name="bpp">A bits per pixel value; usually 15, 16, or 32.</param>
-	/// <param name="rMask">The red mask for the format.</param>
-	/// <param name="gMask">The green mask for the format.</param>
-	/// <param name="bMask">The blue mask for the format.</param>
-	/// <param name="aMask">The alpha mask for the format.</param>
+	/// <param name="rMask">A pointer filled in with the red mask for the format.</param>
+	/// <param name="gMask">A pointer filled in with the green mask for the format.</param>
+	/// <param name="bMask">A pointer filled in with the blue mask for the format.</param>
+	/// <param name="aMask">A pointer filled in with the alpha mask for the format.</param>
 	/// <returns>True on success or false if the conversion wasn't possible; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMasksForPixelFormatEnum")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -226,20 +226,6 @@ unsafe partial class SDL
 	public static partial uint MapRGB(SDL_PixelFormat* format, byte r, byte g, byte b);
 
 	/// <summary>
-	/// Map an <see cref="SDL_Color"/> to an opaque pixel value for a given pixel format.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MapRGB">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="format">An <see cref="SDL_PixelFormat"/> structure describing the pixel format.</param>
-	/// <param name="color">The <see cref="SDL_Color"/> structure to convert.</param>
-	/// <returns>A pixel value.</returns>
-	public static uint MapRGB(SDL_PixelFormat* format, SDL_Color color)
-	{
-		return MapRGB(format, color.R, color.G, color.B);
-	}
-
-	/// <summary>
 	/// Map an RGBA quadruple to a pixel value for a given pixel format.
 	/// </summary>
 	/// <remarks>
@@ -256,20 +242,6 @@ unsafe partial class SDL
 	public static partial uint MapRGBA(SDL_PixelFormat* format, byte r, byte g, byte b, byte a);
 
 	/// <summary>
-	/// Map an <see cref="SDL_Color"/> to a pixel value for a given pixel format.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MapRGBA">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="format">An <see cref="SDL_PixelFormat"/> structure describing the pixel format.</param>
-	/// <param name="color">The <see cref="SDL_Color"/> structure to convert.</param>
-	/// <returns>A pixel value.</returns>
-	public static uint MapRGBA(SDL_PixelFormat* format, SDL_Color color)
-	{
-		return MapRGBA(format, color.R, color.G, color.B, color.A);
-	}
-
-	/// <summary>
 	/// Get RGB values from a pixel in the specified format.
 	/// </summary>
 	/// <remarks>
@@ -277,29 +249,14 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="pixel">A pixel value.</param>
 	/// <param name="format">An <see cref="SDL_PixelFormat"/> structure describing the pixel format.</param>
-	/// <param name="r">The red component.</param>
-	/// <param name="g">The green component.</param>
-	/// <param name="b">The blue component.</param>
+	/// <param name="r">A pointer filled in with the red component.</param>
+	/// <param name="g">A pointer filled in with the green component.</param>
+	/// <param name="b">A pointer filled in with the blue component.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRGB")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial void GetRGB(uint pixel, SDL_PixelFormat* format, out byte r, out byte g, out byte b);
 
 	/// <summary>
-	/// Get an opaque <see cref="SDL_Color"/> from a pixel in the specified format.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRGB">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="pixel">A pixel value.</param>
-	/// <param name="format">An <see cref="SDL_PixelFormat"/> structure describing the pixel format.</param>
-	/// <param name="color">The components of <paramref name="pixel"/> represented as an <see cref="SDL_Color"/>.</param>
-	public static void GetRGB(uint pixel, SDL_PixelFormat* format, out SDL_Color color)
-	{
-		GetRGB(pixel, format, out byte r, out byte g, out byte b);
-		color = new(r, g, b, AlphaOpaque);
-	}
-
-	/// <summary>
 	/// Get RGBA values from a pixel in the specified format.
 	/// </summary>
 	/// <remarks>
@@ -307,28 +264,13 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="pixel">A pixel value.</param>
 	/// <param name="format">An <see cref="SDL_PixelFormat"/> structure describing the pixel format.</param>
-	/// <param name="r">The red component.</param>
-	/// <param name="g">The green component.</param>
-	/// <param name="b">The blue component.</param>
-	/// <param name="a">The alpha component.</param>
+	/// <param name="r">A pointer filled in with the red component.</param>
+	/// <param name="g">A pointer filled in with the green component.</param>
+	/// <param name="b">A pointer filled in with the blue component.</param>
+	/// <param name="a">A pointer filled in with the alpha component.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRGBA")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial void GetRGBA(uint pixel, SDL_PixelFormat* format, out byte r, out byte g, out byte b, out byte a);
-
-	/// <summary>
-	/// Get RGBA values from a pixel in the specified format.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRGBA">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="pixel">A pixel value.</param>
-	/// <param name="format">An <see cref="SDL_PixelFormat"/> structure describing the pixel format.</param>
-	/// <param name="color">The components of <paramref name="pixel"/> represented as an <see cref="SDL_Color"/>.</param>
-	public static void GetRGBA(uint pixel, SDL_PixelFormat* format, out SDL_Color color)
-	{
-		GetRGBA(pixel, format, out byte r, out byte g, out byte b, out byte a);
-		color = new(r, g, b, a);
-	}
 
 	/// <summary>
 	/// RGBA format, where each channel represents 8-bits.
@@ -371,12 +313,18 @@ unsafe partial class SDL
 	public static SDL_PixelFormatEnum PixelFormatEnumXBGR32 => BitConverter.IsLittleEndian ? SDL_PixelFormatEnum.RGBX8888 : SDL_PixelFormatEnum.XBGR8888;
 
 	/// <summary>
-	/// No transparency.
+	/// A fully opaque 8-bit alpha value.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ALPHA_OPAQUE">documentation</see> for more details.
+	/// </remarks>
 	public const byte AlphaOpaque = 255;
 
 	/// <summary>
-	/// Full transparency.
+	/// A fully transparent 8-bit alpha value.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ALPHA_TRANSPARENT">documentation</see> for more details.
+	/// </remarks>
 	public const byte AlphaTransparent = 0;
 }

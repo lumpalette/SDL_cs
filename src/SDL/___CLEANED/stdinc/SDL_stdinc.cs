@@ -12,7 +12,19 @@ unsafe partial class SDL
 		return (uint)(a | (b << 8) | (c << 16) | (d << 24));
 	}
 
+	[LibraryImport(LibraryName, EntryPoint = "SDL_malloc")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial void* Malloc(ulong size); // adding this is probably a bad idea
+
 	[LibraryImport(LibraryName, EntryPoint = "SDL_free")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial void Free(void* mem);
+
+	/// <summary>
+	/// Epsilon constant, used for comparing floating-point numbers.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FLT_EPSILON">documentation</see> for more details.
+	/// </remarks>
+	public const float FloatEpsilon = 1.1920928955078125e-07f;
 }
