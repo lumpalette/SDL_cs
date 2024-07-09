@@ -21,8 +21,8 @@ partial class SDL_Prop
 	public const string RendererD3d12DevicePointer = "SDL.renderer.d3d12.device";
 	public const string RendererD3d12SwapchainPointer = "SDL.renderer.d3d12.swap_chain";
 	public const string RendererD3d9DevicePointer = "SDL.renderer.d3d9.device";
-	public const string RendererHDREnabledBoolean = "SDL.renderer.HDR_enabled";
-	public const string RendererHDRHeadroomFloat = "SDL.renderer.HDR_headroom";
+	public const string RendererHdrEnabledBoolean = "SDL.renderer.HDR_enabled";
+	public const string RendererHdrHeadroomFloat = "SDL.renderer.HDR_headroom";
 	public const string RendererMaxTextureSizeNumber = "SDL.renderer.max_texture_size";
 	public const string RendererNameString = "SDL.renderer.name";
 	public const string RendererOutputColorspaceNumber = "SDL.renderer.output_colorspace";
@@ -47,7 +47,7 @@ partial class SDL_Prop
 	public const string TextureCreateD3d12TextureUPointer = "d3d12.texture_u";
 	public const string TextureCreateD3d12TextureVPointer = "d3d12.texture_v";
 	public const string TextureCreateFormatNumber = "format";
-	public const string TextureCreateHDRHeadroomFloat = "HDR_headroom";
+	public const string TextureCreateHdrHeadroomFloat = "HDR_headroom";
 	public const string TextureCreateHeightNumber = "height";
 	public const string TextureCreateMetalPixelBufferPointer = "metal.pixelbuffer";
 	public const string TextureCreateOpenGLES2TextureNumber = "opengles2.texture";
@@ -71,7 +71,7 @@ partial class SDL_Prop
 	public const string TextureD3d12TextureUPointer = "SDL.texture.d3d12.texture_u";
 	public const string TextureD3d12TextureVPointer = "SDL.texture.d3d12.texture_v";
 	public const string TextureFormatNumber = "SDL.texture.format";
-	public const string TextureHDRHeadroomFloat = "SDL.texture.HDR_headroom";
+	public const string TextureHdrHeadroomFloat = "SDL.texture.HDR_headroom";
 	public const string TextureHeightNumber = "SDL.texture.height";
 	public const string TextureOpenGLES2TextureNumber = "SDL.texture.opengles2.texture";
 	public const string TextureOpenGLES2TextureTargetNumber = "SDL.texture.opengles2.target";

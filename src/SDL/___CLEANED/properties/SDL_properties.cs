@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 
 namespace SDL_cs;
@@ -202,9 +203,9 @@ unsafe partial class SDL
 	/// <param name="name">The name of the property to query.</param>
 	/// <param name="defaultValue">The default value of the property. Defaults to an empty string.</param>
 	/// <returns>The value of the property, or <paramref name="defaultValue"/> if it is not set or not a string property.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetStringProperty", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetStringProperty", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial string GetStringProperty(SDL_PropertiesId props, string name, string defaultValue = "");
+	public static partial string GetStringProperty(SDL_PropertiesId props, [MarshalUsing(typeof(Utf8StringMarshaller))] string name, [MarshalUsing(typeof(Utf8StringMarshaller))] string defaultValue = "");
 
 	/// <summary>
 	/// Get a number property on a set of properties.

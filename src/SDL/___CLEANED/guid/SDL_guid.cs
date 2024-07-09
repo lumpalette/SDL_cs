@@ -7,8 +7,6 @@ namespace SDL_cs;
 // SDL_guid.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_guid.h
 unsafe partial class SDL
 {
-	// TODO: Test if this can be implemented using the source generator.
-
 	/// <summary>
 	/// Get a string representation for a given <see cref="SDL_Guid"/>.
 	/// </summary>

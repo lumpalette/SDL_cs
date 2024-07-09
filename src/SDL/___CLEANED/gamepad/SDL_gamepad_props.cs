@@ -7,9 +7,9 @@ partial class SDL_Prop
 	/// </summary>
 	public static class Gamepad
 	{
-		public const string CapMonoLEDBoolean = Joystick.CapMonoLEDBoolean;
-		public const string CapRGBLEDBoolean = Joystick.CapRGBLEDBoolean;
-		public const string CapPlayerLedBoolean = Joystick.CapPlayerLEDBoolean;
+		public const string CapMonoLedBoolean = Joystick.CapMonoLedBoolean;
+		public const string CapRGBLedBoolean = Joystick.CapRGBLedBoolean;
+		public const string CapPlayerLedBoolean = Joystick.CapPlayerLedBoolean;
 		public const string CapRumbleBoolean = Joystick.CapRumbleBoolean;
 		public const string CapTriggerRumbleBoolean = Joystick.CapTriggerRumbleBoolean;
 	}

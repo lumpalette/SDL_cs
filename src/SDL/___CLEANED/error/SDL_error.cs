@@ -36,7 +36,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetError">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>A message with information about the specific error that occurred, or an empty string if there hasn't been an error message set since the last call to <see cref="ClearError"/>.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetError", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetError", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string GetError();
 

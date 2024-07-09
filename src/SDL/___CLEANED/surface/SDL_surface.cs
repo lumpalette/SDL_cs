@@ -49,7 +49,7 @@ unsafe partial class SDL
 	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateSurfaceFrom")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Surface* CreateSurfaceFrom([In] byte[]? pixels, int width, int height, int pitch, SDL_PixelFormatEnum format);
+	public static partial SDL_Surface* CreateSurfaceFrom(nint pixels, int width, int height, int pitch, SDL_PixelFormatEnum format);
 
 	/// <summary>
 	/// Free an RGB surface.
@@ -136,7 +136,7 @@ unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial void UnlockSurface(SDL_Surface* surface);
 
-	// FIXME: implement SDL_LoadBMP_IO()
+	// TODO: implement SDL_LoadBMP_IO()
 
 	/// <summary>
 	/// Load a BMP image from a file.
@@ -150,7 +150,7 @@ unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Surface* LoadBMP(string file);
 
-	// FIXME: implement SDL_SaveBMP_IO()
+	// TODO: implement SDL_SaveBMP_IO()
 
 	/// <summary>
 	/// Save a surface to a file.
@@ -437,7 +437,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertPixels")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ConvertPixels(int width, int height, SDL_PixelFormatEnum srcFormat, [In] byte[] src, int srcPitch, SDL_PixelFormatEnum dstFormat, [In, Out] byte[] dst, int dstPitch);
+	public static partial int ConvertPixels(int width, int height, SDL_PixelFormatEnum srcFormat, nint src, int srcPitch, SDL_PixelFormatEnum dstFormat, nint dst, int dstPitch);
 
 	/// <summary>
 	/// Copy a block of pixels of one format and colorspace to another format and colorspace.
@@ -479,7 +479,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PremultiplyAlpha")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int PremultiplyAlpha(int width, int height, SDL_PixelFormatEnum srcFormat, [In] byte[] src, int srcPitch, SDL_PixelFormatEnum dstFormat, [In, Out] byte[] dst, int dstPitch);
+	public static partial int PremultiplyAlpha(int width, int height, SDL_PixelFormatEnum srcFormat, nint src, int srcPitch, SDL_PixelFormatEnum dstFormat, nint dst, int dstPitch);
 
 	/// <summary>
 	/// Perform a fast fill of a rectangle with a specific color.

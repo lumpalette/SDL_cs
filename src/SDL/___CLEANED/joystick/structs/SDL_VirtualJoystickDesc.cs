@@ -115,9 +115,9 @@ public unsafe struct SDL_VirtualJoystickDesc
 	public SDL_VirtualJoysticRumbleTriggersCallback RumbleTriggers;
 
 	/// <summary>
-	/// Implements <see cref="SDL.SetJoystickLED(SDL_Joystick*, byte, byte, byte)"/>.
+	/// Implements <see cref="SDL.SetJoystickLed(SDL_Joystick*, byte, byte, byte)"/>.
 	/// </summary>
-	public SDL_VirtualJoysticSetLEDCallback SetLED;
+	public SDL_VirtualJoysticSetLedCallback SetLed;
 
 	/// <summary>
 	/// Implements <see cref="SDL.SendJoystickEffect(SDL_Joystick*, void*, int)"/>.

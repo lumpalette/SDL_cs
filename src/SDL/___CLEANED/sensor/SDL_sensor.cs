@@ -13,7 +13,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensors">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of sensors returned.</param>
-	/// <returns>A 0 terminated array of sensor instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
+	/// <returns>A null-terminated array of sensor instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensors")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_SensorId* GetSensors(out int count);
@@ -26,7 +26,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="sensorId">The sensor instance ID.</param>
 	/// <returns>The sensor name, or <see langword="null"/> if <paramref name="sensorId"/> is not valid.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorInstanceName", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorInstanceName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetSensorInstanceName(SDL_SensorId sensorId);
 
@@ -98,7 +98,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="sensor">The <see cref="SDL_Sensor"/> object.</param>
 	/// <returns>The sensor name, or <see langword="null"/> if <paramref name="sensor"/> is <see langword="null"/>.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorName", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetSensorName(SDL_Sensor* sensor);
 

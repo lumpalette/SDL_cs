@@ -26,7 +26,7 @@ public enum SDL_Colorspace : uint
 	/// <summary>
 	/// HDR10 is a non-linear HDR colorspace and the default colorspace for 10-bit surfaces.
 	/// </summary>
-	HDR10 = 301999616,
+	Hdr10 = 301999616,
 
 	/// <summary>
 	/// Equivalent to DXGI_COLOR_SPACE_YCBCR_FULL_G22_NONE_P709_X601.

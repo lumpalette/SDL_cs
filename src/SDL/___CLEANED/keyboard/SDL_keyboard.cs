@@ -26,7 +26,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboards">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of keyboards returned.</param>
-	/// <returns>A 0 terminated array of keyboards instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
+	/// <returns>A null-terminated array of keyboards instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboards")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_KeyboardId* GetKeyboards(out int count);
@@ -39,7 +39,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="keyboardId">The keyboard instance ID.</param>
 	/// <returns>The name of the selected keyboard, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardInstanceName", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardInstanceName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetKeyboardInstanceName(SDL_KeyboardId keyboardId);
 
@@ -197,7 +197,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="scancode">The desired <see cref="SDL_Scancode"/> to query.</param>
 	/// <returns>The name for the scancode. If the scancode doesn't have a name this function returns an empty string.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetScancodeName", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetScancodeName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string GetScancodeName(SDL_Scancode scancode);
 
@@ -221,7 +221,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="key">The desired <see cref="SDL_Keycode"/> to query.</param>
 	/// <returns>A string of the key name.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyName", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string GetKeyName(SDL_Keycode key);
 

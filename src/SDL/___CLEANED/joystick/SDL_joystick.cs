@@ -45,7 +45,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoysticks">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of joysticks returned.</param>
-	/// <returns>A 0 terminated array of joystick instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on error; <see cref="GetError"/> for more details.</returns>
+	/// <returns>A null-terminated array of joystick instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on error; <see cref="GetError"/> for more details.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoysticks")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_JoystickId* GetJoysticks(out int count);
@@ -58,7 +58,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="joystickId">The joystick instance ID.</param>
 	/// <returns>The name of the selected joystick. If no name can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceName", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetJoystickInstanceName(SDL_JoystickId joystickId);
 
@@ -70,7 +70,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="joystickId">The joystick instance ID.</param>
 	/// <returns>The path of the selected joystick. If no path can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickInstancePath", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickInstancePath", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetJoystickInstancePath(SDL_JoystickId joystickId);
 
@@ -330,7 +330,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="joystick">The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
 	/// <returns>The name of the selected joystick. If no name can be found, this function returns null; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickName", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetJoystickName(SDL_Joystick* joystick);
 
@@ -342,7 +342,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="joystick">The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
 	/// <returns>The path of the selected joystick. If no path can be found, this function returns null; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPath", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPath", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetJoystickPath(SDL_Joystick* joystick);
 
@@ -439,7 +439,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="joystick">The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
 	/// <returns>The serial number of the selected joystick, or null if unavailable.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickSerial", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickSerial", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetJoystickSerial(SDL_Joystick* joystick);
 
@@ -715,7 +715,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickLED")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetJoystickLED(SDL_Joystick* joystick, byte red, byte green, byte blue);
+	public static partial int SetJoystickLed(SDL_Joystick* joystick, byte red, byte green, byte blue);
 
 	/// <summary>
 	/// Send a joystick specific effect packet.

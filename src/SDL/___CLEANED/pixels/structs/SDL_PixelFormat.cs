@@ -30,14 +30,14 @@ public unsafe readonly struct SDL_PixelFormat
 	public readonly uint BMask;
 
 	public readonly uint AMask;
-	// :(
-	public readonly byte RBits;
+	
+	public readonly byte RLoss; // |
 
-	public readonly byte GBits;
+	public readonly byte GLoss; // ||
 
-	public readonly byte BBits;
+	public readonly byte BLoss; // ||
 
-	public readonly uint ABits;
+	public readonly uint ALoss; // |_
 
 	public readonly byte RShift;
 

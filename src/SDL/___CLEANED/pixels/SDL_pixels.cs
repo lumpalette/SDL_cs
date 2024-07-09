@@ -96,7 +96,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="format">The pixel format to query.</param>
 	/// <returns>The human readable name of the specified pixel format or "SDL_PIXELFORMAT_UNKNOWN" if the format isn't recognized.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPixelFormatName", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPixelFormatName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string GetPixelFormatName(SDL_PixelFormatEnum format);
 
@@ -133,8 +133,6 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPixelFormatEnumForMasks")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_PixelFormatEnum GetPixelFormatEnumForMasks(int bpp, uint rMask, uint gMask, uint bMask, uint aMask);
-
-	// TODO: Check if the functions below can use a ref return, instead of using a pointer.
 
 	/// <summary>
 	/// Create an <see cref="SDL_PixelFormat"/> structure corresponding to a pixel format.
