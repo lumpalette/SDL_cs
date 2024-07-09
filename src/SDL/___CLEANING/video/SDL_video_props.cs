@@ -2,39 +2,45 @@
 
 partial class SDL_Prop
 {
-	public const string WindowCreateAlwaysOnTopBoolean = "always_on_top";
-	public const string WindowCreateBorderlessBoolean = "borderless";
-	public const string WindowCreateCocoaViewPointer = "cocoa.view";
-	public const string WindowCreateCocoaWindowPointer = "cocoa.window";
-	public const string WindowCreateCreateEGLWindowBoolean = "wayland.create_egl_window";
-	public const string WindowCreateExternalGraphicsContextBoolean = "external_graphics_context";
-	public const string WindowCreateFocusableBoolean = "focusable";
-	public const string WindowCreateFullscreenBoolean = "fullscreen";
-	public const string WindowCreateHeightNumber = "height";
-	public const string WindowCreateHiddenBoolean = "hidden";
-	public const string WindowCreateHighPixelDensityBoolean = "high_pixel_density";
-	public const string WindowCreateMaximizedBoolean = "maximized";
-	public const string WindowCreateMenuBoolean = "menu";
-	public const string WindowCreateMetalBoolean = "metal";
-	public const string WindowCreateMinimizedBoolean = "minimized";
-	public const string WindowCreateModalBoolean = "modal";
-	public const string WindowCreateMouseGrabbedBoolean = "mouse_grabbed";
-	public const string WindowCreateOpenGLBoolean = "opengl";
-	public const string WindowCreateParentPointer = "parent";
-	public const string WindowCreateResizableBoolean = "resizable";
-	public const string WindowCreateTitleString = "title";
-	public const string WindowCreateTooltipBoolean = "tooltip";
-	public const string WindowCreateTransparentBoolean = "transparent";
-	public const string WindowCreateUtilityBoolean = "utility";
-	public const string WindowCreateVulkanBoolean = "vulkan";
-	public const string WindowCreateWaylandSurfaceRoleCustomBoolean = "wayland.surface_role_custom";
-	public const string WindowCreateWaylandWLSurfacePointer = "wayland.wl_surface";
-	public const string WindowCreateWidthNumber = "width";
-	public const string WindowCreateWin32HwndPointer = "win32.hwnd";
-	public const string WindowCreateWin32PixelFormatHwndPointer = "win32.pixel_format_hwnd";
-	public const string WindowCreateX11WindowNumber = "x11.window";
-	public const string WindowCreateXNumber = "x";
-	public const string WindowCreateYNumber = "y";
+	/// <summary>
+	/// Properties used in <see cref="SDL.CreateWindowWithProperties(SDL_PropertiesId)"/>.
+	/// </summary>
+	public static class WindowCreate
+	{
+		public const string AlwaysOnTopBoolean = "always_on_top";
+		public const string BorderlessBoolean = "borderless";
+		public const string FocusableBoolean = "focusable";
+		public const string ExternalGraphicsContextBoolean = "external_graphics_context";
+		public const string FullscreenBoolean = "fullscreen";
+		public const string HeightNumber = "height";
+		public const string HiddenBoolean = "hidden";
+		public const string HighPixelDensityBoolean = "high_pixel_density";
+		public const string MaximizedBoolean = "maximized";
+		public const string MenuBoolean = "menu";
+		public const string MetalBoolean = "metal";
+		public const string MinimizedBoolean = "minimized";
+		public const string ModalBoolean = "modal";
+		public const string MouseGrabbedBoolean = "mouse_grabbed";
+		public const string OpenGLBoolean = "opengl";
+		public const string ParentPointer = "parent";
+		public const string ResizableBoolean = "resizable";
+		public const string TitleString = "title";
+		public const string TransparentBoolean = "transparent";
+		public const string TooltipBoolean = "tooltip";
+		public const string UtilityBoolean = "utility";
+		public const string VulkanBoolean = "vulkan";
+		public const string WidthNumber = "width";
+		public const string XNumber = "x";
+		public const string YNumber = "y";
+		public const string CocoaWindowPointer = "cocoa.window";
+		public const string CocoaViewPointer = "cocoa.view";
+		public const string WaylandSurfaceRoleCustomBoolean = "wayland.surface_role_custom";
+		public const string WaylandCreateEGLWindowBoolean = "wayland.create_egl_window";
+		public const string WaylandWLSurfacePointer = "wayland.wl_surface";
+		public const string Win32HwndPointer = "win32.hwnd";
+		public const string Win32PixelFormatHwndPointer = "win32.pixel_format_hwnd";
+		public const string X11WindowNumber = "x11.window";
+	}
 
 	public const string WindowAndroidSurfacePointer = "SDL.window.android.surface";
 	public const string WindowAndroidWindowPointer = "SDL.window.android.window";
