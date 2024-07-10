@@ -4,7 +4,7 @@ using System.Text;
 namespace SDL_cs;
 
 // SDL_video.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_video.h.
-unsafe partial class SDL
+unsafe partial class SDL_old
 {
 	[Macro]
 	public static uint WindowPosUndefinedDisplay(uint x)
@@ -688,7 +688,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowPosition">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to reposition. </param>
-	/// <param name="x"> The x coordinate of the window, or <see cref="WindowPosCentered"/> or <see cref="WindowPosUndefined"/>. </param>
+	/// <param name="x"> The x coordinate of the window, or <see cref="SDL_Windowpos.Centered"/> or <see cref="WindowPosUndefined"/>. </param>
 	/// <param name="y"> The y coordinate of the window, or <see cref="WindowPosCentered"/> or <see cref="WindowPosUndefined"/>. </param>
 	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more informatiom. </returns>
 	public static int SetWindowPosition(SDL_Window* window, int x, int y)

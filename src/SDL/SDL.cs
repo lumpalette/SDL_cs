@@ -1,7 +1,7 @@
 ﻿namespace SDL_cs;
 
 /// <summary>
-/// Defines C# function bindings, properties and constants to operate with the SDL library.
+/// Defines the C# bindings to operate with SDL.
 /// </summary>
 public static unsafe partial class SDL
 {

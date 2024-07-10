@@ -18,8 +18,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="src\SDL\___CLEANED\blendmode\classes\" />
-    <Folder Include="src\SDL\___CLEANING\video\enums\" />
     <Folder Include="src\SDL\___TOCLEAN\pen\" />
   </ItemGroup>
 

@@ -271,7 +271,7 @@ unsafe partial class SDL
 	/// <returns>An <see cref="SDL_Gamepad"/> on success or <see langword="null"/> on failure or if it hasn't been opened yet; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadFromInstanceID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Gamepad* SDL_GetGamepadFromInstanceId(SDL_JoystickId joystickId);
+	public static partial SDL_Gamepad* GetGamepadFromInstanceId(SDL_JoystickId joystickId);
 
 	/// <summary>
 	/// Get the <see cref="SDL_Gamepad"/> associated with a player index.
@@ -283,7 +283,7 @@ unsafe partial class SDL
 	/// <returns>The <see cref="SDL_Gamepad"/> associated with a player index.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadFromPlayerIndex")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Gamepad* SDL_GetGamepadFromPlayerIndex(int playerIndex);
+	public static partial SDL_Gamepad* GetGamepadFromPlayerIndex(int playerIndex);
 
 	/// <summary>
 	/// Get the properties associated with an opened gamepad.
@@ -626,7 +626,7 @@ unsafe partial class SDL
 	/// <returns>The <see cref="SDL_GamepadButton"/> enum corresponding to the input string, or <see cref="SDL_GamepadButton.Invalid"/> if no match was found.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadButtonFromString", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_GamepadButton SDL_GetGamepadButtonFromString(string str);
+	public static partial SDL_GamepadButton GetGamepadButtonFromString(string str);
 
 	/// <summary>
 	/// Convert from an <see cref="SDL_GamepadButton"/> enum to a string.
