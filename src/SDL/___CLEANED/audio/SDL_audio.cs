@@ -1,6 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
+using System.Security.Cryptography.X509Certificates;
 
 namespace SDL_cs;
 
@@ -191,6 +194,36 @@ unsafe partial class SDL
 	public static partial int GetAudioDeviceFormat(SDL_AudioDeviceId devId, out SDL_AudioSpec spec, out int sampleFrames);
 
 	/// <summary>
+	/// Get the current channel map of an audio device.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioDeviceChannelMap">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="devId">The instance ID of the device to query.</param>
+	/// <param name="count">On output, set to number of channels in the map.</param>
+	/// <returns>An array of the current channel mapping, with as many elements as the current output spec's channels, or <see langword="null"/> if default.</returns>
+	public static int[]? GetAudioDeviceChannelMap(SDL_AudioDeviceId devId, out int count)
+	{
+		fixed (int* countPtr = &count)
+		{
+			int[]? channelMap = null;
+			int* channelMapPtr = SDL_GetAudioDeviceChannelMap(devId, countPtr);
+			if (channelMapPtr is not null)
+			{
+				channelMap = new int[count];
+				for (int i = 0; i < count; i++)
+				{
+					channelMap[i] = channelMapPtr[i];
+				}
+			}
+			return channelMap;
+		}
+
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
+		static extern int* SDL_GetAudioDeviceChannelMap(SDL_AudioDeviceId devid, int* count);
+	}
+
+	/// <summary>
 	/// Open a specific audio device.
 	/// </summary>
 	/// <remarks>
@@ -252,6 +285,31 @@ unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(UnmanagedType.I4)]
 	public static partial bool AudioDevicePaused(SDL_AudioDeviceId dev);
+
+	/// <summary>
+	/// Get the gain of an audio device.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioDeviceGain">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="devId">The audio device to query.</param>
+	/// <returns>The gain of the device, or -1.0f on error.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDeviceGain")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial float GetAudioDeviceGain(SDL_AudioDeviceId devId);
+
+	/// <summary>
+	/// Change the gain of an audio device.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioDeviceGain">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="devId">The audio device on which to change gain.</param>
+	/// <param name="gain">The gain. 1.0f is no change, 0.0f is silence.</param>
+	/// <returns>0 on success, or -1 on error.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioDeviceGain")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int SetAudioDeviceGain(SDL_AudioDeviceId devId, float gain);
 
 	/// <summary>
 	/// Close a previously-opened audio device.
@@ -431,6 +489,120 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioStreamFrequencyRatio")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int SetAudioStreamFrequencyRatio(SDL_AudioStream* stream, float ratio);
+
+	/// <summary>
+	/// Get the gain of an audio stream.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamGain">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="stream">The <see cref="SDL_AudioStream"/> to query.</param>
+	/// <returns>The gain of the stream, or -1.0f on error.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioStreamGain")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial float GetAudioStreamGain(SDL_AudioStream* stream);
+
+	/// <summary>
+	/// Change the gain of an audio stream.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioStreamGain">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="stream">The stream on which the gain is being changed.</param>
+	/// <param name="gain">The gain. 1.0f is no change, 0.0f is silence.</param>
+	/// <returns>0 on success, or -1 on error.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioStreamGain")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int SetAudioStreamGain(SDL_AudioStream* stream, float gain);
+
+	/// <summary>
+	/// Get the current input channel map of an audio stream.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamInputChannelMap">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="stream">The <see cref="SDL_AudioStream"/> to query.</param>
+	/// <param name="count">On output, set to number of channels in the map.</param>
+	/// <returns>An array of the current channel mapping, with as many elements as the current output spec's channels, or <see langword="null"/> if default.</returns>
+	public static int[]? GetAudioStreamInputChannelMap(SDL_AudioStream* stream, out int count)
+	{
+		fixed (int* countPtr = &count)
+		{
+			int[]? channelMap = null;
+			int* channelMapPtr = SDL_GetAudioStreamInputChannelMap(stream, countPtr);
+			if (channelMapPtr is not null)
+			{
+				channelMap = new int[count];
+				for (int i = 0; i < count; i++)
+				{
+					channelMap[i] = channelMapPtr[i];
+				}
+			}
+			return channelMap;
+		}
+
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
+		static extern int* SDL_GetAudioStreamInputChannelMap(SDL_AudioStream* stream, int* count);
+	}
+
+
+	/// <summary>
+	/// Get the current output channel map of an audio stream.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamOutputChannelMap">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="stream">The <see cref="SDL_AudioStream"/> to query.</param>
+	/// <param name="count">On output, set to number of channels in the map.</param>
+	/// <returns>An array of the current channel mapping, with as many elements as the current output spec's channels, or <see langword="null"/> if default.</returns>
+	public static int[]? GetAudioStreamOutputChannelMap(SDL_AudioStream* stream, out int count)
+	{
+		fixed (int* countPtr = &count)
+		{
+			int[]? channelMap = null;
+			int* channelMapPtr = SDL_GetAudioStreamOutputChannelMap(stream, countPtr);
+			if (channelMapPtr is not null)
+			{
+				channelMap = new int[count];
+				for (int i = 0; i < count; i++)
+				{
+					channelMap[i] = channelMapPtr[i];
+				}
+			}
+			return channelMap;
+		}
+
+		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
+		static extern int* SDL_GetAudioStreamOutputChannelMap(SDL_AudioStream* stream, int* count);
+	}
+
+	/// <summary>
+	/// Set the current input channel map of an audio stream.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioStreamInputChannelMap">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="stream">The <see cref="SDL_AudioStream"/> to change.</param>
+	/// <param name="channelMap">The new channel map, <see langword="null"/> to reset to default.</param>
+	/// <param name="count">The number of channels in the map. Corresponds to <paramref name="channelMap"/>.Length.</param>
+	/// <returns>0 on success, -1 on error.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioStreamInputChannelMap")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int SetAudioStreamInputChannelMap(SDL_AudioStream* stream, [In] int[]? channelMap, int count);
+
+	/// <summary>
+	/// Set the current output channel map of an audio stream.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioStreamOutputChannelMap">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="stream">The <see cref="SDL_AudioStream"/> to change.</param>
+	/// <param name="channelMap">The new channel map, <see langword="null"/> to reset to default.</param>
+	/// <param name="count">The number of channels in the map. Corresponds to <paramref name="channelMap"/>.Length.</param>
+	/// <returns>0 on success, -1 on error.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioStreamOutputChannelMap")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int SetAudioStreamOutputChannelMap(SDL_AudioStream* stream, [In] int[]? channelMap, int count);
 
 	/// <summary>
 	/// Add data to the stream.
@@ -747,12 +919,4 @@ unsafe partial class SDL
 	/// Mask used to determine if an <see cref="SDL_AudioFormat"/> is signed.
 	/// </summary>
 	public const ushort AudioMaskSigned = 1 << 15;
-
-	/// <summary>
-	/// Maximum channels that an <see cref="SDL_AudioSpec"/> channel map can handle.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MAX_CHANNEL_MAP_SIZE">documentation</see> for more details.
-	/// </remarks>
-	public const int MaxChannelMapSize = 16;
 }

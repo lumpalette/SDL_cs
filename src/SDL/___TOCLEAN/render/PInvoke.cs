@@ -237,17 +237,17 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateTexture">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer"> The rendering context. </param>
-	/// <param name="format"> One of the static properties in <see cref="SDL_PixelFormatEnum"/>. </param>
+	/// <param name="format"> One of the static properties in <see cref="SDL_PixelFormat"/>. </param>
 	/// <param name="access"> One of the enumerated values in <see cref="SDL_TextureAccess"/>. </param>
 	/// <param name="width"> The width of the texture in pixels. </param>
 	/// <param name="height"> The height of the texture in pixels. </param>
 	/// <returns> A pointer to the created texture or null if no rendering context was active, the format was unsupported, or the width or height were out of range; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_Texture* CreateTexture(SDL_Renderer* renderer, SDL_PixelFormatEnum format, SDL_TextureAccess access, int width, int height)
+	public static SDL_Texture* CreateTexture(SDL_Renderer* renderer, SDL_PixelFormat format, SDL_TextureAccess access, int width, int height)
 	{
 		return _PInvoke(renderer, format, access, width, height);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_CreateTexture", CallingConvention = CallingConvention.Cdecl)]
-		static extern SDL_Texture* _PInvoke(SDL_Renderer* renderer, SDL_PixelFormatEnum format, SDL_TextureAccess access, int width, int height);
+		static extern SDL_Texture* _PInvoke(SDL_Renderer* renderer, SDL_PixelFormat format, SDL_TextureAccess access, int width, int height);
 	}
 
 	/// <summary>

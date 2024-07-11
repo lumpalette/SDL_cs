@@ -7,6 +7,11 @@
 public enum SDL_Colorspace : uint
 {
 	/// <summary>
+	/// Unknown colorspace.
+	/// </summary>
+	Unknown,
+
+	/// <summary>
 	/// sRGB is a gamma corrected colorspace, and the default colorspace for SDL rendering and 8-bit RGB surfaces.
 	/// </summary>
 	/// <remarks>

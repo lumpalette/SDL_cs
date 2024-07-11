@@ -8,49 +8,49 @@ namespace SDL_cs;
 unsafe partial class SDL
 {
 	[Macro]
-	public static SDL_PixelFormatEnum DefinePixelFourCC(byte a, byte b, byte c, byte d) => (SDL_PixelFormatEnum)FourCC(a, b, c, d);
+	public static SDL_PixelFormat DefinePixelFourCC(byte a, byte b, byte c, byte d) => (SDL_PixelFormat)FourCC(a, b, c, d);
 
 	[Macro]
-	public static SDL_PixelFormatEnum DefinePixelFormat(SDL_PixelType type, byte order, SDL_PackedLayout layout, byte bits, byte bytes) => (SDL_PixelFormatEnum)((1 << 28) | ((byte)type << 24) | (order << 20) | ((byte)layout << 16) | (bits << 8) | bytes);
+	public static SDL_PixelFormat DefinePixelFormat(SDL_PixelType type, byte order, SDL_PackedLayout layout, byte bits, byte bytes) => (SDL_PixelFormat)((1 << 28) | ((byte)type << 24) | (order << 20) | ((byte)layout << 16) | (bits << 8) | bytes);
 
 	[Macro]
-	public static byte PixelFlag(SDL_PixelFormatEnum x) => (byte)(((uint)x >> 28) & 0x0F);
+	public static byte PixelFlag(SDL_PixelFormat x) => (byte)(((uint)x >> 28) & 0x0F);
 
 	[Macro]
-	public static SDL_PixelType PixelType(SDL_PixelFormatEnum x) => (SDL_PixelType)(((uint)x >> 24) & 0x0F);
+	public static SDL_PixelType PixelType(SDL_PixelFormat x) => (SDL_PixelType)(((uint)x >> 24) & 0x0F);
 
 	[Macro]
-	public static byte PixelOrder(SDL_PixelFormatEnum x) => (byte)(((uint)x >> 20) & 0x0F);
+	public static byte PixelOrder(SDL_PixelFormat x) => (byte)(((uint)x >> 20) & 0x0F);
 
 	[Macro]
-	public static SDL_PackedLayout PixelLayout(SDL_PixelFormatEnum x) => (SDL_PackedLayout)(((uint)x >> 16) & 0x0F);
+	public static SDL_PackedLayout PixelLayout(SDL_PixelFormat x) => (SDL_PackedLayout)(((uint)x >> 16) & 0x0F);
 
 	[Macro]
-	public static byte BitsPerPixel(SDL_PixelFormatEnum x) => (byte)(((uint)x >> 8) & 0xFF);
+	public static byte BitsPerPixel(SDL_PixelFormat x) => (byte)(IsPixelFormatFourCC(x) ? 0 : (((uint)x >> 8) & 0xFF));
 
 	[Macro]
-	public static byte BytesPerPixel(SDL_PixelFormatEnum x) => (byte)(IsPixelFormatFourCC(x) ? (((x == SDL_PixelFormatEnum.YUY2) || (x == SDL_PixelFormatEnum.UYVY) || (x == SDL_PixelFormatEnum.YVYU) || (x == SDL_PixelFormatEnum.P010)) ? 2u : 1u) : (((uint)x >> 0) & 0xFF));
+	public static byte BytesPerPixel(SDL_PixelFormat x) => (byte)(IsPixelFormatFourCC(x) ? (((x == SDL_PixelFormat.YUY2) || (x == SDL_PixelFormat.UYVY) || (x == SDL_PixelFormat.YVYU) || (x == SDL_PixelFormat.P010)) ? 2u : 1u) : (((uint)x >> 0) & 0xFF));
 
 	[Macro]
-	public static bool IsPixelFormatIndexed(SDL_PixelFormatEnum x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.Index1) || (PixelType(x) == SDL_PixelType.Index2) || (PixelType(x) == SDL_PixelType.Index4) || (PixelType(x) == SDL_PixelType.Index8));
+	public static bool IsPixelFormatIndexed(SDL_PixelFormat x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.Index1) || (PixelType(x) == SDL_PixelType.Index2) || (PixelType(x) == SDL_PixelType.Index4) || (PixelType(x) == SDL_PixelType.Index8));
 
 	[Macro]
-	public static bool IsPixelFormatPacked(SDL_PixelFormatEnum x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.Packed8) || (PixelType(x) == SDL_PixelType.Packed16) || (PixelType(x) == SDL_PixelType.Packed32));
+	public static bool IsPixelFormatPacked(SDL_PixelFormat x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.Packed8) || (PixelType(x) == SDL_PixelType.Packed16) || (PixelType(x) == SDL_PixelType.Packed32));
 
 	[Macro]
-	public static bool IsPixelFormatArray(SDL_PixelFormatEnum x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.ArrayU8) || (PixelType(x) == SDL_PixelType.ArrayU16) || (PixelType(x) == SDL_PixelType.ArrayU32) || (PixelType(x) == SDL_PixelType.ArrayF16) || (PixelType(x) == SDL_PixelType.ArrayF32));
+	public static bool IsPixelFormatArray(SDL_PixelFormat x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.ArrayU8) || (PixelType(x) == SDL_PixelType.ArrayU16) || (PixelType(x) == SDL_PixelType.ArrayU32) || (PixelType(x) == SDL_PixelType.ArrayF16) || (PixelType(x) == SDL_PixelType.ArrayF32));
 
 	[Macro]
-	public static bool IsPixelFormatAlpha(SDL_PixelFormatEnum x) => IsPixelFormatPacked(x) && ((PixelOrder(x) == (uint)SDL_PackedOrder.ARGB) || (PixelOrder(x) == (uint)SDL_PackedOrder.RGBA) || (PixelOrder(x) == (uint)SDL_PackedOrder.ABGR) || (PixelOrder(x) == (uint)SDL_PackedOrder.BGRA));
+	public static bool IsPixelFormatAlpha(SDL_PixelFormat x) => IsPixelFormatPacked(x) && ((PixelOrder(x) == (uint)SDL_PackedOrder.ARGB) || (PixelOrder(x) == (uint)SDL_PackedOrder.RGBA) || (PixelOrder(x) == (uint)SDL_PackedOrder.ABGR) || (PixelOrder(x) == (uint)SDL_PackedOrder.BGRA));
 
 	[Macro]
-	public static bool IsPixelFormat10Bit(SDL_PixelFormatEnum x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.Packed32) || (PixelLayout(x) == SDL_PackedLayout._2101010));
+	public static bool IsPixelFormat10Bit(SDL_PixelFormat x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.Packed32) || (PixelLayout(x) == SDL_PackedLayout._2101010));
 
 	[Macro]
-	public static bool IsPixelFormatFloat(SDL_PixelFormatEnum x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.ArrayF16) || (PixelType(x) == SDL_PixelType.ArrayF32));
+	public static bool IsPixelFormatFloat(SDL_PixelFormat x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.ArrayF16) || (PixelType(x) == SDL_PixelType.ArrayF32));
 
 	[Macro]
-	public static bool IsPixelFormatFourCC(SDL_PixelFormatEnum x) => (x != SDL_PixelFormatEnum.Unknown) && (PixelFlag(x) != 1);
+	public static bool IsPixelFormatFourCC(SDL_PixelFormat x) => (x != SDL_PixelFormat.Unknown) && (PixelFlag(x) != 1);
 
 	[Macro]
 	public static SDL_Colorspace DefineColorspace(SDL_ColorType type, SDL_ColorRange range, SDL_ColorPrimaries primaries, SDL_TransferCharacteristics transfer, SDL_MatrixCoefficients matrix, SDL_ChromaLocation chroma) => (SDL_Colorspace)(((byte)type << 28) | ((byte)range << 24) | ((byte)chroma << 20) | ((byte)primaries << 10) | ((byte)transfer << 5) | (byte)matrix);
@@ -98,7 +98,7 @@ unsafe partial class SDL
 	/// <returns>The human readable name of the specified pixel format or "SDL_PIXELFORMAT_UNKNOWN" if the format isn't recognized.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPixelFormatName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial string GetPixelFormatName(SDL_PixelFormatEnum format);
+	public static partial string GetPixelFormatName(SDL_PixelFormat format);
 
 	/// <summary>
 	/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.
@@ -106,17 +106,17 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMasksForPixelFormatEnum">here</see>
 	/// </remarks>
-	/// <param name="format">One of the <see cref="SDL_PixelFormatEnum"/> values.</param>
+	/// <param name="format">One of the <see cref="SDL_PixelFormat"/> values.</param>
 	/// <param name="bpp">A bits per pixel value; usually 15, 16, or 32.</param>
 	/// <param name="rMask">A pointer filled in with the red mask for the format.</param>
 	/// <param name="gMask">A pointer filled in with the green mask for the format.</param>
 	/// <param name="bMask">A pointer filled in with the blue mask for the format.</param>
 	/// <param name="aMask">A pointer filled in with the alpha mask for the format.</param>
-	/// <returns>True on success or false if the conversion wasn't possible; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMasksForPixelFormatEnum")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return:  MarshalAs(UnmanagedType.I4)]
-	public static partial bool GetMasksForPixelFormatEnum(SDL_PixelFormatEnum format, out int bpp, out uint rMask, out uint gMask, out uint bMask, out uint aMask);
+	public static partial int GetMasksForPixelFormatEnum(SDL_PixelFormat format, out int bpp, out uint rMask, out uint gMask, out uint bMask, out uint aMask);
 
 	/// <summary>
 	/// Convert a bpp value and RGBA masks to an enumerated pixel format.
@@ -129,33 +129,22 @@ unsafe partial class SDL
 	/// <param name="gMask">The green mask for the format.</param>
 	/// <param name="bMask">The blue mask for the format.</param>
 	/// <param name="aMask">The alpha mask for the format.</param>
-	/// <returns>The <see cref="SDL_PixelFormatEnum"/> value corresponding to the format masks, or <see cref="SDL_PixelFormatEnum.Unknown"/> if there isn't a match.</returns>
+	/// <returns>The <see cref="SDL_PixelFormat"/> value corresponding to the format masks, or <see cref="SDL_PixelFormat.Unknown"/> if there isn't a match.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPixelFormatEnumForMasks")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_PixelFormatEnum GetPixelFormatEnumForMasks(int bpp, uint rMask, uint gMask, uint bMask, uint aMask);
+	public static partial SDL_PixelFormat GetPixelFormatEnumForMasks(int bpp, uint rMask, uint gMask, uint bMask, uint aMask);
 
 	/// <summary>
-	/// Create an <see cref="SDL_PixelFormat"/> structure corresponding to a pixel format.
+	/// Create an <see cref="SDL_PixelFormatDetails"/> structure corresponding to a pixel format.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreatePixelFormat">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="format">One of the <see cref="SDL_PixelFormatEnum"/> values.</param>
-	/// <returns>The new <see cref="SDL_PixelFormat"/> structure on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <param name="format">One of the <see cref="SDL_PixelFormat"/> values.</param>
+	/// <returns>A pointer to a <see cref="SDL_PixelFormatDetails"/> structure or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreatePixelFormat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_PixelFormat* CreatePixelFormat(SDL_PixelFormatEnum format);
-
-	/// <summary>
-	/// Free an <see cref="SDL_PixelFormat"/> structure allocated by <see cref="CreatePixelFormat(SDL_PixelFormatEnum)"/>.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyPixelFormat">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="format">The <see cref="SDL_PixelFormat"/> structure to free.</param>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_DestroyPixelFormat")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void DestroyPixelFormat(SDL_PixelFormat* format);
+	public static partial SDL_PixelFormatDetails* GetPixelFormatDetails(SDL_PixelFormat format);
 
 	/// <summary>
 	/// Create a palette structure with the specified number of color entries.
@@ -168,19 +157,6 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreatePalette")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Palette* CreatePalette(int numColor);
-
-	/// <summary>
-	/// Set the palette for a pixel format structure.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetPixelFormatPalette">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="format">The <see cref="SDL_PixelFormat"/> structure that will use the palette.</param>
-	/// <param name="palette">The <see cref="SDL_Palette"/> structure that will be used.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetPixelFormatPalette")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetPixelFormatPalette(SDL_PixelFormat* format, SDL_Palette* palette);
 
 	/// <summary>
 	/// Set a range of colors in a palette.
@@ -214,14 +190,15 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MapRGB">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="format">An <see cref="SDL_PixelFormat"/> structure describing the pixel format.</param>
+	/// <param name="format">A pointer to <see cref="SDL_PixelFormatDetails"/> describing the pixel format.</param>
+	/// <param name="palette">An optional palette for indexed formats, may be <see langword="null"/>.</param>
 	/// <param name="r">The red component of the pixel in the range 0-255.</param>
 	/// <param name="g">The green component of the pixel in the range 0-255.</param>
 	/// <param name="b">The blue component of the pixel in the range 0-255.</param>
 	/// <returns>A pixel value.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_MapRGB")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial uint MapRGB(SDL_PixelFormat* format, byte r, byte g, byte b);
+	public static partial uint MapRGB(SDL_PixelFormatDetails* format, SDL_Palette* palette, byte r, byte g, byte b);
 
 	/// <summary>
 	/// Map an RGBA quadruple to a pixel value for a given pixel format.
@@ -229,7 +206,8 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MapRGBA">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="format">An <see cref="SDL_PixelFormat"/> structure describing the pixel format.</param>
+	/// <param name="format">A pointer to <see cref="SDL_PixelFormatDetails"/> describing the pixel format.</param>
+	/// <param name="palette">An optional palette for indexed formats, may be <see langword="null"/>.</param>
 	/// <param name="r">The red component of the pixel in the range 0-255.</param>
 	/// <param name="g">The green component of the pixel in the range 0-255.</param>
 	/// <param name="b">The blue component of the pixel in the range 0-255.</param>
@@ -237,7 +215,7 @@ unsafe partial class SDL
 	/// <returns>A pixel value.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_MapRGBA")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial uint MapRGBA(SDL_PixelFormat* format, byte r, byte g, byte b, byte a);
+	public static partial uint MapRGBA(SDL_PixelFormatDetails* format, SDL_Palette* palette, byte r, byte g, byte b, byte a);
 
 	/// <summary>
 	/// Get RGB values from a pixel in the specified format.
@@ -246,13 +224,14 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRGB">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="pixel">A pixel value.</param>
-	/// <param name="format">An <see cref="SDL_PixelFormat"/> structure describing the pixel format.</param>
+	/// <param name="format">An <see cref="SDL_PixelFormatDetails"/> structure describing the pixel format.</param>
+	/// <param name="palette">An optional palette for indexed formats, may be <see langword="null"/>.</param>
 	/// <param name="r">A pointer filled in with the red component.</param>
 	/// <param name="g">A pointer filled in with the green component.</param>
 	/// <param name="b">A pointer filled in with the blue component.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRGB")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void GetRGB(uint pixel, SDL_PixelFormat* format, out byte r, out byte g, out byte b);
+	public static partial void GetRGB(uint pixel, SDL_PixelFormatDetails* format, SDL_Palette* palette, out byte r, out byte g, out byte b);
 
 	/// <summary>
 	/// Get RGBA values from a pixel in the specified format.
@@ -261,54 +240,55 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRGBA">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="pixel">A pixel value.</param>
-	/// <param name="format">An <see cref="SDL_PixelFormat"/> structure describing the pixel format.</param>
+	/// <param name="format">An <see cref="SDL_PixelFormatDetails"/> structure describing the pixel format.</param>
+	/// <param name="palette">An optional palette for indexed formats, may be <see langword="null"/>.</param>
 	/// <param name="r">A pointer filled in with the red component.</param>
 	/// <param name="g">A pointer filled in with the green component.</param>
 	/// <param name="b">A pointer filled in with the blue component.</param>
 	/// <param name="a">A pointer filled in with the alpha component.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRGBA")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void GetRGBA(uint pixel, SDL_PixelFormat* format, out byte r, out byte g, out byte b, out byte a);
+	public static partial void GetRGBA(uint pixel, SDL_PixelFormatDetails* format, SDL_Palette* palette, out byte r, out byte g, out byte b, out byte a);
 
 	/// <summary>
 	/// RGBA format, where each channel represents 8-bits.
 	/// </summary>
-	public static SDL_PixelFormatEnum PixelFormatEnumRGBA32 => BitConverter.IsLittleEndian ? SDL_PixelFormatEnum.ABGR8888 : SDL_PixelFormatEnum.RGBA8888;
+	public static SDL_PixelFormat PixelFormatEnumRGBA32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.ABGR8888 : SDL_PixelFormat.RGBA8888;
 
 	/// <summary>
 	/// ARGB format, where each channel represents 8-bits.
 	/// </summary>
-	public static SDL_PixelFormatEnum PixelFormatEnumARGB32 => BitConverter.IsLittleEndian ? SDL_PixelFormatEnum.BGRA8888 : SDL_PixelFormatEnum.ARGB8888;
+	public static SDL_PixelFormat PixelFormatEnumARGB32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.BGRA8888 : SDL_PixelFormat.ARGB8888;
 
 	/// <summary>
 	/// BGRA format, where each channel represents 8-bits.
 	/// </summary>
-	public static SDL_PixelFormatEnum PixelFormatEnumBGRA32 => BitConverter.IsLittleEndian ? SDL_PixelFormatEnum.ARGB8888 : SDL_PixelFormatEnum.BGRA8888;
+	public static SDL_PixelFormat PixelFormatEnumBGRA32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.ARGB8888 : SDL_PixelFormat.BGRA8888;
 
 	/// <summary>
 	/// ABGR format, where each channel represents 8-bits.
 	/// </summary>
-	public static SDL_PixelFormatEnum PixelFormatEnumABGR32 => BitConverter.IsLittleEndian ? SDL_PixelFormatEnum.RGBA8888 : SDL_PixelFormatEnum.ABGR8888;
+	public static SDL_PixelFormat PixelFormatEnumABGR32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.RGBA8888 : SDL_PixelFormat.ABGR8888;
 
 	/// <summary>
 	/// RGBA format, where each channel represents 8-bits. Alpha channel is ignored.
 	/// </summary>
-	public static SDL_PixelFormatEnum PixelFormatEnumRGBX32 => BitConverter.IsLittleEndian ? SDL_PixelFormatEnum.XBGR8888 : SDL_PixelFormatEnum.RGBX8888;
+	public static SDL_PixelFormat PixelFormatEnumRGBX32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.XBGR8888 : SDL_PixelFormat.RGBX8888;
 
 	/// <summary>
 	/// ARGB format, where each channel represents 8-bits. Alpha channel is ignored.
 	/// </summary>
-	public static SDL_PixelFormatEnum PixelFormatEnumXRGB32 => BitConverter.IsLittleEndian ? SDL_PixelFormatEnum.BGRX8888 : SDL_PixelFormatEnum.XRGB8888;
+	public static SDL_PixelFormat PixelFormatEnumXRGB32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.BGRX8888 : SDL_PixelFormat.XRGB8888;
 
 	/// <summary>
 	/// BGRA format, where each channel represents 8-bits. Alpha channel is ignored.
 	/// </summary>
-	public static SDL_PixelFormatEnum PixelFormatEnumBGRX32 => BitConverter.IsLittleEndian ? SDL_PixelFormatEnum.XRGB8888 : SDL_PixelFormatEnum.BGRX8888;
+	public static SDL_PixelFormat PixelFormatEnumBGRX32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.XRGB8888 : SDL_PixelFormat.BGRX8888;
 
 	/// <summary>
 	/// ABGR format, where each channel represents 8-bits. Alpha channel is ignored.
 	/// </summary>
-	public static SDL_PixelFormatEnum PixelFormatEnumXBGR32 => BitConverter.IsLittleEndian ? SDL_PixelFormatEnum.RGBX8888 : SDL_PixelFormatEnum.XBGR8888;
+	public static SDL_PixelFormat PixelFormatEnumXBGR32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.RGBX8888 : SDL_PixelFormat.XBGR8888;
 
 	/// <summary>
 	/// A fully opaque 8-bit alpha value.

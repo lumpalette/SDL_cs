@@ -15,25 +15,20 @@ public enum SDL_SurfaceFlags : uint
 	/// <summary>
 	/// Surface uses preallocated memory.
 	/// </summary>
-	PreAlloc = 0x00000001u,
+	Preallocated = 0x00000001u,
 
 	/// <summary>
-	/// Surface is RLE encoded.
+	/// Surface needs to be locked to access pixels.
 	/// </summary>
-	RleAccel = 0x00000002u,
+	LockNeeded = 0x00000002u,
 
 	/// <summary>
-	/// Surface is referenced internally.
+	/// Surface is currently locked.
 	/// </summary>
-	DontFree = 0x00000004u,
+	Locked = 0x00000004u,
 
 	/// <summary>
-	/// Surface uses aligned memory.
+	/// Surface uses pixel memory allocated with SDL_aligned_alloc().
 	/// </summary>
-	SimdAligned = 0x00000008u,
-
-	/// <summary>
-	/// Surface uses properties.
-	/// </summary>
-	UsesProperties = 0x00000010u
+	SimdAligned = 0x00000008u
 }

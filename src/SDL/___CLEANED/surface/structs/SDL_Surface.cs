@@ -9,29 +9,42 @@ namespace SDL_cs;
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Surface">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct SDL_Surface
+public readonly unsafe struct SDL_Surface
 {
+	/// <summary>
+	/// Read-only.
+	/// </summary>
 	public readonly SDL_SurfaceFlags Flags;
 
-	public readonly SDL_PixelFormat* Format;
+	/// <summary>
+	/// Read-only.
+	/// </summary>
+	public readonly SDL_PixelFormat Format;
 
+	/// <summary>
+	/// Read-only.
+	/// </summary>
 	public readonly int Width;
 
+	/// <summary>
+	/// Read-only.
+	/// </summary>
 	public readonly int Height;
 
+	/// <summary>
+	/// Read-only.
+	/// </summary>
 	public readonly int Pitch;
 
-	public nint Pixels;
+	/// <summary>
+	/// Read-only pointer, writable pixels if non-null (<see cref="nint.Zero"/>).
+	/// </summary>
+	public readonly nint Pixels;
 
-	private readonly nint _reserved;
-
-	public readonly int Locked;
-
-	private readonly SDL_BlitMap* _listBlitmap;
-
-	public readonly SDL_Rect ClipRect;
-
-	private readonly SDL_BlitMap* _map;
-
+	/// <summary>
+	/// Application reference count, used when freeing surface
+	/// </summary>
 	public readonly int RefCount;
+
+	private readonly SDL_SurfaceData* _internal;
 }

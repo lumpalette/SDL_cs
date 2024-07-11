@@ -16,24 +16,21 @@ unsafe partial class SDL
 	/// <param name="s">The <see cref="SDL_Surface"/> structure to evaluate.</param>
 	/// <returns>True if <paramref name="s"/> needs to be locked, otherwise false.</returns>
 	[Macro]
-	public static bool MustLock(SDL_Surface* s)
-	{
-		return (s->Flags & SDL_SurfaceFlags.RleAccel) != 0;
-	}
+	public static bool MustLock(SDL_Surface* s) =>(s->Flags & (SDL_SurfaceFlags.LockNeeded | SDL_SurfaceFlags.Locked)) == SDL_SurfaceFlags.LockNeeded;
 
 	/// <summary>
-	/// Allocate a new RGB surface with a specific pixel format.
+	/// Allocate a new surface with a specific pixel format.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSurface">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="width">The width of the surface.</param>
 	/// <param name="height">The height of the surface.</param>
-	/// <param name="format">The <see cref="SDL_PixelFormatEnum"/> for the new surface's pixel format.</param>
+	/// <param name="format">The <see cref="SDL_PixelFormat"/> for the new surface's pixel format.</param>
 	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Surface* CreateSurface(int width, int height, SDL_PixelFormatEnum format);
+	public static partial SDL_Surface* CreateSurface(int width, int height, SDL_PixelFormat format);
 
 	/// <summary>
 	/// Allocate a new RGB surface with a specific pixel format and existing pixel data.
@@ -41,18 +38,18 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSurfaceFrom">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="pixels">A pointer to existing pixel data.</param>
 	/// <param name="width">The width of the surface.</param>
 	/// <param name="height">The height of the surface.</param>
+	/// <param name="format">The <see cref="SDL_PixelFormat"/> for the new surface's pixel format.</param>
+	/// <param name="pixels">A pointer to existing pixel data.</param>
 	/// <param name="pitch">The number of bytes between each row, including padding.</param>
-	/// <param name="format">The <see cref="SDL_PixelFormatEnum"/> for the new surface's pixel format.</param>
 	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateSurfaceFrom")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Surface* CreateSurfaceFrom(nint pixels, int width, int height, int pitch, SDL_PixelFormatEnum format);
+	public static partial SDL_Surface* CreateSurfaceFrom(int width, int height, SDL_PixelFormat format, nint pixels, int pitch);
 
 	/// <summary>
-	/// Free an RGB surface.
+	/// Free a surface.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DestroySurface">documentation</see> for more details.
@@ -95,10 +92,10 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to query.</param>
 	/// <param name="colorspace">A pointer filled in with an <see cref="SDL_Colorspace"/> value describing the surface colorspace.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>The colorspace used by the surface, or <see cref="SDL_Colorspace.Unknown"/> if the surface is <see langword="null"/>.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorspace")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetSurfaceColorspace(SDL_Surface* surface, out SDL_Colorspace colorspace);
+	public static partial SDL_Colorspace GetSurfaceColorspace(SDL_Surface* surface);
 
 	/// <summary>
 	/// Set the palette used by a surface.
@@ -112,6 +109,18 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfacePalette")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int SetSurfacePalette(SDL_Surface* surface, SDL_Palette* palette);
+
+	/// <summary>
+	/// Get the palette used by a surface.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSurfacePalette">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="surface">The <see cref="SDL_Surface"/> structure to query.</param>
+	/// <returns>A pointer to the palette used by the surface, or <see langword="null"/> if there is no palette used.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfacePalette")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_Palette* GetSurfacePalette(SDL_Surface* surface);
 
 	/// <summary>
 	/// Set up a surface for directly accessing the pixels.
@@ -172,11 +181,11 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceRLE">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to optimize.</param>
-	/// <param name="enable">False to disable, true to enable RLE acceleration.</param>
+	/// <param name="enabled">True to enable RLE acceleration, false to disable it.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceRLE")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetSurfaceRLE(SDL_Surface* surface, [MarshalAs(UnmanagedType.I4)] bool flag);
+	public static partial int SetSurfaceRLE(SDL_Surface* surface, [MarshalAs(UnmanagedType.I4)] bool enabled);
 
 	/// <summary>
 	/// Returns whether the surface is RLE enabled.
@@ -198,12 +207,12 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceColorKey">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to update.</param>
-	/// <param name="enable">True to enable color key, false to disable color key.</param>
+	/// <param name="enabled">True to enable color key, false to disable color key.</param>
 	/// <param name="key">The transparent pixel.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetSurfaceColorKey(SDL_Surface* surface, [MarshalAs(UnmanagedType.I4)] bool flag, uint key);
+	public static partial int SetSurfaceColorKey(SDL_Surface* surface, [MarshalAs(UnmanagedType.I4)] bool enabled, uint key);
 
 	/// <summary>
 	/// Returns whether the surface has a color key.
@@ -386,39 +395,27 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurface">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface">The existing <see cref="SDL_Surface"/> structure to convert.</param>
-	/// <param name="format">The <see cref="SDL_PixelFormat"/> structure that the new surface is optimized for.</param>
+	/// <param name="format">The new pixel format.</param>
 	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Surface* ConvertSurface(SDL_Surface* surface, SDL_PixelFormat* format);
-
-	/// <summary>
-	/// Copy an existing surface to a new surface of the specified format.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurfaceFormat">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="surface">The existing <see cref="SDL_Surface"/> structure to convert.</param>
-	/// <param name="format">The new pixel format.</param>
-	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertSurfaceFormat")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Surface* ConvertSurfaceFormat(SDL_Surface* surface, SDL_PixelFormatEnum format);
+	public static partial SDL_Surface* ConvertSurface(SDL_Surface* surface, SDL_PixelFormat format);
 
 	/// <summary>
 	/// Copy an existing surface to a new surface of the specified format and colorspace.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurfaceFormatAndColorspace">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ConvertSurfaceAndColorspace">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface">The existing <see cref="SDL_Surface"/> structure to convert.</param>
 	/// <param name="format">The new pixel format.</param>
+	/// <param name="palette">An optional palette to use for indexed formats, may be <see langword="null"/>.</param>
 	/// <param name="colorspace">The new colorspace.</param>
 	/// <param name="props">An <see cref="SDL_PropertiesId"/> with additional color properties, or <see cref="SDL_PropertiesId.Invalid"/>.</param>
 	/// <returns>The new <see cref="SDL_Surface"/> structure that is created or <see langword="null"/> if it fails; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertSurfaceFormatAndColorspace")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertSurfaceAndColorspace")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Surface* ConvertSurfaceFormatAndColorspace(SDL_Surface* surface, SDL_PixelFormatEnum format, SDL_Colorspace colorspace, SDL_PropertiesId props);
+	public static partial SDL_Surface* ConvertSurfaceAndColorspace(SDL_Surface* surface, SDL_PixelFormat format, SDL_Palette* palette, SDL_Colorspace colorspace, SDL_PropertiesId props);
 
 	/// <summary>
 	/// Copy a block of pixels of one format to another format.
@@ -428,16 +425,16 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="width">The width of the block to copy, in pixels.</param>
 	/// <param name="height">The height of the block to copy, in pixels.</param>
-	/// <param name="srcFormat">An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="src"/> pixels format.</param>
+	/// <param name="srcFormat">An <see cref="SDL_PixelFormat"/> value of the <paramref name="src"/> pixels format.</param>
 	/// <param name="src">A pointer to the source pixels.</param>
 	/// <param name="srcPitch">The pitch of the source pixels, in bytes.</param>
-	/// <param name="dstFormat">An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="dst"/> pixels format.</param>
+	/// <param name="dstFormat">An <see cref="SDL_PixelFormat"/> value of the <paramref name="dst"/> pixels format.</param>
 	/// <param name="dst">A pointer to be filled in with new pixel data.</param>
 	/// <param name="dstPitch">The pitch of the destination pixels, in bytes.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertPixels")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ConvertPixels(int width, int height, SDL_PixelFormatEnum srcFormat, nint src, int srcPitch, SDL_PixelFormatEnum dstFormat, nint dst, int dstPitch);
+	public static partial int ConvertPixels(int width, int height, SDL_PixelFormat srcFormat, nint src, int srcPitch, SDL_PixelFormat dstFormat, nint dst, int dstPitch);
 
 	/// <summary>
 	/// Copy a block of pixels of one format and colorspace to another format and colorspace.
@@ -447,12 +444,12 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="width">The width of the block to copy, in pixels.</param>
 	/// <param name="height">The height of the block to copy, in pixels.</param>
-	/// <param name="srcFormat">An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="src"/> pixels format.</param>
+	/// <param name="srcFormat">An <see cref="SDL_PixelFormat"/> value of the <paramref name="src"/> pixels format.</param>
 	/// <param name="srcColorspace">An <see cref="SDL_Colorspace"/> value describing the colorspace of the <paramref name="src"/> pixels.</param>
 	/// <param name="srcProps">An <see cref="SDL_PropertiesId"/> with additional source color properties, or <see cref="SDL_PropertiesId.Invalid"/>.</param>
 	/// <param name="src">A pointer to the source pixels.</param>
 	/// <param name="srcPitch">The pitch of the source pixels, in bytes.</param>
-	/// <param name="dstFormat">An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="dst"/> pixels format.</param>
+	/// <param name="dstFormat">An <see cref="SDL_PixelFormat"/> value of the <paramref name="dst"/> pixels format.</param>
 	/// <param name="dstColorspace">An <see cref="SDL_Colorspace"/> value describing the colorspace of the <paramref name="dst"/> pixels.</param>
 	/// <param name="dstProps">An <see cref="SDL_PropertiesId"/> with additional destination color properties, or <see cref="SDL_PropertiesId.Invalid"/>.</param>
 	/// <param name="dst">A pointer to be filled in with new pixel data.</param>
@@ -460,7 +457,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertPixelsAndColorspace")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ConvertPixelsAndColorspace(int width, int height, SDL_PixelFormatEnum srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, [In] byte[] src, int srcPitch, SDL_PixelFormatEnum dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, [In, Out] byte[] dst, int dstPitch);
+	public static partial int ConvertPixelsAndColorspace(int width, int height, SDL_PixelFormat srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, [In] byte[] src, int srcPitch, SDL_PixelFormat dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, [In, Out] byte[] dst, int dstPitch);
 
 	/// <summary>
 	/// Premultiply the alpha on a block of pixels.
@@ -470,16 +467,16 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="width">The width of the block to convert, in pixels.</param>
 	/// <param name="height">The height of the block to convert, in pixels.</param>
-	/// <param name="srcFormat">An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="src"/> pixels format.</param>
+	/// <param name="srcFormat">An <see cref="SDL_PixelFormat"/> value of the <paramref name="src"/> pixels format.</param>
 	/// <param name="src">A pointer to the source pixels.</param>
 	/// <param name="srcPitch">The pitch of the source pixels, in bytes.</param>
-	/// <param name="dstFormat">An <see cref="SDL_PixelFormatEnum"/> value of the <paramref name="dst"/> pixels format.</param>
+	/// <param name="dstFormat">An <see cref="SDL_PixelFormat"/> value of the <paramref name="dst"/> pixels format.</param>
 	/// <param name="dst">A pointer to be filled in with premultiplied pixel data.</param>
 	/// <param name="dstPitch">The pitch of the destination pixels, in bytes.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PremultiplyAlpha")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int PremultiplyAlpha(int width, int height, SDL_PixelFormatEnum srcFormat, nint src, int srcPitch, SDL_PixelFormatEnum dstFormat, nint dst, int dstPitch);
+	public static partial int PremultiplyAlpha(int width, int height, SDL_PixelFormat srcFormat, nint src, int srcPitch, SDL_PixelFormat dstFormat, nint dst, int dstPitch);
 
 	/// <summary>
 	/// Perform a fast fill of a rectangle with a specific color.
@@ -631,6 +628,37 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceUncheckedScaled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int BlitSurfaceUncheckedScaled(SDL_Surface* src, in SDL_Rect srcRect, SDL_Surface* dst, in SDL_Rect dstRect, SDL_ScaleMode scaleMode);
+
+	/// <summary>
+	/// Map an RGB triple to an opaque pixel value for a surface.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MapSurfaceRGB">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="surface">The surface to use for the pixel format and palette.</param>
+	/// <param name="r">The red component of the pixel in the range 0-255.</param>
+	/// <param name="g">The green component of the pixel in the range 0-255.</param>
+	/// <param name="b">The blue component of the pixel in the range 0-255.</param>
+	/// <returns>A pixel value.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_MapSurfaceRGB")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial uint MapSurfaceRGB(SDL_Surface* surface, byte r, byte g, byte b);
+
+	/// <summary>
+	/// Map an RGB quadruple to an opaque pixel value for a surface.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MapSurfaceRGBA">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="surface">The surface to use for the pixel format and palette.</param>
+	/// <param name="r">The red component of the pixel in the range 0-255.</param>
+	/// <param name="g">The green component of the pixel in the range 0-255.</param>
+	/// <param name="b">The blue component of the pixel in the range 0-255.</param>
+	/// <param name="a">The alpha component of the pixel in the range 0-255.</param>
+	/// <returns>A pixel value.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_MapSurfaceRGBA")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial uint MapSurfaceRGBA(SDL_Surface* surface, byte r, byte g, byte b, byte a);
 
 	/// <summary>
 	/// Retrieves a single pixel from a surface.

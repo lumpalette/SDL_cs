@@ -6,14 +6,12 @@ namespace SDL_cs;
 /// Details about the format of a pixel.
 /// </summary>
 /// <remarks>
-/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">documentation</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormatDetails">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
-public unsafe readonly struct SDL_PixelFormat
+public unsafe readonly struct SDL_PixelFormatDetails
 {
-	public readonly SDL_PixelFormatEnum Format;
-
-	public readonly SDL_Palette* Palette;
+	public readonly SDL_PixelFormat Format;
 
 	public readonly byte BitsPerPixel;
 
@@ -30,14 +28,14 @@ public unsafe readonly struct SDL_PixelFormat
 	public readonly uint BMask;
 
 	public readonly uint AMask;
+
+	public readonly byte RBits;
+
+	public readonly byte GBits;
+
+	public readonly byte BBits;
 	
-	public readonly byte RLoss; // |
-
-	public readonly byte GLoss; // ||
-
-	public readonly byte BLoss; // ||
-
-	public readonly uint ALoss; // |_
+	public readonly uint ABits;
 
 	public readonly byte RShift;
 
@@ -46,8 +44,4 @@ public unsafe readonly struct SDL_PixelFormat
 	public readonly byte BShift;
 
 	public readonly byte AShift;
-
-	private readonly int _refCount;
-
-	private readonly nint _next;
 }

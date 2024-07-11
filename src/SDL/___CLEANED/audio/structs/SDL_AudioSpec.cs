@@ -27,14 +27,4 @@ public unsafe struct SDL_AudioSpec
 	/// Sample rate: sample frames per second.
 	/// </summary>
 	public int Frequency;
-
-	/// <summary>
-	/// If false, ignore <see cref="ChannelMap"/> and use default order.
-	/// </summary>
-	public bool UseChannelMap;
-
-	/// <summary>
-	/// <see cref="Channels"/> items of channel order.
-	/// </summary>
-	public byte[] ChannelMap;
 }

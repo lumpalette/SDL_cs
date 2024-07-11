@@ -4,9 +4,9 @@
 /// All pixel formats known to SDL.
 /// </summary>
 /// <remarks>
-/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormatEnum">documentation</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">documentation</see> for more details.
 /// </remarks>
-public enum SDL_PixelFormatEnum : uint
+public enum SDL_PixelFormat : uint
 {
 	Unknown = 0,
 	Index1Lsb = 286261504,

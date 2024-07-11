@@ -19,7 +19,7 @@ public unsafe struct SDL_DisplayMode
 	/// <summary>
 	/// Pixel format.
 	/// </summary>
-	public SDL_PixelFormatEnum Format;
+	public SDL_PixelFormat Format;
 
 	/// <summary>
 	/// Width, in pixels.

@@ -480,13 +480,13 @@ unsafe partial class SDL_old
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowPixelFormat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window"> The window to query. </param>
-	/// <returns> The pixel format of the window on success or <see cref="SDL_PixelFormatEnum.Unknown"/> on failure; call <see cref="GetError"/> for more information. </returns>
-	public static SDL_PixelFormatEnum GetWindowPixelFormat(SDL_Window* window)
+	/// <returns> The pixel format of the window on success or <see cref="SDL_PixelFormat.Unknown"/> on failure; call <see cref="GetError"/> for more information. </returns>
+	public static SDL_PixelFormat GetWindowPixelFormat(SDL_Window* window)
 	{
 		return _PInvoke(window);
 
 		[DllImport(LibraryName, EntryPoint = "SDL_GetWindowPixelFormat", CallingConvention = CallingConvention.Cdecl)]
-		static extern SDL_PixelFormatEnum _PInvoke(SDL_Window* window);
+		static extern SDL_PixelFormat _PInvoke(SDL_Window* window);
 	}
 
 	/// <summary>
