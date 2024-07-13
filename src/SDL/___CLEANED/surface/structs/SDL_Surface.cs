@@ -37,7 +37,7 @@ public readonly unsafe struct SDL_Surface
 	public readonly int Pitch;
 
 	/// <summary>
-	/// Read-only pointer, writable pixels if non-null (<see cref="nint.Zero"/>).
+	/// Read-only pointer, writable pixels if is not <see cref="nint.Zero"/>.
 	/// </summary>
 	public readonly nint Pixels;
 

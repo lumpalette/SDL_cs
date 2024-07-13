@@ -115,7 +115,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMasksForPixelFormatEnum")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return:  MarshalAs(UnmanagedType.I4)]
+	[return:  MarshalAs(NativeBool)]
 	public static partial int GetMasksForPixelFormatEnum(SDL_PixelFormat format, out int bpp, out uint rMask, out uint gMask, out uint bMask, out uint aMask);
 
 	/// <summary>

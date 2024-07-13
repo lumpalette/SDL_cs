@@ -104,7 +104,7 @@ unsafe partial class SDL
 	/// <returns>True if a gamepad is connected, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasGamepad")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool HasGamepad();
 
 	/// <summary>
@@ -126,11 +126,11 @@ unsafe partial class SDL
 	/// <returns>True if the given joystick is supported by the gamepad interface, false if it isn't or it's an invalid index.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_IsGamepad")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool IsGamepad(SDL_JoystickId joystickId);
 
 	/// <summary>
-	/// Get the implementation dependent name of a gamepad.
+	/// Get the implementation-dependent name of a gamepad.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceName">documentation</see> for more details.
@@ -140,7 +140,7 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string GetGamepadInstanceName(SDL_JoystickId joystickId);
-
+	
 	/// <summary>
 	/// Get the implementation dependent path of a gamepad.
 	/// </summary>
@@ -483,7 +483,7 @@ unsafe partial class SDL
 	/// <returns>True if the gamepad has been opened and is currently connected, or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GamepadConnected")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GamepadConnected(SDL_Gamepad* gamepad);
 
 	/// <summary>
@@ -507,7 +507,7 @@ unsafe partial class SDL
 	/// <param name="enabled">Whether to process gamepad events or not.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetGamepadEventsEnabled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void SetGamepadEventsEnabled([MarshalAs(UnmanagedType.I4)] bool enabled);
+	public static partial void SetGamepadEventsEnabled([MarshalAs(NativeBool)] bool enabled);
 
 	/// <summary>
 	/// Query the state of gamepad event processing.
@@ -518,7 +518,7 @@ unsafe partial class SDL
 	/// <returns>True if gamepad events are being processed, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GamepadEventsEnabled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GamepadEventsEnabled();
 
 	/// <summary>
@@ -600,7 +600,7 @@ unsafe partial class SDL
 	/// <returns>True if the gamepad has this axis, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GamepadHasAxis")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GamepadHasAxis(SDL_Gamepad* gamepad, SDL_GamepadAxis axis);
 
 	/// <summary>
@@ -651,7 +651,7 @@ unsafe partial class SDL
 	/// <returns>True if the gamepad has this button, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GamepadHasButton")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GamepadHasButton(SDL_Gamepad* gamepad, SDL_GamepadButton button);
 
 	/// <summary>
@@ -747,7 +747,7 @@ unsafe partial class SDL
 	/// <returns>True if the sensor exists, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GamepadHasSensor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GamepadHasSensor(SDL_Gamepad* gamepad, SDL_SensorType type);
 
 	/// <summary>
@@ -762,7 +762,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetGamepadSensorEnabled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetGamepadSensorEnabled(SDL_Gamepad* gamepad, SDL_SensorType type, [MarshalAs(UnmanagedType.I4)] bool enabled);
+	public static partial int SetGamepadSensorEnabled(SDL_Gamepad* gamepad, SDL_SensorType type, [MarshalAs(NativeBool)] bool enabled);
 
 	/// <summary>
 	/// Query whether sensor data reporting is enabled for a gamepad.
@@ -775,7 +775,7 @@ unsafe partial class SDL
 	/// <returns>True if the sensor is enabled, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GamepadSensorEnabled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GamepadSensorEnabled(SDL_Gamepad* gamepad, SDL_SensorType type);
 
 	/// <summary>

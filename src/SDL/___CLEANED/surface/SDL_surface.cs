@@ -185,7 +185,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceRLE")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetSurfaceRLE(SDL_Surface* surface, [MarshalAs(UnmanagedType.I4)] bool enabled);
+	public static partial int SetSurfaceRLE(SDL_Surface* surface, [MarshalAs(NativeBool)] bool enabled);
 
 	/// <summary>
 	/// Returns whether the surface is RLE enabled.
@@ -197,7 +197,7 @@ unsafe partial class SDL
 	/// <returns>True if the surface has RLE enabled, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SurfaceHasRLE")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool SurfaceHasRLE(SDL_Surface* surface);
 
 	/// <summary>
@@ -212,7 +212,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetSurfaceColorKey(SDL_Surface* surface, [MarshalAs(UnmanagedType.I4)] bool enabled, uint key);
+	public static partial int SetSurfaceColorKey(SDL_Surface* surface, [MarshalAs(NativeBool)] bool enabled, uint key);
 
 	/// <summary>
 	/// Returns whether the surface has a color key.
@@ -224,7 +224,7 @@ unsafe partial class SDL
 	/// <returns>True if the surface has a color key, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SurfaceHasColorKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool SurfaceHasColorKey(SDL_Surface* surface);
 
 	/// <summary>
@@ -333,7 +333,7 @@ unsafe partial class SDL
 	/// <returns>True if the rectangle intersects the surface, otherwise false and blits will be completely clipped.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceClipRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool SetSurfaceClipRect(SDL_Surface* surface, in SDL_Rect rect);
 
 	/// <summary>
@@ -347,7 +347,7 @@ unsafe partial class SDL
 	/// <returns>True if the rectangle intersects the surface, otherwise false and blits will be completely clipped.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceClipRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool SetSurfaceClipRect(SDL_Surface* surface, nint rect);
 
 	/// <summary>

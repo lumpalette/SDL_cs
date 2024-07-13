@@ -283,7 +283,7 @@ unsafe partial class SDL
 	/// <returns>True if device is valid and paused, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AudioDevicePaused")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool AudioDevicePaused(SDL_AudioDeviceId dev);
 
 	/// <summary>

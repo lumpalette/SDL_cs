@@ -35,7 +35,7 @@ unsafe partial class SDL
 	/// <returns>True if a joystick is connected, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasJoystick")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool HasJoystick();
 
 	/// <summary>
@@ -216,7 +216,7 @@ unsafe partial class SDL
 	/// <returns>True if the joystick is virtual, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_IsJoystickVirtual")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool IsJoystickVirtual(SDL_JoystickId joystickId);
 
 	/// <summary>
@@ -507,7 +507,7 @@ unsafe partial class SDL
 	/// <returns>True if the joystick has been opened, false if it has not; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_JoystickConnected")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool JoystickConnected(SDL_Joystick* joystick);
 
 	/// <summary>
@@ -579,7 +579,7 @@ unsafe partial class SDL
 	/// <param name="enabled">Whether to process joystick events or not.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickEventsEnabled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void SetJoystickEventsEnabled([MarshalAs(UnmanagedType.I4)] bool enabled);
+	public static partial void SetJoystickEventsEnabled([MarshalAs(NativeBool)] bool enabled);
 
 	/// <summary>
 	/// Query the state of joystick event processing.
@@ -590,7 +590,7 @@ unsafe partial class SDL
 	/// <returns>True if joystick events are being processed, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_JoystickEventsEnabled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool JoystickEventsEnabled();
 
 	/// <summary>
@@ -628,7 +628,7 @@ unsafe partial class SDL
 	/// <returns>True if this axis has any initial value, or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickAxisInitialState")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GetJoystickAxisInitialState(SDL_Joystick* joystick, int axis, out short state);
 
 	/// <summary>

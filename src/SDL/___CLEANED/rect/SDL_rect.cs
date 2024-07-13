@@ -118,7 +118,7 @@ unsafe partial class SDL
 	/// <returns>True if there is an intersection, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasRectIntersection")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool HasRectIntersection(in SDL_Rect a, in SDL_Rect b);
 
 	/// <summary>
@@ -132,7 +132,7 @@ unsafe partial class SDL
 	/// <returns>True if there is an intersection, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasRectIntersectionFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool HasRectIntersectionFloat(in SDL_FRect a, in SDL_FRect b);
 
 	/// <summary>
@@ -147,7 +147,7 @@ unsafe partial class SDL
 	/// <returns>True if there is an intersection, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectIntersection")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GetRectIntersection(in SDL_Rect a, in SDL_Rect b, out SDL_Rect result);
 
 	/// <summary>
@@ -162,7 +162,7 @@ unsafe partial class SDL
 	/// <returns>True if there is an intersection, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectIntersectionFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GetRectIntersectionFloat(in SDL_FRect a, in SDL_FRect b, out SDL_FRect result);
 
 	/// <summary>
@@ -206,7 +206,7 @@ unsafe partial class SDL
 	/// <returns>True if any points were enclosed or false if all the points were outside of the clipping rectangle.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectEnclosingPoints")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GetRectEnclosingPoints([In] SDL_Point[] points, int count, in SDL_Rect clip, out SDL_Rect result);
 
 	/// <summary>
@@ -222,7 +222,7 @@ unsafe partial class SDL
 	/// <returns>True if any points were enclosed or false if all the points were outside of the clipping rectangle.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectEnclosingPoints")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GetRectEnclosingPoints([In] SDL_Point[] points, int count, nint clip, out SDL_Rect result);
 
 	/// <summary>
@@ -238,7 +238,7 @@ unsafe partial class SDL
 	/// <returns>True if any points were enclosed or false if all the points were outside of the clipping rectangle.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectEnclosingPointsFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GetRectEnclosingPointsFloat([In] SDL_FPoint[] points, int count, in SDL_FRect clip, out SDL_FRect result);
 
 	/// <summary>
@@ -254,7 +254,7 @@ unsafe partial class SDL
 	/// <returns>True if any points were enclosed or false if all the points were outside of the clipping rectangle.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectEnclosingPointsFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GetRectEnclosingPointsFloat([In] SDL_FPoint[] points, int count, nint clip, out SDL_FRect result);
 
 	/// <summary>
@@ -271,7 +271,7 @@ unsafe partial class SDL
 	/// <returns>True if there is an intersection, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectAndLineIntersection")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GetRectAndLineIntersection(in SDL_Rect rect, ref int x1, ref int y1, ref int x2, ref int y2);
 
 	/// <summary>
@@ -288,6 +288,6 @@ unsafe partial class SDL
 	/// <returns>True if there is an intersection, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectAndLineIntersection")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GetRectAndLineIntersectionFloat(in SDL_FRect rect, ref float x1, ref float y1, ref float x2, ref float y2);
 }

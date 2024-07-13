@@ -150,7 +150,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetBooleanProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetBooleanProperty(SDL_PropertiesId props, string name, [MarshalAs(UnmanagedType.I4)] bool value);
+	public static partial int SetBooleanProperty(SDL_PropertiesId props, string name, [MarshalAs(NativeBool)] bool value);
 
 	/// <summary>
 	/// Return whether a property exists in a set of properties.
@@ -163,7 +163,7 @@ unsafe partial class SDL
 	/// <returns>True if the property exists, or false if it doesn't.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool HasProperty(SDL_PropertiesId props, string name);
 
 	/// <summary>
@@ -247,8 +247,8 @@ unsafe partial class SDL
 	/// <returns>The value of the property, or <paramref name="defaultValue"/> if it is not set or not a boolean property.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetBooleanProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
-	public static partial bool GetBooleanProperty(SDL_PropertiesId props, string name, [MarshalAs(UnmanagedType.I4)] bool defaultValue = false);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetBooleanProperty(SDL_PropertiesId props, string name, [MarshalAs(NativeBool)] bool defaultValue = false);
 
 	/// <summary>
 	/// Clear a property on a set of properties.

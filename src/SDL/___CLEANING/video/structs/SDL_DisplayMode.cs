@@ -22,12 +22,12 @@ public unsafe struct SDL_DisplayMode
 	public SDL_PixelFormat Format;
 
 	/// <summary>
-	/// Width, in pixels.
+	/// Width.
 	/// </summary>
 	public int Width;
 
 	/// <summary>
-	/// Height, in pixels.
+	/// Height.
 	/// </summary>
 	public int Height;
 
@@ -40,6 +40,16 @@ public unsafe struct SDL_DisplayMode
 	/// Refresh rate (or zero for unspecified).
 	/// </summary>
 	public float RefreshRate;
+
+	/// <summary>
+	/// Precise refresh rate numerator (or 0 for unspecified).
+	/// </summary>
+	public int RefreshRateNumerator;
+
+	/// <summary>
+	/// Precise refresh rate denominator
+	/// </summary>
+	public int RefreshRateDenominator;
 
 	private readonly nint _driverData;
 }

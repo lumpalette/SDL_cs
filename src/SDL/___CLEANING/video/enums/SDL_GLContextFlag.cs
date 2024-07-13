@@ -6,7 +6,7 @@ namespace SDL_cs;
 /// Possible values to be set for the <see cref="FIXME:SDL_GL_CONTEXT_FLAGS"/> attribute.
 /// </summary>
 /// <remarks>
-/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/Type">documentation</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GLcontextFlag">documentation</see> for more details.
 /// </remarks>
 [Flags]
 public enum SDL_GLContextFlag

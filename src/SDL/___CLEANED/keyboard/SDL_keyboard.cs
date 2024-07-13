@@ -16,7 +16,7 @@ unsafe partial class SDL
 	/// <returns>True if a keyboard is connected, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasKeyboard")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool HasKeyboard();
 
 	/// <summary>
@@ -259,7 +259,7 @@ unsafe partial class SDL
 	/// <returns>True if text input events are enabled else false.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_TextInputActive")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool TextInputActive(SDL_Window* window);
 
 	/// <summary>
@@ -321,7 +321,7 @@ unsafe partial class SDL
 	/// <returns>True if the platform has some screen keyboard support or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasScreenKeyboardSupport")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool HasScreenKeyboardSupport();
 
 	/// <summary>
@@ -334,6 +334,6 @@ unsafe partial class SDL
 	/// <returns>True if screen keyboard is shown or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ScreenKeyboardShown")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool ScreenKeyboardShown(SDL_Window* window);
 }

@@ -18,7 +18,7 @@ unsafe partial class SDL
 	/// <returns>True if a mouse is connected, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasMouse")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool HasMouse();
 
 	/// <summary>
@@ -131,7 +131,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRelativeMouseMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetRelativeMouseMode([MarshalAs(UnmanagedType.I4)] bool enabled);
+	public static partial int SetRelativeMouseMode([MarshalAs(NativeBool)] bool enabled);
 
 	/// <summary>
 	/// Capture the mouse and to track input outside an SDL window.
@@ -143,7 +143,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CaptureMouse")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int CaptureMouse([MarshalAs(UnmanagedType.I4)] bool enabled);
+	public static partial int CaptureMouse([MarshalAs(NativeBool)] bool enabled);
 
 	/// <summary>
 	/// Query whether relative mouse mode is enabled.
@@ -154,7 +154,7 @@ unsafe partial class SDL
 	/// <returns>True if relative mode is enabled or false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRelativeMouseMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool GetRelativeMouseMode();
 
 	/// <summary>
@@ -276,7 +276,7 @@ unsafe partial class SDL
 	/// <returns>True if the cursor is being shown, or false if the cursor is hidden.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CursorVisible")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(UnmanagedType.I4)]
+	[return: MarshalAs(NativeBool)]
 	public static partial bool CursorVisible();
 
 	/// <summary>

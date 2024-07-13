@@ -1,4 +1,6 @@
-﻿namespace SDL_cs;
+﻿using System.Runtime.InteropServices;
+
+namespace SDL_cs;
 
 /// <summary>
 /// Defines the C# bindings to operate with SDL.
@@ -6,4 +8,6 @@
 public static unsafe partial class SDL
 {
 	private const string LibraryName = "SDL3";
+
+	private const UnmanagedType NativeBool = UnmanagedType.I4;
 }
