@@ -143,14 +143,14 @@ partial class SDL_Prop
 		public const string WidthNumber = "width";
 
 		/// <summary>
-		/// The x position of the window, or <see cref="SDL_Windowpos.Centered"/>, defaults to
-		/// <see cref="SDL_Windowpos.Undefined"/>. This is relative to the parent for windows with the "parent" property set.
+		/// The x position of the window, or <see cref="SDL.WindowposCentered"/>, defaults to <see cref="SDL.WindowposUndefined"/>.
+		/// This is relative to the parent for windows with the "parent" property set.
 		/// </summary>
 		public const string XNumber = "x";
 
 		/// <summary>
-		/// The y position of the window, or <see cref="SDL_Windowpos.Centered"/>, defaults to
-		/// <see cref="SDL_Windowpos.Undefined"/>. This is relative to the parent for windows with the "parent" property set.
+		/// The x position of the window, or <see cref="SDL.WindowposCentered"/>, defaults to <see cref="SDL.WindowposUndefined"/>.
+		/// This is relative to the parent for windows with the "parent" property set.
 		/// </summary>
 		public const string YNumber = "y";
 

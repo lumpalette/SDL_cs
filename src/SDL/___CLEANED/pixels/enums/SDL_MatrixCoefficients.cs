@@ -1,7 +1,7 @@
 ﻿namespace SDL_cs;
 
 /// <summary>
-/// The matrix coefficients. These are as described by <see href="https://www.itu.int/rec/T-REC-H.273-201612-S/en"/>.
+/// Colorspace matrix coefficients. These are as described by <see href="https://www.itu.int/rec/T-REC-H.273-201612-S/en"/>.
 /// </summary>
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MatrixCoefficients">documentation</see> for more details.

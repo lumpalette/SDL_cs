@@ -14,22 +14,22 @@ unsafe partial class SDL
 	public static SDL_PixelFormat DefinePixelFormat(SDL_PixelType type, byte order, SDL_PackedLayout layout, byte bits, byte bytes) => (SDL_PixelFormat)((1 << 28) | ((byte)type << 24) | (order << 20) | ((byte)layout << 16) | (bits << 8) | bytes);
 
 	[Macro]
-	public static byte PixelFlag(SDL_PixelFormat x) => (byte)(((uint)x >> 28) & 0x0F);
+	public static uint PixelFlag(SDL_PixelFormat x) => ((uint)x >> 28) & 0x0F;
 
 	[Macro]
 	public static SDL_PixelType PixelType(SDL_PixelFormat x) => (SDL_PixelType)(((uint)x >> 24) & 0x0F);
 
 	[Macro]
-	public static byte PixelOrder(SDL_PixelFormat x) => (byte)(((uint)x >> 20) & 0x0F);
+	public static uint PixelOrder(SDL_PixelFormat x) => ((uint)x >> 20) & 0x0F;
 
 	[Macro]
 	public static SDL_PackedLayout PixelLayout(SDL_PixelFormat x) => (SDL_PackedLayout)(((uint)x >> 16) & 0x0F);
 
 	[Macro]
-	public static byte BitsPerPixel(SDL_PixelFormat x) => (byte)(IsPixelFormatFourCC(x) ? 0 : (((uint)x >> 8) & 0xFF));
+	public static uint BitsPerPixel(SDL_PixelFormat x) => IsPixelFormatFourCC(x) ? 0 : (((uint)x >> 8) & 0xFF);
 
 	[Macro]
-	public static byte BytesPerPixel(SDL_PixelFormat x) => (byte)(IsPixelFormatFourCC(x) ? (((x == SDL_PixelFormat.YUY2) || (x == SDL_PixelFormat.UYVY) || (x == SDL_PixelFormat.YVYU) || (x == SDL_PixelFormat.P010)) ? 2u : 1u) : (((uint)x >> 0) & 0xFF));
+	public static uint BytesPerPixel(SDL_PixelFormat x) => IsPixelFormatFourCC(x) ? (((x == SDL_PixelFormat.YUY2) || (x == SDL_PixelFormat.UYVY) || (x == SDL_PixelFormat.YVYU) || (x == SDL_PixelFormat.P010)) ? 2u : 1u) : (((uint)x >> 0) & 0xFF);
 
 	[Macro]
 	public static bool IsPixelFormatIndexed(SDL_PixelFormat x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.Index1) || (PixelType(x) == SDL_PixelType.Index2) || (PixelType(x) == SDL_PixelType.Index4) || (PixelType(x) == SDL_PixelType.Index8));
@@ -104,7 +104,7 @@ unsafe partial class SDL
 	/// Convert one of the enumerated pixel formats to a bpp value and RGBA masks.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMasksForPixelFormatEnum">here</see>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMasksForPixelFormat">here</see>
 	/// </remarks>
 	/// <param name="format">One of the <see cref="SDL_PixelFormat"/> values.</param>
 	/// <param name="bpp">A bits per pixel value; usually 15, 16, or 32.</param>
@@ -113,16 +113,16 @@ unsafe partial class SDL
 	/// <param name="bMask">A pointer filled in with the blue mask for the format.</param>
 	/// <param name="aMask">A pointer filled in with the alpha mask for the format.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMasksForPixelFormatEnum")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMasksForPixelFormat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return:  MarshalAs(NativeBool)]
-	public static partial int GetMasksForPixelFormatEnum(SDL_PixelFormat format, out int bpp, out uint rMask, out uint gMask, out uint bMask, out uint aMask);
+	public static partial int GetMasksForPixelFormat(SDL_PixelFormat format, out int bpp, out uint rMask, out uint gMask, out uint bMask, out uint aMask);
 
 	/// <summary>
 	/// Convert a bpp value and RGBA masks to an enumerated pixel format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPixelFormatEnumForMasks">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPixelFormatForMasks">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="bpp">A bits per pixel value; usually 15, 16, or 32.</param>
 	/// <param name="rMask">The red mask for the format.</param>
@@ -130,9 +130,9 @@ unsafe partial class SDL
 	/// <param name="bMask">The blue mask for the format.</param>
 	/// <param name="aMask">The alpha mask for the format.</param>
 	/// <returns>The <see cref="SDL_PixelFormat"/> value corresponding to the format masks, or <see cref="SDL_PixelFormat.Unknown"/> if there isn't a match.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPixelFormatEnumForMasks")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPixelFormatForMasks")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_PixelFormat GetPixelFormatEnumForMasks(int bpp, uint rMask, uint gMask, uint bMask, uint aMask);
+	public static partial SDL_PixelFormat GetPixelFormatForMasks(int bpp, uint rMask, uint gMask, uint bMask, uint aMask);
 
 	/// <summary>
 	/// Create an <see cref="SDL_PixelFormatDetails"/> structure corresponding to a pixel format.
@@ -253,42 +253,52 @@ unsafe partial class SDL
 	/// <summary>
 	/// RGBA format, where each channel represents 8-bits.
 	/// </summary>
-	public static SDL_PixelFormat PixelFormatEnumRGBA32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.ABGR8888 : SDL_PixelFormat.RGBA8888;
+	public static SDL_PixelFormat PixelFormatRGBA32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.ABGR8888 : SDL_PixelFormat.RGBA8888;
 
 	/// <summary>
 	/// ARGB format, where each channel represents 8-bits.
 	/// </summary>
-	public static SDL_PixelFormat PixelFormatEnumARGB32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.BGRA8888 : SDL_PixelFormat.ARGB8888;
+	public static SDL_PixelFormat PixelFormatARGB32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.BGRA8888 : SDL_PixelFormat.ARGB8888;
 
 	/// <summary>
 	/// BGRA format, where each channel represents 8-bits.
 	/// </summary>
-	public static SDL_PixelFormat PixelFormatEnumBGRA32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.ARGB8888 : SDL_PixelFormat.BGRA8888;
+	public static SDL_PixelFormat PixelFormatBGRA32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.ARGB8888 : SDL_PixelFormat.BGRA8888;
 
 	/// <summary>
 	/// ABGR format, where each channel represents 8-bits.
 	/// </summary>
-	public static SDL_PixelFormat PixelFormatEnumABGR32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.RGBA8888 : SDL_PixelFormat.ABGR8888;
+	public static SDL_PixelFormat PixelFormatABGR32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.RGBA8888 : SDL_PixelFormat.ABGR8888;
 
 	/// <summary>
 	/// RGBA format, where each channel represents 8-bits. Alpha channel is ignored.
 	/// </summary>
-	public static SDL_PixelFormat PixelFormatEnumRGBX32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.XBGR8888 : SDL_PixelFormat.RGBX8888;
+	public static SDL_PixelFormat PixelFormatRGBX32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.XBGR8888 : SDL_PixelFormat.RGBX8888;
 
 	/// <summary>
 	/// ARGB format, where each channel represents 8-bits. Alpha channel is ignored.
 	/// </summary>
-	public static SDL_PixelFormat PixelFormatEnumXRGB32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.BGRX8888 : SDL_PixelFormat.XRGB8888;
+	public static SDL_PixelFormat PixelFormatXRGB32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.BGRX8888 : SDL_PixelFormat.XRGB8888;
 
 	/// <summary>
 	/// BGRA format, where each channel represents 8-bits. Alpha channel is ignored.
 	/// </summary>
-	public static SDL_PixelFormat PixelFormatEnumBGRX32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.XRGB8888 : SDL_PixelFormat.BGRX8888;
+	public static SDL_PixelFormat PixelFormatBGRX32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.XRGB8888 : SDL_PixelFormat.BGRX8888;
 
 	/// <summary>
 	/// ABGR format, where each channel represents 8-bits. Alpha channel is ignored.
 	/// </summary>
-	public static SDL_PixelFormat PixelFormatEnumXBGR32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.RGBX8888 : SDL_PixelFormat.XBGR8888;
+	public static SDL_PixelFormat PixelFormatXBGR32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.RGBX8888 : SDL_PixelFormat.XBGR8888;
+
+	/// <summary>
+	/// The default colorspace for RGB surfaces if no colorspace is specified.
+	/// </summary>
+	public static SDL_Colorspace ColorspaceRGBDefault => SDL_Colorspace.SRGB;
+
+	/// <summary>
+	/// The default colorspace for YUV surfaces if no colorspace is specified.
+	/// </summary>
+	public static SDL_Colorspace ColorspaceYUVDefault => SDL_Colorspace.Jpeg;
 
 	/// <summary>
 	/// A fully opaque 8-bit alpha value.

@@ -13,7 +13,7 @@
 /// </para>
 /// </remarks>
 [Typedef]
-public enum SDL_AudioFormat : ushort
+public enum SDL_AudioFormat
 {
 	/// <summary>
 	/// Unsigned 8-bit samples.
@@ -53,32 +53,5 @@ public enum SDL_AudioFormat : ushort
 	/// <summary>
 	/// 32-bit floating point samples, in big endian.
 	/// </summary>
-	F32BigEndian = 0x9120,
-
-	/// <summary>
-	/// Signed 16-bit samples.
-	/// </summary>
-	/// <remarks>
-	/// This entry assumes the machine is little-endian. The format based on the system's endianness can be queried using
-	/// <see cref="SDL.AudioFormatS16"/>.
-	/// </remarks>
-	S16 = S16LittleEndian,
-
-	/// <summary>
-	/// 32-bit integer samples.
-	/// </summary>
-	/// <remarks>
-	/// This entry assumes the machine is little-endian. The format based on the system's endianness can be queried using
-	/// <see cref="SDL.AudioFormatS32"/>.
-	/// </remarks>
-	S32 = S32LittleEndian,
-
-	/// <summary>
-	/// 32-bit floating point samples.
-	/// </summary>
-	/// <remarks>
-	/// This entry assumes the machine is little-endian. The format based on the system's endianness can be queried using
-	/// <see cref="SDL.AudioFormatF32"/>.
-	/// </remarks>
-	F32 = F32LittleEndian
+	F32BigEndian = 0x9120
 }

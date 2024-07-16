@@ -35,13 +35,13 @@ unsafe partial class SDL
 	/// Get the name of a keyboard.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboardInstanceName">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboardNameForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="keyboardId">The keyboard instance ID.</param>
+	/// <param name="instanceId">The keyboard instance ID.</param>
 	/// <returns>The name of the selected keyboard, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardInstanceName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardNameForID", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial string? GetKeyboardInstanceName(SDL_KeyboardId keyboardId);
+	public static partial string? GetKeyboardNameForID(SDL_KeyboardId instanceId);
 
 	/// <summary>
 	/// Query the window which currently has keyboard focus.
@@ -131,7 +131,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDefaultScancodeFromKey">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="key">The desired <see cref="SDL_Keycode"/> to query.</param>
-	/// <param name="modState">A pointer to the modifier state that would be used when the scancode generates this key, may be <see cref="nint.Zero"/>.</param>
+	/// <param name="modState">A pointer to the modifier state that would be used when the scancode generates this key, may be <see langword="null"/>.</param>
 	/// <returns>The <see cref="SDL_Scancode"/> that corresponds to the given <see cref="SDL_Keycode"/>.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDefaultScancodeFromKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -144,11 +144,11 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDefaultScancodeFromKey">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="key">The desired <see cref="SDL_Keycode"/> to query.</param>
-	/// <param name="modState">The modifier state that would be used when the scancode generates this key, may be <see cref="nint.Zero"/>.</param>
+	/// <param name="modState">A pointer to the modifier state that would be used when the scancode generates this key, may be <see langword="null"/>.</param>
 	/// <returns>The <see cref="SDL_Scancode"/> that corresponds to the given <see cref="SDL_Keycode"/>.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDefaultScancodeFromKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Scancode GetDefaultScancodeFromKey(SDL_Keycode key, nint modState);
+	public static partial SDL_Scancode GetDefaultScancodeFromKey(SDL_Keycode key, SDL_Keymod* modState);
 
 	/// <summary>
 	/// Get the scancode corresponding to the given key code according to the current keyboard layout.
@@ -157,7 +157,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetScancodeFromKey">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="key">The desired <see cref="SDL_Keycode"/> to query.</param>
-	/// <param name="modState">A pointer to the modifier state that would be used when the scancode generates this key, may be <see cref="nint.Zero"/>.</param>
+	/// <param name="modState">A pointer to the modifier state that would be used when the scancode generates this key, may be <see langword="null"/>.</param>
 	/// <returns>The <see cref="SDL_Scancode"/> that corresponds to the given <see cref="SDL_Keycode"/>.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetScancodeFromKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -170,11 +170,11 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetScancodeFromKey">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="key">The desired <see cref="SDL_Keycode"/> to query.</param>
-	/// <param name="modState">The modifier state that would be used when the scancode generates this key, may be <see cref="nint.Zero"/>.</param>
+	/// <param name="modState">A pointer to the modifier state that would be used when the scancode generates this key, may be <see langword="null"/>.</param>
 	/// <returns>The <see cref="SDL_Scancode"/> that corresponds to the given <see cref="SDL_Keycode"/>.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetScancodeFromKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Scancode GetScancodeFromKey(SDL_Keycode key, nint modState);
+	public static partial SDL_Scancode GetScancodeFromKey(SDL_Keycode key, SDL_Keymod* modState);
 
 	/// <summary>
 	/// Set a human-readable name for a scancode.
@@ -287,30 +287,60 @@ unsafe partial class SDL
 	public static partial int ClearComposition(SDL_Window* window);
 
 	/// <summary>
-	/// Set the rectangle used to type Unicode text inputs.
+	/// Set the area used to type Unicode text input.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextInputRect">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextInputArea">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="window">The window for which to set the text input rectangle.</param>
-	/// <param name="rect">The <see cref="SDL_Rect"/> structure representing the rectangle to receive text (ignored if <see cref="nint.Zero"/>).</param>
+	/// <param name="window">The window for which to set the text input area.</param>
+	/// <param name="rect">The <see cref="SDL_Rect"/> representing the text input area, in window coordinates, or <see langword="null"/> to clear it.</param>
+	/// <param name="cursor">The offset of the current cursor location relative to <paramref name="rect"/>.X, in window coordinates.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextInputRect")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextInputArea")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetTextInputRect(SDL_Window* window, in SDL_Rect rect);
+	public static partial int SetTextInputArea(SDL_Window* window, in SDL_Rect rect, int cursor);
 
 	/// <summary>
-	/// Set the rectangle used to type Unicode text inputs.
+	/// Set the area used to type Unicode text input.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextInputRect">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextInputArea">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="window">The window for which to set the text input rectangle.</param>
-	/// <param name="rect">The <see cref="SDL_Rect"/> structure representing the rectangle to receive text (ignored if <see langword="null"/>).</param>
+	/// <param name="window">The window for which to set the text input area.</param>
+	/// <param name="rect">The <see cref="SDL_Rect"/> representing the text input area, in window coordinates, or <see langword="null"/> to clear it.</param>
+	/// <param name="cursor">The offset of the current cursor location relative to <paramref name="rect"/>.X, in window coordinates.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextInputRect")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextInputArea")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetTextInputRect(SDL_Window* window, nint rect);
+	public static partial int SetTextInputArea(SDL_Window* window, SDL_Rect* rect, int cursor);
+
+	/// <summary>
+	/// Get the area used to type Unicode text input.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextInputArea">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="window">The window for which to query the text input area.</param>
+	/// <param name="rect">A pointer to an <see cref="SDL_Rect"/> filled in with the text input area, may be <see langword="null"/>.</param>
+	/// <param name="cursor">A pointer to the offset of the current cursor location relative to <paramref name="rect"/>.X.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextInputArea")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int GetTextInputArea(SDL_Window* window, out SDL_Rect rect, out int cursor);
+
+	/// <summary>
+	/// Get the area used to type Unicode text input.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextInputArea">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="window">The window for which to query the text input area.</param>
+	/// <param name="rect">A pointer to an <see cref="SDL_Rect"/> filled in with the text input area, may be <see langword="null"/>.</param>
+	/// <param name="cursor">A pointer to the offset of the current cursor location relative to <paramref name="rect"/>.X.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextInputArea")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int GetTextInputArea(SDL_Window* window, SDL_Rect* rect, out int cursor);
 
 	/// <summary>
 	/// Check whether the platform has screen keyboard support.

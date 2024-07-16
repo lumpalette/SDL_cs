@@ -37,13 +37,13 @@ unsafe partial class SDL
 	/// Get the name of a mouse.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMouseInstanceName">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMouseNameForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="mouseId">The mouse instance ID.</param>
+	/// <param name="instanceId">The mouse instance ID.</param>
 	/// <returns>The name of the selected mouse, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMouseInstanceName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMouseNameForID", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial string? GetMouseInstanceName(SDL_MouseId mouseId);
+	public static partial string? GetMouseNameForId(SDL_MouseId instanceId);
 
 	/// <summary>
 	/// Get the window which currently has mouse focus.

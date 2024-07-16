@@ -22,37 +22,37 @@ unsafe partial class SDL
 	/// Get the implementation dependent name of a sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorInstanceName">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorNameForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="sensorId">The sensor instance ID.</param>
-	/// <returns>The sensor name, or <see langword="null"/> if <paramref name="sensorId"/> is not valid.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorInstanceName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
+	/// <param name="instanceId">The sensor instance ID.</param>
+	/// <returns>The sensor name, or <see langword="null"/> if <paramref name="instanceId"/> is not valid.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorNameForID", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial string? GetSensorInstanceName(SDL_SensorId sensorId);
+	public static partial string? GetSensorNameForId(SDL_SensorId instanceId);
 
 	/// <summary>
 	/// Get the type of a sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorInstanceType">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorTypeForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="sensorId">The sensor instance ID.</param>
-	/// <returns>The <see cref="SDL_SensorType"/>, or <see cref="SDL_SensorType.Invalid"/> if <paramref name="sensorId"/> is not valid.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorInstanceType")]
+	/// <param name="instanceId">The sensor instance ID.</param>
+	/// <returns>The <see cref="SDL_SensorType"/>, or <see cref="SDL_SensorType.Invalid"/> if <paramref name="instanceId"/> is not valid.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorTypeForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_SensorType GetSensorInstanceType(SDL_SensorId sensorId);
+	public static partial SDL_SensorType GetSensorTypeForId(SDL_SensorId instanceId);
 
 	/// <summary>
 	/// Get the platform dependent type of a sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorInstanceNonPortableType">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorNonPortableTypeForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="sensorId">The sensor instance ID.</param>
-	/// <returns>The sensor platform dependent type, or -1 if <paramref name="sensorId"/> is not valid.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorInstanceNonPortableType")]
+	/// <param name="instanceId">The sensor instance ID.</param>
+	/// <returns>The sensor platform dependent type, or -1 if <paramref name="instanceId"/> is not valid.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorNonPortableTypeForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetSensorInstanceNonPortableType(SDL_SensorId sensorId);
+	public static partial int GetSensorNonPortableTypeForId(SDL_SensorId instanceId);
 
 	/// <summary>
 	/// Open a sensor for use.
@@ -60,23 +60,23 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenSensor">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="sensorId">The sensor instance ID.</param>
+	/// <param name="instanceId">The sensor instance ID.</param>
 	/// <returns>An <see cref="SDL_Sensor"/> object, or <see langword="null"/> if an error occurred.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_OpenSensor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Sensor* OpenSensor(SDL_SensorId sensorId);
+	public static partial SDL_Sensor* OpenSensor(SDL_SensorId instanceId);
 
 	/// <summary>
 	/// Return the <see cref="SDL_Sensor"/> associated with an instance ID.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorFromInstanceID">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorFromID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="sensorId">The sensor instance ID.</param>
+	/// <param name="instanceId">The sensor instance ID.</param>
 	/// <returns>An <see cref="SDL_Sensor"/> object.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorFromInstanceID")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorFromID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Sensor* GetSensorFromInstanceId(SDL_SensorId sensorId);
+	public static partial SDL_Sensor* GetSensorFromId(SDL_SensorId instanceId);
 
 	/// <summary>
 	/// Get the properties associated with a sensor.
@@ -130,13 +130,13 @@ unsafe partial class SDL
 	/// Get the instance ID of a sensor.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorInstanceID">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensor">The <see cref="SDL_Sensor"/> object to inspect.</param>
 	/// <returns>The sensor instance ID, or <see cref="SDL_SensorId.Invalid"/> if <paramref name="sensor"/> is <see langword="null"/>.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorInstanceID")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_SensorId GetSensorInstanceId(SDL_Sensor* sensor);
+	public static partial SDL_SensorId GetSensorId(SDL_Sensor* sensor);
 
 	/// <summary>
 	/// Get the current state of an opened sensor.

@@ -1,7 +1,7 @@
 ﻿namespace SDL_cs;
 
 /// <summary>
-/// The chroma sample location.
+/// Colorspace chroma sample location.
 /// </summary>
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ChromaLocation">documentation</see> for more details.

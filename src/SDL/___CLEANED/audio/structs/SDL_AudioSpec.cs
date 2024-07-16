@@ -9,7 +9,6 @@ namespace SDL_cs;
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioSpec">documentation</see> for more details.
 /// </remarks>
-[NativeMarshalling(typeof(SDL_AudioSpecMarshaller))]
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SDL_AudioSpec
 {

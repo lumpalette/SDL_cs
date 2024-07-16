@@ -243,11 +243,11 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenAudioDevice">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="devId">The device instance ID to open, or <see cref="SDL_AudioDeviceId.DefaultPlayback"/> or <see cref="SDL_AudioDeviceId.DefaultRecording"/> for the most reasonable default device.</param>
-	/// <param name="spec">The requested device configuration. Can be <see cref="nint.Zero"/> to use reasonable defaults.</param>
+	/// <param name="spec">The requested device configuration. Can be <see langword="null"/> to use reasonable defaults.</param>
 	/// <returns>The device ID on success, <see cref="SDL_AudioDeviceId.Invalid"/> on error; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_OpenAudioDevice")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_AudioDeviceId OpenAudioDevice(SDL_AudioDeviceId devId, nint spec);
+	public static partial SDL_AudioDeviceId OpenAudioDevice(SDL_AudioDeviceId devId, SDL_AudioSpec* spec);
 
 	/// <summary>
 	/// Use this function to pause audio playback on a specified device.
@@ -416,8 +416,8 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamFormat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream">The <see cref="SDL_AudioStream"/> to query.</param>
-	/// <param name="srcSpec">Where to store the input audio format; ignored if <see cref="nint.Zero"/>.</param>
-	/// <param name="dstSpec">Where to store the output audio format; ignored if <see cref="nint.Zero"/>.</param>
+	/// <param name="srcSpec">Where to store the input audio format; ignored if <see langword="null"/>.</param>
+	/// <param name="dstSpec">Where to store the output audio format; ignored if <see langword="null"/>.</param>
 	/// <returns>0 on success, or -1 on error.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioStreamFormat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -430,12 +430,12 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamFormat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream">The <see cref="SDL_AudioStream"/> to query.</param>
-	/// <param name="srcSpec">Where to store the input audio format; ignored if <see cref="nint.Zero"/>.</param>
-	/// <param name="dstSpec">Where to store the output audio format; ignored if <see cref="nint.Zero"/>.</param>
+	/// <param name="srcSpec">Where to store the input audio format; ignored if <see langword="null"/>.</param>
+	/// <param name="dstSpec">Where to store the output audio format; ignored if <see langword="null"/>.</param>
 	/// <returns>0 on success, or -1 on error.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioStreamFormat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetAudioStreamFormat(SDL_AudioStream* stream, nint srcSpec, nint dstSpec);
+	public static partial int GetAudioStreamFormat(SDL_AudioStream* stream, SDL_AudioSpec* srcSpec, SDL_AudioSpec* dstSpec);
 
 	/// <summary>
 	/// Change the input and output formats of an audio stream.
@@ -444,8 +444,8 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioStreamFormat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream">The stream the format is being changed.</param>
-	/// <param name="srcSpec">The new format of the audio input; if <see cref="nint.Zero"/>, it is not changed.</param>
-	/// <param name="dstSpec">The new format of the audio output; if <see cref="nint.Zero"/>, it is not changed.</param>
+	/// <param name="srcSpec">The new format of the audio input; if <see langword="null"/>, it is not changed.</param>
+	/// <param name="dstSpec">The new format of the audio output; if <see langword="null"/>, it is not changed.</param>
 	/// <returns>0 on success, or -1 on error.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioStreamFormat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -458,12 +458,12 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetAudioStreamFormat">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream">The stream the format is being changed.</param>
-	/// <param name="srcSpec">The new format of the audio input; if <see cref="nint.Zero"/>, it is not changed.</param>
-	/// <param name="dstSpec">The new format of the audio output; if <see cref="nint.Zero"/>, it is not changed.</param>
+	/// <param name="srcSpec">The new format of the audio input; if <see langword="null"/>, it is not changed.</param>
+	/// <param name="dstSpec">The new format of the audio output; if <see langword="null"/>, it is not changed.</param>
 	/// <returns>0 on success, or -1 on error.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioStreamFormat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetAudioStreamFormat(SDL_AudioStream* stream, nint srcSpec, nint dstSpec);
+	public static partial int SetAudioStreamFormat(SDL_AudioStream* stream, SDL_AudioSpec* srcSpec, SDL_AudioSpec* dstSpec);
 
 	/// <summary>
 	/// Get the frequency ratio of an audio stream.
@@ -775,9 +775,9 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenAudioDeviceStream">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="devId">An audio device to open, or <see cref="SDL_AudioDeviceId.DefaultPlayback"/> or <see cref="SDL_AudioDeviceId.DefaultRecording"/></param>
-	/// <param name="spec">The audio stream's data format. Can be <see cref="nint.Zero"/>.</param>
+	/// <param name="spec">The audio stream's data format. Can be <see langword="null"/>.</param>
 	/// <param name="callback">A callback where the app will provide new data for playback, or receive new data for recording. Can be <see langword="null"/>, in which case the app will need to call <see cref="PutAudioStreamData"/> or <see cref="GetAudioStreamData"/> as necessary.</param>
-	/// <param name="userData">App-controlled pointer passed to callback. Can be <see langword="null"/>. Ignored if <paramref name="callback"/> is <see langword="null"/>.</param>
+	/// <param name="userData">App-controlled pointer passed to callback. Can be <see cref="nint.Zero"/>. Ignored if <paramref name="callback"/> is <see langword="null"/>.</param>
 	/// <returns>An audio stream ready to use on success, <see langword="null"/> on error; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_OpenAudioDeviceStream")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -790,13 +790,13 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenAudioDeviceStream">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="devId">An audio device to open, or <see cref="SDL_AudioDeviceId.DefaultPlayback"/> or <see cref="SDL_AudioDeviceId.DefaultRecording"/></param>
-	/// <param name="spec">The audio stream's data format. Can be <see cref="nint.Zero"/>.</param>
+	/// <param name="spec">The audio stream's data format. Can be <see langword="null"/>.</param>
 	/// <param name="callback">A callback where the app will provide new data for playback, or receive new data for recording. Can be <see langword="null"/>, in which case the app will need to call <see cref="PutAudioStreamData"/> or <see cref="GetAudioStreamData"/> as necessary.</param>
-	/// <param name="userData">App-controlled pointer passed to callback. Can be <see langword="null"/>. Ignored if <paramref name="callback"/> is <see langword="null"/>.</param>
+	/// <param name="userData">App-controlled pointer passed to callback. Can be <see cref="nint.Zero"/>. Ignored if <paramref name="callback"/> is <see langword="null"/>.</param>
 	/// <returns>An audio stream ready to use on success, <see langword="null"/> on error; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_OpenAudioDeviceStream")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_AudioStream* OpenAudioDeviceStream(SDL_AudioDeviceId devId, nint spec, SDL_AudioStreamCallback? callback, nint userData);
+	public static partial SDL_AudioStream* OpenAudioDeviceStream(SDL_AudioDeviceId devId, SDL_AudioSpec* spec, SDL_AudioStreamCallback? callback, nint userData);
 
 	/// <summary>
 	/// Set a callback that fires when data is about to be fed to an audio device.

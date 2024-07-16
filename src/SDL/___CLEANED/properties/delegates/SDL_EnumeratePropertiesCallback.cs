@@ -4,7 +4,7 @@ using System.Runtime.InteropServices.Marshalling;
 namespace SDL_cs;
 
 /// <summary>
-/// A callback used to enumerate all properties set in an <see cref="SDL_PropertiesId"/>.
+/// A callback used to enumerate all properties set in a group of properties.
 /// </summary>
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_EnumeratePropertiesCallback">documentation</see> for more details.

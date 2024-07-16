@@ -98,6 +98,18 @@ unsafe partial class SDL
 	public static partial SDL_Colorspace GetSurfaceColorspace(SDL_Surface* surface);
 
 	/// <summary>
+	/// Create a palette and associate it with a surface.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSurfacePalette">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="surface">The <see cref="SDL_Surface"/> structure to update.</param>
+	/// <returns>A new <see cref="SDL_Palette"/> structure on success or <see langword="null"/> on failure (e.g. if the surface didn't have an index format); call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateSurfacePalette")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_Palette* CreateSurfacePalette(SDL_Surface* surface);
+
+	/// <summary>
 	/// Set the palette used by a surface.
 	/// </summary>
 	/// <remarks>
@@ -329,7 +341,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceClipRect">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to be clipped.</param>
-	/// <param name="rect">The <see cref="SDL_Rect"/> structure representing the clipping rectangle, or <see cref="nint.Zero""/> to disable clipping.</param>
+	/// <param name="rect">The <see cref="SDL_Rect"/> structure representing the clipping rectangle, or <see langword="null"/> to disable clipping.</param>
 	/// <returns>True if the rectangle intersects the surface, otherwise false and blits will be completely clipped.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceClipRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -343,12 +355,12 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetSurfaceClipRect">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to be clipped.</param>
-	/// <param name="rect">The <see cref="SDL_Rect"/> structure representing the clipping rectangle, or <see cref="nint.Zero"/> to disable clipping.</param>
+	/// <param name="rect">The <see cref="SDL_Rect"/> structure representing the clipping rectangle, or <see langword="null"/> to disable clipping.</param>
 	/// <returns>True if the rectangle intersects the surface, otherwise false and blits will be completely clipped.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceClipRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool SetSurfaceClipRect(SDL_Surface* surface, nint rect);
+	public static partial bool SetSurfaceClipRect(SDL_Surface* surface, SDL_Rect* rect);
 
 	/// <summary>
 	/// Get the clipping rectangle for a surface.
@@ -485,7 +497,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FillSurfaceRect">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the drawing target.</param>
-	/// <param name="rect">The <see cref="SDL_Rect"/> structure representing the rectangle to fill, or <see cref="nint.Zero""/> to fill the entire surface.</param>
+	/// <param name="rect">The <see cref="SDL_Rect"/> structure representing the rectangle to fill, or <see langword="null"/> to fill the entire surface.</param>
 	/// <param name="color">The color to fill with.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FillSurfaceRect")]
@@ -499,12 +511,12 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FillSurfaceRect">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the drawing target.</param>
-	/// <param name="rect">The <see cref="SDL_Rect"/> structure representing the rectangle to fill, or <see cref="nint.Zero"/> to fill the entire surface.</param>
+	/// <param name="rect">The <see cref="SDL_Rect"/> structure representing the rectangle to fill, or <see langword="null"/> to fill the entire surface.</param>
 	/// <param name="color">The color to fill with.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FillSurfaceRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int FillSurfaceRect(SDL_Surface* dst, nint rect, uint color);
+	public static partial int FillSurfaceRect(SDL_Surface* dst, SDL_Rect* rect, uint color);
 
 	/// <summary>
 	/// Perform a fast fill of a set of rectangles with a specific color.
@@ -528,7 +540,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurface">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
-	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see cref="nint.Zero"/> to copy the entire surface.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see langword="null"/> to copy the entire surface.</param>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
 	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the x and y position in the destination surface. On input the width and height are ignored (taken from <paramref name="srcRect"/>), and on output this is filled in with the actual rectangle used after clipping.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
@@ -543,13 +555,13 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurface">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
-	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see cref="nint.Zero"/> to copy the entire surface.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see langword="null"/> to copy the entire surface.</param>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
 	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the x and y position in the destination surface. On input the width and height are ignored (taken from <paramref name="srcRect"/>), and on output this is filled in with the actual rectangle used after clipping.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int BlitSurface(SDL_Surface* src, nint srcRect, SDL_Surface* dst, nint dstRect);
+	public static partial int BlitSurface(SDL_Surface* src, SDL_Rect* srcRect, SDL_Surface* dst, SDL_Rect* dstRect);
 
 	/// <summary>
 	/// Perform low-level surface blitting only.
@@ -558,7 +570,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceUnchecked">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
-	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see cref="nint.Zero"/> to copy the entire surface.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see langword="null"/> to copy the entire surface.</param>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
 	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the x and y position in the destination surface.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
@@ -573,13 +585,13 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceUnchecked">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
-	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see cref="nint.Zero"/> to copy the entire surface.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see langword="null"/> to copy the entire surface.</param>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
 	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the x and y position in the destination surface.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceUnchecked")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int BlitSurfaceUnchecked(SDL_Surface* src, nint srcRect, SDL_Surface* dst, nint dstRect);
+	public static partial int BlitSurfaceUnchecked(SDL_Surface* src, SDL_Rect* srcRect, SDL_Surface* dst, SDL_Rect* dstRect);
 
 	/// <summary>
 	/// Perform stretch blit between two surfaces of the same format.

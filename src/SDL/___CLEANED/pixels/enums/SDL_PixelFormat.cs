@@ -6,143 +6,70 @@
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">documentation</see> for more details.
 /// </remarks>
-public enum SDL_PixelFormat : uint
+public enum SDL_PixelFormat
 {
-	Unknown = 0,
-	Index1Lsb = 286261504,
-	Index1Msb = 287310080,
-	Index2Lsb = 470811136,
-	Index2Msb = 471859712,
-	Index4Lsb = 303039488,
-	Index4Msb = 304088064,
-	Index8 = 318769153,
-	RGB332 = 336660481,
-	XRGB4444 = 353504258,
-	XBGR4444 = 357698562,
-	XRGB1555 = 353570562,
-	XBGR1555 = 357764866,
-	ARGB4444 = 355602434,
-	RGBA4444 = 356651010,
-	ABGR4444 = 359796738,
-	BGRA4444 = 360845314,
-	ARGB1555 = 355667970,
-	RGBA5551 = 356782082,
-	ABGR1555 = 359862274,
-	BGRA5551 = 360976386,
-	RGB565 = 353701890,
-	BGR565 = 357896194,
-	RGB24 = 386930691,
-	BGR24 = 390076419,
-	XRGB8888 = 370546692,
-	RGBX8888 = 371595268,
-	XBGR8888 = 374740996,
-	BGRX8888 = 375789572,
-	ARGB8888 = 372645892,
-	RGBA8888 = 373694468,
-	ABGR8888 = 376840196,
-	BGRA8888 = 377888772,
-	XRGB2101010 = 370614276,
-	XBGR2101010 = 374808580,
-	ARGB2101010 = 372711428,
-	ABGR2101010 = 376905732,
-	RGB48 = 403714054,
-	BGR48 = 406859782,
-	RGBA64 = 404766728,
-	ARGB64 = 405815304,
-	BGRA64 = 407912456,
-	ABGR64 = 408961032,
-	RGB48Float = 437268486,
-	BGR48Float = 440414214,
-	RGBA64Float = 438321160,
-	ARGB64Float = 439369736,
-	BGRA64Float = 441466888,
-	ABGR64Float = 442515464,
-	RGB96Float = 454057996,
-	BGR96Float = 457203724,
-	RGBA128Float = 455114768,
-	ARGB128Float = 456163344,
-	BGRA128Float = 458260496,
-	ABGR128Float = 459309072,
-
-	/// <summary>
-	/// RGBA format, where each channel represents 8-bits.
-	/// </summary>
-	/// <remarks>
-	/// This entry assumes the machine is little-endian. The format based on the system's endianness can be queried using
-	/// <see cref="SDL.PixelFormatEnumRGBA32"/>.
-	/// </remarks>
-	RGBA32 = ABGR8888,
-
-	/// <summary>
-	/// ARGB format, where each channel represents 8-bits.
-	/// </summary>
-	/// <remarks>
-	/// This entry assumes the machine is little-endian. The format based on the system's endianness can be queried using
-	/// <see cref="SDL.PixelFormatEnumARGB32"/>.
-	/// </remarks>
-	ARGB32 = BGRA8888,
-
-	/// <summary>
-	/// BGRA format, where each channel represents 8-bits.
-	/// </summary>
-	/// <remarks>
-	/// This entry assumes the machine is little-endian. The format based on the system's endianness can be queried using
-	/// <see cref="SDL.PixelFormatEnumBGRA32"/>.
-	/// </remarks>
-	BGRA32 = ARGB8888,
-
-	/// <summary>
-	/// ABGR format, where each channel represents 8-bits.
-	/// </summary>
-	/// <remarks>
-	/// This entry assumes the machine is little-endian. The format based on the system's endianness can be queried using
-	/// <see cref="SDL.PixelFormatEnumABGR32"/>.
-	/// </remarks>
-	ABGR32 = RGBA8888,
-
-	/// <summary>
-	/// RGBA format, where each channel represents 8-bits. Alpha channel is ignored.
-	/// </summary>
-	/// <remarks>
-	/// This entry assumes the machine is little-endian. The format based on the system's endianness can be queried using
-	/// <see cref="SDL.PixelFormatEnumRGBX32"/>.
-	/// </remarks>
-	RGBX32 = XBGR8888,
-
-	/// <summary>
-	/// ARGB format, where each channel represents 8-bits. Alpha channel is ignored.
-	/// </summary>
-	/// <remarks>
-	/// This entry assumes the machine is little-endian. The format based on the system's endianness can be queried using
-	/// <see cref="SDL.PixelFormatEnumXRGB32"/>.
-	/// </remarks>
-	XRGB32 = BGRX8888,
-
-	/// <summary>
-	/// BGRA format, where each channel represents 8-bits. Alpha channel is ignored.
-	/// </summary>
-	/// <remarks>
-	/// This entry assumes the machine is little-endian. The format based on the system's endianness can be queried using
-	/// <see cref="SDL.PixelFormatEnumBGRX32"/>.
-	/// </remarks>
-	BGRX32 = XRGB8888,
-
-	/// <summary>
-	/// ABGR format, where each channel represents 8-bits. Alpha channel is ignored.
-	/// </summary>
-	/// <remarks>
-	/// This entry assumes the machine is little-endian. The format based on the system's endianness can be queried using
-	/// <see cref="SDL.PixelFormatEnumXBGR32"/>.
-	/// </remarks>
-	XBGR32 = RGBX8888,
-
-	YV12 = 842094169,
-	IYUV = 1448433993,
-	YUY2 = 844715353,
-	UYVY = 1498831189,
-	YVYU = 1431918169,
-	NV12 = 842094158,
-	NV21 = 825382478,
-	P010 = 808530000,
-	ExternalOes = 542328143,
+	Unknown,
+	Index1Lsb = 0x11100100,
+	Index1Msb = 0x11200100,
+	Index2Lsb = 0x1c100200,
+	Index2Msb = 0x1c200200,
+	Index4Lsb = 0x12100400,
+	Index4Msb = 0x12200400,
+	Index8 = 0x13000801,
+	RGB332 = 0x14110801,
+	XRGB4444 = 0x15120c02,
+	XBGR4444 = 0x15520c02,
+	XRGB1555 = 0x15130f02,
+	XBGR1555 = 0x15530f02,
+	ARGB4444 = 0x15321002,
+	RGBA4444 = 0x15421002,
+	ABGR4444 = 0x15721002,
+	BGRA4444 = 0x15821002,
+	ARGB1555 = 0x15331002,
+	RGBA5551 = 0x15441002,
+	ABGR1555 = 0x15731002,
+	BGRA5551 = 0x15841002,
+	RGB565 = 0x15151002,
+	BGR565 = 0x15551002,
+	RGB24 = 0x17101803,
+	BGR24 = 0x17401803,
+	XRGB8888 = 0x16161804,
+	RGBX8888 = 0x16261804,
+	XBGR8888 = 0x16561804,
+	BGRX8888 = 0x16661804,
+	ARGB8888 = 0x16362004,
+	RGBA8888 = 0x16462004,
+	ABGR8888 = 0x16762004,
+	BGRA8888 = 0x16862004,
+	XRGB2101010 = 0x16172004,
+	XBGR2101010 = 0x16572004,
+	ARGB2101010 = 0x16372004,
+	ABGR2101010 = 0x16772004,
+	RGB48 = 0x18103006,
+	BGR48 = 0x18403006,
+	RGBA64 = 0x18204008,
+	ARGB64 = 0x18304008,
+	BGRA64 = 0x18504008,
+	ABGR64 = 0x18604008,
+	RGB48Float = 0x1a103006,
+	BGR48Float = 0x1a403006,
+	RGBA64Float = 0x1a204008,
+	ARGB64Float = 0x1a304008,
+	BGRA64Float = 0x1a504008,
+	ABGR64Float = 0x1a604008,
+	RGB96Float = 0x1b10600c,
+	BGR96Float = 0x1b40600c,
+	RGBA128Float = 0x1b208010,
+	ARGB128Float = 0x1b308010,
+	BGRA128Float = 0x1b508010,
+	ABGR128Float = 0x1b608010,
+	YV12 = 0x32315659,
+	IYUV = 0x56555949,
+	YUY2 = 0x32595559,
+	UYVY = 0x59565955,
+	YVYU = 0x55595659,
+	NV12 = 0x3231564e,
+	NV21 = 0x3132564e,
+	P010 = 0x30313050,
+	ExternalOes = 0x2053454f,
 }

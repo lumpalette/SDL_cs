@@ -1,13 +1,13 @@
 ﻿namespace SDL_cs;
 
 /// <summary>
-/// Represents the ID for a display.
+/// Represents the ID of a window.
 /// </summary>
 [Typedef]
-public enum SDL_DisplayId
+public enum SDL_WindowId : uint
 {
 	/// <summary>
-	/// An invalid display ID.
+	/// An invalid window ID.
 	/// </summary>
 	Invalid = 0
 }

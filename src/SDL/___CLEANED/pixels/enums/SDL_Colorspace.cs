@@ -1,10 +1,13 @@
 ﻿namespace SDL_cs;
 
 /// <summary>
-/// All the colorspaces known to SDL.
+/// Colorspace definitions.
 /// </summary>
+/// <remarks>
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Colorspace">documentation</see> for more details.
+/// </remarks>
 [Typedef]
-public enum SDL_Colorspace : uint
+public enum SDL_Colorspace
 {
 	/// <summary>
 	/// Unknown colorspace.
@@ -17,7 +20,7 @@ public enum SDL_Colorspace : uint
 	/// <remarks>
 	/// Equivalent to DXGI_COLOR_SPACE_RGB_FULL_G22_NONE_P709.
 	/// </remarks>
-	SRGB = 301991328,
+	SRGB = 0x120005a0,
 
 	/// <summary>
 	/// This is a linear colorspace and the default colorspace for floating point surfaces. On Windows this is the
@@ -26,55 +29,45 @@ public enum SDL_Colorspace : uint
 	/// <remarks>
 	/// Equivalent to DXGI_COLOR_SPACE_RGB_FULL_G10_NONE_P709.
 	/// </remarks>
-	SRGBLinear = 301991168,
+	SRGBLinear = 0x12000500,
 
 	/// <summary>
 	/// HDR10 is a non-linear HDR colorspace and the default colorspace for 10-bit surfaces.
 	/// </summary>
-	Hdr10 = 301999616,
+	Hdr10 = 0x12002600,
 
 	/// <summary>
 	/// Equivalent to DXGI_COLOR_SPACE_YCBCR_FULL_G22_NONE_P709_X601.
 	/// </summary>
-	Jpeg = 570426566,
+	Jpeg = 0x220004c6,
 
 	/// <summary>
 	/// Equivalent to DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P601.
 	/// </summary>
-	BT601Limited = 554703046,
+	BT601Limited = 0x211018c6,
 
 	/// <summary>
 	/// Equivalent to DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P601.
 	/// </summary>
-	BT601Full = 571480262,
+	BT601Full = 0x221018c6,
 
 	/// <summary>
 	/// Equivalent to DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P709.
 	/// </summary>
-	BT709Limited = 554697761,
+	BT709Limited = 0x21100421,
 
 	/// <summary>
 	/// Equivalent to DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P709.
 	/// </summary>
-	BT709Full = 571474977,
+	BT709Full = 0x22100421,
 
 	/// <summary>
 	/// Equivalent to DXGI_COLOR_SPACE_YCBCR_STUDIO_G22_LEFT_P2020.
 	/// </summary>
-	BT2020Limited = 554706441,
+	BT2020Limited = 0x21102609,
 
 	/// <summary>
 	/// Equivalent to DXGI_COLOR_SPACE_YCBCR_FULL_G22_LEFT_P2020.
 	/// </summary>
-	BT2020Full = 571483657,
-
-	/// <summary>
-	/// The default colorspace for RGB surfaces if no colorspace is specified.
-	/// </summary>
-	DefaultRGB = SRGB,
-
-	/// <summary>
-	/// The default colorspace for YUV surfaces if no colorspace is specified.
-	/// </summary>
-	DefaultYUV = Jpeg
+	BT2020Full = 0x22102609,
 }

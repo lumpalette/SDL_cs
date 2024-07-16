@@ -14,7 +14,7 @@ public enum SDL_PropertyType
 	Invalid,
 
 	/// <summary>
-	/// The property is an arbitrary object.
+	/// The property is a pointer.
 	/// </summary>
 	Pointer,
 

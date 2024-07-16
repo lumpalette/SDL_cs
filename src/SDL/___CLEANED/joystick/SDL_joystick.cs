@@ -54,97 +54,97 @@ unsafe partial class SDL
 	/// Get the implementation dependent name of a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceName">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickNameForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>The name of the selected joystick. If no name can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickNameForID", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial string? GetJoystickInstanceName(SDL_JoystickId joystickId);
+	public static partial string? GetJoystickNameForID(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the implementation dependent path of a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstancePath">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickPathForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>The path of the selected joystick. If no path can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickInstancePath", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPathForID", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial string? GetJoystickInstancePath(SDL_JoystickId joystickId);
+	public static partial string? GetJoystickPathForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the player index of a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstancePlayerIndex">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickPlayerIndexForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>The player index of a joystick, or -1 if it's not available.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickInstancePlayerIndex")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPlayerIndexForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetJoystickInstancePlayerIndex(SDL_JoystickId joystickId);
+	public static partial int GetJoystickPlayerIndexForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the implementation-dependent GUID of a joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceGUID">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickGUIDForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
-	/// <returns>The GUID of the selected joystick. If called with an invalid <paramref name="joystickId"/>, this function returns a zero GUID.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceGUID")]
+	/// <param name="instanceId">The joystick instance ID.</param>
+	/// <returns>The GUID of the selected joystick. If called with an invalid <paramref name="instanceId"/>, this function returns a zero GUID.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickGUIDForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_JoystickGuid GetJoystickInstanceGuid(SDL_JoystickId joystickId);
+	public static partial SDL_JoystickGuid GetJoystickGuidForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the USB vendor ID of a joystick, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceVendor">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickVendorForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
-	/// <returns>The USB vendor ID of the selected joystick. If called with an invalid <paramref name="joystickId"/>, this function returns 0.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceVendor")]
+	/// <param name="instanceId">The joystick instance ID.</param>
+	/// <returns>The USB vendor ID of the selected joystick. If called with an invalid <paramref name="instanceId"/>, this function returns 0.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickVendorForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial ushort GetJoystickInstanceVendor(SDL_JoystickId joystickId);
+	public static partial ushort GetJoystickVendorForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the USB product ID of a joystick, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceProduct">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickProductForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
-	/// <returns>The USB product ID of the selected joystick. If called with an invalid <paramref name="joystickId"/>, this function returns 0.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceProduct")]
+	/// <param name="instanceId">The joystick instance ID.</param>
+	/// <returns>The USB product ID of the selected joystick. If called with an invalid <paramref name="instanceId"/>, this function returns 0.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickProductForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial ushort GetJoystickInstanceProduct(SDL_JoystickId joystickId);
+	public static partial ushort GetJoystickProductForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the product version of a joystick, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceProductVersion">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickProductVersionForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
-	/// <returns>The product version of the selected joystick. If called with an invalid <paramref name="joystickId"/>, this function returns 0.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceProductVersion")]
+	/// <param name="instanceId">The joystick instance ID.</param>
+	/// <returns>The product version of the selected joystick. If called with an invalid <paramref name="instanceId"/>, this function returns 0.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickProductVersionForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial ushort GetJoystickInstanceProductVersion(SDL_JoystickId joystickId);
+	public static partial ushort GetJoystickProductVersionForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the type of a joystick, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceType">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickTypeForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
-	/// <returns>The <see cref="SDL_JoystickType"/> of the selected joystick. If called with an invalid <paramref name="joystickId"/>, this function returns <see cref="SDL_JoystickType.Unknown"/>.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceType")]
+	/// <param name="instanceId">The joystick instance ID.</param>
+	/// <returns>The <see cref="SDL_JoystickType"/> of the selected joystick. If called with an invalid <paramref name="instanceId"/>, this function returns <see cref="SDL_JoystickType.Unknown"/>.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickTypeForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_JoystickType GetJoystickInstanceType(SDL_JoystickId joystickId);
+	public static partial SDL_JoystickType GetJoystickTypeForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Open a joystick for use.
@@ -152,23 +152,23 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenJoystick">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>A joystick identifier or <see langword="null"/> if an error occurred; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_OpenJoystick")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Joystick* OpenJoystick(SDL_JoystickId joystickId);
+	public static partial SDL_Joystick* OpenJoystick(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the <see cref="SDL_Joystick"/> associated with an instance ID, if it has been opened.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickFromInstanceID">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickFromID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The instance ID to get the <see cref="SDL_JoystickId"/> for.</param>
+	/// <param name="instanceId">The instance ID to get the <see cref="SDL_JoystickId"/> for.</param>
 	/// <returns>An <see cref="SDL_Joystick"/> on success or <see langword="null"/> on failure or if it hasn't been opened yet; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickFromInstanceID")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickFromID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Joystick* GetJoystickFromInstanceId(SDL_JoystickId joystickId);
+	public static partial SDL_Joystick* GetJoystickFromId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the <see cref="SDL_Joystick"/> associated with a player index, if it has been opened.
@@ -199,11 +199,11 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DetachVirtualJoystick">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID, previously returned from <see cref="AttachVirtualJoystick(in SDL_VirtualJoystickDesc)"/>.</param>
+	/// <param name="instanceId">The joystick instance ID, previously returned from <see cref="AttachVirtualJoystick(in SDL_VirtualJoystickDesc)"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_DetachVirtualJoystick")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int DetachVirtualJoystick(SDL_JoystickId joystickId);
+	public static partial int DetachVirtualJoystick(SDL_JoystickId instanceId);
 
 
 	/// <summary>
@@ -212,12 +212,12 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_IsJoystickVirtual">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>True if the joystick is virtual, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_IsJoystickVirtual")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool IsJoystickVirtual(SDL_JoystickId joystickId);
+	public static partial bool IsJoystickVirtual(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Set the state of an axis on an opened virtual joystick.
@@ -514,13 +514,13 @@ unsafe partial class SDL
 	/// Get the instance ID of an opened joystick.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickInstanceID">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick">An <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
 	/// <returns>The instance ID of the specified joystick on success or 0 on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickInstanceID")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_JoystickId GetJoystickInstanceId(SDL_Joystick* joystick);
+	public static partial SDL_JoystickId GetJoystickId(SDL_Joystick* joystick);
 
 	/// <summary>
 	/// Get the number of general axis controls on a joystick.

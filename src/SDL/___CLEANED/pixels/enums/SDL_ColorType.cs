@@ -1,7 +1,7 @@
 ﻿namespace SDL_cs;
 
 /// <summary>
-/// The color type.
+/// Colorspace color type.
 /// </summary>
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ColorType">documentation</see> for more details.

@@ -1,7 +1,7 @@
 ﻿namespace SDL_cs;
 
 /// <summary>
-/// The color range, as described by <see href="https://www.itu.int/rec/R-REC-BT.2100-2-201807-I/en"/>.
+/// Colorspace color range, as described by <see href="https://www.itu.int/rec/R-REC-BT.2100-2-201807-I/en"/>.
 /// </summary>
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ColorRange">documentation</see> for more details.

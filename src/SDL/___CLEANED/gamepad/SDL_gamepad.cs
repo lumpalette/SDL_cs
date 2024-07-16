@@ -88,12 +88,12 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetGamepadMapping">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <param name="mapping">the mapping to use for this device, or <see langword="null"/> to clear the mapping.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetGamepadMapping", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetGamepadMapping(SDL_JoystickId joystickId, string mapping);
+	public static partial int SetGamepadMapping(SDL_JoystickId instanceId, string mapping);
 
 	/// <summary>
 	/// Return whether a gamepad is currently connected.
@@ -122,132 +122,135 @@ unsafe partial class SDL
 	/// <summary>
 	/// Check if the given joystick is supported by the gamepad interface.
 	/// </summary>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_IsGamepad">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>True if the given joystick is supported by the gamepad interface, false if it isn't or it's an invalid index.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_IsGamepad")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool IsGamepad(SDL_JoystickId joystickId);
+	public static partial bool IsGamepad(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the implementation-dependent name of a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceName">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadNameForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>The name of the selected gamepad. If no name can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadNameForID", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial string GetGamepadInstanceName(SDL_JoystickId joystickId);
-	
+	public static partial string? GetGamepadNameForId(SDL_JoystickId instanceId);
+
 	/// <summary>
 	/// Get the implementation dependent path of a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstancePath">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadPathForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>The path of the selected gamepad. If no path can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadInstancePath", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadPathForID", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial string GetGamepadInstancePath(SDL_JoystickId joystickId);
+	public static partial string? GetGamepadPathForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the player index of a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstancePlayerIndex">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadPlayerIndexForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>The player index of a gamepad, or -1 if it's not available.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadInstancePlayerIndex")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadPlayerIndexForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetGamepadInstancePlayerIndex(SDL_JoystickId joystickId);
+	public static partial int GetGamepadPlayerIndexForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the implementation-dependent GUID of a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceGUID">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadGUIDForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>The GUID of the selected gamepad. If called on an invalid index, this function returns a zero GUID.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceGUID")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadGUIDForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_JoystickGuid GetGamepadInstanceGuid(SDL_JoystickId joystickId);
+	public static partial SDL_JoystickGuid GetGamepadGuidForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the USB vendor ID of a gamepad, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceVendor">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadVendorForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>The USB vendor ID of the selected gamepad. If called on an invalid index, this function returns zero.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceVendor")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadVendorForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial ushort GetGamepadInstanceVendor(SDL_JoystickId joystickId);
+	public static partial ushort GetGamepadVendorForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the USB product ID of a gamepad, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceProduct">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadProductForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>The USB product ID of the selected gamepad. If called on an invalid index, this function returns zero.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceProduct")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadProductForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial ushort GetGamepadInstanceProduct(SDL_JoystickId joystickId);
+	public static partial ushort GetGamepadProductForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the product version of a gamepad, if available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceProductVersion">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadProductVersionForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>The product version of the selected gamepad. If called on an invalid index, this function returns zero.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceProductVersion")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadProductVersionForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial ushort GetGamepadInstanceProductVersion(SDL_JoystickId joystickId);
+	public static partial ushort GetGamepadProductVersionForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the type of a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceType">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadTypeForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>The gamepad type.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceType")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadTypeForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_GamepadType GetGamepadInstanceType(SDL_JoystickId joystickId);
+	public static partial SDL_GamepadType GetGamepadTypeForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the type of a gamepad, ignoring any mapping override.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRealGamepadInstanceType">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRealGamepadTypeForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>The gamepad type.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRealGamepadInstanceType")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRealGamepadTypeForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_GamepadType GetRealGamepadInstanceType(SDL_JoystickId joystickId);
+	public static partial SDL_GamepadType GetRealGamepadTypeForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the mapping of a gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceMapping">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMappingForID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>The mapping string. Must be freed with <see cref="Free(void*)"/>. Returns <see langword="null"/> if no mapping is available.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceMapping")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadMappingForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetGamepadInstanceMapping(SDL_JoystickId joystickId);
+	public static partial byte* GetGamepadMappingForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Open a gamepad for use.
@@ -255,23 +258,23 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenGamepad">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>A gamepad identifier or <see langword="null"/> if an error occurred; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_OpenGamepad")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Gamepad* OpenGamepad(SDL_JoystickId joystickId);
+	public static partial SDL_Gamepad* OpenGamepad(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the <see cref="SDL_Gamepad"/> associated with a joystick instance ID, if it has been opened.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadFromInstanceID">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadFromID">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystickId">The joystick instance ID.</param>
+	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>An <see cref="SDL_Gamepad"/> on success or <see langword="null"/> on failure or if it hasn't been opened yet; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadFromInstanceID")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadFromID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Gamepad* GetGamepadFromInstanceId(SDL_JoystickId joystickId);
+	public static partial SDL_Gamepad* GetGamepadFromId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the <see cref="SDL_Gamepad"/> associated with a player index.
@@ -301,13 +304,13 @@ unsafe partial class SDL
 	/// Get the instance ID of an opened gamepad.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadInstanceID">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad">A gamepad identifier previously returned by <see cref="OpenGamepad(SDL_JoystickId)"/>.</param>
 	/// <returns>The instance ID of the specified gamepad on success or <see cref="SDL_JoystickId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadInstanceID")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_JoystickId GetGamepadInstanceId(SDL_Gamepad* gamepad);
+	public static partial SDL_JoystickId GetGamepadId(SDL_Gamepad* gamepad);
 
 	/// <summary>
 	/// Get the implementation-dependent name for an opened gamepad.
@@ -356,7 +359,7 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRealGamepadType")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_GamepadType GetRealGamepadType(SDL_Gamepad* gamepad);
-
+	
 	/// <summary>
 	/// Get the player index of an opened gamepad.
 	/// </summary>

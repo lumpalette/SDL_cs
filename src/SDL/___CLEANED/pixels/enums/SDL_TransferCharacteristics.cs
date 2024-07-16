@@ -1,7 +1,7 @@
 ﻿namespace SDL_cs;
 
 /// <summary>
-/// The color transfer characteristics. These are as described by <see href="https://www.itu.int/rec/T-REC-H.273-201612-S/en"/>.
+/// Colorspace transfer characteristics. These are as described by <see href="https://www.itu.int/rec/T-REC-H.273-201612-S/en"/>.
 /// </summary>
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_TransferCharacteristics">documentation</see> for more details.

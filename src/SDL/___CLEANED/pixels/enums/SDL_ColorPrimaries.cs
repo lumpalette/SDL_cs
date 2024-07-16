@@ -1,7 +1,7 @@
 ﻿namespace SDL_cs;
 
 /// <summary>
-/// The color primaries, as described by <see href="https://www.itu.int/rec/T-REC-H.273-201612-S/en"/>.
+/// Colorspace color primaries, as described by <see href="https://www.itu.int/rec/T-REC-H.273-201612-S/en"/>.
 /// </summary>
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ColorPrimaries">documentation</see> for more details.
