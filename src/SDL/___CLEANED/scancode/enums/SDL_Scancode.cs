@@ -185,7 +185,7 @@ public enum SDL_Scancode
 	KpD = 191,
 	KpE = 192,
 	KpF = 193,
-	KpXOR = 194,
+	KpXor = 194,
 	KpPower = 195,
 	KpPercent = 196,
 	KpLess = 197,

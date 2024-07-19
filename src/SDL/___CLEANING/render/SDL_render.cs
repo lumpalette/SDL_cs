@@ -47,6 +47,16 @@ public static unsafe partial class SDL
 	public static partial int CreateWindowAndRenderer(string title, int width, int height, SDL_WindowFlags windowFlags, out SDL_Window* window, out SDL_Renderer* renderer);
 
 	/// <summary>
+	/// Create a 2D rendering context for a window.
+	/// </summary>
+	/// <param name="window">The window where rendering is displayed.</param>
+	/// <param name="name"></param>
+	/// <returns></returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateRenderer", StringMarshalling = StringMarshalling.Utf8)]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_Renderer* CreateRenderer(SDL_Window* window, string name);
+
+	/// <summary>
 	/// The name of the software renderer.
 	/// </summary>
 	/// <remarks>
