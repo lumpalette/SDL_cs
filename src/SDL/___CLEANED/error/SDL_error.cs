@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace SDL_cs;
 
 // SDL_error.h located at: https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_error.h.
-unsafe partial class SDL
+public static unsafe partial class SDL
 {
 	/// <summary>
 	/// Set the SDL error message for the current thread.
@@ -13,7 +13,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetError">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="fmt">The error message.</param>
-	/// <returns>Always -1.</returns>
+	/// <returns>-1.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetError", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int SetError(string fmt);

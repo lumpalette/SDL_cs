@@ -11,7 +11,7 @@
 public enum SDL_JoystickId
 {
 	/// <summary>
-	/// An invalid joystick ID.
+	/// Invalid/null joystick ID.
 	/// </summary>
 	Invalid = 0
 }

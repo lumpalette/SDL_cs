@@ -10,7 +10,7 @@
 public enum SDL_AudioDeviceId : uint
 {
 	/// <summary>
-	/// An invalid/null audio device ID.
+	/// Invalid/null audio device ID.
 	/// </summary>
 	Invalid = 0,
 

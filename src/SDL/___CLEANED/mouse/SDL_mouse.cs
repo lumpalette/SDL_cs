@@ -4,10 +4,10 @@ using System.Runtime.InteropServices;
 namespace SDL_cs;
 
 // SDL_mouse.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_mouse.h
-unsafe partial class SDL
+public static unsafe partial class SDL
 {
 	[Macro]
-	public static uint Button(byte x) => 1u << (x - 1);
+	public static SDL_MouseButtonFlags Button(byte x) => (SDL_MouseButtonFlags)(1u << (x - 1));
 
 	/// <summary>
 	/// Return whether a mouse is currently connected.
@@ -28,7 +28,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMice">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of mice returned.</param>
-	/// <returns>A null-terminated array of mouse instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
+	/// <returns>A null-terminated array of mouse instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on failure; call <see cref="GetError"/> for more details.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMice")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_MouseId* GetMice(out int count);
@@ -51,7 +51,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMouseFocus">documentation</see> for more details.
 	/// </remarks>
-	/// <returns>The windows with mouse focus.</returns>
+	/// <returns>The window with mouse focus.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMouseFocus")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Window* GetMouseFocus();
@@ -229,7 +229,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDefaultCursor">documentation</see> for more details.
 	/// </remarks>
-	/// <returns>The default cursor on success or <see langword="null"/> on failure.</returns>
+	/// <returns>The default cursor on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDefaultCursor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Cursor* GetDefaultCursor();
@@ -278,84 +278,4 @@ unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
 	public static partial bool CursorVisible();
-
-	/// <summary>
-	/// Button 1: Left mouse button.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
-	/// </remarks>
-	public const byte ButtonLeft = 1;
-
-	/// <summary>
-	/// Button 2: Middle mouse button.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
-	/// </remarks>
-	public const byte ButtonMiddle = 2;
-
-	/// <summary>
-	/// Button 3: Right mouse button.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
-	/// </remarks>
-	public const byte ButtonRight = 3;
-
-	/// <summary>
-	/// Button 4: Side mouse button 1.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
-	/// </remarks>
-	public const byte ButtonX1 = 4;
-
-	/// <summary>
-	/// Button 5: Side mouse button 2.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
-	/// </remarks>
-	public const byte ButtonX2 = 5;
-
-	/// <summary>
-	/// Left mouse button mask.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
-	/// </remarks>
-	public static SDL_MouseButtonFlags ButtonLeftMask => (SDL_MouseButtonFlags)Button(ButtonLeft);
-
-	/// <summary>
-	/// Middle mouse button mask.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
-	/// </remarks>
-	public static SDL_MouseButtonFlags ButtonMiddleMask => (SDL_MouseButtonFlags)Button(ButtonMiddle);
-
-	/// <summary>
-	/// Right mouse button mask.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
-	/// </remarks>
-	public static SDL_MouseButtonFlags ButtonRightMask => (SDL_MouseButtonFlags)Button(ButtonRight);
-
-	/// <summary>
-	/// Side mouse button 1 mask.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
-	/// </remarks>
-	public static SDL_MouseButtonFlags ButtonX1Mask => (SDL_MouseButtonFlags)Button(ButtonX1);
-
-	/// <summary>
-	/// Side mouse button 2 mask.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
-	/// </remarks>
-	public static SDL_MouseButtonFlags ButtonX2Mask => (SDL_MouseButtonFlags)Button(ButtonX2);
 }

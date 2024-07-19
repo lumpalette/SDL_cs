@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace SDL_cs;
 
 // SDL_init.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_init.h.
-unsafe partial class SDL
+public static unsafe partial class SDL
 {
 	/// <summary>
 	/// Initialize the SDL library.

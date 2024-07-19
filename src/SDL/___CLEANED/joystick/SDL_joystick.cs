@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace SDL_cs;
 
 // SDL_joystick.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_joystick.h
-unsafe partial class SDL
+public static unsafe partial class SDL
 {
 	/// <summary>
 	/// Locking for atomic access to the joystick API.
@@ -45,7 +45,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoysticks">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of joysticks returned.</param>
-	/// <returns>A null-terminated array of joystick instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on error; <see cref="GetError"/> for more details.</returns>
+	/// <returns>A null-terminated array of joystick instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on failure; <see cref="GetError"/> for more details.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoysticks")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_JoystickId* GetJoysticks(out int count);
@@ -153,7 +153,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenJoystick">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The joystick instance ID.</param>
-	/// <returns>A joystick identifier or <see langword="null"/> if an error occurred; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A joystick identifier or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_OpenJoystick")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Joystick* OpenJoystick(SDL_JoystickId instanceId);
@@ -189,7 +189,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AttachVirtualJoystick">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="desc">Joystick description.</param>
-	/// <returns>The joystick instance ID, or <see cref="SDL_JoystickId.Invalid"/> if an error occurred; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>The joystick instance ID, or <see cref="SDL_JoystickId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_AttachVirtualJoystick")]
 	public static extern SDL_JoystickId AttachVirtualJoystick([In] in SDL_VirtualJoystickDesc desc);
 
@@ -241,12 +241,12 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="joystick">The virtual joystick on which to set state.</param>
 	/// <param name="ball">The index of the ball on the virtual joystick to update.</param>
-	/// <param name="xRelative">The relative motion on the X axis.</param>
-	/// <param name="yRelative">The relative motion on the Y axis.</param>
+	/// <param name="xRel">The relative motion on the X axis.</param>
+	/// <param name="yRel">The relative motion on the Y axis.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickVirtualBall")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetJoystickVirtualBall(SDL_Joystick* joystick, int ball, short xRelative, short yRelative);
+	public static partial int SetJoystickVirtualBall(SDL_Joystick* joystick, int ball, short xRel, short yRel);
 
 	/// <summary>
 	/// Set the state of a button on an opened virtual joystick.
@@ -285,14 +285,14 @@ unsafe partial class SDL
 	/// <param name="joystick">The virtual joystick on which to set state.</param>
 	/// <param name="touchpad">The index of the touchpad on the virtual joystick to update.</param>
 	/// <param name="finger">The index of the finger on the touchpad to set.</param>
-	/// <param name="state"><see cref="SDL_InputState.Pressed"/> if the finger is pressed, <see cref="SDL_InputState.Released"/> if the finger is released.</param>
+	/// <param name="state"><see cref="SDL_State.Pressed"/> if the finger is pressed, <see cref="SDL_State.Released"/> if the finger is released.</param>
 	/// <param name="x">The x coordinate of the finger on the touchpad, normalized 0 to 1, with the origin in the upper left.</param>
 	/// <param name="y">The y coordinate of the finger on the touchpad, normalized 0 to 1, with the origin in the upper left.</param>
 	/// <param name="pressure">The pressure of the finger.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickVirtualTouchpad")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetJoystickVirtualTouchpad(SDL_Joystick* joystick, int touchpad, int finger, SDL_InputState state, float x, float y, float pressure);
+	public static partial int SetJoystickVirtualTouchpad(SDL_Joystick* joystick, int touchpad, int finger, byte state, float x, float y, float pressure);
 
 	/// <summary>
 	/// Send a sensor update for an opened virtual joystick.
@@ -670,7 +670,7 @@ unsafe partial class SDL
 	/// <returns>1 if the specified button is pressed, 0 otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickButton")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_InputState GetJoystickButton(SDL_Joystick* joystick, int button);
+	public static partial byte GetJoystickButton(SDL_Joystick* joystick, int button);
 
 	/// <summary>
 	/// Start a rumble effect.

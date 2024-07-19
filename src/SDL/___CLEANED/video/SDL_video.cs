@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace SDL_cs;
 
 // SDL_video.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_video.h.
-unsafe partial class SDL
+public static unsafe partial class SDL
 {
 	public static uint WindowposUndefinedDisplay(SDL_DisplayId x) => WindowposUndefinedMask | (uint)x;
 
@@ -66,7 +66,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplays">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of displays returned.</param>
-	/// <returns>A null-terminated array of display instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
+	/// <returns>A null-terminated array of display instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplays")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_DisplayId* GetDisplays(out int count);
@@ -160,7 +160,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayContentScale">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
-	/// <returns>The content scale of the display, or 0.0f on error; call <see cref="GetError"/> for more details.</returns>
+	/// <returns>The content scale of the display, or 0.0f on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayContentScale")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial float GetDisplayContentScale(SDL_DisplayId instanceId);
@@ -173,7 +173,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
 	/// <param name="count">A pointer filled in with the number of display modes returned.</param>
-	/// <returns>A null-terminated array of display mode pointers which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
+	/// <returns>A null-terminated array of display mode pointers which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetFullscreenDisplayModes")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_DisplayMode** GetFullscreenDisplayModes(SDL_DisplayId instanceId, out int count);
@@ -189,7 +189,7 @@ unsafe partial class SDL
 	/// <param name="height">The height in pixels of the desired display mode.</param>
 	/// <param name="refreshRate">The refresh rate of the desired display mode, or 0.0f for the desktop refresh rate.</param>
 	/// <param name="includeHighDensityModes">Boolean to include high density modes in the search.</param>
-	/// <returns>The closest display mode equal to or larger than the desired mode, or <see langword="null"/> on error; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>The closest display mode equal to or larger than the desired mode, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_DisplayMode? GetClosestFullscreenDisplayMode(SDL_DisplayId instanceId, int width, int height, float refreshRate, bool includeHighDensityModes)
 	{
 		SDL_DisplayMode* displayModePtr = SDL_GetClosestFullscreenDisplayMode(instanceId, width, height, refreshRate, includeHighDensityModes);
@@ -210,7 +210,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDesktopDisplayMode">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
-	/// <returns>The desktop display mode or <see langword="null"/> on error; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>The desktop display mode or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_DisplayMode? GetDesktopDisplayMode(SDL_DisplayId instanceId)
 	{
 		SDL_DisplayMode* displayModePtr = SDL_GetDesktopDisplayMode(instanceId);
@@ -231,7 +231,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentDisplayMode">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
-	/// <returns>The current display mode or <see langword="null"/> on error; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>The current display mode or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	public static SDL_DisplayMode? GetCurrentDisplayMode(SDL_DisplayId instanceId)
 	{
 		SDL_DisplayMode* displayModePtr = SDL_GetCurrentDisplayMode(instanceId);
@@ -1260,7 +1260,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GL_CreateContext">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window">The window to associate with the context.</param>
-	/// <returns>The OpenGL context associated with <paramref name="window"/> or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
+	/// <returns>The OpenGL context associated with <paramref name="window"/> or <see langword="null"/> on failure; call <see cref="GetError"/> for more details.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GL_CreateContext")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_GLContext* GL_CreateContext(SDL_Window* window); // TODO: check if this is correct.

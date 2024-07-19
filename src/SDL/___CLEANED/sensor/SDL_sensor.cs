@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace SDL_cs;
 
 // SDL_sensor.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_sensor.h.
-unsafe partial class SDL
+public static unsafe partial class SDL
 {
 	/// <summary>
 	/// Get a list of currently connected sensors.
@@ -13,7 +13,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensors">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of sensors returned.</param>
-	/// <returns>A null-terminated array of sensor instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
+	/// <returns>A null-terminated array of sensor instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensors")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_SensorId* GetSensors(out int count);
@@ -61,7 +61,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OpenSensor">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The sensor instance ID.</param>
-	/// <returns>An <see cref="SDL_Sensor"/> object, or <see langword="null"/> if an error occurred.</returns>
+	/// <returns>An <see cref="SDL_Sensor"/> object or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_OpenSensor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Sensor* OpenSensor(SDL_SensorId instanceId);
@@ -73,7 +73,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorFromID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The sensor instance ID.</param>
-	/// <returns>An <see cref="SDL_Sensor"/> object.</returns>
+	/// <returns>An <see cref="SDL_Sensor"/> object or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorFromID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Sensor* GetSensorFromId(SDL_SensorId instanceId);
@@ -97,7 +97,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensor">The <see cref="SDL_Sensor"/> object.</param>
-	/// <returns>The sensor name, or <see langword="null"/> if <paramref name="sensor"/> is <see langword="null"/>.</returns>
+	/// <returns>The sensor name or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetSensorName(SDL_Sensor* sensor);
@@ -133,7 +133,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensor">The <see cref="SDL_Sensor"/> object to inspect.</param>
-	/// <returns>The sensor instance ID, or <see cref="SDL_SensorId.Invalid"/> if <paramref name="sensor"/> is <see langword="null"/>.</returns>
+	/// <returns>The sensor instance ID or <see cref="SDL_SensorId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_SensorId GetSensorId(SDL_Sensor* sensor);

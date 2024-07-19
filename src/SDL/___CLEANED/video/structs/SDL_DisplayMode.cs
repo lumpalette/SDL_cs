@@ -51,5 +51,5 @@ public unsafe struct SDL_DisplayMode
 	/// </summary>
 	public int RefreshRateDenominator;
 
-	private readonly nint _driverData;
+	private readonly SDL_DisplayModeData* _internal;
 }

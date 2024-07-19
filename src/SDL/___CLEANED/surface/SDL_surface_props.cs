@@ -1,6 +1,6 @@
 ﻿namespace SDL_cs;
 
-partial class SDL_Prop
+public static partial class SDL_Prop
 {
 	/// <summary>
 	/// Properties used in <see cref="SDL.GetSurfaceProperties(SDL_Surface*)"/>.

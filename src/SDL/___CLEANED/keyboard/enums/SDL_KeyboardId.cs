@@ -8,4 +8,10 @@
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_KeyboardID">documentation</see> for more details.
 /// </remarks>
 [Typedef]
-public enum SDL_KeyboardId : uint;
+public enum SDL_KeyboardId : uint
+{
+	/// <summary>
+	/// Invalid/null keyboard ID.
+	/// </summary>
+	Invalid
+}

@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace SDL_cs;
 
 // SDL_rect.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_rect.h.
-unsafe partial class SDL
+public static unsafe partial class SDL
 {
 	/// <summary>
 	/// Determine whether a point resides inside a rectangle.

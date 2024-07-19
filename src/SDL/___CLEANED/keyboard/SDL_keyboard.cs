@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.Marshalling;
 namespace SDL_cs;
 
 // SDL_keyboard.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_keyboard.h
-unsafe partial class SDL
+public static unsafe partial class SDL
 {
 	/// <summary>
 	/// Return whether a keyboard is currently connected.
@@ -26,7 +26,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboards">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of keyboards returned.</param>
-	/// <returns>A null-terminated array of keyboards instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
+	/// <returns>A null-terminated array of keyboards instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboards")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_KeyboardId* GetKeyboards(out int count);
@@ -38,7 +38,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboardNameForID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The keyboard instance ID.</param>
-	/// <returns>The name of the selected keyboard, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>The name of the selected keyboard or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardNameForID", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetKeyboardNameForID(SDL_KeyboardId instanceId);

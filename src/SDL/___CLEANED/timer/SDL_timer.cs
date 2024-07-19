@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace SDL_cs;
 
 // SDL_timer.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_timer.h.
-unsafe partial class SDL
+public static unsafe partial class SDL
 {
 	[Macro]
 	public static ulong SecondsToNs(ulong s) => s * NsPerSecond;
@@ -99,7 +99,7 @@ unsafe partial class SDL
 	/// <param name="intervalMs">The timer delay, in milliseconds, passed to <paramref name="callback"/>.</param>
 	/// <param name="callback">The <see cref="SDL_TimerCallback"/> function to call when the specified <paramref name="intervalMs"/> elapses.</param>
 	/// <param name="userData">A pointer that is passed to <paramref name="callback"/>.</param>
-	/// <returns>A timer ID or <see cref="SDL_TimerId.Invalid"/> if an error occurs; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A timer ID or <see cref="SDL_TimerId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddTimer")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_TimerId AddTimer(uint intervalMs, SDL_TimerCallback callback, nint userData);
@@ -113,7 +113,7 @@ unsafe partial class SDL
 	/// <param name="intervalNs">The timer delay, in nanoseconds, passed to <paramref name="callback"/>.</param>
 	/// <param name="callback">The <see cref="SDL_NsTimerCallback"/> function to call when the specified <paramref name="intervalNs"/> elapses.</param>
 	/// <param name="userData">A pointer that is passed to <paramref name="callback"/>.</param>
-	/// <returns>A timer ID or <see cref="SDL_TimerId.Invalid"/> if an error occurs; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A timer ID or <see cref="SDL_TimerId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddTimerNS")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_TimerId AddTimerNs(ulong intervalNs, SDL_NsTimerCallback callback, nint userData);
