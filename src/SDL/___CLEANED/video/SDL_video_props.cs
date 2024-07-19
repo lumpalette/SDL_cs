@@ -212,21 +212,21 @@ public static partial class SDL_Prop
 
 		/// <summary>
 		/// True if the window has HDR headroom above the SDR white point. This property can change dynamically when
-		/// <see cref="FIXME:SDL_EVENT_WINDOW_HDR_STATE_CHANGED"/> is sent.
+		/// <see cref="SDL_EventType.WindowHdrStateChanged"/> is sent.
 		/// </summary>
 		public const string HdrEnabledBoolean = "SDL.window.HDR_enabled";
 
 		/// <summary>
 		/// The value of SDR white in the <see cref="SDL_Colorspace.SRGBLinear"/> colorspace.On Windows this corresponds
 		/// to the SDR white level in scRGB colorspace, and on Apple platforms this is always 1.0 for EDR content. This
-		/// property can change dynamically when <see cref="FIXME:SDL_EVENT_WINDOW_HDR_STATE_CHANGED"/> is sent.
+		/// property can change dynamically when <see cref="SDL_EventType.WindowHdrStateChanged"/> is sent.
 		/// </summary>
 		public const string SdrWhiteLevelFloat = "SDL.window.SDR_white_level";
 
 		/// <summary>
 		/// The additional high dynamic range that can be displayed, in terms of the SDR white point. When HDR is not
 		/// enabled, this will be 1.0. This property can change dynamically when
-		/// <see cref="FIXME:SDL_EVENT_WINDOW_HDR_STATE_CHANGED"/> is sent.
+		/// <see cref="SDL_EventType.WindowHdrStateChanged"/> is sent.
 		/// </summary>
 		public const string HdrHeadroomFloat = "SDL.window.HDR_headroom";
 
@@ -256,7 +256,7 @@ public static partial class SDL_Prop
 		public const string UIKitOpenGLFramebufferNumber = "SDL.window.uikit.opengl.framebuffer";
 
 		/// <summary>
-		/// The OpenGL view's renderbuffer object. It must be bound when <see cref="FIXME:SDL_GL_SwapWindow"/> is
+		/// The OpenGL view's renderbuffer object. It must be bound when <see cref="SDL.GL_SwapWindow(SDL_Window*)"/> is
 		/// called.
 		/// </summary>
 		public const string UIKitOpenGLRenderbufferNumber = "SDL.window.uikit.opengl.renderbuffer";

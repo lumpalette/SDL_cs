@@ -611,7 +611,7 @@ public enum SDL_EventType : uint
 
 	/// <summary>
 	/// Events <see cref="User"/> through <see cref="Last"/> are for your use and should be allocated with
-	/// <see cref="FIXME:SDL_RegisterEvents()"/>.
+	/// <see cref="<see cref="SDL.RegisterEvents(int)"/>"/>.
 	/// </summary>
 	User = 0x8000,
 

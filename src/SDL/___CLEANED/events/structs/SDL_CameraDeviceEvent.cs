@@ -27,5 +27,5 @@ public struct SDL_CameraDeviceEvent
 	/// <summary>
 	/// <see cref="FIXME:SDL_CameraID"/> for the device being added or removed or changing
 	/// </summary>
-	public uint Which; // FIXME: implement SDL_camera.h
+	public uint Which; // TODO: implement SDL_camera.h
 }

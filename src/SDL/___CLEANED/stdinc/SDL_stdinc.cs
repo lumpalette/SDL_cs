@@ -12,7 +12,6 @@ public static unsafe partial class SDL
 		return (uint)(a | (b << 8) | (c << 16) | (d << 24));
 	}
 
-	// TODO: consider if adding malloc is a good idea.
 	[LibraryImport(LibraryName, EntryPoint = "SDL_malloc")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial void* Malloc(nuint size);
