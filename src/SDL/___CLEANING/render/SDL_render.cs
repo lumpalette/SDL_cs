@@ -49,12 +49,39 @@ public static unsafe partial class SDL
 	/// <summary>
 	/// Create a 2D rendering context for a window.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateRenderer">documentation</see> for more details.
+	/// </remarks>
 	/// <param name="window">The window where rendering is displayed.</param>
-	/// <param name="name"></param>
-	/// <returns></returns>
+	/// <param name="name">The name of the rendering driver to initialize, or <see langword="null"/> to initialize the first one supporting the requested flags.</param>
+	/// <returns>A valid rendering context or <see langword="null"/> if there was an error; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateRenderer", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Renderer* CreateRenderer(SDL_Window* window, string name);
+	public static partial SDL_Renderer* CreateRenderer(SDL_Window* window, string? name);
+
+	/// <summary>
+	/// Create a 2D rendering context for a window, with the specified properties.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateRendererWithProperties">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="props">The properties to use.</param>
+	/// <returns>A valid rendering context or <see langword="null"/> if there was an error; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateRendererWithProperties")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_Renderer* CreateRendererWithProperties(SDL_PropertiesId props);
+
+	/// <summary>
+	/// Create a 2D software rendering context for a surface.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateSoftwareRenderer">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="surface">The <see cref="SDL_Surface"/> structure representing the surface where rendering is done.</param>
+	/// <returns>A valid rendering context or <see langword="null"/> if there was an error; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateSoftwareRenderer")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_Renderer* CreateSoftwareRenderer(SDL_Surface* surface);
 
 	/// <summary>
 	/// The name of the software renderer.

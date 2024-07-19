@@ -45,10 +45,13 @@ public static partial class SDL_Prop
 
 		/// <summary>
 		/// The tone mapping operator used when compressing from a surface with high dynamic range to another with lower
-		/// dynamic range. Currently this supports "chrome", which uses the same tone mapping that Chrome uses for HDR
-		/// content, the form "*=N", where N is a floating point scale factor applied in linear space, and "none", which
-		/// disables tone mapping. This defaults to "chrome".
+		/// dynamic range.
 		/// </summary>
+		/// <remarks>
+		/// Currently this supports "chrome", which uses the same tone mapping that Chrome uses for HDR content, the form "*=N",
+		/// where N is a floating point scale factor applied in linear space, and "none", which disables tone mapping. This
+		/// defaults to "chrome".
+		/// </remarks>
 		public const string TonemapOperatorString = "SDL.surface.tonemap";
 	}
 }
