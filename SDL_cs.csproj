@@ -17,8 +17,4 @@
     <NoWarn>1701;1702;CA1401;</NoWarn>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="src\SDL\___TOCLEAN\" />
-  </ItemGroup>
-
 </Project>

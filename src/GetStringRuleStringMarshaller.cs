@@ -3,13 +3,13 @@
 namespace SDL_cs;
 
 /// <summary>
-/// A marshaller for UTF-8 strings that are owned by SDL, and therefore, cannot be manually freed.
+/// A marshaller for strings that follows the SDL_GetStringRule, i.e. strings that the program <b>should not</b> free manually.
 /// </summary>
-[CustomMarshaller(typeof(string), MarshalMode.ManagedToUnmanagedOut, typeof(SDLManagedStringMarshaller))]
-public static unsafe class SDLManagedStringMarshaller
+[CustomMarshaller(typeof(string), MarshalMode.ManagedToUnmanagedOut, typeof(GetStringRuleStringMarshaller))]
+public static unsafe class GetStringRuleStringMarshaller
 {
 	/// <summary>
-	/// Converts an owned SDL UTF-8 native string into a managed <see cref="string"/>.
+	/// Converts an SDL_GetStringRule string into a managed C# <see cref="string"/>.
 	/// </summary>
 	/// <param name="unmanaged">A pointer to the SDL string.</param>
 	/// <returns>A managed <see cref="string"/>.</returns>
