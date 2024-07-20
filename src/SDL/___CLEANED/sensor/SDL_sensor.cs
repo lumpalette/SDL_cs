@@ -26,7 +26,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The sensor instance ID.</param>
 	/// <returns>The sensor name, or <see langword="null"/> if <paramref name="instanceId"/> is not valid.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorNameForID", StringMarshallingCustomType = typeof(SDLTempStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorNameForID", StringMarshallingCustomType = typeof(SDLManagedString))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetSensorNameForId(SDL_SensorId instanceId);
 
@@ -98,7 +98,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="sensor">The <see cref="SDL_Sensor"/> object.</param>
 	/// <returns>The sensor name or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorName", StringMarshallingCustomType = typeof(SDLTempStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorName", StringMarshallingCustomType = typeof(SDLManagedString))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetSensorName(SDL_Sensor* sensor);
 
