@@ -32,20 +32,7 @@ public unsafe struct SDL_SensorEvent
 	/// Up to 6 values from the sensor - additional values can be queried using
 	/// <see cref="SDL.GetSensorData(SDL_Sensor*, float[], int)"/>.
 	/// </summary>
-	public float[] Data
-	{
-		get
-		{
-			var data = new float[6];
-			for (int i = 0; i < 6; i++)
-			{
-				data[i] = _data[i];
-			}
-			return data;
-		}
-	}
-
-	private fixed float _data[6];
+	public fixed float Data[6];
 
 	/// <summary>
 	/// The timestamp of the sensor reading in nanoseconds, not necessarily synchronized with the system clock.

@@ -204,7 +204,7 @@ public static unsafe partial class SDL
 	/// <returns>The value of the property, or <paramref name="defaultValue"/> if it is not set or not a string property.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetStringProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalUsing(typeof(GetStringRuleStringMarshaller))]
+	[return: MarshalUsing(typeof(SDLTempStringMarshaller))]
 	public static partial string? GetStringProperty(SDL_PropertiesId props, string name, string defaultValue = "");
 
 	/// <summary>

@@ -13,7 +13,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDevices">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of fingers returned.</param>
-	/// <returns>A null-terminated array of touch device IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A null-terminated array of touch device IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchDevices")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_TouchId* GetTouchDevices(out int count);
@@ -26,7 +26,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="touchId">The touch device instance ID.</param>
 	/// <returns>Touch device name, or <see langword="null"/> on failure; call <see cref="GetError"/> for more details.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceName", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceName", StringMarshallingCustomType = typeof(SDLTempStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetTouchDeviceName(SDL_TouchId touchId);
 
@@ -50,7 +50,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="touchId">The ID of a touch device.</param>
 	/// <param name="count">A pointer filled in with the number of fingers returned.</param>
-	/// <returns>a <see langword="null"/> terminated array of <see cref="SDL_Finger"/> pointers which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>a <see langword="null"/> terminated array of <see cref="SDL_Finger"/> pointers which should be freed with <see cref="Free(nint)"/>, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchFingers")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Finger** GetTouchFingers(SDL_TouchId touchId, out int count);

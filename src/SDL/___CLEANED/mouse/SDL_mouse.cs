@@ -28,7 +28,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMice">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of mice returned.</param>
-	/// <returns>A null-terminated array of mouse instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on failure; call <see cref="GetError"/> for more details.</returns>
+	/// <returns>A null-terminated array of mouse instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more details.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMice")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_MouseId* GetMice(out int count);
@@ -41,7 +41,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The mouse instance ID.</param>
 	/// <returns>The name of the selected mouse, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMouseNameForID", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMouseNameForID", StringMarshallingCustomType = typeof(SDLTempStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetMouseNameForId(SDL_MouseId instanceId);
 

@@ -125,7 +125,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="index">The index of the audio driver; the value ranges from 0 to <see cref="GetNumAudioDrivers"/> - 1.</param>
 	/// <returns>The name of the audio driver at the requested index, or <see langword="null"/> if an invalid index was specified.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDriver", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDriver", StringMarshallingCustomType = typeof(SDLTempStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetAudioDriver(int index);
 
@@ -136,7 +136,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentAudioDriver">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>The name of the current audio driver or <see langword="null"/> if no driver has been initialized.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDriver", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDriver", StringMarshallingCustomType = typeof(SDLTempStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetCurrentAudioDriver();
 
@@ -147,7 +147,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioPlaybackDevices">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of devices returned.</param>
-	/// <returns>A null-terminated array of device instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A null-terminated array of device instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioPlaybackDevices")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_AudioDeviceId* GetAudioPlaybackDevices(out int count);
@@ -159,7 +159,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioRecordingDevices">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of devices returned.</param>
-	/// <returns>A null-terminated array of device instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A null-terminated array of device instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioRecordingDevices")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_AudioDeviceId* GetAudioRecordingDevices(out int count);
@@ -172,7 +172,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="devId">The instance ID of the device to query.</param>
 	/// <returns>The name of the audio device, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDeviceName", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDeviceName", StringMarshallingCustomType = typeof(SDLTempStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetAudioDeviceName(SDL_AudioDeviceId devId);
 
@@ -199,26 +199,9 @@ public static unsafe partial class SDL
 	/// <param name="devId">The instance ID of the device to query.</param>
 	/// <param name="count">On output, set to number of channels in the map.</param>
 	/// <returns>An array of the current channel mapping, with as many elements as the current output spec's channels, or <see langword="null"/> if default.</returns>
-	public static int[]? GetAudioDeviceChannelMap(SDL_AudioDeviceId devId, out int count)
-	{
-		fixed (int* countPtr = &count)
-		{
-			int[]? channelMap = null;
-			int* channelMapPtr = SDL_GetAudioDeviceChannelMap(devId, countPtr);
-			if (channelMapPtr is not null)
-			{
-				channelMap = new int[count];
-				for (int i = 0; i < count; i++)
-				{
-					channelMap[i] = channelMapPtr[i];
-				}
-			}
-			return channelMap;
-		}
-
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-		static extern int* SDL_GetAudioDeviceChannelMap(SDL_AudioDeviceId devid, int* count);
-	}
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDeviceChannelMap")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int* GetAudioDeviceChannelMap(SDL_AudioDeviceId devId, out int count);
 
 	/// <summary>
 	/// Open a specific audio device.
@@ -521,26 +504,9 @@ public static unsafe partial class SDL
 	/// <param name="stream">The <see cref="SDL_AudioStream"/> to query.</param>
 	/// <param name="count">On output, set to number of channels in the map.</param>
 	/// <returns>An array of the current channel mapping, with as many elements as the current output spec's channels, or <see langword="null"/> if default.</returns>
-	public static int[]? GetAudioStreamInputChannelMap(SDL_AudioStream* stream, out int count)
-	{
-		fixed (int* countPtr = &count)
-		{
-			int[]? channelMap = null;
-			int* channelMapPtr = SDL_GetAudioStreamInputChannelMap(stream, countPtr);
-			if (channelMapPtr is not null)
-			{
-				channelMap = new int[count];
-				for (int i = 0; i < count; i++)
-				{
-					channelMap[i] = channelMapPtr[i];
-				}
-			}
-			return channelMap;
-		}
-
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-		static extern int* SDL_GetAudioStreamInputChannelMap(SDL_AudioStream* stream, int* count);
-	}
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioStreamInputChannelMap")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int* GetAudioStreamInputChannelMap(SDL_AudioStream* stream, out int count);
 
 
 	/// <summary>
@@ -552,26 +518,9 @@ public static unsafe partial class SDL
 	/// <param name="stream">The <see cref="SDL_AudioStream"/> to query.</param>
 	/// <param name="count">On output, set to number of channels in the map.</param>
 	/// <returns>An array of the current channel mapping, with as many elements as the current output spec's channels, or <see langword="null"/> if default.</returns>
-	public static int[]? GetAudioStreamOutputChannelMap(SDL_AudioStream* stream, out int count)
-	{
-		fixed (int* countPtr = &count)
-		{
-			int[]? channelMap = null;
-			int* channelMapPtr = SDL_GetAudioStreamOutputChannelMap(stream, countPtr);
-			if (channelMapPtr is not null)
-			{
-				channelMap = new int[count];
-				for (int i = 0; i < count; i++)
-				{
-					channelMap[i] = channelMapPtr[i];
-				}
-			}
-			return channelMap;
-		}
-
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-		static extern int* SDL_GetAudioStreamOutputChannelMap(SDL_AudioStream* stream, int* count);
-	}
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioStreamOutputChannelMap")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int* GetAudioStreamOutputChannelMap(SDL_AudioStream* stream, out int count);
 
 	/// <summary>
 	/// Set the current input channel map of an audio stream.
@@ -822,7 +771,18 @@ public static unsafe partial class SDL
 	/// <param name="audioBuffer">A pointer filled with the audio data, allocated by the function.</param>
 	/// <param name="audioLength">A pointer filled with the length of the audio data buffer in bytes.</param>
 	/// <returns>
-	/// 0 on success, -1 on failure; call <see cref="GetError"/> for more details.
+	/// <para>
+	/// 0 on success. <paramref name="audioBuffer"/> will be filled with a pointer to an allocated buffer containing the audio data,
+	/// and <paramref name="audioLength"/> is filled with the length of that audio buffer in bytes.
+	/// </para>
+	/// <para>
+	/// This function returns -1 if the .WAV file cannot be opened, uses an unknown data format, or is corrupt; call <see cref="GetError"/>
+	/// for more information.
+	/// </para>
+	/// <para>
+	/// When the application is done with the data returned in <paramref name="audioBuffer"/>, it should call <see cref="Free(nint)"/>
+	/// to dispose of it.
+	/// </para>
 	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_LoadWAV", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -854,7 +814,7 @@ public static unsafe partial class SDL
 	/// <param name="srcData">The audio data to be converted.</param>
 	/// <param name="srcLength">The length of <paramref name="srcData"/>.</param>
 	/// <param name="dstSpec">The format details of the output audio.</param>
-	/// <param name="dstData">Will be filled with a pointer to the converted audio data, which should be freed with <see cref="Free(void*)"/>. On error, it will be <see langword="null"/>.</param>
+	/// <param name="dstData">Will be filled with a pointer to the converted audio data, which should be freed with <see cref="Free(nint)"/>. On error, it will be <see langword="null"/>.</param>
 	/// <param name="dstLength">Will be filled with the len of <paramref name="dstData"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertAudioSamples")]

@@ -13,7 +13,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensors">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of sensors returned.</param>
-	/// <returns>A null-terminated array of sensor instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A null-terminated array of sensor instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensors")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_SensorId* GetSensors(out int count);
@@ -26,7 +26,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The sensor instance ID.</param>
 	/// <returns>The sensor name, or <see langword="null"/> if <paramref name="instanceId"/> is not valid.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorNameForID", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorNameForID", StringMarshallingCustomType = typeof(SDLTempStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetSensorNameForId(SDL_SensorId instanceId);
 
@@ -98,7 +98,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="sensor">The <see cref="SDL_Sensor"/> object.</param>
 	/// <returns>The sensor name or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorName", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorName", StringMarshallingCustomType = typeof(SDLTempStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetSensorName(SDL_Sensor* sensor);
 
@@ -145,8 +145,8 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorData">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="sensor">The <see cref="SDL_Sensor"/> object to query. </param>
-	/// <param name="data">A pointer filled with the current sensor state. Corresponds to <paramref name="data"/>.Length.</param>
-	/// <param name="numValues">The number of values to write to data.</param>
+	/// <param name="data">A pointer filled with the current sensor state.</param>
+	/// <param name="numValues">The number of values to write to data. Corresponds to <paramref name="data"/>.Length.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorData")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]

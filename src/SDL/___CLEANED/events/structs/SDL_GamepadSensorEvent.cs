@@ -37,20 +37,7 @@ public unsafe struct SDL_GamepadSensorEvent
 	/// <summary>
 	/// Up to 3 values from the sensor, as defined in SDL_sensor.h.
 	/// </summary>
-	public float[] Data
-	{
-		get
-		{
-			var data = new float[3];
-			for (int i = 0; i < 3; i++)
-			{
-				data[i] = _data[i];
-			}
-			return data;
-		}
-	}
-
-	private fixed float _data[3];
+	public fixed float Data[3];
 
 	/// <summary>
 	/// The timestamp of the sensor reading in nanoseconds, not necessarily synchronized with the system clock.

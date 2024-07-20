@@ -13,4 +13,4 @@ namespace SDL_cs;
 /// <param name="buffer">The buffer of audio samples to be submitted. The callback can inspect and/or modify this data.</param>
 /// <param name="bufferLength">The size of <paramref name="buffer"/> in bytes.</param>
 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-public unsafe delegate void SDL_AudioPostmixCallback(nint userData, in SDL_AudioSpec spec, float[] buffer, int bufferLength);
+public unsafe delegate void SDL_AudioPostmixCallback(nint userData, in SDL_AudioSpec spec, [In, Out] float[] buffer, int bufferLength);

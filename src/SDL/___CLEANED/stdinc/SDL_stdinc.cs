@@ -14,11 +14,11 @@ public static unsafe partial class SDL
 
 	[LibraryImport(LibraryName, EntryPoint = "SDL_malloc")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void* Malloc(nuint size);
+	public static partial nint Malloc(nuint size);
 
 	[LibraryImport(LibraryName, EntryPoint = "SDL_free")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void Free(void* mem);
+	public static partial void Free(nint mem);
 
 	/// <summary>
 	/// Epsilon constant, used for comparing floating-point numbers.

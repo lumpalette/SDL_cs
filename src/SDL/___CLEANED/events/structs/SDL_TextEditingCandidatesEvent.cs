@@ -32,24 +32,7 @@ public unsafe struct SDL_TextEditingCandidatesEvent
 	/// <summary>
 	/// The list of candidates, or <see langword="null"/> if there are no candidates available.
 	/// </summary>
-	public readonly string[]? Candidates
-	{
-		get
-		{
-			string[]? candidates = null;
-			if (_candidates is not null)
-			{
-				candidates = new string[NumCandidates];
-				for (int i = 0; i < NumCandidates; i++)
-				{
-					candidates[i] = Utf8StringMarshaller.ConvertToManaged(_candidates[i])!;
-				}
-			}
-			return candidates;
-		}
-	}
-
-	private readonly byte** _candidates;
+	public byte** Candidates;
 
 	/// <summary>
 	/// The number of strings in <see cref="Candidates"/>.

@@ -33,7 +33,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="index">The index of a video driver.</param>
 	/// <returns>The name of the video driver with the given <paramref name="index"/>.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetVideoDriver", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetVideoDriver", StringMarshallingCustomType = typeof(SDLTempStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetVideoDriver(int index);
 
@@ -44,7 +44,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentVideoDriver">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>The name of the current video driver or <see langword="null"/> if no driver has been initialized.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentVideoDriver", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentVideoDriver", StringMarshallingCustomType = typeof(SDLTempStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetCurrentVideoDriver();
 
@@ -66,7 +66,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplays">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of displays returned.</param>
-	/// <returns>A null-terminated array of display instance IDs which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A null-terminated array of display instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplays")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_DisplayId* GetDisplays(out int count);
@@ -99,7 +99,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
 	/// <returns>The name of a display or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayName", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayName", StringMarshallingCustomType = typeof(SDLTempStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetDisplayName(SDL_DisplayId instanceId);
 
@@ -173,7 +173,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
 	/// <param name="count">A pointer filled in with the number of display modes returned.</param>
-	/// <returns>A null-terminated array of display mode pointers which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A null-terminated array of display mode pointers or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetFullscreenDisplayModes")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_DisplayMode** GetFullscreenDisplayModes(SDL_DisplayId instanceId, out int count);
@@ -190,18 +190,9 @@ public static unsafe partial class SDL
 	/// <param name="refreshRate">The refresh rate of the desired display mode, or 0.0f for the desktop refresh rate.</param>
 	/// <param name="includeHighDensityModes">Boolean to include high density modes in the search.</param>
 	/// <returns>The closest display mode equal to or larger than the desired mode, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	public static SDL_DisplayMode? GetClosestFullscreenDisplayMode(SDL_DisplayId instanceId, int width, int height, float refreshRate, bool includeHighDensityModes)
-	{
-		SDL_DisplayMode* displayModePtr = SDL_GetClosestFullscreenDisplayMode(instanceId, width, height, refreshRate, includeHighDensityModes);
-		if (displayModePtr is not null)
-		{
-			return *displayModePtr;
-		}
-		return null;
-
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-		static extern SDL_DisplayMode* SDL_GetClosestFullscreenDisplayMode(SDL_DisplayId displayID, int w, int h, float refresh_rate, bool include_high_density_modes);
-	}
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetClosestFullscreenDisplayMode")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_DisplayMode* GetClosestFullscreenDisplayMode(SDL_DisplayId instanceId, int width, int height, float refreshRate, [MarshalAs(NativeBool)] bool includeHighDensityModes);
 
 	/// <summary>
 	/// Get information about the desktop's display mode.
@@ -211,18 +202,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
 	/// <returns>The desktop display mode or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	public static SDL_DisplayMode? GetDesktopDisplayMode(SDL_DisplayId instanceId)
-	{
-		SDL_DisplayMode* displayModePtr = SDL_GetDesktopDisplayMode(instanceId);
-		if (displayModePtr is not null)
-		{
-			return *displayModePtr;
-		}
-		return null;
-
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-		static extern SDL_DisplayMode* SDL_GetDesktopDisplayMode(SDL_DisplayId displayID);
-	}
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDesktopDisplayMode")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_DisplayMode* GetDesktopDisplayMode(SDL_DisplayId instanceId);
 
 	/// <summary>
 	/// Get information about the current display mode.
@@ -232,18 +214,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
 	/// <returns>The current display mode or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	public static SDL_DisplayMode? GetCurrentDisplayMode(SDL_DisplayId instanceId)
-	{
-		SDL_DisplayMode* displayModePtr = SDL_GetCurrentDisplayMode(instanceId);
-		if (displayModePtr is not null)
-		{
-			return *displayModePtr;
-		}
-		return null;
-
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-		static extern SDL_DisplayMode* SDL_GetCurrentDisplayMode(SDL_DisplayId displayID);
-	}
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayMode")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_DisplayMode* GetCurrentDisplayMode(SDL_DisplayId instanceId);
 
 	/// <summary>
 	/// Get the display containing a point.
@@ -326,18 +299,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="window">The window to query.</param>
 	/// <returns>A pointer to the exclusive fullscreen mode to use or <see langword="null"/> for borderless fullscreen desktop mode.</returns>
-	public static SDL_DisplayMode? GetWindowFullscreenMode(SDL_Window* window)
-	{
-		SDL_DisplayMode* displayModePtr = SDL_GetWindowFullscreenMode(window);
-		if (displayModePtr is not null)
-		{
-			return *displayModePtr;
-		}
-		return null;
-
-		[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl)]
-		static extern SDL_DisplayMode* SDL_GetWindowFullscreenMode(SDL_Window* window);
-	}
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowFullscreenMode")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_DisplayMode* GetWindowFullscreenMode(SDL_Window* window);
 
 	/// <summary>
 	/// Get the raw ICC profile data for the screen the window is currently on.
@@ -371,7 +335,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindows">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of windows returned, may be <see langword="null"/>.</param>
-	/// <returns>A null-terminated array of window pointers which should be freed with <see cref="Free(void*)"/>, or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
+	/// <returns>A null-terminated array of window pointers or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindows")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Window** GetWindows(out int count);
@@ -502,7 +466,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="window">The window to query.</param>
 	/// <returns>The title of the window or an empty string if there is no title.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowTitle", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowTitle", StringMarshallingCustomType = typeof(SDLTempStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string GetWindowTitle(SDL_Window* window);
 

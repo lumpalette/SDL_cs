@@ -468,7 +468,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertPixelsAndColorspace")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ConvertPixelsAndColorspace(int width, int height, SDL_PixelFormat srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, [In] byte[] src, int srcPitch, SDL_PixelFormat dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, [In, Out] byte[] dst, int dstPitch);
+	public static partial int ConvertPixelsAndColorspace(int width, int height, SDL_PixelFormat srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, nint src, int srcPitch, SDL_PixelFormat dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, nint dst, int dstPitch);
 
 	/// <summary>
 	/// Premultiply the alpha on a block of pixels.

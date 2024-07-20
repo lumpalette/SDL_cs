@@ -82,12 +82,12 @@ public unsafe struct SDL_VirtualJoystickDesc
 	/// <summary>
 	/// A pointer to an array of touchpad descriptions, required if <see cref="NumTouchpads"/> is > 0.
 	/// </summary>
-	public SDL_VirtualJoystickTouchpadDesc[]? Touchpads;
+	public SDL_VirtualJoystickTouchpadDesc* Touchpads;
 
 	/// <summary>
 	/// A pointer to an array of sensor descriptions, required if <see cref="NumSensors"/> is > 0.
 	/// </summary>
-	public SDL_VirtualJoystickSensorDesc[]? Sensors;
+	public SDL_VirtualJoystickSensorDesc* Sensors;
 
 	/// <summary>
 	/// User data pointer passed to callbacks.

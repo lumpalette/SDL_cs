@@ -96,7 +96,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="format">The pixel format to query.</param>
 	/// <returns>The human readable name of the specified pixel format or "SDL_PIXELFORMAT_UNKNOWN" if the format isn't recognized.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPixelFormatName", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPixelFormatName", StringMarshallingCustomType = typeof(SDLTempStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string GetPixelFormatName(SDL_PixelFormat format);
 
@@ -115,7 +115,6 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMasksForPixelFormat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return:  MarshalAs(NativeBool)]
 	public static partial int GetMasksForPixelFormat(SDL_PixelFormat format, out int bpp, out uint rMask, out uint gMask, out uint bMask, out uint aMask);
 
 	/// <summary>

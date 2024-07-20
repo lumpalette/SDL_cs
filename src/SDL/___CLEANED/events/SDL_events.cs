@@ -285,24 +285,37 @@ public static unsafe partial class SDL
 	public static partial uint RegisterEvents(int numEvents);
 
 	/// <summary>
-	/// Allocate temporary memory for an SDL event.
+	/// Allocate temporary memory.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AllocateEventMemory">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AllocateTemporaryMemory">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="size">The amount of memory to allocate.</param>
 	/// <returns>A pointer to the memory allocated or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_AllocateEventMemory")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_AllocateTemporaryMemory")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial nint AllocateEventMemory(nuint size);
+	public static partial nint AllocateTemporaryMemory(nuint size);
 
 	/// <summary>
-	/// Free temporary event memory allocated by SDL.
+	/// Claim ownership of temporary memory.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FreeEventMemory">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ClaimTemporaryMemory">documentation</see> for more details.
 	/// </remarks>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_FreeEventMemory")]
+	/// <param name="mem">A pointer allocated with <see cref="AllocateTemporaryMemory(nuint)"/>.</param>
+	/// <returns>A pointer to the memory now owned by the application, which must be freed using <see cref="Free(nint)"/>, or <see langword="null"/> if the memory is not temporary or was allocated on a different thread.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_ClaimTemporaryMemory")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void FreeEventMemory();
+	public static partial nint ClaimTemporaryMemory(nint mem);
+
+	/// <summary>
+	/// Free temporary memory.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FreeTemporaryMemory">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="mem">A pointer allocated with <see cref="AllocateTemporaryMemory(nuint)"/>, or <see langword="null"/> to free all pending temporary allocations.</param>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_FreeTemporaryMemory")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial void FreeTemporaryMemory(nint mem);
 }
