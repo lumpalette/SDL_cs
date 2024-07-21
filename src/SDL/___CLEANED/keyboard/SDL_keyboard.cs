@@ -41,7 +41,19 @@ public static unsafe partial class SDL
 	/// <returns>The name of the selected keyboard or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardNameForID", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial string? GetKeyboardNameForID(SDL_KeyboardId instanceId);
+	public static partial string? GetKeyboardNameForId(SDL_KeyboardId instanceId);
+
+	/// <summary>
+	/// Get the name of a keyboard.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboardNameForID">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="instanceId">The keyboard instance ID.</param>
+	/// <returns>The name of the selected keyboard or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardNameForID")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetKeyboardNameForIdRaw(SDL_KeyboardId instanceId);
 
 	/// <summary>
 	/// Query the window which currently has keyboard focus.
@@ -202,6 +214,18 @@ public static unsafe partial class SDL
 	public static partial string GetScancodeName(SDL_Scancode scancode);
 
 	/// <summary>
+	/// Get a human-readable name for a scancode.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetScancodeName">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="scancode">The desired <see cref="SDL_Scancode"/> to query.</param>
+	/// <returns>The name for the scancode. If the scancode doesn't have a name this function returns an empty string.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetScancodeName")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetScancodeNameRaw(SDL_Scancode scancode);
+
+	/// <summary>
 	/// Get a scancode from a human-readable name.
 	/// </summary>
 	/// <remarks>
@@ -224,6 +248,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string GetKeyName(SDL_Keycode key);
+
+	/// <summary>
+	/// Get a human-readable name for a key.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyName">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="key">The desired <see cref="SDL_Keycode"/> to query.</param>
+	/// <returns>A string of the key name.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyName")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetKeyNameRaw(SDL_Keycode key);
 
 	/// <summary>
 	/// Get a key code from a human-readable name.

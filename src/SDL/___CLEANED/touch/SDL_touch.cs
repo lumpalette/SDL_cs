@@ -31,6 +31,18 @@ public static unsafe partial class SDL
 	public static partial string? GetTouchDeviceName(SDL_TouchId touchId);
 
 	/// <summary>
+	/// Get the touch device name as reported from the driver.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDeviceName">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="touchId">The touch device instance ID.</param>
+	/// <returns>Touch device name, or <see langword="null"/> on failure; call <see cref="GetError"/> for more details.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceName")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetTouchDeviceNameRaw(SDL_TouchId touchId);
+
+	/// <summary>
 	/// Get the type of the given touch device.
 	/// </summary>
 	/// <remarks>

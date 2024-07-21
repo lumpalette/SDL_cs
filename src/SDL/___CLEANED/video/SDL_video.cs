@@ -38,6 +38,18 @@ public static unsafe partial class SDL
 	public static partial string? GetVideoDriver(int index);
 
 	/// <summary>
+	/// Get the name of a built in video driver.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetVideoDriver">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="index">The index of a video driver.</param>
+	/// <returns>The name of the video driver with the given <paramref name="index"/>.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetVideoDriver")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetVideoDriverRaw(int index);
+
+	/// <summary>
 	/// Get the name of the currently initialized video driver.
 	/// </summary>
 	/// <remarks>
@@ -47,6 +59,17 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentVideoDriver", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetCurrentVideoDriver();
+
+	/// <summary>
+	/// Get the name of the currently initialized video driver.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentVideoDriver">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>The name of the current video driver or <see langword="null"/> if no driver has been initialized.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentVideoDriver")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetCurrentVideoDriverRaw();
 
 	/// <summary>
 	/// Get the current system theme.
@@ -102,6 +125,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetDisplayName(SDL_DisplayId instanceId);
+
+	/// <summary>
+	/// Get the name of a display.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayName">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="instanceId">The instance ID of the display to query.</param>
+	/// <returns>The name of a display or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayName")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetDisplayNameRaw(SDL_DisplayId instanceId);
 
 	/// <summary>
 	/// Get the desktop area represented by a display.
@@ -469,6 +504,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowTitle", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string GetWindowTitle(SDL_Window* window);
+
+	/// <summary>
+	/// Get the title of a window.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowTitle">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="window">The window to query.</param>
+	/// <returns>The title of the window in UTF-8 format or an empty string if there is no title.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowTitle")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetWindowTitleRaw(SDL_Window* window);
 
 	/// <summary>
 	/// Set the icon for a window.

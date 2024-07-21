@@ -86,7 +86,7 @@ public static unsafe partial class SDL
 	public static bool IsColorspaceLimitedRange(SDL_Colorspace x) => ColorspaceRange(x) != SDL_ColorRange.Full;
 
 	[Macro]
-	public static bool IsColorspaceFullRange(SDL_Colorspace colorspace) => ColorspaceRange(colorspace) == SDL_ColorRange.Full;
+	public static bool IsColorspaceFullRange(SDL_Colorspace x) => ColorspaceRange(x) == SDL_ColorRange.Full;
 
 	/// <summary>
 	/// Get the human readable name of a pixel format.

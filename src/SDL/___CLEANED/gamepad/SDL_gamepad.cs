@@ -71,6 +71,18 @@ public static unsafe partial class SDL
 	public static partial string? GetGamepadMappingForGuid(SDL_JoystickGuid guid);
 
 	/// <summary>
+	/// Get the gamepad mapping string for a given GUID.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMappingForGUID">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="guid">A structure containing the GUID for which a mapping is desired.</param>
+	/// <returns>A mapping string or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadMappingForGUID")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetGamepadMappingForGuidRaw(SDL_JoystickGuid guid);
+
+	/// <summary>
 	/// Get the current mapping of a gamepad.
 	/// </summary>
 	/// <remarks>
@@ -81,6 +93,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadMapping", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetGamepadMapping(SDL_Gamepad* gamepad);
+
+	/// <summary>
+	/// Get the current mapping of a gamepad.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMapping">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="gamepad">The gamepad you want to get the current mapping for.</param>
+	/// <returns>A string that has the gamepad's mapping or <see langword="null"/> if no mapping is available; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadMapping")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetGamepadMappingRaw(SDL_Gamepad* gamepad);
 
 	/// <summary>
 	/// Set the current mapping of a joystick or gamepad.
@@ -145,6 +169,18 @@ public static unsafe partial class SDL
 	public static partial string? GetGamepadNameForId(SDL_JoystickId instanceId);
 
 	/// <summary>
+	/// Get the implementation-dependent name of a gamepad.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadNameForID">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="instanceId">The joystick instance ID.</param>
+	/// <returns>The name of the selected gamepad. If no name can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadNameForID")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetGamepadNameForIdRaw(SDL_JoystickId instanceId);
+
+	/// <summary>
 	/// Get the implementation dependent path of a gamepad.
 	/// </summary>
 	/// <remarks>
@@ -155,6 +191,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadPathForID", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetGamepadPathForId(SDL_JoystickId instanceId);
+
+	/// <summary>
+	/// Get the implementation dependent path of a gamepad.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadPathForID">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="instanceId">The joystick instance ID.</param>
+	/// <returns>The path of the selected gamepad. If no path can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadPathForID")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetGamepadPathForIdRaw(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the player index of a gamepad.
@@ -253,6 +301,18 @@ public static unsafe partial class SDL
 	public static partial string? GetGamepadMappingForId(SDL_JoystickId instanceId);
 
 	/// <summary>
+	/// Get the mapping of a gamepad.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMappingForID">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="instanceId">The joystick instance ID.</param>
+	/// <returns>The mapping string. Returns <see langword="null"/> if no mapping is available.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadMappingForID")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetGamepadMappingForIdRaw(SDL_JoystickId instanceId);
+
+	/// <summary>
 	/// Open a gamepad for use.
 	/// </summary>
 	/// <remarks>
@@ -325,6 +385,18 @@ public static unsafe partial class SDL
 	public static partial string? GetGamepadName(SDL_Gamepad* gamepad);
 
 	/// <summary>
+	/// Get the implementation-dependent name for an opened gamepad.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadName">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="gamepad">A gamepad identifier previously returned by <see cref="OpenGamepad(SDL_JoystickId)"/>.</param>
+	/// <returns>The implementation dependent name for the gamepad, or <see langword="null"/> if there is no name or the identifier passed is invalid.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadName")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetGamepadNameRaw(SDL_Gamepad* gamepad);
+
+	/// <summary>
 	/// Get the implementation-dependent path for an opened gamepad.
 	/// </summary>
 	/// <remarks>
@@ -335,6 +407,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadPath", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetGamepadPath(SDL_Gamepad* gamepad);
+
+	/// <summary>
+	/// Get the implementation-dependent path for an opened gamepad.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadPath">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="gamepad">A gamepad identifier previously returned by <see cref="OpenGamepad(SDL_JoystickId)"/>.</param>
+	/// <returns>The implementation dependent path for the gamepad, or <see langword="null"/> if there is no path or the identifier passed is invalid.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadPath")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetGamepadPathRaw(SDL_Gamepad* gamepad);
 
 	/// <summary>
 	/// Get the type of an opened gamepad.
@@ -441,6 +525,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadSerial", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetGamepadSerial(SDL_Gamepad* gamepad);
+
+	/// <summary>
+	/// Get the serial number of an opened gamepad, if available.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadSerial">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="gamepad">The gamepad object to query.</param>
+	/// <returns>The serial number, or <see langword="null"/> if unavailable.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadSerial")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetGamepadSerialRaw(SDL_Gamepad* gamepad);
 
 	/// <summary>
 	/// Get the Steam Input handle of an opened gamepad, if available.
@@ -557,7 +653,7 @@ public static unsafe partial class SDL
 	public static partial SDL_GamepadType GetGamepadTypeFromString(string str);
 
 	/// <summary>
-	/// Convert from an SDL_GamepadType enum to a string.
+	/// Convert from an <see cref="SDL_GamepadType"/> enum to a string.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadStringForType">documentation</see> for more details.
@@ -567,6 +663,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadStringForType", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetGamepadStringForType(SDL_GamepadType type);
+
+	/// <summary>
+	/// Convert from an <see cref="SDL_GamepadType"/> enum to a string.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadStringForType">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="type">Type an enum value for a given <see cref="SDL_GamepadType"/>.</param>
+	/// <returns>A string for the given type, or <see langword="null"/> if an invalid type is specified. The string returned is of the format used by <see cref="SDL_Gamepad"/> mapping strings.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadStringForType")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte GetGamepadStringForTypeRaw(SDL_GamepadType type);
 
 	/// <summary>
 	/// Convert a string into <see cref="SDL_GamepadAxis"/> enum.
@@ -591,6 +699,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadStringForAxis", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetGamepadStringForAxis(SDL_GamepadAxis axis);
+
+	/// <summary>
+	/// Convert from an <see cref="SDL_GamepadAxis"/> enum to a string.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadStringForAxis">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="axis">An enum value for a given <see cref="SDL_GamepadAxis"/>.</param>
+	/// <returns>A string for the given axis, or <see langword="null"/> if an invalid axis is specified. The string returned is of the format used by <see cref="SDL_Gamepad"/> mapping strings.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadStringForAxis")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetGamepadStringForAxisRaw(SDL_GamepadAxis axis);
 
 	/// <summary>
 	/// Query whether a gamepad has a given axis.
@@ -642,6 +762,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadStringForButton", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetGamepadStringForButton(SDL_GamepadButton button);
+
+	/// <summary>
+	/// Convert from an <see cref="SDL_GamepadButton"/> enum to a string.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadStringForButton">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="button">An enum value for a given <see cref="SDL_GamepadButton"/>.</param>
+	/// <returns>A string for the given button, or <see langword="null"/> if an invalid button is specified. The string returned is of the format used by <see cref="SDL_Gamepad"/> mapping strings.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadStringForButton")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetGamepadStringForButtonRaw(SDL_GamepadButton button);
 
 	/// <summary>
 	/// Query whether a gamepad has a given button.
@@ -883,7 +1015,7 @@ public static unsafe partial class SDL
 	/// Return the sfSymbolsName for a given button on a gamepad on Apple platforms.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/GetGamepadAppleSFSymbolsNameForButton">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadAppleSFSymbolsNameForButton">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad">The gamepad to query.</param>
 	/// <param name="button">A button on the gamepad.</param>
@@ -891,6 +1023,19 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "GetGamepadAppleSFSymbolsNameForButton", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetGamepadAppleSFSymbolsNameForButton(SDL_Gamepad* gamepad, SDL_GamepadButton button);
+
+	/// <summary>
+	/// Return the sfSymbolsName for a given button on a gamepad on Apple platforms.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadAppleSFSymbolsNameForButton">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="gamepad">The gamepad to query.</param>
+	/// <param name="button">A button on the gamepad.</param>
+	/// <returns>The sfSymbolsName or <see langword="null"/> if the name can't be found.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "GetGamepadAppleSFSymbolsNameForButton")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetGamepadAppleSFSymbolsNameForButtonRaw(SDL_Gamepad* gamepad, SDL_GamepadButton button);
 
 	/// <summary>
 	/// Return the sfSymbolsName for a given axis on a gamepad on Apple platforms.
@@ -904,4 +1049,17 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadAppleSFSymbolsNameForAxis", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetGamepadAppleSFSymbolsNameForAxis(SDL_Gamepad* gamepad, SDL_GamepadAxis axis);
+
+	/// <summary>
+	/// Return the sfSymbolsName for a given axis on a gamepad on Apple platforms.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadAppleSFSymbolsNameForAxis">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="gamepad">The gamepad to query.</param>
+	/// <param name="axis">An axis on the gamepad.</param>
+	/// <returns>The sfSymbolsName or <see langword="null"/> if the name can't be found.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadAppleSFSymbolsNameForAxis")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetGamepadAppleSFSymbolsNameForAxisRaw(SDL_Gamepad* gamepad, SDL_GamepadAxis axis);
 }

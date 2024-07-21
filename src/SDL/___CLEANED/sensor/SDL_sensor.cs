@@ -31,6 +31,18 @@ public static unsafe partial class SDL
 	public static partial string? GetSensorNameForId(SDL_SensorId instanceId);
 
 	/// <summary>
+	/// Get the implementation dependent name of a sensor.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorNameForID">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="instanceId">The sensor instance ID.</param>
+	/// <returns>The sensor name, or <see langword="null"/> if <paramref name="instanceId"/> is not valid.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorNameForID")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetSensorNameForIdRaw(SDL_SensorId instanceId);
+
+	/// <summary>
 	/// Get the type of a sensor.
 	/// </summary>
 	/// <remarks>
@@ -101,6 +113,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetSensorName(SDL_Sensor* sensor);
+
+	/// <summary>
+	/// Get the implementation dependent name of a sensor.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorName">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="sensor">The <see cref="SDL_Sensor"/> object.</param>
+	/// <returns>The sensor name or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorName")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetSensorNameRaw(SDL_Sensor* sensor);
 
 	/// <summary>
 	/// Get the type of a sensor.

@@ -46,6 +46,18 @@ public static unsafe partial class SDL
 	public static partial string? GetMouseNameForId(SDL_MouseId instanceId);
 
 	/// <summary>
+	/// Get the name of a mouse.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMouseNameForID">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="instanceId">The mouse instance ID.</param>
+	/// <returns>The name of the selected mouse, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMouseNameForID")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetMouseNameForIdRaw(SDL_MouseId instanceId);
+
+	/// <summary>
 	/// Get the window which currently has mouse focus.
 	/// </summary>
 	/// <remarks>

@@ -130,6 +130,18 @@ public static unsafe partial class SDL
 	public static partial string? GetAudioDriver(int index);
 
 	/// <summary>
+	/// Use this function to get the name of a built in audio driver.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioDriver">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="index">The index of the audio driver; the value ranges from 0 to <see cref="GetNumAudioDrivers"/> - 1.</param>
+	/// <returns>The name of the audio driver at the requested index, or <see langword="null"/> if an invalid index was specified.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDriver")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetAudioDriverRaw(int index);
+
+	/// <summary>
 	/// Get the name of the current audio driver.
 	/// </summary>
 	/// <remarks>
@@ -139,6 +151,17 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDriver", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetCurrentAudioDriver();
+
+	/// <summary>
+	/// Get the name of the current audio driver.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentAudioDriver">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>The name of the current audio driver or <see langword="null"/> if no driver has been initialized.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDriver")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetCurrentAudioDriverRaw();
 
 	/// <summary>
 	/// Get a list of currently-connected audio playback devices.
@@ -175,6 +198,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDeviceName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetAudioDeviceName(SDL_AudioDeviceId devId);
+
+	/// <summary>
+	/// Get the human-readable name of a specific audio device.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioDeviceName">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="devId">The instance ID of the device to query.</param>
+	/// <returns>The name of the audio device, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDeviceName")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetAudioDeviceNameRaw(SDL_AudioDeviceId devId);
 
 	/// <summary>
 	/// Get the current audio format of a specific audio device.

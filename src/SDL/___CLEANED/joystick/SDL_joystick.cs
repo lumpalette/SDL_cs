@@ -60,7 +60,19 @@ public static unsafe partial class SDL
 	/// <returns>The name of the selected joystick. If no name can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickNameForID", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial string? GetJoystickNameForID(SDL_JoystickId instanceId);
+	public static partial string? GetJoystickNameForId(SDL_JoystickId instanceId);
+
+	/// <summary>
+	/// Get the implementation dependent name of a joystick.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickNameForID">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="instanceId">The joystick instance ID.</param>
+	/// <returns>The name of the selected joystick. If no name can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickNameForID")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetJoystickNameForIdRaw(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the implementation dependent path of a joystick.
@@ -73,6 +85,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPathForID", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetJoystickPathForId(SDL_JoystickId instanceId);
+
+	/// <summary>
+	/// Get the implementation dependent path of a joystick.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickPathForID">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="instanceId">The joystick instance ID.</param>
+	/// <returns>The path of the selected joystick. If no path can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPathForID")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetJoystickPathForIdRaw(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the player index of a joystick.
@@ -336,6 +360,18 @@ public static unsafe partial class SDL
 	public static partial string? GetJoystickName(SDL_Joystick* joystick);
 
 	/// <summary>
+	/// Get the implementation dependent name of a joystick.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickName">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="joystick">The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
+	/// <returns>The name of the selected joystick. If no name can be found, this function returns null; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickName")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetJoystickNameRaw(SDL_Joystick* joystick);
+
+	/// <summary>
 	/// Get the implementation dependent path of a joystick.
 	/// </summary>
 	/// <remarks>
@@ -346,6 +382,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPath", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetJoystickPath(SDL_Joystick* joystick);
+
+	/// <summary>
+	/// Get the implementation dependent path of a joystick.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickPath">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="joystick">The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
+	/// <returns>The path of the selected joystick. If no path can be found, this function returns null; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPath")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetJoystickPathRaw(SDL_Joystick* joystick);
 
 	/// <summary>
 	/// Get the player index of an opened joystick.
@@ -443,6 +491,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickSerial", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetJoystickSerial(SDL_Joystick* joystick);
+
+	/// <summary>
+	/// Get the serial number of an opened joystick, if available.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickSerial">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="joystick">The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
+	/// <returns>The serial number of the selected joystick, or null if unavailable.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickSerial")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte* GetJoystickSerialRaw(SDL_Joystick* joystick);
 
 	/// <summary>
 	/// Get the type of an opened joystick.
