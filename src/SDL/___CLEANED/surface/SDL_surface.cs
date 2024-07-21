@@ -808,6 +808,9 @@ public static unsafe partial class SDL
 	/// <summary>
 	/// Writes a single pixel to a surface.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WriteSurfacePixel">documentation</see> for more details.
+	/// </remarks>
 	/// <param name="surface">The surface to write.</param>
 	/// <param name="x">The horizontal coordinate, 0 <= x < width.</param>
 	/// <param name="y">The vertical coordinate, 0 <= y < height.</param>
@@ -823,6 +826,9 @@ public static unsafe partial class SDL
 	/// <summary>
 	/// Writes a single pixel to a surface.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WriteSurfacePixelFloat">documentation</see> for more details.
+	/// </remarks>
 	/// <param name="surface">The surface to write.</param>
 	/// <param name="x">The horizontal coordinate, 0 <= x < width.</param>
 	/// <param name="y">The vertical coordinate, 0 <= y < height.</param>

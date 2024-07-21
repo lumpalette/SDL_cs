@@ -84,6 +84,30 @@ public static unsafe partial class SDL
 	public static partial SDL_Renderer* CreateSoftwareRenderer(SDL_Surface* surface);
 
 	/// <summary>
+	/// Get the renderer associated with a window.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/GetRenderer">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="window">The window to query.</param>
+	/// <returns>The rendering context on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderer")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_Renderer* GetRenderer(SDL_Window* window);
+
+	/// <summary>
+	/// Get the window associated with a renderer.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/GetRenderWindow">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="renderer">The renderer to query.</param>
+	/// <returns>The window on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderWindow")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_Window* GetRenderWindow(SDL_Renderer* renderer);
+
+	/// <summary>
 	/// The name of the software renderer.
 	/// </summary>
 	/// <remarks>

@@ -81,7 +81,7 @@ public static unsafe partial class SDL
 	/// <param name="type">The type of event to be cleared; see <see cref="SDL_EventType"/> for details.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FlushEvent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void SDL_FlushEvent(SDL_EventType type);
+	public static partial void FlushEvent(SDL_EventType type);
 
 	/// <summary>
 	/// Clear events of a range of types from the event queue.
@@ -93,7 +93,7 @@ public static unsafe partial class SDL
 	/// <param name="maxType">The high end of event type to be cleared, inclusive; see <see cref="SDL_EventType"/> for details.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FlushEvents")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void SDL_FlushEvents(SDL_EventType minType, SDL_EventType maxType);
+	public static partial void FlushEvents(SDL_EventType minType, SDL_EventType maxType);
 
 	/// <summary>
 	/// Poll for currently pending events.
