@@ -190,8 +190,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="desc">Joystick description.</param>
 	/// <returns>The joystick instance ID, or <see cref="SDL_JoystickId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_AttachVirtualJoystick")]
-	public static extern SDL_JoystickId AttachVirtualJoystick([In] in SDL_VirtualJoystickDesc desc);
+	[LibraryImport(LibraryName, EntryPoint = "SDL_AttachVirtualJoystick")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_JoystickId AttachVirtualJoystick(in SDL_VirtualJoystickDesc desc);
 
 	/// <summary>
 	/// Detach a virtual joystick.

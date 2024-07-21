@@ -32,7 +32,7 @@ public unsafe struct SDL_TextEditingCandidatesEvent
 	/// <summary>
 	/// The list of candidates, or <see langword="null"/> if there are no candidates available.
 	/// </summary>
-	public byte** Candidates;
+	public readonly byte** Candidates;
 
 	/// <summary>
 	/// The number of strings in <see cref="Candidates"/>.

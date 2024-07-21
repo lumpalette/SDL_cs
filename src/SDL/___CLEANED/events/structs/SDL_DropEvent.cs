@@ -44,15 +44,11 @@ public unsafe struct SDL_DropEvent
 	/// <summary>
 	/// The source app that sent this drop event, or <see langword="null"/> if that isn't available.
 	/// </summary>
-	public readonly string? Source => Utf8StringMarshaller.ConvertToManaged(_source);
-
-	private readonly byte* _source;
+	public readonly byte* Source;
 
 	/// <summary>
 	/// The text for <see cref="SDL_EventType.DropText"/> and the file name for <see cref="SDL_EventType.DropFile"/>,
 	/// <see langword="null"/> for other events.
 	/// </summary>
-	public readonly string? Data => Utf8StringMarshaller.ConvertToManaged(_data);
-
-	private readonly byte* _data;
+	public readonly byte* Data;
 }

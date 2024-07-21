@@ -30,9 +30,7 @@ public unsafe struct SDL_TextInputEvent
 	public SDL_WindowId WindowId;
 
 	/// <summary>
-	/// The input text.
+	/// The input text, UTF-8 encoded.
 	/// </summary>
-	public readonly string Text => Utf8StringMarshaller.ConvertToManaged(_text)!;
-
-	private readonly byte* _text;
+	public readonly byte* Text;
 }

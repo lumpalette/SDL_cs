@@ -49,10 +49,11 @@ public static unsafe partial class SDL
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMappings">documentation</see> for more details.
-	/// Use <see cref="Utf8StringMarshaller.ConvertToManaged(byte*)"/> to get managed versions of the returned strings.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of mappings returned.</param>
-	/// <returns>An array of the mapping strings, null-terminated, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>
+	/// An array of the mapping strings, null-terminated, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.
+	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadMappings")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial byte** GetGamepadMappings(out int count);
@@ -62,7 +63,6 @@ public static unsafe partial class SDL
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMappingForGUID">documentation</see> for more details.
-	/// Use <see cref="Utf8StringMarshaller.ConvertToManaged(byte*)"/> to get a managed version of the returned string.
 	/// </remarks>
 	/// <param name="guid">A structure containing the GUID for which a mapping is desired.</param>
 	/// <returns>A mapping string or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>

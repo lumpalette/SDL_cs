@@ -9,6 +9,7 @@ namespace SDL_cs;
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_VirtualJoystickDesc">documentation</see> for more details.
 /// </remarks>
+[NativeMarshalling(typeof(SDL_VirtualJoystickDescMarshaller))]
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SDL_VirtualJoystickDesc
 {
@@ -76,18 +77,17 @@ public unsafe struct SDL_VirtualJoystickDesc
 	/// <summary>
 	/// The name of the joystick.
 	/// </summary>
-	[MarshalAs(UnmanagedType.LPUTF8Str)]
 	public string? Name;
 
 	/// <summary>
 	/// A pointer to an array of touchpad descriptions, required if <see cref="NumTouchpads"/> is > 0.
 	/// </summary>
-	public SDL_VirtualJoystickTouchpadDesc* Touchpads;
+	public SDL_VirtualJoystickTouchpadDesc[]? Touchpads;
 
 	/// <summary>
 	/// A pointer to an array of sensor descriptions, required if <see cref="NumSensors"/> is > 0.
 	/// </summary>
-	public SDL_VirtualJoystickSensorDesc* Sensors;
+	public SDL_VirtualJoystickSensorDesc[]? Sensors;
 
 	/// <summary>
 	/// User data pointer passed to callbacks.

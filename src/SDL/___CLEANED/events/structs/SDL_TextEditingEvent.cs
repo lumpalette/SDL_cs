@@ -32,10 +32,7 @@ public unsafe struct SDL_TextEditingEvent
 	/// <summary>
 	/// The editing text.
 	/// </summary>
-	public readonly string Text => Utf8StringMarshaller.ConvertToManaged(_text)!;
-
-	// i don't want to write a custom marshaller only because one field lol
-	private readonly byte* _text;
+	public readonly byte* Text;
 
 	/// <summary>
 	/// The start cursor of selected editing text, or -1 if not set.
