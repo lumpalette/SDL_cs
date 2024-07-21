@@ -96,7 +96,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="format">The pixel format to query.</param>
 	/// <returns>The human readable name of the specified pixel format or "SDL_PIXELFORMAT_UNKNOWN" if the format isn't recognized.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPixelFormatName", StringMarshallingCustomType = typeof(SDLManagedString))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPixelFormatName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string GetPixelFormatName(SDL_PixelFormat format);
 

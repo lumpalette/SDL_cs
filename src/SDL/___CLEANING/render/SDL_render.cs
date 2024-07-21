@@ -25,7 +25,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="index">The index of the rendering driver; the value ranges from 0 to <see cref="GetNumRenderDrivers"/> - 1.</param>
 	/// <returns>The name of the rendering driver at the requested index, or <see langword="null"/> if an invalid index was specified.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderDriver", StringMarshallingCustomType = typeof(SDLManagedString))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderDriver", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetRenderDriver(int index);
 

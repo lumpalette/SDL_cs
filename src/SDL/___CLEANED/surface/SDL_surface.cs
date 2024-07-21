@@ -571,11 +571,11 @@ public static unsafe partial class SDL
 	/// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
 	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see langword="null"/> to copy the entire surface.</param>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
-	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the x and y position in the destination surface. On input the width and height are ignored (taken from <paramref name="srcRect"/>), and on output this is filled in with the actual rectangle used after clipping.</param>
+	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the x and y position in the destination surface, or <see langword="null"/> for (0,0). The width and height are ignored, and are copied from <paramref name="srcRect"/>. If you want a specific width and height, you should use <see cref="BlitSurfaceScaled(SDL_Surface*, in SDL_Rect, SDL_Surface*, ref SDL_Rect, SDL_ScaleMode)"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int BlitSurface(SDL_Surface* src, in SDL_Rect srcRect, SDL_Surface* dst, ref SDL_Rect dstRect);
+	public static partial int BlitSurface(SDL_Surface* src, in SDL_Rect srcRect, SDL_Surface* dst, in SDL_Rect dstRect);
 
 	/// <summary>
 	/// Performs a fast blit from the source surface to the destination surface.
@@ -586,7 +586,7 @@ public static unsafe partial class SDL
 	/// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
 	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see langword="null"/> to copy the entire surface.</param>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
-	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the x and y position in the destination surface. On input the width and height are ignored (taken from <paramref name="srcRect"/>), and on output this is filled in with the actual rectangle used after clipping.</param>
+	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the x and y position in the destination surface, or <see langword="null"/> for (0,0). The width and height are ignored, and are copied from <paramref name="srcRect"/>. If you want a specific width and height, you should use <see cref="BlitSurfaceScaled(SDL_Surface*, in SDL_Rect, SDL_Surface*, ref SDL_Rect, SDL_ScaleMode)"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -599,7 +599,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceUnchecked">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
-	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see langword="null"/> to copy the entire surface.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied.</param>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
 	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the x and y position in the destination surface.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
@@ -608,35 +608,20 @@ public static unsafe partial class SDL
 	public static partial int BlitSurfaceUnchecked(SDL_Surface* src, in SDL_Rect srcRect, SDL_Surface* dst, in SDL_Rect dstRect);
 
 	/// <summary>
-	/// Perform low-level surface blitting only.
+	/// Perform a scaled blit to a destination surface, which may be of a different format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceUnchecked">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceScaled">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
-	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see langword="null"/> to copy the entire surface.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see langword="null"/> to copy the entire surface..</param>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
-	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the x and y position in the destination surface.</param>
+	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface, filled with the actual rectangle used after clipping.</param>
+	/// <param name="scaleMode">The <see cref="SDL_ScaleMode"/> to be used.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceUnchecked")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceScaled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int BlitSurfaceUnchecked(SDL_Surface* src, SDL_Rect* srcRect, SDL_Surface* dst, SDL_Rect* dstRect);
-
-	/// <summary>
-	/// Perform stretch blit between two surfaces of the same format.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SoftStretch">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
-	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied.</param>
-	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
-	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface.</param>
-	/// <param name="scaleMode">Scale algorithm to be used.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SoftStretch")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SoftStretch(SDL_Surface* src, in SDL_Rect srcRect, SDL_Surface* dst, in SDL_Rect dstRect, SDL_ScaleMode scaleMode);
+	public static partial int BlitSurfaceScaled(SDL_Surface* src, in SDL_Rect srcRect, SDL_Surface* dst, ref SDL_Rect dstRect, SDL_ScaleMode scaleMode);
 
 	/// <summary>
 	/// Perform a scaled blit to a destination surface, which may be of a different format.
@@ -645,14 +630,14 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceScaled">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
-	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see langword="null"/> to copy the entire surface..</param>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
 	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface, filled with the actual rectangle used after clipping.</param>
 	/// <param name="scaleMode">The <see cref="SDL_ScaleMode"/> to be used.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceScaled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int BlitSurfaceScaled(SDL_Surface* src, in SDL_Rect srcRect, SDL_Surface* dst, ref SDL_Rect dstRect, SDL_ScaleMode scaleMode);
+	public static partial int BlitSurfaceScaled(SDL_Surface* src, SDL_Rect* srcRect, SDL_Surface* dst, SDL_Rect* dstRect, SDL_ScaleMode scaleMode);
 
 	/// <summary>
 	/// Perform low-level surface scaled blitting only.
@@ -669,6 +654,89 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceUncheckedScaled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int BlitSurfaceUncheckedScaled(SDL_Surface* src, in SDL_Rect srcRect, SDL_Surface* dst, in SDL_Rect dstRect, SDL_ScaleMode scaleMode);
+
+	/// <summary>
+	/// Perform a tiled blit to a destination surface, which may be of a different format.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceTiled">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see langword="null"/> to copy the entire surface.</param>
+	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
+	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface, or <see langword="null"/> to fill the entire surface.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceTiled")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int BlitSurfaceTiled(SDL_Surface* src, in SDL_Rect srcRect, SDL_Surface* dst, in SDL_Rect dstRect);
+
+	/// <summary>
+	/// Perform a tiled blit to a destination surface, which may be of a different format.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceTiled">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see langword="null"/> to copy the entire surface.</param>
+	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
+	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface, or <see langword="null"/> to fill the entire surface.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceTiled")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int BlitSurfaceTiled(SDL_Surface* src, SDL_Rect* srcRect, SDL_Surface* dst, SDL_Rect* dstRect);
+
+	/// <summary>
+	/// Perform a scaled and tiled blit to a destination surface, which may be of a different format.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurfaceTiledWithScale">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see langword="null"/> to copy the entire surface.</param>
+	/// <param name="scale">The scale used to transform <paramref name="srcRect"/> into the destination rectangle, e.g. a 32x32 texture with a scale of 2 would fill 64x64 tiles.</param>
+	/// <param name="scaleMode">Scale algorithm to be used.</param>
+	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
+	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface, or <see langword="null"/> to fill the entire surface.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceTiledWithScale")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int BlitSurfaceTiledWithScale(SDL_Surface* src, in SDL_Rect srcRect, float scale, SDL_ScaleMode scaleMode, SDL_Surface* dst, in SDL_Rect dstRect);
+
+	/// <summary>
+	/// Perform a scaled blit using the 9-grid algorithm to a destination surface, which may be of a different format.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurface9Grid">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be used for the 9-grid, or <see langword="null"/> to use the entire surface.</param>
+	/// <param name="cornerSize">The size, in pixels, of the corner in <paramref name="srcRect"/>.</param>
+	/// <param name="scale">The scale used to transform the corner of <paramref name="srcRect"/> into the corner of <paramref name="dstRect"/>, or 0.0f for an unscaled blit.</param>
+	/// <param name="scaleMode">Scale algorithm to be used.</param>
+	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
+	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface, or <see langword="null"/> to fill the entire surface.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurface9Grid")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int BlitSurface9Grid(SDL_Surface* src, in SDL_Rect srcRect, int cornerSize, float scale, SDL_ScaleMode scaleMode, SDL_Surface* dst, in SDL_Rect dstRect);
+
+	/// <summary>
+	/// Perform a scaled blit using the 9-grid algorithm to a destination surface, which may be of a different format.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BlitSurface9Grid">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be used for the 9-grid, or <see langword="null"/> to use the entire surface.</param>
+	/// <param name="cornerSize">The size, in pixels, of the corner in <paramref name="srcRect"/>.</param>
+	/// <param name="scale">The scale used to transform the corner of <paramref name="srcRect"/> into the corner of <paramref name="dstRect"/>, or 0.0f for an unscaled blit.</param>
+	/// <param name="scaleMode">Scale algorithm to be used.</param>
+	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
+	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface, or <see langword="null"/> to fill the entire surface.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurface9Grid")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int BlitSurface9Grid(SDL_Surface* src, SDL_Rect* srcRect, int cornerSize, float scale, SDL_ScaleMode scaleMode, SDL_Surface* dst, SDL_Rect* dstRect);
 
 	/// <summary>
 	/// Map an RGB triple to an opaque pixel value for a surface.
@@ -736,4 +804,34 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ReadSurfacePixelFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int ReadSurfacePixelFloat(SDL_Surface* surface, int x, int y, out float r, out float g, out float b, out float a);
+
+	/// <summary>
+	/// Writes a single pixel to a surface.
+	/// </summary>
+	/// <param name="surface">The surface to write.</param>
+	/// <param name="x">The horizontal coordinate, 0 <= x < width.</param>
+	/// <param name="y">The vertical coordinate, 0 <= y < height.</param>
+	/// <param name="r">The red channel value, 0-255.</param>
+	/// <param name="g">The green channel value, 0-255.</param>
+	/// <param name="b">The blue channel value, 0-255.</param>
+	/// <param name="a">The alpha channel value, 0-255.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_WriteSurfacePixel")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int WriteSurfacePixel(SDL_Surface* surface, int x, int y, byte r, byte g, byte b, byte a);
+
+	/// <summary>
+	/// Writes a single pixel to a surface.
+	/// </summary>
+	/// <param name="surface">The surface to write.</param>
+	/// <param name="x">The horizontal coordinate, 0 <= x < width.</param>
+	/// <param name="y">The vertical coordinate, 0 <= y < height.</param>
+	/// <param name="r">The red channel value, normally in the range 0-1.</param>
+	/// <param name="g">The green channel value, normally in the range 0-1.</param>
+	/// <param name="b">The blue channel value, normally in the range 0-1.</param>
+	/// <param name="a">The alpha channel value, normally in the range 0-1.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_WriteSurfacePixelFloat")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int WriteSurfacePixelFloat(SDL_Surface* surface, int x, int y, float r, float g, float b, float a);
 }

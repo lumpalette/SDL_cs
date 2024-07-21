@@ -5,8 +5,8 @@ namespace SDL_cs;
 /// <summary>
 /// A marshaller for strings managed by SDL, i.e. strings that the program <b>should not</b> free manually.
 /// </summary>
-[CustomMarshaller(typeof(string), MarshalMode.ManagedToUnmanagedOut, typeof(SDLManagedString))]
-public static unsafe class SDLManagedString
+[CustomMarshaller(typeof(string), MarshalMode.ManagedToUnmanagedOut, typeof(SDLManagedStringMarshaller))]
+public static unsafe class SDLManagedStringMarshaller
 {
 	/// <summary>
 	/// Converts an SDL-managed string into a managed C# <see cref="string"/>.
