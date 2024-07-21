@@ -26,10 +26,33 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboards">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of keyboards returned.</param>
+	/// <returns>An array of keyboards instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	public static SDL_KeyboardId[]? GetKeyboards(out int count)
+	{
+		SDL_KeyboardId[]? keyboards = null;
+		SDL_KeyboardId* keyboardsPtr = GetKeyboardsRaw(out count);
+		if (keyboardsPtr is not null)
+		{
+			keyboards = new SDL_KeyboardId[count];
+			for (int i = 0; i < count; i++)
+			{
+				keyboards[i] = keyboardsPtr[i];
+			}
+		}
+		return keyboards;
+	}
+
+	/// <summary>
+	/// Get a list of currently connected keyboards.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboards">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="count">A pointer filled in with the number of keyboards returned.</param>
 	/// <returns>A null-terminated array of keyboards instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboards")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_KeyboardId* GetKeyboards(out int count);
+	public static partial SDL_KeyboardId* GetKeyboardsRaw(out int count);
 
 	/// <summary>
 	/// Get the name of a keyboard.

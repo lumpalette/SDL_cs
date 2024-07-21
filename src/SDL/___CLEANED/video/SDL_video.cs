@@ -89,10 +89,33 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplays">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of displays returned.</param>
+	/// <returns>An array of display instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	public static SDL_DisplayId[]? GetDisplays(out int count)
+	{
+		SDL_DisplayId[]? displays = null;
+		SDL_DisplayId* displaysPtr = GetDisplaysRaw(out count);
+		if (displaysPtr is not null)
+		{
+			displays = new SDL_DisplayId[count];
+			for (int i = 0; i < count; i++)
+			{
+				displays[i] = displaysPtr[i];
+			}
+		}
+		return displays;
+	}
+
+	/// <summary>
+	/// Get a list of currently connected displays.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplays">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="count">A pointer filled in with the number of displays returned.</param>
 	/// <returns>A null-terminated array of display instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplays")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_DisplayId* GetDisplays(out int count);
+	public static partial SDL_DisplayId* GetDisplaysRaw(out int count);
 
 	/// <summary>
 	/// Return the primary display.
@@ -208,10 +231,34 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
 	/// <param name="count">A pointer filled in with the number of display modes returned.</param>
+	/// <returns>An array of display mode pointers or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	public static SDL_DisplayMode*[]? GetFullscreenDisplayModes(SDL_DisplayId instanceId, out int count)
+	{
+		SDL_DisplayMode*[]? modes = null;
+		SDL_DisplayMode** modesPtr = GetFullscreenDisplayModesRaw(instanceId, out count);
+		if (modesPtr is not null)
+		{
+			modes = new SDL_DisplayMode*[count];
+			for (int i = 0; i < count; i++)
+			{
+				modes[i] = modesPtr[i];
+			}
+		}
+		return modes;
+	}
+
+	/// <summary>
+	/// Get a list of fullscreen display modes available on a display.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetFullscreenDisplayModes">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="instanceId">The instance ID of the display to query.</param>
+	/// <param name="count">A pointer filled in with the number of display modes returned.</param>
 	/// <returns>A null-terminated array of display mode pointers or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetFullscreenDisplayModes")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_DisplayMode** GetFullscreenDisplayModes(SDL_DisplayId instanceId, out int count);
+	public static partial SDL_DisplayMode** GetFullscreenDisplayModesRaw(SDL_DisplayId instanceId, out int count);
 
 	/// <summary>
 	/// Get the closest match to the requested display mode.
@@ -370,10 +417,33 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindows">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of windows returned, may be <see langword="null"/>.</param>
+	/// <returns>An array of window pointers or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
+	public static SDL_Window*[]? GetWindows(out int count)
+	{
+		SDL_Window*[]? windows = null;
+		SDL_Window** windowsPtr = GetWindowsRaw(out count);
+		if (windowsPtr is not null)
+		{
+			windows = new SDL_Window*[count];
+			for (int i = 0; i < count; i++)
+			{
+				windows[i] = windowsPtr[i];
+			}
+		}
+		return windows;
+	}
+
+	/// <summary>
+	/// Get a list of valid windows.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindows">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="count">A pointer filled in with the number of windows returned, may be <see langword="null"/>.</param>
 	/// <returns>A null-terminated array of window pointers or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindows")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Window** GetWindows(out int count);
+	public static partial SDL_Window** GetWindowsRaw(out int count);
 
 	/// <summary>
 	/// Create a window with the specified dimensions and flags.

@@ -68,7 +68,7 @@ public static unsafe partial class SDL
 	/// <returns>A mapping string or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadMappingForGUID", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial string? GetGamepadMappingForGuid(SDL_JoystickGuid guid);
+	public static partial string? GetGamepadMappingForGuid(SDL_Guid guid);
 
 	/// <summary>
 	/// Get the gamepad mapping string for a given GUID.
@@ -80,7 +80,7 @@ public static unsafe partial class SDL
 	/// <returns>A mapping string or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadMappingForGUID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetGamepadMappingForGuidRaw(SDL_JoystickGuid guid);
+	public static partial byte* GetGamepadMappingForGuidRaw(SDL_Guid guid);
 
 	/// <summary>
 	/// Get the current mapping of a gamepad.
@@ -138,10 +138,33 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepads">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of gamepads returned.</param>
+	/// <returns>An array of joystick instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	public static SDL_JoystickId[]? GetGamepads(out int count)
+	{
+		SDL_JoystickId[]? gamepads = null;
+		SDL_JoystickId* gamepadsRaw = GetGamepadsRaw(out count);
+		if (gamepadsRaw is not null)
+		{
+			gamepads = new SDL_JoystickId[count];
+			for (int i = 0; i < count; i++)
+			{
+				gamepads[i] = gamepadsRaw[i];
+			}
+		}
+		return gamepads;
+	}
+
+	/// <summary>
+	/// Get a list of currently connected gamepads.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepads">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="count">A pointer filled in with the number of gamepads returned.</param>
 	/// <returns>A null-terminated array of joystick instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepads")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_JoystickId* GetGamepads(out int count);
+	public static partial SDL_JoystickId* GetGamepadsRaw(out int count);
 
 	/// <summary>
 	/// Check if the given joystick is supported by the gamepad interface.
@@ -226,7 +249,7 @@ public static unsafe partial class SDL
 	/// <returns>The GUID of the selected gamepad. If called on an invalid index, this function returns a zero GUID.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadGUIDForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_JoystickGuid GetGamepadGuidForId(SDL_JoystickId instanceId);
+	public static partial SDL_Guid GetGamepadGuidForId(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the USB vendor ID of a gamepad, if available.
@@ -628,10 +651,34 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="gamepad">A gamepad.</param>
 	/// <param name="count">A pointer filled in with the number of bindings returned.</param>
+	/// <returns>An array of pointers to bindings or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	public static SDL_GamepadBinding*[] GetGamepadBindings(SDL_Gamepad* gamepad, out int count)
+	{
+		SDL_GamepadBinding*[]? bindings = null;
+		SDL_GamepadBinding** bindingsPtr = GetGamepadBindingsRaw(gamepad, out count);
+		if (bindings is not null)
+		{
+			bindings = new SDL_GamepadBinding*[count];
+			for (int i = 0; i < count; i++)
+			{
+				bindings[i] = bindingsPtr[i];
+			}
+		}
+		return bindings;
+	}
+
+	/// <summary>
+	/// Get the SDL joystick layer bindings for a gamepad.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadBindings">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="gamepad">A gamepad.</param>
+	/// <param name="count">A pointer filled in with the number of bindings returned.</param>
 	/// <returns>A null-terminated array of pointers to bindings or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadBindings")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_GamepadBinding** GetGamepadBindings(SDL_Gamepad* gamepad, out int count);
+	public static partial SDL_GamepadBinding** GetGamepadBindingsRaw(SDL_Gamepad* gamepad, out int count);
 
 	/// <summary>
 	/// Manually pump gamepad updates if not using the loop.

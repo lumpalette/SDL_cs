@@ -13,10 +13,33 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDevices">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of fingers returned.</param>
+	/// <returns>An array of touch device IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	public static SDL_TouchId[]? GetTouchDevices(out int count)
+	{
+		SDL_TouchId[]? devices = null;
+		SDL_TouchId* devicesPtr = GetTouchDevicesRaw(out count);
+		if (devicesPtr is not null)
+		{
+			devices = new SDL_TouchId[count];
+			for (int i = 0; i < count; i++)
+			{
+				devices[i] = devicesPtr[i];
+			}
+		}
+		return devices;
+	}
+
+	/// <summary>
+	/// Get a list of registered touch fingers.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDevices">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="count">A pointer filled in with the number of fingers returned.</param>
 	/// <returns>A null-terminated array of touch device IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchDevices")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_TouchId* GetTouchDevices(out int count);
+	public static partial SDL_TouchId* GetTouchDevicesRaw(out int count);
 
 	/// <summary>
 	/// Get the touch device name as reported from the driver.
@@ -62,10 +85,34 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="touchId">The ID of a touch device.</param>
 	/// <param name="count">A pointer filled in with the number of fingers returned.</param>
-	/// <returns>a <see langword="null"/> terminated array of <see cref="SDL_Finger"/> pointers which should be freed with <see cref="Free(nint)"/>, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>An array of <see cref="SDL_Finger"/> pointers or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	public static SDL_Finger*[]? GetTouchFingers(SDL_TouchId touchId, out int count)
+	{
+		SDL_Finger*[]? fingers = null;
+		SDL_Finger** fingersPtr = GetTouchFingersRaw(touchId, out count);
+		if (fingersPtr is not null)
+		{
+			fingers = new SDL_Finger*[count];
+			for (int i = 0; i < count; i++)
+			{
+				fingers[i] = fingersPtr[i];
+			}
+		}
+		return fingers;
+	}
+
+	/// <summary>
+	/// Get a list of active fingers for a given touch device.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchFingers">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="touchId">The ID of a touch device.</param>
+	/// <param name="count">A pointer filled in with the number of fingers returned.</param>
+	/// <returns>A <see langword="null"/> terminated array of <see cref="SDL_Finger"/> pointers or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchFingers")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Finger** GetTouchFingers(SDL_TouchId touchId, out int count);
+	public static partial SDL_Finger** GetTouchFingersRaw(SDL_TouchId touchId, out int count);
 
 	/// <summary>
 	/// Used as the device ID for mouse events simulated with touch input.

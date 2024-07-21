@@ -28,10 +28,33 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMice">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of mice returned.</param>
+	/// <returns>An array of mouse instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more details.</returns>
+	public static SDL_MouseId[]? GetMice(out int count)
+	{
+		SDL_MouseId[]? mice = null;
+		SDL_MouseId* micePtr = GetMiceRaw(out count);
+		if (micePtr is not null)
+		{
+			mice = new SDL_MouseId[count];
+			for (int i = 0; i < count; i++)
+			{
+				mice[i] = micePtr[i];
+			}
+		}
+		return mice;
+	}
+
+	/// <summary>
+	/// Get a list of currently connected mice.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMice">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="count">A pointer filled in with the number of mice returned.</param>
 	/// <returns>A null-terminated array of mouse instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more details.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMice")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_MouseId* GetMice(out int count);
+	public static partial SDL_MouseId* GetMiceRaw(out int count);
 
 	/// <summary>
 	/// Get the name of a mouse.

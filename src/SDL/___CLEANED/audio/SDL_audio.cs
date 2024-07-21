@@ -170,10 +170,56 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioPlaybackDevices">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of devices returned.</param>
+	/// <returns>An array of device instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	public static SDL_AudioDeviceId[]? GetAudioPlaybackDevices(out int count)
+	{
+		SDL_AudioDeviceId[]? devices = null;
+		SDL_AudioDeviceId* devicesPtr = GetAudioPlaybackDevicesRaw(out count);
+		if (devicesPtr is not null)
+		{
+			devices = new SDL_AudioDeviceId[count];
+			for (int i = 0; i < count; i++)
+			{
+				devices[i] = devicesPtr[i];
+			}
+		}
+		return devices;
+	}
+
+	/// <summary>
+	/// Get a list of currently-connected audio playback devices.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioPlaybackDevices">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="count">A pointer filled in with the number of devices returned.</param>
 	/// <returns>A null-terminated array of device instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioPlaybackDevices")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_AudioDeviceId* GetAudioPlaybackDevices(out int count);
+	public static partial SDL_AudioDeviceId* GetAudioPlaybackDevicesRaw(out int count);
+
+	/// <summary>
+	/// Get a list of currently-connected audio recording devices.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioRecordingDevices">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="count">A pointer filled in with the number of devices returned.</param>
+	/// <returns>An array of device instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	public static SDL_AudioDeviceId[]? GetAudioRecordingDevice(out int count)
+	{
+		SDL_AudioDeviceId[]? devices = null;
+		SDL_AudioDeviceId* devicesPtr = GetAudioRecordingDevicesRaw(out count);
+		if (devicesPtr is not null)
+		{
+			devices = new SDL_AudioDeviceId[count];
+			for (int i = 0; i < count; i++)
+			{
+				devices[i] = devicesPtr[i];
+			}
+		}
+		return devices;
+	}
 
 	/// <summary>
 	/// Get a list of currently-connected audio recording devices.
@@ -185,7 +231,7 @@ public static unsafe partial class SDL
 	/// <returns>A null-terminated array of device instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioRecordingDevices")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_AudioDeviceId* GetAudioRecordingDevices(out int count);
+	public static partial SDL_AudioDeviceId* GetAudioRecordingDevicesRaw(out int count);
 
 	/// <summary>
 	/// Get the human-readable name of a specific audio device.
@@ -357,12 +403,12 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BindAudioStream">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="deviceId">An audio device to bind a stream to.</param>
+	/// <param name="devId">An audio device to bind a stream to.</param>
 	/// <param name="stream">An audio stream to bind to a device.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BindAudioStream")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int BindAudioStream(SDL_AudioDeviceId deviceId, SDL_AudioStream* stream);
+	public static partial int BindAudioStream(SDL_AudioDeviceId devId, SDL_AudioStream* stream);
 
 	/// <summary>
 	/// Unbind a list of audio streams from their audio devices.

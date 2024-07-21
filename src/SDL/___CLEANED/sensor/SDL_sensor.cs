@@ -13,10 +13,33 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensors">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of sensors returned.</param>
+	/// <returns>An array of sensor instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	public static SDL_SensorId[]? GetSensors(out int count)
+	{
+		SDL_SensorId[]? sensors = null;
+		SDL_SensorId* sensorsPtr = GetSensorsRaw(out count);
+		if (sensorsPtr is not null)
+		{
+			sensors = new SDL_SensorId[count];
+			for (int i = 0; i < count; i++)
+			{
+				sensors[i] = sensorsPtr[i];
+			}
+		}
+		return sensors;
+	}
+
+	/// <summary>
+	/// Get a list of currently connected sensors.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensors">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="count">A pointer filled in with the number of sensors returned.</param>
 	/// <returns>A null-terminated array of sensor instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensors")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_SensorId* GetSensors(out int count);
+	public static partial SDL_SensorId* GetSensorsRaw(out int count);
 
 	/// <summary>
 	/// Get the implementation dependent name of a sensor.
