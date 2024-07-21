@@ -3,6 +3,9 @@
 /// <summary>
 /// The types of events that can be delivered.
 /// </summary>
+/// <remarks>
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_EventType">documentation</see> for more details.
+/// </remarks>
 public enum SDL_EventType : uint
 {
 	/// <summary>
