@@ -1408,7 +1408,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DestroyTexture">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture">The texture to destroy.</param>
-	[LibraryImport(LibraryName, EntryPoint = "")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_DestroyTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial void DestroyTexture(SDL_Texture* texture);
 
