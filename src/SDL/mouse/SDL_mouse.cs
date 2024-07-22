@@ -64,7 +64,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The mouse instance ID.</param>
 	/// <returns>The name of the selected mouse, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMouseNameForID", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMouseNameForID", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetMouseNameForId(SDL_MouseId instanceId);
 

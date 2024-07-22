@@ -30,7 +30,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="index">The index of the rendering driver; the value ranges from 0 to <see cref="GetNumRenderDrivers"/> - 1.</param>
 	/// <returns>The name of the rendering driver at the requested index, or <see langword="null"/> if an invalid index was specified.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderDriver", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderDriver", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetRenderDriver(int index);
 
@@ -132,7 +132,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="renderer">The rendering context.</param>
 	/// <returns>The name of the selected renderer, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRendererName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRendererName", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetRendererName(SDL_Renderer* renderer);
 

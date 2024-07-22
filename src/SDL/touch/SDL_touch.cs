@@ -49,7 +49,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="touchId">The touch device instance ID.</param>
 	/// <returns>Touch device name, or <see langword="null"/> on failure; call <see cref="GetError"/> for more details.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceName", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceName", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetTouchDeviceName(SDL_TouchId touchId);
 

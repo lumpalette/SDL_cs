@@ -15,7 +15,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="guid">The <see cref="SDL_Guid"/> you wish to convert to string.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GUIDToString", StringMarshallingCustomType = typeof(SDLManagedStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GUIDToString", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GuidToString(SDL_Guid guid);
 
