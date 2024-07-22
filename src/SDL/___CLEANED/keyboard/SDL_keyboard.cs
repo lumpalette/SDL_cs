@@ -30,7 +30,7 @@ public static unsafe partial class SDL
 	public static SDL_KeyboardId[]? GetKeyboards(out int count)
 	{
 		SDL_KeyboardId[]? keyboards = null;
-		SDL_KeyboardId* keyboardsPtr = GetKeyboardsRaw(out count);
+		SDL_KeyboardId* keyboardsPtr = GetKeyboardsTemporary(out count);
 		if (keyboardsPtr is not null)
 		{
 			keyboards = new SDL_KeyboardId[count];
@@ -52,7 +52,7 @@ public static unsafe partial class SDL
 	/// <returns>A null-terminated array of keyboards instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboards")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_KeyboardId* GetKeyboardsRaw(out int count);
+	public static partial SDL_KeyboardId* GetKeyboardsTemporary(out int count);
 
 	/// <summary>
 	/// Get the name of a keyboard.
@@ -76,7 +76,7 @@ public static unsafe partial class SDL
 	/// <returns>The name of the selected keyboard or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardNameForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetKeyboardNameForIdRaw(SDL_KeyboardId instanceId);
+	public static partial byte* GetKeyboardNameForIdTemporary(SDL_KeyboardId instanceId);
 
 	/// <summary>
 	/// Query the window which currently has keyboard focus.
@@ -246,7 +246,7 @@ public static unsafe partial class SDL
 	/// <returns>The name for the scancode. If the scancode doesn't have a name this function returns an empty string.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetScancodeName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetScancodeNameRaw(SDL_Scancode scancode);
+	public static partial byte* GetScancodeNameTemporary(SDL_Scancode scancode);
 
 	/// <summary>
 	/// Get a scancode from a human-readable name.
@@ -282,7 +282,7 @@ public static unsafe partial class SDL
 	/// <returns>A string of the key name.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetKeyNameRaw(SDL_Keycode key);
+	public static partial byte* GetKeyNameTemporary(SDL_Keycode key);
 
 	/// <summary>
 	/// Get a key code from a human-readable name.

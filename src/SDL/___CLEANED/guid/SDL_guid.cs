@@ -29,7 +29,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GUIDToString")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GuidToStringRaw(SDL_Guid guid);
+	public static partial byte* GuidToStringTemporary(SDL_Guid guid);
 
 	/// <summary>
 	/// Convert a GUID string into an <see cref="SDL_Guid"/> structure.

@@ -32,7 +32,7 @@ public static unsafe partial class SDL
 	public static SDL_MouseId[]? GetMice(out int count)
 	{
 		SDL_MouseId[]? mice = null;
-		SDL_MouseId* micePtr = GetMiceRaw(out count);
+		SDL_MouseId* micePtr = GetMiceTemporary(out count);
 		if (micePtr is not null)
 		{
 			mice = new SDL_MouseId[count];
@@ -54,7 +54,7 @@ public static unsafe partial class SDL
 	/// <returns>A null-terminated array of mouse instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more details.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMice")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_MouseId* GetMiceRaw(out int count);
+	public static partial SDL_MouseId* GetMiceTemporary(out int count);
 
 	/// <summary>
 	/// Get the name of a mouse.
@@ -78,7 +78,7 @@ public static unsafe partial class SDL
 	/// <returns>The name of the selected mouse, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMouseNameForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetMouseNameForIdRaw(SDL_MouseId instanceId);
+	public static partial byte* GetMouseNameForIdTemporary(SDL_MouseId instanceId);
 
 	/// <summary>
 	/// Get the window which currently has mouse focus.

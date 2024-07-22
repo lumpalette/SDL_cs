@@ -139,7 +139,7 @@ public static unsafe partial class SDL
 	/// <returns>The name of the audio driver at the requested index, or <see langword="null"/> if an invalid index was specified.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDriver")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetAudioDriverRaw(int index);
+	public static partial byte* GetAudioDriverTemporary(int index);
 
 	/// <summary>
 	/// Get the name of the current audio driver.
@@ -161,7 +161,7 @@ public static unsafe partial class SDL
 	/// <returns>The name of the current audio driver or <see langword="null"/> if no driver has been initialized.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDriver")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetCurrentAudioDriverRaw();
+	public static partial byte* GetCurrentAudioDriverTemporary();
 
 	/// <summary>
 	/// Get a list of currently-connected audio playback devices.
@@ -174,7 +174,7 @@ public static unsafe partial class SDL
 	public static SDL_AudioDeviceId[]? GetAudioPlaybackDevices(out int count)
 	{
 		SDL_AudioDeviceId[]? devices = null;
-		SDL_AudioDeviceId* devicesPtr = GetAudioPlaybackDevicesRaw(out count);
+		SDL_AudioDeviceId* devicesPtr = GetAudioPlaybackDevicesTemporary(out count);
 		if (devicesPtr is not null)
 		{
 			devices = new SDL_AudioDeviceId[count];
@@ -196,7 +196,7 @@ public static unsafe partial class SDL
 	/// <returns>A null-terminated array of device instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioPlaybackDevices")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_AudioDeviceId* GetAudioPlaybackDevicesRaw(out int count);
+	public static partial SDL_AudioDeviceId* GetAudioPlaybackDevicesTemporary(out int count);
 
 	/// <summary>
 	/// Get a list of currently-connected audio recording devices.
@@ -209,7 +209,7 @@ public static unsafe partial class SDL
 	public static SDL_AudioDeviceId[]? GetAudioRecordingDevice(out int count)
 	{
 		SDL_AudioDeviceId[]? devices = null;
-		SDL_AudioDeviceId* devicesPtr = GetAudioRecordingDevicesRaw(out count);
+		SDL_AudioDeviceId* devicesPtr = GetAudioRecordingDevicesTemporary(out count);
 		if (devicesPtr is not null)
 		{
 			devices = new SDL_AudioDeviceId[count];
@@ -231,7 +231,7 @@ public static unsafe partial class SDL
 	/// <returns>A null-terminated array of device instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioRecordingDevices")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_AudioDeviceId* GetAudioRecordingDevicesRaw(out int count);
+	public static partial SDL_AudioDeviceId* GetAudioRecordingDevicesTemporary(out int count);
 
 	/// <summary>
 	/// Get the human-readable name of a specific audio device.
@@ -255,7 +255,7 @@ public static unsafe partial class SDL
 	/// <returns>The name of the audio device, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDeviceName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetAudioDeviceNameRaw(SDL_AudioDeviceId devId);
+	public static partial byte* GetAudioDeviceNameTemporary(SDL_AudioDeviceId devId);
 
 	/// <summary>
 	/// Get the current audio format of a specific audio device.

@@ -9,7 +9,7 @@ namespace SDL_cs;
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Surface">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
-public readonly unsafe struct SDL_Surface
+public unsafe struct SDL_Surface
 {
 	/// <summary>
 	/// Read-only.
@@ -44,7 +44,7 @@ public readonly unsafe struct SDL_Surface
 	/// <summary>
 	/// Application reference count, used when freeing surface
 	/// </summary>
-	public readonly int RefCount;
+	public int RefCount;
 
 	private readonly SDL_SurfaceData* _internal;
 }

@@ -8,21 +8,16 @@ public static partial class SDL_Prop
 	public static class Display
 	{
 		/// <summary>
-		/// True if the display has HDR headroom above the SDR white point.
+		/// True if the display has HDR headroom above the SDR white point. This is for informational and diagnostic purposes only,
+		/// as not all platforms provide this information at the display level.
 		/// </summary>
-		/// <remarks>
-		/// This is for informational and diagnostic purposes only, as not all platforms provide this information at the
-		/// display level.
-		/// </remarks>
 		public const string HdrEnabledBoolean = "SDL.display.HDR_enabled";
 
 		/// <summary>
-		/// The "panel orientation" property for the display in degrees of clockwise rotation.
+		/// The "panel orientation" property for the display in degrees of clockwise rotation. Note that this is provided only as
+		/// a hint, and the application is responsible for any coordinate transformations needed to conform to the requested
+		/// display orientation.
 		/// </summary>
-		/// <remarks>
-		/// Note that this is provided only as a hint, and the application is responsible for any coordinate transformations
-		/// needed to conform to the requested display orientation.
-		/// </remarks>
 		public const string KmsDrmOrientationNumber = "SDL.display.KMSDRM.panel_orientation";
 	}
 
@@ -173,11 +168,8 @@ public static partial class SDL_Prop
 
 		/// <summary>
 		/// True if the application wants to use the Wayland surface for a custom role and does not want it attached to an
-		/// XDG toplevel window.
+		/// XDG toplevel window. See README/wayland for more information on using custom surfaces.
 		/// </summary>
-		/// <remarks>
-		/// See README/wayland for more information on using custom surfaces.
-		/// </remarks>
 		public const string WaylandSurfaceRoleCustomBoolean = "wayland.surface_role_custom";
 
 		/// <summary>
@@ -187,11 +179,9 @@ public static partial class SDL_Prop
 		public const string WaylandCreateEglWindowBoolean = "wayland.create_egl_window";
 
 		/// <summary>
-		/// The <c>wl_surface</c> associated with the window, if you want to wrap an existing window.
+		/// The <c>wl_surface</c> associated with the window, if you want to wrap an existing window. See README/wayland for
+		/// more information.
 		/// </summary>
-		/// <remarks>
-		/// See README/wayland for more information.
-		/// </remarks>
 		public const string WaylandWLSurfacePointer = "wayland.wl_surface";
 
 		/// <summary>
@@ -229,12 +219,10 @@ public static partial class SDL_Prop
 		public const string HdrEnabledBoolean = "SDL.window.HDR_enabled";
 
 		/// <summary>
-		/// The value of SDR white in the <see cref="SDL_Colorspace.SRGBLinear"/> colorspace.On Windows this corresponds
-		/// to the SDR white level in scRGB colorspace, and on Apple platforms this is always 1.0 for EDR content.
+		/// The value of SDR white in the <see cref="SDL_Colorspace.SRGBLinear"/> colorspace.On Windows this corresponds to the
+		/// SDR white level in scRGB colorspace, and on Apple platforms this is always 1.0 for EDR content. This property can
+		/// change dynamically when <see cref="SDL_EventType.WindowHdrStateChanged"/> is sent.
 		/// </summary>
-		/// <remarks>
-		/// This property can change dynamically when <see cref="SDL_EventType.WindowHdrStateChanged"/> is sent.
-		/// </remarks>
 		public const string SdrWhiteLevelFloat = "SDL.window.SDR_white_level";
 
 		/// <summary>

@@ -24,21 +24,17 @@ public static partial class SDL_Prop
 
 		/// <summary>
 		/// An <see cref="SDL_Colorspace"/> value describing the colorspace for output to the display, defaults to
-		/// <see cref="SDL_Colorspace.SRGB"/>.
+		/// <see cref="SDL_Colorspace.SRGB"/>. The direct3d11, direct3d12, and metal renderers support
+		/// <see cref="SDL_Colorspace.SRGBLinear"/>, which is a linear color space and supports HDR output. If you select
+		/// <see cref="SDL_Colorspace.SRGBLinear"/>, drawing still uses the sRGB colorspace, but values can go beyond 1.0 and float
+		/// (linear) format textures can be used for HDR content.
 		/// </summary>
-		/// <remarks>
-		/// The direct3d11, direct3d12, and metal renderers support <see cref="SDL_Colorspace.SRGBLinear"/>, which is a linear
-		/// color space and supports HDR output. If you select <see cref="SDL_Colorspace.SRGBLinear"/>, drawing still uses the
-		/// sRGB colorspace, but values can go beyond 1.0 and float (linear) format textures can be used for HDR content.
-		/// </remarks>
 		public const string OutputColorspaceNumber = "output_colorspace";
 
 		/// <summary>
-		/// Non-zero if you want present synchronized with the refresh rate.
+		/// Non-zero if you want present synchronized with the refresh rate. This property can take any value that is supported by
+		/// <see cref="FIXME:SDL_SetRenderVSync()"/> for the renderer.
 		/// </summary>
-		/// <remarks>
-		/// This property can take any value that is supported by <see cref="FIXME:SDL_SetRenderVSync()"/> for the renderer.
-		/// </remarks>
 		public const string PresentVSyncNumber = "present_vsync";
 
 		/// <summary>
@@ -116,29 +112,21 @@ public static partial class SDL_Prop
 
 		/// <summary>
 		/// True if the output colorspace is <see cref="SDL_Colorspace.SRGBLinear"/> and the renderer is showing on a display with
-		/// HDR enabled.
+		/// HDR enabled. This property can change dynamically when <see cref="FIXME:SDL_EVENT_DISPLAY_HDR_STATE_CHANGED"/> is sent.
 		/// </summary>
-		/// <remarks>
-		/// This property can change dynamically when <see cref="FIXME:SDL_EVENT_DISPLAY_HDR_STATE_CHANGED"/> is sent.
-		/// </remarks>
 		public const string HdrEnabledBoolean = "SDL.renderer.HDR_enabled"; // TODO: report this error
 
 		/// <summary>
-		/// The value of SDR white in the <see cref="SDL_Colorspace.SRGBLinear"/> colorspace.
+		/// The value of SDR white in the <see cref="SDL_Colorspace.SRGBLinear"/> colorspace. When HDR is enabled, this value is
+		/// automatically multiplied into the color scale. This property can change dynamically when
+		/// <see cref="FIXME:SDL_EVENT_DISPLAY_HDR_STATE_CHANGED"/> is sent.
 		/// </summary>
-		/// <remarks>
-		/// When HDR is enabled, this value is automatically multiplied into the color scale. This property can change dynamically
-		/// when <see cref="FIXME:SDL_EVENT_DISPLAY_HDR_STATE_CHANGED"/> is sent.
-		/// </remarks>
 		public const string SdrWhitePointFloat = "SDL.renderer.SDR_white_point";
 
 		/// <summary>
 		/// The additional high dynamic range that can be displayed, in terms of the SDR white point.When HDR is not enabled, this
-		/// will be 1.0.
+		/// will be 1.0. This property can change dynamically when <see cref="FIXME:SDL_EVENT_DISPLAY_HDR_STATE_CHANGED"/> is sent.
 		/// </summary>
-		/// <remarks>
-		/// This property can change dynamically when <see cref="FIXME:SDL_EVENT_DISPLAY_HDR_STATE_CHANGED"/> is sent.
-		/// </remarks>
 		public const string HdrHeadroomFloat = "SDL.renderer.HDR_headroom";
 
 		/// <summary>
@@ -152,11 +140,8 @@ public static partial class SDL_Prop
 		public const string D3D11DevicePointer = "SDL.renderer.d3d11.device";
 
 		/// <summary>
-		/// The <c>IDXGISwapChain1</c> associated with the renderer.
+		/// The <c>IDXGISwapChain1</c> associated with the renderer. This may change when the window is resized.
 		/// </summary>
-		/// <remarks>
-		/// This may change when the window is resized.
-		/// </remarks>
 		public const string D3D11SwapchainPointer = "SDL.renderer.d3d11.swap_chain";
 
 		/// <summary>
@@ -260,22 +245,16 @@ public static partial class SDL_Prop
 
 		/// <summary>
 		/// For HDR10 and floating point textures, this defines the value of 100% diffuse white, with higher values being displayed
-		/// in the High Dynamic Range headroom.
+		/// in the High Dynamic Range headroom. This defaults to 100 for HDR10 textures and 1.0 for floating point textures.
 		/// </summary>
-		/// <remarks>
-		/// This defaults to 100 for HDR10 textures and 1.0 for floating point textures.
-		/// </remarks>
 		public const string SdrWhitePointFloat = "SDR_white_point";
 
 		/// <summary>
 		/// For HDR10 and floating point textures, this defines the maximum dynamic range used by the content, in terms of the SDR
-		/// white point.
-		/// </summary>
-		/// <remarks>
-		/// This would be equivalent to maxCLL / <see cref="SdrWhitePointFloat"/> for HDR10 content. If this is
+		/// white point. This would be equivalent to maxCLL / <see cref="SdrWhitePointFloat"/> for HDR10 content. If this is
 		/// defined, any values outside the range supported by the display will be scaled into the available HDR headroom,
 		/// otherwise they are clipped.
-		/// </remarks>
+		/// </summary>
 		public const string HdrHeadroomFloat = "HDR_headroom";
 
 		/// <summary>
@@ -358,5 +337,145 @@ public static partial class SDL_Prop
 		/// to wrap an existing texture.
 		/// </summary>
 		public const string VulkanTextureNumber = "vulkan.texture";
+	}
+
+	/// <summary>
+	/// Properties used in <see cref="SDL.GetTextureProperties(SDL_Texture*)"/>.
+	/// </summary>
+	public static class Texture
+	{
+		/// <summary>
+		/// An <see cref="SDL_Colorspace"/> value describing the texture colorspace.
+		/// </summary>
+		public const string ColorspaceNumber = "SDL.texture.colorspace";
+
+		/// <summary>
+		/// One of the enumerated values in <see cref="SDL_PixelFormat"/>.
+		/// </summary>
+		public const string FormatNumber = "SDL.texture.format";
+
+		/// <summary>
+		/// One of the enumerated values in <see cref="SDL_TextureAccess"/>.
+		/// </summary>
+		public const string AccessNumber = "SDL.texture.access";
+
+		/// <summary>
+		/// The width of the texture in pixels.
+		/// </summary>
+		public const string WidthNumber = "SDL.texture.width";
+
+		/// <summary>
+		/// The height of the texture in pixels.
+		/// </summary>
+		public const string HeightNumber = "SDL.texture.height";
+
+		/// <summary>
+		/// For HDR10 and floating point textures, this defines the value of 100% diffuse white, with higher values being displayed
+		/// in the High Dynamic Range headroom. 
+		/// </summary>
+		public const string SdrWhitePointFloat = "SDL.texture.SDR_white_point";
+
+		/// <summary>
+		/// For HDR10 and floating point textures, this defines the maximum dynamic range used by the content, in terms of the SDR
+		/// white point. If this is defined, any values outside the range supported by the display will be scaled into the
+		/// available HDR headroom, otherwise they are clipped. This defaults to 1.0 for SDR textures, 4.0 for HDR10 textures, and
+		/// no default for floating point textures.
+		/// </summary>
+		public const string HdrHeadroomFloat = "SDL.texture.HDR_headroom";
+
+		/// <summary>
+		/// The <c>ID3D11Texture2D</c> associated with the texture.
+		/// </summary>
+		public const string D3D11TexturePointer = "SDL.texture.d3d11.texture";
+
+		/// <summary>
+		/// The <c>ID3D11Texture2D</c> associated with the U plane of a YUV texture.
+		/// </summary>
+		public const string D3D11TextureUPointer = "SDL.texture.d3d11.texture_u";
+
+		/// <summary>
+		/// The <c>ID3D11Texture2D</c> associated with the V plane of a YUV texture.
+		/// </summary>
+		public const string D3D11TextureVPointer = "SDL.texture.d3d11.texture_v";
+
+		/// <summary>
+		/// The <c>ID3D12Resource</c> associated with the texture.
+		/// </summary>
+		public const string D3D12TexturePointer = "SDL.texture.d3d12.texture";
+
+		/// <summary>
+		/// The <c>ID3D12Resource</c> associated with the U plane of a YUV texture.
+		/// </summary>
+		public const string D3D12TextureUPointer = "SDL.texture.d3d12.texture_u";
+
+		/// <summary>
+		/// The <c>ID3D12Resource</c> associated with the V plane of a YUV texture
+		/// </summary>
+		public const string D3D12TextureVPointer = "SDL.texture.d3d12.texture_v";
+
+		/// <summary>
+		/// The <c>GLuint</c> texture associated with the texture.
+		/// </summary>
+		public const string OpenGLTextureNumber = "SDL.texture.opengl.texture";
+
+		/// <summary>
+		/// The <c>GLuint</c> texture associated with the UV plane of an NV12 texture.
+		/// </summary>
+		public const string OpenGLTextureUVNumber = "SDL.texture.opengl.texture_uv";
+
+		/// <summary>
+		/// The <c>GLuint</c> texture associated with the U plane of a YUV texture.
+		/// </summary>
+		public const string OpenGLTextureUNumber = "SDL.texture.opengl.texture_u";
+
+		/// <summary>
+		/// The <c>GLuint</c> texture associated with the V plane of a YUV texture.
+		/// </summary>
+		public const string OpenGLTextureVNumber = "SDL.texture.opengl.texture_v";
+
+		/// <summary>
+		/// The <c>GLenum</c> for the texture target (<c>GL_TEXTURE_2D</c>, <c>GL_TEXTURE_RECTANGLE_ARB</c>, etc).
+		/// </summary>
+		public const string OpenGLTextureTargetNumber = "SDL.texture.opengl.target";
+
+		/// <summary>
+		/// The texture coordinate width of the texture (0.0 - 1.0).
+		/// </summary>
+		public const string OpenGLTexWFloat = "SDL.texture.opengl.tex_w";
+
+		/// <summary>
+		/// The texture coordinate height of the texture (0.0 - 1.0).
+		/// </summary>
+		public const string OpenGLTexHFloat = "SDL.texture.opengl.tex_h";
+
+		/// <summary>
+		/// The <c>GLuint</c> texture associated with the texture.
+		/// </summary>
+		public const string OpenGLES2TextureNumber = "SDL.texture.opengles2.texture";
+
+		/// <summary>
+		/// The <c>GLuint</c> texture associated with the UV plane of an NV12 texture.
+		/// </summary>
+		public const string OpenGLES2TextureUVNumber = "SDL.texture.opengles2.texture_uv";
+
+		/// <summary>
+		/// The <c>GLuint</c> texture associated with the U plane of a YUV texture.
+		/// </summary>
+		public const string OpenGLES2TextureUNumber = "SDL.texture.opengles2.texture_u";
+
+		/// <summary>
+		/// The <c>GLuint</c> texture associated with the V plane of a YUV texture.
+		/// </summary>
+		public const string OpenGLES2TextureVNumber = "SDL.texture.opengles2.texture_v";
+
+		/// <summary>
+		/// The <c>GLenum</c> for the texture target (<c>GL_TEXTURE_2D</c>, <c>GL_TEXTURE_EXTERNAL_OES</c>, etc)
+		/// </summary>
+		public const string OpenGLES2TextureTargetNumber = "SDL.texture.opengles2.target";
+
+		/// <summary>
+		/// The <c>VkImage</c> associated with the texture.
+		/// </summary>
+		public const string VulkanTextureNumber = "SDL.texture.vulkan.texture";
 	}
 }

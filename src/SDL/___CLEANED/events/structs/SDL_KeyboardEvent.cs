@@ -51,7 +51,7 @@ public struct SDL_KeyboardEvent
 	/// <summary>
 	/// The platform dependent scancode for this event.
 	/// </summary>
-	public ushort Raw;
+	public ushort Temporary;
 
 	/// <summary>
 	/// Either <see cref="SDL_State.Pressed"/> or <see cref="SDL_State.Released"/>.

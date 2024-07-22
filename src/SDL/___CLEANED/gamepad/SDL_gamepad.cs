@@ -80,7 +80,7 @@ public static unsafe partial class SDL
 	/// <returns>A mapping string or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadMappingForGUID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetGamepadMappingForGuidRaw(SDL_Guid guid);
+	public static partial byte* GetGamepadMappingForGuidTemporary(SDL_Guid guid);
 
 	/// <summary>
 	/// Get the current mapping of a gamepad.
@@ -104,7 +104,7 @@ public static unsafe partial class SDL
 	/// <returns>A string that has the gamepad's mapping or <see langword="null"/> if no mapping is available; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadMapping")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetGamepadMappingRaw(SDL_Gamepad* gamepad);
+	public static partial byte* GetGamepadMappingTemporary(SDL_Gamepad* gamepad);
 
 	/// <summary>
 	/// Set the current mapping of a joystick or gamepad.
@@ -142,13 +142,13 @@ public static unsafe partial class SDL
 	public static SDL_JoystickId[]? GetGamepads(out int count)
 	{
 		SDL_JoystickId[]? gamepads = null;
-		SDL_JoystickId* gamepadsRaw = GetGamepadsRaw(out count);
-		if (gamepadsRaw is not null)
+		SDL_JoystickId* gamepadsTemporary = GetGamepadsTemporary(out count);
+		if (gamepadsTemporary is not null)
 		{
 			gamepads = new SDL_JoystickId[count];
 			for (int i = 0; i < count; i++)
 			{
-				gamepads[i] = gamepadsRaw[i];
+				gamepads[i] = gamepadsTemporary[i];
 			}
 		}
 		return gamepads;
@@ -164,7 +164,7 @@ public static unsafe partial class SDL
 	/// <returns>A null-terminated array of joystick instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepads")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_JoystickId* GetGamepadsRaw(out int count);
+	public static partial SDL_JoystickId* GetGamepadsTemporary(out int count);
 
 	/// <summary>
 	/// Check if the given joystick is supported by the gamepad interface.
@@ -201,7 +201,7 @@ public static unsafe partial class SDL
 	/// <returns>The name of the selected gamepad. If no name can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadNameForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetGamepadNameForIdRaw(SDL_JoystickId instanceId);
+	public static partial byte* GetGamepadNameForIdTemporary(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the implementation dependent path of a gamepad.
@@ -225,7 +225,7 @@ public static unsafe partial class SDL
 	/// <returns>The path of the selected gamepad. If no path can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadPathForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetGamepadPathForIdRaw(SDL_JoystickId instanceId);
+	public static partial byte* GetGamepadPathForIdTemporary(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the player index of a gamepad.
@@ -333,7 +333,7 @@ public static unsafe partial class SDL
 	/// <returns>The mapping string. Returns <see langword="null"/> if no mapping is available.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadMappingForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetGamepadMappingForIdRaw(SDL_JoystickId instanceId);
+	public static partial byte* GetGamepadMappingForIdTemporary(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Open a gamepad for use.
@@ -417,7 +417,7 @@ public static unsafe partial class SDL
 	/// <returns>The implementation dependent name for the gamepad, or <see langword="null"/> if there is no name or the identifier passed is invalid.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetGamepadNameRaw(SDL_Gamepad* gamepad);
+	public static partial byte* GetGamepadNameTemporary(SDL_Gamepad* gamepad);
 
 	/// <summary>
 	/// Get the implementation-dependent path for an opened gamepad.
@@ -441,7 +441,7 @@ public static unsafe partial class SDL
 	/// <returns>The implementation dependent path for the gamepad, or <see langword="null"/> if there is no path or the identifier passed is invalid.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadPath")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetGamepadPathRaw(SDL_Gamepad* gamepad);
+	public static partial byte* GetGamepadPathTemporary(SDL_Gamepad* gamepad);
 
 	/// <summary>
 	/// Get the type of an opened gamepad.
@@ -559,7 +559,7 @@ public static unsafe partial class SDL
 	/// <returns>The serial number, or <see langword="null"/> if unavailable.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadSerial")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetGamepadSerialRaw(SDL_Gamepad* gamepad);
+	public static partial byte* GetGamepadSerialTemporary(SDL_Gamepad* gamepad);
 
 	/// <summary>
 	/// Get the Steam Input handle of an opened gamepad, if available.
@@ -655,7 +655,7 @@ public static unsafe partial class SDL
 	public static SDL_GamepadBinding*[] GetGamepadBindings(SDL_Gamepad* gamepad, out int count)
 	{
 		SDL_GamepadBinding*[]? bindings = null;
-		SDL_GamepadBinding** bindingsPtr = GetGamepadBindingsRaw(gamepad, out count);
+		SDL_GamepadBinding** bindingsPtr = GetGamepadBindingsTemporary(gamepad, out count);
 		if (bindings is not null)
 		{
 			bindings = new SDL_GamepadBinding*[count];
@@ -678,7 +678,7 @@ public static unsafe partial class SDL
 	/// <returns>A null-terminated array of pointers to bindings or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadBindings")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_GamepadBinding** GetGamepadBindingsRaw(SDL_Gamepad* gamepad, out int count);
+	public static partial SDL_GamepadBinding** GetGamepadBindingsTemporary(SDL_Gamepad* gamepad, out int count);
 
 	/// <summary>
 	/// Manually pump gamepad updates if not using the loop.
@@ -721,7 +721,7 @@ public static unsafe partial class SDL
 	/// <returns>A string for the given type, or <see langword="null"/> if an invalid type is specified. The string returned is of the format used by <see cref="SDL_Gamepad"/> mapping strings.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadStringForType")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte GetGamepadStringForTypeRaw(SDL_GamepadType type);
+	public static partial byte GetGamepadStringForTypeTemporary(SDL_GamepadType type);
 
 	/// <summary>
 	/// Convert a string into <see cref="SDL_GamepadAxis"/> enum.
@@ -757,7 +757,7 @@ public static unsafe partial class SDL
 	/// <returns>A string for the given axis, or <see langword="null"/> if an invalid axis is specified. The string returned is of the format used by <see cref="SDL_Gamepad"/> mapping strings.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadStringForAxis")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetGamepadStringForAxisRaw(SDL_GamepadAxis axis);
+	public static partial byte* GetGamepadStringForAxisTemporary(SDL_GamepadAxis axis);
 
 	/// <summary>
 	/// Query whether a gamepad has a given axis.
@@ -820,7 +820,7 @@ public static unsafe partial class SDL
 	/// <returns>A string for the given button, or <see langword="null"/> if an invalid button is specified. The string returned is of the format used by <see cref="SDL_Gamepad"/> mapping strings.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadStringForButton")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetGamepadStringForButtonRaw(SDL_GamepadButton button);
+	public static partial byte* GetGamepadStringForButtonTemporary(SDL_GamepadButton button);
 
 	/// <summary>
 	/// Query whether a gamepad has a given button.
@@ -1082,7 +1082,7 @@ public static unsafe partial class SDL
 	/// <returns>The sfSymbolsName or <see langword="null"/> if the name can't be found.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "GetGamepadAppleSFSymbolsNameForButton")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetGamepadAppleSFSymbolsNameForButtonRaw(SDL_Gamepad* gamepad, SDL_GamepadButton button);
+	public static partial byte* GetGamepadAppleSFSymbolsNameForButtonTemporary(SDL_Gamepad* gamepad, SDL_GamepadButton button);
 
 	/// <summary>
 	/// Return the sfSymbolsName for a given axis on a gamepad on Apple platforms.
@@ -1108,5 +1108,5 @@ public static unsafe partial class SDL
 	/// <returns>The sfSymbolsName or <see langword="null"/> if the name can't be found.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadAppleSFSymbolsNameForAxis")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetGamepadAppleSFSymbolsNameForAxisRaw(SDL_Gamepad* gamepad, SDL_GamepadAxis axis);
+	public static partial byte* GetGamepadAppleSFSymbolsNameForAxisTemporary(SDL_Gamepad* gamepad, SDL_GamepadAxis axis);
 }
