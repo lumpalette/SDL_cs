@@ -1400,7 +1400,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderPresent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int RenderPresent(SDL_Renderer* renderer);
-
+	
 	/// <summary>
 	/// Destroy the specified texture.
 	/// </summary>
