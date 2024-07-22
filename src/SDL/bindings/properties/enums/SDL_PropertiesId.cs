@@ -10,7 +10,7 @@
 public enum SDL_PropertiesId : uint
 {
 	/// <summary>
-	/// Invalid/null set of properties.
+	/// An invalid/null set of properties.
 	/// </summary>
 	Invalid = 0
 }

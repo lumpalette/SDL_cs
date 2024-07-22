@@ -3,7 +3,7 @@
 /// <summary>
 /// General keyboard/mouse/pen state definitions.
 /// </summary>
-public enum SDL_State
+public enum SDL_State : byte
 {
 	/// <summary>
 	/// A value that signifies a button is no longer pressed.

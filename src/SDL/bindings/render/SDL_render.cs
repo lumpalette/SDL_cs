@@ -376,7 +376,7 @@ public static unsafe partial class SDL
 	public static partial int GetTextureAlphaModFloat(SDL_Texture* texture, out float alpha);
 
 	/// <summary>
-	/// Set the blend mode for a texture, used by <see cref="FIXME:SDL_RenderTexture"/>.
+	/// Set the blend mode for a texture, used by <see cref="RenderTexture(SDL_Renderer*, SDL_Texture*, in SDL_FRect, in SDL_FRect)"/>.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureBlendMode">documentation</see> for more details.

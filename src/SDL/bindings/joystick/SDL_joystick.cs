@@ -340,7 +340,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickVirtualTouchpad")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetJoystickVirtualTouchpad(SDL_Joystick* joystick, int touchpad, int finger, byte state, float x, float y, float pressure);
+	public static partial int SetJoystickVirtualTouchpad(SDL_Joystick* joystick, int touchpad, int finger, SDL_State state, float x, float y, float pressure);
 
 	/// <summary>
 	/// Send a sensor update for an opened virtual joystick.

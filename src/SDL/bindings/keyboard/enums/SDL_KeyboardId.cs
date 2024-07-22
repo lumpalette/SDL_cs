@@ -11,7 +11,7 @@
 public enum SDL_KeyboardId : uint
 {
 	/// <summary>
-	/// Invalid/null keyboard ID.
+	/// An invalid/null keyboard ID.
 	/// </summary>
-	Invalid
+	Invalid = 0
 }

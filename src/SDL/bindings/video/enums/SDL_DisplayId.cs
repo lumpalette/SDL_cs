@@ -7,7 +7,7 @@
 public enum SDL_DisplayId : uint
 {
 	/// <summary>
-	/// An invalid display ID.
+	/// An invalid/null display ID.
 	/// </summary>
 	Invalid = 0
 }

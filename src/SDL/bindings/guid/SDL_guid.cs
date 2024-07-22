@@ -34,11 +34,16 @@ public static unsafe partial class SDL
 	/// Convert a GUID string into an <see cref="SDL_Guid"/> structure.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GUIDFromString">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_StringToGUID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="pchGuid">String containing a representation of a GUID.</param>
 	/// <returns>An <see cref="SDL_Guid"/> structure.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GUIDFromString", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_StringToGUID", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Guid GuidFromString(string pchGuid);
+	public static partial SDL_Guid StringToGuid(string pchGuid);
+
+	void X()
+	{
+		SDL.FreeTemporaryMemory
+	}
 }

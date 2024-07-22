@@ -32,7 +32,7 @@ public static unsafe partial class SDL
 	/// <returns>True if <paramref name="p"/> is contained by <paramref name="r"/>, false otherwise.</returns>
 	public static bool PointInRectFloat(in SDL_FPoint p, in SDL_FRect r)
 	{
-		return (p.X >= r.X) && (p.X < (r.X + r.Width)) && (p.Y >= r.Y) && (p.Y < (r.Y + r.Height));
+		return (p.X >= r.X) && (p.X <= (r.X + r.Width)) && (p.Y >= r.Y) && (p.Y <= (r.Y + r.Height));
 	}
 
 	/// <summary>
@@ -57,10 +57,10 @@ public static unsafe partial class SDL
 	/// for more details.
 	/// </remarks>
 	/// <param name="r">The rectangle to test.</param>
-	/// <returns>True if the rectangle is "empty" (has zero or negative area), false otherwise.</returns>
+	/// <returns>True if the rectangle is "empty", false otherwise.</returns>
 	public static bool RectEmptyFloat(in SDL_FRect r)
 	{
-		return (r.Width <= 0f) && (r.Height <= 0f);
+		return (r.Width < 0f) && (r.Height < 0f);
 	}
 
 	/// <summary>

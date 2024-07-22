@@ -18,7 +18,7 @@ public static partial class SDL_Prop
 		/// a hint, and the application is responsible for any coordinate transformations needed to conform to the requested
 		/// display orientation.
 		/// </summary>
-		public const string KmsDrmOrientationNumber = "SDL.display.KMSDRM.panel_orientation";
+		public const string KmsDrmPanelOrientationNumber = "SDL.display.KMSDRM.panel_orientation";
 	}
 
 	/// <summary>

@@ -10,7 +10,7 @@
 public enum SDL_TimerId : uint
 {
 	/// <summary>
-	/// An invalid timer ID.
+	/// An invalid/null timer ID.
 	/// </summary>
 	Invalid = 0
 }

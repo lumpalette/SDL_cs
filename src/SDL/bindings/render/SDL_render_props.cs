@@ -33,7 +33,7 @@ public static partial class SDL_Prop
 
 		/// <summary>
 		/// Non-zero if you want present synchronized with the refresh rate. This property can take any value that is supported by
-		/// <see cref="FIXME:SDL_SetRenderVSync()"/> for the renderer.
+		/// <see cref="SDL.SetRenderVSync(SDL_Renderer*, int)"/> for the renderer.
 		/// </summary>
 		public const string PresentVSyncNumber = "present_vsync";
 

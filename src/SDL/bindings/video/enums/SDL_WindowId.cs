@@ -7,7 +7,7 @@
 public enum SDL_WindowId : uint
 {
 	/// <summary>
-	/// An invalid window ID.
+	/// An invalid/null window ID.
 	/// </summary>
 	Invalid = 0
 }

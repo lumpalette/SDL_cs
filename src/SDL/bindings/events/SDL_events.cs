@@ -307,15 +307,4 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ClaimTemporaryMemory")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial nint ClaimTemporaryMemory(nint mem);
-
-	/// <summary>
-	/// Free temporary memory.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FreeTemporaryMemory">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="mem">A pointer allocated with <see cref="AllocateTemporaryMemory(nuint)"/>, or <see langword="null"/> to free all pending temporary allocations.</param>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_FreeTemporaryMemory")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void FreeTemporaryMemory(nint mem);
 }

@@ -11,7 +11,7 @@
 public enum SDL_SensorId : uint
 {
 	/// <summary>
-	/// An invalid sensor ID.
+	/// An invalid/null sensor ID.
 	/// </summary>
 	Invalid = 0
 }
