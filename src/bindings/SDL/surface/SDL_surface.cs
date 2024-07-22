@@ -15,7 +15,7 @@ public static unsafe partial class SDL
 	/// <param name="s">The <see cref="SDL_Surface"/> structure to evaluate.</param>
 	/// <returns>True if <paramref name="s"/> needs to be locked, otherwise false.</returns>
 	[Macro]
-	public static bool MustLock(SDL_Surface* s) =>(s->Flags & SDL_SurfaceFlags.LockNeeded) == SDL_SurfaceFlags.LockNeeded;
+	public static bool MustLock(SDL_Surface* s) => (s->Flags & SDL_SurfaceFlags.LockNeeded) == SDL_SurfaceFlags.LockNeeded;
 
 	/// <summary>
 	/// Allocate a new surface with a specific pixel format.

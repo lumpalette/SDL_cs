@@ -40,7 +40,7 @@ public static partial class SDL_Prop
 		/// True if the window should accept keyboard input (defaults true).
 		/// </summary>
 		public const string FocusableBoolean = "focusable";
-		
+
 		/// <summary>
 		/// True if the window will be used with an externally managed graphics context.
 		/// </summary>

@@ -34,7 +34,7 @@ public unsafe readonly struct SDL_PixelFormatDetails
 	public readonly byte GBits;
 
 	public readonly byte BBits;
-	
+
 	public readonly uint ABits;
 
 	public readonly byte RShift;

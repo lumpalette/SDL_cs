@@ -1,10 +1,5 @@
-﻿using Microsoft.VisualBasic;
-using System.Diagnostics.Metrics;
-using System.Drawing;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Runtime.Intrinsics.X86;
-using static SDL_cs.SDL_Prop;
 
 namespace SDL_cs;
 

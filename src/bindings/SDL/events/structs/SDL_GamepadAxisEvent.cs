@@ -34,11 +34,11 @@ public struct SDL_GamepadAxisEvent
 	public byte Axis;
 
 	private readonly byte _padding1;
-	
+
 	private readonly byte _padding2;
-	
+
 	private readonly byte _padding3;
-	
+
 	/// <summary>
 	/// The axis value (range: -32768 to 32767).
 	/// </summary>

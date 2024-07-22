@@ -124,7 +124,7 @@ public unsafe struct SDL_Event
 	/// </summary>
 	[FieldOffset(0)]
 	public SDL_JoystickBatteryEvent JoystickBattery;
-	
+
 	/// <summary>
 	/// Gamepad device event data
 	/// </summary>

@@ -36,7 +36,7 @@ public struct SDL_JoystickAxisEvent
 	private readonly byte _padding1;
 
 	private readonly byte _padding2;
-	
+
 	private readonly byte _padding3;
 
 	/// <summary>

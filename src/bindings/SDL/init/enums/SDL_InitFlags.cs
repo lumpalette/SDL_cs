@@ -54,7 +54,7 @@ public enum SDL_InitFlags : uint
 	/// Sensor subsystem. Implies <see cref="Events"/>.
 	/// </summary>
 	Sensor = 0x00008000u,
-	
+
 	/// <summary>
 	/// Camera subsystem. Implies <see cref="Events"/>.
 	/// </summary>

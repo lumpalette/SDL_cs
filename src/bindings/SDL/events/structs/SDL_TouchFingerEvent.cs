@@ -62,5 +62,5 @@ public struct SDL_TouchFingerEvent
 	/// <summary>
 	/// The window underneath the finger, if any.
 	/// </summary>
-	public SDL_WindowId	WindowId;
+	public SDL_WindowId WindowId;
 }

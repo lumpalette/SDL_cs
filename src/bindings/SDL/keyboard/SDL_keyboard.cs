@@ -223,7 +223,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetScancodeName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int SetScancodeName(SDL_Scancode scancode, byte* name);
-	
+
 	/// <summary>
 	/// Get a human-readable name for a scancode.
 	/// </summary>

@@ -1,6 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.Marshalling;
 
 namespace SDL_cs;
 
@@ -466,7 +465,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRealGamepadType")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_GamepadType GetRealGamepadType(SDL_Gamepad* gamepad);
-	
+
 	/// <summary>
 	/// Get the player index of an opened gamepad.
 	/// </summary>
@@ -652,7 +651,7 @@ public static unsafe partial class SDL
 	/// <param name="gamepad">A gamepad.</param>
 	/// <param name="count">A pointer filled in with the number of bindings returned.</param>
 	/// <returns>An array of pointers to bindings or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	public static SDL_GamepadBinding*[] GetGamepadBindings(SDL_Gamepad* gamepad, out int count)
+	public static SDL_GamepadBinding*[]? GetGamepadBindings(SDL_Gamepad* gamepad, out int count)
 	{
 		SDL_GamepadBinding*[]? bindings = null;
 		SDL_GamepadBinding** bindingsPtr = GetGamepadBindingsTemporary(gamepad, out count);
