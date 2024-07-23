@@ -32,12 +32,12 @@ public unsafe struct SDL_TextEditingEvent
 	/// <summary>
 	/// The editing text.
 	/// </summary>
-	public readonly byte* TextTemporary;
+	public readonly byte* TextTemp;
 
 	/// <summary>
 	/// The editing text.
 	/// </summary>
-	public readonly string? Text => Utf8StringMarshaller.ConvertToManaged(TextTemporary);
+	public readonly string? Text => Utf8StringMarshaller.ConvertToManaged(TextTemp);
 
 	/// <summary>
 	/// The start cursor of selected editing text, or -1 if not set.

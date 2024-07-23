@@ -49,7 +49,7 @@ public static unsafe partial class SDL
 	public static SDL_JoystickId[]? GetJoystick(out int count)
 	{
 		SDL_JoystickId[]? joysticks = null;
-		SDL_JoystickId* joysticksPtr = GetJoysticksTemporary(out count);
+		SDL_JoystickId* joysticksPtr = GetJoysticksTemp(out count);
 		if (joysticksPtr is not null)
 		{
 			joysticks = new SDL_JoystickId[count];
@@ -71,7 +71,7 @@ public static unsafe partial class SDL
 	/// <returns>A null-terminated array of joystick instance IDs or <see langword="null"/> on failure; <see cref="GetError"/> for more details.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoysticks")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_JoystickId* GetJoysticksTemporary(out int count);
+	public static partial SDL_JoystickId* GetJoysticksTemp(out int count);
 
 	/// <summary>
 	/// Get the implementation dependent name of a joystick.
@@ -95,7 +95,7 @@ public static unsafe partial class SDL
 	/// <returns>The name of the selected joystick. If no name can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickNameForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetJoystickNameForIdTemporary(SDL_JoystickId instanceId);
+	public static partial byte* GetJoystickNameForIdTemp(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the implementation dependent path of a joystick.
@@ -119,7 +119,7 @@ public static unsafe partial class SDL
 	/// <returns>The path of the selected joystick. If no path can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPathForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetJoystickPathForIdTemporary(SDL_JoystickId instanceId);
+	public static partial byte* GetJoystickPathForIdTemp(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the player index of a joystick.
@@ -392,7 +392,7 @@ public static unsafe partial class SDL
 	/// <returns>The name of the selected joystick. If no name can be found, this function returns null; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetJoystickNameTemporary(SDL_Joystick* joystick);
+	public static partial byte* GetJoystickNameTemp(SDL_Joystick* joystick);
 
 	/// <summary>
 	/// Get the implementation dependent path of a joystick.
@@ -416,7 +416,7 @@ public static unsafe partial class SDL
 	/// <returns>The path of the selected joystick. If no path can be found, this function returns null; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPath")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetJoystickPathTemporary(SDL_Joystick* joystick);
+	public static partial byte* GetJoystickPathTemp(SDL_Joystick* joystick);
 
 	/// <summary>
 	/// Get the player index of an opened joystick.
@@ -525,7 +525,7 @@ public static unsafe partial class SDL
 	/// <returns>The serial number of the selected joystick, or null if unavailable.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickSerial")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetJoystickSerialTemporary(SDL_Joystick* joystick);
+	public static partial byte* GetJoystickSerialTemp(SDL_Joystick* joystick);
 
 	/// <summary>
 	/// Get the type of an opened joystick.

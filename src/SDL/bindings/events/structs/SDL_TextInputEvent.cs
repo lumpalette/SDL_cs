@@ -32,10 +32,10 @@ public unsafe struct SDL_TextInputEvent
 	/// <summary>
 	/// The input text, UTF-8 encoded.
 	/// </summary>
-	public readonly byte* TextTemporary;
+	public readonly byte* TextTemp;
 
 	/// <summary>
 	/// The input text.
 	/// </summary>
-	public readonly string? Text => Utf8StringMarshaller.ConvertToManaged(TextTemporary);
+	public readonly string? Text => Utf8StringMarshaller.ConvertToManaged(TextTemp);
 }
