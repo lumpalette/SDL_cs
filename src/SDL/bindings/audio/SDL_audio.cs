@@ -139,7 +139,6 @@ public static unsafe partial class SDL
 	/// <returns>The name of the audio driver at the requested index, or <see langword="null"/> if an invalid index was specified.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDriver")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[Claimable]
 	public static partial byte* GetAudioDriver_Raw(int index);
 
 	/// <summary>

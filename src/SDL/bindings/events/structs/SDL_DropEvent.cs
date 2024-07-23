@@ -44,7 +44,6 @@ public unsafe struct SDL_DropEvent
 	/// <summary>
 	/// The source app that sent this drop event, or <see langword="null"/> if that isn't available.
 	/// </summary>
-	[Claimable]
 	public readonly byte* Source_Raw;
 
 	/// <summary>
@@ -56,7 +55,6 @@ public unsafe struct SDL_DropEvent
 	/// The text for <see cref="SDL_EventType.DropText"/> and the file name for <see cref="SDL_EventType.DropFile"/>,
 	/// <see langword="null"/> for other events.
 	/// </summary>
-	[Claimable]
 	public readonly byte* Data_Raw;
 
 	/// <summary>
