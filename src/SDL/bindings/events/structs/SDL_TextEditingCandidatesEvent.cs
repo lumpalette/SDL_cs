@@ -32,7 +32,7 @@ public unsafe struct SDL_TextEditingCandidatesEvent
 	/// <summary>
 	/// The list of candidates, or <see langword="null"/> if there are no candidates available.
 	/// </summary>
-	public readonly byte** CandidatesTemp;
+	public readonly byte** Candidates_Raw;
 
 	/// <summary>
 	/// The list of candidates, or <see langword="null"/> if there are no candidates available.
@@ -42,12 +42,12 @@ public unsafe struct SDL_TextEditingCandidatesEvent
 		get
 		{
 			string?[]? candidates = null;
-			if (CandidatesTemp is not null)
+			if (Candidates_Raw is not null)
 			{
 				candidates = new string?[NumCandidates];
 				for (int i = 0; i < NumCandidates; i++)
 				{
-					candidates[i] = Utf8StringMarshaller.ConvertToManaged(CandidatesTemp[i]);
+					candidates[i] = Utf8StringMarshaller.ConvertToManaged(Candidates_Raw[i]);
 				}
 			}
 			return candidates;

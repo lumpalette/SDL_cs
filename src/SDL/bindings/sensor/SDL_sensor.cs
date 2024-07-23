@@ -17,7 +17,7 @@ public static unsafe partial class SDL
 	public static SDL_SensorId[]? GetSensors(out int count)
 	{
 		SDL_SensorId[]? sensors = null;
-		SDL_SensorId* sensorsPtr = GetSensorsTemp(out count);
+		SDL_SensorId* sensorsPtr = GetSensors_Raw(out count);
 		if (sensorsPtr is not null)
 		{
 			sensors = new SDL_SensorId[count];
@@ -39,7 +39,7 @@ public static unsafe partial class SDL
 	/// <returns>A null-terminated array of sensor instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensors")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_SensorId* GetSensorsTemp(out int count);
+	public static partial SDL_SensorId* GetSensors_Raw(out int count);
 
 	/// <summary>
 	/// Get the implementation dependent name of a sensor.
@@ -63,7 +63,7 @@ public static unsafe partial class SDL
 	/// <returns>The sensor name, or <see langword="null"/> if <paramref name="instanceId"/> is not valid.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorNameForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetSensorNameForIdTemp(SDL_SensorId instanceId);
+	public static partial byte* GetSensorNameForId_Raw(SDL_SensorId instanceId);
 
 	/// <summary>
 	/// Get the type of a sensor.
@@ -147,7 +147,7 @@ public static unsafe partial class SDL
 	/// <returns>The sensor name or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetSensorNameTemp(SDL_Sensor* sensor);
+	public static partial byte* GetSensorName_Raw(SDL_Sensor* sensor);
 
 	/// <summary>
 	/// Get the type of a sensor.

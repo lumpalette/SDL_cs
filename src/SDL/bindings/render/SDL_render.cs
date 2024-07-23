@@ -39,7 +39,7 @@ public static unsafe partial class SDL
 	/// <returns>The name of the rendering driver at the requested index, or <see langword="null"/> if an invalid index was specified.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderDriver")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetRenderDriverTemp(int index);
+	public static partial byte* GetRenderDriver_Raw(int index);
 
 	/// <summary>
 	/// Create a window and default renderer.
@@ -141,7 +141,7 @@ public static unsafe partial class SDL
 	/// <returns>The name of the selected renderer, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRendererName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetRendererNameTemp(SDL_Renderer* renderer);
+	public static partial byte* GetRendererName_Raw(SDL_Renderer* renderer);
 
 	/// <summary>
 	/// Get the properties associated with a renderer.

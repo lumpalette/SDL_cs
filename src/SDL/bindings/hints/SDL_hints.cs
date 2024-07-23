@@ -82,7 +82,7 @@ public static unsafe partial class SDL
 	/// <returns>The string value of a hint or <see langword="null"/> if the hint isn't set.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetHint", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetHintTemp(string name);
+	public static partial byte* GetHint_Raw(string name);
 
 	/// <summary>
 	/// Add a function to watch a particular hint.
