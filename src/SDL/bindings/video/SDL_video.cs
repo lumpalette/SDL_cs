@@ -47,7 +47,7 @@ public static unsafe partial class SDL
 	/// <returns>The name of the video driver with the given <paramref name="index"/>.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetVideoDriver")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetVideoDriver_Raw(int index);
+	public static partial byte* GetVideoDriverTemporary(int index);
 
 	/// <summary>
 	/// Get the name of the currently initialized video driver.
@@ -69,7 +69,7 @@ public static unsafe partial class SDL
 	/// <returns>The name of the current video driver or <see langword="null"/> if no driver has been initialized.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentVideoDriver")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetCurrentVideoDriver_Raw();
+	public static partial byte* GetCurrentVideoDriverTemporary();
 
 	/// <summary>
 	/// Get the current system theme.
@@ -93,7 +93,7 @@ public static unsafe partial class SDL
 	public static SDL_DisplayId[]? GetDisplays(out int count)
 	{
 		SDL_DisplayId[]? displays = null;
-		SDL_DisplayId* displaysPtr = GetDisplays_Raw(out count);
+		SDL_DisplayId* displaysPtr = GetDisplaysTemporary(out count);
 		if (displaysPtr is not null)
 		{
 			displays = new SDL_DisplayId[count];
@@ -115,7 +115,7 @@ public static unsafe partial class SDL
 	/// <returns>A null-terminated array of display instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplays")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_DisplayId* GetDisplays_Raw(out int count);
+	public static partial SDL_DisplayId* GetDisplaysTemporary(out int count);
 
 	/// <summary>
 	/// Return the primary display.
@@ -159,7 +159,7 @@ public static unsafe partial class SDL
 	/// <returns>The name of a display or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetDisplayName_Raw(SDL_DisplayId instanceId);
+	public static partial byte* GetDisplayNameTemporary(SDL_DisplayId instanceId);
 
 	/// <summary>
 	/// Get the desktop area represented by a display.
@@ -235,7 +235,7 @@ public static unsafe partial class SDL
 	public static SDL_DisplayMode*[]? GetFullscreenDisplayModes(SDL_DisplayId instanceId, out int count)
 	{
 		SDL_DisplayMode*[]? modes = null;
-		SDL_DisplayMode** modesPtr = GetFullscreenDisplayModes_Raw(instanceId, out count);
+		SDL_DisplayMode** modesPtr = GetFullscreenDisplayModesTemporary(instanceId, out count);
 		if (modesPtr is not null)
 		{
 			modes = new SDL_DisplayMode*[count];
@@ -258,7 +258,7 @@ public static unsafe partial class SDL
 	/// <returns>A null-terminated array of display mode pointers or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetFullscreenDisplayModes")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_DisplayMode** GetFullscreenDisplayModes_Raw(SDL_DisplayId instanceId, out int count);
+	public static partial SDL_DisplayMode** GetFullscreenDisplayModesTemporary(SDL_DisplayId instanceId, out int count);
 
 	/// <summary>
 	/// Get the closest match to the requested display mode.
@@ -421,7 +421,7 @@ public static unsafe partial class SDL
 	public static SDL_Window*[]? GetWindows(out int count)
 	{
 		SDL_Window*[]? windows = null;
-		SDL_Window** windowsPtr = GetWindows_Raw(out count);
+		SDL_Window** windowsPtr = GetWindowsTemporary(out count);
 		if (windowsPtr is not null)
 		{
 			windows = new SDL_Window*[count];
@@ -443,7 +443,7 @@ public static unsafe partial class SDL
 	/// <returns>A null-terminated array of window pointers or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindows")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Window** GetWindows_Raw(out int count);
+	public static partial SDL_Window** GetWindowsTemporary(out int count);
 
 	/// <summary>
 	/// Create a window with the specified dimensions and flags.
@@ -585,7 +585,7 @@ public static unsafe partial class SDL
 	/// <returns>The title of the window in UTF-8 format or an empty string if there is no title.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowTitle")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetWindowTitle_Raw(SDL_Window* window);
+	public static partial byte* GetWindowTitleTemporary(SDL_Window* window);
 
 	/// <summary>
 	/// Set the icon for a window.

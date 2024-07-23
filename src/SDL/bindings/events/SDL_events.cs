@@ -302,7 +302,7 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ClaimTemporaryMemory">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="mem">A pointer allocated with <see cref="Allocate_RaworaryMemory(nuint)"/>.</param>
+	/// <param name="mem">A pointer allocated with <see cref="AllocateTemporaryMemory(nuint)"/>.</param>
 	/// <returns>A pointer to the memory now owned by the application, which must be freed using <see cref="Free(nint)"/>, or <see langword="null"/> if the memory is not temporary or was allocated on a different thread.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ClaimTemporaryMemory")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]

@@ -219,7 +219,7 @@ public static unsafe partial class SDL
 	/// <returns>The value of the property, or <paramref name="defaultValue"/> if it is not set or not a string property.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetStringProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetStringProperty_Raw(SDL_PropertiesId props, string name, string defaultValue = "");
+	public static partial byte* GetStringPropertyTemporary(SDL_PropertiesId props, string name, string defaultValue = "");
 
 	/// <summary>
 	/// Get a number property on a group of properties.
