@@ -44,6 +44,9 @@ public unsafe struct SDL_DropEvent
 	/// <summary>
 	/// The source app that sent this drop event, or <see langword="null"/> if that isn't available.
 	/// </summary>
+	/// <remarks>
+	/// You can claim the memory of this field using <see cref="SDL.ClaimTemporaryMemory(nint)"/>.
+	/// </remarks>
 	public readonly byte* SourceTemporary;
 
 	/// <summary>
@@ -55,6 +58,9 @@ public unsafe struct SDL_DropEvent
 	/// The text for <see cref="SDL_EventType.DropText"/> and the file name for <see cref="SDL_EventType.DropFile"/>,
 	/// <see langword="null"/> for other events.
 	/// </summary>
+	/// <remarks>
+	/// You can claim the memory of this field using <see cref="SDL.ClaimTemporaryMemory(nint)"/>.
+	/// </remarks>
 	public readonly byte* DataTemporary;
 
 	/// <summary>

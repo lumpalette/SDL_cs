@@ -211,6 +211,7 @@ public static unsafe partial class SDL
 	/// Get a string property on a group of properties.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetStringProperty">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props">The properties to query.</param>

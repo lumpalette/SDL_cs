@@ -42,6 +42,7 @@ public static unsafe partial class SDL
 	/// Get the name of a built in video driver.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetVideoDriver">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="index">The index of a video driver.</param>
@@ -65,6 +66,7 @@ public static unsafe partial class SDL
 	/// Get the name of the currently initialized video driver.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentVideoDriver">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>The name of the current video driver or <see langword="null"/> if no driver has been initialized.</returns>
@@ -110,6 +112,7 @@ public static unsafe partial class SDL
 	/// Get a list of currently connected displays.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplays">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of displays returned.</param>
@@ -154,6 +157,7 @@ public static unsafe partial class SDL
 	/// Get the name of a display.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
@@ -252,6 +256,7 @@ public static unsafe partial class SDL
 	/// Get a list of fullscreen display modes available on a display.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetFullscreenDisplayModes">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
@@ -438,6 +443,7 @@ public static unsafe partial class SDL
 	/// Get a list of valid windows.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindows">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of windows returned, may be <see langword="null"/>.</param>
@@ -580,6 +586,7 @@ public static unsafe partial class SDL
 	/// Get the title of a window.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowTitle">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window">The window to query.</param>

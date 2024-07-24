@@ -32,6 +32,9 @@ public unsafe struct SDL_TextEditingCandidatesEvent
 	/// <summary>
 	/// The list of candidates, or <see langword="null"/> if there are no candidates available.
 	/// </summary>
+	/// <remarks>
+	/// You can claim the memory of this field using <see cref="SDL.ClaimTemporaryMemory(nint)"/>.
+	/// </remarks>
 	public readonly byte** CandidatesTemporary;
 
 	/// <summary>

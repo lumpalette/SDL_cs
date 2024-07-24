@@ -133,6 +133,7 @@ public static unsafe partial class SDL
 	/// Use this function to get the name of a built in audio driver.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioDriver">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="index">The index of the audio driver; the value ranges from 0 to <see cref="GetNumAudioDrivers"/> - 1.</param>
@@ -156,6 +157,7 @@ public static unsafe partial class SDL
 	/// Get the name of the current audio driver.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentAudioDriver">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>The name of the current audio driver or <see langword="null"/> if no driver has been initialized.</returns>
@@ -190,6 +192,7 @@ public static unsafe partial class SDL
 	/// Get a list of currently-connected audio playback devices.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioPlaybackDevices">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of devices returned.</param>
@@ -202,6 +205,7 @@ public static unsafe partial class SDL
 	/// Get a list of currently-connected audio recording devices.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioRecordingDevices">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of devices returned.</param>
@@ -225,6 +229,7 @@ public static unsafe partial class SDL
 	/// Get a list of currently-connected audio recording devices.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioRecordingDevices">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of devices returned.</param>
@@ -249,6 +254,7 @@ public static unsafe partial class SDL
 	/// Get the human-readable name of a specific audio device.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioDeviceName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="devId">The instance ID of the device to query.</param>

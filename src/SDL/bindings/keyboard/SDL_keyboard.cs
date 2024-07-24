@@ -46,6 +46,7 @@ public static unsafe partial class SDL
 	/// Get a list of currently connected keyboards.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboards">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of keyboards returned.</param>
@@ -70,6 +71,7 @@ public static unsafe partial class SDL
 	/// Get the name of a keyboard.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboardNameForID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The keyboard instance ID.</param>
@@ -240,6 +242,7 @@ public static unsafe partial class SDL
 	/// Get a human-readable name for a scancode.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetScancodeName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="scancode">The desired <see cref="SDL_Scancode"/> to query.</param>
@@ -276,6 +279,7 @@ public static unsafe partial class SDL
 	/// Get a human-readable name for a key.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="key">The desired <see cref="SDL_Keycode"/> to query.</param>

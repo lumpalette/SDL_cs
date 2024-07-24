@@ -33,6 +33,7 @@ public static unsafe partial class SDL
 	/// Get a list of registered touch fingers.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDevices">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of fingers returned.</param>
@@ -57,6 +58,7 @@ public static unsafe partial class SDL
 	/// Get the touch device name as reported from the driver.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDeviceName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="touchId">The touch device instance ID.</param>
@@ -105,6 +107,7 @@ public static unsafe partial class SDL
 	/// Get a list of active fingers for a given touch device.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchFingers">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="touchId">The ID of a touch device.</param>

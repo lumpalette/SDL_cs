@@ -33,6 +33,7 @@ public static unsafe partial class SDL
 	/// Use this function to get the name of a built in 2D rendering driver.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderDriver">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="index">The index of the rendering driver; the value ranges from 0 to <see cref="GetNumRenderDrivers"/> - 1.</param>
@@ -135,6 +136,7 @@ public static unsafe partial class SDL
 	/// Get the name of a renderer.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRendererName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer">The rendering context.</param>

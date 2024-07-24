@@ -32,6 +32,9 @@ public unsafe struct SDL_TextEditingEvent
 	/// <summary>
 	/// The editing text.
 	/// </summary>
+	/// <remarks>
+	/// You can claim the memory of this field using <see cref="SDL.ClaimTemporaryMemory(nint)"/>.
+	/// </remarks>
 	public readonly byte* TextTemporary;
 
 	/// <summary>

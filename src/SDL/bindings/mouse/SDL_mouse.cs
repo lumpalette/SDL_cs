@@ -48,6 +48,7 @@ public static unsafe partial class SDL
 	/// Get a list of currently connected mice.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMice">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of mice returned.</param>
@@ -72,6 +73,7 @@ public static unsafe partial class SDL
 	/// Get the name of a mouse.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMouseNameForID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The mouse instance ID.</param>

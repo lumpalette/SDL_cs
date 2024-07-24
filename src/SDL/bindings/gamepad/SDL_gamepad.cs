@@ -73,6 +73,7 @@ public static unsafe partial class SDL
 	/// Get the gamepad mapping string for a given GUID.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMappingForGUID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="guid">A structure containing the GUID for which a mapping is desired.</param>
@@ -97,6 +98,7 @@ public static unsafe partial class SDL
 	/// Get the current mapping of a gamepad.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMapping">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad">The gamepad you want to get the current mapping for.</param>
@@ -141,13 +143,13 @@ public static unsafe partial class SDL
 	public static SDL_JoystickId[]? GetGamepads(out int count)
 	{
 		SDL_JoystickId[]? gamepads = null;
-		SDL_JoystickId* gamepadsTemporary = GetGamepadsTemporary(out count);
-		if (gamepadsTemporary is not null)
+		SDL_JoystickId* gamepadsPtr = GetGamepadsTemporary(out count);
+		if (gamepadsPtr is not null)
 		{
 			gamepads = new SDL_JoystickId[count];
 			for (int i = 0; i < count; i++)
 			{
-				gamepads[i] = gamepadsTemporary[i];
+				gamepads[i] = gamepadsPtr[i];
 			}
 		}
 		return gamepads;
@@ -157,6 +159,7 @@ public static unsafe partial class SDL
 	/// Get a list of currently connected gamepads.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepads">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of gamepads returned.</param>
@@ -194,6 +197,7 @@ public static unsafe partial class SDL
 	/// Get the implementation-dependent name of a gamepad.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadNameForID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The joystick instance ID.</param>
@@ -218,6 +222,7 @@ public static unsafe partial class SDL
 	/// Get the implementation dependent path of a gamepad.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadPathForID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The joystick instance ID.</param>
@@ -326,6 +331,7 @@ public static unsafe partial class SDL
 	/// Get the mapping of a gamepad.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMappingForID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The joystick instance ID.</param>
@@ -410,6 +416,7 @@ public static unsafe partial class SDL
 	/// Get the implementation-dependent name for an opened gamepad.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad">A gamepad identifier previously returned by <see cref="OpenGamepad(SDL_JoystickId)"/>.</param>
@@ -434,6 +441,7 @@ public static unsafe partial class SDL
 	/// Get the implementation-dependent path for an opened gamepad.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadPath">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad">A gamepad identifier previously returned by <see cref="OpenGamepad(SDL_JoystickId)"/>.</param>
@@ -552,6 +560,7 @@ public static unsafe partial class SDL
 	/// Get the serial number of an opened gamepad, if available.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadSerial">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad">The gamepad object to query.</param>
@@ -670,6 +679,7 @@ public static unsafe partial class SDL
 	/// Get the SDL joystick layer bindings for a gamepad.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadBindings">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad">A gamepad.</param>
@@ -714,6 +724,7 @@ public static unsafe partial class SDL
 	/// Convert from an <see cref="SDL_GamepadType"/> enum to a string.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadStringForType">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="type">Type an enum value for a given <see cref="SDL_GamepadType"/>.</param>
@@ -750,6 +761,7 @@ public static unsafe partial class SDL
 	/// Convert from an <see cref="SDL_GamepadAxis"/> enum to a string.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadStringForAxis">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="axis">An enum value for a given <see cref="SDL_GamepadAxis"/>.</param>
@@ -813,6 +825,7 @@ public static unsafe partial class SDL
 	/// Convert from an <see cref="SDL_GamepadButton"/> enum to a string.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadStringForButton">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="button">An enum value for a given <see cref="SDL_GamepadButton"/>.</param>
@@ -1074,6 +1087,7 @@ public static unsafe partial class SDL
 	/// Return the sfSymbolsName for a given button on a gamepad on Apple platforms.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadAppleSFSymbolsNameForButton">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad">The gamepad to query.</param>
@@ -1100,6 +1114,7 @@ public static unsafe partial class SDL
 	/// Return the sfSymbolsName for a given axis on a gamepad on Apple platforms.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadAppleSFSymbolsNameForAxis">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad">The gamepad to query.</param>

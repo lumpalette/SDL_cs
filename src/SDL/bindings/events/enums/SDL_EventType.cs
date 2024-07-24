@@ -24,8 +24,7 @@ public enum SDL_EventType : uint
 	/// The application is being terminated by the OS.
 	/// </summary>
 	/// <remarks>
-	/// Called on iOS in <c>applicationWillTerminate()</c>.
-	/// <br/>
+	/// Called on iOS in <c>applicationWillTerminate()</c>. <br/>
 	/// Called on Android in <c>onDestroy()</c>.
 	/// </remarks>
 	Terminating,
@@ -34,8 +33,7 @@ public enum SDL_EventType : uint
 	/// The application is low on memory, free memory if possible.
 	/// </summary>
 	/// <remarks>
-	/// Called on iOS in <c>applicationDidReceiveMemoryWarning()</c>.
-	/// <br/>
+	/// Called on iOS in <c>applicationDidReceiveMemoryWarning()</c>. <br/>
 	/// Called on Android in <c>onLowMemory()</c>.
 	/// </remarks>
 	LowMemory,
@@ -44,8 +42,7 @@ public enum SDL_EventType : uint
 	/// The application is about to enter the background.
 	/// </summary>
 	/// <remarks>
-	/// Called on iOS in <c>applicationWillResignActive()</c>.
-	/// <br/>
+	/// Called on iOS in <c>applicationWillResignActive()</c>. <br/>
 	/// Called on Android in <c>onPause()</c>.
 	/// </remarks>
 	WillEnterBackground,
@@ -54,8 +51,7 @@ public enum SDL_EventType : uint
 	/// The application did enter the background and may not get CPU for some time
 	/// </summary>
 	/// <remarks>
-	/// Called on iOS in <c>applicationDidEnterBackground()</c>.
-	/// <br/>
+	/// Called on iOS in <c>applicationDidEnterBackground()</c>. <br/>
 	/// Called on Android in <c>onPause()</c>.
 	/// </remarks>
 	DidEnterBackground,
@@ -64,8 +60,7 @@ public enum SDL_EventType : uint
 	/// The application is about to enter the foreground.
 	/// </summary>
 	/// <remarks>
-	/// Called on iOS in <c>applicationWillEnterForeground()</c>.
-	/// <br/>
+	/// Called on iOS in <c>applicationWillEnterForeground()</c>. <br/>
 	/// Called on Android in <c>onResume()</c>.
 	/// </remarks>
 	WillEnterForeground,
@@ -74,8 +69,7 @@ public enum SDL_EventType : uint
 	/// The application is now interactive.
 	/// </summary>
 	/// <remarks>
-	/// Called on iOS in <c>applicationDidBecomeActive()</c>.
-	/// <br/>
+	/// Called on iOS in <c>applicationDidBecomeActive()</c>. <br/>
 	/// Called on Android in <c>onResume()</c>.
 	/// </remarks>
 	DidEnterForeground,

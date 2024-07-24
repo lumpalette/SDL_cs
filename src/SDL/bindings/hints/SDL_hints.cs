@@ -76,6 +76,7 @@ public static unsafe partial class SDL
 	/// Get the value of a hint.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetHint">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="name">The hint to query.</param>

@@ -22,6 +22,7 @@ public static unsafe partial class SDL
 	/// Get an ASCII string representation for a given <see cref="SDL_Guid"/>.
 	/// </summary>
 	/// <remarks>
+	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GUIDToString">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="guid">The <see cref="SDL_Guid"/> you wish to convert to string.</param>

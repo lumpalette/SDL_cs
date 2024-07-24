@@ -32,6 +32,9 @@ public unsafe struct SDL_TextInputEvent
 	/// <summary>
 	/// The input text, UTF-8 encoded.
 	/// </summary>
+	/// <remarks>
+	/// You can claim the memory of this field using <see cref="SDL.ClaimTemporaryMemory(nint)"/>.
+	/// </remarks>
 	public readonly byte* TextTemporary;
 
 	/// <summary>
