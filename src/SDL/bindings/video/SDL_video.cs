@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using Microsoft.VisualBasic;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace SDL_cs;
@@ -655,6 +656,19 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int GetWindowSize(SDL_Window* window, out int width, out int height);
+
+	/// <summary>
+	/// Get the safe area for this window.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowSafeArea">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="window">The window to query.</param>
+	/// <param name="rect">A pointer filled in with the client area that is safe for interactive content.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowSafeArea")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int GetWindowSafeArea(SDL_Window* window, out SDL_Rect rect);
 
 	/// <summary>
 	/// Request that the aspect ratio of a window's client area be set.
@@ -1376,34 +1390,48 @@ public static unsafe partial class SDL
 	/// Get the currently active EGL display.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_EGL_GetCurrentEGLDisplay">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_EGL_GetCurrentDisplay">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>The currently active EGL display or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_EGL_GetCurrentEGLDisplay")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_EGL_GetCurrentDisplay")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_EGLDisplay* EGL_GetCurrentEGLDisplay();
+	public static partial SDL_EGLDisplay* EGL_GetCurrentDisplay();
+
+	/// <summary>
+	/// Get the currently active EGL config.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_EGL_GetCurrentConfig">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>The currently active EGL config or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_EGL_GetCurrentConfig")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_EGLConfig* EGL_GetCurrentConfig();
 
 	/// <summary>
 	/// Get the EGL surface associated with the window.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_EGL_GetWindowSurface">documentation</see> for more details.
+	/// </remarks>
 	/// <param name="window">The window to query.</param>
 	/// <returns>The EGLSurface pointer associated with the window, or <see langword="null"/> on failure.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_EGL_GetWindowEGLSurface")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_EGL_GetWindowSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_EGLSurface* EGL_GetWindowEGLSurface(SDL_Window* window);
+	public static partial SDL_EGLSurface* EGL_GetWindowSurface(SDL_Window* window);
 
 	/// <summary>
 	/// Sets the callbacks for defining custom EGLAttrib arrays for EGL initialization.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/EGL_SetEGLAttributeCallbacks">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_EGL_SetAttributeCallbacks">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="platformAttribCallback">Callback for attributes to pass to <c>eglGetPlatformDisplay</c>.</param>
 	/// <param name="surfaceAttribCallback">Callback for attributes to pass to <c>eglCreateSurface</c>.</param>
 	/// <param name="contextAttribCallback">Callback for attributes to pass to <c>eglCreateContext</c>.</param>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_EGL_SetEGLAttributeCallbacks")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_EGL_SetAttributeCallbacks")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void EGL_SetEGLAttributeCallbacks(SDL_EGLAttribArrayCallback platformAttribCallback, SDL_EGLIntArrayCallback surfaceAttribCallback, SDL_EGLIntArrayCallback contextAttribCallback);
+	public static partial void EGL_SetAttributeCallbacks(SDL_EGLAttribArrayCallback platformAttribCallback, SDL_EGLIntArrayCallback surfaceAttribCallback, SDL_EGLIntArrayCallback contextAttribCallback);
 
 	/// <summary>
 	/// Set the swap interval for the current OpenGL context.

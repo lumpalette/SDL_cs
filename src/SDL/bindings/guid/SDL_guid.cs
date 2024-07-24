@@ -41,9 +41,4 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_StringToGUID", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Guid StringToGuid(string pchGuid);
-
-	void X()
-	{
-		SDL.FreeTemporaryMemory
-	}
 }

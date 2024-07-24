@@ -183,7 +183,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SaveBMP", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SaveBMP(SDL_Surface* surface, string file);
+	public static partial int SaveBmp(SDL_Surface* surface, string file);
 
 	/// <summary>
 	/// Set the RLE acceleration hint for a surface.
