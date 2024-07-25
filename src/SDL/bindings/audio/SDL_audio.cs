@@ -873,7 +873,7 @@ public static unsafe partial class SDL
 	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_LoadWAV", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int LoadWAV(string path, out SDL_AudioSpec spec, out byte* audioBuffer, out uint audioLength);
+	public static partial int LoadWav(string path, out SDL_AudioSpec spec, out byte* audioBuffer, out uint audioLength);
 
 	/// <summary>
 	/// Mix audio data in a specified format.
