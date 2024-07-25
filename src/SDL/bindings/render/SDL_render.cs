@@ -748,6 +748,19 @@ public static unsafe partial class SDL
 	public static partial bool RenderViewportSet(SDL_Renderer* renderer);
 
 	/// <summary>
+	/// Get the safe area for rendering within the current viewport.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderSafeArea">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="renderer">The rendering context.</param>
+	/// <param name="rect">A pointer filled in with the area that is safe for interactive content.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderSafeArea")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int GetRenderSafeArea(SDL_Renderer* renderer, out SDL_Rect rect);
+
+	/// <summary>
 	/// Set the clip rectangle for rendering on the specified target.
 	/// </summary>
 	/// <remarks>
@@ -1402,7 +1415,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderPresent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int RenderPresent(SDL_Renderer* renderer);
-	
+
 	/// <summary>
 	/// Destroy the specified texture.
 	/// </summary>
