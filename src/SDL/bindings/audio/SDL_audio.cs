@@ -926,7 +926,7 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioFormat AudioFormatS16 => BitConverter.IsLittleEndian ? SDL_AudioFormat.S16LittleEndian : SDL_AudioFormat.S16BigEndian;
+	public static SDL_AudioFormat AudioFormatS16 => BitConverter.IsLittleEndian ? SDL_AudioFormat.S16LE : SDL_AudioFormat.S16BE;
 
 	/// <summary>
 	/// 32-bit integer samples.
@@ -934,7 +934,7 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioFormat AudioFormatS32 => BitConverter.IsLittleEndian ? SDL_AudioFormat.S32LittleEndian : SDL_AudioFormat.S32BigEndian;
+	public static SDL_AudioFormat AudioFormatS32 => BitConverter.IsLittleEndian ? SDL_AudioFormat.S32LE : SDL_AudioFormat.S32BE;
 
 	/// <summary>
 	/// 32-bit floating point samples.
@@ -942,7 +942,7 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_AudioFormat AudioFormatF32 => BitConverter.IsLittleEndian ? SDL_AudioFormat.F32LittleEndian : SDL_AudioFormat.F32BigEndian;
+	public static SDL_AudioFormat AudioFormatF32 => BitConverter.IsLittleEndian ? SDL_AudioFormat.F32LE : SDL_AudioFormat.F32BE;
 
 	/// <summary>
 	/// Mask used to query the size of an <see cref="SDL_AudioFormat"/>.

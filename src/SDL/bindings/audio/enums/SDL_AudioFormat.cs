@@ -28,30 +28,30 @@ public enum SDL_AudioFormat
 	/// <summary>
 	/// Signed 16-bit samples, in little endian.
 	/// </summary>
-	S16LittleEndian = 0x8010,
+	S16LE = 0x8010,
 
 	/// <summary>
 	/// Signed 16-bit samples, in big endian.
 	/// </summary>
-	S16BigEndian = 0x9010,
+	S16BE = 0x9010,
 
 	/// <summary>
 	/// 32-bit integer samples, in little endian.
 	/// </summary>
-	S32LittleEndian = 0x8020,
+	S32LE = 0x8020,
 
 	/// <summary>
 	/// 32-bit integer samples, in big endian.
 	/// </summary>
-	S32BigEndian = 0x9020,
+	S32BE = 0x9020,
 
 	/// <summary>
 	/// 32-bit floating point samples, in little endian.
 	/// </summary>
-	F32LittleEndian = 0x8120,
+	F32LE = 0x8120,
 
 	/// <summary>
 	/// 32-bit floating point samples, in big endian.
 	/// </summary>
-	F32BigEndian = 0x9120
+	F32BE = 0x9120
 }
