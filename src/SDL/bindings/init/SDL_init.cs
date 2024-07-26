@@ -48,7 +48,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WasInit">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="flags">Any of the flags used by <see cref="Init(SDL_InitFlags)"/>; see <see cref="Init(SDL_InitFlags)"/> for details.</param>
-	/// <returns>A mask of all initialized subsystems if <paramref name="flags"/> is 0, otherwise it returns the initialization status of the specified subsystems.</returns>
+	/// <returns>A mask of all initialized subsystems if <paramref name="flags"/> is <see cref="SDL_InitFlags.None"/>, otherwise it returns the initialization status of the specified subsystems.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_WasInit")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_InitFlags WasInit(SDL_InitFlags flags);
