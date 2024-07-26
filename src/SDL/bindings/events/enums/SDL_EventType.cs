@@ -161,6 +161,11 @@ public enum SDL_EventType : uint
 	WindowPixelSizeChanged,
 
 	/// <summary>
+	/// The pixel size of a Metal view associated with the window has changed.
+	/// </summary>
+	WindowMetalViewResized,
+
+	/// <summary>
 	/// Window has been minimized.
 	/// </summary>
 	WindowMinimized,
@@ -219,6 +224,11 @@ public enum SDL_EventType : uint
 	/// Window display scale has been changed.
 	/// </summary>
 	WindowDisplayScaleChanged,
+
+	/// <summary>
+	/// The window safe area has been changed.
+	/// </summary>
+	WindowSafeAreaChanged,
 
 	/// <summary>
 	/// The window has been occluded.
