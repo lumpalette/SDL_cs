@@ -1493,7 +1493,7 @@ public static unsafe partial class SDL
 	/// Toggle VSync of the given renderer.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SetRenderVSync">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderVSync">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer">The renderer to toggle.</param>
 	/// <param name="vsync">The vertical refresh sync interval.</param>

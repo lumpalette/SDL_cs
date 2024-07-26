@@ -12,6 +12,11 @@ namespace SDL_cs;
 public enum SDL_InitFlags : uint
 {
 	/// <summary>
+	/// No subsystem is targetted.
+	/// </summary>
+	None = 0x00000000u,
+
+	/// <summary>
 	/// Timer subsystem.
 	/// </summary>
 	Timer = 0x00000001u,
