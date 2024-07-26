@@ -10,7 +10,7 @@ public static partial class SDL_Prop
 		/// <summary>
 		/// The name of the rendering driver to use, if a specific one is desired.
 		/// </summary>
-		public const string Name = "name";
+		public const string NameString = "name";
 
 		/// <summary>
 		/// The window where rendering is displayed, required if this isn't a software renderer using a surface.
