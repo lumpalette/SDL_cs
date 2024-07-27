@@ -283,28 +283,4 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RegisterEvents")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial uint RegisterEvents(int numEvents);
-
-	/// <summary>
-	/// Allocate temporary memory.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AllocateTemporaryMemory">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="size">The amount of memory to allocate.</param>
-	/// <returns>A pointer to the memory allocated or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_AllocateTemporaryMemory")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial nint AllocateTemporaryMemory(nuint size);
-
-	/// <summary>
-	/// Claim ownership of temporary memory.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ClaimTemporaryMemory">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="mem">A pointer allocated with <see cref="AllocateTemporaryMemory(nuint)"/>.</param>
-	/// <returns>A pointer to the memory now owned by the application, which must be freed using <see cref="Free(nint)"/>, or <see langword="null"/> if the memory is not temporary or was allocated on a different thread.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_ClaimTemporaryMemory")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial nint ClaimTemporaryMemory(nint mem);
 }

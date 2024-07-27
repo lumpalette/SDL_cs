@@ -30,15 +30,9 @@ public unsafe struct SDL_TextInputEvent
 	public SDL_WindowId WindowId;
 
 	/// <summary>
-	/// The input text, UTF-8 encoded.
-	/// </summary>
-	/// <remarks>
-	/// You can claim the memory of this field using <see cref="SDL.ClaimTemporaryMemory(nint)"/>.
-	/// </remarks>
-	public readonly byte* TextTemporary;
-
-	/// <summary>
 	/// The input text.
 	/// </summary>
-	public readonly string? Text => Utf8StringMarshaller.ConvertToManaged(TextTemporary);
+	public readonly string? Text => Utf8StringMarshaller.ConvertToManaged(_text);
+
+	private readonly byte* _text;
 }

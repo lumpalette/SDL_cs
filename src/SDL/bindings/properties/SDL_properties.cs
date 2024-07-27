@@ -204,23 +204,8 @@ public static unsafe partial class SDL
 	/// <returns>The value of the property, or <paramref name="defaultValue"/> if it is not set or not a string property.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetStringProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalUsing(typeof(GetStringRuleStringMarshaller))]
+	[return: MarshalUsing(typeof(SDLStringMarshaller))]
 	public static partial string? GetStringProperty(SDL_PropertiesId props, string name, string defaultValue = "");
-
-	/// <summary>
-	/// Get a string property on a group of properties.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetStringProperty">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="props">The properties to query.</param>
-	/// <param name="name">The name of the property to query.</param>
-	/// <param name="defaultValue">The default value of the property. Defaults to an empty string.</param>
-	/// <returns>The value of the property, or <paramref name="defaultValue"/> if it is not set or not a string property.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetStringProperty", StringMarshalling = StringMarshalling.Utf8)]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetStringPropertyTemporary(SDL_PropertiesId props, string name, string defaultValue = "");
 
 	/// <summary>
 	/// Get a number property on a group of properties.

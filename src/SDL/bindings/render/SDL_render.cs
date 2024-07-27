@@ -25,22 +25,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="index">The index of the rendering driver; the value ranges from 0 to <see cref="GetNumRenderDrivers"/> - 1.</param>
 	/// <returns>The name of the rendering driver at the requested index, or <see langword="null"/> if an invalid index was specified.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderDriver", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderDriver", StringMarshallingCustomType = typeof(SDLStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetRenderDriver(int index);
-
-	/// <summary>
-	/// Use this function to get the name of a built in 2D rendering driver.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderDriver">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="index">The index of the rendering driver; the value ranges from 0 to <see cref="GetNumRenderDrivers"/> - 1.</param>
-	/// <returns>The name of the rendering driver at the requested index, or <see langword="null"/> if an invalid index was specified.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderDriver")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetRenderDriverTemporary(int index);
 
 	/// <summary>
 	/// Create a window and default renderer.
@@ -128,22 +115,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="renderer">The rendering context.</param>
 	/// <returns>The name of the selected renderer, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRendererName", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRendererName", StringMarshallingCustomType = typeof(SDLStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetRendererName(SDL_Renderer* renderer);
-
-	/// <summary>
-	/// Get the name of a renderer.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRendererName">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The rendering context.</param>
-	/// <returns>The name of the selected renderer, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRendererName")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetRendererNameTemporary(SDL_Renderer* renderer);
 
 	/// <summary>
 	/// Get the properties associated with a renderer.

@@ -45,34 +45,10 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoysticks">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of joysticks returned.</param>
-	/// <returns>An array of joystick instance IDs or <see langword="null"/> on failure; <see cref="GetError"/> for more details.</returns>
-	public static SDL_JoystickId[]? GetJoystick(out int count)
-	{
-		SDL_JoystickId[]? joysticks = null;
-		SDL_JoystickId* joysticksPtr = GetJoysticksTemporary(out count);
-		if (joysticksPtr is not null)
-		{
-			joysticks = new SDL_JoystickId[count];
-			for (int i = 0; i < count; i++)
-			{
-				joysticks[i] = joysticksPtr[i];
-			}
-		}
-		return joysticks;
-	}
-
-	/// <summary>
-	/// Get a list of currently connected joysticks.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoysticks">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="count">A pointer filled in with the number of joysticks returned.</param>
-	/// <returns>A null-terminated array of joystick instance IDs or <see langword="null"/> on failure; <see cref="GetError"/> for more details.</returns>
+	/// <returns>A null-terminated array of joystick instance IDs or <see langword="null"/> on failure; <see cref="GetError"/> for more details. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoysticks")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_JoystickId* GetJoysticksTemporary(out int count);
+	public static partial SDL_JoystickId* GetJoysticks(out int count);
 
 	/// <summary>
 	/// Get the implementation dependent name of a joystick.
@@ -82,24 +58,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>The name of the selected joystick. If no name can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickNameForID", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickNameForID", StringMarshallingCustomType = typeof(SDLStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetJoystickNameForId(SDL_JoystickId instanceId);
 
 	/// <summary>
-	/// Get the implementation dependent name of a joystick.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickNameForID">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="instanceId">The joystick instance ID.</param>
-	/// <returns>The name of the selected joystick. If no name can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickNameForID")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetJoystickNameForIdTemporary(SDL_JoystickId instanceId);
-
-	/// <summary>
 	/// Get the implementation dependent path of a joystick.
 	/// </summary>
 	/// <remarks>
@@ -107,22 +70,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <returns>The path of the selected joystick. If no path can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPathForID", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPathForID", StringMarshallingCustomType = typeof(SDLStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetJoystickPathForId(SDL_JoystickId instanceId);
-
-	/// <summary>
-	/// Get the implementation dependent path of a joystick.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickPathForID">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="instanceId">The joystick instance ID.</param>
-	/// <returns>The path of the selected joystick. If no path can be found, this function returns <see langword="null"/>; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPathForID")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetJoystickPathForIdTemporary(SDL_JoystickId instanceId);
 
 	/// <summary>
 	/// Get the player index of a joystick.
@@ -381,24 +331,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="joystick">The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
 	/// <returns>The name of the selected joystick. If no name can be found, this function returns null; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickName", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickName", StringMarshallingCustomType = typeof(SDLStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetJoystickName(SDL_Joystick* joystick);
 
 	/// <summary>
-	/// Get the implementation dependent name of a joystick.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickName">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="joystick">The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
-	/// <returns>The name of the selected joystick. If no name can be found, this function returns null; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickName")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetJoystickNameTemporary(SDL_Joystick* joystick);
-
-	/// <summary>
 	/// Get the implementation dependent path of a joystick.
 	/// </summary>
 	/// <remarks>
@@ -406,22 +343,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="joystick">The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
 	/// <returns>The path of the selected joystick. If no path can be found, this function returns null; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPath", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPath", StringMarshallingCustomType = typeof(SDLStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetJoystickPath(SDL_Joystick* joystick);
-
-	/// <summary>
-	/// Get the implementation dependent path of a joystick.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickPath">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="joystick">The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
-	/// <returns>The path of the selected joystick. If no path can be found, this function returns null; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPath")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetJoystickPathTemporary(SDL_Joystick* joystick);
 
 	/// <summary>
 	/// Get the player index of an opened joystick.
@@ -516,22 +440,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="joystick">The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
 	/// <returns>The serial number of the selected joystick, or null if unavailable.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickSerial", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickSerial", StringMarshallingCustomType = typeof(SDLStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetJoystickSerial(SDL_Joystick* joystick);
-
-	/// <summary>
-	/// Get the serial number of an opened joystick, if available.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickSerial">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="joystick">The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
-	/// <returns>The serial number of the selected joystick, or null if unavailable.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickSerial")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetJoystickSerialTemporary(SDL_Joystick* joystick);
 
 	/// <summary>
 	/// Get the type of an opened joystick.

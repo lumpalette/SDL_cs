@@ -13,34 +13,10 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensors">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of sensors returned.</param>
-	/// <returns>An array of sensor instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	public static SDL_SensorId[]? GetSensors(out int count)
-	{
-		SDL_SensorId[]? sensors = null;
-		SDL_SensorId* sensorsPtr = GetSensorsTemporary(out count);
-		if (sensorsPtr is not null)
-		{
-			sensors = new SDL_SensorId[count];
-			for (int i = 0; i < count; i++)
-			{
-				sensors[i] = sensorsPtr[i];
-			}
-		}
-		return sensors;
-	}
-
-	/// <summary>
-	/// Get a list of currently connected sensors.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensors">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="count">A pointer filled in with the number of sensors returned.</param>
-	/// <returns>A null-terminated array of sensor instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A null-terminated array of sensor instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensors")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_SensorId* GetSensorsTemporary(out int count);
+	public static partial SDL_SensorId* GetSensors(out int count);
 
 	/// <summary>
 	/// Get the implementation dependent name of a sensor.
@@ -50,22 +26,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The sensor instance ID.</param>
 	/// <returns>The sensor name, or <see langword="null"/> if <paramref name="instanceId"/> is not valid.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorNameForID", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorNameForID", StringMarshallingCustomType = typeof(SDLStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetSensorNameForId(SDL_SensorId instanceId);
-
-	/// <summary>
-	/// Get the implementation dependent name of a sensor.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorNameForID">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="instanceId">The sensor instance ID.</param>
-	/// <returns>The sensor name, or <see langword="null"/> if <paramref name="instanceId"/> is not valid.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorNameForID")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetSensorNameForIdTemporary(SDL_SensorId instanceId);
 
 	/// <summary>
 	/// Get the type of a sensor.
@@ -135,22 +98,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="sensor">The <see cref="SDL_Sensor"/> object.</param>
 	/// <returns>The sensor name or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorName", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorName", StringMarshallingCustomType = typeof(SDLStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetSensorName(SDL_Sensor* sensor);
-
-	/// <summary>
-	/// Get the implementation dependent name of a sensor.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensorName">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="sensor">The <see cref="SDL_Sensor"/> object.</param>
-	/// <returns>The sensor name or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorName")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetSensorNameTemporary(SDL_Sensor* sensor);
 
 	/// <summary>
 	/// Get the type of a sensor.

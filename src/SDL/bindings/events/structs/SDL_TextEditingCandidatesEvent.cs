@@ -32,30 +32,24 @@ public unsafe struct SDL_TextEditingCandidatesEvent
 	/// <summary>
 	/// The list of candidates, or <see langword="null"/> if there are no candidates available.
 	/// </summary>
-	/// <remarks>
-	/// You can claim the memory of this field using <see cref="SDL.ClaimTemporaryMemory(nint)"/>.
-	/// </remarks>
-	public readonly byte** CandidatesTemporary;
-
-	/// <summary>
-	/// The list of candidates, or <see langword="null"/> if there are no candidates available.
-	/// </summary>
 	public readonly string?[]? Candidates
 	{
 		get
 		{
-			string?[]? candidates = null;
-			if (CandidatesTemporary is not null)
+			if (_candidates is null)
 			{
-				candidates = new string?[NumCandidates];
+				var candidates = new string?[NumCandidates];
 				for (int i = 0; i < NumCandidates; i++)
 				{
-					candidates[i] = Utf8StringMarshaller.ConvertToManaged(CandidatesTemporary[i]);
+					candidates[i] = Utf8StringMarshaller.ConvertToManaged(_candidates[i]);
 				}
+				return candidates;
 			}
-			return candidates;
+			return null;
 		}
 	}
+
+	private readonly byte** _candidates;
 
 	/// <summary>
 	/// The number of strings in <see cref="Candidates"/>.

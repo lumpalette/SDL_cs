@@ -69,21 +69,8 @@ public static unsafe partial class SDL
 	/// <returns>The string value of a hint or <see langword="null"/> if the hint isn't set.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetHint", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalUsing(typeof(GetStringRuleStringMarshaller))]
+	[return: MarshalUsing(typeof(SDLStringMarshaller))]
 	public static partial string? GetHint(string name);
-
-	/// <summary>
-	/// Get the value of a hint.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetHint">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="name">The hint to query.</param>
-	/// <returns>The string value of a hint or <see langword="null"/> if the hint isn't set.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetHint", StringMarshalling = StringMarshalling.Utf8)]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetHintTemporary(string name);
 
 	/// <summary>
 	/// Add a function to watch a particular hint.

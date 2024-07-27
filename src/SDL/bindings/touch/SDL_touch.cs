@@ -13,34 +13,10 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDevices">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of fingers returned.</param>
-	/// <returns>An array of touch device IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	public static SDL_TouchId[]? GetTouchDevices(out int count)
-	{
-		SDL_TouchId[]? devices = null;
-		SDL_TouchId* devicesPtr = GetTouchDevicesTemporary(out count);
-		if (devicesPtr is not null)
-		{
-			devices = new SDL_TouchId[count];
-			for (int i = 0; i < count; i++)
-			{
-				devices[i] = devicesPtr[i];
-			}
-		}
-		return devices;
-	}
-
-	/// <summary>
-	/// Get a list of registered touch fingers.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDevices">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="count">A pointer filled in with the number of fingers returned.</param>
-	/// <returns>A null-terminated array of touch device IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A null-terminated array of touch device IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchDevices")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_TouchId* GetTouchDevicesTemporary(out int count);
+	public static partial SDL_TouchId* GetTouchDevices(out int count);
 
 	/// <summary>
 	/// Get the touch device name as reported from the driver.
@@ -50,22 +26,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="touchId">The touch device instance ID.</param>
 	/// <returns>Touch device name, or <see langword="null"/> on failure; call <see cref="GetError"/> for more details.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceName", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceName", StringMarshallingCustomType = typeof(SDLStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetTouchDeviceName(SDL_TouchId touchId);
-
-	/// <summary>
-	/// Get the touch device name as reported from the driver.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDeviceName">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="touchId">The touch device instance ID.</param>
-	/// <returns>Touch device name, or <see langword="null"/> on failure; call <see cref="GetError"/> for more details.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceName")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetTouchDeviceNameTemporary(SDL_TouchId touchId);
 
 	/// <summary>
 	/// Get the type of the given touch device.
@@ -87,35 +50,10 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="touchId">The ID of a touch device.</param>
 	/// <param name="count">A pointer filled in with the number of fingers returned.</param>
-	/// <returns>An array of <see cref="SDL_Finger"/> pointers or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	public static SDL_Finger*[]? GetTouchFingers(SDL_TouchId touchId, out int count)
-	{
-		SDL_Finger*[]? fingers = null;
-		SDL_Finger** fingersPtr = GetTouchFingersTemporary(touchId, out count);
-		if (fingersPtr is not null)
-		{
-			fingers = new SDL_Finger*[count];
-			for (int i = 0; i < count; i++)
-			{
-				fingers[i] = fingersPtr[i];
-			}
-		}
-		return fingers;
-	}
-
-	/// <summary>
-	/// Get a list of active fingers for a given touch device.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchFingers">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="touchId">The ID of a touch device.</param>
-	/// <param name="count">A pointer filled in with the number of fingers returned.</param>
-	/// <returns>A <see langword="null"/> terminated array of <see cref="SDL_Finger"/> pointers or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A <see langword="null"/> terminated array of <see cref="SDL_Finger"/> pointers or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This is a single allocation that should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchFingers")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Finger** GetTouchFingersTemporary(SDL_TouchId touchId, out int count);
+	public static partial SDL_Finger** GetTouchFingers(SDL_TouchId touchId, out int count);
 
 	/// <summary>
 	/// Used as the device ID for mouse events simulated with touch input.

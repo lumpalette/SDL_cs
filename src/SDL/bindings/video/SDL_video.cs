@@ -33,45 +33,20 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="index">The index of a video driver.</param>
 	/// <returns>The name of the video driver with the given <paramref name="index"/>.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetVideoDriver", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetVideoDriver", StringMarshallingCustomType = typeof(SDLStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetVideoDriver(int index);
 
 	/// <summary>
-	/// Get the name of a built in video driver.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetVideoDriver">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="index">The index of a video driver.</param>
-	/// <returns>The name of the video driver with the given <paramref name="index"/>.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetVideoDriver")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetVideoDriverTemporary(int index);
-
-	/// <summary>
 	/// Get the name of the currently initialized video driver.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentVideoDriver">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>The name of the current video driver or <see langword="null"/> if no driver has been initialized.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentVideoDriver", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentVideoDriver", StringMarshallingCustomType = typeof(SDLStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetCurrentVideoDriver();
-
-	/// <summary>
-	/// Get the name of the currently initialized video driver.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentVideoDriver">documentation</see> for more details.
-	/// </remarks>
-	/// <returns>The name of the current video driver or <see langword="null"/> if no driver has been initialized.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentVideoDriver")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetCurrentVideoDriverTemporary();
 
 	/// <summary>
 	/// Get the current system theme.
@@ -88,37 +63,14 @@ public static unsafe partial class SDL
 	/// Get a list of currently connected displays.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplays">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="count">A pointer filled in with the number of displays returned.</param>
-	/// <returns>An array of display instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	public static SDL_DisplayId[]? GetDisplays(out int count)
-	{
-		SDL_DisplayId[]? displays = null;
-		SDL_DisplayId* displaysPtr = GetDisplaysTemporary(out count);
-		if (displaysPtr is not null)
-		{
-			displays = new SDL_DisplayId[count];
-			for (int i = 0; i < count; i++)
-			{
-				displays[i] = displaysPtr[i];
-			}
-		}
-		return displays;
-	}
-
-	/// <summary>
-	/// Get a list of currently connected displays.
-	/// </summary>
-	/// <remarks>
 	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplays">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of displays returned.</param>
-	/// <returns>A null-terminated array of display instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A null-terminated array of display instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplays")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_DisplayId* GetDisplaysTemporary(out int count);
+	public static partial SDL_DisplayId* GetDisplays(out int count);
 
 	/// <summary>
 	/// Return the primary display.
@@ -148,22 +100,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
 	/// <returns>The name of a display or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayName", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayName", StringMarshallingCustomType = typeof(SDLStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string? GetDisplayName(SDL_DisplayId instanceId);
-
-	/// <summary>
-	/// Get the name of a display.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplayName">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="instanceId">The instance ID of the display to query.</param>
-	/// <returns>The name of a display or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayName")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetDisplayNameTemporary(SDL_DisplayId instanceId);
 
 	/// <summary>
 	/// Get the desktop area represented by a display.
@@ -235,35 +174,10 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
 	/// <param name="count">A pointer filled in with the number of display modes returned.</param>
-	/// <returns>An array of display mode pointers or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	public static SDL_DisplayMode*[]? GetFullscreenDisplayModes(SDL_DisplayId instanceId, out int count)
-	{
-		SDL_DisplayMode*[]? modes = null;
-		SDL_DisplayMode** modesPtr = GetFullscreenDisplayModesTemporary(instanceId, out count);
-		if (modesPtr is not null)
-		{
-			modes = new SDL_DisplayMode*[count];
-			for (int i = 0; i < count; i++)
-			{
-				modes[i] = modesPtr[i];
-			}
-		}
-		return modes;
-	}
-
-	/// <summary>
-	/// Get a list of fullscreen display modes available on a display.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetFullscreenDisplayModes">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="instanceId">The instance ID of the display to query.</param>
-	/// <param name="count">A pointer filled in with the number of display modes returned.</param>
-	/// <returns>A null-terminated array of display mode pointers or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A null-terminated array of display mode pointers or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This is a single allocation that should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetFullscreenDisplayModes")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_DisplayMode** GetFullscreenDisplayModesTemporary(SDL_DisplayId instanceId, out int count);
+	public static partial SDL_DisplayMode** GetFullscreenDisplayModes(SDL_DisplayId instanceId, out int count);
 
 	/// <summary>
 	/// Get the closest match to the requested display mode.
@@ -276,10 +190,11 @@ public static unsafe partial class SDL
 	/// <param name="height">The height in pixels of the desired display mode.</param>
 	/// <param name="refreshRate">The refresh rate of the desired display mode, or 0.0f for the desktop refresh rate.</param>
 	/// <param name="includeHighDensityModes">Boolean to include high density modes in the search.</param>
-	/// <returns>The closest display mode equal to or larger than the desired mode, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <param name="mode">A pointer filled in with the closest display mode equal to or larger than the desired mode.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetClosestFullscreenDisplayMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_DisplayMode* GetClosestFullscreenDisplayMode(SDL_DisplayId instanceId, int width, int height, float refreshRate, [MarshalAs(NativeBool)] bool includeHighDensityModes);
+	public static partial int GetClosestFullscreenDisplayMode(SDL_DisplayId instanceId, int width, int height, float refreshRate, [MarshalAs(NativeBool)] bool includeHighDensityModes, out SDL_DisplayMode mode);
 
 	/// <summary>
 	/// Get information about the desktop's display mode.
@@ -288,7 +203,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDesktopDisplayMode">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
-	/// <returns>The desktop display mode or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A pointer to the desktop display mode or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDesktopDisplayMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_DisplayMode* GetDesktopDisplayMode(SDL_DisplayId instanceId);
@@ -300,7 +215,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentDisplayMode">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
-	/// <returns>The current display mode or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>A pointer to the current display mode or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_DisplayMode* GetCurrentDisplayMode(SDL_DisplayId instanceId);
@@ -398,7 +313,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="window">The window to query.</param>
 	/// <param name="size">The size of the ICC profile.</param>
-	/// <returns>The raw ICC profile data on success or <see cref="nint.Zero"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>The raw ICC profile data on success or <see cref="nint.Zero"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowICCProfile")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial nint GetWindowICCProfile(SDL_Window* window, out nuint size);
@@ -422,34 +337,10 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindows">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of windows returned, may be <see langword="null"/>.</param>
-	/// <returns>An array of window pointers or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
-	public static SDL_Window*[]? GetWindows(out int count)
-	{
-		SDL_Window*[]? windows = null;
-		SDL_Window** windowsPtr = GetWindowsTemporary(out count);
-		if (windowsPtr is not null)
-		{
-			windows = new SDL_Window*[count];
-			for (int i = 0; i < count; i++)
-			{
-				windows[i] = windowsPtr[i];
-			}
-		}
-		return windows;
-	}
-
-	/// <summary>
-	/// Get a list of valid windows.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindows">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="count">A pointer filled in with the number of windows returned, may be <see langword="null"/>.</param>
-	/// <returns>A null-terminated array of window pointers or <see langword="null"/> on error; call <see cref="GetError"/> for more details.</returns>
+	/// <returns>A null-terminated array of window pointers or <see langword="null"/> on error; call <see cref="GetError"/> for more details. This is a single allocation that should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindows")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Window** GetWindowsTemporary(out int count);
+	public static partial SDL_Window** GetWindows(out int count);
 
 	/// <summary>
 	/// Create a window with the specified dimensions and flags.
@@ -577,22 +468,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="window">The window to query.</param>
 	/// <returns>The title of the window or an empty string if there is no title.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowTitle", StringMarshallingCustomType = typeof(GetStringRuleStringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowTitle", StringMarshallingCustomType = typeof(SDLStringMarshaller))]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial string GetWindowTitle(SDL_Window* window);
-
-	/// <summary>
-	/// Get the title of a window.
-	/// </summary>
-	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowTitle">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="window">The window to query.</param>
-	/// <returns>The title of the window in UTF-8 format or an empty string if there is no title.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowTitle")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetWindowTitleTemporary(SDL_Window* window);
 
 	/// <summary>
 	/// Set the icon for a window.

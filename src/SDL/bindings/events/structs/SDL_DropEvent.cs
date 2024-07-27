@@ -44,28 +44,15 @@ public unsafe struct SDL_DropEvent
 	/// <summary>
 	/// The source app that sent this drop event, or <see langword="null"/> if that isn't available.
 	/// </summary>
-	/// <remarks>
-	/// You can claim the memory of this field using <see cref="SDL.ClaimTemporaryMemory(nint)"/>.
-	/// </remarks>
-	public readonly byte* SourceTemporary;
+	public readonly string? Source => Utf8StringMarshaller.ConvertToManaged(_source);
 
-	/// <summary>
-	/// The source app that sent this drop event, or <see langword="null"/> if that isn't available.
-	/// </summary>
-	public readonly string? Source => Utf8StringMarshaller.ConvertToManaged(SourceTemporary);
+	private readonly byte* _source;
 
 	/// <summary>
 	/// The text for <see cref="SDL_EventType.DropText"/> and the file name for <see cref="SDL_EventType.DropFile"/>,
 	/// <see langword="null"/> for other events.
 	/// </summary>
-	/// <remarks>
-	/// You can claim the memory of this field using <see cref="SDL.ClaimTemporaryMemory(nint)"/>.
-	/// </remarks>
-	public readonly byte* DataTemporary;
+	public readonly string? Data => Utf8StringMarshaller.ConvertToManaged(_data);
 
-	/// <summary>
-	/// The text for <see cref="SDL_EventType.DropText"/> and the file name for <see cref="SDL_EventType.DropFile"/>,
-	/// <see langword="null"/> for other events.
-	/// </summary>
-	public readonly string? Data => Utf8StringMarshaller.ConvertToManaged(DataTemporary);
+	private readonly byte* _data;
 }

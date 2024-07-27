@@ -32,15 +32,9 @@ public unsafe struct SDL_TextEditingEvent
 	/// <summary>
 	/// The editing text.
 	/// </summary>
-	/// <remarks>
-	/// You can claim the memory of this field using <see cref="SDL.ClaimTemporaryMemory(nint)"/>.
-	/// </remarks>
-	public readonly byte* TextTemporary;
+	public readonly string? Text => Utf8StringMarshaller.ConvertToManaged(_text);
 
-	/// <summary>
-	/// The editing text.
-	/// </summary>
-	public readonly string? Text => Utf8StringMarshaller.ConvertToManaged(TextTemporary);
+	private readonly byte* _text;
 
 	/// <summary>
 	/// The start cursor of selected editing text, or -1 if not set.
