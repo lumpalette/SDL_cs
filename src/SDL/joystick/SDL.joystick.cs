@@ -286,14 +286,14 @@ public static unsafe partial class SDL
 	/// <param name="joystick">The virtual joystick on which to set state.</param>
 	/// <param name="touchpad">The index of the touchpad on the virtual joystick to update.</param>
 	/// <param name="finger">The index of the finger on the touchpad to set.</param>
-	/// <param name="state"><see cref="SDL_State.Pressed"/> if the finger is pressed, <see cref="SDL_State.Released"/> if the finger is released.</param>
+	/// <param name="state"><see cref="SDL.Pressed"/> if the finger is pressed, <see cref="SDL.Released"/> if the finger is released.</param>
 	/// <param name="x">The x coordinate of the finger on the touchpad, normalized 0 to 1, with the origin in the upper left.</param>
 	/// <param name="y">The y coordinate of the finger on the touchpad, normalized 0 to 1, with the origin in the upper left.</param>
 	/// <param name="pressure">The pressure of the finger.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickVirtualTouchpad")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetJoystickVirtualTouchpad(SDL_Joystick* joystick, int touchpad, int finger, SDL_State state, float x, float y, float pressure);
+	public static partial int SetJoystickVirtualTouchpad(SDL_Joystick* joystick, int touchpad, int finger, byte state, float x, float y, float pressure);
 
 	/// <summary>
 	/// Send a sensor update for an opened virtual joystick.

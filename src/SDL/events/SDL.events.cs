@@ -286,4 +286,20 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RegisterEvents")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial uint RegisterEvents(int numEvents);
+
+	/// <summary>
+	/// A value that signifies a button is no longer pressed.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RELEASED">documentation</see> for more details.
+	/// </remarks>
+	public const byte Released = 0;
+
+	/// <summary>
+	/// A value that signifies a button has been pressed down.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PRESSED">documentation</see> for more details.
+	/// </remarks>
+	public const byte Pressed = 1;
 }

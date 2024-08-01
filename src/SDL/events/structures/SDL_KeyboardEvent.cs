@@ -54,9 +54,9 @@ public struct SDL_KeyboardEvent
 	public ushort Raw;
 
 	/// <summary>
-	/// Either <see cref="SDL_State.Pressed"/> or <see cref="SDL_State.Released"/>.
+	/// Either <see cref="SDL.Pressed"/> or <see cref="SDL.Released"/>.
 	/// </summary>
-	public SDL_State State;
+	public byte State;
 
 	/// <summary>
 	/// Non-zero if this is a key repeat.

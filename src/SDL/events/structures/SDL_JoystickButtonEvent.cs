@@ -34,9 +34,9 @@ public struct SDL_JoystickButtonEvent
 	public byte Button;
 
 	/// <summary>
-	/// Either <see cref="SDL_State.Pressed"/> or <see cref="SDL_State.Released"/>.
+	/// Either <see cref="SDL.Pressed"/> or <see cref="SDL.Released"/>.
 	/// </summary>
-	public SDL_State State;
+	public byte State;
 
 	private readonly byte _padding1;
 
