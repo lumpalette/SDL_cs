@@ -4,7 +4,7 @@ using System.Runtime.InteropServices.Marshalling;
 namespace SDL_cs;
 
 [CustomMarshaller(typeof(SDL_VirtualJoystickDesc), MarshalMode.ManagedToUnmanagedIn, typeof(SDL_VirtualJoystickDescMarshaller))]
-public unsafe static class SDL_VirtualJoystickDescMarshaller
+public static unsafe class SDL_VirtualJoystickDescMarshaller
 {
 	[StructLayout(LayoutKind.Sequential)]
 	public struct SDL_VirtualJoystickDescUnmanaged

@@ -455,7 +455,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="window">The window to change.</param>
 	/// <param name="title">The desired window title.</param>
-	/// <returns></returns>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowTitle", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int SetWindowTitle(SDL_Window* window, string title);

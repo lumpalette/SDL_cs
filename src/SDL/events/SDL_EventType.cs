@@ -24,8 +24,12 @@ public enum SDL_EventType : uint
 	/// The application is being terminated by the OS.
 	/// </summary>
 	/// <remarks>
-	/// Called on iOS in <c>applicationWillTerminate()</c>. <br/>
-	/// Called on Android in <c>onDestroy()</c>.
+	/// <para>
+	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch(SDL_EventFilterCallback, nint)"/>.
+	/// </para>
+	/// <para>
+	/// Called on iOS in <c>applicationWillTerminate()</c>. Called on Android in <c>onDestroy()</c>.
+	/// </para>
 	/// </remarks>
 	Terminating,
 
@@ -33,8 +37,12 @@ public enum SDL_EventType : uint
 	/// The application is low on memory, free memory if possible.
 	/// </summary>
 	/// <remarks>
-	/// Called on iOS in <c>applicationDidReceiveMemoryWarning()</c>. <br/>
-	/// Called on Android in <c>onLowMemory()</c>.
+	/// <para>
+	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch(SDL_EventFilterCallback, nint)"/>.
+	/// </para>
+	/// <para>
+	/// Called on iOS in <c>applicationDidReceiveMemoryWarning()</c>. Called on Android in <c>onTrimMemory()</c>.
+	/// </para>
 	/// </remarks>
 	LowMemory,
 
@@ -42,17 +50,25 @@ public enum SDL_EventType : uint
 	/// The application is about to enter the background.
 	/// </summary>
 	/// <remarks>
-	/// Called on iOS in <c>applicationWillResignActive()</c>. <br/>
-	/// Called on Android in <c>onPause()</c>.
+	/// <para>
+	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch(SDL_EventFilterCallback, nint)"/>.
+	/// </para>
+	/// <para>
+	/// Called on iOS in <c>applicationWillResignActive()</c>. Called on Android in <c>onPause()</c>.
+	/// </para>
 	/// </remarks>
 	WillEnterBackground,
 
 	/// <summary>
-	/// The application did enter the background and may not get CPU for some time
+	/// The application did enter the background and may not get CPU for some time.
 	/// </summary>
 	/// <remarks>
-	/// Called on iOS in <c>applicationDidEnterBackground()</c>. <br/>
-	/// Called on Android in <c>onPause()</c>.
+	/// <para>
+	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch(SDL_EventFilterCallback, nint)"/>.
+	/// </para>
+	/// <para>
+	/// Called on iOS in <c>applicationDidEnterBackground()</c>. Called on Android in <c>onPause()</c>.
+	/// </para>
 	/// </remarks>
 	DidEnterBackground,
 
@@ -60,8 +76,12 @@ public enum SDL_EventType : uint
 	/// The application is about to enter the foreground.
 	/// </summary>
 	/// <remarks>
-	/// Called on iOS in <c>applicationWillEnterForeground()</c>. <br/>
-	/// Called on Android in <c>onResume()</c>.
+	/// <para>
+	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch(SDL_EventFilterCallback, nint)"/>.
+	/// </para>
+	/// <para>
+	/// Called on iOS in <c>applicationWillEnterForeground()</c>. Called on Android in <c>onResume()</c>.
+	/// </para>
 	/// </remarks>
 	WillEnterForeground,
 
@@ -69,8 +89,12 @@ public enum SDL_EventType : uint
 	/// The application is now interactive.
 	/// </summary>
 	/// <remarks>
-	/// Called on iOS in <c>applicationDidBecomeActive()</c>. <br/>
-	/// Called on Android in <c>onResume()</c>.
+	/// <para>
+	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch(SDL_EventFilterCallback, nint)"/>.
+	/// </para>
+	/// <para>
+	/// Called on iOS in <c>applicationDidBecomeActive()</c>. Called on Android in <c>onResume()</c>.
+	/// </para>
 	/// </remarks>
 	DidEnterForeground,
 
