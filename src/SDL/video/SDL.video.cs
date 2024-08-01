@@ -63,7 +63,6 @@ public static unsafe partial class SDL
 	/// Get a list of currently connected displays.
 	/// </summary>
 	/// <remarks>
-	/// This overload allows you to claim the returned memory using <see cref="ClaimTemporaryMemory(nint)"/>. <br/>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplays">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of displays returned.</param>
