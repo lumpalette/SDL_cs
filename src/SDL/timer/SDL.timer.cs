@@ -102,7 +102,7 @@ public static unsafe partial class SDL
 	/// <returns>A timer ID or <see cref="SDL_TimerId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddTimer")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_TimerId AddTimer(uint intervalMs, SDL_TimerCallback callback, nint userData);
+	public static partial SDL_TimerId AddTimer(uint intervalMs, delegate* unmanaged[Cdecl]<nint, SDL_TimerId, uint, uint> callback, nint userData);
 
 	/// <summary>
 	/// Call a callback function at a future time.
@@ -116,7 +116,7 @@ public static unsafe partial class SDL
 	/// <returns>A timer ID or <see cref="SDL_TimerId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddTimerNS")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_TimerId AddTimerNs(ulong intervalNs, SDL_NsTimerCallback callback, nint userData);
+	public static partial SDL_TimerId AddTimerNs(ulong intervalNs, delegate* unmanaged[Cdecl]<nint, SDL_TimerId, ulong, ulong> callback, nint userData);
 
 	/// <summary>
 	/// Remove a timer created with <see cref="AddTimer(uint, SDL_TimerCallback, nint)"/> or <see cref="AddTimerNs(ulong, SDL_NsTimerCallback, nint)"/>.

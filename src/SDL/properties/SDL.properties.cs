@@ -79,7 +79,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetPointerPropertyWithCleanup", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetPointerPropertyWithCleanup(SDL_PropertiesId props, string name, nint value, SDL_CleanupPropertyCallback cleanup, nint userData);
+	public static partial int SetPointerPropertyWithCleanup(SDL_PropertiesId props, string name, nint value, delegate* unmanaged[Cdecl]<nint, nint, void> cleanup, nint userData);
 
 	/// <summary>
 	/// Set a property on a group of properties.
@@ -275,7 +275,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_EnumerateProperties")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int EnumerateProperties(SDL_PropertiesId props, SDL_EnumeratePropertiesCallback callback, nint userData);
+	public static partial int EnumerateProperties(SDL_PropertiesId props, delegate* unmanaged[Cdecl]<nint, SDL_PropertiesId, byte*, void> callback, nint userData);
 
 	/// <summary>
 	/// Destroy a group of properties.

@@ -89,7 +89,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetClipboardData", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetClipboardData(SDL_ClipboardDataCallback callback, SDL_ClipboardCleanupCallback cleanup, nint userData, [In] string[] mimeTypes, nuint numMimeTypes);
+	public static partial int SetClipboardData(delegate* unmanaged[Cdecl]<nint, string, nuint*, void> callback, delegate* unmanaged[Cdecl]<nint, void> cleanup, nint userData, [In] string[] mimeTypes, nuint numMimeTypes);
 
 	/// <summary>
 	/// Clear the clipboard data.

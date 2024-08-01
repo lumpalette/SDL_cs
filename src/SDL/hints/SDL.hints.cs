@@ -84,7 +84,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddHintCallback", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int AddHintCallback(string name, SDL_HintCallback callback, nint userData);
+	public static partial int AddHintCallback(string name, delegate* unmanaged[Cdecl]<nint, byte*, byte*, byte*, void> callback, nint userData);
 
 	/// <summary>
 	/// Remove a function watching a particular hint.
@@ -97,5 +97,5 @@ public static unsafe partial class SDL
 	/// <param name="userData">A pointer being passed to the callback function.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_DelHintCallback", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void DelHintCallback(string name, SDL_HintCallback callback, nint userData);
+	public static partial void DelHintCallback(string name, delegate* unmanaged[Cdecl]<nint, byte*, byte*, byte*, void> callback, nint userData);
 }

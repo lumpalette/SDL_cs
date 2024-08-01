@@ -1055,7 +1055,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowHitTest")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetWindowHitTest(SDL_Window* window, SDL_HitTestCallback callback, nint callbackData);
+	public static partial int SetWindowHitTest(SDL_Window* window, delegate* unmanaged[Cdecl]<SDL_Window*, SDL_Point*, nint, SDL_HitTestResult> callback, nint callbackData);
 
 	/// <summary>
 	/// Set the shape of a transparent window.
@@ -1315,7 +1315,7 @@ public static unsafe partial class SDL
 	/// <param name="contextAttribCallback">Callback for attributes to pass to <c>eglCreateContext</c>.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_EGL_SetAttributeCallbacks")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void EGL_SetAttributeCallbacks(SDL_EGLAttribArrayCallback platformAttribCallback, SDL_EGLIntArrayCallback surfaceAttribCallback, SDL_EGLIntArrayCallback contextAttribCallback);
+	public static partial void EGL_SetAttributeCallbacks(delegate* unmanaged[Cdecl]<SDL_EGLAttrib*> platformAttribCallback, delegate* unmanaged[Cdecl]<SDL_EGLint*> surfaceAttribCallback, delegate* unmanaged[Cdecl]<SDL_EGLint*> contextAttribCallback);
 
 	/// <summary>
 	/// Set the swap interval for the current OpenGL context.

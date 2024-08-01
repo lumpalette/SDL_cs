@@ -197,7 +197,7 @@ public static unsafe partial class SDL
 	/// <param name="userData">A pointer that is passed to <paramref name="filter"/>.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetEventFilter")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void SetEventFilter(SDL_EventFilterCallback filter, nint userData);
+	public static partial void SetEventFilter(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int>  filter, nint userData);
 
 	/// <summary>
 	/// Query the current event filter.
@@ -211,7 +211,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetEventFilter")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool GetEventFilter(out SDL_EventFilterCallback filter, out nint userData);
+	public static partial bool GetEventFilter(out delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, out nint userData);
 
 	/// <summary>
 	/// Add a callback to be triggered when an event is added to the event queue.
@@ -224,7 +224,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddEventWatch")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int AddEventWatch(SDL_EventFilterCallback filter, nint userdata);
+	public static partial int AddEventWatch(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint userdata);
 
 	/// <summary>
 	/// Remove an event watch callback added with <see cref="AddEventWatch(SDL_EventFilterCallback, nint)"/>.
@@ -236,16 +236,19 @@ public static unsafe partial class SDL
 	/// <param name="userdata"></param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_DelEventWatch")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void DelEventWatch(SDL_EventFilterCallback filter, nint userdata);
+	public static partial void DelEventWatch(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint userdata);
 
 	/// <summary>
 	/// Run a specific filter function on the current event queue, removing any events for which the filter returns 0.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FilterEvents">documentation</see> for more details.
+	/// </remarks>
 	/// <param name="filter">The <see cref="SDL_EventFilterCallback"/> function to call when an event happens.</param>
 	/// <param name="userdata">A pointer that is passed to <paramref name="filter"/>.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FilterEvents")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void FilterEvents(SDL_EventFilterCallback filter, nint userdata);
+	public static partial void FilterEvents(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint userdata);
 
 	/// <summary>
 	/// Set the state of processing events by type.
