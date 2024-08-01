@@ -1274,14 +1274,17 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
 	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be used for the 9-grid, or <see langword="null"/> to use the entire texture</param>
-	/// <param name="cornerSize">The size, in pixels, of the corner in <paramref name="srcRect"/>.</param>
-	/// <param name="scale">The scale used to transform the corner of <paramref name="srcRect"/> into the corner of <paramref name="dstRect"/>, or 0.0f for an unscaled copy.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be used for the 9-grid, or <see langword="null"/> to use the entire texture.</param>
+	/// <param name="leftWidth">The width, in pixels, of the left corners in <paramref name="srcRect"/>.</param>
+	/// <param name="rightWidth">The width, in pixels, of the right corners in <paramref name="srcRect"/>.</param>
+	/// <param name="topHeight">The height, in pixels, of the top corners in <paramref name="srcRect"/>.</param>
+	/// <param name="bottomHeight">The height, in pixels, of the bottom corners in <paramref name="srcRect"/>.</param>
+	/// <param name="scale">The scale used to transform the corner of srcrect into the corner of dstrect, or 0.0f for an unscaled copy.</param>
 	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture9Grid")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, in SDL_FRect srcRect, float cornerSize, float scale, in SDL_FRect dstRect);
+	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, in SDL_FRect srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, in SDL_FRect dstRect);
 
 	/// <summary>
 	/// Perform a scaled copy using the 9-grid algorithm to the current rendering target at subpixel precision.
@@ -1291,14 +1294,17 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
 	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be used for the 9-grid, or <see langword="null"/> to use the entire texture</param>
-	/// <param name="cornerSize">The size, in pixels, of the corner in <paramref name="srcRect"/>.</param>
-	/// <param name="scale">The scale used to transform the corner of <paramref name="srcRect"/> into the corner of <paramref name="dstRect"/>, or 0.0f for an unscaled copy.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be used for the 9-grid, or <see langword="null"/> to use the entire texture.</param>
+	/// <param name="leftWidth">The width, in pixels, of the left corners in <paramref name="srcRect"/>.</param>
+	/// <param name="rightWidth">The width, in pixels, of the right corners in <paramref name="srcRect"/>.</param>
+	/// <param name="topHeight">The height, in pixels, of the top corners in <paramref name="srcRect"/>.</param>
+	/// <param name="bottomHeight">The height, in pixels, of the bottom corners in <paramref name="srcRect"/>.</param>
+	/// <param name="scale">The scale used to transform the corner of srcrect into the corner of dstrect, or 0.0f for an unscaled copy.</param>
 	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture9Grid")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, float cornerSize, float scale, in SDL_FRect dstRect);
+	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, in SDL_FRect dstRect);
 
 	/// <summary>
 	/// Perform a scaled copy using the 9-grid algorithm to the current rendering target at subpixel precision.
@@ -1308,14 +1314,17 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
 	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be used for the 9-grid, or <see langword="null"/> to use the entire texture</param>
-	/// <param name="cornerSize">The size, in pixels, of the corner in <paramref name="srcRect"/>.</param>
-	/// <param name="scale">The scale used to transform the corner of <paramref name="srcRect"/> into the corner of <paramref name="dstRect"/>, or 0.0f for an unscaled copy.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be used for the 9-grid, or <see langword="null"/> to use the entire texture.</param>
+	/// <param name="leftWidth">The width, in pixels, of the left corners in <paramref name="srcRect"/>.</param>
+	/// <param name="rightWidth">The width, in pixels, of the right corners in <paramref name="srcRect"/>.</param>
+	/// <param name="topHeight">The height, in pixels, of the top corners in <paramref name="srcRect"/>.</param>
+	/// <param name="bottomHeight">The height, in pixels, of the bottom corners in <paramref name="srcRect"/>.</param>
+	/// <param name="scale">The scale used to transform the corner of srcrect into the corner of dstrect, or 0.0f for an unscaled copy.</param>
 	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture9Grid")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, in SDL_FRect srcRect, float cornerSize, float scale, SDL_FRect* dstRect);
+	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, in SDL_FRect srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, SDL_FRect* dstRect);
 
 	/// <summary>
 	/// Perform a scaled copy using the 9-grid algorithm to the current rendering target at subpixel precision.
@@ -1325,14 +1334,17 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
 	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be used for the 9-grid, or <see langword="null"/> to use the entire texture</param>
-	/// <param name="cornerSize">The size, in pixels, of the corner in <paramref name="srcRect"/>.</param>
-	/// <param name="scale">The scale used to transform the corner of <paramref name="srcRect"/> into the corner of <paramref name="dstRect"/>, or 0.0f for an unscaled copy.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be used for the 9-grid, or <see langword="null"/> to use the entire texture.</param>
+	/// <param name="leftWidth">The width, in pixels, of the left corners in <paramref name="srcRect"/>.</param>
+	/// <param name="rightWidth">The width, in pixels, of the right corners in <paramref name="srcRect"/>.</param>
+	/// <param name="topHeight">The height, in pixels, of the top corners in <paramref name="srcRect"/>.</param>
+	/// <param name="bottomHeight">The height, in pixels, of the bottom corners in <paramref name="srcRect"/>.</param>
+	/// <param name="scale">The scale used to transform the corner of srcrect into the corner of dstrect, or 0.0f for an unscaled copy.</param>
 	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture9Grid")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, float cornerSize, float scale, SDL_FRect* dstRect);
+	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, SDL_FRect* dstRect);
 
 	/// <summary>
 	/// Render a list of triangles, optionally using a texture and indices into the vertex array Color and alpha modulation
