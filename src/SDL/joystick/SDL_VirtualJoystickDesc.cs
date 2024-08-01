@@ -9,7 +9,6 @@ namespace SDL_cs;
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_VirtualJoystickDesc">documentation</see> for more details.
 /// </remarks>
-[NativeMarshalling(typeof(SDL_VirtualJoystickDescMarshaller))]
 [StructLayout(LayoutKind.Sequential)]
 public unsafe struct SDL_VirtualJoystickDesc
 {
@@ -77,17 +76,17 @@ public unsafe struct SDL_VirtualJoystickDesc
 	/// <summary>
 	/// The name of the joystick.
 	/// </summary>
-	public string? Name;
+	public byte* Name;
 
 	/// <summary>
 	/// A pointer to an array of touchpad descriptions, required if <see cref="NumTouchpads"/> is > 0.
 	/// </summary>
-	public SDL_VirtualJoystickTouchpadDesc[]? Touchpads;
+	public SDL_VirtualJoystickTouchpadDesc* Touchpads;
 
 	/// <summary>
 	/// A pointer to an array of sensor descriptions, required if <see cref="NumSensors"/> is > 0.
 	/// </summary>
-	public SDL_VirtualJoystickSensorDesc[]? Sensors;
+	public SDL_VirtualJoystickSensorDesc* Sensors;
 
 	/// <summary>
 	/// User data pointer passed to callbacks.
@@ -97,35 +96,35 @@ public unsafe struct SDL_VirtualJoystickDesc
 	/// <summary>
 	/// Called when the joystick state should be updated.
 	/// </summary>
-	public SDL_VirtualJoystickUpdateCallback Update;
+	public delegate* unmanaged[Cdecl]<nint, void> Update;
 
 	/// <summary>
 	/// Called when the player index is set.
 	/// </summary>
-	public SDL_VirtualJoysticSetPlayerIndexCallback SetPlayerIndex;
+	public delegate* unmanaged[Cdecl]<nint, int, void> SetPlayerIndex;
 
 	/// <summary>
 	/// Implements <see cref="SDL.RumbleJoystick(SDL_Joystick*, ushort, ushort, uint)"/>.
 	/// </summary>
-	public SDL_VirtualJoysticRumbleCallback Rumble;
+	public delegate* unmanaged[Cdecl]<nint, ushort, ushort, int> Rumble;
 
 	/// <summary>
 	/// Implements <see cref="SDL.RumbleJoystickTriggers(SDL_Joystick*, ushort, ushort, uint)"/>.
 	/// </summary>
-	public SDL_VirtualJoysticRumbleTriggersCallback RumbleTriggers;
+	public delegate* unmanaged[Cdecl]<nint, ushort, ushort, int> RumbleTriggers;
 
 	/// <summary>
 	/// Implements <see cref="SDL.SetJoystickLed(SDL_Joystick*, byte, byte, byte)"/>.
 	/// </summary>
-	public SDL_VirtualJoysticSetLedCallback SetLed;
+	public delegate* unmanaged[Cdecl]<nint, byte, byte, byte, int> SetLed;
 
 	/// <summary>
 	/// Implements <see cref="SDL.SendJoystickEffect(SDL_Joystick*, void*, int)"/>.
 	/// </summary>
-	public SDL_VirtualJoysticSendEffectCallback SendEffect;
+	public delegate* unmanaged[Cdecl]<nint, nint, int, int> SendEffect;
 
 	/// <summary>
 	/// Implements <see cref="SDL.SetGamepadSensorEnabled(SDL_Gamepad*, SDL_SensorType, bool)"/>.
 	/// </summary>
-	public SDL_VirtualJoysticSetSensorsEnabledCallback SetSensorsEnabled;
+	public delegate* unmanaged[Cdecl]<nint, int, int> SetSensorsEnabled;
 }
