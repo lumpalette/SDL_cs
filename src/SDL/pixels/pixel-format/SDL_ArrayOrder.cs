@@ -1,4 +1,4 @@
-﻿namespace SDL_cs;
+﻿namespace SDL3;
 
 /// <summary>
 /// Array component order, low byte -> high byte.

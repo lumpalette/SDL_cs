@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// A set of indexed colors representing a palette.

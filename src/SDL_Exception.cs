@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// An exception that can be thrown whenever an SDL function fails.

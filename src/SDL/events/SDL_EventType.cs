@@ -1,4 +1,4 @@
-﻿namespace SDL_cs;
+﻿namespace SDL3;
 
 /// <summary>
 /// The types of events that can be delivered.

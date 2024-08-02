@@ -1,4 +1,4 @@
-﻿namespace SDL_cs;
+﻿namespace SDL3;
 
 /// <summary>
 /// Represents a unique ID for a finger.

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// A structure that represents a color as RGBA components.

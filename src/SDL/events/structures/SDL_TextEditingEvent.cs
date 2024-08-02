@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// Keyboard text editing event structure (<see cref="SDL_Event.TextEditing"/>).

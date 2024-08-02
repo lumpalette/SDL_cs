@@ -1,4 +1,4 @@
-﻿namespace SDL_cs;
+﻿namespace SDL3;
 
 /// <summary>
 /// The different sensors defined by SDL.

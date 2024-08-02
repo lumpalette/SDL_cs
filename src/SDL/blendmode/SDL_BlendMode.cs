@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// An enumeration of blend modes used in drawing operations.

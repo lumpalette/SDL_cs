@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// An event used to drop text or request a file open by the system (<see cref="SDL_Event.Drop"/>).

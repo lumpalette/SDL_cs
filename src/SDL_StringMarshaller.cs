@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices.Marshalling;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// A marshaller for UTF-8 strings that are managed by SDL, i.e. strings that the program <b>should not</b> free manually.

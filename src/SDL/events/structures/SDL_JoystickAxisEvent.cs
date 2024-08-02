@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// Joystick axis motion event structure (<see cref="SDL_Event.JoystickAxis"/>).

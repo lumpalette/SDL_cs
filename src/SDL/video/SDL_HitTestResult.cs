@@ -1,4 +1,4 @@
-﻿namespace SDL_cs;
+﻿namespace SDL3;
 
 /// <summary>
 /// Possible return values from the <see cref="SDL_HitTestCallback"/>.

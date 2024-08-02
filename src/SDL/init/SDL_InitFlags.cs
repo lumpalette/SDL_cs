@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// Initialization flags for <see cref="SDL.Init(SDL_InitFlags)"/> and/or <see cref="SDL.InitSubSystem(SDL_InitFlags)"/>.

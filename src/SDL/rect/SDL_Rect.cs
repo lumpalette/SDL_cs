@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// A rectangle, with the origin at the upper (left using integers).

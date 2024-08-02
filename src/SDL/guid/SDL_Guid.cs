@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// A 128-bit identifier for an input device that identifies that device across runs of SDL programs on the same platform.

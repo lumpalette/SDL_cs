@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// Pressure-sensitive pen touched or stopped touching surface (<see cref="SDL_Event.PenTip"/>).

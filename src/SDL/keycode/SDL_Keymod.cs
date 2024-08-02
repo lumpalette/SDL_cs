@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// Valid key modifiers (possibly OR'd together).

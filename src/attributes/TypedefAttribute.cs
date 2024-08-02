@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// Indicates that an <see langword="enum"/> or <see langword="struct"/> is a typedef.

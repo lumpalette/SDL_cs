@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// The blend operation used when combining source and destination pixel components.

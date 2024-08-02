@@ -1,4 +1,4 @@
-﻿namespace SDL_cs;
+﻿namespace SDL3;
 
 /// <summary>
 /// This is a unique ID for a joystick for the time it is connected to the system, and is never reused for the lifetime

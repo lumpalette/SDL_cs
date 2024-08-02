@@ -1,4 +1,4 @@
-﻿	namespace SDL_cs;
+﻿	namespace SDL3;
 
 public static unsafe partial class SDL
 {

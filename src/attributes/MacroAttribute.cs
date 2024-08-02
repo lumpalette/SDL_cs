@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// Indicates that a method is a <c>#define</c> macro.

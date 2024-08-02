@@ -1,4 +1,4 @@
-﻿namespace SDL_cs;
+﻿namespace SDL3;
 
 /// <summary>
 /// Cursor types for <see cref="SDL.CreateCursor(SDL_SystemCursor)"/>.

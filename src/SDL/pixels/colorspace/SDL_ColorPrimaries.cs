@@ -1,4 +1,4 @@
-﻿namespace SDL_cs;
+﻿namespace SDL3;
 
 /// <summary>
 /// Colorspace color primaries, as described by <see href="https://www.itu.int/rec/T-REC-H.273-201612-S/en"/>.

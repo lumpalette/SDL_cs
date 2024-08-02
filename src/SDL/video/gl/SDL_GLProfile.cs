@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SDL_cs;
+namespace SDL3;
 
 /// <summary>
 /// Possible values to be set for the <see cref="FIXME:SDL_GL_CONTEXT_PROFILE_MASK"/> attribute.
