@@ -1,4 +1,4 @@
-﻿using System.Runtime.CompilerServices;
+﻿ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace SDL3;
@@ -286,6 +286,18 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RegisterEvents")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial uint RegisterEvents(int numEvents);
+
+	/// <summary>
+	/// Get window associated with an event.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowFromEvent">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="e">An event containing a <c>WindowId</c>.</param>
+	/// <returns>The associated window on success or <see langword="null"/> if there is none.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowFromEvent")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDL_Window* GetWindowFromEvent(in SDL_Event e);
 
 	/// <summary>
 	/// A value that signifies a button is no longer pressed.

@@ -250,6 +250,19 @@ public static unsafe partial class SDL
 	public static partial int StartTextInput(SDL_Window* window);
 
 	/// <summary>
+	/// Start accepting Unicode text input events in a window, with properties describing the input.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_StartTextInputWithProperties">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="window">The window to enable text input</param>
+	/// <param name="props">The properties to use.</param>
+	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_StartTextInputWithProperties")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int StartTextInputWithProperties(SDL_Window* window, SDL_PropertiesId props);
+
+	/// <summary>
 	/// Check whether or not Unicode text input events are enabled for a window.
 	/// </summary>
 	/// <remarks>
