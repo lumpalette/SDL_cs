@@ -309,7 +309,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BindAudioStreams">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="devId">An audio device to bind a stream to.</param>
-	/// <param name="streams">An array of audio streams to unbind.</param>
+	/// <param name="streams">An array of audio streams to bind.</param>
 	/// <param name="numStreams">Number of streams listed in the <paramref name="streams"/> array. Corresponds to <paramref name="streams"/>.Length.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BindAudioStreams")]
