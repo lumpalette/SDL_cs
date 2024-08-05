@@ -229,7 +229,7 @@ public static unsafe partial class SDL
 	/// <returns>The instance ID of the display containing the point or <see cref="SDL_DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayForPoint")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_DisplayId GetDisplayForPoint(in SDL_Point point);
+	public static partial SDL_DisplayId GetDisplayForPoint(ref SDL_Point point);
 
 	/// <summary>
 	/// Get the display primarily containing a rect.
@@ -241,7 +241,7 @@ public static unsafe partial class SDL
 	/// <returns>The instance ID of the display entirely containing the rect or closest to the center of the rect on success or <see cref="SDL_DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayForRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_DisplayId GetDisplayForRect(in SDL_Rect rect);
+	public static partial SDL_DisplayId GetDisplayForRect(ref SDL_Rect rect);
 
 	/// <summary>
 	/// Get the display associated with a window.
@@ -290,7 +290,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowFullscreenMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetWindowFullscreenMode(SDL_Window* window, in SDL_DisplayMode mode);
+	public static partial int SetWindowFullscreenMode(SDL_Window* window, ref SDL_DisplayMode mode);
 
 	/// <summary>
 	/// Query the display mode to use when a window is visible at fullscreen.
@@ -963,7 +963,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowMouseRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetWindowMouseRect(SDL_Window* window, in SDL_Rect rect);
+	public static partial int SetWindowMouseRect(SDL_Window* window, ref SDL_Rect rect);
 
 	/// <summary>
 	/// Get the mouse confinement rectangle of a window.

@@ -192,7 +192,7 @@ public static unsafe partial class SDL
 	/// <returns>The joystick instance ID, or <see cref="SDL_JoystickId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AttachVirtualJoystick")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_JoystickId AttachVirtualJoystick(in SDL_VirtualJoystickDesc desc);
+	public static partial SDL_JoystickId AttachVirtualJoystick(ref SDL_VirtualJoystickDesc desc);
 
 	/// <summary>
 	/// Detach a virtual joystick.
@@ -200,7 +200,7 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DetachVirtualJoystick">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="instanceId">The joystick instance ID, previously returned from <see cref="AttachVirtualJoystick(in SDL_VirtualJoystickDesc)"/>.</param>
+	/// <param name="instanceId">The joystick instance ID, previously returned from <see cref="AttachVirtualJoystick(ref SDL_VirtualJoystickDesc)"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_DetachVirtualJoystick")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]

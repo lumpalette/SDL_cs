@@ -36,7 +36,7 @@ public enum SDL_InitFlags : uint
 	/// </summary>
 	/// <remarks>
 	/// This subsystem should be initialized on the same thread as <see cref="Video"/> on Windows if you don't set
-	/// <see cref="FIXME:SDL_HINT_JOYSTICK_THREAD"/>.
+	/// <see cref="SDL.Hint.JoystickThread"/>.
 	/// </remarks>
 	Joystick = 0x00000200u,
 

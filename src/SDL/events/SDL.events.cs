@@ -193,11 +193,11 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetEventFilter">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="filter">An <see cref="SDL_EventFilterCallback"/> function to call when an event happens.</param>
+	/// <param name="filter">An SDL_EventFilter function to call when an event happens.</param>
 	/// <param name="userData">A pointer that is passed to <paramref name="filter"/>.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetEventFilter")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void SetEventFilter(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int>  filter, nint userData);
+	public static partial void SetEventFilter(delegate* unmanaged[Cdecl]<nint, ref SDL_Event, int>  filter, nint userData);
 
 	/// <summary>
 	/// Query the current event filter.
@@ -211,7 +211,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetEventFilter")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool GetEventFilter(out delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, out nint userData);
+	public static partial bool GetEventFilter(out delegate* unmanaged[Cdecl]<nint, ref SDL_Event, int> filter, out nint userData);
 
 	/// <summary>
 	/// Add a callback to be triggered when an event is added to the event queue.
@@ -219,15 +219,15 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AddEventWatch">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="filter">An <see cref="SDL_EventFilterCallback"/> function to call when an event happens.</param>
+	/// <param name="filter">An SDL_EventFilter function to call when an event happens.</param>
 	/// <param name="userdata">A pointer that is passed to <paramref name="filter"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddEventWatch")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int AddEventWatch(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint userdata);
+	public static partial int AddEventWatch(delegate* unmanaged[Cdecl]<nint, ref SDL_Event, int> filter, nint userdata);
 
 	/// <summary>
-	/// Remove an event watch callback added with <see cref="AddEventWatch(SDL_EventFilterCallback, nint)"/>.
+	/// Remove an event watch callback added with <see cref="AddEventWatch"/>.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DelEventWatch">documentation</see> for more details.
@@ -236,7 +236,7 @@ public static unsafe partial class SDL
 	/// <param name="userdata"></param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_DelEventWatch")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void DelEventWatch(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint userdata);
+	public static partial void DelEventWatch(delegate* unmanaged[Cdecl]<nint, ref SDL_Event, int> filter, nint userdata);
 
 	/// <summary>
 	/// Run a specific filter function on the current event queue, removing any events for which the filter returns 0.
@@ -244,11 +244,11 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FilterEvents">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="filter">The <see cref="SDL_EventFilterCallback"/> function to call when an event happens.</param>
+	/// <param name="filter">The SDL_EventFilter function to call when an event happens.</param>
 	/// <param name="userdata">A pointer that is passed to <paramref name="filter"/>.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FilterEvents")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void FilterEvents(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint userdata);
+	public static partial void FilterEvents(delegate* unmanaged[Cdecl]<nint, ref SDL_Event, int> filter, nint userdata);
 
 	/// <summary>
 	/// Set the state of processing events by type.
@@ -297,7 +297,7 @@ public static unsafe partial class SDL
 	/// <returns>The associated window on success or <see langword="null"/> if there is none.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowFromEvent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Window* GetWindowFromEvent(in SDL_Event e);
+	public static partial SDL_Window* GetWindowFromEvent(ref SDL_Event e);
 
 	/// <summary>
 	/// A value that signifies a button is no longer pressed.

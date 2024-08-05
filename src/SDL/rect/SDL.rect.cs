@@ -15,7 +15,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="rect">A pointer to an <see cref="SDL_Rect"/>.</param>
 	/// <param name="frect">A pointer filled in with the floating point representation of <paramref name="rect"/>.</param>
-	public static void RectToFRect(in SDL_Rect rect, out SDL_FRect frect)
+	public static void RectToFRect(ref SDL_Rect rect, out SDL_FRect frect)
 	{
 		frect = new(rect.X, rect.Y, rect.Width, rect.Height);
 	}
@@ -29,7 +29,7 @@ public static unsafe partial class SDL
 	/// <param name="p">The point to test.</param>
 	/// <param name="r">The rectangle to test.</param>
 	/// <returns>True if <paramref name="p"/> is contained by <paramref name="r"/>, false otherwise.</returns>
-	public static bool PointInRect(in SDL_Point p, in SDL_Rect r)
+	public static bool PointInRect(ref SDL_Point p, ref SDL_Rect r)
 	{
 		return (p.X >= r.X) && (p.X < (r.X + r.Width)) && (p.Y >= r.Y) && (p.Y < (r.Y + r.Height));
 	}
@@ -43,7 +43,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="r">The rectangle to test.</param>
 	/// <returns>True if the rectangle is "empty" (has zero or negative area), false otherwise.</returns>
-	public static bool RectEmpty(in SDL_Rect r)
+	public static bool RectEmpty(ref SDL_Rect r)
 	{
 		return (r.Width <= 0) && (r.Height <= 0);
 	}
@@ -57,7 +57,7 @@ public static unsafe partial class SDL
 	/// <param name="a">The first rectangle to test.</param>
 	/// <param name="b">The second rectangle to test.</param>
 	/// <returns>True if the rectangles are equal, false otherwise.</returns>
-	public static bool RectsEqual(in SDL_Rect a, in SDL_Rect b)
+	public static bool RectsEqual(ref SDL_Rect a, ref SDL_Rect b)
 	{
 		return (a.X == b.X) && (a.Y == b.Y) && (a.Width == b.Width) && (a.Height == b.Height);
 	}
@@ -74,7 +74,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasRectIntersection")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool HasRectIntersection(in SDL_Rect a, in SDL_Rect b);
+	public static partial bool HasRectIntersection(ref SDL_Rect a, ref SDL_Rect b);
 
 	/// <summary>
 	/// Calculate the intersection of two rectangles.
@@ -89,7 +89,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectIntersection")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool GetRectIntersection(in SDL_Rect a, in SDL_Rect b, out SDL_Rect result);
+	public static partial bool GetRectIntersection(ref SDL_Rect a, ref SDL_Rect b, out SDL_Rect result);
 
 	/// <summary>
 	/// Calculate the union of two rectangles.
@@ -103,7 +103,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectUnion", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRectUnion(in SDL_Rect a, in SDL_Rect b, out SDL_Rect result);
+	public static partial int GetRectUnion(ref SDL_Rect a, ref SDL_Rect b, out SDL_Rect result);
 
 	/// <summary>
 	/// Calculate a minimal rectangle enclosing a set of points.
@@ -119,7 +119,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectEnclosingPoints")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool GetRectEnclosingPoints([In] SDL_Point[] points, int count, in SDL_Rect clip, out SDL_Rect result);
+	public static partial bool GetRectEnclosingPoints([In] SDL_Point[] points, int count, ref SDL_Rect clip, out SDL_Rect result);
 
 	/// <summary>
 	/// Calculate a minimal rectangle enclosing a set of points.
@@ -152,14 +152,14 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectAndLineIntersection")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool GetRectAndLineIntersection(in SDL_Rect rect, ref int x1, ref int y1, ref int x2, ref int y2);
+	public static partial bool GetRectAndLineIntersection(ref SDL_Rect rect, ref int x1, ref int y1, ref int x2, ref int y2);
 
 	/// <summary>
 	/// Convert an <see cref="SDL_FRect"/> to <see cref="SDL_Rect"/>.
 	/// </summary>
 	/// <param name="rect">A pointer to an <see cref="SDL_FRect"/>.</param>
 	/// <param name="frect">A pointer filled in with the integer representation of <paramref name="frect"/>.</param>
-	public static void FRectToRect(in SDL_FRect frect, out SDL_Rect rect)
+	public static void FRectToRect(ref SDL_FRect frect, out SDL_Rect rect)
 	{
 		rect = new((int)frect.X, (int)frect.Y, (int)frect.Width, (int)frect.Height);
 	}
@@ -173,7 +173,7 @@ public static unsafe partial class SDL
 	/// <param name="p">The point to test.</param>
 	/// <param name="r">The rectangle to test.</param>
 	/// <returns>True if <paramref name="p"/> is contained by <paramref name="r"/>, false otherwise.</returns>
-	public static bool PointInRectFloat(in SDL_FPoint p, in SDL_FRect r)
+	public static bool PointInRectFloat(ref SDL_FPoint p, ref SDL_FRect r)
 	{
 		return (p.X >= r.X) && (p.X <= (r.X + r.Width)) && (p.Y >= r.Y) && (p.Y <= (r.Y + r.Height));
 	}
@@ -187,7 +187,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="r">The rectangle to test.</param>
 	/// <returns>True if the rectangle is "empty", false otherwise.</returns>
-	public static bool RectEmptyFloat(in SDL_FRect r)
+	public static bool RectEmptyFloat(ref SDL_FRect r)
 	{
 		return (r.Width < 0f) && (r.Height < 0f);
 	}
@@ -202,7 +202,7 @@ public static unsafe partial class SDL
 	/// <param name="b">The second rectangle to test.</param>
 	/// <param name="epsilon">The epsilon value for comparison..</param>
 	/// <returns>True if the rectangles are equal, false otherwise.</returns>
-	public static bool RectsEqualEpsilon(in SDL_FRect a, in SDL_FRect b, float epsilon)
+	public static bool RectsEqualEpsilon(ref SDL_FRect a, ref SDL_FRect b, float epsilon)
 	{
 		return (Math.Abs(a.X - b.X) <= epsilon) && (Math.Abs(a.Y - b.Y) <= epsilon)
 			&& (Math.Abs(a.Width - b.Width) <= epsilon) && (Math.Abs(a.Height - b.Height) <= epsilon);
@@ -217,9 +217,9 @@ public static unsafe partial class SDL
 	/// <param name="a">The first rectangle to test.</param>
 	/// <param name="b">The second rectangle to test.</param>
 	/// <returns>True if the rectangles are equal, false otherwise.</returns>
-	public static bool RectsEqualFloat(in SDL_FRect a, in SDL_FRect b)
+	public static bool RectsEqualFloat(ref SDL_FRect a, ref SDL_FRect b)
 	{
-		return RectsEqualEpsilon(a, b, FloatEpsilon);
+		return RectsEqualEpsilon(ref a, ref b, FloatEpsilon);
 	}
 
 	/// <summary>
@@ -234,7 +234,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasRectIntersectionFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool HasRectIntersectionFloat(in SDL_FRect a, in SDL_FRect b);
+	public static partial bool HasRectIntersectionFloat(ref SDL_FRect a, ref SDL_FRect b);
 	
 	/// <summary>
 	/// Calculate the intersection of two rectangles with float precision.
@@ -249,7 +249,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectIntersectionFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool GetRectIntersectionFloat(in SDL_FRect a, in SDL_FRect b, out SDL_FRect result);
+	public static partial bool GetRectIntersectionFloat(ref SDL_FRect a, ref SDL_FRect b, out SDL_FRect result);
 
 	/// <summary>
 	/// Calculate the union of two rectangles with float precision.
@@ -263,7 +263,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectUnionFloat", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRectUnionFloat(in SDL_FRect a, in SDL_FRect b, out SDL_FRect result);
+	public static partial int GetRectUnionFloat(ref SDL_FRect a, ref SDL_FRect b, out SDL_FRect result);
 
 	/// <summary>
 	/// Calculate a minimal rectangle enclosing a set of points with float precision.
@@ -279,7 +279,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectEnclosingPointsFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool GetRectEnclosingPointsFloat([In] SDL_FPoint[] points, int count, in SDL_FRect clip, out SDL_FRect result);
+	public static partial bool GetRectEnclosingPointsFloat([In] SDL_FPoint[] points, int count, ref SDL_FRect clip, out SDL_FRect result);
 
 	/// <summary>
 	/// Calculate a minimal rectangle enclosing a set of points with float precision.
@@ -312,5 +312,5 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectAndLineIntersection")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool GetRectAndLineIntersectionFloat(in SDL_FRect rect, ref float x1, ref float y1, ref float x2, ref float y2);
+	public static partial bool GetRectAndLineIntersectionFloat(ref SDL_FRect rect, ref float x1, ref float y1, ref float x2, ref float y2);
 }

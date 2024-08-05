@@ -24,5 +24,5 @@ public unsafe struct SDL_AudioSpec
 	/// <summary>
 	/// Sample rate: sample frames per second.
 	/// </summary>
-	public int Frequency;
+	public int Freq;
 }

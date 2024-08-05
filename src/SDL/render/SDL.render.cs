@@ -352,7 +352,7 @@ public static unsafe partial class SDL
 	public static partial int GetTextureAlphaModFloat(SDL_Texture* texture, out float alpha);
 
 	/// <summary>
-	/// Set the blend mode for a texture, used by <see cref="RenderTexture(SDL_Renderer*, SDL_Texture*, in SDL_FRect, in SDL_FRect)"/>.
+	/// Set the blend mode for a texture, used by <see cref="RenderTexture(SDL_Renderer*, SDL_Texture*, ref SDL_FRect, ref SDL_FRect)"/>.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureBlendMode">documentation</see> for more details.
@@ -416,7 +416,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int UpdateTexture(SDL_Texture* texture, in SDL_Rect rect, nint pixels, int pitch);
+	public static partial int UpdateTexture(SDL_Texture* texture, ref SDL_Rect rect, nint pixels, int pitch);
 
 	/// <summary>
 	/// Update the given texture rectangle with new pixel data.
@@ -450,7 +450,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateYUVTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int UpdateYUVTexture(SDL_Texture* texture, in SDL_Rect rect, [In] byte[] yplane, int ypitch, [In] byte[] uplane, int upitch, [In] byte[] vplane, int vpitch);
+	public static partial int UpdateYUVTexture(SDL_Texture* texture, ref SDL_Rect rect, [In] byte[] yplane, int ypitch, [In] byte[] uplane, int upitch, [In] byte[] vplane, int vpitch);
 
 	/// <summary>
 	/// Update a rectangle within a planar YV12 or IYUV texture with new pixel data.
@@ -469,7 +469,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateYUVTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int UpdateYUVTexture(SDL_Texture* texture, SDL_Rect* rect, [In] byte[] yplane, int ypitch, [In] byte[] uplane, int upitch, [In] byte[] vplane, int vpitch);
+	public static partial int UpdateYUVTexture(SDL_Texture* texture, SDL_Rect* rect, byte* yplane, int ypitch, byte* uplane, int upitch, byte* vplane, int vpitch);
 
 	/// <summary>
 	/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.
@@ -486,7 +486,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateNVTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int UpdateNVTexture(SDL_Texture* texture, in SDL_Rect rect, [In] byte[] yplane, int ypitch, [In] byte[] uvplane, int uvpitch);
+	public static partial int UpdateNVTexture(SDL_Texture* texture, ref SDL_Rect rect, byte* yplane, int ypitch, byte* uvplane, int uvpitch);
 
 	/// <summary>
 	/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.
@@ -503,7 +503,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateNVTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int UpdateNVTexture(SDL_Texture* texture, SDL_Rect* rect, [In] byte[] yplane, int ypitch, [In] byte[] uvplane, int uvpitch);
+	public static partial int UpdateNVTexture(SDL_Texture* texture, SDL_Rect* rect, byte* yplane, int ypitch, byte* uvplane, int uvpitch);
 
 	/// <summary>
 	/// Lock a portion of the texture for <b>write-only</b> pixel access.
@@ -515,7 +515,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code if the texture is not valid or was not created with <see cref="SDL_TextureAccess.Streaming"/>; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_LockTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int LockTexture(SDL_Texture* texture, in SDL_Rect rect, out nint pixels, out int pitch);
+	public static partial int LockTexture(SDL_Texture* texture, ref SDL_Rect rect, out nint pixels, out int pitch);
 
 	/// <summary>
 	/// Lock a portion of the texture for <b>write-only</b> pixel access.
@@ -541,7 +541,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_LockTextureToSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int LockTextureToSurface(SDL_Texture* texture, in SDL_Rect rect, out SDL_Surface* surface);
+	public static partial int LockTextureToSurface(SDL_Texture* texture, ref SDL_Rect rect, out SDL_Surface* surface);
 
 	/// <summary>
 	/// Unlock a texture, uploading the changes to video memory, if needed.
@@ -549,7 +549,7 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UnlockTexture">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="texture">A texture locked by <see cref="LockTexture(SDL_Texture*, in SDL_Rect, out nint, out int)"/>.</param>
+	/// <param name="texture">A texture locked by <see cref="LockTexture(SDL_Texture*, ref SDL_Rect, out nint, out int)"/>.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UnlockTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial void UnlockTexture(SDL_Texture* texture);
@@ -680,7 +680,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderViewport")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetRenderViewport(SDL_Renderer* renderer, in SDL_Rect rect);
+	public static partial int SetRenderViewport(SDL_Renderer* renderer, ref SDL_Rect rect);
 
 	/// <summary>
 	/// Set the drawing area for rendering on the current target.
@@ -745,7 +745,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderClipRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetRenderClipRect(SDL_Renderer* renderer, in SDL_Rect rect);
+	public static partial int SetRenderClipRect(SDL_Renderer* renderer, ref SDL_Rect rect);
 
 	/// <summary>
 	/// Set the clip rectangle for rendering on the specified target.
@@ -840,7 +840,7 @@ public static unsafe partial class SDL
 	/// <param name="r">The red value used to draw on the rendering target.</param>
 	/// <param name="g">The green value used to draw on the rendering target.</param>
 	/// <param name="b">The blue value used to draw on the rendering target.</param>
-	/// <param name="a">The alpha value used to draw on the rendering target. Use <see cref="<see cref="SetRenderDrawBlendMode(SDL_Renderer*, SDL_BlendMode)"/>"/> to specify how the alpha channel is used.</param>
+	/// <param name="a">The alpha value used to draw on the rendering target. Use <see cref="SetRenderDrawBlendMode(SDL_Renderer*, SDL_BlendMode)"/> to specify how the alpha channel is used.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderDrawColorFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -1011,7 +1011,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderRect(SDL_Renderer* renderer, in SDL_FRect rect);
+	public static partial int RenderRect(SDL_Renderer* renderer, ref SDL_FRect rect);
 
 	/// <summary>
 	/// Draw a rectangle on the current rendering target at subpixel precision.
@@ -1051,7 +1051,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderFillRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderFillRect(SDL_Renderer* renderer, in SDL_FRect rect);
+	public static partial int RenderFillRect(SDL_Renderer* renderer, ref SDL_FRect rect);
 
 	/// <summary>
 	/// Fill a rectangle on the current rendering target with the drawing color at subpixel precision.
@@ -1093,7 +1093,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture(SDL_Renderer* renderer, SDL_Texture* texture, in SDL_FRect srcRect, in SDL_FRect dstRect);
+	public static partial int RenderTexture(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, ref SDL_FRect dstRect);
 
 	/// <summary>
 	/// Copy a portion of the texture to the current rendering target at subpixel precision.
@@ -1108,7 +1108,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, in SDL_FRect dstRect);
+	public static partial int RenderTexture(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, ref SDL_FRect dstRect);
 
 	/// <summary>
 	/// Copy a portion of the texture to the current rendering target at subpixel precision.
@@ -1123,7 +1123,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture(SDL_Renderer* renderer, SDL_Texture* texture, in SDL_FRect srcRect, SDL_FRect* dstRect);
+	public static partial int RenderTexture(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, SDL_FRect* dstRect);
 
 	/// <summary>
 	/// Copy a portion of the texture to the current rendering target at subpixel precision.
@@ -1156,7 +1156,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureRotated")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, in SDL_FRect srcRect, in SDL_FRect dstRect, double angle, in SDL_FPoint center, SDL_FlipMode flip);
+	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, ref SDL_FRect dstRect, double angle, ref SDL_FPoint center, SDL_FlipMode flip);
 
 	/// <summary>
 	/// Copy a portion of the source texture to the current rendering target, with rotation and flipping, at subpixel precision.
@@ -1174,7 +1174,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureRotated")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, in SDL_FRect dstRect, double angle, in SDL_FPoint center, SDL_FlipMode flip);
+	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, ref SDL_FRect dstRect, double angle, ref SDL_FPoint center, SDL_FlipMode flip);
 
 	/// <summary>
 	/// Copy a portion of the source texture to the current rendering target, with rotation and flipping, at subpixel precision.
@@ -1192,7 +1192,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureRotated")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, in SDL_FRect srcRect, SDL_FRect* dstRect, double angle, in SDL_FPoint center, SDL_FlipMode flip);
+	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, SDL_FRect* dstRect, double angle, ref SDL_FPoint center, SDL_FlipMode flip);
 
 	/// <summary>
 	/// Copy a portion of the source texture to the current rendering target, with rotation and flipping, at subpixel precision.
@@ -1210,7 +1210,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureRotated")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, in SDL_FRect srcRect, in SDL_FRect dstRect, double angle, SDL_FPoint* center, SDL_FlipMode flip);
+	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, ref SDL_FRect dstRect, double angle, SDL_FPoint* center, SDL_FlipMode flip);
 
 	/// <summary>
 	/// Copy a portion of the source texture to the current rendering target, with rotation and flipping, at subpixel precision.
@@ -1228,7 +1228,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureRotated")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, SDL_FRect* dstRect, double angle, in SDL_FPoint center, SDL_FlipMode flip);
+	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, SDL_FRect* dstRect, double angle, ref SDL_FPoint center, SDL_FlipMode flip);
 
 	/// <summary>
 	/// Copy a portion of the source texture to the current rendering target, with rotation and flipping, at subpixel precision.
@@ -1246,7 +1246,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureRotated")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, in SDL_FRect srcRect, SDL_FRect* dstRect, double angle, SDL_FPoint* center, SDL_FlipMode flip);
+	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, SDL_FRect* dstRect, double angle, SDL_FPoint* center, SDL_FlipMode flip);
 
 	/// <summary>
 	/// Copy a portion of the source texture to the current rendering target, with rotation and flipping, at subpixel precision.
@@ -1284,7 +1284,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture9Grid")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, in SDL_FRect srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, in SDL_FRect dstRect);
+	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, ref SDL_FRect dstRect);
 
 	/// <summary>
 	/// Perform a scaled copy using the 9-grid algorithm to the current rendering target at subpixel precision.
@@ -1304,7 +1304,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture9Grid")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, in SDL_FRect dstRect);
+	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, ref SDL_FRect dstRect);
 
 	/// <summary>
 	/// Perform a scaled copy using the 9-grid algorithm to the current rendering target at subpixel precision.
@@ -1324,7 +1324,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture9Grid")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, in SDL_FRect srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, SDL_FRect* dstRect);
+	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, SDL_FRect* dstRect);
 
 	/// <summary>
 	/// Perform a scaled copy using the 9-grid algorithm to the current rendering target at subpixel precision.
@@ -1375,7 +1375,7 @@ public static unsafe partial class SDL
 	/// <returns>A new <see cref="SDL_Surface"/> on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderReadPixels")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Surface* RenderReadPixels(SDL_Renderer* renderer, in SDL_Rect rect);
+	public static partial SDL_Surface* RenderReadPixels(SDL_Renderer* renderer, ref SDL_Rect rect);
 
 	/// <summary>
 	/// Read pixels from the current rendering target.
@@ -1455,7 +1455,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRenderMetalCommandEncoder">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="renderer">The renderer to query.</param>
-	/// <returns>An <c>id<MTLRenderCommandEncoder></c> on success, or <see cref="nint.Zero"/> if the renderer isn't a Metal renderer or there was an error.</returns>
+	/// <returns>An <c>id&lt;MTLRenderCommandEncoder&gt;</c> on success, or <see cref="nint.Zero"/> if the renderer isn't a Metal renderer or there was an error.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderMetalCommandEncoder")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial nint GetRenderMetalCommandEncoder(SDL_Renderer* renderer);

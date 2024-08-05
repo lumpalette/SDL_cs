@@ -311,7 +311,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextInputArea")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetTextInputArea(SDL_Window* window, in SDL_Rect rect, int cursor);
+	public static partial int SetTextInputArea(SDL_Window* window, ref SDL_Rect rect, int cursor);
 
 	/// <summary>
 	/// Set the area used to type Unicode text input.
