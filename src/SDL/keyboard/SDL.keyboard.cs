@@ -119,10 +119,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="scancode">The desired <see cref="SDL_Scancode"/> to query.</param>
 	/// <param name="modState">The modifier state to use when translating the scancode to a keycode.</param>
+	/// <param name="keyEvent">True if the keycode will be used in key events.</param>
 	/// <returns>The <see cref="SDL_Keycode"/> that corresponds to the given <see cref="SDL_Scancode"/>.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyFromScancode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Keycode GetKeyFromScancode(SDL_Scancode scancode, SDL_Keymod modState);
+	public static partial SDL_Keycode GetKeyFromScancode(SDL_Scancode scancode, SDL_Keymod modState, [MarshalAs(NativeBool)] bool keyEvent);
 
 	/// <summary>
 	/// Get the scancode corresponding to the given key code according to a default en_US keyboard layout.
