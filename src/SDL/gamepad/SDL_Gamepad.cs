@@ -9,5 +9,4 @@ namespace SDL3;
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Gamepad">documentation</see> for more details.
 /// </remarks>
 [Opaque]
-[StructLayout(LayoutKind.Sequential)]
 public unsafe struct SDL_Gamepad;

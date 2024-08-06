@@ -6,5 +6,4 @@ namespace SDL3;
 /// Internal display mode data.
 /// </summary>
 [Opaque]
-[StructLayout(LayoutKind.Sequential)]
 public unsafe struct SDL_DisplayModeData;

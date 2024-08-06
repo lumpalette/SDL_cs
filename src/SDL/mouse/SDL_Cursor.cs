@@ -6,5 +6,4 @@ namespace SDL3;
 /// The structure that represents a cursor in SDL.
 /// </summary>
 [Opaque]
-[StructLayout(LayoutKind.Sequential)]
 public unsafe struct SDL_Cursor;
