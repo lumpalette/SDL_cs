@@ -660,7 +660,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamAvailable">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream">The audio stream to query.</param>
-	/// <returns>The number of converted/resampled bytes available.</returns>
+	/// <returns>The number of converted/resampled bytes available or a negative error code on failure; call <see cref="GetError"/> for more information..</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioStreamAvailable")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int GetAudioStreamAvailable(SDL_AudioStream* stream);
@@ -672,7 +672,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioStreamQueued">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="stream">The audio stream to query.</param>
-	/// <returns>The number of bytes queued.</returns>
+	/// <returns>The number of bytes queued or a negative error code on failure; call <see cref="GetError"/> for more information..</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioStreamQueued")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int GetAudioStreamQueued(SDL_AudioStream* stream);
