@@ -1498,6 +1498,14 @@ public static unsafe partial class SDL
 		public const string WindowsEnableMessageLoop = "SDL_WINDOWS_ENABLE_MESSAGELOOP";
 
 		/// <summary>
+		/// A variable controlling whether GameInput is used for raw keyboard and mouse on Windows.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_WINDOWS_GAMEINPUT">documentation</see> for more details.
+		/// </remarks>
+		public const string WindowsGameInput = "SDL_WINDOWS_GAMEINPUT";
+
+		/// <summary>
 		/// A variable controlling whether SDL will clear the window contents when the <c>WM_ERASEBKGND</c> message is received.
 		/// </summary>
 		/// <remarks>
