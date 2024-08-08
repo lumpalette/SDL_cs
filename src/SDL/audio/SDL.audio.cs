@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace SDL3;
 
@@ -125,8 +126,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="index">The index of the audio driver; the value ranges from 0 to <see cref="GetNumAudioDrivers"/> - 1.</param>
 	/// <returns>The name of the audio driver at the requested index, or <see langword="null"/> if an invalid index was specified.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDriver", StringMarshallingCustomType = typeof(SDL_StringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDriver")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalUsing(typeof(SDL_StringMarshaller))]
 	public static partial string? GetAudioDriver(int index);
 
 	/// <summary>
@@ -136,8 +138,9 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentAudioDriver">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>The name of the current audio driver or <see langword="null"/> if no driver has been initialized.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentAudioDriver", StringMarshallingCustomType = typeof(SDL_StringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentAudioDriver")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalUsing(typeof(SDL_StringMarshaller))]
 	public static partial string? GetCurrentAudioDriver();
 
 	/// <summary>
@@ -180,8 +183,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="devId">The instance ID of the device to query.</param>
 	/// <returns>The name of the audio device, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDeviceName", StringMarshallingCustomType = typeof(SDL_StringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDeviceName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalUsing(typeof(SDL_StringMarshaller))]
 	public static partial string? GetAudioDeviceName(SDL_AudioDeviceId devId);
 
 	/// <summary>
@@ -889,6 +893,19 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertAudioSamples")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int ConvertAudioSamples(ref SDL_AudioSpec srcSpec, byte* srcData, int srcLength, ref SDL_AudioSpec dstSpec, out byte* dstData, out int dstLength);
+
+	/// <summary>
+	/// Get the human readable name of an audio format.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioFormatName">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="format">The audio format to query.</param>
+	/// <returns>The human readable name of the specified audio format or "SDL_AUDIO_UNKNOWN" if the format isn't recognized.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioFormatName")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalUsing(typeof(SDL_StringMarshaller))]
+	public static partial string GetAudioFormatName(SDL_AudioFormat format);
 
 	/// <summary>
 	/// Get the appropriate memset value for silencing an audio format.
