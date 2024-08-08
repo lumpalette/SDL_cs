@@ -122,16 +122,30 @@ public static unsafe partial class SDL
 	public static partial int WarpMouseGlobal(float x, float y);
 
 	/// <summary>
-	/// Set relative mouse mode.
+	/// Set relative mouse mode for a window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRelativeMouseMode">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowRelativeMouseMode">documentation</see> for more details.
 	/// </remarks>
+	/// <param name="window">The window to change.</param>
 	/// <param name="enabled">True to enable relative mode, false to disable.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRelativeMouseMode")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowRelativeMouseMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetRelativeMouseMode([MarshalAs(NativeBool)] bool enabled);
+	public static partial int SetWindowRelativeMouseMode(SDL_Window* window, [MarshalAs(NativeBool)] bool enabled);
+
+	/// <summary>
+	/// Query whether relative mouse mode is enabled for a window.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowRelativeMouseMode">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="window">The window to query.</param>
+	/// <returns>True if relative mode is enabled for a window or false otherwise.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowRelativeMouseMode")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetWindowRelativeMouseMode(SDL_Window* window);
 
 	/// <summary>
 	/// Capture the mouse and to track input outside an SDL window.
@@ -144,18 +158,6 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CaptureMouse")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int CaptureMouse([MarshalAs(NativeBool)] bool enabled);
-
-	/// <summary>
-	/// Query whether relative mouse mode is enabled.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRelativeMouseMode">documentation</see> for more details.
-	/// </remarks>
-	/// <returns>True if relative mode is enabled or false otherwise.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRelativeMouseMode")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool GetRelativeMouseMode();
 
 	/// <summary>
 	/// Create a cursor using the specified bitmap data and mask (in MSB format).

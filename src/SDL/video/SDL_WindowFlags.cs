@@ -93,9 +93,14 @@ public enum SDL_WindowFlags : ulong
 	MouseCapture = 0x0000000000004000uL,
 
 	/// <summary>
+	/// Window has relative mode enabled.
+	/// </summary>
+	MouseRelativeMode = 0x0000000000008000uL,
+
+	/// <summary>
 	/// Window should always be above others.
 	/// </summary>
-	AlwaysOnTop = 0x0000000000008000uL,
+	AlwaysOnTop = 0x0000000000010000uL,
 
 	/// <summary>
 	/// Window should be treated as a utility window, not showing in the task bar and window list.
