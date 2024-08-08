@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace SDL3;
 
@@ -96,8 +97,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="format">The pixel format to query.</param>
 	/// <returns>The human readable name of the specified pixel format or "SDL_PIXELFORMAT_UNKNOWN" if the format isn't recognized.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPixelFormatName", StringMarshallingCustomType = typeof(SDL_StringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPixelFormatName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalUsing(typeof(SDL_StringMarshaller))]
 	public static partial string GetPixelFormatName(SDL_PixelFormat format);
 
 	/// <summary>

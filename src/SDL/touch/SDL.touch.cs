@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace SDL3;
 
@@ -26,8 +27,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="touchId">The touch device instance ID.</param>
 	/// <returns>Touch device name, or <see langword="null"/> on failure; call <see cref="GetError"/> for more details.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceName", StringMarshallingCustomType = typeof(SDL_StringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchDeviceName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalUsing(typeof(SDL_StringMarshaller))]
 	public static partial string? GetTouchDeviceName(SDL_TouchId touchId);
 
 	/// <summary>

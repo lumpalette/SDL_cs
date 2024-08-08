@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace SDL3;
 
@@ -33,8 +34,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="index">The index of a video driver.</param>
 	/// <returns>The name of the video driver with the given <paramref name="index"/>.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetVideoDriver", StringMarshallingCustomType = typeof(SDL_StringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetVideoDriver")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalUsing(typeof(SDL_StringMarshaller))]
 	public static partial string? GetVideoDriver(int index);
 
 	/// <summary>
@@ -44,8 +46,9 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCurrentVideoDriver">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>The name of the current video driver or <see langword="null"/> if no driver has been initialized.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentVideoDriver", StringMarshallingCustomType = typeof(SDL_StringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentVideoDriver")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalUsing(typeof(SDL_StringMarshaller))]
 	public static partial string? GetCurrentVideoDriver();
 
 	/// <summary>
@@ -99,8 +102,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
 	/// <returns>The name of a display or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayName", StringMarshallingCustomType = typeof(SDL_StringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalUsing(typeof(SDL_StringMarshaller))]
 	public static partial string? GetDisplayName(SDL_DisplayId instanceId);
 
 	/// <summary>
@@ -467,8 +471,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="window">The window to query.</param>
 	/// <returns>The title of the window or an empty string if there is no title.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowTitle", StringMarshallingCustomType = typeof(SDL_StringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowTitle")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalUsing(typeof(SDL_StringMarshaller))]
 	public static partial string GetWindowTitle(SDL_Window* window);
 
 	/// <summary>

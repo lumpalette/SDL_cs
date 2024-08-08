@@ -39,8 +39,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The keyboard instance ID.</param>
 	/// <returns>The name of the selected keyboard or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardNameForID", StringMarshallingCustomType = typeof(SDL_StringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardNameForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalUsing(typeof(SDL_StringMarshaller))]
 	public static partial string? GetKeyboardNameForId(SDL_KeyboardId instanceId);
 
 	/// <summary>
@@ -198,8 +199,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="scancode">The desired <see cref="SDL_Scancode"/> to query.</param>
 	/// <returns>The name for the scancode. If the scancode doesn't have a name this function returns an empty string.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetScancodeName", StringMarshallingCustomType = typeof(SDL_StringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetScancodeName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalUsing(typeof(SDL_StringMarshaller))]
 	public static partial string GetScancodeName(SDL_Scancode scancode);
 
 	/// <summary>
@@ -222,8 +224,9 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="key">The desired <see cref="SDL_Keycode"/> to query.</param>
 	/// <returns>A string of the key name.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyName", StringMarshallingCustomType = typeof(SDL_StringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalUsing(typeof(SDL_StringMarshaller))]
 	public static partial string GetKeyName(SDL_Keycode key);
 
 	/// <summary>

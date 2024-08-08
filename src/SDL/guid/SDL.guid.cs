@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace SDL3;
 
@@ -15,8 +16,9 @@ public static unsafe partial class SDL
 	/// <param name="guid">The <see cref="SDL_Guid"/> you wish to convert to string.</param>
 	/// <param name="pszGuid">Buffer in which to write the ASCII string.</param>
 	/// <param name="cbGuid">The size of <paramref name="pszGuid"/>, should be at least 33 bytes.</param>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GUIDToString", StringMarshallingCustomType = typeof(SDL_StringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GUIDToString")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalUsing(typeof(SDL_StringMarshaller))]
 	public static partial void GuidToString(SDL_Guid guid, byte* pszGuid, int cbGuid);
 
 	/// <summary>
