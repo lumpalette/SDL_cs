@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace SDL3;
 
@@ -80,8 +81,9 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetRevision">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>An arbitrary string, uniquely identifying the exact revision of the SDL library in use.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "Func", StringMarshallingCustomType = typeof(SDL_StringMarshaller))]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRevision")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalUsing(typeof(SDL_StringMarshaller))]
 	public static partial string GetRevision();
 
 	/// <summary>
