@@ -25,11 +25,14 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboards">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="count">A pointer filled in with the number of keyboards returned.</param>
-	/// <returns>A null-terminated array of keyboards instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
+	/// <param name="count">A pointer filled in with the number of keyboards returned, may be <see langword="null"/>.</param>
+	/// <returns>
+	/// A null-terminated array of keyboards instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.<br/>
+	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
+	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboards")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_KeyboardId* GetKeyboards(out int count);
+	public static partial SDL_KeyboardId* GetKeyboards(int* count);
 
 	/// <summary>
 	/// Get the name of a keyboard.
@@ -65,7 +68,8 @@ public static unsafe partial class SDL
 	/// <returns>A pointer to an array of key states.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardState")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte* GetKeyboardState(out int numKeys);
+	[return: Const]
+	public static partial byte* GetKeyboardState(int* numKeys);
 
 	/// <summary>
 	/// Clear the state of the keyboard.
@@ -137,33 +141,7 @@ public static unsafe partial class SDL
 	/// <returns>The <see cref="SDL_Scancode"/> that corresponds to the given <see cref="SDL_Keycode"/>.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDefaultScancodeFromKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Scancode GetDefaultScancodeFromKey(SDL_Keycode key, ref SDL_Keymod modState);
-
-	/// <summary>
-	/// Get the scancode corresponding to the given key code according to a default en_US keyboard layout.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDefaultScancodeFromKey">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="key">The desired <see cref="SDL_Keycode"/> to query.</param>
-	/// <param name="modState">A pointer to the modifier state that would be used when the scancode generates this key, may be <see langword="null"/>.</param>
-	/// <returns>The <see cref="SDL_Scancode"/> that corresponds to the given <see cref="SDL_Keycode"/>.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDefaultScancodeFromKey")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Scancode GetDefaultScancodeFromKey(SDL_Keycode key, SDL_Keymod* modState);
-
-	/// <summary>
-	/// Get the scancode corresponding to the given key code according to the current keyboard layout.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetScancodeFromKey">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="key">The desired <see cref="SDL_Keycode"/> to query.</param>
-	/// <param name="modState">A pointer to the modifier state that would be used when the scancode generates this key, may be <see langword="null"/>.</param>
-	/// <returns>The <see cref="SDL_Scancode"/> that corresponds to the given <see cref="SDL_Keycode"/>.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetScancodeFromKey")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Scancode GetScancodeFromKey(SDL_Keycode key, ref SDL_Keymod modState);
 
 	/// <summary>
 	/// Get the scancode corresponding to the given key code according to the current keyboard layout.
@@ -315,21 +293,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextInputArea")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetTextInputArea(SDL_Window* window, ref SDL_Rect rect, int cursor);
-
-	/// <summary>
-	/// Set the area used to type Unicode text input.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextInputArea">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="window">The window for which to set the text input area.</param>
-	/// <param name="rect">The <see cref="SDL_Rect"/> representing the text input area, in window coordinates, or <see langword="null"/> to clear it.</param>
-	/// <param name="cursor">The offset of the current cursor location relative to <paramref name="rect"/>.X, in window coordinates.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextInputArea")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetTextInputArea(SDL_Window* window, SDL_Rect* rect, int cursor);
+	public static partial int SetTextInputArea(SDL_Window* window, [Const] SDL_Rect* rect, int cursor);
 
 	/// <summary>
 	/// Get the area used to type Unicode text input.
@@ -339,25 +303,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="window">The window for which to query the text input area.</param>
 	/// <param name="rect">A pointer to an <see cref="SDL_Rect"/> filled in with the text input area, may be <see langword="null"/>.</param>
-	/// <param name="cursor">A pointer to the offset of the current cursor location relative to <paramref name="rect"/>.X.</param>
+	/// <param name="cursor">A pointer to the offset of the current cursor location relative to <paramref name="rect"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextInputArea")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetTextInputArea(SDL_Window* window, out SDL_Rect rect, out int cursor);
-
-	/// <summary>
-	/// Get the area used to type Unicode text input.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextInputArea">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="window">The window for which to query the text input area.</param>
-	/// <param name="rect">A pointer to an <see cref="SDL_Rect"/> filled in with the text input area, may be <see langword="null"/>.</param>
-	/// <param name="cursor">A pointer to the offset of the current cursor location relative to <paramref name="rect"/>.X.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextInputArea")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetTextInputArea(SDL_Window* window, SDL_Rect* rect, out int cursor);
+	public static partial int GetTextInputArea(SDL_Window* window, SDL_Rect* rect, int* cursor);
 
 	/// <summary>
 	/// Check whether the platform has screen keyboard support.

@@ -2,10 +2,7 @@
 
 public static unsafe partial class SDL
 {
-	/// <summary>
-	/// The collection of hints used across SDL.
-	/// </summary>
-	public static class Hint
+	public static partial class Hint
 	{
 		/// <summary>
 		/// Specify the behavior of Alt+Tab while the keyboard is grabbed.
@@ -184,7 +181,7 @@ public static unsafe partial class SDL
 		public const string CpuFeatureMask = "SDL_CPU_FEATURE_MASK";
 
 		/// <summary>
-		/// Override for <see cref="SDL.GetDisplayUsableBounds(SDL_DisplayId, out SDL_Rect)"/>.
+		/// Override for <see cref="GetDisplayUsableBounds(SDL_DisplayId, SDL_Rect*)"/>.
 		/// </summary>
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_DISPLAY_USABLE_BOUNDS">documentation</see> for more details.

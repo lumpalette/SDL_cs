@@ -30,7 +30,7 @@ public unsafe struct SDL_SensorEvent
 
 	/// <summary>
 	/// Up to 6 values from the sensor - additional values can be queried using
-	/// <see cref="SDL.GetSensorData(SDL_Sensor*, float[], int)"/>.
+	/// <see cref="SDL.GetSensorData(SDL_Sensor*, float*, int)"/>.
 	/// </summary>
 	public fixed float Data[6];
 

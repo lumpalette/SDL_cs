@@ -46,7 +46,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateWindowAndRenderer", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int CreateWindowAndRenderer(string title, int width, int height, SDL_WindowFlags windowFlags, out SDL_Window* window, out SDL_Renderer* renderer);
+	public static partial int CreateWindowAndRenderer(string title, int width, int height, SDL_WindowFlags windowFlags, SDL_Window** window, SDL_Renderer** renderer);
 
 	/// <summary>
 	/// Create a 2D rendering context for a window.
@@ -146,7 +146,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderOutputSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRenderOutputSize(SDL_Renderer* renderer, out int width, out int height);
+	public static partial int GetRenderOutputSize(SDL_Renderer* renderer, int* width, int* height);
 
 	/// <summary>
 	/// Get the current output size in pixels of a rendering context.
@@ -160,7 +160,7 @@ public static unsafe partial class SDL
 	/// <returns></returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentRenderOutputSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetCurrentRenderOutputSize(SDL_Renderer* renderer, out int width, out int height);
+	public static partial int GetCurrentRenderOutputSize(SDL_Renderer* renderer, int* width, int* height);
 
 	/// <summary>
 	/// Create a texture for a rendering context.
@@ -235,12 +235,12 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureSize">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture">The texture to query.</param>
-	/// <param name="width">A pointer filled in with the width of the texture in pixels.</param>
-	/// <param name="height">A pointer filled in with the height of the texture in pixels.</param>
+	/// <param name="width">A pointer filled in with the width of the texture in pixels. This argument can be <see langword="null"/> if you don't need this information.</param>
+	/// <param name="height">A pointer filled in with the height of the texture in pixels. This argument can be <see langword="null"/> if you don't need this information.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetTextureSize(SDL_Texture* texture, out float width, out float height);
+	public static partial int GetTextureSize(SDL_Texture* texture, float* width, float* height);
 
 	/// <summary>
 	/// Set an additional color value multiplied into render copy operations.
@@ -285,7 +285,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureColorMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetTextureColorMod(SDL_Texture* texture, out byte r, out byte g, out byte b);
+	public static partial int GetTextureColorMod(SDL_Texture* texture, byte* r, byte* g, byte* b);
 
 	/// <summary>
 	/// Get the additional color value multiplied into render copy operations.
@@ -300,7 +300,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureColorModFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetTextureColorModFloat(SDL_Texture* texture, out float r, out float g, out float b);
+	public static partial int GetTextureColorModFloat(SDL_Texture* texture, float* r, float* g, float* b);
 
 	/// <summary>
 	/// Set an additional alpha value multiplied into render copy operations.
@@ -339,7 +339,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureAlphaMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetTextureAlphaMod(SDL_Texture* texture, out byte alpha);
+	public static partial int GetTextureAlphaMod(SDL_Texture* texture, byte* alpha);
 
 	/// <summary>
 	/// Get the additional alpha value multiplied into render copy operations.
@@ -352,10 +352,10 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureAlphaModFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetTextureAlphaModFloat(SDL_Texture* texture, out float alpha);
+	public static partial int GetTextureAlphaModFloat(SDL_Texture* texture, float* alpha);
 
 	/// <summary>
-	/// Set the blend mode for a texture, used by <see cref="RenderTexture(SDL_Renderer*, SDL_Texture*, ref SDL_FRect, ref SDL_FRect)"/>.
+	/// Set the blend mode for a texture, used by <see cref="RenderTexture(SDL_Renderer*, SDL_Texture*, SDL_FRect*, SDL_FRect*)"/>.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetTextureBlendMode">documentation</see> for more details.
@@ -371,14 +371,14 @@ public static unsafe partial class SDL
 	/// Get the blend mode used for texture copy operations.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/GetTextureBlendMode">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTextureBlendMode">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="texture">The texture to update.</param>
 	/// <param name="blendMode">A pointer filled in with the current <see cref="SDL_BlendMode"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureBlendMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetTextureBlendMode(SDL_Texture* texture, out SDL_BlendMode blendMode);
+	public static partial int GetTextureBlendMode(SDL_Texture* texture, SDL_BlendMode* blendMode);
 
 	/// <summary>
 	/// Set the scale mode used for texture scale operations.
@@ -404,7 +404,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureScaleMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetTextureScaleMode(SDL_Texture* texture, out SDL_ScaleMode scaleMode);
+	public static partial int GetTextureScaleMode(SDL_Texture* texture, SDL_ScaleMode* scaleMode);
 
 	/// <summary>
 	/// Update the given texture rectangle with new pixel data.
@@ -419,22 +419,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int UpdateTexture(SDL_Texture* texture, ref SDL_Rect rect, nint pixels, int pitch);
-
-	/// <summary>
-	/// Update the given texture rectangle with new pixel data.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateTexture">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="texture">The texture to update.</param>
-	/// <param name="rect">An <see cref="SDL_Rect"/> structure representing the area to update, or <see langword="null"/> to update the entire texture.</param>
-	/// <param name="pixels">The raw pixel data in the format of the texture.</param>
-	/// <param name="pitch">The number of bytes in a row of pixel data, including padding between lines.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateTexture")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int UpdateTexture(SDL_Texture* texture, SDL_Rect* rect, nint pixels, int pitch);
+	public static partial int UpdateTexture(SDL_Texture* texture, [Const] SDL_Rect* rect, [Const] nint pixels, int pitch);
 
 	/// <summary>
 	/// Update a rectangle within a planar YV12 or IYUV texture with new pixel data.
@@ -453,26 +438,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateYUVTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int UpdateYUVTexture(SDL_Texture* texture, ref SDL_Rect rect, [In] byte[] yplane, int ypitch, [In] byte[] uplane, int upitch, [In] byte[] vplane, int vpitch);
-
-	/// <summary>
-	/// Update a rectangle within a planar YV12 or IYUV texture with new pixel data.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateYUVTexture">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="texture">The texture to update.</param>
-	/// <param name="rect">A pointer to the rectangle of pixels to update, or <see langword="null"/> to update the entire texture.</param>
-	/// <param name="yplane">The raw pixel data for the Y plane.</param>
-	/// <param name="ypitch">The number of bytes between rows of pixel data for the Y plane.</param>
-	/// <param name="uplane">The raw pixel data for the U plane.</param>
-	/// <param name="upitch">The number of bytes between rows of pixel data for the U plane.</param>
-	/// <param name="vplane">The raw pixel data for the V plane.</param>
-	/// <param name="vpitch">The number of bytes between rows of pixel data for the V plane.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateYUVTexture")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int UpdateYUVTexture(SDL_Texture* texture, SDL_Rect* rect, byte* yplane, int ypitch, byte* uplane, int upitch, byte* vplane, int vpitch);
+	public static partial int UpdateYUVTexture(SDL_Texture* texture, [Const] SDL_Rect* rect, [Const] byte* yplane, int ypitch, [Const] byte* uplane, int upitch, [Const] byte* vplane, int vpitch);
 
 	/// <summary>
 	/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.
@@ -489,28 +455,14 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateNVTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int UpdateNVTexture(SDL_Texture* texture, ref SDL_Rect rect, byte* yplane, int ypitch, byte* uvplane, int uvpitch);
+	public static partial int UpdateNVTexture(SDL_Texture* texture, [Const] SDL_Rect* rect, [Const] byte* yplane, int ypitch, [Const] byte* uvplane, int uvpitch);
 
 	/// <summary>
-	/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.
+	/// Lock a portion of the texture for <b>write-only</b> pixel access.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UpdateNVTexture">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_LockTexture">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="texture"></param>
-	/// <param name="rect">A pointer to the rectangle of pixels to update, or <see langword="null"/> to update the entire texture.</param>
-	/// <param name="yplane">The raw pixel data for the Y plane.</param>
-	/// <param name="ypitch">The number of bytes between rows of pixel data for the Y plane.</param>
-	/// <param name="uvplane">The raw pixel data for the UV plane.</param>
-	/// <param name="uvpitch">The number of bytes between rows of pixel data for the UV plane.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateNVTexture")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int UpdateNVTexture(SDL_Texture* texture, SDL_Rect* rect, byte* yplane, int ypitch, byte* uvplane, int uvpitch);
-
-	/// <summary>
-	/// Lock a portion of the texture for <b>write-only</b> pixel access.
-	/// </summary>
 	/// <param name="texture">The texture to lock for access, which was created with <see cref="SDL_TextureAccess.Streaming"/>.</param>
 	/// <param name="rect">An <see cref="SDL_Rect"/> structure representing the area to lock for access; <see langword="null"/> to lock the entire texture.</param>
 	/// <param name="pixels">This is filled in with a pointer to the locked pixels, appropriately offset by the locked area.</param>
@@ -518,19 +470,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code if the texture is not valid or was not created with <see cref="SDL_TextureAccess.Streaming"/>; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_LockTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int LockTexture(SDL_Texture* texture, ref SDL_Rect rect, out nint pixels, out int pitch);
-
-	/// <summary>
-	/// Lock a portion of the texture for <b>write-only</b> pixel access.
-	/// </summary>
-	/// <param name="texture">The texture to lock for access, which was created with <see cref="SDL_TextureAccess.Streaming"/>.</param>
-	/// <param name="rect">An <see cref="SDL_Rect"/> structure representing the area to lock for access; <see langword="null"/> to lock the entire texture.</param>
-	/// <param name="pixels">This is filled in with a pointer to the locked pixels, appropriately offset by the locked area.</param>
-	/// <param name="pitch">This is filled in with the pitch of the locked pixels; the pitch is the length of one row in bytes.</param>
-	/// <returns>0 on success or a negative error code if the texture is not valid or was not created with <see cref="SDL_TextureAccess.Streaming"/>; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_LockTexture")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int LockTexture(SDL_Texture* texture, SDL_Rect* rect, out nint pixels, out int pitch);
+	public static partial int LockTexture(SDL_Texture* texture, [Const] SDL_Rect* rect, nint** pixels, int* pitch);
 
 	/// <summary>
 	/// Lock a portion of the texture for <b>write-only</b> pixel access, and expose it as a SDL surface.
@@ -544,7 +484,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_LockTextureToSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int LockTextureToSurface(SDL_Texture* texture, ref SDL_Rect rect, out SDL_Surface* surface);
+	public static partial int LockTextureToSurface(SDL_Texture* texture, [Const] SDL_Rect* rect, SDL_Surface* surface);
 
 	/// <summary>
 	/// Unlock a texture, uploading the changes to video memory, if needed.
@@ -552,7 +492,7 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_UnlockTexture">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="texture">A texture locked by <see cref="LockTexture(SDL_Texture*, ref SDL_Rect, out nint, out int)"/>.</param>
+	/// <param name="texture">A texture locked by <see cref="LockTexture(SDL_Texture*, SDL_Rect*, nint**, int*)"/>.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UnlockTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial void UnlockTexture(SDL_Texture* texture);
@@ -612,7 +552,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderLogicalPresentation")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRenderLogicalPresentation(SDL_Renderer* renderer, out int width, out int height, out SDL_RendererLogicalPresentation mode, out SDL_ScaleMode scaleMode);
+	public static partial int GetRenderLogicalPresentation(SDL_Renderer* renderer, int* width, int* height, SDL_RendererLogicalPresentation* mode, SDL_ScaleMode* scaleMode);
 
 	/// <summary>
 	/// Get the final presentation rectangle for rendering.
@@ -625,7 +565,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderLogicalPresentationRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRenderLogicalPresentationRect(SDL_Renderer* renderer, out SDL_FRect rect);
+	public static partial int GetRenderLogicalPresentationRect(SDL_Renderer* renderer, SDL_FRect* rect);
 
 	/// <summary>
 	/// Get a point in render coordinates when given a point in window coordinates.
@@ -641,7 +581,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderCoordinatesFromWindow")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderCoordinatesFromWindow(SDL_Renderer* renderer, float windowX, float windowY, out float x, out float y);
+	public static partial int RenderCoordinatesFromWindow(SDL_Renderer* renderer, float windowX, float windowY, float* x, float* y);
 
 	/// <summary>
 	/// Get a point in window coordinates when given a point in render coordinates.
@@ -657,7 +597,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderCoordinatesToWindow")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderCoordinatesToWindow(SDL_Renderer* renderer, float x, float y, out float windowX, out float windowY);
+	public static partial int RenderCoordinatesToWindow(SDL_Renderer* renderer, float x, float y, float* windowX, float* windowY);
 
 	/// <summary>
 	/// Convert the coordinates in an event to render coordinates.
@@ -670,7 +610,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertEventToRenderCoordinates")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ConvertEventToRenderCoordinates(SDL_Renderer* renderer, ref SDL_Event e);
+	public static partial int ConvertEventToRenderCoordinates(SDL_Renderer* renderer, SDL_Event* e);
 
 	/// <summary>
 	/// Set the drawing area for rendering on the current target.
@@ -683,20 +623,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderViewport")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetRenderViewport(SDL_Renderer* renderer, ref SDL_Rect rect);
-
-	/// <summary>
-	/// Set the drawing area for rendering on the current target.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderViewport">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The rendering context.</param>
-	/// <param name="rect">The <see cref="SDL_Rect"/> structure representing the drawing area, or <see langword="null"/> to set the viewport to the entire target.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderViewport")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetRenderViewport(SDL_Renderer* renderer, SDL_Rect* rect);
+	public static partial int SetRenderViewport(SDL_Renderer* renderer, [Const] SDL_Rect* rect);
 
 	/// <summary>
 	/// Get the drawing area for the current target.
@@ -709,7 +636,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderViewport")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRenderViewport(SDL_Renderer* renderer, out SDL_Rect rect);
+	public static partial int GetRenderViewport(SDL_Renderer* renderer, SDL_Rect* rect);
 
 	/// <summary>
 	/// Return whether an explicit rectangle was set as the viewport.
@@ -735,7 +662,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderSafeArea")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRenderSafeArea(SDL_Renderer* renderer, out SDL_Rect rect);
+	public static partial int GetRenderSafeArea(SDL_Renderer* renderer, SDL_Rect* rect);
 
 	/// <summary>
 	/// Set the clip rectangle for rendering on the specified target.
@@ -748,20 +675,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderClipRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetRenderClipRect(SDL_Renderer* renderer, ref SDL_Rect rect);
-
-	/// <summary>
-	/// Set the clip rectangle for rendering on the specified target.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRenderClipRect">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer"></param>
-	/// <param name="rect">An <see cref="SDL_Rect"/> structure representing the clip area, relative to the viewport, or <see langword="null"/> to disable clipping.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderClipRect")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetRenderClipRect(SDL_Renderer* renderer, SDL_Rect* rect);
+	public static partial int SetRenderClipRect(SDL_Renderer* renderer, [Const] SDL_Rect* rect);
 
 	/// <summary>
 	/// Get the clip rectangle for the current target.
@@ -774,7 +688,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderClipRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRenderClipRect(SDL_Renderer* renderer, out SDL_Rect rect);
+	public static partial int GetRenderClipRect(SDL_Renderer* renderer, SDL_Rect* rect);
 
 	/// <summary>
 	/// Get whether clipping is enabled on the given renderer.
@@ -815,7 +729,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderScale")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRenderScale(SDL_Renderer* renderer, out float scaleX, out float scaleY);
+	public static partial int GetRenderScale(SDL_Renderer* renderer, float* scaleX, float* scaleY);
 
 	/// <summary>
 	/// Set the color used for drawing operations.
@@ -863,7 +777,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderDrawColor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRenderDrawColor(SDL_Renderer* renderer, out byte r, out byte g, out byte b, out byte a);
+	public static partial int GetRenderDrawColor(SDL_Renderer* renderer, byte* r, byte* g, byte* b, byte* a);
 
 	/// <summary>
 	/// Get the color used for drawing operations (Rect, Line and Clear).
@@ -879,7 +793,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderDrawColorFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRenderDrawColorFloat(SDL_Renderer* renderer, out float r, out float g, out float b, out float a);
+	public static partial int GetRenderDrawColorFloat(SDL_Renderer* renderer, float* r, float* g, float* b, float* a);
 
 	/// <summary>
 	/// Set the color scale used for render operations.
@@ -905,7 +819,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderColorScale")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRenderColorScale(SDL_Renderer* renderer, out float scale);
+	public static partial int GetRenderColorScale(SDL_Renderer* renderer, float* scale);
 
 	/// <summary>
 	/// Set the blend mode used for drawing operations (Fill and Line).
@@ -931,7 +845,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderDrawBlendMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRenderDrawBlendMode(SDL_Renderer* renderer, out SDL_BlendMode blendMode);
+	public static partial int GetRenderDrawBlendMode(SDL_Renderer* renderer, SDL_BlendMode* blendMode);
 
 	/// <summary>
 	/// Clear the current rendering target with the drawing color.
@@ -967,11 +881,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="renderer">The renderer which should draw multiple points.</param>
 	/// <param name="points">The points to draw.</param>
-	/// <param name="count">The number of points to draw. Corresponds to <paramref name="points"/>.Length.</param>
+	/// <param name="count">The number of points to draw.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderPoints")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderPoints(SDL_Renderer* renderer, [In] SDL_FPoint[] points, int count);
+	public static partial int RenderPoints(SDL_Renderer* renderer, [Const] SDL_FPoint* points, int count);
 
 	/// <summary>
 	/// Draw a line on the current rendering target at subpixel precision.
@@ -997,11 +911,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="renderer">The renderer which should draw multiple lines.</param>
 	/// <param name="points">The points along the lines.</param>
-	/// <param name="count">The number of points, drawing count-1 lines. Corresponds to <paramref name="points"/>.Length.</param>
+	/// <param name="count">The number of points, drawing count-1 lines.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderLines")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderLines(SDL_Renderer* renderer, [In] SDL_FPoint[] points, int count);
+	public static partial int RenderLines(SDL_Renderer* renderer, [Const] SDL_FPoint* points, int count);
 
 	/// <summary>
 	/// Draw a rectangle on the current rendering target at subpixel precision.
@@ -1014,20 +928,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderRect(SDL_Renderer* renderer, ref SDL_FRect rect);
-
-	/// <summary>
-	/// Draw a rectangle on the current rendering target at subpixel precision.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderRect">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The renderer which should draw a rectangle.</param>
-	/// <param name="rect">A pointer to the destination rectangle, or <see langword="null"/> to outline the entire rendering target.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderRect")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderRect(SDL_Renderer* renderer, SDL_FRect* rect);
+	public static partial int RenderRect(SDL_Renderer* renderer, [Const] SDL_FRect* rect);
 
 	/// <summary>
 	/// Draw some number of rectangles on the current rendering target at subpixel precision.
@@ -1037,11 +938,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="renderer">The renderer which should draw multiple rectangles.</param>
 	/// <param name="rects">A pointer to an array of destination rectangles.</param>
-	/// <param name="count">The number of rectangles. Corresponds to <paramref name="rects"/>.Length.</param>
+	/// <param name="count">The number of rectangles.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderRects")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderRects(SDL_Renderer* renderer, [In] SDL_FRect[] rects, int count);
+	public static partial int RenderRects(SDL_Renderer* renderer, [Const] SDL_FRect* rects, int count);
 
 	/// <summary>
 	/// Fill a rectangle on the current rendering target with the drawing color at subpixel precision.
@@ -1054,20 +955,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderFillRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderFillRect(SDL_Renderer* renderer, ref SDL_FRect rect);
-
-	/// <summary>
-	/// Fill a rectangle on the current rendering target with the drawing color at subpixel precision.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderFillRect">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The renderer which should fill a rectangle.</param>
-	/// <param name="rect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderFillRect")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderFillRect(SDL_Renderer* renderer, SDL_FRect* rect);
+	public static partial int RenderFillRect(SDL_Renderer* renderer, [Const] SDL_FRect* rect);
 
 	/// <summary>
 	/// Fill some number of rectangles on the current rendering target with the drawing color at subpixel precision.
@@ -1077,11 +965,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="renderer">The renderer which should fill multiple rectangles.</param>
 	/// <param name="rects">A pointer to an array of destination rectangles.</param>
-	/// <param name="count">The number of rectangles. Corresponds to <paramref name="rects"/>.Length.</param>
+	/// <param name="count">The number of rectangles.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderFillRects")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderFillRects(SDL_Renderer* renderer, [In] SDL_FRect[] rects, int count);
+	public static partial int RenderFillRects(SDL_Renderer* renderer, [Const] SDL_FRect* rects, int count);
 
 	/// <summary>
 	/// Copy a portion of the texture to the current rendering target at subpixel precision.
@@ -1096,52 +984,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, ref SDL_FRect dstRect);
-
-	/// <summary>
-	/// Copy a portion of the texture to the current rendering target at subpixel precision.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTexture">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
-	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">A pointer to the source rectangle, or <see langword="null"/> for the entire texture.</param>
-	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, ref SDL_FRect dstRect);
-
-	/// <summary>
-	/// Copy a portion of the texture to the current rendering target at subpixel precision.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTexture">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
-	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">A pointer to the source rectangle, or <see langword="null"/> for the entire texture.</param>
-	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, SDL_FRect* dstRect);
-
-	/// <summary>
-	/// Copy a portion of the texture to the current rendering target at subpixel precision.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTexture">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
-	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">A pointer to the source rectangle, or <see langword="null"/> for the entire texture.</param>
-	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, SDL_FRect* dstRect);
+	public static partial int RenderTexture(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, [Const] SDL_FRect* dstRect);
 
 	/// <summary>
 	/// Copy a portion of the source texture to the current rendering target, with rotation and flipping, at subpixel precision.
@@ -1159,115 +1002,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureRotated")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, ref SDL_FRect dstRect, double angle, ref SDL_FPoint center, SDL_FlipMode flip);
-
-	/// <summary>
-	/// Copy a portion of the source texture to the current rendering target, with rotation and flipping, at subpixel precision.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTextureRotated">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
-	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">A pointer to the source rectangle, or <see langword="null"/> for the entire texture.</param>
-	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
-	/// <param name="angle">An angle in degrees that indicates the rotation that will be applied to dstrect, rotating it in a clockwise direction.</param>
-	/// <param name="center">A pointer to a point indicating the point around which dstrect will be rotated (if <see langword="null"/>, rotation will be done around <paramref name="dstRect"/>.Width / 2, <paramref name="dstRect"/>.Height / 2).</param>
-	/// <param name="flip">An <see cref="SDL_FlipMode"/> value stating which flipping actions should be performed on the texture.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureRotated")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, ref SDL_FRect dstRect, double angle, ref SDL_FPoint center, SDL_FlipMode flip);
-
-	/// <summary>
-	/// Copy a portion of the source texture to the current rendering target, with rotation and flipping, at subpixel precision.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTextureRotated">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
-	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">A pointer to the source rectangle, or <see langword="null"/> for the entire texture.</param>
-	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
-	/// <param name="angle">An angle in degrees that indicates the rotation that will be applied to dstrect, rotating it in a clockwise direction.</param>
-	/// <param name="center">A pointer to a point indicating the point around which dstrect will be rotated (if <see langword="null"/>, rotation will be done around <paramref name="dstRect"/>.Width / 2, <paramref name="dstRect"/>.Height / 2).</param>
-	/// <param name="flip">An <see cref="SDL_FlipMode"/> value stating which flipping actions should be performed on the texture.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureRotated")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, SDL_FRect* dstRect, double angle, ref SDL_FPoint center, SDL_FlipMode flip);
-
-	/// <summary>
-	/// Copy a portion of the source texture to the current rendering target, with rotation and flipping, at subpixel precision.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTextureRotated">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
-	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">A pointer to the source rectangle, or <see langword="null"/> for the entire texture.</param>
-	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
-	/// <param name="angle">An angle in degrees that indicates the rotation that will be applied to dstrect, rotating it in a clockwise direction.</param>
-	/// <param name="center">A pointer to a point indicating the point around which dstrect will be rotated (if <see langword="null"/>, rotation will be done around <paramref name="dstRect"/>.Width / 2, <paramref name="dstRect"/>.Height / 2).</param>
-	/// <param name="flip">An <see cref="SDL_FlipMode"/> value stating which flipping actions should be performed on the texture.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureRotated")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, ref SDL_FRect dstRect, double angle, SDL_FPoint* center, SDL_FlipMode flip);
-
-	/// <summary>
-	/// Copy a portion of the source texture to the current rendering target, with rotation and flipping, at subpixel precision.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTextureRotated">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
-	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">A pointer to the source rectangle, or <see langword="null"/> for the entire texture.</param>
-	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
-	/// <param name="angle">An angle in degrees that indicates the rotation that will be applied to dstrect, rotating it in a clockwise direction.</param>
-	/// <param name="center">A pointer to a point indicating the point around which dstrect will be rotated (if <see langword="null"/>, rotation will be done around <paramref name="dstRect"/>.Width / 2, <paramref name="dstRect"/>.Height / 2).</param>
-	/// <param name="flip">An <see cref="SDL_FlipMode"/> value stating which flipping actions should be performed on the texture.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureRotated")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, SDL_FRect* dstRect, double angle, ref SDL_FPoint center, SDL_FlipMode flip);
-
-	/// <summary>
-	/// Copy a portion of the source texture to the current rendering target, with rotation and flipping, at subpixel precision.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTextureRotated">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
-	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">A pointer to the source rectangle, or <see langword="null"/> for the entire texture.</param>
-	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
-	/// <param name="angle">An angle in degrees that indicates the rotation that will be applied to dstrect, rotating it in a clockwise direction.</param>
-	/// <param name="center">A pointer to a point indicating the point around which dstrect will be rotated (if <see langword="null"/>, rotation will be done around <paramref name="dstRect"/>.Width / 2, <paramref name="dstRect"/>.Height / 2).</param>
-	/// <param name="flip">An <see cref="SDL_FlipMode"/> value stating which flipping actions should be performed on the texture.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureRotated")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, SDL_FRect* dstRect, double angle, SDL_FPoint* center, SDL_FlipMode flip);
-
-	/// <summary>
-	/// Copy a portion of the source texture to the current rendering target, with rotation and flipping, at subpixel precision.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTextureRotated">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
-	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">A pointer to the source rectangle, or <see langword="null"/> for the entire texture.</param>
-	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
-	/// <param name="angle">An angle in degrees that indicates the rotation that will be applied to dstrect, rotating it in a clockwise direction.</param>
-	/// <param name="center">A pointer to a point indicating the point around which dstrect will be rotated (if <see langword="null"/>, rotation will be done around <paramref name="dstRect"/>.Width / 2, <paramref name="dstRect"/>.Height / 2).</param>
-	/// <param name="flip">An <see cref="SDL_FlipMode"/> value stating which flipping actions should be performed on the texture.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureRotated")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, SDL_FRect* dstRect, double angle, SDL_FPoint* center, SDL_FlipMode flip);
+	public static partial int RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, [Const] SDL_FRect* dstRect, [Const] double angle, [Const] SDL_FPoint* center, [Const] SDL_FlipMode flip);
 
 	/// <summary>
 	/// Perform a scaled copy using the 9-grid algorithm to the current rendering target at subpixel precision.
@@ -1287,67 +1022,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture9Grid")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, ref SDL_FRect dstRect);
-
-	/// <summary>
-	/// Perform a scaled copy using the 9-grid algorithm to the current rendering target at subpixel precision.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTexture9Grid">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
-	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be used for the 9-grid, or <see langword="null"/> to use the entire texture.</param>
-	/// <param name="leftWidth">The width, in pixels, of the left corners in <paramref name="srcRect"/>.</param>
-	/// <param name="rightWidth">The width, in pixels, of the right corners in <paramref name="srcRect"/>.</param>
-	/// <param name="topHeight">The height, in pixels, of the top corners in <paramref name="srcRect"/>.</param>
-	/// <param name="bottomHeight">The height, in pixels, of the bottom corners in <paramref name="srcRect"/>.</param>
-	/// <param name="scale">The scale used to transform the corner of srcrect into the corner of dstrect, or 0.0f for an unscaled copy.</param>
-	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture9Grid")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, ref SDL_FRect dstRect);
-
-	/// <summary>
-	/// Perform a scaled copy using the 9-grid algorithm to the current rendering target at subpixel precision.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTexture9Grid">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
-	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be used for the 9-grid, or <see langword="null"/> to use the entire texture.</param>
-	/// <param name="leftWidth">The width, in pixels, of the left corners in <paramref name="srcRect"/>.</param>
-	/// <param name="rightWidth">The width, in pixels, of the right corners in <paramref name="srcRect"/>.</param>
-	/// <param name="topHeight">The height, in pixels, of the top corners in <paramref name="srcRect"/>.</param>
-	/// <param name="bottomHeight">The height, in pixels, of the bottom corners in <paramref name="srcRect"/>.</param>
-	/// <param name="scale">The scale used to transform the corner of srcrect into the corner of dstrect, or 0.0f for an unscaled copy.</param>
-	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture9Grid")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, ref SDL_FRect srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, SDL_FRect* dstRect);
-
-	/// <summary>
-	/// Perform a scaled copy using the 9-grid algorithm to the current rendering target at subpixel precision.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTexture9Grid">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
-	/// <param name="texture">The source texture.</param>
-	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be used for the 9-grid, or <see langword="null"/> to use the entire texture.</param>
-	/// <param name="leftWidth">The width, in pixels, of the left corners in <paramref name="srcRect"/>.</param>
-	/// <param name="rightWidth">The width, in pixels, of the right corners in <paramref name="srcRect"/>.</param>
-	/// <param name="topHeight">The height, in pixels, of the top corners in <paramref name="srcRect"/>.</param>
-	/// <param name="bottomHeight">The height, in pixels, of the bottom corners in <paramref name="srcRect"/>.</param>
-	/// <param name="scale">The scale used to transform the corner of srcrect into the corner of dstrect, or 0.0f for an unscaled copy.</param>
-	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture9Grid")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, SDL_FRect* srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, SDL_FRect* dstRect);
+	public static partial int RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, [Const] SDL_FRect* dstRect);
 
 	/// <summary>
 	/// Render a list of triangles, optionally using a texture and indices into the vertex array Color and alpha modulation
@@ -1359,13 +1034,13 @@ public static unsafe partial class SDL
 	/// <param name="renderer">The rendering context.</param>
 	/// <param name="texture">(optional) The SDL texture to use.</param>
 	/// <param name="vertices">Vertices.</param>
-	/// <param name="numVertices">Number of vertices. Corresponds to <paramref name="vertices"/>.Length.</param>
+	/// <param name="numVertices">Number of vertices.</param>
 	/// <param name="indices">(optional) An array of integer indices into the <paramref name="vertices"/> array, if <see langword="null"/> all vertices will be rendered in sequential order.</param>
-	/// <param name="numIndices">Number of indices. Corresponds to <paramref name="indices"/>.Length.</param>
+	/// <param name="numIndices">Number of indices.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderGeometry")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RenderGeometry(SDL_Renderer* renderer, SDL_Texture* texture, [In] SDL_Vertex[] vertices, int numVertices, [In] int[]? indices, int numIndices);
+	public static partial int RenderGeometry(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_Vertex* vertices, int numVertices, int* indices, int numIndices);
 
 	/// <summary>
 	/// Read pixels from the current rendering target.
@@ -1378,20 +1053,7 @@ public static unsafe partial class SDL
 	/// <returns>A new <see cref="SDL_Surface"/> on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderReadPixels")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Surface* RenderReadPixels(SDL_Renderer* renderer, ref SDL_Rect rect);
-
-	/// <summary>
-	/// Read pixels from the current rendering target.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderReadPixels">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The rendering context.</param>
-	/// <param name="rect">An <see cref="SDL_Rect"/> structure representing the area in pixels relative to the to current viewport, or <see langword="null"/> for the entire viewport.</param>
-	/// <returns>A new <see cref="SDL_Surface"/> on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderReadPixels")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Surface* RenderReadPixels(SDL_Renderer* renderer, SDL_Rect* rect);
+	public static partial SDL_Surface* RenderReadPixels(SDL_Renderer* renderer, [Const] SDL_Rect* rect);
 
 	/// <summary>
 	/// Update the screen with any rendering performed since the previous call.
@@ -1502,7 +1164,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderVSync")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRenderVSync(SDL_Renderer* renderer, out int vsync);
+	public static partial int GetRenderVSync(SDL_Renderer* renderer, int* vsync);
 
 	/// <summary>
 	/// The name of the software renderer.

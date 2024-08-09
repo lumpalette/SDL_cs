@@ -30,22 +30,6 @@ public static unsafe partial class SDL
 	/// <returns>The number of events actually stored or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PeepEvents")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int PeepEvents(ref SDL_Event e, int numEvents, SDL_EventAction action, SDL_EventType minType, SDL_EventType maxType);
-
-	/// <summary>
-	/// Check the event queue for messages and optionally return them.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PeepEvents">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="e">Destination buffer for the retrieved events, may be <see langword="null"/> to leave the events in the queue and return the number of events that would have been stored.</param>
-	/// <param name="numEvents">If <paramref name="action"/> is <see cref="SDL_EventAction.AddEvent"/>, the number of events to add back to the event queue; if <paramref name="action"/> is <see cref="SDL_EventAction.PeekEvent"/> or <see cref="SDL_EventAction.GetEvent"/>, the maximum number of events to retrieve.</param>
-	/// <param name="action">Action to take.</param>
-	/// <param name="minType">Minimum value of the event type to be considered; <see cref="SDL_EventType.First"/> is a safe choice.</param>
-	/// <param name="maxType">Maximum value of the event type to be considered; <see cref="SDL_EventType.First"/> is a safe choice.</param>
-	/// <returns>The number of events actually stored or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_PeepEvents")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int PeepEvents(SDL_Event* e, int numEvents, SDL_EventAction action, SDL_EventType minType, SDL_EventType maxType);
 
 	/// <summary>
@@ -106,33 +90,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PollEvent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool PollEvent(out SDL_Event e);
-
-	/// <summary>
-	/// Poll for currently pending events.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PollEvent">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="e">The <see cref="SDL_Event"/> structure to be filled with the next event from the queue, or <see langword="null"/>.</param>
-	/// <returns>True if this got an event or false if there are none available.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_PollEvent")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
 	public static partial bool PollEvent(SDL_Event* e);
-
-	/// <summary>
-	/// Wait indefinitely for the next available event.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WaitEvent">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="e">The <see cref="SDL_Event"/> structure to be filled in with the next event from the queue, or <see langword="null"/>.</param>
-	/// <returns>True on success or false if there was an error while waiting for events; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_WaitEvent")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool WaitEvent(out SDL_Event e);
 
 	/// <summary>
 	/// Wait indefinitely for the next available event.
@@ -159,20 +117,6 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_WaitEventTimeout")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool WaitEventTimeout(out SDL_Event e, int timeoutMs);
-
-	/// <summary>
-	/// Wait until the specified timeout (in milliseconds) for the next available event.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WaitEventTimeout">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="e">The <see cref="SDL_Event"/> structure to be filled in with the next event from the queue, or <see langword="null"/>.</param>
-	/// <param name="timeoutMs">The maximum number of milliseconds to wait for the next available event.</param>
-	/// <returns>True if this got an event or false if the timeout elapsed without any events available.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_WaitEventTimeout")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
 	public static partial bool WaitEventTimeout(SDL_Event* e, int timeoutMs);
 
 	/// <summary>
@@ -185,7 +129,7 @@ public static unsafe partial class SDL
 	/// <returns>1 on success, 0 if the event was filtered, or a negative error code on failure; call <see cref="GetError"/> for more information. A common reason for error is the event queue being full.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PushEvent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int PushEvent(ref SDL_Event e);
+	public static partial int PushEvent(SDL_Event* e);
 
 	/// <summary>
 	/// Set up a filter to process all events before they change internal state and are posted to the internal event queue.
@@ -197,7 +141,7 @@ public static unsafe partial class SDL
 	/// <param name="userData">A pointer that is passed to <paramref name="filter"/>.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetEventFilter")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void SetEventFilter(delegate* unmanaged[Cdecl]<nint, ref SDL_Event, int>  filter, nint userData);
+	public static partial void SetEventFilter(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int>  filter, nint userData);
 
 	/// <summary>
 	/// Query the current event filter.
@@ -211,7 +155,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetEventFilter")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool GetEventFilter(out delegate* unmanaged[Cdecl]<nint, ref SDL_Event, int> filter, out nint userData);
+	public static partial bool GetEventFilter(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint* userData);
 
 	/// <summary>
 	/// Add a callback to be triggered when an event is added to the event queue.
@@ -224,7 +168,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddEventWatch")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int AddEventWatch(delegate* unmanaged[Cdecl]<nint, ref SDL_Event, int> filter, nint userdata);
+	public static partial int AddEventWatch(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint userdata);
 
 	/// <summary>
 	/// Remove an event watch callback added with <see cref="AddEventWatch"/>.
@@ -236,7 +180,7 @@ public static unsafe partial class SDL
 	/// <param name="userdata"></param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_DelEventWatch")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void DelEventWatch(delegate* unmanaged[Cdecl]<nint, ref SDL_Event, int> filter, nint userdata);
+	public static partial void DelEventWatch(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint userdata);
 
 	/// <summary>
 	/// Run a specific filter function on the current event queue, removing any events for which the filter returns 0.
@@ -248,7 +192,7 @@ public static unsafe partial class SDL
 	/// <param name="userdata">A pointer that is passed to <paramref name="filter"/>.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FilterEvents")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void FilterEvents(delegate* unmanaged[Cdecl]<nint, ref SDL_Event, int> filter, nint userdata);
+	public static partial void FilterEvents(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint userdata);
 
 	/// <summary>
 	/// Set the state of processing events by type.
@@ -297,7 +241,7 @@ public static unsafe partial class SDL
 	/// <returns>The associated window on success or <see langword="null"/> if there is none.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowFromEvent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Window* GetWindowFromEvent(ref SDL_Event e);
+	public static partial SDL_Window* GetWindowFromEvent([Const] SDL_Event* e);
 
 	/// <summary>
 	/// A value that signifies a button is no longer pressed.

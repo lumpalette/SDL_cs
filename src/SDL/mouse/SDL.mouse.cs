@@ -28,11 +28,14 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetMice">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="count">A pointer filled in with the number of mice returned.</param>
-	/// <returns>A null-terminated array of mouse instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more details. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
+	/// <param name="count">A pointer filled in with the number of mice returned, may be <see langword="null"/>.</param>
+	/// <returns>
+	/// A null-terminated array of mouse instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more details.<br/>
+	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
+	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMice")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_MouseId* GetMice(out int count);
+	public static partial SDL_MouseId* GetMice(int* count);
 
 	/// <summary>
 	/// Get the name of a mouse.
@@ -69,7 +72,7 @@ public static unsafe partial class SDL
 	/// <returns>A 32-bit button bitmask of the current button state.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMouseState")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_MouseButtonFlags GetMouseState(out float x, out float y);
+	public static partial SDL_MouseButtonFlags GetMouseState(float* x, float* y);
 
 	/// <summary>
 	/// Get the current state of the mouse in relation to the desktop.
@@ -82,7 +85,7 @@ public static unsafe partial class SDL
 	/// <returns>The current button state as a bitmask.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGlobalMouseState")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_MouseButtonFlags GetGlobalMouseState(out float x, out float y);
+	public static partial SDL_MouseButtonFlags GetGlobalMouseState(float* x, float* y);
 
 	/// <summary>
 	/// Retrieve the relative state of the mouse.
@@ -95,7 +98,7 @@ public static unsafe partial class SDL
 	/// <returns>A 32-bit button bitmask of the relative button state.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRelativeMouseState")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_MouseButtonFlags GetRelativeMouseState(out float x, out float y);
+	public static partial SDL_MouseButtonFlags GetRelativeMouseState(float* x, float* y);
 
 	/// <summary>
 	/// Move the mouse cursor to the given position within the window.
@@ -176,7 +179,7 @@ public static unsafe partial class SDL
 	/// <returns>A new cursor with the specified parameters on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateCursor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Cursor* CreateCursor([In] byte[] data, [In] byte[] mask, int width, int height, int hotX, int hotY);
+	public static partial SDL_Cursor* CreateCursor([Const] byte* data, [Const] byte* mask, int width, int height, int hotX, int hotY);
 
 	/// <summary>
 	/// Create a color cursor.

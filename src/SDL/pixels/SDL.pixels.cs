@@ -117,7 +117,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMasksForPixelFormat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetMasksForPixelFormat(SDL_PixelFormat format, out int bpp, out uint rMask, out uint gMask, out uint bMask, out uint aMask);
+	public static partial int GetMasksForPixelFormat(SDL_PixelFormat format, int* bpp, uint* rMask, uint* gMask, uint* bMask, uint* aMask);
 
 	/// <summary>
 	/// Convert a bpp value and RGBA masks to an enumerated pixel format.
@@ -139,12 +139,13 @@ public static unsafe partial class SDL
 	/// Create an <see cref="SDL_PixelFormatDetails"/> structure corresponding to a pixel format.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreatePixelFormat">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPixelFormatDetails">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="format">One of the <see cref="SDL_PixelFormat"/> values.</param>
 	/// <returns>A pointer to a <see cref="SDL_PixelFormatDetails"/> structure or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreatePixelFormat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: Const]
 	public static partial SDL_PixelFormatDetails* GetPixelFormatDetails(SDL_PixelFormat format);
 
 	/// <summary>
@@ -168,11 +169,11 @@ public static unsafe partial class SDL
 	/// <param name="palette">The <see cref="SDL_Palette"/> structure to modify.</param>
 	/// <param name="colors">An array of <see cref="SDL_Color"/> structures to copy into the palette.</param>
 	/// <param name="firstColor">The index of the first palette entry to modify.</param>
-	/// <param name="numColors">The number of entries to modify. Corresponds to <paramref name="colors"/>.Length.</param>
+	/// <param name="numColors">The number of entries to modify.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetPaletteColors")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetPaletteColors(SDL_Palette* palette, [In] SDL_Color[] colors, int firstColor, int numColors);
+	public static partial int SetPaletteColors(SDL_Palette* palette, [Const] SDL_Color* colors, int firstColor, int numColors);
 
 	/// <summary>
 	/// Free a palette created with <see cref="CreatePalette(int)"/>.
@@ -232,7 +233,7 @@ public static unsafe partial class SDL
 	/// <param name="b">A pointer filled in with the blue component.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRGB")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void GetRGB(uint pixel, SDL_PixelFormatDetails* format, SDL_Palette* palette, out byte r, out byte g, out byte b);
+	public static partial void GetRGB(uint pixel, SDL_PixelFormatDetails* format, SDL_Palette* palette, byte* r, byte* g, byte* b);
 
 	/// <summary>
 	/// Get RGBA values from a pixel in the specified format.
@@ -249,7 +250,7 @@ public static unsafe partial class SDL
 	/// <param name="a">A pointer filled in with the alpha component.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRGBA")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void GetRGBA(uint pixel, SDL_PixelFormatDetails* format, SDL_Palette* palette, out byte r, out byte g, out byte b, out byte a);
+	public static partial void GetRGBA(uint pixel, SDL_PixelFormatDetails* format, SDL_Palette* palette, byte* r, byte* g, byte* b, byte* a);
 
 	/// <summary>
 	/// RGBA format, where each channel represents 8-bits.

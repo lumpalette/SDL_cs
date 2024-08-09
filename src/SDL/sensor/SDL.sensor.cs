@@ -13,11 +13,14 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSensors">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="count">A pointer filled in with the number of sensors returned.</param>
-	/// <returns>A null-terminated array of sensor instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
+	/// <param name="count">A pointer filled in with the number of sensors returned, may be <see langword="null"/>.</param>
+	/// <returns>
+	/// A null-terminated array of sensor instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.<br/>
+	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
+	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensors")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_SensorId* GetSensors(out int count);
+	public static partial SDL_SensorId* GetSensors(int* count);
 
 	/// <summary>
 	/// Get the implementation dependent name of a sensor.
@@ -149,11 +152,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="sensor">The <see cref="SDL_Sensor"/> object to query. </param>
 	/// <param name="data">A pointer filled with the current sensor state.</param>
-	/// <param name="numValues">The number of values to write to data. Corresponds to <paramref name="data"/>.Length.</param>
+	/// <param name="numValues">The number of values to write to data.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorData")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetSensorData(SDL_Sensor* sensor, [In, Out] float[] data, int numValues);
+	public static partial int GetSensorData(SDL_Sensor* sensor, float* data, int numValues);
 
 	/// <summary>
 	/// Close a sensor previously opened with <see cref="OpenSensor(SDL_SensorId)"/>.

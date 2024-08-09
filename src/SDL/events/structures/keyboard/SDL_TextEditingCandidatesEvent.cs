@@ -10,56 +10,42 @@ namespace SDL3;
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_TextEditingCandidatesEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
-public unsafe struct SDL_TextEditingCandidatesEvent
+public readonly unsafe struct SDL_TextEditingCandidatesEvent
 {
 	/// <summary>
 	/// Set to <see cref="SDL_EventType.TextEditingCandidates"/>.
 	/// </summary>
-	public SDL_EventType Type;
+	public readonly SDL_EventType Type;
 
 	private readonly uint _reserved;
 
 	/// <summary>
 	/// In nanoseconds, populated using <see cref="SDL.GetTicksNs"/>.
 	/// </summary>
-	public ulong Timestamp;
+	public readonly ulong Timestamp;
 
 	/// <summary>
 	/// The window with keyboard focus, if any.
 	/// </summary>
-	public SDL_WindowId WindowId;
+	public readonly SDL_WindowId WindowId;
 
 	/// <summary>
 	/// The list of candidates, or <see langword="null"/> if there are no candidates available.
 	/// </summary>
-	public readonly string?[]? Candidates
-	{
-		get
-		{
-			if (_candidates is null)
-			{
-				var candidates = new string?[NumCandidates];
-				for (int i = 0; i < NumCandidates; i++)
-				{
-					candidates[i] = Utf8StringMarshaller.ConvertToManaged(_candidates[i]);
-				}
-				return candidates;
-			}
-			return null;
-		}
-	}
-
-	private readonly byte** _candidates;
+	/// <remarks>
+	/// Use <see cref="SDL.UnmanagedToManagedStrings(byte**, int)"/> to convert this field into an array of managed strings.
+	/// </remarks>
+	public readonly byte** Candidates;
 
 	/// <summary>
 	/// The number of strings in <see cref="Candidates"/>.
 	/// </summary>
-	public int NumCandidates;
+	public readonly int NumCandidates;
 
 	/// <summary>
 	/// The index of the selected candidate, or -1 if no candidate is selected.
 	/// </summary>
-	public int SelectedCandidate;
+	public readonly int SelectedCandidate;
 
 	/// <summary>
 	/// True if the list is horizontal, false if it's vertical.

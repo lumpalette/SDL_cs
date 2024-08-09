@@ -3,7 +3,7 @@
 namespace SDL3;
 
 /// <summary>
-/// 
+/// Gamepad axis motion event structure (<see cref="SDL_Event.GamepadAxis"/>).
 /// </summary>
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GamepadAxisEvent">documentation</see> for more details.

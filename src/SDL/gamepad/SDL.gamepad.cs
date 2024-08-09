@@ -50,11 +50,11 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMappings">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="count">A pointer filled in with the number of mappings returned.</param>
+	/// <param name="count">A pointer filled in with the number of mappings returned, can be <see langword="null"/>.</param>
 	/// <returns>An array of the mapping strings, null-terminated, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This is a single allocation that should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadMappings")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte** GetGamepadMappings(out int count);
+	public static partial byte** GetGamepadMappings(int* count);
 
 	/// <summary>
 	/// Get the gamepad mapping string for a given GUID.
@@ -63,7 +63,10 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMappingForGUID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="guid">A structure containing the GUID for which a mapping is desired.</param>
-	/// <returns>A mapping string or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
+	/// <returns>
+	/// A mapping string or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.<br/>
+	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
+	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadMappingForGUID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial byte* GetGamepadMappingForGuid(SDL_Guid guid);
@@ -75,7 +78,10 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMapping">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="gamepad">The gamepad you want to get the current mapping for.</param>
-	/// <returns>A string that has the gamepad's mapping or <see langword="null"/> if no mapping is available; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
+	/// <returns>
+	/// A string that has the gamepad's mapping or <see langword="null"/> if no mapping is available; call <see cref="GetError"/> for more information.<br/>
+	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
+	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadMapping")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial byte* GetGamepadMapping(SDL_Gamepad* gamepad);
@@ -111,11 +117,14 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepads">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="count">A pointer filled in with the number of gamepads returned.</param>
-	/// <returns>A null-terminated array of joystick instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
+	/// <param name="count">A pointer filled in with the number of gamepads returned, may be <see langword="null"/>.</param>
+	/// <returns>
+	/// A null-terminated array of joystick instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.<br/>
+	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
+	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepads")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_JoystickId* GetGamepads(out int count);
+	public static partial SDL_JoystickId* GetGamepads(int* count);
 
 	/// <summary>
 	/// Check if the given joystick is supported by the gamepad interface.
@@ -247,7 +256,10 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetGamepadMappingForID">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The joystick instance ID.</param>
-	/// <returns>The mapping string. Returns <see langword="null"/> if no mapping is available. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
+	/// <returns>
+	/// The mapping string. Returns <see langword="null"/> if no mapping is available.<br/>
+	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed
+	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadMappingForID")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial byte* GetGamepadMappingForId(SDL_JoystickId instanceId);
@@ -477,7 +489,7 @@ public static unsafe partial class SDL
 	/// <returns>The current battery state.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadPowerInfo")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_PowerState GetGamepadPowerInfo(SDL_Gamepad* gamepad, out int percent);
+	public static partial SDL_PowerState GetGamepadPowerInfo(SDL_Gamepad* gamepad, int* percent);
 
 	/// <summary>
 	/// Check if a gamepad has been opened and is currently connected.
@@ -538,7 +550,7 @@ public static unsafe partial class SDL
 	/// <returns>A null-terminated array of pointers to bindings or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This is a single allocation that should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadBindings")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_GamepadBinding** GetGamepadBindings(SDL_Gamepad* gamepad, out int count);
+	public static partial SDL_GamepadBinding** GetGamepadBindings(SDL_Gamepad* gamepad, int* count);
 
 	/// <summary>
 	/// Manually pump gamepad updates if not using the loop.
@@ -743,7 +755,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadTouchpadFinger")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetGamepadTouchpadFinger(SDL_Gamepad* gamepad, int touchpad, int finger, out byte state, out float x, out float y, out float pressure);
+	public static partial int GetGamepadTouchpadFinger(SDL_Gamepad* gamepad, int touchpad, int finger, byte* state, float* x, float* y, float* pressure);
 
 	/// <summary>
 	/// Return whether a gamepad has a particular sensor.
@@ -809,11 +821,11 @@ public static unsafe partial class SDL
 	/// <param name="gamepad">The gamepad to query.</param>
 	/// <param name="type">Type of sensor to query.</param>
 	/// <param name="data">A pointer filled with the current sensor state.</param>
-	/// <param name="numValues">The number of values to write to data. Corresponds to <paramref name="data"/>.Length.</param>
+	/// <param name="numValues">The number of values to write to data.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadSensorData")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetGamepadSensorData(SDL_Gamepad* gamepad, SDL_SensorType type, [In, Out] float[] data, int numValues);
+	public static partial int GetGamepadSensorData(SDL_Gamepad* gamepad, SDL_SensorType type, float* data, int numValues);
 
 	/// <summary>
 	/// Start a rumble effect on a gamepad.

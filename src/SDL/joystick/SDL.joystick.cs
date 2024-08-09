@@ -45,11 +45,14 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoysticks">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="count">A pointer filled in with the number of joysticks returned.</param>
-	/// <returns>A null-terminated array of joystick instance IDs or <see langword="null"/> on failure; <see cref="GetError"/> for more details. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
+	/// <param name="count">A pointer filled in with the number of joysticks returned, may be <see langword="null"/>.</param>
+	/// <returns>
+	/// A null-terminated array of joystick instance IDs or <see langword="null"/> on failure; <see cref="GetError"/> for more details.<br/>
+	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed
+	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoysticks")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_JoystickId* GetJoysticks(out int count);
+	public static partial SDL_JoystickId* GetJoysticks(int* count);
 
 	/// <summary>
 	/// Get the implementation dependent name of a joystick.
@@ -195,7 +198,7 @@ public static unsafe partial class SDL
 	/// <returns>The joystick instance ID, or <see cref="SDL_JoystickId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AttachVirtualJoystick")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_JoystickId AttachVirtualJoystick(ref SDL_VirtualJoystickDesc desc);
+	public static partial SDL_JoystickId AttachVirtualJoystick([Const] SDL_VirtualJoystickDesc* desc);
 
 	/// <summary>
 	/// Detach a virtual joystick.
@@ -203,7 +206,7 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DetachVirtualJoystick">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="instanceId">The joystick instance ID, previously returned from <see cref="AttachVirtualJoystick(ref SDL_VirtualJoystickDesc)"/>.</param>
+	/// <param name="instanceId">The joystick instance ID, previously returned from <see cref="AttachVirtualJoystick(SDL_VirtualJoystickDesc*)"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_DetachVirtualJoystick")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -308,11 +311,11 @@ public static unsafe partial class SDL
 	/// <param name="type">The type of the sensor on the virtual joystick to update.</param>
 	/// <param name="sensorTimestamp">A 64-bit timestamp in nanoseconds associated with the sensor reading.</param>
 	/// <param name="data">The data associated with the sensor reading.</param>
-	/// <param name="numValues">The number of values pointed to by <paramref name="data"/>. Corresponds to <paramref name="data"/>.Length.</param>
+	/// <param name="numValues">The number of values pointed to by <paramref name="data"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SendJoystickVirtualSensorData")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SendJoystickVirtualSensorData(SDL_Joystick* joystick, SDL_SensorType type, ulong sensorTimestamp, [In] float[] data, int numValues);
+	public static partial int SendJoystickVirtualSensorData(SDL_Joystick* joystick, SDL_SensorType type, ulong sensorTimestamp, [Const] float* data, int numValues);
 
 	/// <summary>
 	/// Get the properties associated with a joystick.
@@ -475,7 +478,7 @@ public static unsafe partial class SDL
 	/// <param name="crc16">A pointer filled in with a CRC used to distinguish different products with the same VID/PID, or 0 if not available.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickGUIDInfo")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void GetJoystickGuidInfo(SDL_Guid guid, out ushort vendor, out ushort product, out ushort version, out ushort crc16);
+	public static partial void GetJoystickGuidInfo(SDL_Guid guid, ushort* vendor, ushort* product, ushort* version, ushort* crc16);
 
 	/// <summary>
 	/// Get the status of a specified joystick.
@@ -609,7 +612,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickAxisInitialState")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool GetJoystickAxisInitialState(SDL_Joystick* joystick, int axis, out short state);
+	public static partial bool GetJoystickAxisInitialState(SDL_Joystick* joystick, int axis, short* state);
 
 	/// <summary>
 	/// Get the ball axis change since the last poll.
@@ -624,7 +627,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickBall")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetJoystickBall(SDL_Joystick* joystick, int ball, out int dx, out int dy);
+	public static partial int GetJoystickBall(SDL_Joystick* joystick, int ball, int* dx, int* dy);
 
 	/// <summary>
 	/// Get the current state of a POV hat on a joystick.
@@ -745,7 +748,7 @@ public static unsafe partial class SDL
 	/// <returns>The current battery state or <see cref="SDL_PowerState.Error"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickPowerInfo")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_PowerState GetJoystickPowerInfo(SDL_Joystick* joystick, out int percent);
+	public static partial SDL_PowerState GetJoystickPowerInfo(SDL_Joystick* joystick, int* percent);
 
 	/// <summary>
 	/// The largest value an <see cref="SDL_Joystick"/>'s axis can report.

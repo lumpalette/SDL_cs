@@ -17,5 +17,5 @@ public static unsafe partial class SDL
 	/// <returns>The current battery state or <see cref="SDL_PowerState.Error"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPowerInfo")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_PowerState GetPowerInfo(out int seconds, out int percent);
+	public static partial SDL_PowerState GetPowerInfo(int* seconds, int* percent);
 }

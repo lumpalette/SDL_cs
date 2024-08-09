@@ -62,7 +62,10 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetPrimarySelectionText">documentation</see> for more details.
 	/// </remarks>
-	/// <returns>The primary selection text on success or an empty string on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
+	/// <returns>
+	/// The primary selection text on success or an empty string on failure; call <see cref="GetError"/> for more information.<br/>
+	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
+	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetPrimarySelectionText")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial byte* GetPrimarySelectionText();
@@ -93,7 +96,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetClipboardData", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetClipboardData(delegate* unmanaged[Cdecl]<nint, byte*, out nuint, void> callback, delegate* unmanaged[Cdecl]<nint, void> cleanup, nint userData, [In] string[] mimeTypes, nuint numMimeTypes);
+	public static partial int SetClipboardData(delegate* unmanaged[Cdecl]<nint, byte*, nuint*, void> callback, delegate* unmanaged[Cdecl]<nint, void> cleanup, nint userData, [Const] byte** mimeTypes, nuint numMimeTypes);
 
 	/// <summary>
 	/// Clear the clipboard data.
@@ -114,10 +117,13 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="mimeType">The mime type to read from the clipboard.</param>
 	/// <param name="size">A pointer filled in with the length of the returned data.</param>
-	/// <returns>The retrieved data buffer or <see cref="nint.Zero"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
+	/// <returns>
+	/// The retrieved data buffer or <see cref="nint.Zero"/> on failure; call <see cref="GetError"/> for more information.<br/>
+	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
+	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetClipboardData", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial nint GetClipboardData(string mimeType, out nuint size);
+	public static partial nint GetClipboardData(string mimeType, nuint* size);
 
 	/// <summary>
 	/// Query whether there is data in the clipboard for the provided mime type.

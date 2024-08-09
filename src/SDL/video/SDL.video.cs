@@ -68,11 +68,14 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplays">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="count">A pointer filled in with the number of displays returned.</param>
-	/// <returns>A null-terminated array of display instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
+	/// <param name="count">A pointer filled in with the number of displays returned, may be <see langword="null"/>.</param>
+	/// <returns>
+	/// A null-terminated array of display instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.<br/>
+	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
+	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplays")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_DisplayId* GetDisplays(out int count);
+	public static partial SDL_DisplayId* GetDisplays(int* count);
 
 	/// <summary>
 	/// Return the primary display.
@@ -118,7 +121,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayBounds")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetDisplayBounds(SDL_DisplayId instanceId, out SDL_Rect rect);
+	public static partial int GetDisplayBounds(SDL_DisplayId instanceId, SDL_Rect* rect);
 
 	/// <summary>
 	/// Get the usable desktop area represented by a display, in screen coordinates.
@@ -131,7 +134,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayUsableBounds")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetDisplayUsableBounds(SDL_DisplayId instanceId, out SDL_Rect rect);
+	public static partial int GetDisplayUsableBounds(SDL_DisplayId instanceId, SDL_Rect* rect);
 
 	/// <summary>
 	/// Get the orientation of a display when it is unrotated.
@@ -176,11 +179,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetFullscreenDisplayModes">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The instance ID of the display to query.</param>
-	/// <param name="count">A pointer filled in with the number of display modes returned.</param>
+	/// <param name="count">A pointer filled in with the number of display modes returned, may be <see langword="null"/>.</param>
 	/// <returns>A null-terminated array of display mode pointers or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This is a single allocation that should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetFullscreenDisplayModes")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_DisplayMode** GetFullscreenDisplayModes(SDL_DisplayId instanceId, out int count);
+	public static partial SDL_DisplayMode** GetFullscreenDisplayModes(SDL_DisplayId instanceId, int* count);
 
 	/// <summary>
 	/// Get the closest match to the requested display mode.
@@ -197,7 +200,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetClosestFullscreenDisplayMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetClosestFullscreenDisplayMode(SDL_DisplayId instanceId, int width, int height, float refreshRate, [MarshalAs(NativeBool)] bool includeHighDensityModes, out SDL_DisplayMode mode);
+	public static partial int GetClosestFullscreenDisplayMode(SDL_DisplayId instanceId, int width, int height, float refreshRate, [MarshalAs(NativeBool)] bool includeHighDensityModes, SDL_DisplayMode* mode);
 
 	/// <summary>
 	/// Get information about the desktop's display mode.
@@ -209,6 +212,7 @@ public static unsafe partial class SDL
 	/// <returns>A pointer to the desktop display mode or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDesktopDisplayMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: Const]
 	public static partial SDL_DisplayMode* GetDesktopDisplayMode(SDL_DisplayId instanceId);
 
 	/// <summary>
@@ -221,6 +225,7 @@ public static unsafe partial class SDL
 	/// <returns>A pointer to the current display mode or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentDisplayMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: Const]
 	public static partial SDL_DisplayMode* GetCurrentDisplayMode(SDL_DisplayId instanceId);
 
 	/// <summary>
@@ -233,7 +238,7 @@ public static unsafe partial class SDL
 	/// <returns>The instance ID of the display containing the point or <see cref="SDL_DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayForPoint")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_DisplayId GetDisplayForPoint(ref SDL_Point point);
+	public static partial SDL_DisplayId GetDisplayForPoint([Const] SDL_Point* point);
 
 	/// <summary>
 	/// Get the display primarily containing a rect.
@@ -245,7 +250,7 @@ public static unsafe partial class SDL
 	/// <returns>The instance ID of the display entirely containing the rect or closest to the center of the rect on success or <see cref="SDL_DisplayId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayForRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_DisplayId GetDisplayForRect(ref SDL_Rect rect);
+	public static partial SDL_DisplayId GetDisplayForRect([Const] SDL_Rect* rect);
 
 	/// <summary>
 	/// Get the display associated with a window.
@@ -290,11 +295,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowFullscreenMode">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window">The window to affect.</param>
-	/// <param name="mode">A pointer to the display mode to use, which can be <see langword="null"/> for borderless fullscreen desktop mode, or one of the fullscreen modes returned by <see cref="GetFullscreenDisplayModes(SDL_DisplayId, out int)"/> to set an exclusive fullscreen mode.</param>
+	/// <param name="mode">A pointer to the display mode to use, which can be <see langword="null"/> for borderless fullscreen desktop mode, or one of the fullscreen modes returned by <see cref="GetFullscreenDisplayModes(SDL_DisplayId, int*)"/> to set an exclusive fullscreen mode.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowFullscreenMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetWindowFullscreenMode(SDL_Window* window, ref SDL_DisplayMode mode);
+	public static partial int SetWindowFullscreenMode(SDL_Window* window, [Const] SDL_DisplayMode* mode);
 
 	/// <summary>
 	/// Query the display mode to use when a window is visible at fullscreen.
@@ -306,6 +311,7 @@ public static unsafe partial class SDL
 	/// <returns>A pointer to the exclusive fullscreen mode to use or <see langword="null"/> for borderless fullscreen desktop mode.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowFullscreenMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: Const]
 	public static partial SDL_DisplayMode* GetWindowFullscreenMode(SDL_Window* window);
 
 	/// <summary>
@@ -316,10 +322,13 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="window">The window to query.</param>
 	/// <param name="size">The size of the ICC profile.</param>
-	/// <returns>The raw ICC profile data on success or <see cref="nint.Zero"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
+	/// <returns>
+	/// The raw ICC profile data on success or <see cref="nint.Zero"/> on failure; call <see cref="GetError"/> for more information.<br/>
+	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
+	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowICCProfile")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial nint GetWindowICCProfile(SDL_Window* window, out nuint size);
+	public static partial nint GetWindowICCProfile(SDL_Window* window, nuint* size);
 
 	/// <summary>
 	/// Get the pixel format associated with the window.
@@ -343,7 +352,7 @@ public static unsafe partial class SDL
 	/// <returns>A null-terminated array of window pointers or <see langword="null"/> on error; call <see cref="GetError"/> for more details. This is a single allocation that should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindows")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Window** GetWindows(out int count);
+	public static partial SDL_Window** GetWindows(int* count);
 
 	/// <summary>
 	/// Create a window with the specified dimensions and flags.
@@ -510,12 +519,12 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowPosition">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window">The window to query.</param>
-	/// <param name="x">A pointer filled in with the x position of the window.</param>
-	/// <param name="y">A pointer filled in with the y position of the window.</param>
+	/// <param name="x">A pointer filled in with the x position of the window, may be <see langword="null"/>.</param>
+	/// <param name="y">A pointer filled in with the y position of the window, may be <see langword="null"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowPosition")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetWindowPosition(SDL_Window* window, out int x, out int y);
+	public static partial int GetWindowPosition(SDL_Window* window, int* x, int* y);
 
 	/// <summary>
 	/// Request that the size of a window's client area be set.
@@ -538,12 +547,12 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowSize">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window">The window to query the width and height from.</param>
-	/// <param name="width">A pointer filled in with the width of the window.</param>
-	/// <param name="height">A pointer filled in with the height of the window.</param>
+	/// <param name="width">A pointer filled in with the width of the window, may be <see langword="null"/>.</param>
+	/// <param name="height">A pointer filled in with the height of the window, may be <see langword="null"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetWindowSize(SDL_Window* window, out int width, out int height);
+	public static partial int GetWindowSize(SDL_Window* window, int* width, int* height);
 
 	/// <summary>
 	/// Get the safe area for this window.
@@ -556,7 +565,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowSafeArea")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetWindowSafeArea(SDL_Window* window, out SDL_Rect rect);
+	public static partial int GetWindowSafeArea(SDL_Window* window, SDL_Rect* rect);
 
 	/// <summary>
 	/// Request that the aspect ratio of a window's client area be set.
@@ -579,12 +588,12 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowAspectRatio">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window">The window to query the width and height from.</param>
-	/// <param name="minAspect">A pointer filled in with the minimum aspect ratio of the window.</param>
-	/// <param name="maxAspect">A pointer filled in with the maximum aspect ratio of the window.</param>
+	/// <param name="minAspect">A pointer filled in with the minimum aspect ratio of the window, may be <see langword="null"/>.</param>
+	/// <param name="maxAspect">A pointer filled in with the maximum aspect ratio of the window, may be <see langword="null"/>.</param>
 	/// <returns></returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowAspectRatio")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetWindowAspectRatio(SDL_Window* window, out float minAspect, out float maxAspect);
+	public static partial int GetWindowAspectRatio(SDL_Window* window, float* minAspect, float* maxAspect);
 
 	/// <summary>
 	/// Get the size of a window's borders (decorations) around the client area.
@@ -593,14 +602,14 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowBordersSize">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window">The window to query the size values of the border (decorations) from.</param>
-	/// <param name="top">Pointer to variable for storing the size of the top border.</param>
-	/// <param name="left">Pointer to variable for storing the size of the left border.</param>
-	/// <param name="bottom">Pointer to variable for storing the size of the bottom border.</param>
-	/// <param name="right">Pointer to variable for storing the size of the right border.</param>
+	/// <param name="top">Pointer to variable for storing the size of the top border; <see langword="null"/> is permitted.</param>
+	/// <param name="left">Pointer to variable for storing the size of the left border; <see langword="null"/> is permitted.</param>
+	/// <param name="bottom">Pointer to variable for storing the size of the bottom border; <see langword="null"/> is permitted.</param>
+	/// <param name="right">Pointer to variable for storing the size of the right border; <see langword="null"/> is permitted.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowBordersSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetWindowBordersSize(SDL_Window* window, out int top, out int left, out int bottom, out int right);
+	public static partial int GetWindowBordersSize(SDL_Window* window, int* top, int* left, int* bottom, int* right);
 
 	/// <summary>
 	/// Get the size of a window's client area, in pixels.
@@ -609,12 +618,12 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowSizeInPixels">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window">The window from which the drawable size should be queried.</param>
-	/// <param name="width">A pointer to variable for storing the width in pixels.</param>
-	/// <param name="height">A pointer to variable for storing the height in pixels.</param>
+	/// <param name="width">A pointer to variable for storing the width in pixels, may be <see langword="null"/>.</param>
+	/// <param name="height">A pointer to variable for storing the height in pixels, may be <see langword="null"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowSizeInPixels")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetWindowSizeInPixels(SDL_Window* window, out int width, out int height);
+	public static partial int GetWindowSizeInPixels(SDL_Window* window, int* width, int* height);
 
 	/// <summary>
 	/// Set the minimum size of a window's client area.
@@ -637,12 +646,12 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowMinimumSize">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window">The window to query.</param>
-	/// <param name="minWidth">A pointer filled in with the minimum width of the window.</param>
-	/// <param name="minHeight">A pointer filled in with the minimum height of the window.</param>
+	/// <param name="minWidth">A pointer filled in with the minimum width of the window, may be <see langword="null"/>.</param>
+	/// <param name="minHeight">A pointer filled in with the minimum height of the window, may be <see langword="null"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowMinimumSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetWindowMinimumSize(SDL_Window* window, out int minWidth, out int minHeight);
+	public static partial int GetWindowMinimumSize(SDL_Window* window, int* minWidth, int* minHeight);
 
 	/// <summary>
 	/// Set the maximum size of a window's client area.
@@ -665,12 +674,12 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetWindowMaximumSize">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window">The window to query.</param>
-	/// <param name="maxWidth">A pointer filled in with the maximum width of the window.</param>
-	/// <param name="maxHeight">A pointer filled in with the maximum height of the window.</param>
+	/// <param name="maxWidth">A pointer filled in with the maximum width of the window, may be <see langword="null"/>.</param>
+	/// <param name="maxHeight">A pointer filled in with the maximum height of the window, may be <see langword="null"/>.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowMaximumSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetWindowMaximumSize(SDL_Window* window, out int maxWidth, out int maxHeight);
+	public static partial int GetWindowMaximumSize(SDL_Window* window, int* maxWidth, int* maxHeight);
 
 	/// <summary>
 	/// Set the border state of a window.
@@ -857,7 +866,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowSurfaceVSync")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetWindowSurfaceVSync(SDL_Window* window, out int vsync);
+	public static partial int GetWindowSurfaceVSync(SDL_Window* window, int* vsync);
 
 	/// <summary>
 	/// Copy the window surface to the screen.
@@ -879,11 +888,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="window">The window to update.</param>
 	/// <param name="rects">An array of <see cref="SDL_Rect"/> structures representing areas of the surface to copy, in pixels.</param>
-	/// <param name="numRects">The number of rectangles. Corresponds to <paramref name="rects"/>.Length.</param>
+	/// <param name="numRects">The number of rectangles.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateWindowSurfaceRects")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int UpdateWindowSurfaceRects(SDL_Window* window, [In] SDL_Rect[] rects, int numRects);
+	public static partial int UpdateWindowSurfaceRects(SDL_Window* window, [Const] SDL_Rect* rects, int numRects);
 
 	/// <summary>
 	/// Destroy the surface associated with the window.
@@ -968,7 +977,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowMouseRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetWindowMouseRect(SDL_Window* window, ref SDL_Rect rect);
+	public static partial int SetWindowMouseRect(SDL_Window* window, [Const] SDL_Rect* rect);
 
 	/// <summary>
 	/// Get the mouse confinement rectangle of a window.
@@ -1225,7 +1234,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GL_GetAttribute")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GL_GetAttribute(SDL_GLAttr attr, out int value);
+	public static partial int GL_GetAttribute(SDL_GLAttr attr, int* value);
 
 	/// <summary>
 	/// Create an OpenGL context for an OpenGL window, and make it current.
@@ -1343,7 +1352,7 @@ public static unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GL_GetSwapInterval")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GL_GetSwapInterval(out int interval);
+	public static partial int GL_GetSwapInterval(int* interval);
 
 	/// <summary>
 	/// Update a window with OpenGL rendering.
