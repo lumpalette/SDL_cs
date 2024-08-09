@@ -1,4 +1,4 @@
-﻿	namespace SDL3;
+﻿namespace SDL3;
 
 public static unsafe partial class SDL
 {
@@ -333,7 +333,7 @@ public static unsafe partial class SDL
 		public const string GdkTextInputTitle = "SDL_GDK_TEXTINPUT_TITLE";
 
 		/// <summary>
-		/// A variable to control whether <see cref="FIXME:SDL_hid_enumerate()"/> enumerates all HID devices or only controllers.
+		/// A variable to control whether <see cref="HidEnumerate(ushort, ushort)"/> enumerates all HID devices or only controllers.
 		/// </summary>
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_HIDAPI_ENUMERATE_ONLY_CONTROLLERS">documentation</see> for more details.
@@ -341,7 +341,7 @@ public static unsafe partial class SDL
 		public const string HidapiEnumerateOnlyControllers = "SDL_HIDAPI_ENUMERATE_ONLY_CONTROLLERS";
 
 		/// <summary>
-		/// A variable containing a list of devices to ignore in <see cref="FIXME:SDL_hid_enumerate()"/>.
+		/// A variable containing a list of devices to ignore in <see cref="HidEnumerate(ushort, ushort)"/>.
 		/// </summary>
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_HIDAPI_IGNORE_DEVICES">documentation</see> for more details.
@@ -435,6 +435,14 @@ public static unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_FLIGHTSTICK_DEVICES_EXCLUDED">documentation</see> for more details.
 		/// </remarks>
 		public const string JoystickFlightstickDevicesExcluded = "SDL_JOYSTICK_FLIGHTSTICK_DEVICES_EXCLUDED";
+
+		/// <summary>
+		/// A variable controlling whether GameInput should be used for controller handling on Windows.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_JOYSTICK_GAMEINPUT">documentation</see> for more details.
+		/// </remarks>
+		public const string JoystickGameInput = "SDL_JOYSTICK_GAMEINPUT";
 
 		/// <summary>
 		/// A variable containing a list of devices known to have a GameCube form factor.

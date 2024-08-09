@@ -25,7 +25,7 @@ public enum SDL_EventType : uint
 	/// </summary>
 	/// <remarks>
 	/// <para>
-	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch(SDL_EventFilterCallback, nint)"/>.
+	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch"/>.
 	/// </para>
 	/// <para>
 	/// Called on iOS in <c>applicationWillTerminate()</c>. Called on Android in <c>onDestroy()</c>.
@@ -38,7 +38,7 @@ public enum SDL_EventType : uint
 	/// </summary>
 	/// <remarks>
 	/// <para>
-	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch(SDL_EventFilterCallback, nint)"/>.
+	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch"/>.
 	/// </para>
 	/// <para>
 	/// Called on iOS in <c>applicationDidReceiveMemoryWarning()</c>. Called on Android in <c>onTrimMemory()</c>.
@@ -51,7 +51,7 @@ public enum SDL_EventType : uint
 	/// </summary>
 	/// <remarks>
 	/// <para>
-	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch(SDL_EventFilterCallback, nint)"/>.
+	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch"/>.
 	/// </para>
 	/// <para>
 	/// Called on iOS in <c>applicationWillResignActive()</c>. Called on Android in <c>onPause()</c>.
@@ -64,7 +64,7 @@ public enum SDL_EventType : uint
 	/// </summary>
 	/// <remarks>
 	/// <para>
-	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch(SDL_EventFilterCallback, nint)"/>.
+	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch"/>.
 	/// </para>
 	/// <para>
 	/// Called on iOS in <c>applicationDidEnterBackground()</c>. Called on Android in <c>onPause()</c>.
@@ -77,7 +77,7 @@ public enum SDL_EventType : uint
 	/// </summary>
 	/// <remarks>
 	/// <para>
-	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch(SDL_EventFilterCallback, nint)"/>.
+	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch"/>.
 	/// </para>
 	/// <para>
 	/// Called on iOS in <c>applicationWillEnterForeground()</c>. Called on Android in <c>onResume()</c>.
@@ -90,7 +90,7 @@ public enum SDL_EventType : uint
 	/// </summary>
 	/// <remarks>
 	/// <para>
-	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch(SDL_EventFilterCallback, nint)"/>.
+	/// This event must be handled in a callback set with <see cref="SDL.AddEventWatch"/>.
 	/// </para>
 	/// <para>
 	/// Called on iOS in <c>applicationDidBecomeActive()</c>. Called on Android in <c>onResume()</c>.
@@ -147,7 +147,14 @@ public enum SDL_EventType : uint
 	/// </summary>
 	DisplayContentScaleChanged,
 
+	/// <summary>
+	/// The first event in the category of "Display".
+	/// </summary>
 	DisplayFirst = DisplayOrientation,
+
+	/// <summary>
+	/// The last event in the category of "Display".
+	/// </summary>
 	DisplayLast = DisplayContentScaleChanged,
 
 	#endregion
@@ -294,7 +301,14 @@ public enum SDL_EventType : uint
 	/// </summary>
 	WindowHdrStateChanged,
 
+	/// <summary>
+	/// The first event in the category of "Window".
+	/// </summary>
 	WindowFirst = WindowShown,
+
+	/// <summary>
+	/// The last event in the category of "Window".
+	/// </summary>
 	WindowLast = WindowHdrStateChanged,
 
 	#endregion
@@ -642,7 +656,7 @@ public enum SDL_EventType : uint
 
 	/// <summary>
 	/// Events <see cref="User"/> through <see cref="Last"/> are for your use and should be allocated with
-	/// <see cref="<see cref="SDL.RegisterEvents(int)"/>"/>.
+	/// <see cref="SDL.RegisterEvents(int)"/>.
 	/// </summary>
 	User = 0x8000,
 
