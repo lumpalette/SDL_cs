@@ -15,7 +15,7 @@ public unsafe struct SDL_Event
 	/// Event type, shared with all events.
 	/// </summary>
 	[FieldOffset(0)]
-	public uint Type;
+	public SDL_EventType Type;
 
 	/// <summary>
 	/// Common event data.
