@@ -14,7 +14,7 @@ public struct SDL_UserEvent
 	/// <summary>
 	/// Set to <see cref="SDL_EventType.User"/> through <see cref="SDL_EventType.Last"/> - 1.
 	/// </summary>
-	public SDL_EventType Type;
+	public uint Type;
 
 	private readonly uint _reserved;
 
