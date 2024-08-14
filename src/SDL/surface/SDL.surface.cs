@@ -168,10 +168,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to query.</param>
 	/// <param name="count">A pointer filled in with the number of surface pointers returned, may be <see langword="null"/>.</param>
-	/// <returns>
-	/// A null-terminated array of <see cref="SDL_Surface"/> pointers or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.<br/>
-	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
-	/// </returns>
+	/// <returns>A null-terminated array of <see cref="SDL_Surface"/> pointers or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceImages")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Surface** GetSurfaceImages(SDL_Surface* surface, int* count);

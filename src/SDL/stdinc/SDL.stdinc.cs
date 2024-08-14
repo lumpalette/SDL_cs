@@ -20,6 +20,10 @@ public static unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial void free(nint mem);
 
+	[LibraryImport(LibraryName, EntryPoint = "SDL_free")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial void free(void* mem);
+
 	/// <summary>
 	/// Epsilon constant, used for comparing floating-point numbers.
 	/// </summary>

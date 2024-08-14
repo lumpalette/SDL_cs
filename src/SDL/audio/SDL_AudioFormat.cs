@@ -8,8 +8,8 @@
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioFormat">documentation</see> for more details.
 /// </para>
 /// <para>
-/// For audio formats that can be used regardless on the system endianness, use<br/>
-/// <see cref="SDL.AudioFormatS16"/>, <see cref="SDL.AudioFormatS32"/> or <see cref="SDL.AudioFormatF32"/>.
+/// For audio formats that can be used regardless on the system endianness, use <see cref="SDL.AudioFormatS16"/>,
+/// <see cref="SDL.AudioFormatS32"/> or <see cref="SDL.AudioFormatF32"/>.
 /// </para>
 /// </remarks>
 [Typedef]

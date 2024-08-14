@@ -26,10 +26,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetKeyboards">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of keyboards returned, may be <see langword="null"/>.</param>
-	/// <returns>
-	/// A null-terminated array of keyboards instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.<br/>
-	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
-	/// </returns>
+	/// <returns>A null-terminated array of keyboards instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboards")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_KeyboardId* GetKeyboards(int* count);
@@ -163,7 +160,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetScancodeName">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="scancode">The desired <see cref="SDL_Scancode"/>.</param>
-	/// <param name="name">The name to use for the scancode as UTF-8. The string is not copied, so the pointer given to this function must stay valid while SDL is being used.<br/>Use <see cref="Utf16StringMarshaller.ConvertToUnmanaged(string?)"/> and <see cref="Utf8StringMarshaller.Free(byte*)"/> to manually manage the string memory.</param>
+	/// <param name="name">The name to use for the scancode as UTF-8. The string is not copied, so the pointer given to this function must stay valid while SDL is being used.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetScancodeName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]

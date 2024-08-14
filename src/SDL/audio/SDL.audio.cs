@@ -150,10 +150,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioPlaybackDevices">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of devices returned, may be <see langword="null"/>.</param>
-	/// <returns>
-	/// A 0 terminated array of device instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.<br/>
-	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
-	/// </returns>
+	/// <returns>A null-terminated array of device instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioPlaybackDevices")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_AudioDeviceId* GetAudioPlaybackDevices(int* count);
@@ -165,10 +162,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetAudioRecordingDevices">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of devices returned, may be <see langword="null"/>.</param>
-	/// <returns>
-	/// A 0 terminated array of device instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.<br/>
-	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
-	/// </returns>
+	/// <returns>A null-terminated array of device instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioRecordingDevices")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_AudioDeviceId* GetAudioRecordingDevices(int* count);
@@ -208,10 +202,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="devId">The instance ID of the device to query.</param>
 	/// <param name="count">On output, set to number of channels in the map. Can be <see langword="null"/>.</param>
-	/// <returns>
-	/// An array of the current channel mapping, with as many elements as the current output spec's channels, or <see langword="null"/> if default.<br/>
-	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
-	/// </returns>
+	/// <returns>An array of the current channel mapping, with as many elements as the current output spec's channels, or <see langword="null"/> if default. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDeviceChannelMap")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int* GetAudioDeviceChannelMap(SDL_AudioDeviceId devId, int* count);
@@ -475,10 +466,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="stream">The <see cref="SDL_AudioStream"/> to query.</param>
 	/// <param name="count">On output, set to number of channels in the map. Can be <see langword="null"/>.</param>
-	/// <returns>
-	/// An array of the current channel mapping, with as many elements as the current output spec's channels, or <see langword="null"/> if default.<br/>
-	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
-	/// </returns>
+	/// <returns>An array of the current channel mapping, with as many elements as the current output spec's channels, or <see langword="null"/> if default. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioStreamInputChannelMap")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int* GetAudioStreamInputChannelMap(SDL_AudioStream* stream, int* count);
@@ -491,10 +479,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="stream">The <see cref="SDL_AudioStream"/> to query.</param>
 	/// <param name="count">On output, set to number of channels in the map. can be <see langword="null"/>.</param>
-	/// <returns>
-	/// An array of the current channel mapping, with as many elements as the current output spec's channels, or <see langword="null"/> if default.<br/>
-	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
-	/// </returns>
+	/// <returns>An array of the current channel mapping, with as many elements as the current output spec's channels, or <see langword="null"/> if default. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioStreamOutputChannelMap")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int* GetAudioStreamOutputChannelMap(SDL_AudioStream* stream, int* count);
@@ -720,27 +705,27 @@ public static unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int SetAudioPostmixCallback(SDL_AudioDeviceId devId, delegate* unmanaged[Cdecl]<nint, SDL_AudioSpec*, float*, int, void> callback, nint userData);
 
-	// TODO: implement SDL_LoadWAV_IO
+    // TODO: implement SDL_LoadWAV_IO
 
-	/// <summary>
-	/// Loads a WAV from a file path.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_LoadWAV">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="path">The file path of the WAV file to open.</param>
-	/// <param name="spec">An <see cref="SDL_AudioSpec"/> that will be set to the WAVE data's format details on successful return.</param>
-	/// <param name="audioBuffer">A pointer filled with the audio data, allocated by the function.</param>
-	/// <param name="audioLength">A pointer filled with the length of the audio data buffer in bytes.</param>
-	/// <returns>
-	/// 0 on success. <paramref name="audioBuffer"/> will be filled with a pointer to an allocated buffer containing the audio data,
-	/// and <paramref name="audioLength"/> is filled with the length of that audio buffer in bytes.<br/>
-	/// This function returns -1 if the .WAV file cannot be opened, uses an unknown data format, or is corrupt; call <see cref="GetError"/>
-	/// for more information.<br/>
+    /// <summary>
+    /// Loads a WAV from a file path.
+    /// </summary>
+    /// <remarks>
+    /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_LoadWAV">documentation</see> for more details.
+    /// </remarks>
+    /// <param name="path">The file path of the WAV file to open.</param>
+    /// <param name="spec">An <see cref="SDL_AudioSpec"/> that will be set to the WAVE data's format details on successful return.</param>
+    /// <param name="audioBuffer">A pointer filled with the audio data, allocated by the function.</param>
+    /// <param name="audioLength">A pointer filled with the length of the audio data buffer in bytes.</param>
+    /// <returns>
+    /// 0 on success. <paramref name="audioBuffer"/> will be filled with a pointer to an allocated buffer containing the audio data,
+    /// and <paramref name="audioLength"/> is filled with the length of that audio buffer in bytes.
+	/// This function returns -1 if the .WAV file cannot be opened, uses an unknown data format, or is corrupt; call
+	/// <see cref="GetError"/> for more information.
 	/// When the application is done with the data returned in <paramref name="audioBuffer"/>, it should call <see cref="free(nint)"/>
-	/// to dispose of it.
-	/// </returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_LoadWAV", StringMarshalling = StringMarshalling.Utf8)]
+    /// to dispose of it.
+    /// </returns>
+    [LibraryImport(LibraryName, EntryPoint = "SDL_LoadWAV", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int LoadWav(string path, SDL_AudioSpec* spec, byte** audioBuffer, uint* audioLength);
 

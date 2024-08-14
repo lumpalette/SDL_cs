@@ -97,7 +97,7 @@ public enum SDL_Keycode : uint
 	F10 = 0x40000043u,
 	F11 = 0x40000044u,
 	F12 = 0x40000045u,
-	Printscreen = 0x40000046u,
+	PrintScreen = 0x40000046u,
 	ScrollLock = 0x40000047u,
 	Pause = 0x40000048u,
 	Insert = 0x40000049u,

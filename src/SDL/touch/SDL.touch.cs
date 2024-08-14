@@ -14,10 +14,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetTouchDevices">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of fingers returned, may be <see langword="null"/>.</param>
-	/// <returns>
-	/// A null-terminated array of touch device IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.<br/>
-	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
-	/// </returns>
+	/// <returns>A null-terminated array of touch device IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTouchDevices")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_TouchId* GetTouchDevices(int* count);

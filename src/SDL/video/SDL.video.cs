@@ -69,10 +69,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDisplays">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="count">A pointer filled in with the number of displays returned, may be <see langword="null"/>.</param>
-	/// <returns>
-	/// A null-terminated array of display instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.<br/>
-	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
-	/// </returns>
+	/// <returns>A null-terminated array of display instance IDs or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplays")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_DisplayId* GetDisplays(int* count);
@@ -322,10 +319,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="window">The window to query.</param>
 	/// <param name="size">The size of the ICC profile.</param>
-	/// <returns>
-	/// The raw ICC profile data on success or <see cref="nint.Zero"/> on failure; call <see cref="GetError"/> for more information.<br/>
-	/// This should be freed with <see cref="free(nint)"/> when it is no longer needed.
-	/// </returns>
+	/// <returns>The raw ICC profile data on success or <see cref="nint.Zero"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(nint)"/> when it is no longer needed.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowICCProfile")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial nint GetWindowICCProfile(SDL_Window* window, nuint* size);
@@ -368,7 +362,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateWindow", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Window* CreateWindow(string title, int width, int height, SDL_WindowFlags flags);
-
+	
 	/// <summary>
 	/// Create a child popup window of the specified parent window.
 	/// </summary>
