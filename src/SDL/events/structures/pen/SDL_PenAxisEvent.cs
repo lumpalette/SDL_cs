@@ -3,13 +3,13 @@
 namespace SDL3;
 
 /// <summary>
-/// Pressure-sensitive pen button event structure (<see cref="SDL_Event.PenButton"/>).
+/// Pressure-sensitive pen pressure / angle event structure (<see cref="SDL_Event.PenAxis"/>).
 /// </summary>
 [StructLayout(LayoutKind.Sequential)]
-public struct SDL_PenButtonEvent
+public struct SDL_PenAxisEvent
 {
 	/// <summary>
-	/// Either <see cref="SDL_EventType.PenButtonDown"/> or <see cref="SDL_EventType.PenButtonUp"/>.
+	/// Set to <see cref="SDL_EventType.PenAxis"/>.
 	/// </summary>
 	public SDL_EventType Type;
 
@@ -46,12 +46,12 @@ public struct SDL_PenButtonEvent
 	public float Y;
 
 	/// <summary>
-	/// The pen button index (first button is 1).
+	/// Axis that has changed.
 	/// </summary>
-	public byte Button;
+	public SDL_PenAxis Axis;
 
 	/// <summary>
-	/// <see cref="SDL.Pressed"/> or <see cref="SDL.Released"/>.
+	/// New value of axis.
 	/// </summary>
-	public byte State;
+	public float Value;
 }

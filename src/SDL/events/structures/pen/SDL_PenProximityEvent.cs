@@ -3,13 +3,13 @@
 namespace SDL3;
 
 /// <summary>
-/// Pressure-sensitive pen motion event structure (<see cref="SDL_Event.PenMotion"/>).
+/// Pressure-sensitive pen proximity event structure (<see cref="SDL_Event.PenProximity"/>)
 /// </summary>
 [StructLayout(LayoutKind.Sequential)]
-public struct SDL_PenMotionEvent
+public struct SDL_PenProximityEvent
 {
 	/// <summary>
-	/// Set to <see cref="SDL_EventType.PenMotion"/>.	
+	/// Either <see cref="SDL_EventType.PenProximityIn"/> or <see cref="SDL_EventType.PenProximityOut"/>.
 	/// </summary>
 	public SDL_EventType Type;
 
@@ -29,19 +29,4 @@ public struct SDL_PenMotionEvent
 	/// The pen instance ID.
 	/// </summary>
 	public SDL_PenId Which;
-
-	/// <summary>
-	/// Complete pen input state at time of event.
-	/// </summary>
-	public SDL_PenInputFlags PenState;
-
-	/// <summary>
-	/// X position of pen on tablet.
-	/// </summary>
-	public float X;
-
-	/// <summary>
-	/// Y position of pen on tablet.
-	/// </summary>
-	public float Y;
 }

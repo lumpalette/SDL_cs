@@ -192,22 +192,34 @@ public unsafe struct SDL_Event
 	public SDL_TouchFingerEvent TouchFinger;
 
 	/// <summary>
-	/// Pen tip touching or leaving drawing surface.
+	/// Pen proximity event data.
 	/// </summary>
 	[FieldOffset(0)]
-	public SDL_PenTipEvent PenTip;
+	public SDL_PenProximityEvent PenProximity;
 
 	/// <summary>
-	/// Pen change in position, pressure, or angle.
+	/// Pen tip touching event data.
+	/// </summary>
+	[FieldOffset(0)]
+	public SDL_PenTouchEvent PenTouch;
+
+	/// <summary>
+	/// Pen motion event data.
 	/// </summary>
 	[FieldOffset(0)]
 	public SDL_PenMotionEvent PenMotion;
 
 	/// <summary>
-	/// Pen button press.
+	/// Pen button event data.
 	/// </summary>
 	[FieldOffset(0)]
 	public SDL_PenButtonEvent PenButton;
+
+	/// <summary>
+	/// Pen axis event data.
+	/// </summary>
+	[FieldOffset(0)]
+	public SDL_PenAxisEvent PenAxis;
 
 	/// <summary>
 	/// Drag and drop event data.

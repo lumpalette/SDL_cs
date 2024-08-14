@@ -3,13 +3,13 @@
 namespace SDL3;
 
 /// <summary>
-/// Pressure-sensitive pen button event structure (<see cref="SDL_Event.PenButton"/>).
+/// Pressure-sensitive pen touched event structure (<see cref="SDL_Event.PenTouch"/>).
 /// </summary>
 [StructLayout(LayoutKind.Sequential)]
-public struct SDL_PenButtonEvent
+public struct SDL_PenTouchEvent
 {
 	/// <summary>
-	/// Either <see cref="SDL_EventType.PenButtonDown"/> or <see cref="SDL_EventType.PenButtonUp"/>.
+	/// Either <see cref="SDL_EventType.PenDown"/> or <see cref="SDL_EventType.PenUp"/>.
 	/// </summary>
 	public SDL_EventType Type;
 
@@ -46,12 +46,12 @@ public struct SDL_PenButtonEvent
 	public float Y;
 
 	/// <summary>
-	/// The pen button index (first button is 1).
+	/// Non-zero if eraser end is used (not all pens support this).
 	/// </summary>
-	public byte Button;
+	public byte Eraser;
 
 	/// <summary>
-	/// <see cref="SDL.Pressed"/> or <see cref="SDL.Released"/>.
+	/// <see cref="SDL.Pressed"/> (pen is touching) or <see cref="SDL.Released"/> (pen is lifted off).
 	/// </summary>
 	public byte State;
 }

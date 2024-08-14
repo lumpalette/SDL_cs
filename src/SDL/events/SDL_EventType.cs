@@ -287,16 +287,6 @@ public enum SDL_EventType : uint
 	WindowDestroyed,
 
 	/// <summary>
-	/// Window has gained focus of the pressure-sensitive pen with ID <c>Data1</c>.
-	/// </summary>
-	WindowPenEnter,
-
-	/// <summary>
-	/// Window has lost focus of the pressure-sensitive pen with ID <c>Data1</c>.
-	/// </summary>
-	WindowPenLeave,
-
-	/// <summary>
 	/// Window HDR properties have changed.
 	/// </summary>
 	WindowHdrStateChanged,
@@ -581,19 +571,24 @@ public enum SDL_EventType : uint
 	#region Pressure-sensitive pen events
 
 	/// <summary>
+	/// Pressure-sensitive pen has become available.
+	/// </summary>
+	PenProximityIn = 0x1300,
+
+	/// <summary>
+	/// Pressure-sensitive pen has become unavailable.
+	/// </summary>
+	PenProximityOut,
+
+	/// <summary>
 	/// Pressure-sensitive pen touched drawing surface.
 	/// </summary>
-	PenDown = 0x1300,
+	PenDown,
 
 	/// <summary>
 	/// Pressure-sensitive pen stopped touching drawing surface.
 	/// </summary>
 	PenUp,
-
-	/// <summary>
-	/// Pressure-sensitive pen moved, or angle/pressure changed.
-	/// </summary>
-	PenMotion,
 
 	/// <summary>
 	/// Pressure-sensitive pen button pressed.
@@ -604,6 +599,16 @@ public enum SDL_EventType : uint
 	/// Pressure-sensitive pen button released.
 	/// </summary>
 	PenButtonUp,
+
+	/// <summary>
+	/// Pressure-sensitive pen is moving on the tablet.
+	/// </summary>
+	PenMotion,
+
+	/// <summary>
+	/// Pressure-sensitive pen angle/pressure/etc changed.
+	/// </summary>
+	PenAxis,
 
 	#endregion
 
