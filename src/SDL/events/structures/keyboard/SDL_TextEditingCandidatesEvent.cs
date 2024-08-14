@@ -10,24 +10,24 @@ namespace SDL3;
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_TextEditingCandidatesEvent">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
-public readonly unsafe struct SDL_TextEditingCandidatesEvent
+public unsafe struct SDL_TextEditingCandidatesEvent
 {
 	/// <summary>
 	/// Set to <see cref="SDL_EventType.TextEditingCandidates"/>.
 	/// </summary>
-	public readonly SDL_EventType Type;
+	public SDL_EventType Type;
 
 	private readonly uint _reserved;
 
 	/// <summary>
 	/// In nanoseconds, populated using <see cref="SDL.GetTicksNs"/>.
 	/// </summary>
-	public readonly ulong Timestamp;
+	public ulong Timestamp;
 
 	/// <summary>
 	/// The window with keyboard focus, if any.
 	/// </summary>
-	public readonly SDL_WindowId WindowId;
+	public SDL_WindowId WindowId;
 
 	/// <summary>
 	/// The list of candidates, or <see langword="null"/> if there are no candidates available.
@@ -35,22 +35,26 @@ public readonly unsafe struct SDL_TextEditingCandidatesEvent
 	/// <remarks>
 	/// Use <see cref="SDL.UnmanagedToManagedStrings(byte**, int)"/> to convert this field into an array of managed strings.
 	/// </remarks>
-	public readonly byte** Candidates;
+	public byte** Candidates;
 
 	/// <summary>
 	/// The number of strings in <see cref="Candidates"/>.
 	/// </summary>
-	public readonly int NumCandidates;
+	public int NumCandidates;
 
 	/// <summary>
 	/// The index of the selected candidate, or -1 if no candidate is selected.
 	/// </summary>
-	public readonly int SelectedCandidate;
+	public int SelectedCandidate;
 
 	/// <summary>
 	/// True if the list is horizontal, false if it's vertical.
 	/// </summary>
-	public readonly bool Horizontal => _horizontal == 1;
+	public bool Horizontal
+	{
+		readonly get => _horizontal == 1;
+		set => _horizontal = value ? 1 : 0;
+	}
 
-	private readonly int _horizontal;
+	private int _horizontal;
 }

@@ -9,39 +9,39 @@ namespace SDL3;
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormatDetails">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
-public unsafe readonly struct SDL_PixelFormatDetails
+public unsafe struct SDL_PixelFormatDetails
 {
-	public readonly SDL_PixelFormat Format;
+	public SDL_PixelFormat Format;
 
-	public readonly byte BitsPerPixel;
+	public byte BitsPerPixel;
 
-	public readonly byte BytesPerPixel;
+	public byte BytesPerPixel;
 
 	private readonly byte _padding1;
 
 	private readonly byte _padding2;
 
-	public readonly uint RMask;
+	public uint RMask;
 
-	public readonly uint GMask;
+	public uint GMask;
 
-	public readonly uint BMask;
+	public uint BMask;
 
-	public readonly uint AMask;
+	public uint AMask;
 
-	public readonly byte RBits;
+	public byte RBits;
 
-	public readonly byte GBits;
+	public byte GBits;
 
-	public readonly byte BBits;
+	public byte BBits;
 
-	public readonly uint ABits;
+	public uint ABits;
 
-	public readonly byte RShift;
+	public byte RShift;
 
-	public readonly byte GShift;
+	public byte GShift;
 
-	public readonly byte BShift;
+	public byte BShift;
 
-	public readonly byte AShift;
+	public byte AShift;
 }

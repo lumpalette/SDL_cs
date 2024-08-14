@@ -9,17 +9,17 @@ namespace SDL3;
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Palette">documentation</see> for more details.
 /// </remarks>
 [StructLayout(LayoutKind.Sequential)]
-public unsafe readonly struct SDL_Palette
+public unsafe struct SDL_Palette
 {
 	/// <summary>
 	/// Number of elements in <see cref="Colors"/>.
 	/// </summary>
-	public readonly int NumColors;
+	public int NumColors;
 
 	/// <summary>
 	/// An array of <see cref="SDL_Color"/> structures representing this palette, <see cref="NumColors"/> long.
 	/// </summary>
-	public readonly SDL_Color* Colors;
+	public SDL_Color* Colors;
 
 	private readonly uint _version;
 
