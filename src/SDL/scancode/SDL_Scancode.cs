@@ -75,7 +75,7 @@ public enum SDL_Scancode
 	F10 = 67,
 	F11 = 68,
 	F12 = 69,
-	Printscreen = 70,
+	PrintScreen = 70,
 	ScrollLock = 71,
 	Pause = 72,
 	Insert = 73,

@@ -12,17 +12,17 @@ public static unsafe partial class SDL
 			/// <summary>
 			/// The name of the rendering driver to use, if a specific one is desired.
 			/// </summary>
-			public const string NameString = "name";
+			public const string NameString = "SDL.renderer.create.name";
 
 			/// <summary>
 			/// The window where rendering is displayed, required if this isn't a software renderer using a surface.
 			/// </summary>
-			public const string WindowPointer = "window";
+			public const string WindowPointer = "SDL.renderer.create.window";
 
 			/// <summary>
 			/// The surface where rendering is displayed, if you want a software renderer without a window.
 			/// </summary>
-			public const string SurfacePointer = "surface";
+			public const string SurfacePointer = "SDL.renderer.create.surface";
 
 			/// <summary>
 			/// An <see cref="SDL_Colorspace"/> value describing the colorspace for output to the display, defaults to
@@ -31,43 +31,43 @@ public static unsafe partial class SDL
 			/// <see cref="SDL_Colorspace.SRGBLinear"/>, drawing still uses the sRGB colorspace, but values can go beyond 1.0 and float
 			/// (linear) format textures can be used for HDR content.
 			/// </summary>
-			public const string OutputColorspaceNumber = "output_colorspace";
+			public const string OutputColorspaceNumber = "SDL.renderer.create.output_colorspace";
 
 			/// <summary>
 			/// Non-zero if you want present synchronized with the refresh rate. This property can take any value that is supported by
 			/// <see cref="SDL.SetRenderVSync(SDL_Renderer*, int)"/> for the renderer.
 			/// </summary>
-			public const string PresentVSyncNumber = "present_vsync";
+			public const string PresentVSyncNumber = "SDL.renderer.create.present_vsync";
 
 			/// <summary>
 			/// The <c>VkInstance</c> to use with the renderer, optional.
 			/// </summary>
-			public const string VulkanInstancePointer = "vulkan.instance";
+			public const string VulkanInstancePointer = "SDL.renderer.create.vulkan.instance";
 
 			/// <summary>
 			/// The <c>VkSurfaceKHR</c> to use with the renderer, optional.
 			/// </summary>
-			public const string VulkanSurfaceNumber = "vulkan.surface";
+			public const string VulkanSurfaceNumber = "SDL.renderer.create.vulkan.surface";
 
 			/// <summary>
 			/// The <c>VkPhysicalDevice</c> to use with the renderer, optional.
 			/// </summary>
-			public const string VulkanPhysicalDevicePointer = "vulkan.physical_device";
+			public const string VulkanPhysicalDevicePointer = "SDL.renderer.create.vulkan.physical_device";
 
 			/// <summary>
 			/// The <c>VkDevice</c> to use with the renderer, optional.
 			/// </summary>
-			public const string VulkanDevicePointer = "vulkan.device";
+			public const string VulkanDevicePointer = "SDL.renderer.create.vulkan.device";
 
 			/// <summary>
 			/// The queue family index used for rendering.
 			/// </summary>
-			public const string VulkanGraphicsQueueFamilyIndexNumber = "vulkan.graphics_queue_family_index";
+			public const string VulkanGraphicsQueueFamilyIndexNumber = "SDL.renderer.create.vulkan.graphics_queue_family_index";
 
 			/// <summary>
 			/// The queue family index used for presentation.
 			/// </summary>
-			public const string VulkanPresentQueueFamilyIndexNumber = "vulkan.present_queue_family_index";
+			public const string VulkanPresentQueueFamilyIndexNumber = "SDL.renderer.create.vulkan.present_queue_family_index";
 		}
 
 		/// <summary>
