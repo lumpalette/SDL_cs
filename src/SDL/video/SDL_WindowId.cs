@@ -1,8 +1,11 @@
 ﻿namespace SDL3;
 
 /// <summary>
-/// Represents the ID of a window.
+/// This is a unique ID for a window.
 /// </summary>
+/// <remarks>
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WindowID">documentation</see> for more details.
+/// </remarks>
 [Typedef]
 public enum SDL_WindowId : uint
 {
