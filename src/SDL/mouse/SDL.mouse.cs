@@ -282,4 +282,69 @@ public static unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
 	public static partial bool CursorVisible();
+
+	/// <summary>
+	/// Left mouse button.
+	/// </summary>
+	public const byte ButtonLeft = 1;
+
+	/// <summary>
+	/// Middle mouse button.
+	/// </summary>
+	public const byte ButtonMiddle = 2;
+
+	/// <summary>
+	/// Right mouse button.
+	/// </summary>
+	public const byte ButtonRight = 3;
+
+	/// <summary>
+	/// Side mouse button 1.
+	/// </summary>
+	public const byte ButtonX1 = 4;
+
+	/// <summary>
+	/// Side mouse button 2.
+	/// </summary>
+	public const byte ButtonX2 = 5;
+
+	/// <summary>
+	/// Left mouse button bitmask.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_MouseButtonFlags ButtonLMask => Button(ButtonLeft);
+
+	/// <summary>
+	/// Middle mouse button bitmask.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_MouseButtonFlags ButtonMMask => Button(ButtonMiddle);
+
+	/// <summary>
+	/// Right mouse button bitmask.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_MouseButtonFlags ButtonRMask => Button(ButtonRight);
+
+	/// <summary>
+	/// Side mouse button 1 bitmask.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_MouseButtonFlags ButtonX1Mask => Button(ButtonX1);
+
+	/// <summary>
+	/// Side mouse button 2 bitmask.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
+	/// </remarks>
+	public static SDL_MouseButtonFlags ButtonX2Mask => Button(ButtonX2);
 }

@@ -812,6 +812,22 @@ public static unsafe partial class SDL
 	public static SDL_AudioFormat AudioFormatF32 => BitConverter.IsLittleEndian ? SDL_AudioFormat.F32LE : SDL_AudioFormat.F32BE;
 
 	/// <summary>
+	/// A value used to request a default playback audio device.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK">documentation</see> for more details.
+	/// </remarks>
+	public const SDL_AudioDeviceId AudioDeviceDefaultPlayback = (SDL_AudioDeviceId)0xFFFFFFFF;
+
+	/// <summary>
+	/// A value used to request a default recording audio device.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_DEVICE_DEFAULT_RECORDING">documentation</see> for more details.
+	/// </remarks>
+	public const SDL_AudioDeviceId AudioDeviceDefaultRecording = (SDL_AudioDeviceId)0xFFFFFFFE;
+
+	/// <summary>
 	/// The size of an <see cref="SDL_AudioFormat"/>, in bits.
 	/// </summary>
 	public const ushort AudioMaskBitSize = 0xFF;
