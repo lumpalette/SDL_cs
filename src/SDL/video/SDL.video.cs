@@ -626,12 +626,12 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowMinimumSize">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window">The window to change.</param>
-	/// <param name="maxWidth">The minimum width of the window, or 0 for no limit.</param>
+	/// <param name="minWidth">The minimum width of the window, or 0 for no limit.</param>
 	/// <param name="minHeight">The minimum height of the window, or 0 for no limit.</param>
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowMinimumSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetWindowMinimumSize(SDL_Window* window, int maxWidth, int minHeight);
+	public static partial int SetWindowMinimumSize(SDL_Window* window, int minWidth, int minHeight);
 
 	/// <summary>
 	/// Get the minimum size of a window's client area.
