@@ -9,25 +9,6 @@ namespace SDL3;
 public class SDL_Exception : Exception
 {
 	/// <summary>
-	/// Instantiates a new <see cref="SDL_Exception"/> that shows the error message returned by <see cref="SDL.GetError"/>.
-	/// </summary>
-	public SDL_Exception() : base($"SDL error: '{SDL.GetError()}'.") => _ = SDL.ClearError();
-
-	/// <summary>
-	/// Instantiates a new <see cref="SDL_Exception"/> with the provided error message. The error message returned by
-	/// <see cref="SDL.GetError"/> is also included.
-	/// </summary>
-	/// <param name="message">The message that describes the error.</param>
-	public SDL_Exception(string message) : base($"{message} SDL error: '{SDL.GetError()}'.") => _ = SDL.ClearError();
-
-	/// <summary>
-	/// Instantiates a new <see cref="SDL_Exception"/> with the provided error message. The error message returned by
-	/// <see cref="SDL.GetError"/> is also included.
-	/// </summary>
-	/// <param name="message">The message that describes the error.</param>
-	public SDL_Exception(string message, Exception inner) : base($"{message} SDL error: '{SDL.GetError()}'.", inner) => _ = SDL.ClearError();
-
-	/// <summary>
 	/// Throws an <see cref="SDL_Exception"/> if the given <paramref name="code"/> is not 0 (a value used in SDL to
 	/// indicate a function succeded).
 	/// </summary>
@@ -53,4 +34,24 @@ public class SDL_Exception : Exception
 			throw new SDL_Exception(message);
 		}
 	}
+
+	/// <summary>
+	/// Instantiates a new <see cref="SDL_Exception"/> that shows the error message returned by <see cref="SDL.GetError"/>.
+	/// </summary>
+	public SDL_Exception() : base($"SDL error: '{SDL.GetError()}'.") => _ = SDL.ClearError();
+
+	/// <summary>
+	/// Instantiates a new <see cref="SDL_Exception"/> with the provided error message. The error message returned by
+	/// <see cref="SDL.GetError"/> is also included.
+	/// </summary>
+	/// <param name="message">The message that describes the error.</param>
+	public SDL_Exception(string message) : base($"{message} SDL error: '{SDL.GetError()}'.") => _ = SDL.ClearError();
+
+	/// <summary>
+	/// Instantiates a new <see cref="SDL_Exception"/> with the provided error message. The error message returned by
+	/// <see cref="SDL.GetError"/> is also included.
+	/// </summary>
+	/// <param name="message">The message that describes the error.</param>
+	/// <param name="inner">The exception that caused the current exception.</param>
+	public SDL_Exception(string message, Exception inner) : base($"{message} SDL error: '{SDL.GetError()}'.", inner) => _ = SDL.ClearError();
 }

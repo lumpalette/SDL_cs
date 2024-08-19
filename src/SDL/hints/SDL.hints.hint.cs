@@ -77,12 +77,36 @@ public static unsafe partial class SDL
 		public const string AppleTVRemoteAllowRotation = "SDL_APPLE_TV_REMOTE_ALLOW_ROTATION";
 
 		/// <summary>
+		/// A variable controlling response to <see cref="FIXME:SDL_assert"/> failures.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_ASSERT">documentation</see> for more details.
+		/// </remarks>
+		public const string Assert = "SDL_ASSERT";
+
+		/// <summary>
+		/// Specify the default ALSA audio device name.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_ALSA_DEFAULT_DEVICE">documentation</see> for more details.
+		/// </remarks>
+		public const string AudioAlsaDefaultDevice = "SDL_AUDIO_ALSA_DEFAULT_DEVICE";
+
+		/// <summary>
 		/// A variable controlling the audio category on iOS and macOS.
 		/// </summary>
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_CATEGORY">documentation</see> for more details.
 		/// </remarks>
 		public const string AudioCategory = "SDL_AUDIO_CATEGORY";
+
+		/// <summary>
+		/// A variable controlling the default audio channel count.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_CHANNELS">documentation</see> for more details.
+		/// </remarks>
+		public const string AudioChannels = "SDL_AUDIO_CHANNELS";
 
 		/// <summary>
 		/// Specify an application name for an audio device.
@@ -125,12 +149,60 @@ public static unsafe partial class SDL
 		public const string AudioDeviceStreamRole = "SDL_AUDIO_DEVICE_STREAM_ROLE";
 
 		/// <summary>
+		/// Specify the input file when recording audio using the disk audio driver.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_DISK_INPUT_FILE">documentation</see> for more details.
+		/// </remarks>
+		public const string AudioDiskInputFile = "SDL_AUDIO_DISK_INPUT_FILE";
+
+		/// <summary>
+		/// Specify the output file when playing audio using the disk audio driver.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_DISK_OUTPUT_FILE">documentation</see> for more details.
+		/// </remarks>
+		public const string AudioDiskOutputFile = "SDL_AUDIO_DISK_OUTPUT_FILE";
+
+		/// <summary>
+		/// A variable controlling the audio rate when using the disk audio driver.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_DISK_TIMESCALE">documentation</see> for more details.
+		/// </remarks>
+		public const string AudioDiskTimescale = "SDL_AUDIO_DISK_TIMESCALE";
+
+		/// <summary>
 		/// A variable that specifies an audio backend to use.
 		/// </summary>
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_DRIVER">documentation</see> for more details.
 		/// </remarks>
 		public const string AudioDriver = "SDL_AUDIO_DRIVER";
+
+		/// <summary>
+		/// A variable controlling the audio rate when using the dummy audio driver.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_DUMMY_TIMESCALE">documentation</see> for more details.
+		/// </remarks>
+		public const string AudioDummyTimescale = "SDL_AUDIO_DUMMY_TIMESCALE";
+
+		/// <summary>
+		/// A variable controlling the default audio format.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_FORMAT">documentation</see> for more details.
+		/// </remarks>
+		public const string AudioFormat = "SDL_AUDIO_FORMAT";
+
+		/// <summary>
+		/// A variable controlling the default audio frequency.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_FREQUENCY">documentation</see> for more details.
+		/// </remarks>
+		public const string AudioFrequency = "SDL_AUDIO_FREQUENCY";
 
 		/// <summary>
 		/// A variable that causes SDL to not ignore audio "monitors".
@@ -219,6 +291,14 @@ public static unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_ENABLE_SCREEN_KEYBOARD">documentation</see> for more details.
 		/// </remarks>
 		public const string EnableScreenKeyboard = "SDL_ENABLE_SCREEN_KEYBOARD";
+
+		/// <summary>
+		/// A variable containing a list of evdev devices to use if udev is not available.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_EVDEV_DEVICES">documentation</see> for more details.
+		/// </remarks>
+		public const string EvdevDevices = "SDL_EVDEV_DEVICES";
 
 		/// <summary>
 		/// A variable controlling verbosity of the logging of SDL events pushed onto the internal queue.
@@ -349,6 +429,30 @@ public static unsafe partial class SDL
 		public const string HidapiIgnoreDevices = "SDL_HIDAPI_IGNORE_DEVICES";
 
 		/// <summary>
+		/// A variable to control whether HIDAPI uses libusb for device access.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_HIDAPI_LIBUSB">documentation</see> for more details.
+		/// </remarks>
+		public const string HidapiLibusb = "SDL_HIDAPI_LIBUSB";
+
+		/// <summary>
+		/// A variable to control whether HIDAPI uses libusb only for whitelisted devices.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_HIDAPI_LIBUSB_WHITELIST">documentation</see> for more details.
+		/// </remarks>
+		public const string HidapiLibusbWhitelist = "SDL_HIDAPI_LIBUSB_WHITELIST";
+
+		/// <summary>
+		/// A variable to control whether HIDAPI uses udev for device detection.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_HIDAPI_UDEV">documentation</see> for more details.
+		/// </remarks>
+		public const string HidapiUdev = "SDL_HIDAPI_UDEV";
+
+		/// <summary>
 		/// A variable describing what IME UI elements the application can display.
 		/// </summary>
 		/// <remarks>
@@ -440,7 +544,7 @@ public static unsafe partial class SDL
 		/// A variable controlling whether GameInput should be used for controller handling on Windows.
 		/// </summary>
 		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_JOYSTICK_GAMEINPUT">documentation</see> for more details.
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_GAMEINPUT">documentation</see> for more details.
 		/// </remarks>
 		public const string JoystickGameInput = "SDL_JOYSTICK_GAMEINPUT";
 
@@ -794,8 +898,7 @@ public static unsafe partial class SDL
 		public const string JoystickRogChakram = "SDL_JOYSTICK_ROG_CHAKRAM";
 
 		/// <summary>
-		/// A variable controlling whether a separate thread should be used for handling joystick detection and raw input
-		/// messages on Windows.
+		/// A variable controlling whether a separate thread should be used for handling joystick detection and raw input messages on Windows.
 		/// </summary>
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_THREAD">documentation</see> for more details.
@@ -940,6 +1043,14 @@ public static unsafe partial class SDL
 		public const string MouseDoubleClickTime = "SDL_MOUSE_DOUBLE_CLICK_TIME";
 
 		/// <summary>
+		/// A variable controlling whether warping a hidden mouse cursor will activate relative mouse mode.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_MOUSE_EMULATE_WARP_WITH_RELATIVE">documentation</see> for more details.
+		/// </remarks>
+		public const string MouseEmulateWarpWithRelative = "SDL_MOUSE_EMULATE_WARP_WITH_RELATIVE";
+
+		/// <summary>
 		/// Allow mouse click events when clicking to focus an SDL window.
 		/// </summary>
 		/// <remarks>
@@ -1021,6 +1132,14 @@ public static unsafe partial class SDL
 		public const string MouseTouchEvents = "SDL_MOUSE_TOUCH_EVENTS";
 
 		/// <summary>
+		/// A variable controlling whether the keyboard should be muted on the console.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_MUTE_CONSOLE_KEYBOARD">documentation</see> for more details.
+		/// </remarks>
+		public const string MuteConsoleKeyboard = "SDL_MUTE_CONSOLE_KEYBOARD";
+
+		/// <summary>
 		/// Tell SDL not to catch the SIGINT or SIGTERM signals on POSIX platforms.
 		/// </summary>
 		/// <remarks>
@@ -1035,6 +1154,14 @@ public static unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_OPENGL_ES_DRIVER">documentation</see> for more details.
 		/// </remarks>
 		public const string OpenGLEsDriver = "SDL_OPENGL_ES_DRIVER";
+
+		/// <summary>
+		/// Specify the OpenGL library to load.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_OPENGL_LIBRARY">documentation</see> for more details.
+		/// </remarks>
+		public const string OpenGLLibrary = "SDL_OPENGL_LIBRARY";
 
 		/// <summary>
 		/// A variable controlling which orientations are allowed on iOS/Android.
@@ -1279,6 +1406,14 @@ public static unsafe partial class SDL
 		public const string VideoDriver = "SDL_VIDEO_DRIVER";
 
 		/// <summary>
+		/// A variable controlling whether the dummy video driver saves output frames.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VIDEO_DUMMY_SAVE_FRAMES">documentation</see> for more details.
+		/// </remarks>
+		public const string VideoDummySaveFrames = "SDL_VIDEO_DUMMY_SAVE_FRAMES";
+
+		/// <summary>
 		/// If eglGetPlatformDisplay fails, fall back to calling <c>eglGetDisplay</c>.
 		/// </summary>
 		/// <remarks>
@@ -1309,6 +1444,14 @@ public static unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS">documentation</see> for more details.
 		/// </remarks>
 		public const string VideoMinimizeOnFocusLoss = "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS";
+
+		/// <summary>
+		/// A variable controlling whether the offscreen video driver saves output frames.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VIDEO_OFFSCREEN_SAVE_FRAMES">documentation</see> for more details.
+		/// </remarks>
+		public const string VideoOffscreenSaveFrames = "SDL_VIDEO_OFFSCREEN_SAVE_FRAMES";
 
 		/// <summary>
 		/// A variable controlling whether all window operations will block until complete.
@@ -1391,12 +1534,28 @@ public static unsafe partial class SDL
 		public const string VideoX11NetWMPing = "SDL_VIDEO_X11_NET_WM_PING";
 
 		/// <summary>
+		/// A variable controlling whether SDL uses DirectColor visuals.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VIDEO_X11_NODIRECTCOLOR">documentation</see> for more details.
+		/// </remarks>
+		public const string VideoX11NoDirectColor = "SDL_VIDEO_X11_NODIRECTCOLOR";
+
+		/// <summary>
 		/// A variable forcing the content scaling factor for X11 displays.
 		/// </summary>
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VIDEO_X11_SCALING_FACTOR">documentation</see> for more details.
 		/// </remarks>
 		public const string VideoX11ScalingFactor = "SDL_VIDEO_X11_SCALING_FACTOR";
+
+		/// <summary>
+		/// A variable forcing the visual ID used for X11 display modes.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VIDEO_X11_VISUALID">documentation</see> for more details.
+		/// </remarks>
+		public const string VideoVisualId = "SDL_VIDEO_X11_VISUALID";
 
 		/// <summary>
 		/// A variable forcing the visual ID chosen for new X11 windows.
@@ -1415,12 +1574,84 @@ public static unsafe partial class SDL
 		public const string VideoX11XRandR = "SDL_VIDEO_X11_XRANDR";
 
 		/// <summary>
+		/// A variable controlling whether touch should be enabled on the back panel of the PlayStation Vita.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VITA_ENABLE_BACK_TOUCH">documentation</see> for more details.
+		/// </remarks>
+		public const string VitaEnableBackTouch = "SDL_VITA_ENABLE_BACK_TOUCH";
+
+		/// <summary>
+		/// A variable controlling whether touch should be enabled on the front panel of the PlayStation Vita.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VITA_ENABLE_FRONT_TOUCH">documentation</see> for more details.
+		/// </remarks>
+		public const string VitaEnableFrontTouch = "SDL_VITA_ENABLE_FRONT_TOUCH";
+
+		/// <summary>
+		/// A variable controlling the module path on the PlayStation Vita.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VITA_MODULE_PATH">documentation</see> for more details.
+		/// </remarks>
+		public const string VitaModulePath = "SDL_VITA_MODULE_PATH";
+
+		/// <summary>
+		/// A variable controlling whether to perform PVR initialization on the PlayStation Vita.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VITA_PVR_INIT">documentation</see> for more details.
+		/// </remarks>
+		public const string VitaPvrInit = "SDL_VITA_PVR_INIT";
+
+		/// <summary>
+		/// A variable controlling whether OpenGL should be used instead of OpenGL ES on the PlayStation Vita.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VITA_PVR_OPENGL">documentation</see> for more details.
+		/// </remarks>
+		public const string VitaPvrOpenGL = "SDL_VITA_PVR_OPENGL";
+
+		/// <summary>
+		/// A variable overriding the resolution reported on the PlayStation Vita.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VITA_RESOLUTION">documentation</see> for more details.
+		/// </remarks>
+		public const string VitaResolution = "SDL_VITA_RESOLUTION";
+
+		/// <summary>
 		/// A variable controlling which touchpad should generate synthetic mouse events.
 		/// </summary>
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VITA_TOUCH_MOUSE_DEVICE">documentation</see> for more details.
 		/// </remarks>
 		public const string VitaTouchMouseDevice = "SDL_VITA_TOUCH_MOUSE_DEVICE";
+
+		/// <summary>
+		/// A variable overriding the display index used in <see cref="SDL_Vulkan_CreateSurface()"/>.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VULKAN_DISPLAY">documentation</see> for more details.
+		/// </remarks>
+		public const string VulkanDisplay = "SDL_VULKAN_DISPLAY";
+
+		/// <summary>
+		/// Specify the Vulkan library to load.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VULKAN_LIBRARY">documentation</see> for more details.
+		/// </remarks>
+		public const string VulkanLibrary = "SDL_VULKAN_LIBRARY";
+
+		/// <summary>
+		/// A variable controlling the maximum number of chunks in a WAVE file.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_WAVE_CHUNK_LIMIT">documentation</see> for more details.
+		/// </remarks>
+		public const string WaveChunkLimit = "SDL_WAVE_CHUNK_LIMIT";
 
 		/// <summary>
 		/// A variable controlling how the fact chunk affects the loading of a WAVE file.
@@ -1597,6 +1828,14 @@ public static unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_X11_WINDOW_TYPE">documentation</see> for more details.
 		/// </remarks>
 		public const string X11WindowType = "SDL_X11_WINDOW_TYPE";
+
+		/// <summary>
+		/// Specify the XCB library to load for the X11 driver.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_X11_XCB_LIBRARY">documentation</see> for more details.
+		/// </remarks>
+		public const string X11XcbLibrary = "SDL_X11_XCB_LIBRARY";
 
 		/// <summary>
 		/// A variable controlling whether XInput should be used for controller handling.

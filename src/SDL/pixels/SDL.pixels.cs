@@ -253,42 +253,42 @@ public static unsafe partial class SDL
 	public static partial void GetRGBA(uint pixel, SDL_PixelFormatDetails* format, SDL_Palette* palette, byte* r, byte* g, byte* b, byte* a);
 
 	/// <summary>
-	/// RGBA format, where each channel represents 8-bits.
+	/// RGBA format, where each channel takes up 8 bits.
 	/// </summary>
 	public static SDL_PixelFormat PixelFormatRGBA32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.ABGR8888 : SDL_PixelFormat.RGBA8888;
 
 	/// <summary>
-	/// ARGB format, where each channel represents 8-bits.
+	/// ARGB format, where each channel takes up 8 bits.
 	/// </summary>
 	public static SDL_PixelFormat PixelFormatARGB32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.BGRA8888 : SDL_PixelFormat.ARGB8888;
 
 	/// <summary>
-	/// BGRA format, where each channel represents 8-bits.
+	/// BGRA format, where each channel takes up 8 bits.
 	/// </summary>
 	public static SDL_PixelFormat PixelFormatBGRA32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.ARGB8888 : SDL_PixelFormat.BGRA8888;
 
 	/// <summary>
-	/// ABGR format, where each channel represents 8-bits.
+	/// ABGR format, where each channel takes up 8 bits.
 	/// </summary>
 	public static SDL_PixelFormat PixelFormatABGR32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.RGBA8888 : SDL_PixelFormat.ABGR8888;
 
 	/// <summary>
-	/// RGBA format, where each channel represents 8-bits. Alpha channel is ignored.
+	/// RGBA format, where each channel takes up 8 bits. Alpha channel is ignored.
 	/// </summary>
 	public static SDL_PixelFormat PixelFormatRGBX32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.XBGR8888 : SDL_PixelFormat.RGBX8888;
 
 	/// <summary>
-	/// ARGB format, where each channel represents 8-bits. Alpha channel is ignored.
+	/// ARGB format, where each channel takes up 8 bits. Alpha channel is ignored.
 	/// </summary>
 	public static SDL_PixelFormat PixelFormatXRGB32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.BGRX8888 : SDL_PixelFormat.XRGB8888;
 
 	/// <summary>
-	/// BGRA format, where each channel represents 8-bits. Alpha channel is ignored.
+	/// BGRA format, where each channel takes up 8 bits. Alpha channel is ignored.
 	/// </summary>
 	public static SDL_PixelFormat PixelFormatBGRX32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.XRGB8888 : SDL_PixelFormat.BGRX8888;
 
 	/// <summary>
-	/// ABGR format, where each channel represents 8-bits. Alpha channel is ignored.
+	/// ABGR format, where each channel takes up 8 bits. Alpha channel is ignored.
 	/// </summary>
 	public static SDL_PixelFormat PixelFormatXBGR32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.RGBX8888 : SDL_PixelFormat.XBGR8888;
 
