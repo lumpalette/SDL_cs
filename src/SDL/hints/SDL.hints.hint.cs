@@ -1172,22 +1172,6 @@ public static unsafe partial class SDL
 		public const string Orientations = "SDL_ORIENTATIONS";
 
 		/// <summary>
-		/// A variable controlling whether pen mouse button emulation triggers only when the pen touches the tablet surface.
-		/// </summary>
-		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_PEN_DELAY_MOUSE_BUTTON">documentation</see> for more details.
-		/// </remarks>
-		public const string PenDelayMouseButton = "SDL_PEN_DELAY_MOUSE_BUTTON";
-
-		/// <summary>
-		/// A variable controlling whether to treat pen movement as separate from mouse movement.
-		/// </summary>
-		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_PEN_NOT_MOUSE">documentation</see> for more details.
-		/// </remarks>
-		public const string PenNotMouse = "SDL_PEN_NOT_MOUSE";
-
-		/// <summary>
 		/// A variable controlling the use of a sentinel event when polling the event queue.
 		/// </summary>
 		/// <remarks>
