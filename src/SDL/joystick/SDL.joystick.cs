@@ -204,10 +204,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DetachVirtualJoystick">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="instanceId">The joystick instance ID, previously returned from <see cref="AttachVirtualJoystick(SDL_VirtualJoystickDesc*)"/>.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_DetachVirtualJoystick")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int DetachVirtualJoystick(SDL_JoystickId instanceId);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool DetachVirtualJoystick(SDL_JoystickId instanceId);
 
 
 	/// <summary>
@@ -232,10 +233,11 @@ public static unsafe partial class SDL
 	/// <param name="joystick">The virtual joystick on which to set state.</param>
 	/// <param name="axis">The index of the axis on the virtual joystick to update.</param>
 	/// <param name="value">The new value for the specified axis.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickVirtualAxis")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetJoystickVirtualAxis(SDL_Joystick* joystick, int axis, short value);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetJoystickVirtualAxis(SDL_Joystick* joystick, int axis, short value);
 
 	/// <summary>
 	/// Generate ball motion on an opened virtual joystick.
@@ -247,10 +249,11 @@ public static unsafe partial class SDL
 	/// <param name="ball">The index of the ball on the virtual joystick to update.</param>
 	/// <param name="xRel">The relative motion on the X axis.</param>
 	/// <param name="yRel">The relative motion on the Y axis.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickVirtualBall")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetJoystickVirtualBall(SDL_Joystick* joystick, int ball, short xRel, short yRel);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetJoystickVirtualBall(SDL_Joystick* joystick, int ball, short xRel, short yRel);
 
 	/// <summary>
 	/// Set the state of a button on an opened virtual joystick.
@@ -261,10 +264,11 @@ public static unsafe partial class SDL
 	/// <param name="joystick">The virtual joystick on which to set state.</param>
 	/// <param name="button">The index of the button on the virtual joystick to update.</param>
 	/// <param name="value">The new value for the specified button.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickVirtualButton")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetJoystickVirtualButton(SDL_Joystick* joystick, int button, byte value);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetJoystickVirtualButton(SDL_Joystick* joystick, int button, byte value);
 
 	/// <summary>
 	/// Set the state of a hat on an opened virtual joystick.
@@ -275,10 +279,11 @@ public static unsafe partial class SDL
 	/// <param name="joystick">The virtual joystick on which to set state.</param>
 	/// <param name="hat">The index of the hat on the virtual joystick to update.</param>
 	/// <param name="value">The new value for the specified hat.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickVirtualHat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetJoystickVirtualHat(SDL_Joystick* joystick, int hat, byte value);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetJoystickVirtualHat(SDL_Joystick* joystick, int hat, byte value);
 
 	/// <summary>
 	/// Set touchpad finger state on an opened virtual joystick.
@@ -293,10 +298,11 @@ public static unsafe partial class SDL
 	/// <param name="x">The x coordinate of the finger on the touchpad, normalized 0 to 1, with the origin in the upper left.</param>
 	/// <param name="y">The y coordinate of the finger on the touchpad, normalized 0 to 1, with the origin in the upper left.</param>
 	/// <param name="pressure">The pressure of the finger.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickVirtualTouchpad")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetJoystickVirtualTouchpad(SDL_Joystick* joystick, int touchpad, int finger, byte state, float x, float y, float pressure);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetJoystickVirtualTouchpad(SDL_Joystick* joystick, int touchpad, int finger, byte state, float x, float y, float pressure);
 
 	/// <summary>
 	/// Send a sensor update for an opened virtual joystick.
@@ -309,10 +315,11 @@ public static unsafe partial class SDL
 	/// <param name="sensorTimestamp">A 64-bit timestamp in nanoseconds associated with the sensor reading.</param>
 	/// <param name="data">The data associated with the sensor reading.</param>
 	/// <param name="numValues">The number of values pointed to by <paramref name="data"/>.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SendJoystickVirtualSensorData")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SendJoystickVirtualSensorData(SDL_Joystick* joystick, SDL_SensorType type, ulong sensorTimestamp, [Const] float* data, int numValues);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SendJoystickVirtualSensorData(SDL_Joystick* joystick, SDL_SensorType type, ulong sensorTimestamp, [Const] float* data, int numValues);
 
 	/// <summary>
 	/// Get the properties associated with a joystick.
@@ -320,7 +327,7 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetJoystickProperties">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="joystick">The <see cref="Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
+	/// <param name="joystick">The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
 	/// <returns>A valid property ID on success or <see cref="SDL_PropertiesId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickProperties")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -372,10 +379,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="joystick">The <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
 	/// <param name="playerIndex">Player index to assign to this joystick, or -1 to clear the player index and turn off player LEDs.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickPlayerIndex")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetJoystickPlayerIndex(SDL_Joystick* joystick, int playerIndex);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetJoystickPlayerIndex(SDL_Joystick* joystick, int playerIndex);
 
 	/// <summary>
 	/// Get the implementation-dependent GUID for the joystick.
@@ -509,7 +517,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumJoystickAxes">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick">An <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
-	/// <returns>The number of axis controls/number of axes on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>The number of axis controls/number of axes on success or -1 on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetNumJoystickAxes")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int GetNumJoystickAxes(SDL_Joystick* joystick);
@@ -521,7 +529,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumJoystickBalls">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick">An <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
-	/// <returns>The number of trackballs on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>The number of trackballs on success or -1 on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetNumJoystickBalls")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int GetNumJoystickBalls(SDL_Joystick* joystick);
@@ -533,7 +541,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumJoystickHats">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick">An <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
-	/// <returns>The number of POV hats on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>The number of POV hats on success or -1 on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetNumJoystickHats")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int GetNumJoystickHats(SDL_Joystick* joystick);
@@ -545,7 +553,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumJoystickButtons">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="joystick">An <see cref="SDL_Joystick"/> obtained from <see cref="OpenJoystick(SDL_JoystickId)"/>.</param>
-	/// <returns>The number of buttons on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>The number of buttons on success or -1 on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetNumJoystickButtons")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int GetNumJoystickButtons(SDL_Joystick* joystick);
@@ -621,10 +629,11 @@ public static unsafe partial class SDL
 	/// <param name="ball">The ball index to query; ball indices start at index 0.</param>
 	/// <param name="dx">Stores the difference in the x axis position since the last poll.</param>
 	/// <param name="dy">Stores the difference in the y axis position since the last poll.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickBall")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetJoystickBall(SDL_Joystick* joystick, int ball, int* dx, int* dy);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetJoystickBall(SDL_Joystick* joystick, int ball, int* dx, int* dy);
 
 	/// <summary>
 	/// Get the current state of a POV hat on a joystick.
@@ -662,10 +671,11 @@ public static unsafe partial class SDL
 	/// <param name="lowFrequencyRumble">The intensity of the low frequency (left) rumble motor, from 0 to 0xFFFF.</param>
 	/// <param name="highFrequencyRumble">The intensity of the high frequency (right) rumble motor, from 0 to 0xFFFF.</param>
 	/// <param name="durationMs">The duration of the rumble effect, in milliseconds.</param>
-	/// <returns>0, or -1 if rumble isn't supported on this joystick.</returns>
+	/// <returns>True, or false if rumble isn't supported on this joystick.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RumbleJoystick")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RumbleJoystick(SDL_Joystick* joystick, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool RumbleJoystick(SDL_Joystick* joystick, ushort lowFrequencyRumble, ushort highFrequencyRumble, uint durationMs);
 
 	/// <summary>
 	/// Start a rumble effect in the joystick's triggers.
@@ -677,10 +687,11 @@ public static unsafe partial class SDL
 	/// <param name="leftRumble">The intensity of the left trigger rumble motor, from 0 to 0xFFFF.</param>
 	/// <param name="rightRumble">The intensity of the right trigger rumble motor, from 0 to 0xFFFF.</param>
 	/// <param name="durationMs">The duration of the rumble effect, in milliseconds.</param>
-	/// <returns> 0 on success or a negative error code on failure; call <see cref="GetError"/> for more information. </returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RumbleJoystickTriggers")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RumbleJoystickTriggers(SDL_Joystick* joystick, ushort leftRumble, ushort rightRumble, uint durationMs);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool RumbleJoystickTriggers(SDL_Joystick* joystick, ushort leftRumble, ushort rightRumble, uint durationMs);
 
 	/// <summary>
 	/// Update a joystick's LED color.
@@ -692,10 +703,11 @@ public static unsafe partial class SDL
 	/// <param name="red">The intensity of the red LED.</param>
 	/// <param name="green">The intensity of the green LED.</param>
 	/// <param name="blue">The intensity of the blue LED.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickLED")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetJoystickLed(SDL_Joystick* joystick, byte red, byte green, byte blue);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetJoystickLed(SDL_Joystick* joystick, byte red, byte green, byte blue);
 
 	/// <summary>
 	/// Send a joystick specific effect packet.
@@ -706,10 +718,11 @@ public static unsafe partial class SDL
 	/// <param name="joystick">The joystick to affect.</param>
 	/// <param name="data">The data to send to the joystick.</param>
 	/// <param name="size">The size of the data to send to the joystick.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SendJoystickEffect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SendJoystickEffect(SDL_Joystick* joystick, nint data, int size);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SendJoystickEffect(SDL_Joystick* joystick, nint data, int size);
 
 	/// <summary>
 	/// Close a joystick previously opened with <see cref="OpenJoystick(SDL_JoystickId)"/>.

@@ -114,10 +114,11 @@ public static unsafe partial class SDL
 	/// <param name="gMask">A pointer filled in with the green mask for the format.</param>
 	/// <param name="bMask">A pointer filled in with the blue mask for the format.</param>
 	/// <param name="aMask">A pointer filled in with the alpha mask for the format.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMasksForPixelFormat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetMasksForPixelFormat(SDL_PixelFormat format, int* bpp, uint* rMask, uint* gMask, uint* bMask, uint* aMask);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetMasksForPixelFormat(SDL_PixelFormat format, int* bpp, uint* rMask, uint* gMask, uint* bMask, uint* aMask);
 
 	/// <summary>
 	/// Convert a bpp value and RGBA masks to an enumerated pixel format.
@@ -158,7 +159,7 @@ public static unsafe partial class SDL
 	/// <returns>A new <see cref="SDL_Palette"/> structure on success or <see langword="null"/> on failure (e.g. if there wasn't enough memory); call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreatePalette")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Palette* CreatePalette(int numColor);
+	public static partial SDL_Palette* CreatePalette(int numColors);
 
 	/// <summary>
 	/// Set a range of colors in a palette.
@@ -170,10 +171,11 @@ public static unsafe partial class SDL
 	/// <param name="colors">An array of <see cref="SDL_Color"/> structures to copy into the palette.</param>
 	/// <param name="firstColor">The index of the first palette entry to modify.</param>
 	/// <param name="numColors">The number of entries to modify.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetPaletteColors")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetPaletteColors(SDL_Palette* palette, [Const] SDL_Color* colors, int firstColor, int numColors);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetPaletteColors(SDL_Palette* palette, [Const] SDL_Color* colors, int firstColor, int numColors);
 
 	/// <summary>
 	/// Free a palette created with <see cref="CreatePalette(int)"/>.

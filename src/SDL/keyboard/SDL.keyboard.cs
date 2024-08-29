@@ -161,10 +161,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="scancode">The desired <see cref="SDL_Scancode"/>.</param>
 	/// <param name="name">The name to use for the scancode as UTF-8. The string is not copied, so the pointer given to this function must stay valid while SDL is being used.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetScancodeName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetScancodeName(SDL_Scancode scancode, byte* name);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetScancodeName(SDL_Scancode scancode, byte* name);
 
 	/// <summary>
 	/// Get a human-readable name for a scancode.
@@ -223,10 +224,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_StartTextInput">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window">The window to enable text input.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_StartTextInput")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int StartTextInput(SDL_Window* window);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool StartTextInput(SDL_Window* window);
 
 	/// <summary>
 	/// Start accepting Unicode text input events in a window, with properties describing the input.
@@ -236,10 +238,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="window">The window to enable text input</param>
 	/// <param name="props">The properties to use.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_StartTextInputWithProperties")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int StartTextInputWithProperties(SDL_Window* window, SDL_PropertiesId props);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool StartTextInputWithProperties(SDL_Window* window, SDL_PropertiesId props);
 
 	/// <summary>
 	/// Check whether or not Unicode text input events are enabled for a window.
@@ -261,10 +264,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_StopTextInput">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window">The window to disable text input.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_StopTextInput")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int StopTextInput(SDL_Window* window);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool StopTextInput(SDL_Window* window);
 
 	/// <summary>
 	/// Dismiss the composition window/IME without disabling the subsystem.
@@ -273,10 +277,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ClearComposition">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window">The window to affect.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ClearComposition")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ClearComposition(SDL_Window* window);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool ClearComposition(SDL_Window* window);
 
 	/// <summary>
 	/// Set the area used to type Unicode text input.
@@ -287,10 +292,11 @@ public static unsafe partial class SDL
 	/// <param name="window">The window for which to set the text input area.</param>
 	/// <param name="rect">The <see cref="SDL_Rect"/> representing the text input area, in window coordinates, or <see langword="null"/> to clear it.</param>
 	/// <param name="cursor">The offset of the current cursor location relative to <paramref name="rect"/>.X, in window coordinates.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextInputArea")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetTextInputArea(SDL_Window* window, [Const] SDL_Rect* rect, int cursor);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetTextInputArea(SDL_Window* window, [Const] SDL_Rect* rect, int cursor);
 
 	/// <summary>
 	/// Get the area used to type Unicode text input.
@@ -301,10 +307,11 @@ public static unsafe partial class SDL
 	/// <param name="window">The window for which to query the text input area.</param>
 	/// <param name="rect">A pointer to an <see cref="SDL_Rect"/> filled in with the text input area, may be <see langword="null"/>.</param>
 	/// <param name="cursor">A pointer to the offset of the current cursor location relative to <paramref name="rect"/>.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextInputArea")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetTextInputArea(SDL_Window* window, SDL_Rect* rect, int* cursor);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetTextInputArea(SDL_Window* window, SDL_Rect* rect, int* cursor);
 
 	/// <summary>
 	/// Check whether the platform has screen keyboard support.

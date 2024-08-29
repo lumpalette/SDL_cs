@@ -14,10 +14,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetError">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="fmt">The error message.</param>
-	/// <returns>-1.</returns>
+	/// <returns>False.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetError", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetError(string fmt);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetError(string fmt);
 
 	/// <summary>
 	/// Set an error indicating that memory allocation failed.
@@ -25,10 +26,11 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_OutOfMemory">documentation</see> for more details.
 	/// </remarks>
-	/// <returns>-1.</returns>
+	/// <returns>False.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_OutOfMemory")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int OutOfMemory();
+	[return: MarshalAs(NativeBool)]
+	public static partial bool OutOfMemory();
 
 	/// <summary>
 	/// Retrieve a message about the last error that occurred on the current thread.
@@ -48,8 +50,9 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ClearError">documentation</see> for more details.
 	/// </remarks>
-	/// <returns>0</returns>
+	/// <returns>True.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ClearError")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ClearError();
+	[return: MarshalAs(NativeBool)]
+	public static partial bool ClearError();
 }

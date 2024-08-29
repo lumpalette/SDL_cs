@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace SDL3;
@@ -79,10 +78,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to update.</param>
 	/// <param name="colorspace">An <see cref="SDL_Colorspace"/> value describing the surface colorspace.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorspace")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetSurfaceColorspace(SDL_Surface* surface, SDL_Colorspace colorspace);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetSurfaceColorspace(SDL_Surface* surface, SDL_Colorspace colorspace);
 
 	/// <summary>
 	/// Get the colorspace used by a surface.
@@ -116,10 +116,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to update.</param>
 	/// <param name="palette">The <see cref="SDL_Palette"/> structure to use.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfacePalette")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetSurfacePalette(SDL_Surface* surface, SDL_Palette* palette);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetSurfacePalette(SDL_Surface* surface, SDL_Palette* palette);
 
 	/// <summary>
 	/// Get the palette used by a surface.
@@ -141,11 +142,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to update.</param>
 	/// <param name="image">A pointer to an alternate <see cref="SDL_Surface"/> to associate with this surface.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
-	// FIXME: update return, because right now the official documentation is kinda messed up.
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddSurfaceAlternateImage")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int AddSurfaceAlternateImage(SDL_Surface* surface, SDL_Surface* image);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool AddSurfaceAlternateImage(SDL_Surface* surface, SDL_Surface* image);
 
 	/// <summary>
 	/// Return whether a surface has alternate versions available.
@@ -191,10 +192,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_LockSurface">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to be locked.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_LockSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int LockSurface(SDL_Surface* surface);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool LockSurface(SDL_Surface* surface);
 
 	/// <summary>
 	/// Release a surface after directly accessing the pixels.
@@ -231,10 +233,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure containing the image to be saved.</param>
 	/// <param name="file">A file to save to.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SaveBMP", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SaveBmp(SDL_Surface* surface, string file);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SaveBmp(SDL_Surface* surface, string file);
 
 	/// <summary>
 	/// Set the RLE acceleration hint for a surface.
@@ -244,10 +247,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to optimize.</param>
 	/// <param name="enabled">True to enable RLE acceleration, false to disable it.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceRLE")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetSurfaceRLE(SDL_Surface* surface, [MarshalAs(NativeBool)] bool enabled);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetSurfaceRLE(SDL_Surface* surface, [MarshalAs(NativeBool)] bool enabled);
 
 	/// <summary>
 	/// Returns whether the surface is RLE enabled.
@@ -271,10 +275,11 @@ public static unsafe partial class SDL
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to update.</param>
 	/// <param name="enabled">True to enable color key, false to disable color key.</param>
 	/// <param name="key">The transparent pixel.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetSurfaceColorKey(SDL_Surface* surface, [MarshalAs(NativeBool)] bool enabled, uint key);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetSurfaceColorKey(SDL_Surface* surface, [MarshalAs(NativeBool)] bool enabled, uint key);
 
 	/// <summary>
 	/// Returns whether the surface has a color key.
@@ -297,10 +302,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to query.</param>
 	/// <param name="key">A pointer filled in with the transparent pixel.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetSurfaceColorKey(SDL_Surface* surface, uint* key);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetSurfaceColorKey(SDL_Surface* surface, uint* key);
 
 	/// <summary>
 	/// Set an additional color value multiplied into blit operations.
@@ -312,10 +318,11 @@ public static unsafe partial class SDL
 	/// <param name="r">The red color value multiplied into blit operations.</param>
 	/// <param name="g">The green color value multiplied into blit operations.</param>
 	/// <param name="b">The blue color value multiplied into blit operations.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetSurfaceColorMod(SDL_Surface* surface, byte r, byte g, byte b);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetSurfaceColorMod(SDL_Surface* surface, byte r, byte g, byte b);
 
 	/// <summary>
 	/// Get the additional color value multiplied into blit operations.
@@ -327,10 +334,11 @@ public static unsafe partial class SDL
 	/// <param name="r">A pointer filled in with the current red color value.</param>
 	/// <param name="g">A pointer filled in with the current green color value.</param>
 	/// <param name="b">A pointer filled in with the current blue color value.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetSurfaceColorMod(SDL_Surface* surface, byte* r, byte* g, byte* b);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetSurfaceColorMod(SDL_Surface* surface, byte* r, byte* g, byte* b);
 
 	/// <summary>
 	/// Set an additional alpha value used in blit operations.
@@ -340,10 +348,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to update.</param>
 	/// <param name="alpha">The alpha value multiplied into blit operations.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceAlphaMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetSurfaceAlphaMod(SDL_Surface* surface, byte alpha);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetSurfaceAlphaMod(SDL_Surface* surface, byte alpha);
 
 	/// <summary>
 	/// Get the additional alpha value used in blit operations.
@@ -353,10 +362,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to query.</param>
 	/// <param name="alpha">A pointer filled in with the current alpha value.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceAlphaMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetSurfaceAlphaMod(SDL_Surface* surface, byte* alpha);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetSurfaceAlphaMod(SDL_Surface* surface, byte* alpha);
 
 	/// <summary>
 	/// Set the blend mode used for blit operations.
@@ -366,10 +376,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to update.</param>
 	/// <param name="blendMode">The <see cref="SDL_BlendMode"/> to use for blit blending.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceBlendMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetSurfaceBlendMode(SDL_Surface* surface, SDL_BlendMode blendMode);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetSurfaceBlendMode(SDL_Surface* surface, SDL_BlendMode blendMode);
 
 	/// <summary>
 	/// Get the blend mode used for blit operations.
@@ -379,10 +390,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure to query.</param>
 	/// <param name="blendMode">A pointer filled in with the current <see cref="SDL_BlendMode"/>.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceBlendMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetSurfaceBlendMode(SDL_Surface* surface, SDL_BlendMode* blendMode);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetSurfaceBlendMode(SDL_Surface* surface, SDL_BlendMode* blendMode);
 
 	/// <summary>
 	/// Set the clipping rectangle for a surface.
@@ -406,10 +418,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="surface">The <see cref="SDL_Surface"/> structure representing the surface to be clipped.</param>
 	/// <param name="rect">An <see cref="SDL_Rect"/> structure representing the clipping rectangle for the surface.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceClipRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetSurfaceClipRect(SDL_Surface* surface, SDL_Rect* rect);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetSurfaceClipRect(SDL_Surface* surface, SDL_Rect* rect);
 
 	/// <summary>
 	/// Flip a surface vertically or horizontally.
@@ -419,10 +432,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="surface">The surface to flip.</param>
 	/// <param name="flip">The direction to flip.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FlipSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int FlipSurface(SDL_Surface* surface, SDL_FlipMode flip);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool FlipSurface(SDL_Surface* surface, SDL_FlipMode flip);
 
 	/// <summary>
 	/// Creates a new surface identical to the existing surface.
@@ -494,10 +508,11 @@ public static unsafe partial class SDL
 	/// <param name="dstFormat">An <see cref="SDL_PixelFormat"/> value of the <paramref name="dst"/> pixels format.</param>
 	/// <param name="dst">A pointer to be filled in with new pixel data.</param>
 	/// <param name="dstPitch">The pitch of the destination pixels, in bytes.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertPixels")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ConvertPixels(int width, int height, SDL_PixelFormat srcFormat, nint src, int srcPitch, SDL_PixelFormat dstFormat, nint dst, int dstPitch);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool ConvertPixels(int width, int height, SDL_PixelFormat srcFormat, nint src, int srcPitch, SDL_PixelFormat dstFormat, nint dst, int dstPitch);
 
 	/// <summary>
 	/// Copy a block of pixels of one format and colorspace to another format and colorspace.
@@ -517,10 +532,11 @@ public static unsafe partial class SDL
 	/// <param name="dstProps">An <see cref="SDL_PropertiesId"/> with additional destination color properties, or <see cref="SDL_PropertiesId.Invalid"/>.</param>
 	/// <param name="dst">A pointer to be filled in with new pixel data.</param>
 	/// <param name="dstPitch">The pitch of the destination pixels, in bytes.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertPixelsAndColorspace")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ConvertPixelsAndColorspace(int width, int height, SDL_PixelFormat srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, nint src, int srcPitch, SDL_PixelFormat dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, nint dst, int dstPitch);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool ConvertPixelsAndColorspace(int width, int height, SDL_PixelFormat srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, nint src, int srcPitch, SDL_PixelFormat dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, nint dst, int dstPitch);
 
 	/// <summary>
 	/// Premultiply the alpha on a block of pixels.
@@ -537,10 +553,11 @@ public static unsafe partial class SDL
 	/// <param name="dst">A pointer to be filled in with premultiplied pixel data.</param>
 	/// <param name="dstPitch">The pitch of the destination pixels, in bytes.</param>
 	/// <param name="linear">True to convert from sRGB to linear space for the alpha multiplication, false to do multiplication in sRGB space.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PremultiplyAlpha")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int PremultiplyAlpha(int width, int height, SDL_PixelFormat srcFormat, nint src, int srcPitch, SDL_PixelFormat dstFormat, nint dst, int dstPitch, [MarshalAs(NativeBool)] bool linear);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool PremultiplyAlpha(int width, int height, SDL_PixelFormat srcFormat, nint src, int srcPitch, SDL_PixelFormat dstFormat, nint dst, int dstPitch, [MarshalAs(NativeBool)] bool linear);
 
 	/// <summary>
 	/// Premultiply the alpha in a surface.
@@ -550,10 +567,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="surface">The surface to modify.</param>
 	/// <param name="linear">True to convert from sRGB to linear space for the alpha multiplication, false to do multiplication in sRGB space.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PremultiplySurfaceAlpha")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int PremultiplySurfaceAlpha(SDL_Surface* surface, [MarshalAs(NativeBool)] bool linear);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool PremultiplySurfaceAlpha(SDL_Surface* surface, [MarshalAs(NativeBool)] bool linear);
 
 	/// <summary>
 	/// Clear a surface with a specific color, with floating point precision.
@@ -566,10 +584,11 @@ public static unsafe partial class SDL
 	/// <param name="g">The green component of the pixel, normally in the range 0-1.</param>
 	/// <param name="b">The blue component of the pixel, normally in the range 0-1.</param>
 	/// <param name="a">The alpha component of the pixel, normally in the range 0-1.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ClearSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ClearSurface(SDL_Surface* surface, float r, float g, float b, float a);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool ClearSurface(SDL_Surface* surface, float r, float g, float b, float a);
 
 	/// <summary>
 	/// Perform a fast fill of a rectangle with a specific color.
@@ -580,10 +599,11 @@ public static unsafe partial class SDL
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the drawing target.</param>
 	/// <param name="rect">The <see cref="SDL_Rect"/> structure representing the rectangle to fill, or <see langword="null"/> to fill the entire surface.</param>
 	/// <param name="color">The color to fill with.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FillSurfaceRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int FillSurfaceRect(SDL_Surface* dst, [Const] SDL_Rect* rect, uint color);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool FillSurfaceRect(SDL_Surface* dst, [Const] SDL_Rect* rect, uint color);
 
 	/// <summary>
 	/// Perform a fast fill of a set of rectangles with a specific color.
@@ -595,10 +615,11 @@ public static unsafe partial class SDL
 	/// <param name="rects">An array of <see cref="SDL_Rect"/>s representing the rectangles to fill.</param>
 	/// <param name="count">The number of rectangles in the array.</param>
 	/// <param name="color">The color to fill with.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FillSurfaceRects")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int FillSurfaceRects(SDL_Surface* dst, [Const] SDL_Rect* rects, int count, uint color);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool FillSurfaceRects(SDL_Surface* dst, [Const] SDL_Rect* rects, int count, uint color);
 
 	/// <summary>
 	/// Performs a fast blit from the source surface to the destination surface.
@@ -610,10 +631,11 @@ public static unsafe partial class SDL
 	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see langword="null"/> to copy the entire surface.</param>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
 	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the x and y position in the destination surface, or <see langword="null"/> for (0,0). The width and height are ignored, and are copied from <paramref name="srcRect"/>. If you want a specific width and height, you should use <see cref="BlitSurfaceScaled(SDL_Surface*, SDL_Rect*, SDL_Surface*, SDL_Rect*, SDL_ScaleMode)"/>.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int BlitSurface(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool BlitSurface(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect);
 
 	/// <summary>
 	/// Perform low-level surface blitting only.
@@ -625,10 +647,11 @@ public static unsafe partial class SDL
 	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, may not be <see langword="null"/>.</param>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
 	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the x and y position in the destination surface, may not be <see langword="null"/>.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceUnchecked")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int BlitSurfaceUnchecked(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool BlitSurfaceUnchecked(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect);
 
 	/// <summary>
 	/// Perform a scaled blit to a destination surface, which may be of a different format.
@@ -641,10 +664,11 @@ public static unsafe partial class SDL
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
 	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface, or <see langword="null"/> to fill the entire destination surface.</param>
 	/// <param name="scaleMode">The <see cref="SDL_ScaleMode"/> to be used.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceScaled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int BlitSurfaceScaled(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect, SDL_ScaleMode scaleMode);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool BlitSurfaceScaled(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect, SDL_ScaleMode scaleMode);
 
 	/// <summary>
 	/// Perform low-level surface scaled blitting only.
@@ -657,10 +681,11 @@ public static unsafe partial class SDL
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
 	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface, may not be <see langword="null"/>.</param>
 	/// <param name="scaleMode">The <see cref="SDL_ScaleMode"/> to be used.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceUncheckedScaled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int BlitSurfaceUncheckedScaled(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect, SDL_ScaleMode scaleMode);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool BlitSurfaceUncheckedScaled(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect, SDL_ScaleMode scaleMode);
 
 	/// <summary>
 	/// Perform a tiled blit to a destination surface, which may be of a different format.
@@ -672,10 +697,11 @@ public static unsafe partial class SDL
 	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, or <see langword="null"/> to copy the entire surface.</param>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
 	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface, or <see langword="null"/> to fill the entire surface.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceTiled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int BlitSurfaceTiled(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool BlitSurfaceTiled(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect);
 
 	/// <summary>
 	/// Perform a scaled and tiled blit to a destination surface, which may be of a different format.
@@ -689,10 +715,11 @@ public static unsafe partial class SDL
 	/// <param name="scaleMode">Scale algorithm to be used.</param>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
 	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface, or <see langword="null"/> to fill the entire surface.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceTiledWithScale")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int BlitSurfaceTiledWithScale(SDL_Surface* src, [Const] SDL_Rect* srcRect, float scale, SDL_ScaleMode scaleMode, SDL_Surface* dst, [Const] SDL_Rect* dstRect);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool BlitSurfaceTiledWithScale(SDL_Surface* src, [Const] SDL_Rect* srcRect, float scale, SDL_ScaleMode scaleMode, SDL_Surface* dst, [Const] SDL_Rect* dstRect);
 
 	/// <summary>
 	/// Perform a scaled blit using the 9-grid algorithm to a destination surface, which may be of a different format.
@@ -710,10 +737,11 @@ public static unsafe partial class SDL
 	/// <param name="scaleMode">Scale algorithm to be used.</param>
 	/// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
 	/// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface, or <see langword="null"/> to fill the entire surface.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurface9Grid")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int BlitSurface9Grid(SDL_Surface* src, [Const] SDL_Rect* srcRect, int leftWidth, int rightWidth, int topHeight, int bottomHeight, float scale, SDL_ScaleMode scaleMode, SDL_Surface* dst, [Const] SDL_FRect* dstRect);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool BlitSurface9Grid(SDL_Surface* src, [Const] SDL_Rect* srcRect, int leftWidth, int rightWidth, int topHeight, int bottomHeight, float scale, SDL_ScaleMode scaleMode, SDL_Surface* dst, [Const] SDL_FRect* dstRect);
 
 	/// <summary>
 	/// Map an RGB triple to an opaque pixel value for a surface.
@@ -759,10 +787,11 @@ public static unsafe partial class SDL
 	/// <param name="g">A pointer filled in with the green channel, 0-255, or <see langword="null"/> to ignore this channel.</param>
 	/// <param name="b">A pointer filled in with the blue channel, 0-255, or <see langword="null"/> to ignore this channel.</param>
 	/// <param name="a">A pointer filled in with the alpha channel, 0-255, or <see langword="null"/> to ignore this channel.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ReadSurfacePixel")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ReadSurfacePixel(SDL_Surface* surface, int x, int y, byte* r, byte* g, byte* b, byte* a);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool ReadSurfacePixel(SDL_Surface* surface, int x, int y, byte* r, byte* g, byte* b, byte* a);
 
 	/// <summary>
 	/// Retrieves a single pixel from a surface.
@@ -777,10 +806,11 @@ public static unsafe partial class SDL
 	/// <param name="g">A pointer filled in with the green channel, 0-255, or <see langword="null"/> to ignore this channel.</param>
 	/// <param name="b">A pointer filled in with the blue channel, 0-255, or <see langword="null"/> to ignore this channel.</param>
 	/// <param name="a">A pointer filled in with the alpha channel, 0-255, or <see langword="null"/> to ignore this channel.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ReadSurfacePixelFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ReadSurfacePixelFloat(SDL_Surface* surface, int x, int y, float* r, float* g, float* b, float* a);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool ReadSurfacePixelFloat(SDL_Surface* surface, int x, int y, float* r, float* g, float* b, float* a);
 
 	/// <summary>
 	/// Writes a single pixel to a surface.
@@ -795,10 +825,11 @@ public static unsafe partial class SDL
 	/// <param name="g">The green channel value, 0-255.</param>
 	/// <param name="b">The blue channel value, 0-255.</param>
 	/// <param name="a">The alpha channel value, 0-255.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_WriteSurfacePixel")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int WriteSurfacePixel(SDL_Surface* surface, int x, int y, byte r, byte g, byte b, byte a);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool WriteSurfacePixel(SDL_Surface* surface, int x, int y, byte r, byte g, byte b, byte a);
 
 	/// <summary>
 	/// Writes a single pixel to a surface.
@@ -813,8 +844,9 @@ public static unsafe partial class SDL
 	/// <param name="g">The green channel value, normally in the range 0-1.</param>
 	/// <param name="b">The blue channel value, normally in the range 0-1.</param>
 	/// <param name="a">The alpha channel value, normally in the range 0-1.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_WriteSurfacePixelFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int WriteSurfacePixelFloat(SDL_Surface* surface, int x, int y, float r, float g, float b, float a);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool WriteSurfacePixelFloat(SDL_Surface* surface, int x, int y, float r, float g, float b, float a);
 }

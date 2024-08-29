@@ -37,10 +37,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="src">The properties to copy.</param>
 	/// <param name="dst">The destionation properties.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CopyProperties")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int CopyProperties(SDL_PropertiesId src, SDL_PropertiesId dst);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool CopyProperties(SDL_PropertiesId src, SDL_PropertiesId dst);
 
 	/// <summary>
 	/// Lock a group of properties.
@@ -49,10 +50,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_LockProperties">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="props">The properties to lock.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_LockProperties")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int LockProperties(SDL_PropertiesId props);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool LockProperties(SDL_PropertiesId props);
 
 	/// <summary>
 	/// Unlock a group of properties.
@@ -76,10 +78,11 @@ public static unsafe partial class SDL
 	/// <param name="value">The new value of the property, or <see cref="nint.Zero"/> to delete the property.</param>
 	/// <param name="cleanup">The function to call when this property is deleted, or <see langword="null"/> if no cleanup is necessary.</param>
 	/// <param name="userData">A pointer that is passed to the cleanup function.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetPointerPropertyWithCleanup", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetPointerPropertyWithCleanup(SDL_PropertiesId props, string name, nint value, delegate* unmanaged[Cdecl]<nint, nint, void> cleanup, nint userData);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetPointerPropertyWithCleanup(SDL_PropertiesId props, string name, nint value, delegate* unmanaged[Cdecl]<nint, nint, void> cleanup, nint userData);
 
 	/// <summary>
 	/// Set a property on a group of properties.
@@ -90,10 +93,11 @@ public static unsafe partial class SDL
 	/// <param name="props">The properties to modify.</param>
 	/// <param name="name">The name of the property to modify.</param>
 	/// <param name="value">The new value of the property, or <see cref="nint.Zero"/> to delete the property.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetPointerProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetPointerProperty(SDL_PropertiesId props, string name, nint value);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetPointerProperty(SDL_PropertiesId props, string name, nint value);
 
 	/// <summary>
 	/// Set a string property on a group of properties.
@@ -104,10 +108,11 @@ public static unsafe partial class SDL
 	/// <param name="props">The properties to modify.</param>
 	/// <param name="name">The name of the property to modify.</param>
 	/// <param name="value">The new value of the property, or <see langword="null"/> to delete the property.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetStringProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetStringProperty(SDL_PropertiesId props, string name, string? value);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetStringProperty(SDL_PropertiesId props, string name, string? value);
 
 	/// <summary>
 	/// Set an integer property on a group of properties.
@@ -118,10 +123,11 @@ public static unsafe partial class SDL
 	/// <param name="props">The properties to modify.</param>
 	/// <param name="name">The name of the property to modify.</param>
 	/// <param name="value">The new value of the property.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetNumberProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetNumberProperty(SDL_PropertiesId props, string name, long value);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetNumberProperty(SDL_PropertiesId props, string name, long value);
 
 	/// <summary>
 	/// Set a floating point property on a group of properties.
@@ -132,10 +138,11 @@ public static unsafe partial class SDL
 	/// <param name="props">The properties to modify.</param>
 	/// <param name="name">The name of the property to modify.</param>
 	/// <param name="value">The new value of the property.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetFloatProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetFloatProperty(SDL_PropertiesId props, string name, float value);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetFloatProperty(SDL_PropertiesId props, string name, float value);
 
 	/// <summary>
 	/// Set a boolean property on a group of properties.
@@ -146,10 +153,11 @@ public static unsafe partial class SDL
 	/// <param name="props">The properties to modify.</param>
 	/// <param name="name">The name of the property to modify.</param>
 	/// <param name="value">The new value of the property.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetBooleanProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetBooleanProperty(SDL_PropertiesId props, string name, [MarshalAs(NativeBool)] bool value);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetBooleanProperty(SDL_PropertiesId props, string name, [MarshalAs(NativeBool)] bool value);
 
 	/// <summary>
 	/// Return whether a property exists in a group of properties.
@@ -258,10 +266,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="props">The properties to modify.</param>
 	/// <param name="name">The name of the property to clear.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ClearProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ClearProperty(SDL_PropertiesId props, string name);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool ClearProperty(SDL_PropertiesId props, string name);
 
 	/// <summary>
 	/// Enumerate the properties on a group of properties.
@@ -272,10 +281,11 @@ public static unsafe partial class SDL
 	/// <param name="props">The properties to query.</param>
 	/// <param name="callback">The function to call for each property.</param>
 	/// <param name="userData">A pointer that is passed to <paramref name="callback"/>.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_EnumerateProperties")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int EnumerateProperties(SDL_PropertiesId props, delegate* unmanaged[Cdecl]<nint, SDL_PropertiesId, byte*, void> callback, nint userData);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool EnumerateProperties(SDL_PropertiesId props, delegate* unmanaged[Cdecl]<nint, SDL_PropertiesId, byte*, void> callback, nint userData);
 
 	/// <summary>
 	/// Destroy a group of properties.

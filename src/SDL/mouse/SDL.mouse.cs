@@ -118,10 +118,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="x">The x coordinate.</param>
 	/// <param name="y">The y coordinate.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_WarpMouseGlobal")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int WarpMouseGlobal(float x, float y);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool WarpMouseGlobal(float x, float y);
 
 	/// <summary>
 	/// Set relative mouse mode for a window.
@@ -131,10 +132,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="window">The window to change.</param>
 	/// <param name="enabled">True to enable relative mode, false to disable.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowRelativeMouseMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetWindowRelativeMouseMode(SDL_Window* window, [MarshalAs(NativeBool)] bool enabled);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetWindowRelativeMouseMode(SDL_Window* window, [MarshalAs(NativeBool)] bool enabled);
 
 	/// <summary>
 	/// Query whether relative mouse mode is enabled for a window.
@@ -156,10 +158,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CaptureMouse">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="enabled">True to enable capturing, false to disable.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CaptureMouse")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int CaptureMouse([MarshalAs(NativeBool)] bool enabled);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool CaptureMouse([MarshalAs(NativeBool)] bool enabled);
 
 	/// <summary>
 	/// Create a cursor using the specified bitmap data and mask (in MSB format).
@@ -211,10 +214,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetCursor">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="cursor">A cursor to make active.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetCursor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetCursor(SDL_Cursor* cursor);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetCursor(SDL_Cursor* cursor);
 
 	/// <summary>
 	/// Get the active cursor.
@@ -255,10 +259,11 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ShowCursor">documentation</see> for more details.
 	/// </remarks>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ShowCursor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ShowCursor();
+	[return: MarshalAs(NativeBool)]
+	public static partial bool ShowCursor();
 
 	/// <summary>
 	/// Hide the cursor.
@@ -266,10 +271,11 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HideCursor">documentation</see> for more details.
 	/// </remarks>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HideCursor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int HideCursor();
+	[return: MarshalAs(NativeBool)]
+	public static partial bool HideCursor();
 
 	/// <summary>
 	/// Return whether the cursor is currently being shown.

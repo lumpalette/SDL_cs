@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.Marshalling;
 
 namespace SDL3;
@@ -64,12 +65,12 @@ public unsafe struct SDL_VirtualJoystickDesc
 	private readonly ushort _padding3;
 
 	/// <summary>
-	/// A mask of which buttons are valid for this controller, e.g. (1 << <see cref="SDL_GamepadButton.South"/>).
+	/// A mask of which buttons are valid for this controller, e.g. (1 &lt;&lt; <see cref="SDL_GamepadButton.South"/>).
 	/// </summary>
 	public uint ButtonMask;
 
 	/// <summary>
-	/// A mask of which axes are valid for this controller, e.g. (1 << <see cref="SDL_GamepadAxis.LeftX"/>).
+	/// A mask of which axes are valid for this controller, e.g. (1 &lt;&lt; <see cref="SDL_GamepadAxis.LeftX"/>).
 	/// </summary>
 	public uint AxisMask;
 
@@ -119,7 +120,7 @@ public unsafe struct SDL_VirtualJoystickDesc
 	public delegate* unmanaged[Cdecl]<nint, byte, byte, byte, int> SetLed;
 
 	/// <summary>
-	/// Implements <see cref="SDL.SendJoystickEffect(SDL_Joystick*, void*, int)"/>.
+	/// Implements <see cref="SDL.SendJoystickEffect(SDL_Joystick*, nint, int)"/>.
 	/// </summary>
 	public delegate* unmanaged[Cdecl]<nint, nint, int, int> SendEffect;
 
@@ -127,4 +128,9 @@ public unsafe struct SDL_VirtualJoystickDesc
 	/// Implements <see cref="SDL.SetGamepadSensorEnabled(SDL_Gamepad*, SDL_SensorType, bool)"/>.
 	/// </summary>
 	public delegate* unmanaged[Cdecl]<nint, int, int> SetSensorsEnabled;
+
+	/// <summary>
+	/// Cleans up the userdata when the joystick is detached.
+	/// </summary>
+	public delegate* unmanaged[Cdecl]<nint, void> Cleanup;
 }

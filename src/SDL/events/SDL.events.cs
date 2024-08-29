@@ -27,7 +27,7 @@ public static unsafe partial class SDL
 	/// <param name="action">Action to take.</param>
 	/// <param name="minType">Minimum value of the event type to be considered; <see cref="SDL_EventType.First"/> is a safe choice.</param>
 	/// <param name="maxType">Maximum value of the event type to be considered; <see cref="SDL_EventType.First"/> is a safe choice.</param>
-	/// <returns>The number of events actually stored or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>The number of events actually stored or -1 on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PeepEvents")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial int PeepEvents(SDL_Event* e, int numEvents, SDL_EventAction action, SDL_EventType minType, SDL_EventType maxType);
@@ -126,10 +126,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PushEvent">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="e">The <see cref="SDL_Event"/> to be added to the queue.</param>
-	/// <returns>1 on success, 0 if the event was filtered, or a negative error code on failure; call <see cref="GetError"/> for more information. A common reason for error is the event queue being full.</returns>
+	/// <returns>True on success, false if the event was filtered or on failure; call <see cref="GetError"/> for more information. A common reason for error is the event queue being full.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PushEvent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int PushEvent(SDL_Event* e);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool PushEvent(SDL_Event* e);
 
 	/// <summary>
 	/// Set up a filter to process all events before they change internal state and are posted to the internal event queue.
@@ -165,10 +166,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="filter">An SDL_EventFilter function to call when an event happens.</param>
 	/// <param name="userdata">A pointer that is passed to <paramref name="filter"/>.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddEventWatch")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int AddEventWatch(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint userdata);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool AddEventWatch(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint userdata);
 
 	/// <summary>
 	/// Remove an event watch callback added with <see cref="AddEventWatch"/>.

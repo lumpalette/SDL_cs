@@ -85,7 +85,7 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DelayNS">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="ms">The number of nanoseconds to delay.</param>
+	/// <param name="ns">The number of nanoseconds to delay.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_DelayNS")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial void DelayNs(ulong ns);
@@ -97,7 +97,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AddTimer">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="intervalMs">The timer delay, in milliseconds, passed to <paramref name="callback"/>.</param>
-	/// <param name="callback">The <see cref="SDL_TimerCallback"/> function to call when the specified <paramref name="intervalMs"/> elapses.</param>
+	/// <param name="callback">The <c>SDL_TimerCallback</c> function to call when the specified <paramref name="intervalMs"/> elapses.</param>
 	/// <param name="userData">A pointer that is passed to <paramref name="callback"/>.</param>
 	/// <returns>A timer ID or <see cref="SDL_TimerId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddTimer")]
@@ -111,7 +111,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AddTimerNS">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="intervalNs">The timer delay, in nanoseconds, passed to <paramref name="callback"/>.</param>
-	/// <param name="callback">The <see cref="SDL_NsTimerCallback"/> function to call when the specified <paramref name="intervalNs"/> elapses.</param>
+	/// <param name="callback">The <c>SDL_NsTimerCallback</c> function to call when the specified <paramref name="intervalNs"/> elapses.</param>
 	/// <param name="userData">A pointer that is passed to <paramref name="callback"/>.</param>
 	/// <returns>A timer ID or <see cref="SDL_TimerId.Invalid"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddTimerNS")]
@@ -119,16 +119,17 @@ public static unsafe partial class SDL
 	public static partial SDL_TimerId AddTimerNs(ulong intervalNs, delegate* unmanaged[Cdecl]<nint, SDL_TimerId, ulong, ulong> callback, nint userData);
 
 	/// <summary>
-	/// Remove a timer created with <see cref="AddTimer(uint, SDL_TimerCallback, nint)"/> or <see cref="AddTimerNs(ulong, SDL_NsTimerCallback, nint)"/>.
+	/// Remove a timer created with <see cref="AddTimer"/>.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RemoveTimer">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="timerId">The ID of the timer to remove.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RemoveTimer")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RemoveTimer(SDL_TimerId timerId);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool RemoveTimer(SDL_TimerId timerId);
 
 	/// <summary>
 	/// The number of miliseconds in a second.

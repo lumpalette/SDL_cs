@@ -57,7 +57,7 @@ public static unsafe partial class SDL
 	internal const string LibraryName = "SDL3";
 
 	/// <summary>
-	/// The size of SDL_bool: an i4.
+	/// The size of SDL_bool: a 8-bit unsigned integer.
 	/// </summary>
-	internal const UnmanagedType NativeBool = UnmanagedType.I4;
+	internal const UnmanagedType NativeBool = UnmanagedType.I1;
 }

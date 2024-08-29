@@ -39,10 +39,11 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ReloadGamepadMappings">documentation</see> for more details.
 	/// </remarks>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ReloadGamepadMappings")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ReloadGamepadMappings();
+	[return: MarshalAs(NativeBool)]
+	public static partial bool ReloadGamepadMappings();
 
 	/// <summary>
 	/// Get the current gamepad mappings.
@@ -88,10 +89,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="instanceId">The joystick instance ID.</param>
 	/// <param name="mapping">the mapping to use for this device, or <see langword="null"/> to clear the mapping.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetGamepadMapping", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetGamepadMapping(SDL_JoystickId instanceId, string mapping);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetGamepadMapping(SDL_JoystickId instanceId, string mapping);
 
 	/// <summary>
 	/// Return whether a gamepad is currently connected.
@@ -382,10 +384,11 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="gamepad">The gamepad object to adjust.</param>
 	/// <param name="playerIndex">Player index to assign to this gamepad, or -1 to clear the player index and turn off player LEDs.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetGamepadPlayerIndex")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetGamepadPlayerIndex(SDL_Gamepad* gamepad, int playerIndex);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetGamepadPlayerIndex(SDL_Gamepad* gamepad, int playerIndex);
 
 	/// <summary>
 	/// Get the USB vendor ID of an opened gamepad, if available.
@@ -740,10 +743,11 @@ public static unsafe partial class SDL
 	/// <param name="x">Filled with x position, normalized 0 to 1, with the origin in the upper left.</param>
 	/// <param name="y">Filled with y position, normalized 0 to 1, with the origin in the upper left.</param>
 	/// <param name="pressure">Filled with pressure value.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadTouchpadFinger")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetGamepadTouchpadFinger(SDL_Gamepad* gamepad, int touchpad, int finger, byte* state, float* x, float* y, float* pressure);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetGamepadTouchpadFinger(SDL_Gamepad* gamepad, int touchpad, int finger, byte* state, float* x, float* y, float* pressure);
 
 	/// <summary>
 	/// Return whether a gamepad has a particular sensor.
@@ -768,10 +772,11 @@ public static unsafe partial class SDL
 	/// <param name="gamepad">The gamepad to update.</param>
 	/// <param name="type">The type of sensor to enable/disable.</param>
 	/// <param name="enabled">Whether data reporting should be enabled.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetGamepadSensorEnabled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetGamepadSensorEnabled(SDL_Gamepad* gamepad, SDL_SensorType type, [MarshalAs(NativeBool)] bool enabled);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetGamepadSensorEnabled(SDL_Gamepad* gamepad, SDL_SensorType type, [MarshalAs(NativeBool)] bool enabled);
 
 	/// <summary>
 	/// Query whether sensor data reporting is enabled for a gamepad.
@@ -810,10 +815,11 @@ public static unsafe partial class SDL
 	/// <param name="type">Type of sensor to query.</param>
 	/// <param name="data">A pointer filled with the current sensor state.</param>
 	/// <param name="numValues">The number of values to write to data.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadSensorData")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetGamepadSensorData(SDL_Gamepad* gamepad, SDL_SensorType type, float* data, int numValues);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetGamepadSensorData(SDL_Gamepad* gamepad, SDL_SensorType type, float* data, int numValues);
 
 	/// <summary>
 	/// Start a rumble effect on a gamepad.
@@ -825,10 +831,11 @@ public static unsafe partial class SDL
 	/// <param name="lowFrequencyRumble">The intensity of the low frequency (left) rumble motor, from 0 to 0xFFFF.</param>
 	/// <param name="high_frequency_rumble">The intensity of the high frequency (right) rumble motor, from 0 to 0xFFFF.</param>
 	/// <param name="durationMs">The duration of the rumble effect, in milliseconds.</param>
-	/// <returns>0, or -1 if rumble isn't supported on this gamepad.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RumbleGamepad")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RumbleGamepad(SDL_Gamepad* gamepad, ushort lowFrequencyRumble, ushort high_frequency_rumble, uint durationMs);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool RumbleGamepad(SDL_Gamepad* gamepad, ushort lowFrequencyRumble, ushort high_frequency_rumble, uint durationMs);
 
 	/// <summary>
 	/// Start a rumble effect in the gamepad's triggers.
@@ -840,10 +847,11 @@ public static unsafe partial class SDL
 	/// <param name="leftRumble">The intensity of the left trigger rumble motor, from 0 to 0xFFFF.</param>
 	/// <param name="rightRumble">The intensity of the right trigger rumble motor, from 0 to 0xFFFF.</param>
 	/// <param name="durationMs">The duration of the rumble effect, in milliseconds.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RumbleGamepadTriggers")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int RumbleGamepadTriggers(SDL_Gamepad* gamepad, ushort leftRumble, ushort rightRumble, uint durationMs);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool RumbleGamepadTriggers(SDL_Gamepad* gamepad, ushort leftRumble, ushort rightRumble, uint durationMs);
 
 	/// <summary>
 	/// Update a gamepad's LED color.
@@ -855,10 +863,11 @@ public static unsafe partial class SDL
 	/// <param name="red">The intensity of the red LED.</param>
 	/// <param name="green">The intensity of the green LED.</param>
 	/// <param name="blue">The intensity of the blue LED.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetGamepadLED")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetGamepadLed(SDL_Gamepad* gamepad, byte red, byte green, byte blue);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetGamepadLed(SDL_Gamepad* gamepad, byte red, byte green, byte blue);
 
 	/// <summary>
 	/// Send a gamepad specific effect packet.
@@ -869,10 +878,11 @@ public static unsafe partial class SDL
 	/// <param name="gamepad">The gamepad to affect.</param>
 	/// <param name="data">The data to send to the gamepad.</param>
 	/// <param name="size">The size of the data to send to the gamepad.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SendGamepadEffect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SendGamepadEffect(SDL_Gamepad* gamepad, nint data, int size);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SendGamepadEffect(SDL_Gamepad* gamepad, nint data, int size);
 
 	/// <summary>
 	/// Close a gamepad previously opened with <see cref="OpenGamepad(SDL_JoystickId)"/>.

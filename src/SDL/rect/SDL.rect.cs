@@ -103,10 +103,11 @@ public static unsafe partial class SDL
 	/// <param name="a">An <see cref="SDL_Rect"/> structure representing the first rectangle.</param>
 	/// <param name="b">An <see cref="SDL_Rect"/> structure representing the second rectangle.</param>
 	/// <param name="result">An <see cref="SDL_Rect"/> structure filled in with the union of rectangles <paramref name="a"/> and <paramref name="b"/>.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectUnion", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRectUnion([Const] SDL_Rect* a, [Const] SDL_Rect* b, SDL_Rect* result);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetRectUnion([Const] SDL_Rect* a, [Const] SDL_Rect* b, SDL_Rect* result);
 
 	/// <summary>
 	/// Calculate a minimal rectangle enclosing a set of points.
@@ -253,10 +254,11 @@ public static unsafe partial class SDL
 	/// <param name="a">An <see cref="SDL_FRect"/> structure representing the first rectangle.</param>
 	/// <param name="b">An <see cref="SDL_FRect"/> structure representing the second rectangle.</param>
 	/// <param name="result">An <see cref="SDL_FRect"/> structure filled in with the union of rectangles <paramref name="a"/> and <paramref name="b"/>.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRectUnionFloat", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetRectUnionFloat([Const] SDL_FRect* a, [Const] SDL_FRect* b, SDL_FRect* result);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetRectUnionFloat([Const] SDL_FRect* a, [Const] SDL_FRect* b, SDL_FRect* result);
 
 	/// <summary>
 	/// Calculate a minimal rectangle enclosing a set of points with float precision.

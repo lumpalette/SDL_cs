@@ -16,7 +16,7 @@ public static unsafe partial class SDL
 	/// <param name="name">The hint to set.</param>
 	/// <param name="value">The value of the hint variable.</param>
 	/// <param name="priority">The <see cref="SDL_HintPriority"/> level for the hint.</param>
-	/// <returns>True if the hint was set, false otherwise.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetHintWithPriority", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
@@ -30,7 +30,7 @@ public static unsafe partial class SDL
 	/// </remarks>
 	/// <param name="name">The hint to set.</param>
 	/// <param name="value">The value of the hint variable.</param>
-	/// <returns>True if the hint was set, false otherwise.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetHint", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
@@ -43,7 +43,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ResetHint">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="name">The hint to set.</param>
-	/// <returns>True if the hint was set, false otherwise.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ResetHint", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
@@ -79,12 +79,13 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AddHintCallback">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="name">The hint to watch.</param>
-	/// <param name="callback">An <see cref="SDL_HintCallback"/> function that will be called when the hint value changes.</param>
+	/// <param name="callback">An <c>SDL_HintCallback</c> function that will be called when the hint value changes.</param>
 	/// <param name="userData">A pointer to pass to the callback function.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddHintCallback", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int AddHintCallback(string name, delegate* unmanaged[Cdecl]<nint, byte*, byte*, byte*, void> callback, nint userData);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool AddHintCallback(string name, delegate* unmanaged[Cdecl]<nint, byte*, byte*, byte*, void> callback, nint userData);
 
 	/// <summary>
 	/// Remove a function watching a particular hint.
@@ -93,7 +94,7 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DelHintCallback">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="name">The hint being watched.</param>
-	/// <param name="callback">An <see cref="SDL_HintCallback"/> function that will be called when the hint value changes.</param>
+	/// <param name="callback">An <c>SDL_HintCallback</c> function that will be called when the hint value changes.</param>
 	/// <param name="userData">A pointer being passed to the callback function.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_DelHintCallback", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]

@@ -150,10 +150,11 @@ public static unsafe partial class SDL
 	/// <param name="sensor">The <see cref="SDL_Sensor"/> object to query. </param>
 	/// <param name="data">A pointer filled with the current sensor state.</param>
 	/// <param name="numValues">The number of values to write to data.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSensorData")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetSensorData(SDL_Sensor* sensor, float* data, int numValues);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetSensorData(SDL_Sensor* sensor, float* data, int numValues);
 
 	/// <summary>
 	/// Close a sensor previously opened with <see cref="OpenSensor(SDL_SensorId)"/>.

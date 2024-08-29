@@ -13,10 +13,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetClipboardText">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="text">The text to store in the clipboard.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetClipboardText", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetClipboardText(string text);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetClipboardText(string text);
 
 	/// <summary>
 	/// Get UTF-8 text from the clipboard.
@@ -48,10 +49,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetPrimarySelectionText">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="text">The text to store in the primary selection.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetPrimarySelectionText", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetPrimarySelectionText(string text);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetPrimarySelectionText(string text);
 
 	/// <summary>
 	/// Get UTF-8 text from the primary selection.
@@ -87,10 +89,11 @@ public static unsafe partial class SDL
 	/// <param name="userData">An opaque pointer that will be forwarded to the callbacks.</param>
 	/// <param name="mimeTypes">A list of mime-types that are being offered.</param>
 	/// <param name="numMimeTypes">The number of mime-types in the mime_types list.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetClipboardData", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int SetClipboardData(delegate* unmanaged[Cdecl]<nint, byte*, nuint*, void> callback, delegate* unmanaged[Cdecl]<nint, void> cleanup, nint userData, [Const] byte** mimeTypes, nuint numMimeTypes);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetClipboardData(delegate* unmanaged[Cdecl]<nint, byte*, nuint*, void> callback, delegate* unmanaged[Cdecl]<nint, void> cleanup, nint userData, [Const] byte** mimeTypes, nuint numMimeTypes);
 
 	/// <summary>
 	/// Clear the clipboard data.
@@ -98,10 +101,11 @@ public static unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ClearClipboardData">documentation</see> for more details.
 	/// </remarks>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ClearClipboardData")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int ClearClipboardData();
+	[return: MarshalAs(NativeBool)]
+	public static partial bool ClearClipboardData();
 
 	/// <summary>
 	/// Get the data from clipboard for a given mime type.

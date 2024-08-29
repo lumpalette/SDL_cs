@@ -13,10 +13,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Init">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="flags">Subsystem initialization flags.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_Init")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int Init(SDL_InitFlags flags);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool Init(SDL_InitFlags flags);
 
 	/// <summary>
 	/// Compatibility function to initialize the SDL library.
@@ -25,10 +26,11 @@ public static unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_InitSubSystem">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="flags">Any of the flags used by <see cref="Init(SDL_InitFlags)"/>; see <see cref="Init(SDL_InitFlags)"/> for details.</param>
-	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_InitSubSystem")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int InitSubSystem(SDL_InitFlags flags);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool InitSubSystem(SDL_InitFlags flags);
 
 	/// <summary>
 	/// Shut down specific SDL subsystems.
