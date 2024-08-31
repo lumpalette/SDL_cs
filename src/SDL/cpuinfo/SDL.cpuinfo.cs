@@ -41,6 +41,172 @@ unsafe partial class SDL
 	public static partial bool HasAltiVec();
 
 	/// <summary>
+	/// Determine whether the CPU has MMX features.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HasMMX">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>True if the CPU has MMX features or false if not.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_HasMMX")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool HasMMX();
+
+	/// <summary>
+	/// Determine whether the CPU has SSE features.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HasSSE">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>True if the CPU has SSE features or false if not.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_HasSSE")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool HasSSE();
+
+	/// <summary>
+	/// Determine whether the CPU has SSE2 features.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HasSSE2">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>True if the CPU has SSE2 features or false if not.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_HasSSE2")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool HasSSE2();
+
+	/// <summary>
+	/// Determine whether the CPU has SSE3 features.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HasSSE3">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>True if the CPU has SSE3 features or false if not.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_HasSSE3")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool HasSSE3();
+
+	/// <summary>
+	/// Determine whether the CPU has SSE4.1 features.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HasSSE41">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>True if the CPU has SSE4.1 features or false if not.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_HasSSE41")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool HasSSE41();
+
+	/// <summary>
+	/// Determine whether the CPU has SSE4.2 features.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HasSSE42">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>True if the CPU has SSE4.2 features or false if not.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_HasSSE42")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool HasSSE42();
+
+	/// <summary>
+	/// Determine whether the CPU has AVX features.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HasAVX">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>True if the CPU has AVX features or false if not.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_HasAVX")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool HasAVX();
+
+	/// <summary>
+	/// Determine whether the CPU has AVX2 features.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HasAVX2">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>True if the CPU has AVX features or false if not.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_HasAVX2")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool HasAVX2();
+
+	/// <summary>
+	/// Determine whether the CPU has AVX-512F (foundation) features.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HasAVX512F">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>True if the CPU has AVX-512F features or false if not.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_HasAVX512F")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool HasAVX512F();
+
+	/// <summary>
+	/// Determine whether the CPU has ARM SIMD (ARMv6) features.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HasARMSIMD">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>True if the CPU has ARM SIMD features or false if not.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_HasARMSIMD")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool HasARMSimd();
+
+	/// <summary>
+	/// Determine whether the CPU has NEON (ARM SIMD) features.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HasARMSIMD">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>True if the CPU has ARM NEON features or false if not.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_HasNEON")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool HasNeon();
+
+	/// <summary>
+	/// Determine whether the CPU has LASX (LOONGARCH SIMD) features.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HasLSX">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>True if the CPU has LOONGARCH LASX features or false if not.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_HasLSX")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool HasLSX();
+
+	/// <summary>
+	/// Get the amount of RAM configured in the system.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSystemRAM">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>The amount of RAM configured in the system in MiB.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSystemRAM")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial int GetSystemRAM();
+
+	/// <summary>
+	/// Report the alignment this system needs for SIMD allocations.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetSIMDAlignment">documentation</see> for more details.
+	/// </remarks>
+	/// <returns>The alignment in bytes needed for available, known SIMD instructions.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSIMDAlignment")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial nuint GetSimdAlignment();
+
+	/// <summary>
 	/// A guess for the cacheline size used for padding.
 	/// </summary>
 	/// <remarks>
