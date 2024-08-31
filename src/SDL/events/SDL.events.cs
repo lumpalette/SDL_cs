@@ -176,13 +176,13 @@ public static unsafe partial class SDL
 	/// Remove an event watch callback added with <see cref="AddEventWatch"/>.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DelEventWatch">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RemoveEventWatch">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="filter"></param>
-	/// <param name="userdata"></param>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_DelEventWatch")]
+	/// <param name="filter">The function originally passed to <see cref="AddEventWatch"/>.</param>
+	/// <param name="userdata">The pointer originally passed to <see cref="AddEventWatch"/>.</param>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_RemoveEventWatch")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void DelEventWatch(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint userdata);
+	public static partial void RemoveEventWatch(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint userdata);
 
 	/// <summary>
 	/// Run a specific filter function on the current event queue, removing any events for which the filter returns 0.

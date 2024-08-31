@@ -16,10 +16,5 @@ public enum SDL_ScaleMode
 	/// <summary>
 	/// Linear filtering.
 	/// </summary>
-	Linear,
-
-	/// <summary>
-	/// Anisotropic filtering
-	/// </summary>
-	Best
+	Linear
 }

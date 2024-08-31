@@ -71,7 +71,7 @@ public static unsafe partial class SDL
 		}
 
 		/// <summary>
-		/// Properties used in <see cref="SDL.GetRendererProperties(SDL_Renderer*)"/>.
+		/// Properties used in <see cref="GetRendererProperties(SDL_Renderer*)"/>.
 		/// </summary>
 		public static class Renderer
 		{
@@ -198,30 +198,14 @@ public static unsafe partial class SDL
 		}
 
 		/// <summary>
-		/// Properties used in <see cref="SDL.CreateTextureWithProperties(SDL_Renderer*, SDL_PropertiesId)"/>.
+		/// Properties used in <see cref="CreateTextureWithProperties(SDL_Renderer*, SDL_PropertiesId)"/>.
 		/// </summary>
 		public static class TextureCreate
 		{
 			/// <summary>
-			/// An <see cref="SDL_Colorspace"/> value describing the texture colorspace, defaults to:
-			/// <list type="bullet">
-			///		<item>
-			///			<term><see cref="SDL_Colorspace.SRGBLinear"/></term>
-			///			<description>for floating point textures</description>
-			///		</item>
-			///		<item>
-			///			<term><see cref="SDL_Colorspace.Hdr10"/></term>
-			///			<description>for 10-bit textures</description>
-			///		</item>
-			///		<item>
-			///			<term><see cref="SDL_Colorspace.SRGB"/></term>
-			///			<description>for other RGB textures</description>
-			///		</item>
-			///		<item>
-			///			<term><see cref="SDL_Colorspace.Jpeg"/></term>
-			///			<description>for YUV textures</description>
-			///		</item>
-			/// </list>
+			/// An <see cref="SDL_Colorspace"/> value describing the texture colorspace, defaults to <see cref="SDL_Colorspace.SRGBLinear"/>
+			/// for floating point textures <see cref="SDL_Colorspace.Hdr10"/> for 10-bit textures, <see cref="SDL_Colorspace.SRGB"/> for
+			/// other RGB textures and <see cref="SDL_Colorspace.Jpeg"/> for YUV textures
 			/// </summary>
 			public const string ColorspaceNumber = "colorspace";
 

@@ -91,12 +91,12 @@ public static unsafe partial class SDL
 	/// Remove a function watching a particular hint.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DelHintCallback">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RemoveHintCallbackHintCallback">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="name">The hint being watched.</param>
 	/// <param name="callback">An <c>SDL_HintCallback</c> function that will be called when the hint value changes.</param>
 	/// <param name="userData">A pointer being passed to the callback function.</param>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_DelHintCallback", StringMarshalling = StringMarshalling.Utf8)]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_RemoveHintCallback", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void DelHintCallback(string name, delegate* unmanaged[Cdecl]<nint, byte*, byte*, byte*, void> callback, nint userData);
+	public static partial void RemoveHintCallback(string name, delegate* unmanaged[Cdecl]<nint, byte*, byte*, byte*, void> callback, nint userData);
 }
