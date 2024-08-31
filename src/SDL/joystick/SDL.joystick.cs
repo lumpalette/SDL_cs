@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.Marshalling;
 namespace SDL3;
 
 // SDL_joystick.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_joystick.h
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	/// <summary>
 	/// Locking for atomic access to the joystick API.
@@ -707,7 +707,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickLED")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool SetJoystickLed(SDL_Joystick* joystick, byte red, byte green, byte blue);
+	public static partial bool SetJoystickLED(SDL_Joystick* joystick, byte red, byte green, byte blue);
 
 	/// <summary>
 	/// Send a joystick specific effect packet.

@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.Marshalling;
 namespace SDL3;
 
 // SDL_version.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_version.h.
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	/// <summary>
 	/// This macro turns the version numbers into a numeric value.

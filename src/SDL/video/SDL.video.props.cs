@@ -1,8 +1,8 @@
 ﻿namespace SDL3;
 
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
-	public static partial class Prop
+	partial class Prop
 	{
 		/// <summary>
 		/// Properties used in <see cref="SDL.GetDisplayProperties(SDL_DisplayId)"/>.

@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace SDL3;
 
 // SDL_stdinc.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_stdinc.h.
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	[Macro]
 	public static uint FourCC(byte a, byte b, byte c, byte d)

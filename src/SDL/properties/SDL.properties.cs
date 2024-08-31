@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.Marshalling;
 namespace SDL3;
 
 // SDL_properties.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_properties.h.
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	/// <summary>
 	/// Get the global SDL properties.

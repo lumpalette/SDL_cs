@@ -6,7 +6,7 @@ using System.Runtime.InteropServices.Marshalling;
 namespace SDL3;
 
 // SDL_pixels.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_pixels.h.
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	[Macro]
 	public static SDL_PixelFormat DefinePixelFourCC(byte a, byte b, byte c, byte d) => (SDL_PixelFormat)FourCC(a, b, c, d);

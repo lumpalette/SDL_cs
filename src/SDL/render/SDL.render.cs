@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.Marshalling;
 namespace SDL3;
 
 // SDL_render.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_render.h
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	/// <summary>
 	/// Get the number of 2D rendering drivers available for the current display.

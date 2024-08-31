@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace SDL3;
 
 // SDL_blendmode.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_blendmode.h.
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	/// <summary>
 	/// Compose a custom blend mode for renderers.

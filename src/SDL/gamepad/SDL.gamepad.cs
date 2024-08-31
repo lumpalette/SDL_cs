@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.Marshalling;
 namespace SDL3;
 
 // SDL_gamepad.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_gamepad.h.
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	/// <summary>
 	/// Add support for gamepads that SDL is unaware of or change the binding of an existing gamepad.
@@ -867,7 +867,7 @@ public static unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetGamepadLED")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool SetGamepadLed(SDL_Gamepad* gamepad, byte red, byte green, byte blue);
+	public static partial bool SetGamepadLED(SDL_Gamepad* gamepad, byte red, byte green, byte blue);
 
 	/// <summary>
 	/// Send a gamepad specific effect packet.

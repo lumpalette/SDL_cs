@@ -1,6 +1,6 @@
 ﻿namespace SDL3;
 
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	public static partial class Hint
 	{
@@ -612,7 +612,7 @@ public static unsafe partial class SDL
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_HIDAPI_JOYCON_HOME_LED">documentation</see> for more details.
 		/// </remarks>
-		public const string JoystickHidapiJoyConHomeLed = "SDL_JOYSTICK_HIDAPI_JOYCON_HOME_LED";
+		public const string JoystickHidapiJoyConHomeLED = "SDL_JOYSTICK_HIDAPI_JOYCON_HOME_LED";
 
 		/// <summary>
 		/// A variable controlling whether the HIDAPI driver for Amazon Luna controllers connected via Bluetooth should be used.
@@ -684,7 +684,7 @@ public static unsafe partial class SDL
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_HIDAPI_PS5_PLAYER_LED">documentation</see> for more details.
 		/// </remarks>
-		public const string JoystickHidapiPS5PlayerLed = "SDL_JOYSTICK_HIDAPI_PS5_PLAYER_LED";
+		public const string JoystickHidapiPS5PlayerLED = "SDL_JOYSTICK_HIDAPI_PS5_PLAYER_LED";
 
 		/// <summary>
 		/// A variable controlling whether extended input reports should be used for PS5 controllers when using the HIDAPI driver.
@@ -740,7 +740,7 @@ public static unsafe partial class SDL
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_HIDAPI_SWITCH_HOME_LED">documentation</see> for more details.
 		/// </remarks>
-		public const string JoystickHidapiSwitchHomeLed = "SDL_JOYSTICK_HIDAPI_SWITCH_HOME_LED";
+		public const string JoystickHidapiSwitchHomeLED = "SDL_JOYSTICK_HIDAPI_SWITCH_HOME_LED";
 
 		/// <summary>
 		/// A variable controlling whether the player LEDs should be lit to indicate which player is associated with a
@@ -749,7 +749,7 @@ public static unsafe partial class SDL
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_HIDAPI_SWITCH_PLAYER_LED">documentation</see> for more details.
 		/// </remarks>
-		public const string JoystickHidapiSwitchPlayerLed = "SDL_JOYSTICK_HIDAPI_SWITCH_PLAYER_LED";
+		public const string JoystickHidapiSwitchPlayerLED = "SDL_JOYSTICK_HIDAPI_SWITCH_PLAYER_LED";
 
 		/// <summary>
 		/// A variable controlling whether Nintendo Switch Joy-Con controllers will be in vertical mode when using the HIDAPI driver.
@@ -773,7 +773,7 @@ public static unsafe partial class SDL
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_HIDAPI_WII_PLAYER_LED">documentation</see> for more details.
 		/// </remarks>
-		public const string JoystickHidapiWiiPlayerLed = "SDL_JOYSTICK_HIDAPI_WII_PLAYER_LED";
+		public const string JoystickHidapiWiiPlayerLED = "SDL_JOYSTICK_HIDAPI_WII_PLAYER_LED";
 
 		/// <summary>
 		/// A variable controlling whether the HIDAPI driver for XBox controllers should be used.
@@ -797,7 +797,7 @@ public static unsafe partial class SDL
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_HIDAPI_XBOX_360_PLAYER_LED">documentation</see> for more details.
 		/// </remarks>
-		public const string JoystickHidapiXbox360PlayerLed = "SDL_JOYSTICK_HIDAPI_XBOX_360_PLAYER_LED";
+		public const string JoystickHidapiXbox360PlayerLED = "SDL_JOYSTICK_HIDAPI_XBOX_360_PLAYER_LED";
 
 		/// <summary>
 		/// A variable controlling whether the HIDAPI driver for XBox 360 wireless controllers should be used.
@@ -821,7 +821,7 @@ public static unsafe partial class SDL
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_HIDAPI_XBOX_ONE_HOME_LED">documentation</see> for more details.
 		/// </remarks>
-		public const string JoystickHidapiXboxOneHomeLed = "SDL_JOYSTICK_HIDAPI_XBOX_ONE_HOME_LED";
+		public const string JoystickHidapiXboxOneHomeLED = "SDL_JOYSTICK_HIDAPI_XBOX_ONE_HOME_LED";
 
 		/// <summary>
 		/// A variable controlling whether IOKit should be used for controller handling.

@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.Marshalling;
 namespace SDL3;
 
 // SDL_video.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_video.h.
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	public static uint WindowposUndefinedDisplay(SDL_DisplayId x) => WindowposUndefinedMask | (uint)x;
 

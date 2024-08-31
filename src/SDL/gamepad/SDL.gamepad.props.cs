@@ -1,8 +1,8 @@
 ﻿namespace SDL3;
 
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
-	public static partial class Prop
+	partial class Prop
 	{
 		/// <summary>
 		/// Properties used in <see cref="SDL.GetGamepadProperties(SDL_Gamepad*)"/>.
@@ -12,17 +12,17 @@ public static unsafe partial class SDL
 			/// <summary>
 			/// True if this gamepad has an LED that has adjustable brightness.
 			/// </summary>
-			public const string CapMonoLedBoolean = Joystick.CapMonoLedBoolean;
+			public const string CapMonoLEDBoolean = Joystick.CapMonoLEDBoolean;
 
 			/// <summary>
 			/// True if this gamepad has an LED that has adjustable color.
 			/// </summary>
-			public const string CapRGBLedBoolean = Joystick.CapRGBLedBoolean;
+			public const string CapRGBLEDBoolean = Joystick.CapRGBLEDBoolean;
 
 			/// <summary>
 			/// True if this gamepad has a player LED.
 			/// </summary>
-			public const string CapPlayerLedBoolean = Joystick.CapPlayerLedBoolean;
+			public const string CapPlayerLEDBoolean = Joystick.CapPlayerLEDBoolean;
 
 			/// <summary>
 			/// True if this gamepad has left/right rumble.

@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace SDL3;
 
 // SDL_rect.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_rect.h.
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	/// <summary>
 	/// Convert an <see cref="SDL_Rect"/> to <see cref="SDL_FRect"/>.

@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.Marshalling;
 namespace SDL3;
 
 // SDL_mouse.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_mouse.h
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	[Macro]
 	public static SDL_MouseButtonFlags Button(byte x) => (SDL_MouseButtonFlags)(1u << (x - 1));

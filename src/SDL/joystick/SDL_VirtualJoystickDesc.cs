@@ -115,9 +115,9 @@ public unsafe struct SDL_VirtualJoystickDesc
 	public delegate* unmanaged[Cdecl]<nint, ushort, ushort, int> RumbleTriggers;
 
 	/// <summary>
-	/// Implements <see cref="SDL.SetJoystickLed(SDL_Joystick*, byte, byte, byte)"/>.
+	/// Implements <see cref="SDL.SetJoystickLED(SDL_Joystick*, byte, byte, byte)"/>.
 	/// </summary>
-	public delegate* unmanaged[Cdecl]<nint, byte, byte, byte, int> SetLed;
+	public delegate* unmanaged[Cdecl]<nint, byte, byte, byte, int> SetLED;
 
 	/// <summary>
 	/// Implements <see cref="SDL.SendJoystickEffect(SDL_Joystick*, nint, int)"/>.

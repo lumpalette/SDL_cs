@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace SDL3;
 
 // SDL_power.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_power.h.
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	/// <summary>
 	/// Get the current power supply details.

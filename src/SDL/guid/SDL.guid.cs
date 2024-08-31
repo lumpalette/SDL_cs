@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.Marshalling;
 namespace SDL3;
 
 // SDL_guid.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_guid.h
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	/// <summary>
 	/// Get an ASCII string representation for a given <see cref="SDL_Guid"/>.

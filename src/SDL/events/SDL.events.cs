@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace SDL3;
 
 // SDL_event.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_mouse.h.
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	/// <summary>
 	/// Pump the event loop, gathering events from the input devices.

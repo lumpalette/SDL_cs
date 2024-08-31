@@ -7,7 +7,7 @@ namespace SDL3;
 
 // SDL_audio.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_audio.h.
 // this header is beautiful, even macros have documentation!
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	/// <summary>
 	/// Retrieve the size, in bits, from an <see cref="SDL_AudioFormat"/>.

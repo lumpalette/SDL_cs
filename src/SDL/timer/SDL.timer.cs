@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace SDL3;
 
 // SDL_timer.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_timer.h.
-public static unsafe partial class SDL
+unsafe partial class SDL
 {
 	[Macro]
 	public static ulong SecondsToNs(ulong s) => s * NsPerSecond;
