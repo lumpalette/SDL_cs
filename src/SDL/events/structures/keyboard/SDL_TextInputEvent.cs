@@ -32,7 +32,5 @@ public unsafe struct SDL_TextInputEvent
 	/// <summary>
 	/// The input text.
 	/// </summary>
-	public readonly string? Text => Utf8StringMarshaller.ConvertToManaged(_text);
-
-	private readonly byte* _text;
+	public byte* Text;
 }
