@@ -9,20 +9,6 @@ namespace SDL3;
 public class SDL_Exception : Exception
 {
 	/// <summary>
-	/// Throws an <see cref="SDL_Exception"/> if the given <paramref name="code"/> is not 0 (a value used in SDL to
-	/// indicate a function succeded).
-	/// </summary>
-	/// <param name="code">The return code of a function.</param>
-	/// <param name="message">The message of the exception if it is thrown.</param>
-	public static void ThrowOnFailure(int code, string message)
-	{
-		if (code != 0)
-		{
-			throw new SDL_Exception(message);
-		}
-	}
-
-	/// <summary>
 	/// Throws an <see cref="SDL_Exception"/> if the given condition is true.
 	/// </summary>
 	/// <param name="condition">The condition to check.</param>
