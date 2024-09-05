@@ -57,4 +57,10 @@ public unsafe struct SDL_TextEditingCandidatesEvent
 	}
 
 	private int _horizontal;
+
+	private readonly byte _padding1;
+
+	private readonly byte _padding2;
+	
+	private readonly byte _padding3;
 }

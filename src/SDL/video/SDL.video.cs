@@ -1050,18 +1050,32 @@ unsafe partial class SDL
 	public static partial float GetWindowOpacity(SDL_Window* window);
 
 	/// <summary>
-	/// Set the window as a modal to a parent window.
+	/// Set the window as a child of a parent window.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowModalFor">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowParent">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="modalWindow">The window that should be set modal.</param>
-	/// <param name="parentWindow">The parent window for the modal window.</param>
+	/// <param name="window">The window that should become the child of a parent.</param>
+	/// <param name="parent">The new parent window for the child window.</param>
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowModalFor")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowParent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool SetWindowModalFor(SDL_Window* modalWindow, SDL_Window* parentWindow);
+	public static partial bool SetWindowParent(SDL_Window* window, SDL_Window* parent);
+
+	/// <summary>
+	/// Toggle the state of the window as modal.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowModal">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="window">The window on which to set the modal state.</param>
+	/// <param name="modal">True to toggle modal status on, false to toggle it off.</param>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowModal")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool SetWindowModal(SDL_Window* window, [MarshalAs(NativeBool)] bool modal);
 
 	/// <summary>
 	/// Set whether the window may have input focus.
