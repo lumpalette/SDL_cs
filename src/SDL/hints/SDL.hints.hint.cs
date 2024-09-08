@@ -1774,30 +1774,6 @@ unsafe partial class SDL
 		public const string WindowsUseD3D9Ex = "SDL_WINDOWS_USE_D3D9EX";
 
 		/// <summary>
-		/// A variable controlling whether back-button-press events on Windows Phone to be marked as handled.
-		/// </summary>
-		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_WINRT_HANDLE_BACK_BUTTON">documentation</see> for more details.
-		/// </remarks>
-		public const string WinRTHandleBackButton = "SDL_WINRT_HANDLE_BACK_BUTTON";
-
-		/// <summary>
-		/// A variable specifying the label text for a WinRT app's privacy policy link.
-		/// </summary>
-		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_WINRT_PRIVACY_POLICY_LABEL">documentation</see> for more details.
-		/// </remarks>
-		public const string WinRTPrivacyPolicyLabel = "SDL_WINRT_PRIVACY_POLICY_LABEL";
-
-		/// <summary>
-		/// A variable specifying the URL to a WinRT app's privacy policy.
-		/// </summary>
-		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_WINRT_PRIVACY_POLICY_URL">documentation</see> for more details.
-		/// </remarks>
-		public const string WinRTPrivacyPolicyUrl = "SDL_WINRT_PRIVACY_POLICY_URL";
-
-		/// <summary>
 		/// A variable controlling whether X11 windows are marked as override-redirect.
 		/// </summary>
 		/// <remarks>

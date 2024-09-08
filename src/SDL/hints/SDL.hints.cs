@@ -73,6 +73,20 @@ unsafe partial class SDL
 	public static partial string? GetHint(string name);
 
 	/// <summary>
+	/// Get the boolean value of a hint variable.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetHintBoolean">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="name">The name of the hint to get the boolean value from.</param>
+	/// <param name="defaultValue">The value to return if the hint does not exist.</param>
+	/// <returns>The boolean value of a hint or the provided default value if the hint does not exist.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetHintBoolean", StringMarshalling = StringMarshalling.Utf8)]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetHintBoolean(string name, [MarshalAs(NativeBool)] bool defaultValue);
+
+	/// <summary>
 	/// Add a function to watch a particular hint.
 	/// </summary>
 	/// <remarks>

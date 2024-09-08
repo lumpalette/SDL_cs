@@ -316,11 +316,6 @@ unsafe partial class SDL
 			public const string VivanteSurfacePointer = "SDL.window.vivante.surface";
 
 			/// <summary>
-			/// The <c>IInspectable CoreWindow</c> associated with the window.
-			/// </summary>
-			public const string WinRTWindowPointer = "SDL.window.winrt.window";
-
-			/// <summary>
 			/// The <c>HWND</c> associated with the window.
 			/// </summary>
 			public const string Win32HwndPointer = "SDL.window.win32.hwnd";
