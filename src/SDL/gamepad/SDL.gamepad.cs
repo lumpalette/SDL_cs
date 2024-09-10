@@ -674,10 +674,11 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="gamepad">A gamepad.</param>
 	/// <param name="button">A button index (one of the SDL_GamepadButton values).</param>
-	/// <returns>1 for pressed state or 0 for not pressed state or failure; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>True if the button is pressed, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadButton")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte GetGamepadButton(SDL_Gamepad* gamepad, SDL_GamepadButton button);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetGamepadButton(SDL_Gamepad* gamepad, SDL_GamepadButton button);
 
 	/// <summary>
 	/// Get the label of a button on a gamepad.
@@ -739,15 +740,16 @@ unsafe partial class SDL
 	/// <param name="gamepad">A gamepad.</param>
 	/// <param name="touchpad">A touchpad.</param>
 	/// <param name="finger">A finger.</param>
-	/// <param name="state">Filled with state.</param>
-	/// <param name="x">Filled with x position, normalized 0 to 1, with the origin in the upper left.</param>
-	/// <param name="y">Filled with y position, normalized 0 to 1, with the origin in the upper left.</param>
-	/// <param name="pressure">Filled with pressure value.</param>
+	/// <param name="down">A pointer filled with true if the finger is down, false otherwise, may be <see langword="null"/>.</param>
+	/// <param name="x">A pointer filled with the x position, normalized 0 to 1, with the origin in the upper left, may be <see langword="null"/>.</param>
+	/// <param name="y">A pointer filled with the y position, normalized 0 to 1, with the origin in the upper left, may be <see langword="null"/>.</param>
+	/// <param name="pressure">A pointer filled with pressure value, may be <see langword="null"/>.</param>
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGamepadTouchpadFinger")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetGamepadTouchpadFinger")]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool GetGamepadTouchpadFinger(SDL_Gamepad* gamepad, int touchpad, int finger, byte* state, float* x, float* y, float* pressure);
+#pragma warning disable SYSLIB1054 // TODO: find a way to implement bool* with libraryimport.
+	public static extern bool GetGamepadTouchpadFinger(SDL_Gamepad* gamepad, int touchpad, int finger, [MarshalAs(NativeBool)] bool* down, float* x, float* y, float* pressure);
+#pragma warning restore SYSLIB1054 
 
 	/// <summary>
 	/// Return whether a gamepad has a particular sensor.

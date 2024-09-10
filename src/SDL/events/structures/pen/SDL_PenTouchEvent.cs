@@ -5,6 +5,9 @@ namespace SDL3;
 /// <summary>
 /// Pressure-sensitive pen touched event structure (<see cref="SDL_Event.PenTouch"/>).
 /// </summary>
+/// <remarks>
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PenTouchEvent">documentation</see> for more details.
+/// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_PenTouchEvent
 {
@@ -46,12 +49,14 @@ public struct SDL_PenTouchEvent
 	public float Y;
 
 	/// <summary>
-	/// Non-zero if eraser end is used (not all pens support this).
+	/// True if eraser end is used (not all pens support this).
 	/// </summary>
-	public byte Eraser;
+	[MarshalAs(SDL.NativeBool)]
+	public bool Eraser;
 
 	/// <summary>
-	/// <see cref="SDL.Pressed"/> (pen is touching) or <see cref="SDL.Released"/> (pen is lifted off).
+	/// True if the pen is touching or false if the pen is lifted off.
 	/// </summary>
-	public byte State;
+	[MarshalAs(SDL.NativeBool)]
+	public bool Down;
 }

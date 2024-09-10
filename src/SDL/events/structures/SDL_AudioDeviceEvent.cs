@@ -30,7 +30,8 @@ public struct SDL_AudioDeviceEvent
 	public SDL_AudioDeviceId Which;
 
 	/// <summary>
-	/// Zero if a playback device, non-zero if a recording device.
+	/// False if a playback device, true if a recording device.
 	/// </summary>
-	public byte Recording;
+	[MarshalAs(SDL.NativeBool)]
+	public bool Recording;
 }

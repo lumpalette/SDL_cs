@@ -263,12 +263,12 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="joystick">The virtual joystick on which to set state.</param>
 	/// <param name="button">The index of the button on the virtual joystick to update.</param>
-	/// <param name="value">The new value for the specified button.</param>
+	/// <param name="down">True if the button is pressed, false otherwise.</param>
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickVirtualButton")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool SetJoystickVirtualButton(SDL_Joystick* joystick, int button, byte value);
+	public static partial bool SetJoystickVirtualButton(SDL_Joystick* joystick, int button, [MarshalAs(NativeBool)] bool down);
 
 	/// <summary>
 	/// Set the state of a hat on an opened virtual joystick.
@@ -294,7 +294,7 @@ unsafe partial class SDL
 	/// <param name="joystick">The virtual joystick on which to set state.</param>
 	/// <param name="touchpad">The index of the touchpad on the virtual joystick to update.</param>
 	/// <param name="finger">The index of the finger on the touchpad to set.</param>
-	/// <param name="state"><see cref="SDL.Pressed"/> if the finger is pressed, <see cref="SDL.Released"/> if the finger is released.</param>
+	/// <param name="down">True if the finger is pressed, false if the finger is released.</param>
 	/// <param name="x">The x coordinate of the finger on the touchpad, normalized 0 to 1, with the origin in the upper left.</param>
 	/// <param name="y">The y coordinate of the finger on the touchpad, normalized 0 to 1, with the origin in the upper left.</param>
 	/// <param name="pressure">The pressure of the finger.</param>
@@ -302,7 +302,7 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetJoystickVirtualTouchpad")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool SetJoystickVirtualTouchpad(SDL_Joystick* joystick, int touchpad, int finger, byte state, float x, float y, float pressure);
+	public static partial bool SetJoystickVirtualTouchpad(SDL_Joystick* joystick, int touchpad, int finger, [MarshalAs(NativeBool)] bool down, float x, float y, float pressure);
 
 	/// <summary>
 	/// Send a sensor update for an opened virtual joystick.
@@ -656,10 +656,11 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="joystick">An <see cref="SDL_Joystick"/> structure containing joystick information.</param>
 	/// <param name="button">The button index to get the state from; indices start at index 0.</param>
-	/// <returns>1 if the specified button is pressed, 0 otherwise.</returns>
+	/// <returns>True if the button is pressed, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetJoystickButton")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial byte GetJoystickButton(SDL_Joystick* joystick, int button);
+	[return: MarshalAs(NativeBool)]
+	public static partial bool GetJoystickButton(SDL_Joystick* joystick, int button);
 
 	/// <summary>
 	/// Start a rumble effect.

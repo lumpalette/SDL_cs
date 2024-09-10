@@ -54,12 +54,14 @@ public struct SDL_KeyboardEvent
 	public ushort Raw;
 
 	/// <summary>
-	/// Either <see cref="SDL.Pressed"/> or <see cref="SDL.Released"/>.
+	/// True if the key is pressed.
 	/// </summary>
-	public byte State;
+	[MarshalAs(SDL.NativeBool)]
+	public bool Down;
 
 	/// <summary>
-	/// Non-zero if this is a key repeat.
+	/// True if this is a key repeat.
 	/// </summary>
-	public byte Repeat;
+	[MarshalAs(SDL.NativeBool)]
+	public bool Repeat;
 }

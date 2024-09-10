@@ -63,10 +63,11 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="numKeys">Receives the length of the returned array.</param>
 	/// <returns>A pointer to an array of key states.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyboardState")]
-	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: Const]
-	public static partial byte* GetKeyboardState(int* numKeys);
+	[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetKeyboardState")]
+	[return: Const, MarshalAs(NativeBool)]
+#pragma warning disable SYSLIB1054 // TODO: find a way to use bool* with libraryimport.
+	public static extern bool* GetKeyboardState(int* numKeys);
+#pragma warning restore SYSLIB1054
 
 	/// <summary>
 	/// Clear the state of the keyboard.

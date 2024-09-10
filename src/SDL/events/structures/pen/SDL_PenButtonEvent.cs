@@ -5,6 +5,9 @@ namespace SDL3;
 /// <summary>
 /// Pressure-sensitive pen button event structure (<see cref="SDL_Event.PenButton"/>).
 /// </summary>
+/// <remarks>
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PenButtonEvent">documentation</see> for more details.
+/// </remarks>
 [StructLayout(LayoutKind.Sequential)]
 public struct SDL_PenButtonEvent
 {
@@ -51,7 +54,8 @@ public struct SDL_PenButtonEvent
 	public byte Button;
 
 	/// <summary>
-	/// <see cref="SDL.Pressed"/> or <see cref="SDL.Released"/>.
+	/// True if the button is pressed.
 	/// </summary>
-	public byte State;
+	[MarshalAs(SDL.NativeBool)]
+	public bool Down;
 }

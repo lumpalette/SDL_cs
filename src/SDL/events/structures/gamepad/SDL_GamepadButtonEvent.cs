@@ -34,9 +34,10 @@ public struct SDL_GamepadButtonEvent
 	public byte Button;
 
 	/// <summary>
-	/// Either <see cref="SDL.Pressed"/> or <see cref="SDL.Released"/>.
+	/// True if the button is pressed.
 	/// </summary>
-	public byte State;
+	[MarshalAs(SDL.NativeBool)]
+	public bool Down;
 
 	private readonly byte _padding1;
 

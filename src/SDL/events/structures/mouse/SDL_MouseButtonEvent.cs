@@ -29,7 +29,7 @@ public struct SDL_MouseButtonEvent
 	public SDL_WindowId WindowId;
 
 	/// <summary>
-	/// The mouse instance ID, <see cref="SDL.TouchMouseId"/>, or <see cref="FIXME:SDL_PEN_MOUSEID"/>.
+	/// The mouse instance ID, <see cref="SDL.TouchMouseId"/>.
 	/// </summary>
 	public SDL_MouseId Which;
 
@@ -39,9 +39,10 @@ public struct SDL_MouseButtonEvent
 	public byte Button;
 
 	/// <summary>
-	/// Either <see cref="SDL.Pressed"/> or <see cref="SDL.Released"/>.
+	/// True if the button is pressed.
 	/// </summary>
-	public byte State;
+	[MarshalAs(SDL.NativeBool)]
+	public bool Down;
 
 	/// <summary>
 	/// 1 for single-click, 2 for double-click, etc.

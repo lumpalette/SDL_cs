@@ -50,13 +50,8 @@ public unsafe struct SDL_TextEditingCandidatesEvent
 	/// <summary>
 	/// True if the list is horizontal, false if it's vertical.
 	/// </summary>
-	public bool Horizontal
-	{
-		readonly get => _horizontal == 1;
-		set => _horizontal = value ? 1 : 0;
-	}
-
-	private int _horizontal;
+	[MarshalAs(SDL.NativeBool)]
+	public bool Horizontal;
 
 	private readonly byte _padding1;
 
