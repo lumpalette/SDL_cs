@@ -101,5 +101,5 @@ public enum SDL_GamepadButton
 	/// </summary>
 	Misc6,
 
-	Max
+	Count
 }

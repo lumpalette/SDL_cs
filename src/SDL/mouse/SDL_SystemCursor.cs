@@ -106,5 +106,7 @@ public enum SDL_SystemCursor
 	/// <summary>
 	/// Window resize left. May be <see cref="EWResize"/>.
 	/// </summary>
-	WResize
+	WResize,
+
+	Count
 }

@@ -15,5 +15,5 @@ public enum SDL_GamepadAxis
 	RightY,
 	LeftTrigger,
 	RightTrigger,
-	Max
+	Count
 }

@@ -52,5 +52,5 @@ public enum SDL_PenAxis
 	/// <summary>
 	/// Total known pen axis types in this version of SDL. This number may grow in future releases!
 	/// </summary>
-	NumAxes
+	Count
 }

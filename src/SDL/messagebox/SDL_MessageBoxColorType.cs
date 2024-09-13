@@ -17,5 +17,5 @@ public enum SDL_MessageBoxColorType
 	/// <summary>
 	/// Size of the colors array of <see cref="SDL_MessageBoxColorScheme"/>.
 	/// </summary>
-	Max
+	Count
 }

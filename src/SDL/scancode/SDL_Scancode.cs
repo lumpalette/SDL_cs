@@ -256,5 +256,5 @@ public enum SDL_Scancode
 	Call = 289,
 	EndCall = 290,
 	Reserved = 400,
-	NumScancodes = 512
+	Count = 512
 }

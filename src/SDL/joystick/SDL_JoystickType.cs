@@ -17,5 +17,6 @@ public enum SDL_JoystickType
 	Guitar,
 	DrumKit,
 	ArcadePad,
-	Throttle
+	Throttle,
+	Count
 }

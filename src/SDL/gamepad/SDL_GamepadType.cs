@@ -19,5 +19,5 @@ public enum SDL_GamepadType
 	NintendoSwitchJoyconLeft,
 	NintendoSwitchJoyconRight,
 	NintendoSwitchJoyconPair,
-	Max
+	Count
 }
