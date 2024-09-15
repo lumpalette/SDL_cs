@@ -5,7 +5,7 @@ unsafe partial class SDL
 	partial class Prop
 	{
 		/// <summary>
-		/// Properties used in <see cref="SDL.GetGamepadProperties(SDL_Gamepad*)"/>.
+		/// Properties used for <see cref="GetGamepadProperties(SDL_Gamepad*)"/>.
 		/// </summary>
 		public static class Gamepad
 		{

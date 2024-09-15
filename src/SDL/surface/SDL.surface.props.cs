@@ -5,7 +5,7 @@ unsafe partial class SDL
 	partial class Prop
 	{
 		/// <summary>
-		/// Properties used in <see cref="SDL.GetSurfaceProperties(SDL_Surface*)"/>.
+		/// Properties used for <see cref="GetSurfaceProperties(SDL_Surface*)"/>.
 		/// </summary>
 		public static class Surface
 		{

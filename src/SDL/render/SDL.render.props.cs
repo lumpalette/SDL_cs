@@ -5,7 +5,7 @@ unsafe partial class SDL
 	partial class Prop
 	{
 		/// <summary>
-		/// Properties used in <see cref="SDL.CreateRendererWithProperties(SDL_PropertiesId)"/>.
+		/// Properties used for <see cref="CreateRendererWithProperties(SDL_PropertiesId)"/>.
 		/// </summary>
 		public static class RendererCreate
 		{
@@ -71,7 +71,7 @@ unsafe partial class SDL
 		}
 
 		/// <summary>
-		/// Properties used in <see cref="GetRendererProperties(SDL_Renderer*)"/>.
+		/// Properties used for <see cref="GetRendererProperties(SDL_Renderer*)"/>.
 		/// </summary>
 		public static class Renderer
 		{
@@ -198,7 +198,7 @@ unsafe partial class SDL
 		}
 
 		/// <summary>
-		/// Properties used in <see cref="CreateTextureWithProperties(SDL_Renderer*, SDL_PropertiesId)"/>.
+		/// Properties used for <see cref="CreateTextureWithProperties(SDL_Renderer*, SDL_PropertiesId)"/>.
 		/// </summary>
 		public static class TextureCreate
 		{
@@ -326,7 +326,7 @@ unsafe partial class SDL
 		}
 
 		/// <summary>
-		/// Properties used in <see cref="SDL.GetTextureProperties(SDL_Texture*)"/>.
+		/// Properties used for <see cref="GetTextureProperties(SDL_Texture*)"/>.
 		/// </summary>
 		public static class Texture
 		{

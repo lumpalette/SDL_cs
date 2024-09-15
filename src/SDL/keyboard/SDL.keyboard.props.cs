@@ -5,7 +5,7 @@ unsafe partial class SDL
 	partial class Prop
 	{
 		/// <summary>
-		/// Properties used in <see cref="SDL.StartTextInputWithProperties(SDL_Window*, SDL_PropertiesId)"/>.
+		/// Properties used for <see cref="StartTextInputWithProperties(SDL_Window*, SDL_PropertiesId)"/>.
 		/// </summary>
 		public static class TextInput
 		{

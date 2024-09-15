@@ -5,7 +5,7 @@ unsafe partial class SDL
 	partial class Prop
 	{
 		/// <summary>
-		/// Properties used in <see cref="SDL.GetJoystickProperties(SDL_Joystick*)"/>.
+		/// Properties used for <see cref="GetJoystickProperties(SDL_Joystick*)"/>.
 		/// </summary>
 		public static class Joystick
 		{

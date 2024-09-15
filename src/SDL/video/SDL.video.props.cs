@@ -5,7 +5,7 @@ unsafe partial class SDL
 	partial class Prop
 	{
 		/// <summary>
-		/// Properties used in <see cref="SDL.GetDisplayProperties(SDL_DisplayId)"/>.
+		/// Properties used for <see cref="GetDisplayProperties(SDL_DisplayId)"/>.
 		/// </summary>
 		public static class Display
 		{
@@ -24,7 +24,7 @@ unsafe partial class SDL
 		}
 
 		/// <summary>
-		/// Properties used in <see cref="SDL.CreateWindowWithProperties(SDL_PropertiesId)"/>.
+		/// Properties used for <see cref="CreateWindowWithProperties(SDL_PropertiesId)"/>.
 		/// </summary>
 		public static class WindowCreate
 		{
@@ -208,7 +208,7 @@ unsafe partial class SDL
 		}
 
 		/// <summary>
-		/// Properties used in <see cref="SDL.GetWindowProperties(SDL_Window*)"/>.
+		/// Properties used for <see cref="GetWindowProperties(SDL_Window*)"/>.
 		/// </summary>
 		public static class Window
 		{

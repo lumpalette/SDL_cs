@@ -7,15 +7,15 @@ namespace SDL3;
 unsafe partial class SDL
 {
 	/// <summary>
-	/// Get the number of CPU cores available.
+	/// Get the number of logical CPU cores available.
 	/// </summary>
 	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetCPUCount">documentation</see> for more details.
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetNumLogicalCPUCores">documentation</see> for more details.
 	/// </remarks>
 	/// <returns>The total number of logical CPU cores. On CPUs that include technologies such as hyperthreading, the number of logical cores may be more than the number of physical cores.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCPUCount")]
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetNumLogicalCPUCores")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial int GetCPUCount();
+	public static partial int GetNumLogicalCPUCores();
 
 	/// <summary>
 	/// Determine the L1 cache line size of the CPU.

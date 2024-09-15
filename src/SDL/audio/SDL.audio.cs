@@ -785,7 +785,7 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertAudioSamples")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool ConvertAudioSamples([Const] SDL_AudioSpec* srcSpec, [Const] byte* srcData, int srcLength, [Const] SDL_AudioSpec* dstSpec, [Const] byte** dstData, [Const] int* dstLength);
+	public static partial bool ConvertAudioSamples([Const] SDL_AudioSpec* srcSpec, [Const] byte* srcData, int srcLength, [Const] SDL_AudioSpec* dstSpec, byte** dstData, int* dstLength);
 
 	/// <summary>
 	/// Get the human readable name of an audio format.
