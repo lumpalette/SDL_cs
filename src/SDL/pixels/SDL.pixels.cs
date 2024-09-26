@@ -319,4 +319,20 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ALPHA_TRANSPARENT">documentation</see> for more details.
 	/// </remarks>
 	public const byte AlphaTransparent = 0;
+
+	/// <summary>
+	/// A fully opaque floating point alpha value.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ALPHA_OPAQUE_FLOAT">documentation</see> for more details.
+	/// </remarks>
+	public const float AlphaOpaqueFloat = 1.0f;
+
+	/// <summary>
+	/// A fully transparent floating point alpha value.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ALPHA_TRANSPARENT_FLOAT">documentation</see> for more details.
+	/// </remarks>
+	public const float AlphaTransparentFloat = 0.0f;
 }

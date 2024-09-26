@@ -554,12 +554,11 @@ unsafe partial class SDL
 	/// <param name="width">The width of the logical resolution.</param>
 	/// <param name="height">The height of the logical resolution.></param>
 	/// <param name="mode">The presentation mode used.</param>
-	/// <param name="scaleMode">The scale mode used.</param>
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderLogicalPresentation")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool SetRenderLogicalPresentation(SDL_Renderer* renderer, int width, int height, SDL_RendererLogicalPresentation mode, SDL_ScaleMode scaleMode);
+	public static partial bool SetRenderLogicalPresentation(SDL_Renderer* renderer, int width, int height, SDL_RendererLogicalPresentation mode);
 
 	/// <summary>
 	/// Get device independent resolution and presentation mode for rendering.
@@ -571,12 +570,11 @@ unsafe partial class SDL
 	/// <param name="width">An int to be filled with the width.</param>
 	/// <param name="height">An int to be filled with the height.</param>
 	/// <param name="mode">A pointer filled in with the presentation mode.</param>
-	/// <param name="scaleMode">A pointer filled in with the scale mode.</param>
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderLogicalPresentation")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool GetRenderLogicalPresentation(SDL_Renderer* renderer, int* width, int* height, SDL_RendererLogicalPresentation* mode, SDL_ScaleMode* scaleMode);
+	public static partial bool GetRenderLogicalPresentation(SDL_Renderer* renderer, int* width, int* height, SDL_RendererLogicalPresentation* mode);
 
 	/// <summary>
 	/// Get the final presentation rectangle for rendering.
@@ -1037,7 +1035,7 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial int RenderTexture(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, [Const] SDL_FRect* dstRect);
+	public static partial bool RenderTexture(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, [Const] SDL_FRect* dstRect);
 
 	/// <summary>
 	/// Copy a portion of the source texture to the current rendering target, with rotation and flipping, at subpixel precision.

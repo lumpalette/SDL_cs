@@ -17,11 +17,6 @@ public enum SDL_InitFlags : uint
 	None = 0x00000000u,
 
 	/// <summary>
-	/// Timer subsystem.
-	/// </summary>
-	Timer = 0x00000001u,
-
-	/// <summary>
 	/// Audio subsystem.
 	/// </summary>
 	Audio = 0x00000010u,
