@@ -132,4 +132,16 @@ unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
 	public static partial bool HasClipboardData(string mimeType);
+
+	/// <summary>
+	/// Retrieve the list of mime types available in the clipboard.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetClipboardMimeTypes">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="numMimeTypes">A pointer filled with the number of mime types, may be <see langword="null"/>.</param>
+	/// <returns>A null terminated array of strings with mime types, or <see langword="null"/> on failure; call <see cref="GetError"/> for more information. This should be freed with <see cref="free(void*)"/> when it is no longer needed.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetClipboardMimeTypes")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial byte** GetClipboardMimeTypes(nuint* numMimeTypes);
 }
