@@ -16,17 +16,11 @@ public enum SDL_PenAxis
 	/// <summary>
 	/// Pen horizontal tilt angle.  Bidirectional: -90.0 to 90.0 (left-to-right).
 	/// </summary>
-	/// <remarks>
-	/// The physical max/min tilt may be smaller than -90.0 / 90.0.
-	/// </remarks>
 	XTilt,
 
 	/// <summary>
 	/// Pen vertical tilt angle.  Bidirectional: -90.0 to 90.0 (top-to-down).
 	/// </summary>
-	/// <remarks>
-	/// The physical max/min tilt may be smaller than -90.0 / 90.0.
-	/// </remarks>
 	Yilt,
 
 	/// <summary>

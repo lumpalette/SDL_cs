@@ -36,12 +36,12 @@ public struct SDL_PenMotionEvent
 	public SDL_PenInputFlags PenState;
 
 	/// <summary>
-	/// X position of pen on tablet.
+	/// X coordinate, relative to window
 	/// </summary>
 	public float X;
 
 	/// <summary>
-	/// Y position of pen on tablet.
+	/// Y coordinate, relative to window
 	/// </summary>
 	public float Y;
 }

@@ -1385,9 +1385,10 @@ unsafe partial class SDL
 	/// <param name="platformAttribCallback">Callback for attributes to pass to <c>eglGetPlatformDisplay</c>.</param>
 	/// <param name="surfaceAttribCallback">Callback for attributes to pass to <c>eglCreateSurface</c>.</param>
 	/// <param name="contextAttribCallback">Callback for attributes to pass to <c>eglCreateContext</c>.</param>
+	/// <param name="userData">A pointer that is passed to the callbacks.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_EGL_SetAttributeCallbacks")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void EGL_SetAttributeCallbacks(delegate* unmanaged[Cdecl]<SDL_EGLAttrib*> platformAttribCallback, delegate* unmanaged[Cdecl]<SDL_EGLint*> surfaceAttribCallback, delegate* unmanaged[Cdecl]<SDL_EGLint*> contextAttribCallback);
+	public static partial void EGL_SetAttributeCallbacks(delegate* unmanaged[Cdecl]<SDL_EGLAttrib*> platformAttribCallback, delegate* unmanaged[Cdecl]<SDL_EGLint*> surfaceAttribCallback, delegate* unmanaged[Cdecl]<SDL_EGLint*> contextAttribCallback, nint userData);
 
 	/// <summary>
 	/// Set the swap interval for the current OpenGL context.
