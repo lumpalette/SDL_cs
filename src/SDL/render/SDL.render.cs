@@ -1054,7 +1054,7 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureRotated")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, [Const] SDL_FRect* dstRect, [Const] double angle, [Const] SDL_FPoint* center, [Const] SDL_FlipMode flip);
+	public static partial bool RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, [Const] SDL_FRect* dstRect, double angle, [Const] SDL_FPoint* center, SDL_FlipMode flip);
 
 	/// <summary>
 	/// Tile a portion of the texture to the current rendering target at subpixel precision.

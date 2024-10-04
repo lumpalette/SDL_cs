@@ -776,9 +776,4 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_JOYSTICK_AXIS_MIN">documentation</see> for more details.
 	/// </remarks>
 	public const short JoystickAxisMin = short.MinValue;
-
-	/// <summary>
-	/// Set max recognized G-force from accelerometer.
-	/// </summary>
-	public const float IPhoneMaxGForce = 5.0f;
 }

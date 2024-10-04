@@ -7,8 +7,11 @@ namespace SDL3;
 // SDL_mouse.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_mouse.h
 unsafe partial class SDL
 {
+	/// <summary>
+	/// Please refer to <see cref="SDL_MouseButtonFlags"/> for details.
+	/// </summary>
 	[Macro]
-	public static SDL_MouseButtonFlags Button(byte x) => (SDL_MouseButtonFlags)(1u << (x - 1));
+	public static SDL_MouseButtonFlags ButtonMask(byte x) => (SDL_MouseButtonFlags)(1u << (x - 1));
 
 	/// <summary>
 	/// Return whether a mouse is currently connected.
@@ -79,7 +82,7 @@ unsafe partial class SDL
 	/// </remarks>
 	/// <param name="x">The current X coord relative to the desktop.</param>
 	/// <param name="y">The current X coord relative to the desktop.</param>
-	/// <returns>The current button state as a bitmask.</returns>
+	/// <returns>The current button state as a bitmask which can be tested using the <see cref="ButtonMask(byte)"/> macros.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetGlobalMouseState")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_MouseButtonFlags GetGlobalMouseState(float* x, float* y);
@@ -320,7 +323,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_MouseButtonFlags ButtonLMask => Button(ButtonLeft);
+	public static SDL_MouseButtonFlags ButtonLMask => ButtonMask(ButtonLeft);
 
 	/// <summary>
 	/// Middle mouse button bitmask.
@@ -328,7 +331,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_MouseButtonFlags ButtonMMask => Button(ButtonMiddle);
+	public static SDL_MouseButtonFlags ButtonMMask => ButtonMask(ButtonMiddle);
 
 	/// <summary>
 	/// Right mouse button bitmask.
@@ -336,7 +339,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_MouseButtonFlags ButtonRMask => Button(ButtonRight);
+	public static SDL_MouseButtonFlags ButtonRMask => ButtonMask(ButtonRight);
 
 	/// <summary>
 	/// Side mouse button 1 bitmask.
@@ -344,7 +347,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_MouseButtonFlags ButtonX1Mask => Button(ButtonX1);
+	public static SDL_MouseButtonFlags ButtonX1Mask => ButtonMask(ButtonX1);
 
 	/// <summary>
 	/// Side mouse button 2 bitmask.
@@ -352,5 +355,5 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseButtonFlags">documentation</see> for more details.
 	/// </remarks>
-	public static SDL_MouseButtonFlags ButtonX2Mask => Button(ButtonX2);
+	public static SDL_MouseButtonFlags ButtonX2Mask => ButtonMask(ButtonX2);
 }

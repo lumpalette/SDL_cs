@@ -1382,13 +1382,13 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_EGL_SetAttributeCallbacks">documentation</see> for more details.
 	/// </remarks>
-	/// <param name="platformAttribCallback">Callback for attributes to pass to <c>eglGetPlatformDisplay</c>.</param>
-	/// <param name="surfaceAttribCallback">Callback for attributes to pass to <c>eglCreateSurface</c>.</param>
-	/// <param name="contextAttribCallback">Callback for attributes to pass to <c>eglCreateContext</c>.</param>
+	/// <param name="platformAttribCallback">Callback for attributes to pass to <c>eglGetPlatformDisplay</c>, may be <see langword="null"/>.</param>
+	/// <param name="surfaceAttribCallback">Callback for attributes to pass to <c>eglCreateSurface</c>, may be <see langword="null"/>.</param>
+	/// <param name="contextAttribCallback">Callback for attributes to pass to <c>eglCreateContext</c>, may be <see langword="null"/>.</param>
 	/// <param name="userData">A pointer that is passed to the callbacks.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_EGL_SetAttributeCallbacks")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void EGL_SetAttributeCallbacks(delegate* unmanaged[Cdecl]<SDL_EGLAttrib*> platformAttribCallback, delegate* unmanaged[Cdecl]<SDL_EGLint*> surfaceAttribCallback, delegate* unmanaged[Cdecl]<SDL_EGLint*> contextAttribCallback, nint userData);
+	public static partial void EGL_SetAttributeCallbacks(delegate* unmanaged[Cdecl]<nint, SDL_EGLAttrib*> platformAttribCallback, delegate* unmanaged[Cdecl]<nint, SDL_EGLDisplay*, SDL_EGLConfig*, SDL_EGLint*> surfaceAttribCallback, delegate* unmanaged[Cdecl]<nint, SDL_EGLDisplay*, SDL_EGLConfig*, SDL_EGLint*> contextAttribCallback, nint userData);
 
 	/// <summary>
 	/// Set the swap interval for the current OpenGL context.
@@ -1452,8 +1452,20 @@ unsafe partial class SDL
 	/// </summary>
 	public static uint WindowposCentered => WindowposCenteredDisplay(0);
 
+	/// <summary>
+	/// Used to indicate that you don't care what the window position is.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WINDOWPOS_UNDEFINED_MASK">documentation</see> for more details.
+	/// </remarks>
 	public const uint WindowposUndefinedMask = 0x1FFF0000u;
 
+	/// <summary>
+	/// Used to indicate that the window position should be centered.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WINDOWPOS_CENTERED_MASK">documentation</see> for more details.
+	/// </remarks>
 	public const uint WindowposCenteredMask = 0x2FFF0000u;
 
 	/// <summary>
