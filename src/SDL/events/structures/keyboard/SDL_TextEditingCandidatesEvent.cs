@@ -33,8 +33,9 @@ public unsafe struct SDL_TextEditingCandidatesEvent
 	/// The list of candidates, or <see langword="null"/> if there are no candidates available.
 	/// </summary>
 	/// <remarks>
-	/// Use <see cref="SDL.UnmanagedToManagedStrings(byte**, int)"/> to convert this field into an array of managed strings.
+	/// You can use <see cref="SDL.UnmanagedToManagedStrings(byte**, int)"/> to convert this field into an array of managed strings.
 	/// </remarks>
+	[Const]
 	public byte** Candidates;
 
 	/// <summary>

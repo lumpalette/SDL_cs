@@ -413,6 +413,14 @@ unsafe partial class SDL
 		public const string GdkTextInputTitle = "SDL_GDK_TEXTINPUT_TITLE";
 
 		/// <summary>
+		/// A variable that specifies a GPU backend to use.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GPU_DRIVER">documentation</see> for more details.
+		/// </remarks>
+		public const string GpuDriver = "SDL_GPU_DRIVER";
+
+		/// <summary>
 		/// A variable to control whether <see cref="HidEnumerate(ushort, ushort)"/> enumerates all HID devices or only controllers.
 		/// </summary>
 		/// <remarks>
@@ -719,6 +727,14 @@ unsafe partial class SDL
 		public const string JoystickHidapiSteam = "SDL_JOYSTICK_HIDAPI_STEAM";
 
 		/// <summary>
+		/// A variable controlling whether the HIDAPI driver for Bluetooth Steam Controllers should be used.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_HIDAPI_STEAM">documentation</see> for more details.
+		/// </remarks>
+		public const string JoystickHidapiSteamHori = "SDL_JOYSTICK_HIDAPI_STEAM_HORI";
+
+		/// <summary>
 		/// A variable controlling whether the HIDAPI driver for the Steam Deck builtin controller should be used.
 		/// </summary>
 		/// <remarks>
@@ -1011,6 +1027,14 @@ unsafe partial class SDL
 		public const string MacOpenGLAsyncDispatch = "SDL_MAC_OPENGL_ASYNC_DISPATCH";
 
 		/// <summary>
+		/// A variable controlling whether <see cref="SDL_EventType.MouseWheel"/> event values will have momentum on macOS.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_MAC_SCROLL_MOMENTUM">documentation</see> for more details.
+		/// </remarks>
+		public const string MacScrollMomentum = "SDL_MAC_SCROLL_MOMENTUM";
+
+		/// <summary>
 		/// Request <see cref="FIXME:SDL_AppIterate()"/> be called at a specific rate.
 		/// </summary>
 		/// <remarks>
@@ -1218,6 +1242,22 @@ unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_RENDER_DRIVER">documentation</see> for more details.
 		/// </remarks>
 		public const string RenderDriver = "SDL_RENDER_DRIVER";
+
+		/// <summary>
+		/// A variable controlling whether to create the GPU device in debug mode.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_RENDER_GPU_DEBUG">documentation</see> for more details.
+		/// </remarks>
+		public const string RenderGpuDebug = "SDL_RENDER_GPU_DEBUG";
+
+		/// <summary>
+		/// A variable controlling whether to prefer a low-power GPU on multi-GPU systems.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_RENDER_GPU_LOW_POWER">documentation</see> for more details.
+		/// </remarks>
+		public const string RenderGpuLowPower = "SDL_RENDER_GPU_LOW_POWER";
 
 		/// <summary>
 		/// A variable controlling how the 2D render API renders lines.

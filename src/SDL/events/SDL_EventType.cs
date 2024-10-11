@@ -281,7 +281,7 @@ public enum SDL_EventType : uint
 	/// </summary>
 	/// <remarks>
 	/// If this message is being handled in an event watcher, the window handle is still valid and can still be used to retrieve
-	/// any userdata associated with the window. Otherwise, the handle has already been destroyed and all resources associated
+	/// any properties associated with the window. Otherwise, the handle has already been destroyed and all resources associated
 	/// with it are invalid.
 	/// </remarks>
 	WindowDestroyed,

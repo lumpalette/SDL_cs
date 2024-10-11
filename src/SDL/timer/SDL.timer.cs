@@ -91,6 +91,17 @@ unsafe partial class SDL
 	public static partial void DelayNs(ulong ns);
 
 	/// <summary>
+	/// Wait a specified number of nanoseconds before returning.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DelayPrecise">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="ns">The number of nanoseconds to delay.</param>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_DelayPrecise")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial void DelayPrecise(ulong ns);
+
+	/// <summary>
 	/// Call a callback function at a future time.
 	/// </summary>
 	/// <remarks>
