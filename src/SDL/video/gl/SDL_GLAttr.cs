@@ -4,7 +4,7 @@
 /// An enumeration of OpenGL configuration attributes.
 /// </summary>
 /// <remarks>
-/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GLattr">documentation</see> for more details.
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GLAttr">documentation</see> for more details.
 /// </remarks>
 public enum SDL_GLAttr
 {
@@ -104,14 +104,14 @@ public enum SDL_GLAttr
 	ContextMinorVersion,
 
 	/// <summary>
-	/// Some combination of 0 or more of elements of the SDL_GLcontextFlag enumeration; defaults to 0.
+	/// Some combination of 0 or more of elements of the <see cref="SDL_GLContextFlag"/> enumeration; defaults to 0.
 	/// </summary>
-	GLContextFlags,
+	ContextFlags,
 
 	/// <summary>
-	/// Type of GL context (Core, Compatibility, ES). See SDL_GLprofile; default value depends on platform.
+	/// Type of GL context (Core, Compatibility, ES). See <see cref="SDL_GLProfile"/>; default value depends on platform.
 	/// </summary>
-	GLContextProfileMask,
+	ContextProfileMask,
 
 	/// <summary>
 	/// OpenGL context sharing; defaults to 0.
@@ -124,7 +124,7 @@ public enum SDL_GLAttr
 	FramebufferSRGBCapable,
 
 	/// <summary>
-	/// Sets context the release behavior. See SDL_GLcontextReleaseFlag; defaults to FLUSH.
+	/// Sets context the release behavior. See <see cref="SDL_GLContextReleaseFlag"/>; defaults to FLUSH.
 	/// </summary>
 	ContextReleaseBehaviour,
 

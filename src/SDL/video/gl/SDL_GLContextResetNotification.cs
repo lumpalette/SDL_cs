@@ -3,14 +3,14 @@
 namespace SDL3;
 
 /// <summary>
-/// Possible values to be set <see cref="FIXME:SDL_GL_CONTEXT_RESET_NOTIFICATION"/> attribute.
+/// Possible values to be set <see cref="SDL_GLAttr.ContextResetNotification"/> attribute.
 /// </summary>
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GLContextResetNotification">documentation</see> for more details.
 /// </remarks>
 [Flags]
-public enum SDL_GLContextResetNotification
+public enum SDL_GLContextResetNotification : uint
 {
-	NoNotification = 0x0000,
-	LoseContext = 0x0001,
+	ContextResetNoNotification = 0x0000,
+	ContextResetLoseContext = 0x0001,
 }

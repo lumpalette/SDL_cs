@@ -56,7 +56,7 @@ unsafe partial class SDL
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_CreateRenderer">documentation</see> for more details.
 	/// </remarks>
 	/// <param name="window">The window where rendering is displayed.</param>
-	/// <param name="name">The name of the rendering driver to initialize, or <see langword="null"/> to initialize the first one supporting the requested flags.</param>
+	/// <param name="name">The name of the rendering driver to initialize, or <see langword="null"/> to let SDL choose one.</param>
 	/// <returns>A valid rendering context or <see langword="null"/> if there was an error; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateRenderer", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
@@ -1269,6 +1269,22 @@ unsafe partial class SDL
 	public static partial bool GetRenderVSync(SDL_Renderer* renderer, int* vsync);
 
 	/// <summary>
+	/// Draw debug text to an <see cref="SDL_Renderer"/>.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderDebugText">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="renderer">The renderer which should draw a line of text.</param>
+	/// <param name="x">The x coordinate where the top-left corner of the text will draw.</param>
+	/// <param name="y">The y coordinate where the top-left corner of the text will draw.</param>
+	/// <param name="str">The string to render.</param>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderDebugText", StringMarshalling = StringMarshalling.Utf8)]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool RenderDebugText(SDL_Renderer* renderer, float x, float y, string str);
+
+	/// <summary>
 	/// The name of the software renderer.
 	/// </summary>
 	/// <remarks>
@@ -1285,4 +1301,12 @@ unsafe partial class SDL
 	/// Please refer to <see cref="SetRenderVSync(SDL_Renderer*, int)"/> for details.
 	/// </summary>
 	public const int RendererVSyncAdaptive = -1;
+
+	/// <summary>
+	/// The size, in pixels, of a single <see cref="RenderDebugText(SDL_Renderer*, float, float, string)"/> character.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DEBUG_TEXT_FONT_CHARACTER_SIZE">documentation</see> for more details.
+	/// </remarks>
+	public const byte DebugTextFontCharacterSize = 8;
 }

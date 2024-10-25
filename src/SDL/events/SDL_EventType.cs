@@ -648,6 +648,20 @@ public enum SDL_EventType : uint
 	/// </summary>
 	RenderDeviceReset,
 
+	/// <summary>
+	/// The device has been lost and can't be recovered.
+	/// </summary>
+	RenderDeviceLost,
+
+	#endregion
+
+	#region Reserved events for private platforms
+
+	Private0 = 0x4000,
+	Private1,
+	Private2,
+	Private3,
+
 	#endregion
 
 	#region Internal events
