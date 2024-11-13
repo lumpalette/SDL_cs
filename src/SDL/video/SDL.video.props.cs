@@ -341,6 +341,11 @@ unsafe partial class SDL
 			public const string WaylandSurfacePointer = "SDL.window.wayland.surface";
 
 			/// <summary>
+			/// The <c>wp_viewport</c> associated with the window.
+			/// </summary>
+			public const string WaylandViewportPointer = "SDL.window.wayland.surface";
+
+			/// <summary>
 			/// The <c>wl_egl_window</c> associated with the window.
 			/// </summary>
 			public const string WaylandEglWindowPointer = "SDL.window.wayland.egl_window";

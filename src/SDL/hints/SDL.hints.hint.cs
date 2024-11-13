@@ -37,6 +37,14 @@ unsafe partial class SDL
 		public const string AndroidBlockOnPausePauseAudio = "SDL_ANDROID_BLOCK_ON_PAUSE_PAUSEAUDIO";
 
 		/// <summary>
+		/// A variable to control whether low latency audio should be enabled.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_ANDROID_LOW_LATENCY_AUDIO">documentation</see> for more details.
+		/// </remarks>
+		public const string AndroidLowLatencyAudio = "SDL_ANDROID_LOW_LATENCY_AUDIO";
+
+		/// <summary>
 		/// A variable to control whether we trap the Android back button to handle it manually.
 		/// </summary>
 		/// <remarks>
@@ -1188,6 +1196,14 @@ unsafe partial class SDL
 		public const string OpenGLLibrary = "SDL_OPENGL_LIBRARY";
 
 		/// <summary>
+		/// Mechanism to specify openvr_api library location.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_OPENVR_LIBRARY">documentation</see> for more details.
+		/// </remarks>
+		public const string OpenVRLibrary = "SDL_OPENVR_LIBRARY";
+
+		/// <summary>
 		/// A variable controlling which orientations are allowed on iOS/Android.
 		/// </summary>
 		/// <remarks>
@@ -1412,6 +1428,14 @@ unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VIDEO_ALLOW_SCREENSAVER">documentation</see> for more details.
 		/// </remarks>
 		public const string VideoAllowScreensaver = "SDL_VIDEO_ALLOW_SCREENSAVER";
+
+		/// <summary>
+		/// A comma separated list containing the names of the displays that SDL should sort to the front of the display list.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VIDEO_DISPLAY_PRIORITY">documentation</see> for more details.
+		/// </remarks>
+		public const string VideoDisplayPriority = "SDL_DISPLAY_PRIORITY";
 
 		/// <summary>
 		/// Tell the video driver that we only want a double buffer.

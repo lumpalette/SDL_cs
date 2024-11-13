@@ -1,4 +1,6 @@
-﻿namespace SDL3;
+﻿using System.Numerics;
+
+namespace SDL3;
 
 /// <summary>
 /// An enumeration of OpenGL configuration attributes.

@@ -195,12 +195,12 @@ unsafe partial class SDL
 	/// <param name="height">The height in pixels of the desired display mode.</param>
 	/// <param name="refreshRate">The refresh rate of the desired display mode, or 0.0f for the desktop refresh rate.</param>
 	/// <param name="includeHighDensityModes">Boolean to include high density modes in the search.</param>
-	/// <param name="mode">A pointer filled in with the closest display mode equal to or larger than the desired mode.</param>
+	/// <param name="closest">A pointer filled in with the closest display mode equal to or larger than the desired mode.</param>
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetClosestFullscreenDisplayMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool GetClosestFullscreenDisplayMode(SDL_DisplayId instanceId, int width, int height, float refreshRate, [MarshalAs(NativeBool)] bool includeHighDensityModes, SDL_DisplayMode* mode);
+	public static partial bool GetClosestFullscreenDisplayMode(SDL_DisplayId instanceId, int width, int height, float refreshRate, [MarshalAs(NativeBool)] bool includeHighDensityModes, SDL_DisplayMode* closest);
 
 	/// <summary>
 	/// Get information about the desktop's display mode.
