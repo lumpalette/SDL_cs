@@ -3,7 +3,7 @@
 namespace SDL3;
 
 /// <summary>
-/// A marshaller for UTF-8 strings that are managed by SDL, i.e. strings that the program <b>should not</b> free manually.
+/// A marshaller for UTF-8 strings that are managed by SDL, i.e. string memory that the C# program <b>should not</b> free manually.
 /// </summary>
 [CustomMarshaller(typeof(string), MarshalMode.ManagedToUnmanagedOut, typeof(SDL_StringMarshaller))]
 public static unsafe class SDL_StringMarshaller

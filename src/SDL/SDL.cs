@@ -4,7 +4,7 @@ using System.Runtime.InteropServices.Marshalling;
 namespace SDL3;
 
 /// <summary>
-/// Defines the C# bindings, properties and constants to interact with the SDL API.
+/// Defines the C# bindings, properties and constants to interact with the C SDL API.
 /// </summary>
 public static unsafe partial class SDL
 {
@@ -13,11 +13,6 @@ public static unsafe partial class SDL
 	/// </summary>
 	public static partial class Prop;
 	
-	/// <summary>
-	/// The collection of hints used across SDL.
-	/// </summary>
-	public static partial class Hint;
-
 	/// <summary>
 	/// Converts an unmanaged UTF-8 string into a UTF-16 managed string.
 	/// </summary>
@@ -52,12 +47,12 @@ public static unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// The name of the library: SDL3.
+	/// The assembly file name for SDL3.
 	/// </summary>
 	internal const string LibraryName = "SDL3";
 
 	/// <summary>
-	/// The size of SDL_bool: a 8-bit unsigned integer.
+	/// The size of a C bool, a 8-bit unsigned integer.
 	/// </summary>
 	internal const UnmanagedType NativeBool = UnmanagedType.I1;
 }
