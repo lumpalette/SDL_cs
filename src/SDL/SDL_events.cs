@@ -1726,9 +1726,9 @@ public struct SDL_CameraDeviceEvent
 	public ulong Timestamp;
 
 	/// <summary>
-	/// <see cref="FIXME:SDL_CameraID"/> for the device being added or removed or changing
+	/// <see cref="SDL_CameraId"/> for the device being added or removed or changing
 	/// </summary>
-	public uint Which; // TODO: implement SDL_camera.h
+	public uint Which;
 }
 
 /// <summary>

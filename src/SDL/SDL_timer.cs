@@ -22,75 +22,108 @@ public enum SDL_TimerId : uint
 unsafe partial class SDL
 {
 	/// <summary>
-	/// The number of miliseconds in a second.
+	/// Number of miliseconds in a second.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MS_PER_SECOND">documentation</see> for more details.
+	/// </remarks>
 	public const ulong MsPerSecond = 1000uL;
 
 	/// <summary>
-	/// The number of microseconds in a second.
+	/// Number of microseconds in a second.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_US_PER_SECOND">documentation</see> for more details.
+	/// </remarks>
 	public const ulong UsToSecond = 1000000uL;
 
 	/// <summary>
-	/// The number of nanoseconds in a second.
+	/// Number of nanoseconds in a second.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_NS_PER_SECOND">documentation</see> for more details.
+	/// </remarks>
 	public const ulong NsPerSecond = 1000000000uL;
 
 	/// <summary>
-	/// The number of nanoseconds in a milisecond.
+	/// Number of nanoseconds in a milisecond.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_NS_PER_MS">documentation</see> for more details.
+	/// </remarks>
 	public const ulong NsPerMs = 1000000uL;
 
 	/// <summary>
-	/// The number of nanoseconds in a microsecond.
+	/// Number of nanoseconds in a microsecond.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_NS_PER_US">documentation</see> for more details.
+	/// </remarks>
 	public const ulong NsPerUs = 1000uL;
 
 	/// <summary>
-	/// Convert a given amount of seconds to nanoseconds.
+	/// Convert seconds to nanoseconds.
 	/// </summary>
-	/// <param name="s">The seconds to convert.</param>
-	/// <returns>The number of nanoseconds equivalent to the given seconds.</returns>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SECONDS_TO_NS">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="s">The number of seconds to convert.</param>
+	/// <returns><paramref name="s"/>, expressed in nanoseconds.</returns>
 	[Macro]
 	public static ulong SecondsToNs(ulong s) => s * NsPerSecond;
 
 	/// <summary>
-	/// Convert a given amount of nanoseconds to seconds.
+	/// Convert nanoseconds to seconds.
 	/// </summary>
-	/// <param name="ns">The nanoseconds to convert.</param>
-	/// <returns>The number of seconds equivalent to the given nanoseconds.</returns>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_NS_TO_SECONDS">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="ns">The number of nanoseconds to convert.</param>
+	/// <returns><paramref name="ns"/>, expressed in seconds.</returns>
 	[Macro]
 	public static double NsToSeconds(ulong ns) => ns / (double)NsPerSecond;
 
 	/// <summary>
-	/// Convert a given amount of miliseconds to nanoseconds.
+	/// Convert milliseconds to nanoseconds.
 	/// </summary>
-	/// <param name="ms">The miliseconds to convert.</param>
-	/// <returns>The number of nanoseconds equivalent to the given miliseconds.</returns>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MS_TO_NS">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="ms">The number of miliseconds to convert.</param>
+	/// <returns><paramref name="ms"/>, expressed in nanoseconds.</returns>
 	[Macro]
 	public static ulong MsToNs(ulong ms) => ms * NsPerMs;
 
 	/// <summary>
-	/// Convert a given amount of nanoseconds to miliseconds.
+	/// Convert nanoseconds to milliseconds.
 	/// </summary>
-	/// <param name="ns">The nanoseconds to convert.</param>
-	/// <returns>The number of miliseconds equivalent to the given nanoseconds.</returns>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_NS_TO_MS">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="ns">The number of nanoseconds to convert.</param>
+	/// <returns><paramref name="ns"/>, expressed in milliseconds.</returns>
 	[Macro]
 	public static double NsToMs(ulong ns) => ns / (double)NsPerMs;
 
 	/// <summary>
-	/// Convert a given amount of microseconds to nanoseconds.
+	/// Convert microseconds to nanoseconds.
 	/// </summary>
-	/// <param name="us">The microseconds to convert.</param>
-	/// <returns>The number of nanoseconds equivalent to the given microseconds.</returns>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_US_TO_NS">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="us">The number of microseconds to convert.</param>
+	/// <returns><paramref name="us"/>, expressed in nanoseconds.</returns>
 	[Macro]
 	public static ulong UsToNs(ulong us) => us * NsPerUs;
 
 	/// <summary>
-	/// Convert a given amount of nanoseconds to microseconds.
+	/// Convert nanoseconds to microseconds.
 	/// </summary>
-	/// <param name="ns">The nanoseconds to convert.</param>
-	/// <returns>The number of microseconds equivalent to the given nanoseconds.</returns>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_NS_TO_US">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="ns">The number of nanoseconds to convert.</param>
+	/// <returns><paramref name="ns"/>, expressed in microseconds.</returns>
 	[Macro]
 	public static double NsToUs(ulong ns) => ns / (double)NsPerUs;
 

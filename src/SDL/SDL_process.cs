@@ -4,6 +4,12 @@ using System.Runtime.InteropServices;
 // SDL_process.h located at https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_process.h.
 namespace SDL3;
 
+/// <summary>
+/// An opaque handle representing a system process.
+/// </summary>
+/// <remarks>
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Process">documentation</see> for more details.
+/// </remarks>
 [Opaque]
 public unsafe struct SDL_Process;
 

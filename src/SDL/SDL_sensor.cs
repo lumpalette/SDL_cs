@@ -6,8 +6,11 @@ using System.Runtime.InteropServices.Marshalling;
 namespace SDL3;
 
 /// <summary>
-/// The structure used to identify a sensor in SDL.
+/// The opaque structure used to identify an opened SDL sensor.
 /// </summary>
+/// <remarks>
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_Sensor">documentation</see> for more details.
+/// </remarks>
 [Opaque]
 public unsafe struct SDL_Sensor;
 

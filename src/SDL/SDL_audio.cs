@@ -114,34 +114,45 @@ public unsafe struct SDL_AudioStream;
 unsafe partial class SDL
 {
 	/// <summary>
-	/// A mask used to determine the size of an <see cref="SDL_AudioFormat"/>.
+	/// Mask of bits in an <see cref="SDL_AudioFormat"/> that contains the format bit size.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_MASK_BITSIZE">documentation</see> for more details.
+	/// </remarks>
 	public const ushort AudioMaskBitSize = 0xFF;
 
 	/// <summary>
-	/// A mask used to get if an <see cref="SDL_AudioFormat"/> uses floating-point data.
+	/// Mask of bits in an <see cref="SDL_AudioFormat"/> that contain the floating point flag.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_MASK_FLOAT">documentation</see> for more details.
+	/// </remarks>
 	public const ushort AudioMaskFloat = 1 << 8;
 
 	/// <summary>
-	/// A mask used to get if an <see cref="SDL_AudioFormat"/> uses big-endian data.
+	/// Mask of bits in an <see cref="SDL_AudioFormat"/> that contain the bigendian flag.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_MASK_BIG_ENDIAN">documentation</see> for more details.
+	/// </remarks>
 	public const ushort AudioMaskBigEndian = 1 << 12;
 
 	/// <summary>
-	/// A mask used to get if an <see cref="SDL_AudioFormat"/> uses signed data.
+	/// Mask of bits in an <see cref="SDL_AudioFormat"/> that contain the signed data flag.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AUDIO_MASK_SIGNED">documentation</see> for more details.
+	/// </remarks>
 	public const ushort AudioMaskSigned = 1 << 15;
 
-	// i don't even remember if this is right or not, it has been like 5 months or something since i worked in this subsystem lol.
 	/// <summary>
-	/// Define a new audio format with the given attributes.
+	/// Define an <see cref="SDL_AudioFormat"/> value.
 	/// </summary>
-	/// <param name="signed">Whether the audio format uses signed data or not.</param>
-	/// <param name="bigEndian">Whether the audio format is formatted in big-endian.</param>
-	/// <param name="flt">Whether the audio format uses floating-point data.</param>
-	/// <param name="size">The size of the audio format, in bytes.</param>
-	/// <returns>A new <see cref="SDL_AudioFormat"/> value.</returns>
+	/// <param name="signed">1 for signed data, 0 for unsigned data.</param>
+	/// <param name="bigEndian">1 for bigendian data, 0 for littleendian data.</param>
+	/// <param name="flt">1 for floating point data, 0 for integer data.</param>
+	/// <param name="size">Number of bits per sample.</param>
+	/// <returns>A format value in the style of <see cref="SDL_AudioFormat"/>.</returns>
 	[Macro]
 	public static SDL_AudioFormat DefineAudioFormat(ushort signed, ushort bigEndian, ushort flt, ushort size) => (SDL_AudioFormat)((signed << 15) | (bigEndian << 12) | (flt << 8) | (size & AudioMaskBitSize));
 

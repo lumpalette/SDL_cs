@@ -314,7 +314,7 @@ public enum SDL_ColorPrimaries
 }
 
 /// <summary>
-/// Colorspace transfer characteristics. These are as described by <see href="https://www.itu.int/rec/T-REC-H.273-201612-S/en"/>.
+/// Colorspace transfer characteristics.
 /// </summary>
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_TransferCharacteristics">documentation</see> for more details.
@@ -418,7 +418,7 @@ public enum SDL_TransferCharacteristics
 }
 
 /// <summary>
-/// Colorspace matrix coefficients. These are as described by <see href="https://www.itu.int/rec/T-REC-H.273-201612-S/en"/>.
+/// Colorspace matrix coefficients.
 /// </summary>
 /// <remarks>
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MatrixCoefficients">documentation</see> for more details.
@@ -598,6 +598,16 @@ public enum SDL_Colorspace
 	/// Equivalent to DXGI_COLOR_SPACE_YCBCR_FULL_G22_LEFT_P2020.
 	/// </summary>
 	BT2020Full = 0x22102609,
+
+	/// <summary>
+	/// The default colorspace for RGB surfaces if no colorspace is specified.
+	/// </summary>
+	RGBDefault = SRGB,
+
+	/// <summary>
+	/// The default colorspace for YUV surfaces if no colorspace is specified.
+	/// </summary>
+	YUVDefault = Jpeg
 }
 
 /// <summary>
@@ -770,136 +780,378 @@ unsafe partial class SDL
 	/// </remarks>
 	public const float AlphaTransparentFloat = 0.0f;
 
+	/// <summary>
+	/// A macro for defining custom FourCC pixel formats.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DEFINE_PIXELFOURCC">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="a">The first character of the FourCC code.</param>
+	/// <param name="b">The second character of the FourCC code.</param>
+	/// <param name="c">The third character of the FourCC code.</param>
+	/// <param name="d">The fourth character of the FourCC code.</param>
+	/// <returns>A format value in the style of <see cref="SDL_PixelFormat"/>.</returns>
 	[Macro]
 	public static SDL_PixelFormat DefinePixelFourCC(byte a, byte b, byte c, byte d) => (SDL_PixelFormat)FourCC(a, b, c, d);
 
+	/// <summary>
+	/// A macro for defining custom non-FourCC pixel formats.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DEFINE_PIXELFORMAT">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="type">The type of the new format, probably a <see cref="SDL_PixelType"/> value.</param>
+	/// <param name="order">The order of the new format, probably a <see cref="SDL_BitmapOrder"/>, <see cref="SDL_PackedOrder"/>, or <see cref="SDL_ArrayOrder"/> value.</param>
+	/// <param name="layout">The layout of the new format, probably an <see cref="SDL_PackedLayout"/> value or zero.</param>
+	/// <param name="bits">The number of bits per pixel of the new format.</param>
+	/// <param name="bytes">The number of bytes per pixel of the new format.</param>
+	/// <returns>A format value in the style of <see cref="SDL_PixelFormat"/>.</returns>
 	[Macro]
 	public static SDL_PixelFormat DefinePixelFormat(SDL_PixelType type, byte order, SDL_PackedLayout layout, byte bits, byte bytes) => (SDL_PixelFormat)((1 << 28) | ((byte)type << 24) | (order << 20) | ((byte)layout << 16) | (bits << 8) | bytes);
 
+	/// <summary>
+	/// A macro to retrieve the flags of an <see cref="SDL_PixelFormat"/>.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PIXELFLAG">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="format">An <see cref="SDL_PixelFormat"/> to check.</param>
+	/// <returns>The flags of <paramref name="format"/>.</returns>
 	[Macro]
-	public static uint PixelFlag(SDL_PixelFormat x) => ((uint)x >> 28) & 0x0F;
+	public static uint PixelFlag(SDL_PixelFormat format) => ((uint)format >> 28) & 0x0F;
 
+	/// <summary>
+	/// A macro to retrieve the type of an <see cref="SDL_PixelFormat"/>.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PIXELTYPE">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="format">An <see cref="SDL_PixelFormat"/> to check.</param>
+	/// <returns>The type of <paramref name="format"/>.</returns>
 	[Macro]
-	public static SDL_PixelType PixelType(SDL_PixelFormat x) => (SDL_PixelType)(((uint)x >> 24) & 0x0F);
+	public static SDL_PixelType PixelType(SDL_PixelFormat format) => (SDL_PixelType)(((uint)format >> 24) & 0x0F);
 
+	/// <summary>
+	/// A macro to retrieve the order of an <see cref="SDL_PixelFormat"/>.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PIXELORDER">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="format">An <see cref="SDL_PixelFormat"/> to check.</param>
+	/// <returns>The order of <paramref name="format"/>.</returns>
 	[Macro]
-	public static uint PixelOrder(SDL_PixelFormat x) => ((uint)x >> 20) & 0x0F;
+	public static uint PixelOrder(SDL_PixelFormat format) => ((uint)format >> 20) & 0x0F;
 
+	/// <summary>
+	/// A macro to retrieve the layout of an <see cref="SDL_PixelFormat"/>.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PIXELLAYOUT">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="format">An <see cref="SDL_PixelFormat"/> to check.</param>
+	/// <returns>The layout of <paramref name="format"/>.</returns>
 	[Macro]
-	public static SDL_PackedLayout PixelLayout(SDL_PixelFormat x) => (SDL_PackedLayout)(((uint)x >> 16) & 0x0F);
+	public static SDL_PackedLayout PixelLayout(SDL_PixelFormat format) => (SDL_PackedLayout)(((uint)format >> 16) & 0x0F);
 
+	/// <summary>
+	/// A macro to determine an <see cref="SDL_PixelFormat"/>'s bits per pixel.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BITSPERPIXEL">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="format">An <see cref="SDL_PixelFormat"/> to check.</param>
+	/// <returns>The bits-per-pixel of <paramref name="format"/>.</returns>
 	[Macro]
-	public static uint BitsPerPixel(SDL_PixelFormat x) => IsPixelFormatFourCC(x) ? 0 : (((uint)x >> 8) & 0xFF);
+	public static uint BitsPerPixel(SDL_PixelFormat format) => IsPixelFormatFourCC(format) ? 0 : (((uint)format >> 8) & 0xFF);
 
+	/// <summary>
+	/// A macro to determine an <see cref="SDL_PixelFormat"/>'s bytes per pixel.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_BYTESPERPIXEL">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="format">An <see cref="SDL_PixelFormat"/> to check.</param>
+	/// <returns>The bytes-per-pixel of <paramref name="format"/>.</returns>
 	[Macro]
-	public static uint BytesPerPixel(SDL_PixelFormat x) => IsPixelFormatFourCC(x) ? (((x == SDL_PixelFormat.YUY2) || (x == SDL_PixelFormat.UYVY) || (x == SDL_PixelFormat.YVYU) || (x == SDL_PixelFormat.P010)) ? 2u : 1u) : (((uint)x >> 0) & 0xFF);
+	public static uint BytesPerPixel(SDL_PixelFormat format) => IsPixelFormatFourCC(format) ? (((format == SDL_PixelFormat.YUY2) || (format == SDL_PixelFormat.UYVY) || (format == SDL_PixelFormat.YVYU) || (format == SDL_PixelFormat.P010)) ? 2u : 1u) : (((uint)format >> 0) & 0xFF);
 
+	/// <summary>
+	/// A macro to determine if an <see cref="SDL_PixelFormat"/> is an indexed format.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ISPIXELFORMAT_INDEXED">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="format">An <see cref="SDL_PixelFormat"/> to check.</param>
+	/// <returns>True if the format is indexed, false otherwise.</returns>
 	[Macro]
-	public static bool IsPixelFormatIndexed(SDL_PixelFormat x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.Index1) || (PixelType(x) == SDL_PixelType.Index2) || (PixelType(x) == SDL_PixelType.Index4) || (PixelType(x) == SDL_PixelType.Index8));
+	public static bool IsPixelFormatIndexed(SDL_PixelFormat format) => (!IsPixelFormatFourCC(format)) && ((PixelType(format) == SDL_PixelType.Index1) || (PixelType(format) == SDL_PixelType.Index2) || (PixelType(format) == SDL_PixelType.Index4) || (PixelType(format) == SDL_PixelType.Index8));
 
+	/// <summary>
+	/// A macro to determine if an <see cref="SDL_PixelFormat"/> is a packed format.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ISPIXELFORMAT_PACKED">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="format">An <see cref="SDL_PixelFormat"/> to check.</param>
+	/// <returns>True if the format is packed, false otherwise.</returns>
 	[Macro]
-	public static bool IsPixelFormatPacked(SDL_PixelFormat x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.Packed8) || (PixelType(x) == SDL_PixelType.Packed16) || (PixelType(x) == SDL_PixelType.Packed32));
+	public static bool IsPixelFormatPacked(SDL_PixelFormat format) => (!IsPixelFormatFourCC(format)) && ((PixelType(format) == SDL_PixelType.Packed8) || (PixelType(format) == SDL_PixelType.Packed16) || (PixelType(format) == SDL_PixelType.Packed32));
 
+	/// <summary>
+	/// A macro to determine if an <see cref="SDL_PixelFormat"/> is an array format.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ISPIXELFORMAT_ARRAY">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="format">An <see cref="SDL_PixelFormat"/> to check.</param>
+	/// <returns>True if the format is an array, false otherwise.</returns>
 	[Macro]
-	public static bool IsPixelFormatArray(SDL_PixelFormat x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.ArrayU8) || (PixelType(x) == SDL_PixelType.ArrayU16) || (PixelType(x) == SDL_PixelType.ArrayU32) || (PixelType(x) == SDL_PixelType.ArrayF16) || (PixelType(x) == SDL_PixelType.ArrayF32));
+	public static bool IsPixelFormatArray(SDL_PixelFormat format) => (!IsPixelFormatFourCC(format)) && ((PixelType(format) == SDL_PixelType.ArrayU8) || (PixelType(format) == SDL_PixelType.ArrayU16) || (PixelType(format) == SDL_PixelType.ArrayU32) || (PixelType(format) == SDL_PixelType.ArrayF16) || (PixelType(format) == SDL_PixelType.ArrayF32));
+	
+	/// <summary>
+	/// A macro to determine if an <see cref="SDL_PixelFormat"/> is a 10-bit format.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ISPIXELFORMAT_10BIT">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="format">An <see cref="SDL_PixelFormat"/> to check.</param>
+	/// <returns>True if the format is 10-bit, false otherwise.</returns>
+	[Macro]
+	public static bool IsPixelFormat10Bit(SDL_PixelFormat format) => (!IsPixelFormatFourCC(format)) && ((PixelType(format) == SDL_PixelType.Packed32) || (PixelLayout(format) == SDL_PackedLayout._2101010));
 
+	/// <summary>
+	/// A macro to determine if an SDL_PixelFormat is a floating point format.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ISPIXELFORMAT_FLOAT">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="format">An <see cref="SDL_PixelFormat"/> to check.</param>
+	/// <returns>True if the format is 10-bit, false otherwise.</returns>
 	[Macro]
-	public static bool IsPixelFormatAlpha(SDL_PixelFormat x) => IsPixelFormatPacked(x) && ((PixelOrder(x) == (uint)SDL_PackedOrder.ARGB) || (PixelOrder(x) == (uint)SDL_PackedOrder.RGBA) || (PixelOrder(x) == (uint)SDL_PackedOrder.ABGR) || (PixelOrder(x) == (uint)SDL_PackedOrder.BGRA));
+	public static bool IsPixelFormatFloat(SDL_PixelFormat format) => (!IsPixelFormatFourCC(format)) && ((PixelType(format) == SDL_PixelType.ArrayF16) || (PixelType(format) == SDL_PixelType.ArrayF32));
 
+	/// <summary>
+	/// A macro to determine if an SDL_PixelFormat has an alpha channel.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ISPIXELFORMAT_ALPHA">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="format">An <see cref="SDL_PixelFormat"/> to check.</param>
+	/// <returns>True if the format has alpha, false otherwise.</returns>
 	[Macro]
-	public static bool IsPixelFormat10Bit(SDL_PixelFormat x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.Packed32) || (PixelLayout(x) == SDL_PackedLayout._2101010));
+	public static bool IsPixelFormatAlpha(SDL_PixelFormat format) => IsPixelFormatPacked(format) && ((PixelOrder(format) == (uint)SDL_PackedOrder.ARGB) || (PixelOrder(format) == (uint)SDL_PackedOrder.RGBA) || (PixelOrder(format) == (uint)SDL_PackedOrder.ABGR) || (PixelOrder(format) == (uint)SDL_PackedOrder.BGRA));
 
+	/// <summary>
+	/// A macro to determine if an <see cref="SDL_PixelFormat"/> is a "FourCC" format.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ISPIXELFORMAT_FOURCC">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="format">An <see cref="SDL_PixelFormat"/> to check.</param>
+	/// <returns>True if the format has alpha, false otherwise.</returns>
 	[Macro]
-	public static bool IsPixelFormatFloat(SDL_PixelFormat x) => (!IsPixelFormatFourCC(x)) && ((PixelType(x) == SDL_PixelType.ArrayF16) || (PixelType(x) == SDL_PixelType.ArrayF32));
-
-	[Macro]
-	public static bool IsPixelFormatFourCC(SDL_PixelFormat x) => (x != SDL_PixelFormat.Unknown) && (PixelFlag(x) != 1);
+	public static bool IsPixelFormatFourCC(SDL_PixelFormat format) => (format != SDL_PixelFormat.Unknown) && (PixelFlag(format) != 1);
 
 	/// <summary>
 	/// RGBA format, where each channel takes up 8 bits.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">documentation</see> for more details.
+	/// </remarks>
 	public static SDL_PixelFormat PixelFormatRGBA32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.ABGR8888 : SDL_PixelFormat.RGBA8888;
 
 	/// <summary>
 	/// ARGB format, where each channel takes up 8 bits.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">documentation</see> for more details.
+	/// </remarks>
 	public static SDL_PixelFormat PixelFormatARGB32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.BGRA8888 : SDL_PixelFormat.ARGB8888;
 
 	/// <summary>
 	/// BGRA format, where each channel takes up 8 bits.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">documentation</see> for more details.
+	/// </remarks>
 	public static SDL_PixelFormat PixelFormatBGRA32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.ARGB8888 : SDL_PixelFormat.BGRA8888;
 
 	/// <summary>
 	/// ABGR format, where each channel takes up 8 bits.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">documentation</see> for more details.
+	/// </remarks>
 	public static SDL_PixelFormat PixelFormatABGR32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.RGBA8888 : SDL_PixelFormat.ABGR8888;
 
 	/// <summary>
 	/// RGBA format, where each channel takes up 8 bits. Alpha channel is ignored.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">documentation</see> for more details.
+	/// </remarks>
 	public static SDL_PixelFormat PixelFormatRGBX32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.XBGR8888 : SDL_PixelFormat.RGBX8888;
 
 	/// <summary>
 	/// ARGB format, where each channel takes up 8 bits. Alpha channel is ignored.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">documentation</see> for more details.
+	/// </remarks>
 	public static SDL_PixelFormat PixelFormatXRGB32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.BGRX8888 : SDL_PixelFormat.XRGB8888;
 
 	/// <summary>
 	/// BGRA format, where each channel takes up 8 bits. Alpha channel is ignored.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">documentation</see> for more details.
+	/// </remarks>
 	public static SDL_PixelFormat PixelFormatBGRX32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.XRGB8888 : SDL_PixelFormat.BGRX8888;
 
 	/// <summary>
 	/// ABGR format, where each channel takes up 8 bits. Alpha channel is ignored.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PixelFormat">documentation</see> for more details.
+	/// </remarks>
 	public static SDL_PixelFormat PixelFormatXBGR32 => BitConverter.IsLittleEndian ? SDL_PixelFormat.RGBX8888 : SDL_PixelFormat.XBGR8888;
 
+	/// <summary>
+	/// A macro for defining custom <see cref="SDL_Colorspace"/> formats.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DEFINE_COLORSPACE">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="type">The type of the new format, probably an <see cref="SDL_ColorType"/> value.</param>
+	/// <param name="range">The range of the new format, probably a <see cref="SDL_ColorRange"/> value.</param>
+	/// <param name="primaries">The primaries of the new format, probably an <see cref="SDL_ColorPrimaries"/> value.</param>
+	/// <param name="transfer">The transfer characteristics of the new format, probably an <see cref="SDL_TransferCharacteristics"/> value.</param>
+	/// <param name="matrix">The matrix coefficients of the new format, probably an <see cref="SDL_MatrixCoefficients"/> value.</param>
+	/// <param name="chroma">The chroma sample location of the new format, probably an <see cref="SDL_ChromaLocation"/> value.</param>
+	/// <returns>A format value in the style of <see cref="SDL_Colorspace"/>.</returns>
 	[Macro]
 	public static SDL_Colorspace DefineColorspace(SDL_ColorType type, SDL_ColorRange range, SDL_ColorPrimaries primaries, SDL_TransferCharacteristics transfer, SDL_MatrixCoefficients matrix, SDL_ChromaLocation chroma) => (SDL_Colorspace)(((byte)type << 28) | ((byte)range << 24) | ((byte)chroma << 20) | ((byte)primaries << 10) | ((byte)transfer << 5) | (byte)matrix);
 
+	/// <summary>
+	/// A macro to retrieve the type of an <see cref="SDL_Colorspace"/>.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_COLORSPACETYPE">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="cspace">An <see cref="SDL_Colorspace"/> to check.</param>
+	/// <returns>The <see cref="SDL_ColorType"/> for <paramref name="cspace"/>.</returns>
 	[Macro]
-	public static SDL_ColorType ColorspaceType(SDL_Colorspace x) => (SDL_ColorType)(((uint)x >> 28) & 0x0F);
-
-	[Macro]
-	public static SDL_ColorRange ColorspaceRange(SDL_Colorspace x) => (SDL_ColorRange)(((uint)x >> 24) & 0x0F);
-
-	[Macro]
-	public static SDL_ChromaLocation ColorspaceChroma(SDL_Colorspace x) => (SDL_ChromaLocation)(((uint)x >> 20) & 0x0F);
-
-	[Macro]
-	public static SDL_ColorPrimaries ColorspacePrimaries(SDL_Colorspace x) => (SDL_ColorPrimaries)(((uint)x >> 10) & 0x1F);
-
-	[Macro]
-	public static SDL_TransferCharacteristics ColorspaceTransfer(SDL_Colorspace x) => (SDL_TransferCharacteristics)(((uint)x >> 5) & 0x1F);
-
-	[Macro]
-	public static SDL_MatrixCoefficients ColorspaceMatrix(SDL_Colorspace x) => (SDL_MatrixCoefficients)((uint)x & 0x1F);
-
-	[Macro]
-	public static bool IsColorspaceMatrixBT601(SDL_Colorspace x) => (ColorspaceMatrix(x) == SDL_MatrixCoefficients.BT601) || (ColorspaceMatrix(x) == SDL_MatrixCoefficients.BT470BG);
-
-	[Macro]
-	public static bool IsColorspaceMatrixBT709(SDL_Colorspace x) => ColorspaceMatrix(x) == SDL_MatrixCoefficients.BT709;
-
-	[Macro]
-	public static bool IsColorspaceMatrixBT2020Ncl(SDL_Colorspace x) => ColorspaceMatrix(x) == SDL_MatrixCoefficients.BT2020NCL;
-
-	[Macro]
-	public static bool IsColorspaceLimitedRange(SDL_Colorspace x) => ColorspaceRange(x) != SDL_ColorRange.Full;
-
-	[Macro]
-	public static bool IsColorspaceFullRange(SDL_Colorspace x) => ColorspaceRange(x) == SDL_ColorRange.Full;
+	public static SDL_ColorType ColorspaceType(SDL_Colorspace cspace) => (SDL_ColorType)(((uint)cspace >> 28) & 0x0F);
 
 	/// <summary>
-	/// The default colorspace for RGB surfaces if no colorspace is specified.
+	/// A macro to retrieve the range of an <see cref="SDL_Colorspace"/>.
 	/// </summary>
-	public static SDL_Colorspace ColorspaceRGBDefault => SDL_Colorspace.SRGB;
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_COLORSPACERANGE">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="cspace">An <see cref="SDL_Colorspace"/> to check.</param>
+	/// <returns>The <see cref="SDL_ColorRange"/> of <paramref name="cspace"/>.</returns>
+	[Macro]
+	public static SDL_ColorRange ColorspaceRange(SDL_Colorspace cspace) => (SDL_ColorRange)(((uint)cspace >> 24) & 0x0F);
 
 	/// <summary>
-	/// The default colorspace for YUV surfaces if no colorspace is specified.
+	/// A macro to retrieve the chroma sample location of an <see cref="SDL_Colorspace"/>.
 	/// </summary>
-	public static SDL_Colorspace ColorspaceYUVDefault => SDL_Colorspace.Jpeg;
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_COLORSPACECHROMA">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="cspace">An <see cref="SDL_Colorspace"/> to check.</param>
+	/// <returns>The <see cref="SDL_ChromaLocation"/> of <paramref name="cspace"/>.</returns>
+	[Macro]
+	public static SDL_ChromaLocation ColorspaceChroma(SDL_Colorspace cspace) => (SDL_ChromaLocation)(((uint)cspace >> 20) & 0x0F);
+
+	/// <summary>
+	/// A macro to retrieve the primaries of an <see cref="SDL_Colorspace"/>.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_COLORSPACEPRIMARIES">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="cspace">An <see cref="SDL_Colorspace"/> to check.</param>
+	/// <returns>The <see cref="SDL_ColorPrimaries"/> of <paramref name="cspace"/>.</returns>
+	[Macro]
+	public static SDL_ColorPrimaries ColorspacePrimaries(SDL_Colorspace cspace) => (SDL_ColorPrimaries)(((uint)cspace >> 10) & 0x1F);
+
+	/// <summary>
+	/// A macro to retrieve the transfer characteristics of an SDL_Colorspace.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_COLORSPACETRANSFER">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="cspace">An <see cref="SDL_Colorspace"/> to check.</param>
+	/// <returns>The <see cref="SDL_TransferCharacteristics"/> of <paramref name="cspace"/>.</returns>
+	[Macro]
+	public static SDL_TransferCharacteristics ColorspaceTransfer(SDL_Colorspace cspace) => (SDL_TransferCharacteristics)(((uint)cspace >> 5) & 0x1F);
+
+	/// <summary>
+	/// A macro to retrieve the matrix coefficients of an SDL_Colorspace.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_COLORSPACEMATRIX">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="cspace">An <see cref="SDL_Colorspace"/> to check.</param>
+	/// <returns>The <see cref="SDL_MatrixCoefficients"/> of <paramref name="cspace"/>.</returns>
+	[Macro]
+	public static SDL_MatrixCoefficients ColorspaceMatrix(SDL_Colorspace cspace) => (SDL_MatrixCoefficients)((uint)cspace & 0x1F);
+
+	/// <summary>
+	/// A macro to determine if an <see cref="SDL_Colorspace"/> uses BT601 (or BT470BG) matrix coefficients.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ISCOLORSPACE_MATRIX_BT601">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="cspace">An <see cref="SDL_Colorspace"/> to check.</param>
+	/// <returns>True if BT601 or BT470BG, false otherwise.</returns>
+	[Macro]
+	public static bool IsColorspaceMatrixBT601(SDL_Colorspace cspace) => (ColorspaceMatrix(cspace) == SDL_MatrixCoefficients.BT601) || (ColorspaceMatrix(cspace) == SDL_MatrixCoefficients.BT470BG);
+
+	/// <summary>
+	/// A macro to determine if an <see cref="SDL_Colorspace"/> uses BT709 matrix coefficients.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ISCOLORSPACE_MATRIX_BT709">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="cspace">An <see cref="SDL_Colorspace"/> to check.</param>
+	/// <returns>True if BT709, false otherwise.</returns>
+	[Macro]
+	public static bool IsColorspaceMatrixBT709(SDL_Colorspace cspace) => ColorspaceMatrix(cspace) == SDL_MatrixCoefficients.BT709;
+
+	/// <summary>
+	/// A macro to determine if an <see cref="SDL_Colorspace"/> uses BT2020_NCL matrix coefficients.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ISCOLORSPACE_MATRIX_BT2020_NCL">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="cspace">An <see cref="SDL_Colorspace"/> to check.</param>
+	/// <returns>True if BT2020_NCL, false otherwise.</returns>
+	[Macro]
+	public static bool IsColorspaceMatrixBT2020Ncl(SDL_Colorspace cspace) => ColorspaceMatrix(cspace) == SDL_MatrixCoefficients.BT2020NCL;
+
+	/// <summary>
+	/// A macro to determine if an <see cref="SDL_Colorspace"/> has a limited range.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ISCOLORSPACE_LIMITED_RANGE">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="cspace">An <see cref="SDL_Colorspace"/> to check.</param>
+	/// <returns>True if limited range, false otherwise.</returns>
+	[Macro]
+	public static bool IsColorspaceLimitedRange(SDL_Colorspace cspace) => ColorspaceRange(cspace) != SDL_ColorRange.Full;
+
+	/// <summary>
+	/// A macro to determine if an <see cref="SDL_Colorspace"/> has a full range.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ISCOLORSPACE_FULL_RANGE">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="cspace">An <see cref="SDL_Colorspace"/> to check.</param>
+	/// <returns>True if full range, false otherwise.</returns>
+	[Macro]
+	public static bool IsColorspaceFullRange(SDL_Colorspace cspace) => ColorspaceRange(cspace) == SDL_ColorRange.Full;
 
 	/// <summary>
 	/// Get the human readable name of a pixel format.

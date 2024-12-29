@@ -63,6 +63,9 @@ public enum SDL_SystemTheme
 /// <summary>
 /// Internal display mode data.
 /// </summary>
+/// <remarks>
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DisplayModeData">documentation</see> for more details.
+/// </remarks>
 [Opaque]
 public unsafe struct SDL_DisplayModeData;
 

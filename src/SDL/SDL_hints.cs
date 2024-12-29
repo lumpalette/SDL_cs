@@ -122,6 +122,22 @@ unsafe partial class SDL
 		public const string AudioAlsaDefaultDevice = "SDL_AUDIO_ALSA_DEFAULT_DEVICE";
 
 		/// <summary>
+		/// Specify the default ALSA audio playback device name.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_ALSA_DEFAULT_PLAYBACK_DEVICE">documentation</see> for more details.
+		/// </remarks>
+		public const string AudioAlsaDefaultPlaybackDevice = "SDL_AUDIO_ALSA_DEFAULT_PLAYBACK_DEVICE";
+
+		/// <summary>
+		/// Specify the default ALSA audio recording device name.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_ALSA_DEFAULT_RECORDING_DEVICE">documentation</see> for more details.
+		/// </remarks>
+		public const string AudioAlsaDefaultRecordingDevice = "SDL_AUDIO_ALSA_DEFAULT_RECORDING_DEVICE";
+
+		/// <summary>
 		/// A variable controlling the audio category on iOS and macOS.
 		/// </summary>
 		/// <remarks>
@@ -756,6 +772,14 @@ unsafe partial class SDL
 		public const string JoystickHidapiSteam = "SDL_JOYSTICK_HIDAPI_STEAM";
 
 		/// <summary>
+		/// A variable controlling whether the Steam button LED should be turned on when a Steam controller is opened.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_HIDAPI_STEAM_HOME_LED">documentation</see> for more details.
+		/// </remarks>
+		public const string JoystickHidapiSteamHomeLED = "SDL_JOYSTICK_HIDAPI_STEAM_HOME_LED";
+
+		/// <summary>
 		/// A variable controlling whether the HIDAPI driver for Bluetooth Steam Controllers should be used.
 		/// </summary>
 		/// <remarks>
@@ -1080,6 +1104,14 @@ unsafe partial class SDL
 		public const string MouseAutoCapture = "SDL_MOUSE_AUTO_CAPTURE";
 
 		/// <summary>
+		/// A variable setting which system cursor to use as the default cursor.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_MOUSE_DEFAULT_SYSTEM_CURSOR">documentation</see> for more details.
+		/// </remarks>
+		public const string MouseDefaultSystemCursor = "SDL_MOUSE_DEFAULT_SYSTEM_CURSOR";
+
+		/// <summary>
 		/// A variable setting the double click radius, in pixels.
 		/// </summary>
 		/// <remarks>
@@ -1143,14 +1175,6 @@ unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_MOUSE_RELATIVE_MODE_CENTER">documentation</see> for more details.
 		/// </remarks>
 		public const string MouseRelativeModeCenter = "SDL_MOUSE_RELATIVE_MODE_CENTER";
-
-		/// <summary>
-		/// A variable controlling whether relative mouse mode is implemented using mouse warping.
-		/// </summary>
-		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_MOUSE_RELATIVE_MODE_WARP">documentation</see> for more details.
-		/// </remarks>
-		public const string MouseRelativeModeWarp = "SDL_MOUSE_RELATIVE_MODE_WARP";
 
 		/// <summary>
 		/// A variable setting the scale for mouse motion, in floating point, when the mouse is in relative mode.
@@ -1841,6 +1865,14 @@ unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_WINDOWS_INTRESOURCE_ICON">documentation</see> for more details.
 		/// </remarks>
 		public const string WindowsIntresourceIcon = "SDL_WINDOWS_INTRESOURCE_ICON";
+
+		/// <summary>
+		/// A variable to specify custom icon resource id from RC file on Windows platform.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_WINDOWS_INTRESOURCE_ICON_SMALL">documentation</see> for more details.
+		/// </remarks>
+		public const string WindowsIntresourceIconSmall = "SDL_WINDOWS_INTRESOURCE_ICON_SMALL";
 
 		/// <summary>
 		/// A variable controlling whether raw keyboard events are used on Windows.

@@ -1651,6 +1651,21 @@ unsafe partial class SDL
 	public static partial bool RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, [Const] SDL_FRect* dstRect, double angle, [Const] SDL_FPoint* center, SDL_FlipMode flip);
 
 	/// <summary>
+	/// Copy a portion of the source texture to the current rendering target, with affine transform, at subpixel precision.
+	/// </summary>
+	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
+	/// <param name="texture">The source texture.</param>
+	/// <param name="srcRect">A pointer to the source rectangle, or <see langword="null"/> for the entire texture.</param>
+	/// <param name="origin">A pointer to a point indicating where the top-left corner of <paramref name="srcRect"/> should be mapped to, or <see langword="null"/> for the rendering target's origin.</param>
+	/// <param name="right">A pointer to a point indicating where the top-right corner of <paramref name="srcRect"/> should be mapped to, or <see langword="null"/> for the rendering target's top-right corner.</param>
+	/// <param name="down">A pointer to a point indicating where the bottom-left corner of srcrect should be mapped to, or <see langword="null"/> for the rendering target's bottom-left corner.</param>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureAffine")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool RenderTextureAffine(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, [Const] SDL_FPoint* origin, [Const] SDL_FPoint* right, [Const] SDL_FPoint* down);
+
+	/// <summary>
 	/// Tile a portion of the texture to the current rendering target at subpixel precision.
 	/// </summary>
 	/// <remarks>

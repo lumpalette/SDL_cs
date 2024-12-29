@@ -6,20 +6,29 @@ using System.Runtime.InteropServices.Marshalling;
 namespace SDL3;
 
 /// <summary>
-/// Represents a unique ID for a touch device.
+/// A unique ID for a touch device.
 /// </summary>
+/// <remarks>
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_TouchID">documentation</see> for more details.
+/// </remarks>
 [Typedef]
 public enum SDL_TouchId : ulong;
 
 /// <summary>
-/// Represents a unique ID for a finger.
+/// A unique ID for a single finger on a touch device.
 /// </summary>
+/// <remarks>
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_FingerID">documentation</see> for more details.
+/// </remarks>
 [Typedef]
 public enum SDL_FingerId : ulong;
 
 /// <summary>
-/// An enumeration that specifies the type of touch device.
+/// An enum that describes the type of a touch device.
 /// </summary>
+/// <remarks>
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_TouchDeviceType">documentation</see> for more details.
+/// </remarks>
 public enum SDL_TouchDeviceType
 {
 	/// <summary>
@@ -76,13 +85,19 @@ public struct /* kid named */ SDL_Finger
 unsafe partial class SDL
 {
 	/// <summary>
-	/// Used as the device ID for mouse events simulated with touch input.
+	/// The <see cref="SDL_TouchId"/> for touch events simulated with mouse input.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_TOUCH_MOUSEID">documentation</see> for more details.
+	/// </remarks>
 	public static SDL_MouseId TouchMouseId => unchecked((SDL_MouseId)(-1));
 
 	/// <summary>
-	/// Used as the device ID for touch events simulated with mouse input.
+	/// The <see cref="SDL_TouchId"/> for touch events simulated with mouse input.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MOUSE_TOUCHID">documentation</see> for more details.
+	/// </remarks>
 	public static SDL_TouchId MouseTouchId => unchecked((SDL_TouchId)(-1));
 
 	/// <summary>
