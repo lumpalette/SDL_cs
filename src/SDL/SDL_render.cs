@@ -241,20 +241,20 @@ unsafe partial class SDL
 
 			/// <summary>
 			/// True if the output colorspace is <see cref="SDL_Colorspace.SRGBLinear"/> and the renderer is showing on a display with
-			/// HDR enabled. This property can change dynamically when <see cref="FIXME:SDL_EVENT_DISPLAY_HDR_STATE_CHANGED"/> is sent.
+			/// HDR enabled. This property can change dynamically when <see cref="SDL_EventType.WindowHdrStateChanged"/> is sent.
 			/// </summary>
 			public const string HdrEnabledBoolean = "SDL.renderer.HDR_enabled"; // TODO: report this error
 
 			/// <summary>
 			/// The value of SDR white in the <see cref="SDL_Colorspace.SRGBLinear"/> colorspace. When HDR is enabled, this value is
 			/// automatically multiplied into the color scale. This property can change dynamically when
-			/// <see cref="FIXME:SDL_EVENT_DISPLAY_HDR_STATE_CHANGED"/> is sent.
+			/// <see cref="SDL_EventType.WindowHdrStateChanged"/> is sent.
 			/// </summary>
 			public const string SdrWhitePointFloat = "SDL.renderer.SDR_white_point";
 
 			/// <summary>
 			/// The additional high dynamic range that can be displayed, in terms of the SDR white point.When HDR is not enabled, this
-			/// will be 1.0. This property can change dynamically when <see cref="FIXME:SDL_EVENT_DISPLAY_HDR_STATE_CHANGED"/> is sent.
+			/// will be 1.0. This property can change dynamically when <see cref="SDL_EventType.WindowHdrStateChanged"/> is sent.
 			/// </summary>
 			public const string HdrHeadroomFloat = "SDL.renderer.HDR_headroom";
 
@@ -322,6 +322,11 @@ unsafe partial class SDL
 			/// The number of swapchain images, or potential frames in flight, used by the Vulkan renderer.
 			/// </summary>
 			public const string VulkanSwapchainImageCountNumber = "SDL.renderer.vulkan.swapchain_image_count";
+
+			/// <summary>
+			/// The <see cref="FIXME:SDL_GPUDevice"/> associated with the renderer.
+			/// </summary>
+			public const string GPUDevicePointer = "SDL.renderer.gpu.device";
 		}
 
 		/// <summary>
@@ -770,7 +775,7 @@ unsafe partial class SDL
 	/// <param name="access">One of the enumerated values in <see cref="SDL_TextureAccess"/>.</param>
 	/// <param name="width">The width of the texture in pixels.</param>
 	/// <param name="height">The height of the texture in pixels.</param>
-	/// <returns>A pointer to the created texture or <see langword="null"/> if no rendering context was active, the format was unsupported, or the width or height were out of range; call <see cref="GetError"/> for more information.</returns>
+	/// <returns>The created texture or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Texture* CreateTexture(SDL_Renderer* renderer, SDL_PixelFormat format, SDL_TextureAccess access, int width, int height);

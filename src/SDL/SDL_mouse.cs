@@ -12,7 +12,13 @@ namespace SDL3;
 /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MouseID">documentation</see> for more details.
 /// </remarks>
 [Typedef]
-public enum SDL_MouseId : uint;
+public enum SDL_MouseId : uint
+{
+	/// <summary>
+	/// An invalid/null mouse device ID.
+	/// </summary>
+	Invalid = 0
+}
 
 /// <summary>
 /// The structure used to identify an SDL cursor.

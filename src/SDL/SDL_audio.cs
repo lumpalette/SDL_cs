@@ -523,7 +523,7 @@ unsafe partial class SDL
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BindAudioStreams")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
-	public static partial bool BindAudioStreams(SDL_AudioDeviceId devId, SDL_AudioStream** streams, int numStreams);
+	public static partial bool BindAudioStreams(SDL_AudioDeviceId devId, [Const] SDL_AudioStream** streams, int numStreams);
 
 	/// <summary>
 	/// Bind a single audio stream to an audio device.
@@ -842,6 +842,19 @@ unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(NativeBool)]
 	public static partial bool ResumeAudioStreamDevice(SDL_AudioStream* stream);
+
+	/// <summary>
+	/// Use this function to query if an audio device associated with a stream is paused.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_AudioStreamDevicePaused">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="stream">The audio stream associated with the audio device to query.</param>
+	/// <returns>True if device is valid and paused, false otherwise.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_AudioStreamDevicePaused")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(NativeBool)]
+	public static partial bool AudioStreamDevicePaused(SDL_AudioStream* stream);
 
 	/// <summary>
 	/// Lock an audio stream for serialized access.

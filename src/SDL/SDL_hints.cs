@@ -306,6 +306,14 @@ unsafe partial class SDL
 		public const string DisplayUsableBounds = "SDL_DISPLAY_USABLE_BOUNDS";
 
 		/// <summary>
+		/// Specify the EGL library to load.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_EGL_LIBRARY">documentation</see> for more details.
+		/// </remarks>
+		public const string EGLLibrary = "SDL_EGL_LIBRARY";
+
+		/// <summary>
 		/// Disable giving back control to the browser automatically when running with asyncify.
 		/// </summary>
 		/// <remarks>
@@ -463,7 +471,7 @@ unsafe partial class SDL
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GPU_DRIVER">documentation</see> for more details.
 		/// </remarks>
-		public const string GpuDriver = "SDL_GPU_DRIVER";
+		public const string GPUDriver = "SDL_GPU_DRIVER";
 
 		/// <summary>
 		/// A variable to control whether <see cref="hid_enumerate(ushort, ushort)"/> enumerates all HID devices or only controllers.
@@ -576,6 +584,14 @@ unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_DIRECTINPUT">documentation</see> for more details.
 		/// </remarks>
 		public const string JoystickDirectInput = "SDL_JOYSTICK_DIRECTINPUT";
+
+		/// <summary>
+		/// A variable controlling whether enhanced reports should be used for controllers when using the HIDAPI driver.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_ENHANCED_REPORTS">documentation</see> for more details.
+		/// </remarks>
+		public const string JoystickEnhancedReports = "SDL_JOYSTICK_ENHANCED_REPORTS";
 
 		/// <summary>
 		/// A variable containing a list of flightstick style controllers.
@@ -1257,6 +1273,22 @@ unsafe partial class SDL
 		public const string Orientations = "SDL_ORIENTATIONS";
 
 		/// <summary>
+		/// A variable controlling whether pen events should generate synthetic mouse events.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_PEN_MOUSE_EVENTS">documentation</see> for more details.
+		/// </remarks>
+		public const string PenMouseEvents = "SDL_PEN_MOUSE_EVENTS";
+
+		/// <summary>
+		/// A variable controlling whether pen events should generate synthetic touch events.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_PEN_TOUCH_EVENTS">documentation</see> for more details.
+		/// </remarks>
+		public const string PenTouchEvents = "SDL_PEN_TOUCH_EVENTS";
+
+		/// <summary>
 		/// A variable controlling the use of a sentinel event when polling the event queue.
 		/// </summary>
 		/// <remarks>
@@ -1310,7 +1342,7 @@ unsafe partial class SDL
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_RENDER_GPU_DEBUG">documentation</see> for more details.
 		/// </remarks>
-		public const string RenderGpuDebug = "SDL_RENDER_GPU_DEBUG";
+		public const string RenderGPUDebug = "SDL_RENDER_GPU_DEBUG";
 
 		/// <summary>
 		/// A variable controlling whether to prefer a low-power GPU on multi-GPU systems.
@@ -1318,7 +1350,7 @@ unsafe partial class SDL
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_RENDER_GPU_LOW_POWER">documentation</see> for more details.
 		/// </remarks>
-		public const string RenderGpuLowPower = "SDL_RENDER_GPU_LOW_POWER";
+		public const string RenderGPULowPower = "SDL_RENDER_GPU_LOW_POWER";
 
 		/// <summary>
 		/// A variable controlling how the 2D render API renders lines.
@@ -1521,6 +1553,14 @@ unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VIDEO_FORCE_EGL">documentation</see> for more details.
 		/// </remarks>
 		public const string VideoForceEGL = "SDL_VIDEO_FORCE_EGL";
+
+		/// <summary>
+		/// A variable that specifies the menu visibility when a window is fullscreen in Spaces on macOS.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VIDEO_MAC_FULLSCREEN_MENU_VISIBILITY">documentation</see> for more details.
+		/// </remarks>
+		public const string VideoMacFullscreenMenuVisibility = "SDL_VIDEO_MAC_FULLSCREEN_MENU_VISIBILITY";
 
 		/// <summary>
 		/// A variable that specifies the policy for fullscreen Spaces on macOS.

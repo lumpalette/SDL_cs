@@ -503,6 +503,7 @@ public enum SDL_EventType : uint
 	FingerDown = 0x700,
 	FingerUp,
 	FingerMotion,
+	FingerCancelled,
 
 	#endregion
 
@@ -1066,7 +1067,7 @@ public struct SDL_MouseMotionEvent
 	public SDL_WindowId WindowId;
 
 	/// <summary>
-	/// The mouse instance ID, <see cref="SDL.TouchMouseId"/>, or <see cref="FIXME:SDL_PEN_MOUSEID"/>.
+	/// The mouse instance ID in relative mode, <see cref="SDL.TouchMouseId"/> for touch events, or <see cref="SDL_MouseId.Invalid"/>.
 	/// </summary>
 	public SDL_MouseId Which;
 
@@ -1123,7 +1124,7 @@ public struct SDL_MouseButtonEvent
 	public SDL_WindowId WindowId;
 
 	/// <summary>
-	/// The mouse instance ID, <see cref="SDL.TouchMouseId"/>.
+	/// The mouse instance ID in relative mode, <see cref="SDL.TouchMouseId"/> for touch events, or <see cref="SDL_MouseId.Invalid"/>.
 	/// </summary>
 	public SDL_MouseId Which;
 
@@ -1183,7 +1184,7 @@ public struct SDL_MouseWheelEvent
 	public SDL_WindowId WindowId;
 
 	/// <summary>
-	/// The mouse instance ID, <see cref="SDL.TouchMouseId"/>, or <see cref="FIXME:SDL_PEN_MOUSEID"/>.
+	/// The mouse instance ID in relative mode or <see cref="SDL_MouseId.Invalid"/>.
 	/// </summary>
 	public SDL_MouseId Which;
 
@@ -1765,8 +1766,8 @@ public struct SDL_RenderEvent
 public struct SDL_TouchFingerEvent
 {
 	/// <summary>
-	/// Either <see cref="SDL_EventType.FingerMotion"/>, <see cref="SDL_EventType.FingerDown"/> or
-	/// <see cref="SDL_EventType.FingerUp"/>.
+	/// Either <see cref="SDL_EventType.FingerMotion"/>, <see cref="SDL_EventType.FingerDown"/>,
+	/// <see cref="SDL_EventType.FingerUp"/> or <see cref="SDL_EventType.FingerCancelled"/>.
 	/// </summary>
 	public SDL_EventType Type;
 
@@ -2142,7 +2143,7 @@ public unsafe struct SDL_ClipboardEvent
 	/// <summary>
 	/// Number of mime type.
 	/// </summary>
-	public int NMimeTypes;
+	public int NumMimeTypes;
 
 	/// <summary>
 	/// Current mime types.

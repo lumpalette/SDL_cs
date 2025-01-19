@@ -98,3 +98,22 @@ public enum SDL_PenAxis
 	/// </summary>
 	Count
 }
+
+unsafe partial class SDL
+{
+	/// <summary>
+	/// The <see cref="SDL_MouseId"/> for mouse events simulated with pen input.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PEN_MOUSEID">documentation</see> for more details.
+	/// </remarks>
+	public const SDL_MouseId PenMouseId = unchecked((SDL_MouseId)(-1));
+
+	/// <summary>
+	/// The <see cref="SDL_TouchId"/> for touch events simulated with pen input.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_PEN_TOUCHID">documentation</see> for more details.
+	/// </remarks>
+	public const SDL_TouchId PenTouchId = unchecked((SDL_TouchId)(-2));
+}
