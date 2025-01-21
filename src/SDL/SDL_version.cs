@@ -21,7 +21,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MINOR_VERSION">documentation</see> for more details.
 	/// </remarks>
-	public const int MinorVersion = 1;
+	public const int MinorVersion = 2;
 
 	/// <summary>
 	/// The current micro (or patchlevel) version of the SDL headers.
@@ -29,7 +29,7 @@ unsafe partial class SDL
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_MICRO_VERSION">documentation</see> for more details.
 	/// </remarks>
-	public const int MicroVersion = 7;
+	public const int MicroVersion = 1;
 
 	/// <summary>
 	/// This macro turns the version numbers into a numeric value.
