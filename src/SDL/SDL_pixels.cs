@@ -337,7 +337,7 @@ public enum SDL_TransferCharacteristics
 	Unspecified = 2,
 
 	/// <summary>
-	/// ITU-R BT.470-6 System M / ITU-R BT1700 625 PAL & SECAM.
+	/// ITU-R BT.470-6 System M / ITU-R BT1700 625 PAL &amp; SECAM.
 	/// </summary>
 	Gamma22 = 4,
 

@@ -1735,6 +1735,7 @@ public struct SDL_CameraDeviceEvent
 /// <summary>
 /// Renderer event structure (<see cref="SDL_Event.Render"/>).
 /// </summary>
+[StructLayout(LayoutKind.Sequential)]
 public struct SDL_RenderEvent
 {
 	/// <summary>

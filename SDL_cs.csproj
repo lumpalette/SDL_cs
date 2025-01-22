@@ -18,5 +18,4 @@
 		<NoWarn>1701;1702;CA1401;</NoWarn>
 		<DebugType>none</DebugType>
 	</PropertyGroup>
-
 </Project>
