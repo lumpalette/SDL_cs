@@ -379,7 +379,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioDeviceFormat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetAudioDeviceFormat(SDL_AudioDeviceId devId, SDL_AudioSpec* spec, int* sampleFrames);
 
 	/// <summary>
@@ -418,7 +418,7 @@ unsafe partial class SDL
 	/// <returns>True if devid is a physical device, false if it is logical.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_IsAudioDevicePhysical")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool IsAudioDevicePhysical(SDL_AudioDeviceId devId);
 
 	/// <summary>
@@ -431,7 +431,7 @@ unsafe partial class SDL
 	/// <returns>True if devid is a playback device, false if it is recording.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_IsAudioDevicePlayback")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool IsAudioDevicePlayback(SDL_AudioDeviceId devId);
 
 	/// <summary>
@@ -444,7 +444,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PauseAudioDevice")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool PauseAudioDevice(SDL_AudioDeviceId dev);
 
 	/// <summary>
@@ -457,7 +457,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ResumeAudioDevice")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ResumeAudioDevice(SDL_AudioDeviceId dev);
 
 	/// <summary>
@@ -470,7 +470,7 @@ unsafe partial class SDL
 	/// <returns>True if device is valid and paused, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AudioDevicePaused")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool AudioDevicePaused(SDL_AudioDeviceId dev);
 
 	/// <summary>
@@ -496,7 +496,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioDeviceGain")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetAudioDeviceGain(SDL_AudioDeviceId devId, float gain);
 
 	/// <summary>
@@ -522,7 +522,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BindAudioStreams")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool BindAudioStreams(SDL_AudioDeviceId devId, [Const] SDL_AudioStream** streams, int numStreams);
 
 	/// <summary>
@@ -536,7 +536,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BindAudioStream")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool BindAudioStream(SDL_AudioDeviceId devId, SDL_AudioStream* stream);
 
 	/// <summary>
@@ -611,7 +611,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetAudioStreamFormat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetAudioStreamFormat(SDL_AudioStream* stream, SDL_AudioSpec* srcSpec, SDL_AudioSpec* dstSpec);
 
 	/// <summary>
@@ -626,7 +626,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioStreamFormat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetAudioStreamFormat(SDL_AudioStream* stream, [Const] SDL_AudioSpec* srcSpec, [Const] SDL_AudioSpec* dstSpec);
 
 	/// <summary>
@@ -652,7 +652,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioStreamFrequencyRatio")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetAudioStreamFrequencyRatio(SDL_AudioStream* stream, float ratio);
 
 	/// <summary>
@@ -678,7 +678,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioStreamGain")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetAudioStreamGain(SDL_AudioStream* stream, float gain);
 
 	/// <summary>
@@ -719,7 +719,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioStreamInputChannelMap")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetAudioStreamInputChannelMap(SDL_AudioStream* stream, [Const] int* channelMap, int count);
 
 	/// <summary>
@@ -734,7 +734,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioStreamOutputChannelMap")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetAudioStreamOutputChannelMap(SDL_AudioStream* stream, [Const] int* channelMap, int count);
 
 	/// <summary>
@@ -749,7 +749,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PutAudioStreamData")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool PutAudioStreamData(SDL_AudioStream* stream, nint buffer, int length);
 
 	/// <summary>
@@ -801,7 +801,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FlushAudioStream")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool FlushAudioStream(SDL_AudioStream* stream);
 
 	/// <summary>
@@ -814,7 +814,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ClearAudioStream")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ClearAudioStream(SDL_AudioStream* stream);
 
 	/// <summary>
@@ -827,7 +827,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PauseAudioStreamDevice")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool PauseAudioStreamDevice(SDL_AudioStream* stream);
 
 	/// <summary>
@@ -840,7 +840,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ResumeAudioStreamDevice")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ResumeAudioStreamDevice(SDL_AudioStream* stream);
 
 	/// <summary>
@@ -853,7 +853,7 @@ unsafe partial class SDL
 	/// <returns>True if device is valid and paused, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AudioStreamDevicePaused")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool AudioStreamDevicePaused(SDL_AudioStream* stream);
 
 	/// <summary>
@@ -866,7 +866,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_LockAudioStream")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool LockAudioStream(SDL_AudioStream* stream);
 
 	/// <summary>
@@ -879,7 +879,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UnlockAudioStream")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool UnlockAudioStream(SDL_AudioStream* stream);
 
 	/// <summary>
@@ -894,7 +894,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information. This only fails if <paramref name="stream"/> is <see langword="null"/>.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioStreamGetCallback")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetAudioStreamGetCallback(SDL_AudioStream* stream, delegate* unmanaged[Cdecl]<nint, SDL_AudioStream*, int, int, void> callback, nint userData);
 
 	/// <summary>
@@ -909,7 +909,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information. This only fails if <paramref name="stream"/> is <see langword="null"/>.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioStreamPutCallback")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetAudioStreamPutCallback(SDL_AudioStream* stream, delegate* unmanaged[Cdecl]<nint, SDL_AudioStream*, int, int, void> callback, nint userData);
 
 	/// <summary>
@@ -950,7 +950,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetAudioPostmixCallback")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetAudioPostmixCallback(SDL_AudioDeviceId devId, delegate* unmanaged[Cdecl]<nint, SDL_AudioSpec*, float*, int, void> callback, nint userData);
 
 	// TODO: implement SDL_LoadWAV_IO
@@ -975,7 +975,7 @@ unsafe partial class SDL
 	/// </returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_LoadWAV", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool LoadWav(string path, SDL_AudioSpec* spec, byte** audioBuffer, uint* audioLength);
 
 	/// <summary>
@@ -992,7 +992,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_MixAudio")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool MixAudio(byte* dst, byte* src, SDL_AudioFormat format, uint length, float volume);
 
 	/// <summary>
@@ -1010,7 +1010,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertAudioSamples")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ConvertAudioSamples([Const] SDL_AudioSpec* srcSpec, [Const] byte* srcData, int srcLength, [Const] SDL_AudioSpec* dstSpec, byte** dstData, int* dstLength);
 
 	/// <summary>

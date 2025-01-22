@@ -45,7 +45,7 @@ unsafe partial class SDL
 	/// <returns>True if the CPU has AltiVec features or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasAltiVec")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasAltiVec();
 
 	/// <summary>
@@ -57,7 +57,7 @@ unsafe partial class SDL
 	/// <returns>True if the CPU has MMX features or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasMMX")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasMMX();
 
 	/// <summary>
@@ -69,7 +69,7 @@ unsafe partial class SDL
 	/// <returns>True if the CPU has SSE features or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasSSE")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasSSE();
 
 	/// <summary>
@@ -81,7 +81,7 @@ unsafe partial class SDL
 	/// <returns>True if the CPU has SSE2 features or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasSSE2")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasSSE2();
 
 	/// <summary>
@@ -93,7 +93,7 @@ unsafe partial class SDL
 	/// <returns>True if the CPU has SSE3 features or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasSSE3")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasSSE3();
 
 	/// <summary>
@@ -105,7 +105,7 @@ unsafe partial class SDL
 	/// <returns>True if the CPU has SSE4.1 features or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasSSE41")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasSSE41();
 
 	/// <summary>
@@ -117,7 +117,7 @@ unsafe partial class SDL
 	/// <returns>True if the CPU has SSE4.2 features or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasSSE42")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasSSE42();
 
 	/// <summary>
@@ -129,7 +129,7 @@ unsafe partial class SDL
 	/// <returns>True if the CPU has AVX features or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasAVX")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasAVX();
 
 	/// <summary>
@@ -141,7 +141,7 @@ unsafe partial class SDL
 	/// <returns>True if the CPU has AVX features or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasAVX2")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasAVX2();
 
 	/// <summary>
@@ -153,7 +153,7 @@ unsafe partial class SDL
 	/// <returns>True if the CPU has AVX-512F features or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasAVX512F")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasAVX512F();
 
 	/// <summary>
@@ -165,7 +165,7 @@ unsafe partial class SDL
 	/// <returns>True if the CPU has ARM SIMD features or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasARMSIMD")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasARMSimd();
 
 	/// <summary>
@@ -177,7 +177,7 @@ unsafe partial class SDL
 	/// <returns>True if the CPU has ARM NEON features or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasNEON")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasNeon();
 
 	/// <summary>
@@ -189,7 +189,7 @@ unsafe partial class SDL
 	/// <returns>True if the CPU has LOONGARCH LASX features or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasLSX")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasLSX();
 
 	/// <summary>
@@ -201,7 +201,7 @@ unsafe partial class SDL
 	/// <returns>True if the CPU has LOONGARCH LASX features or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasLASX")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasLASX();
 
 	/// <summary>

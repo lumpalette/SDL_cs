@@ -645,7 +645,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateWindowAndRenderer", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool CreateWindowAndRenderer(string title, int width, int height, SDL_WindowFlags windowFlags, SDL_Window** window, SDL_Renderer** renderer);
 
 	/// <summary>
@@ -746,7 +746,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderOutputSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetRenderOutputSize(SDL_Renderer* renderer, int* width, int* height);
 
 	/// <summary>
@@ -761,7 +761,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetCurrentRenderOutputSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetCurrentRenderOutputSize(SDL_Renderer* renderer, int* width, int* height);
 
 	/// <summary>
@@ -842,7 +842,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetTextureSize(SDL_Texture* texture, float* width, float* height);
 
 	/// <summary>
@@ -858,7 +858,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextureColorMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetTextureColorMod(SDL_Texture* texture, byte r, byte g, byte b);
 
 	/// <summary>
@@ -874,7 +874,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextureColorModFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetTextureColorModFloat(SDL_Texture* texture, float r, float g, float b);
 
 	/// <summary>
@@ -890,7 +890,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureColorMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetTextureColorMod(SDL_Texture* texture, byte* r, byte* g, byte* b);
 
 	/// <summary>
@@ -906,7 +906,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureColorModFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetTextureColorModFloat(SDL_Texture* texture, float* r, float* g, float* b);
 
 	/// <summary>
@@ -920,7 +920,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextureAlphaMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetTextureAlphaMod(SDL_Texture* texture, byte alpha);
 
 	/// <summary>
@@ -934,7 +934,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextureAlphaModFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetTextureAlphaModFloat(SDL_Texture* texture, float alpha);
 
 	/// <summary>
@@ -948,7 +948,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureAlphaMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetTextureAlphaMod(SDL_Texture* texture, byte* alpha);
 
 	/// <summary>
@@ -962,7 +962,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureAlphaModFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetTextureAlphaModFloat(SDL_Texture* texture, float* alpha);
 
 	/// <summary>
@@ -976,7 +976,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextureBlendMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetTextureBlendMode(SDL_Texture* texture, SDL_BlendMode blendMode);
 
 	/// <summary>
@@ -990,7 +990,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureBlendMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetTextureBlendMode(SDL_Texture* texture, SDL_BlendMode* blendMode);
 
 	/// <summary>
@@ -1004,7 +1004,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextureScaleMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetTextureScaleMode(SDL_Texture* texture, SDL_ScaleMode scaleMode);
 
 	/// <summary>
@@ -1018,7 +1018,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextureScaleMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetTextureScaleMode(SDL_Texture* texture, SDL_ScaleMode* scaleMode);
 
 	/// <summary>
@@ -1034,7 +1034,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool UpdateTexture(SDL_Texture* texture, [Const] SDL_Rect* rect, [Const] nint pixels, int pitch);
 
 	/// <summary>
@@ -1054,7 +1054,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateYUVTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool UpdateYUVTexture(SDL_Texture* texture, [Const] SDL_Rect* rect, [Const] byte* yplane, int ypitch, [Const] byte* uplane, int upitch, [Const] byte* vplane, int vpitch);
 
 	/// <summary>
@@ -1072,7 +1072,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateNVTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool UpdateNVTexture(SDL_Texture* texture, [Const] SDL_Rect* rect, [Const] byte* yplane, int ypitch, [Const] byte* uvplane, int uvpitch);
 
 	/// <summary>
@@ -1088,7 +1088,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false if the texture is not valid or was not created with <see cref="SDL_TextureAccess.Streaming"/>; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_LockTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool LockTexture(SDL_Texture* texture, [Const] SDL_Rect* rect, nint** pixels, int* pitch);
 
 	/// <summary>
@@ -1103,7 +1103,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_LockTextureToSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool LockTextureToSurface(SDL_Texture* texture, [Const] SDL_Rect* rect, SDL_Surface* surface);
 
 	/// <summary>
@@ -1128,7 +1128,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderTarget")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetRenderTarget(SDL_Renderer* renderer, SDL_Texture* texture);
 
 	/// <summary>
@@ -1156,7 +1156,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderLogicalPresentation")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetRenderLogicalPresentation(SDL_Renderer* renderer, int width, int height, SDL_RendererLogicalPresentation mode);
 
 	/// <summary>
@@ -1172,7 +1172,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderLogicalPresentation")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetRenderLogicalPresentation(SDL_Renderer* renderer, int* width, int* height, SDL_RendererLogicalPresentation* mode);
 
 	/// <summary>
@@ -1186,7 +1186,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderLogicalPresentationRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetRenderLogicalPresentationRect(SDL_Renderer* renderer, SDL_FRect* rect);
 
 	/// <summary>
@@ -1203,7 +1203,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderCoordinatesFromWindow")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderCoordinatesFromWindow(SDL_Renderer* renderer, float windowX, float windowY, float* x, float* y);
 
 	/// <summary>
@@ -1220,7 +1220,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderCoordinatesToWindow")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderCoordinatesToWindow(SDL_Renderer* renderer, float x, float y, float* windowX, float* windowY);
 
 	/// <summary>
@@ -1234,7 +1234,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertEventToRenderCoordinates")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ConvertEventToRenderCoordinates(SDL_Renderer* renderer, SDL_Event* e);
 
 	/// <summary>
@@ -1248,7 +1248,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderViewport")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetRenderViewport(SDL_Renderer* renderer, [Const] SDL_Rect* rect);
 
 	/// <summary>
@@ -1262,7 +1262,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderViewport")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetRenderViewport(SDL_Renderer* renderer, SDL_Rect* rect);
 
 	/// <summary>
@@ -1275,7 +1275,7 @@ unsafe partial class SDL
 	/// <returns>True if the viewport was set to a specific rectangle, or false if it was set to <see langword="null"/> (the entire target).</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderViewportSet")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderViewportSet(SDL_Renderer* renderer);
 
 	/// <summary>
@@ -1289,7 +1289,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderSafeArea")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetRenderSafeArea(SDL_Renderer* renderer, SDL_Rect* rect);
 
 	/// <summary>
@@ -1303,7 +1303,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderClipRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetRenderClipRect(SDL_Renderer* renderer, [Const] SDL_Rect* rect);
 
 	/// <summary>
@@ -1317,7 +1317,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderClipRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetRenderClipRect(SDL_Renderer* renderer, SDL_Rect* rect);
 
 	/// <summary>
@@ -1330,7 +1330,7 @@ unsafe partial class SDL
 	/// <returns>True if clipping is enabled or false if not; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderClipEnabled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderClipEnabled(SDL_Renderer* renderer);
 
 	/// <summary>
@@ -1345,7 +1345,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderScale")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetRenderScale(SDL_Renderer* renderer, float scaleX, float scaleY);
 
 	/// <summary>
@@ -1360,7 +1360,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderScale")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetRenderScale(SDL_Renderer* renderer, float* scaleX, float* scaleY);
 
 	/// <summary>
@@ -1377,7 +1377,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderDrawColor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetRenderDrawColor(SDL_Renderer* renderer, byte r, byte g, byte b, byte a);
 
 	/// <summary>
@@ -1394,7 +1394,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderDrawColorFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetRenderDrawColorFloat(SDL_Renderer* renderer, float r, float g, float b, float a);
 
 	/// <summary>
@@ -1411,7 +1411,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderDrawColor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetRenderDrawColor(SDL_Renderer* renderer, byte* r, byte* g, byte* b, byte* a);
 
 	/// <summary>
@@ -1428,7 +1428,7 @@ unsafe partial class SDL
 	/// <returns>0 on success or a negative error code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderDrawColorFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetRenderDrawColorFloat(SDL_Renderer* renderer, float* r, float* g, float* b, float* a);
 
 	/// <summary>
@@ -1442,7 +1442,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderColorScale")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetRenderColorScale(SDL_Renderer* renderer, float scale);
 
 	/// <summary>
@@ -1456,7 +1456,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderColorScale")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetRenderColorScale(SDL_Renderer* renderer, float* scale);
 
 	/// <summary>
@@ -1470,7 +1470,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderDrawBlendMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetRenderDrawBlendMode(SDL_Renderer* renderer, SDL_BlendMode blendMode);
 
 	/// <summary>
@@ -1484,7 +1484,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderDrawBlendMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetRenderDrawBlendMode(SDL_Renderer* renderer, SDL_BlendMode* blendMode);
 
 	/// <summary>
@@ -1497,7 +1497,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderClear")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderClear(SDL_Renderer* renderer);
 
 	/// <summary>
@@ -1512,7 +1512,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderPoint")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderPoint(SDL_Renderer* renderer, float x, float y);
 
 	/// <summary>
@@ -1527,7 +1527,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderPoints")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderPoints(SDL_Renderer* renderer, [Const] SDL_FPoint* points, int count);
 
 	/// <summary>
@@ -1544,7 +1544,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderLine")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderLine(SDL_Renderer* renderer, float x1, float y1, float x2, float y2);
 
 	/// <summary>
@@ -1559,7 +1559,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderLines")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderLines(SDL_Renderer* renderer, [Const] SDL_FPoint* points, int count);
 
 	/// <summary>
@@ -1573,7 +1573,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderRect(SDL_Renderer* renderer, [Const] SDL_FRect* rect);
 
 	/// <summary>
@@ -1588,7 +1588,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderRects")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderRects(SDL_Renderer* renderer, [Const] SDL_FRect* rects, int count);
 
 	/// <summary>
@@ -1602,7 +1602,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderFillRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderFillRect(SDL_Renderer* renderer, [Const] SDL_FRect* rect);
 
 	/// <summary>
@@ -1617,7 +1617,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderFillRects")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderFillRects(SDL_Renderer* renderer, [Const] SDL_FRect* rects, int count);
 
 	/// <summary>
@@ -1633,7 +1633,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderTexture(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, [Const] SDL_FRect* dstRect);
 
 	/// <summary>
@@ -1652,7 +1652,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureRotated")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderTextureRotated(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, [Const] SDL_FRect* dstRect, double angle, [Const] SDL_FPoint* center, SDL_FlipMode flip);
 
 	/// <summary>
@@ -1667,7 +1667,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureAffine")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderTextureAffine(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, [Const] SDL_FPoint* origin, [Const] SDL_FPoint* right, [Const] SDL_FPoint* down);
 
 	/// <summary>
@@ -1684,7 +1684,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTextureTiled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderTextureTiled(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, float scale, [Const] SDL_FRect* dstRect);
 
 	/// <summary>
@@ -1705,7 +1705,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture9Grid")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, [Const] SDL_FRect* dstRect);
 
 	/// <summary>
@@ -1724,7 +1724,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderGeometry")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderGeometry(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_Vertex* vertices, int numVertices, int* indices, int numIndices);
 
 	/// <summary>
@@ -1750,7 +1750,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderGeometryRaw")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderGeometryRaw(SDL_Renderer* renderer, SDL_Texture* texture, [Const] float* xy, int xyStride, [Const] SDL_FColor* color, int colorStride, [Const] float* uv, int uvStride, int numVertices, [Const] nint indices, int numIndices, int sizeIndices);
 
 	/// <summary>
@@ -1776,7 +1776,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderPresent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderPresent(SDL_Renderer* renderer);
 
 	/// <summary>
@@ -1811,7 +1811,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FlushRenderer")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool FlushRenderer(SDL_Renderer* renderer);
 
 	/// <summary>
@@ -1851,7 +1851,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddVulkanRenderSemaphores")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool AddVulkanRenderSemaphores(SDL_Renderer* renderer, uint waitStageMask, long waitSemaphore, long signalSemaphore);
 
 	/// <summary>
@@ -1865,7 +1865,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRenderVSync")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetRenderVSync(SDL_Renderer* renderer, int vsync);
 
 	/// <summary>
@@ -1887,7 +1887,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetRenderVSync")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetRenderVSync(SDL_Renderer* renderer, int* vsync);
 
 	/// <summary>
@@ -1913,6 +1913,6 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderDebugText", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderDebugText(SDL_Renderer* renderer, float x, float y, string str);
 }

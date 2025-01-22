@@ -76,7 +76,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_Init")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool Init(SDL_InitFlags flags);
 
 	/// <summary>
@@ -89,7 +89,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_InitSubSystem")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool InitSubSystem(SDL_InitFlags flags);
 
 	/// <summary>

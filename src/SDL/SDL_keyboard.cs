@@ -152,7 +152,7 @@ unsafe partial class SDL
 	/// <returns>True if a keyboard is connected, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasKeyboard")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasKeyboard();
 
 	/// <summary>
@@ -200,7 +200,7 @@ unsafe partial class SDL
 	/// <param name="numKeys">Receives the length of the returned array.</param>
 	/// <returns>A pointer to an array of key states.</returns>
 	[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetKeyboardState")]
-	[return: Const, MarshalAs(NativeBool)]
+	[return: Const, MarshalAs(BoolSize)]
 #pragma warning disable SYSLIB1054 // TODO: find a way to use bool* with libraryimport.
 	public static extern bool* GetKeyboardState(int* numKeys);
 #pragma warning restore SYSLIB1054
@@ -262,7 +262,7 @@ unsafe partial class SDL
 	/// <returns>The <see cref="SDL_Keycode"/> that corresponds to the given <see cref="SDL_Scancode"/>.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetKeyFromScancode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Keycode GetKeyFromScancode(SDL_Scancode scancode, SDL_Keymod modState, [MarshalAs(NativeBool)] bool keyEvent);
+	public static partial SDL_Keycode GetKeyFromScancode(SDL_Scancode scancode, SDL_Keymod modState, [MarshalAs(BoolSize)] bool keyEvent);
 
 	/// <summary>
 	/// Get the scancode corresponding to the given key code according to a default en_US keyboard layout.
@@ -301,7 +301,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetScancodeName")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetScancodeName(SDL_Scancode scancode, byte* name);
 
 	/// <summary>
@@ -364,7 +364,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_StartTextInput")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool StartTextInput(SDL_Window* window);
 
 	/// <summary>
@@ -378,7 +378,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_StartTextInputWithProperties")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool StartTextInputWithProperties(SDL_Window* window, SDL_PropertiesId props);
 
 	/// <summary>
@@ -391,7 +391,7 @@ unsafe partial class SDL
 	/// <returns>True if text input events are enabled else false.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_TextInputActive")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool TextInputActive(SDL_Window* window);
 
 	/// <summary>
@@ -404,7 +404,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_StopTextInput")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool StopTextInput(SDL_Window* window);
 
 	/// <summary>
@@ -417,7 +417,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ClearComposition")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ClearComposition(SDL_Window* window);
 
 	/// <summary>
@@ -432,7 +432,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetTextInputArea")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetTextInputArea(SDL_Window* window, [Const] SDL_Rect* rect, int cursor);
 
 	/// <summary>
@@ -447,7 +447,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetTextInputArea")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetTextInputArea(SDL_Window* window, SDL_Rect* rect, int* cursor);
 
 	/// <summary>
@@ -459,7 +459,7 @@ unsafe partial class SDL
 	/// <returns>True if the platform has some screen keyboard support or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasScreenKeyboardSupport")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasScreenKeyboardSupport();
 
 	/// <summary>
@@ -472,6 +472,6 @@ unsafe partial class SDL
 	/// <returns>True if screen keyboard is shown or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ScreenKeyboardShown")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ScreenKeyboardShown(SDL_Window* window);
 }

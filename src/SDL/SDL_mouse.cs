@@ -250,7 +250,7 @@ unsafe partial class SDL
 	/// <returns>True if a mouse is connected, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasMouse")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasMouse();
 
 	/// <summary>
@@ -352,7 +352,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_WarpMouseGlobal")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool WarpMouseGlobal(float x, float y);
 
 	/// <summary>
@@ -366,8 +366,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowRelativeMouseMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool SetWindowRelativeMouseMode(SDL_Window* window, [MarshalAs(NativeBool)] bool enabled);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetWindowRelativeMouseMode(SDL_Window* window, [MarshalAs(BoolSize)] bool enabled);
 
 	/// <summary>
 	/// Query whether relative mouse mode is enabled for a window.
@@ -379,7 +379,7 @@ unsafe partial class SDL
 	/// <returns>True if relative mode is enabled for a window or false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowRelativeMouseMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetWindowRelativeMouseMode(SDL_Window* window);
 
 	/// <summary>
@@ -392,8 +392,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CaptureMouse")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool CaptureMouse([MarshalAs(NativeBool)] bool enabled);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool CaptureMouse([MarshalAs(BoolSize)] bool enabled);
 
 	/// <summary>
 	/// Create a cursor using the specified bitmap data and mask (in MSB format).
@@ -448,7 +448,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetCursor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetCursor(SDL_Cursor* cursor);
 
 	/// <summary>
@@ -493,7 +493,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ShowCursor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ShowCursor();
 
 	/// <summary>
@@ -505,7 +505,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HideCursor")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HideCursor();
 
 	/// <summary>
@@ -517,6 +517,6 @@ unsafe partial class SDL
 	/// <returns>True if the cursor is being shown, or false if the cursor is hidden.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CursorVisible")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool CursorVisible();
 }

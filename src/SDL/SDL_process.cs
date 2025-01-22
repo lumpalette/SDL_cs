@@ -158,7 +158,7 @@ unsafe partial class SDL
 	/// <returns>The newly created and running process, or <see langword="null"/> if the process couldn't be created.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CreateProcess")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial SDL_Process* CreateProcess([Const, Const] byte** args, [MarshalAs(NativeBool)] bool pipeStdio);
+	public static partial SDL_Process* CreateProcess([Const, Const] byte** args, [MarshalAs(BoolSize)] bool pipeStdio);
 
 	/// <summary>
 	/// Create a new process with the specified properties.
@@ -212,8 +212,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_KillProcess")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool KillProcess(SDL_Process* process, [MarshalAs(NativeBool)] bool force);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool KillProcess(SDL_Process* process, [MarshalAs(BoolSize)] bool force);
 
 	/// <summary>
 	/// Wait for a process to finish.
@@ -227,8 +227,8 @@ unsafe partial class SDL
 	/// <returns>True if the process exited, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_WaitProcess")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool WaitProcess(SDL_Process* process, [MarshalAs(NativeBool)] bool block, int* exitCode);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool WaitProcess(SDL_Process* process, [MarshalAs(BoolSize)] bool block, int* exitCode);
 
 	/// <summary>
 	/// Destroy a previously created process object.

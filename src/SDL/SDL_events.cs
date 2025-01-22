@@ -871,13 +871,13 @@ public struct SDL_KeyboardEvent
 	/// <summary>
 	/// True if the key is pressed.
 	/// </summary>
-	[MarshalAs(SDL.NativeBool)]
+	[MarshalAs(SDL.BoolSize)]
 	public bool Down;
 
 	/// <summary>
 	/// True if this is a key repeat.
 	/// </summary>
-	[MarshalAs(SDL.NativeBool)]
+	[MarshalAs(SDL.BoolSize)]
 	public bool Repeat;
 }
 
@@ -971,7 +971,7 @@ public unsafe struct SDL_TextEditingCandidatesEvent
 	/// <summary>
 	/// True if the list is horizontal, false if it's vertical.
 	/// </summary>
-	[MarshalAs(SDL.NativeBool)]
+	[MarshalAs(SDL.BoolSize)]
 	public bool Horizontal;
 
 	private readonly byte _padding1;
@@ -1136,7 +1136,7 @@ public struct SDL_MouseButtonEvent
 	/// <summary>
 	/// True if the button is pressed.
 	/// </summary>
-	[MarshalAs(SDL.NativeBool)]
+	[MarshalAs(SDL.BoolSize)]
 	public bool Down;
 
 	/// <summary>
@@ -1386,7 +1386,7 @@ public struct SDL_JoyButtonEvent
 	/// <summary>
 	/// True if the button is pressed.
 	/// </summary>
-	[MarshalAs(SDL.NativeBool)]
+	[MarshalAs(SDL.BoolSize)]
 	public bool Down;
 
 	private readonly byte _padding1;
@@ -1538,7 +1538,7 @@ public struct SDL_GamepadButtonEvent
 	/// <summary>
 	/// True if the button is pressed.
 	/// </summary>
-	[MarshalAs(SDL.NativeBool)]
+	[MarshalAs(SDL.BoolSize)]
 	public bool Down;
 
 	private readonly byte _padding1;
@@ -1700,7 +1700,7 @@ public struct SDL_AudioDeviceEvent
 	/// <summary>
 	/// False if a playback device, true if a recording device.
 	/// </summary>
-	[MarshalAs(SDL.NativeBool)]
+	[MarshalAs(SDL.BoolSize)]
 	public bool Recording;
 }
 
@@ -1941,13 +1941,13 @@ public struct SDL_PenTouchEvent
 	/// <summary>
 	/// True if eraser end is used (not all pens support this).
 	/// </summary>
-	[MarshalAs(SDL.NativeBool)]
+	[MarshalAs(SDL.BoolSize)]
 	public bool Eraser;
 
 	/// <summary>
 	/// True if the pen is touching or false if the pen is lifted off.
 	/// </summary>
-	[MarshalAs(SDL.NativeBool)]
+	[MarshalAs(SDL.BoolSize)]
 	public bool Down;
 }
 
@@ -2005,7 +2005,7 @@ public struct SDL_PenButtonEvent
 	/// <summary>
 	/// True if the button is pressed.
 	/// </summary>
-	[MarshalAs(SDL.NativeBool)]
+	[MarshalAs(SDL.BoolSize)]
 	public bool Down;
 }
 
@@ -2137,7 +2137,7 @@ public unsafe struct SDL_ClipboardEvent
 	/// <summary>
 	/// Are we owning the clipboard? (internal update).
 	/// </summary>
-	[MarshalAs(SDL.NativeBool)]
+	[MarshalAs(SDL.BoolSize)]
 	public bool Owner;
 
 	/// <summary>
@@ -2562,7 +2562,7 @@ unsafe partial class SDL
 	/// <returns>True if events matching <paramref name="type"/> are present, or false if events matching <paramref name="type"/> are not present.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasEvent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasEvent(SDL_EventType type);
 
 	/// <summary>
@@ -2573,7 +2573,7 @@ unsafe partial class SDL
 	/// <returns>True if events with type &gt;= <paramref name="minType"/> and &lt;= <paramref name="maxType"/> are present, or false if not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasEvents")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasEvents(SDL_EventType minType, SDL_EventType maxType);
 
 	/// <summary>
@@ -2609,7 +2609,7 @@ unsafe partial class SDL
 	/// <returns>True if this got an event or false if there are none available.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PollEvent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool PollEvent(SDL_Event* e);
 
 	/// <summary>
@@ -2622,7 +2622,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false if there was an error while waiting for events; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_WaitEvent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool WaitEvent(SDL_Event* e);
 
 	/// <summary>
@@ -2636,7 +2636,7 @@ unsafe partial class SDL
 	/// <returns>True if this got an event or false if the timeout elapsed without any events available.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_WaitEventTimeout")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool WaitEventTimeout(SDL_Event* e, int timeoutMs);
 
 	/// <summary>
@@ -2649,7 +2649,7 @@ unsafe partial class SDL
 	/// <returns>True on success, false if the event was filtered or on failure; call <see cref="GetError"/> for more information. A common reason for error is the event queue being full.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PushEvent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool PushEvent(SDL_Event* e);
 
 	/// <summary>
@@ -2675,7 +2675,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false if there is no event filter set.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetEventFilter")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetEventFilter(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint* userData);
 
 	/// <summary>
@@ -2689,7 +2689,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddEventWatch")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool AddEventWatch(delegate* unmanaged[Cdecl]<nint, SDL_Event*, int> filter, nint userdata);
 
 	/// <summary>
@@ -2726,7 +2726,7 @@ unsafe partial class SDL
 	/// <param name="enabled">Whether to process the event or not.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetEventEnabled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void SetEventEnabled(SDL_EventType type, [MarshalAs(NativeBool)] bool enabled);
+	public static partial void SetEventEnabled(SDL_EventType type, [MarshalAs(BoolSize)] bool enabled);
 
 	/// <summary>
 	/// Query the state of processing events by type.
@@ -2738,7 +2738,7 @@ unsafe partial class SDL
 	/// <returns>True if the event is being processed, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_EventEnabled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool EventEnabled(SDL_EventType type);
 
 	/// <summary>

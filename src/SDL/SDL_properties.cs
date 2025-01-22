@@ -94,7 +94,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_CopyProperties")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool CopyProperties(SDL_PropertiesId src, SDL_PropertiesId dst);
 
 	/// <summary>
@@ -107,7 +107,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_LockProperties")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool LockProperties(SDL_PropertiesId props);
 
 	/// <summary>
@@ -135,7 +135,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetPointerPropertyWithCleanup", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetPointerPropertyWithCleanup(SDL_PropertiesId props, string name, nint value, delegate* unmanaged[Cdecl]<nint, nint, void> cleanup, nint userData);
 
 	/// <summary>
@@ -150,7 +150,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetPointerProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetPointerProperty(SDL_PropertiesId props, string name, nint value);
 
 	/// <summary>
@@ -165,7 +165,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetStringProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetStringProperty(SDL_PropertiesId props, string name, string? value);
 
 	/// <summary>
@@ -180,7 +180,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetNumberProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetNumberProperty(SDL_PropertiesId props, string name, long value);
 
 	/// <summary>
@@ -195,7 +195,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetFloatProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetFloatProperty(SDL_PropertiesId props, string name, float value);
 
 	/// <summary>
@@ -210,8 +210,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetBooleanProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool SetBooleanProperty(SDL_PropertiesId props, string name, [MarshalAs(NativeBool)] bool value);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetBooleanProperty(SDL_PropertiesId props, string name, [MarshalAs(BoolSize)] bool value);
 
 	/// <summary>
 	/// Return whether a property exists in a group of properties.
@@ -224,7 +224,7 @@ unsafe partial class SDL
 	/// <returns>True if the property exists, or false if it doesn't.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasProperty(SDL_PropertiesId props, string name);
 
 	/// <summary>
@@ -309,8 +309,8 @@ unsafe partial class SDL
 	/// <returns>The value of the property, or <paramref name="defaultValue"/> if it is not set or not a boolean property.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetBooleanProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool GetBooleanProperty(SDL_PropertiesId props, string name, [MarshalAs(NativeBool)] bool defaultValue = false);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool GetBooleanProperty(SDL_PropertiesId props, string name, [MarshalAs(BoolSize)] bool defaultValue = false);
 
 	/// <summary>
 	/// Clear a property on a group of properties.
@@ -323,7 +323,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ClearProperty", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ClearProperty(SDL_PropertiesId props, string name);
 
 	/// <summary>
@@ -338,7 +338,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_EnumerateProperties")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool EnumerateProperties(SDL_PropertiesId props, delegate* unmanaged[Cdecl]<nint, SDL_PropertiesId, byte*, void> callback, nint userData);
 
 	/// <summary>

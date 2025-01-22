@@ -1182,7 +1182,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayBounds")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetDisplayBounds(SDL_DisplayId instanceId, SDL_Rect* rect);
 
 	/// <summary>
@@ -1196,7 +1196,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDisplayUsableBounds")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetDisplayUsableBounds(SDL_DisplayId instanceId, SDL_Rect* rect);
 
 	/// <summary>
@@ -1263,8 +1263,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetClosestFullscreenDisplayMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool GetClosestFullscreenDisplayMode(SDL_DisplayId instanceId, int width, int height, float refreshRate, [MarshalAs(NativeBool)] bool includeHighDensityModes, SDL_DisplayMode* closest);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool GetClosestFullscreenDisplayMode(SDL_DisplayId instanceId, int width, int height, float refreshRate, [MarshalAs(BoolSize)] bool includeHighDensityModes, SDL_DisplayMode* closest);
 
 	/// <summary>
 	/// Get information about the desktop's display mode.
@@ -1363,7 +1363,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowFullscreenMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetWindowFullscreenMode(SDL_Window* window, [Const] SDL_DisplayMode* mode);
 
 	/// <summary>
@@ -1532,7 +1532,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowTitle", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetWindowTitle(SDL_Window* window, string title);
 
 	/// <summary>
@@ -1559,7 +1559,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowIcon")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetWindowIcon(SDL_Window* window, SDL_Surface* icon);
 
 	/// <summary>
@@ -1574,7 +1574,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowPosition")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetWindowPosition(SDL_Window* window, int x, int y);
 
 	/// <summary>
@@ -1589,7 +1589,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowPosition")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetWindowPosition(SDL_Window* window, int* x, int* y);
 
 	/// <summary>
@@ -1604,7 +1604,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetWindowSize(SDL_Window* window, int width, int height);
 
 	/// <summary>
@@ -1619,7 +1619,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetWindowSize(SDL_Window* window, int* width, int* height);
 
 	/// <summary>
@@ -1633,7 +1633,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowSafeArea")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetWindowSafeArea(SDL_Window* window, SDL_Rect* rect);
 
 	/// <summary>
@@ -1648,7 +1648,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowAspectRatio")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetWindowAspectRatio(SDL_Window* window, float minAspect, float maxAspect);
 
 	/// <summary>
@@ -1663,7 +1663,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowAspectRatio")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetWindowAspectRatio(SDL_Window* window, float* minAspect, float* maxAspect);
 
 	/// <summary>
@@ -1680,7 +1680,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowBordersSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetWindowBordersSize(SDL_Window* window, int* top, int* left, int* bottom, int* right);
 
 	/// <summary>
@@ -1695,7 +1695,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowSizeInPixels")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetWindowSizeInPixels(SDL_Window* window, int* width, int* height);
 
 	/// <summary>
@@ -1710,7 +1710,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowMinimumSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetWindowMinimumSize(SDL_Window* window, int minWidth, int minHeight);
 
 	/// <summary>
@@ -1725,7 +1725,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowMinimumSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetWindowMinimumSize(SDL_Window* window, int* minWidth, int* minHeight);
 
 	/// <summary>
@@ -1740,7 +1740,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowMaximumSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetWindowMaximumSize(SDL_Window* window, int maxWidth, int maxHeight);
 
 	/// <summary>
@@ -1755,7 +1755,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowMaximumSize")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetWindowMaximumSize(SDL_Window* window, int* maxWidth, int* maxHeight);
 
 	/// <summary>
@@ -1769,8 +1769,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowBordered")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool SetWindowBordered(SDL_Window* window, [MarshalAs(NativeBool)] bool bordered);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetWindowBordered(SDL_Window* window, [MarshalAs(BoolSize)] bool bordered);
 
 	/// <summary>
 	/// Set the user-resizable state of a window.
@@ -1783,8 +1783,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowResizable")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool SetWindowResizable(SDL_Window* window, [MarshalAs(NativeBool)] bool resizable);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetWindowResizable(SDL_Window* window, [MarshalAs(BoolSize)] bool resizable);
 
 	/// <summary>
 	/// Set the window to always be above the others.
@@ -1797,8 +1797,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowAlwaysOnTop")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool SetWindowAlwaysOnTop(SDL_Window* window, [MarshalAs(NativeBool)] bool onTop);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetWindowAlwaysOnTop(SDL_Window* window, [MarshalAs(BoolSize)] bool onTop);
 
 	/// <summary>
 	/// Show a window.
@@ -1810,7 +1810,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ShowWindow")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ShowWindow(SDL_Window* window);
 
 	/// <summary>
@@ -1823,7 +1823,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HideWindow")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HideWindow(SDL_Window* window);
 
 	/// <summary>
@@ -1836,7 +1836,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RaiseWindow")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RaiseWindow(SDL_Window* window);
 
 	/// <summary>
@@ -1849,7 +1849,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_MaximizeWindow")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool MaximizeWindow(SDL_Window* window);
 
 	/// <summary>
@@ -1862,7 +1862,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_MinimizeWindow")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool MinimizeWindow(SDL_Window* window);
 
 	/// <summary>
@@ -1875,7 +1875,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_RestoreWindow")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool RestoreWindow(SDL_Window* window);
 
 	/// <summary>
@@ -1889,8 +1889,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowFullscreen")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool SetWindowFullscreen(SDL_Window* window, [MarshalAs(NativeBool)] bool fullscreen);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetWindowFullscreen(SDL_Window* window, [MarshalAs(BoolSize)] bool fullscreen);
 
 	/// <summary>
 	/// Block until any pending window state is finalized.
@@ -1902,7 +1902,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false if the operation timed out before the window was in the requested state.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SyncWindow")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SyncWindow(SDL_Window* window);
 
 	/// <summary>
@@ -1915,7 +1915,7 @@ unsafe partial class SDL
 	/// <returns>True if there is a surface associated with the window, or false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_WindowHasSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool WindowHasSurface(SDL_Window* window);
 
 	/// <summary>
@@ -1951,7 +1951,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowSurfaceVSync")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetWindowSurfaceVSync(SDL_Window* window, int vsync);
 
 	/// <summary>
@@ -1965,7 +1965,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowSurfaceVSync")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetWindowSurfaceVSync(SDL_Window* window, int* vsync);
 
 	/// <summary>
@@ -1978,7 +1978,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateWindowSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool UpdateWindowSurface(SDL_Window* window);
 
 	/// <summary>
@@ -1993,7 +1993,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_UpdateWindowSurfaceRects")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool UpdateWindowSurfaceRects(SDL_Window* window, [Const] SDL_Rect* rects, int numRects);
 
 	/// <summary>
@@ -2006,7 +2006,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_DestroyWindowSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool DestroyWindowSurface(SDL_Window* window);
 
 	/// <summary>
@@ -2017,8 +2017,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowKeyboardGrab")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool SetWindowKeyboardGrab(SDL_Window* window, [MarshalAs(NativeBool)] bool grabbed);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetWindowKeyboardGrab(SDL_Window* window, [MarshalAs(BoolSize)] bool grabbed);
 
 	/// <summary>
 	/// Set a window's mouse grab mode.
@@ -2031,8 +2031,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowMouseGrab")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool SetWindowMouseGrab(SDL_Window* window, [MarshalAs(NativeBool)] bool grabbed);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetWindowMouseGrab(SDL_Window* window, [MarshalAs(BoolSize)] bool grabbed);
 
 	/// <summary>
 	/// Get a window's keyboard grab mode.
@@ -2044,7 +2044,7 @@ unsafe partial class SDL
 	/// <returns>True if keyboard is grabbed, and false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowKeyboardGrab")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetWindowKeyboardGrab(SDL_Window* window);
 
 	/// <summary>
@@ -2057,7 +2057,7 @@ unsafe partial class SDL
 	/// <returns>True if mouse is grabbed, and false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetWindowMouseGrab")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetWindowMouseGrab(SDL_Window* window);
 
 	/// <summary>
@@ -2082,7 +2082,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowMouseRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetWindowMouseRect(SDL_Window* window, [Const] SDL_Rect* rect);
 
 	/// <summary>
@@ -2108,7 +2108,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowOpacity")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetWindowOpacity(SDL_Window* window, float opacity);
 
 	/// <summary>
@@ -2134,7 +2134,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowParent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetWindowParent(SDL_Window* window, SDL_Window* parent);
 
 	/// <summary>
@@ -2148,8 +2148,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowModal")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool SetWindowModal(SDL_Window* window, [MarshalAs(NativeBool)] bool modal);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetWindowModal(SDL_Window* window, [MarshalAs(BoolSize)] bool modal);
 
 	/// <summary>
 	/// Set whether the window may have input focus.
@@ -2162,8 +2162,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowFocusable")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool SetWindowFocusable(SDL_Window* window, [MarshalAs(NativeBool)] bool focusable);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetWindowFocusable(SDL_Window* window, [MarshalAs(BoolSize)] bool focusable);
 
 	/// <summary>
 	/// Display the system-level window menu.
@@ -2177,7 +2177,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ShowWindowSystemMenu")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ShowWindowSystemMenu(SDL_Window* window, int x, int y);
 
 	/// <summary>
@@ -2192,7 +2192,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowHitTest")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetWindowHitTest(SDL_Window* window, delegate* unmanaged[Cdecl]<SDL_Window*, SDL_Point*, nint, SDL_HitTestResult> callback, nint callbackData);
 
 	/// <summary>
@@ -2206,7 +2206,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowShape")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetWindowShape(SDL_Window* window, SDL_Surface* surface);
 
 	/// <summary>
@@ -2220,7 +2220,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FlashWindow")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool FlashWindow(SDL_Window* window, SDL_FlashOperation operation);
 
 	/// <summary>
@@ -2243,7 +2243,7 @@ unsafe partial class SDL
 	/// <returns>True if the screensaver is enabled, false if it is disabled.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ScreenSaverEnabled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ScreenSaverEnabled();
 
 	/// <summary>
@@ -2255,7 +2255,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_EnableScreenSaver")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool EnableScreenSaver();
 
 	/// <summary>
@@ -2267,7 +2267,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_DisableScreenSaver")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool DisableScreenSaver();
 
 	/// <summary>
@@ -2280,7 +2280,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GL_LoadLibrary", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GL_LoadLibrary(string? path);
 
 	/// <summary>
@@ -2327,7 +2327,7 @@ unsafe partial class SDL
 	/// <returns>True if the extension is supported, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GL_ExtensionSupported", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GL_ExtensionSupported(string extension);
 
 	/// <summary>
@@ -2351,7 +2351,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GL_SetAttribute")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GL_SetAttribute(SDL_GLAttr attr, int value);
 
 	/// <summary>
@@ -2365,7 +2365,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GL_GetAttribute")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GL_GetAttribute(SDL_GLAttr attr, int* value);
 
 	/// <summary>
@@ -2391,7 +2391,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GL_MakeCurrent")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GL_MakeCurrent(SDL_Window* window, SDL_GLContext* context);
 
 	/// <summary>
@@ -2474,7 +2474,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GL_SetSwapInterval")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GL_SetSwapInterval(int interval);
 
 	/// <summary>
@@ -2487,7 +2487,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GL_GetSwapInterval")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GL_GetSwapInterval(int* interval);
 
 	/// <summary>
@@ -2500,7 +2500,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GL_SwapWindow")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GL_SwapWindow(SDL_Window* window);
 
 	/// <summary>
@@ -2513,6 +2513,6 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GL_DestroyContext")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GL_DestroyContext(SDL_GLContext* context);
 }

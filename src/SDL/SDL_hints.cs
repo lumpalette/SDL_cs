@@ -1975,7 +1975,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetHintWithPriority", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetHintWithPriority(string name, string value, SDL_HintPriority priority);
 
 	/// <summary>
@@ -1989,7 +1989,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetHint", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetHint(string name, string value);
 
 	/// <summary>
@@ -2002,7 +2002,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ResetHint", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ResetHint(string name);
 
 	/// <summary>
@@ -2039,8 +2039,8 @@ unsafe partial class SDL
 	/// <returns>The boolean value of a hint or the provided default value if the hint does not exist.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetHintBoolean", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool GetHintBoolean(string name, [MarshalAs(NativeBool)] bool defaultValue);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool GetHintBoolean(string name, [MarshalAs(BoolSize)] bool defaultValue);
 
 	/// <summary>
 	/// Add a function to watch a particular hint.
@@ -2054,7 +2054,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddHintCallback", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool AddHintCallback(string name, delegate* unmanaged[Cdecl]<nint, byte*, byte*, byte*, void> callback, nint userData);
 
 	/// <summary>

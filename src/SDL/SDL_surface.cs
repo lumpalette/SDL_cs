@@ -233,7 +233,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorspace")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetSurfaceColorspace(SDL_Surface* surface, SDL_Colorspace colorspace);
 
 	/// <summary>
@@ -271,7 +271,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfacePalette")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetSurfacePalette(SDL_Surface* surface, SDL_Palette* palette);
 
 	/// <summary>
@@ -297,7 +297,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_AddSurfaceAlternateImage")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool AddSurfaceAlternateImage(SDL_Surface* surface, SDL_Surface* image);
 
 	/// <summary>
@@ -310,7 +310,7 @@ unsafe partial class SDL
 	/// <returns>True if alternate versions are available or false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SurfaceHasAlternateImages")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SurfaceHasAlternateImages(SDL_Surface* surface);
 
 	/// <summary>
@@ -347,7 +347,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_LockSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool LockSurface(SDL_Surface* surface);
 
 	/// <summary>
@@ -388,7 +388,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SaveBMP", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SaveBmp(SDL_Surface* surface, string file);
 
 	/// <summary>
@@ -402,8 +402,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceRLE")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool SetSurfaceRLE(SDL_Surface* surface, [MarshalAs(NativeBool)] bool enabled);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetSurfaceRLE(SDL_Surface* surface, [MarshalAs(BoolSize)] bool enabled);
 
 	/// <summary>
 	/// Returns whether the surface is RLE enabled.
@@ -415,7 +415,7 @@ unsafe partial class SDL
 	/// <returns>True if the surface has RLE enabled, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SurfaceHasRLE")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SurfaceHasRLE(SDL_Surface* surface);
 
 	/// <summary>
@@ -430,8 +430,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool SetSurfaceColorKey(SDL_Surface* surface, [MarshalAs(NativeBool)] bool enabled, uint key);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetSurfaceColorKey(SDL_Surface* surface, [MarshalAs(BoolSize)] bool enabled, uint key);
 
 	/// <summary>
 	/// Returns whether the surface has a color key.
@@ -443,7 +443,7 @@ unsafe partial class SDL
 	/// <returns>True if the surface has a color key, false otherwise.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SurfaceHasColorKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SurfaceHasColorKey(SDL_Surface* surface);
 
 	/// <summary>
@@ -457,7 +457,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorKey")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetSurfaceColorKey(SDL_Surface* surface, uint* key);
 
 	/// <summary>
@@ -473,7 +473,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceColorMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetSurfaceColorMod(SDL_Surface* surface, byte r, byte g, byte b);
 
 	/// <summary>
@@ -489,7 +489,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceColorMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetSurfaceColorMod(SDL_Surface* surface, byte* r, byte* g, byte* b);
 
 	/// <summary>
@@ -503,7 +503,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceAlphaMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetSurfaceAlphaMod(SDL_Surface* surface, byte alpha);
 
 	/// <summary>
@@ -517,7 +517,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceAlphaMod")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetSurfaceAlphaMod(SDL_Surface* surface, byte* alpha);
 
 	/// <summary>
@@ -531,7 +531,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceBlendMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetSurfaceBlendMode(SDL_Surface* surface, SDL_BlendMode blendMode);
 
 	/// <summary>
@@ -545,7 +545,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceBlendMode")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetSurfaceBlendMode(SDL_Surface* surface, SDL_BlendMode* blendMode);
 
 	/// <summary>
@@ -559,7 +559,7 @@ unsafe partial class SDL
 	/// <returns>True if the rectangle intersects the surface, otherwise false and blits will be completely clipped.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetSurfaceClipRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetSurfaceClipRect(SDL_Surface* surface, [Const] SDL_Rect* rect);
 
 	/// <summary>
@@ -573,7 +573,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetSurfaceClipRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetSurfaceClipRect(SDL_Surface* surface, SDL_Rect* rect);
 
 	/// <summary>
@@ -587,7 +587,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FlipSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool FlipSurface(SDL_Surface* surface, SDL_FlipMode flip);
 
 	/// <summary>
@@ -663,7 +663,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertPixels")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ConvertPixels(int width, int height, SDL_PixelFormat srcFormat, nint src, int srcPitch, SDL_PixelFormat dstFormat, nint dst, int dstPitch);
 
 	/// <summary>
@@ -687,7 +687,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ConvertPixelsAndColorspace")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ConvertPixelsAndColorspace(int width, int height, SDL_PixelFormat srcFormat, SDL_Colorspace srcColorspace, SDL_PropertiesId srcProps, nint src, int srcPitch, SDL_PixelFormat dstFormat, SDL_Colorspace dstColorspace, SDL_PropertiesId dstProps, nint dst, int dstPitch);
 
 	/// <summary>
@@ -708,8 +708,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PremultiplyAlpha")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool PremultiplyAlpha(int width, int height, SDL_PixelFormat srcFormat, nint src, int srcPitch, SDL_PixelFormat dstFormat, nint dst, int dstPitch, [MarshalAs(NativeBool)] bool linear);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool PremultiplyAlpha(int width, int height, SDL_PixelFormat srcFormat, nint src, int srcPitch, SDL_PixelFormat dstFormat, nint dst, int dstPitch, [MarshalAs(BoolSize)] bool linear);
 
 	/// <summary>
 	/// Premultiply the alpha in a surface.
@@ -722,8 +722,8 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_PremultiplySurfaceAlpha")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
-	public static partial bool PremultiplySurfaceAlpha(SDL_Surface* surface, [MarshalAs(NativeBool)] bool linear);
+	[return: MarshalAs(BoolSize)]
+	public static partial bool PremultiplySurfaceAlpha(SDL_Surface* surface, [MarshalAs(BoolSize)] bool linear);
 
 	/// <summary>
 	/// Clear a surface with a specific color, with floating point precision.
@@ -739,7 +739,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ClearSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ClearSurface(SDL_Surface* surface, float r, float g, float b, float a);
 
 	/// <summary>
@@ -754,7 +754,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FillSurfaceRect")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool FillSurfaceRect(SDL_Surface* dst, [Const] SDL_Rect* rect, uint color);
 
 	/// <summary>
@@ -770,7 +770,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_FillSurfaceRects")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool FillSurfaceRects(SDL_Surface* dst, [Const] SDL_Rect* rects, int count, uint color);
 
 	/// <summary>
@@ -786,7 +786,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurface")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool BlitSurface(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect);
 
 	/// <summary>
@@ -802,7 +802,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceUnchecked")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool BlitSurfaceUnchecked(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect);
 
 	/// <summary>
@@ -819,7 +819,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceScaled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool BlitSurfaceScaled(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect, SDL_ScaleMode scaleMode);
 
 	/// <summary>
@@ -836,7 +836,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceUncheckedScaled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool BlitSurfaceUncheckedScaled(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect, SDL_ScaleMode scaleMode);
 
 	/// <summary>
@@ -852,7 +852,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceTiled")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool BlitSurfaceTiled(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect);
 
 	/// <summary>
@@ -870,7 +870,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurfaceTiledWithScale")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool BlitSurfaceTiledWithScale(SDL_Surface* src, [Const] SDL_Rect* srcRect, float scale, SDL_ScaleMode scaleMode, SDL_Surface* dst, [Const] SDL_Rect* dstRect);
 
 	/// <summary>
@@ -892,7 +892,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_BlitSurface9Grid")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool BlitSurface9Grid(SDL_Surface* src, [Const] SDL_Rect* srcRect, int leftWidth, int rightWidth, int topHeight, int bottomHeight, float scale, SDL_ScaleMode scaleMode, SDL_Surface* dst, [Const] SDL_FRect* dstRect);
 
 	/// <summary>
@@ -942,7 +942,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ReadSurfacePixel")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ReadSurfacePixel(SDL_Surface* surface, int x, int y, byte* r, byte* g, byte* b, byte* a);
 
 	/// <summary>
@@ -961,7 +961,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ReadSurfacePixelFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ReadSurfacePixelFloat(SDL_Surface* surface, int x, int y, float* r, float* g, float* b, float* a);
 
 	/// <summary>
@@ -980,7 +980,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_WriteSurfacePixel")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool WriteSurfacePixel(SDL_Surface* surface, int x, int y, byte r, byte g, byte b, byte a);
 
 	/// <summary>
@@ -999,6 +999,6 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_WriteSurfacePixelFloat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool WriteSurfacePixelFloat(SDL_Surface* surface, int x, int y, float r, float g, float b, float a);
 }

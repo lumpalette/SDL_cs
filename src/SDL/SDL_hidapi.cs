@@ -459,5 +459,5 @@ unsafe partial class SDL
 	/// <param name="active">True to start the scan, false to stop the scan.</param>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_hid_ble_scan")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	public static partial void hid_ble_scan([MarshalAs(NativeBool)] bool active);
+	public static partial void hid_ble_scan([MarshalAs(BoolSize)] bool active);
 }

@@ -16,7 +16,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false code on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetClipboardText", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetClipboardText(string text);
 
 	/// <summary>
@@ -39,7 +39,7 @@ unsafe partial class SDL
 	/// <returns>True if the clipboard has text, or false if it does not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasClipboardText")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasClipboardText();
 
 	/// <summary>
@@ -52,7 +52,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetPrimarySelectionText", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetPrimarySelectionText(string text);
 
 	/// <summary>
@@ -75,7 +75,7 @@ unsafe partial class SDL
 	/// <returns>True if the primary selection has text, or false if it does not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasPrimarySelectionText")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasPrimarySelectionText();
 
 	/// <summary>
@@ -92,7 +92,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetClipboardData", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetClipboardData(delegate* unmanaged[Cdecl]<nint, byte*, nuint*, void> callback, delegate* unmanaged[Cdecl]<nint, void> cleanup, nint userData, [Const] byte** mimeTypes, nuint numMimeTypes);
 
 	/// <summary>
@@ -104,7 +104,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ClearClipboardData")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ClearClipboardData();
 
 	/// <summary>
@@ -130,7 +130,7 @@ unsafe partial class SDL
 	/// <returns>True if there exists data in clipboard for the provided mime type, false if it does not.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_HasClipboardData", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool HasClipboardData(string mimeType);
 
 	/// <summary>

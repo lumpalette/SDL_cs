@@ -1181,7 +1181,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_GetMasksForPixelFormat")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool GetMasksForPixelFormat(SDL_PixelFormat format, int* bpp, uint* rMask, uint* gMask, uint* bMask, uint* aMask);
 
 	/// <summary>
@@ -1238,7 +1238,7 @@ unsafe partial class SDL
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetPaletteColors")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetPaletteColors(SDL_Palette* palette, [Const] SDL_Color* colors, int firstColor, int numColors);
 
 	/// <summary>

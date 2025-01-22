@@ -9,6 +9,16 @@ namespace SDL3;
 public static unsafe partial class SDL
 {
 	/// <summary>
+	/// The assembly file name for SDL3.
+	/// </summary>
+	internal const string LibraryName = "SDL3";
+
+	/// <summary>
+	/// The size of a C bool: a 8-bit unsigned integer.
+	/// </summary>
+	internal const UnmanagedType BoolSize = UnmanagedType.I1;
+
+	/// <summary>
 	/// A collection of properties, used in various SDL systems.
 	/// </summary>
 	public static partial class Prop;
@@ -45,14 +55,4 @@ public static unsafe partial class SDL
 		}
 		return strsManaged;
 	}
-
-	/// <summary>
-	/// The assembly file name for SDL3.
-	/// </summary>
-	internal const string LibraryName = "SDL3";
-
-	/// <summary>
-	/// The size of a C bool, a 8-bit unsigned integer.
-	/// </summary>
-	internal const UnmanagedType NativeBool = UnmanagedType.I1;
 }

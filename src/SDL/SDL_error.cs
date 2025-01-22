@@ -17,7 +17,7 @@ unsafe partial class SDL
 	/// <returns>False.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_SetError", StringMarshalling = StringMarshalling.Utf8)]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool SetError(string fmt);
 
 	/// <summary>
@@ -29,7 +29,7 @@ unsafe partial class SDL
 	/// <returns>False.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_OutOfMemory")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool OutOfMemory();
 
 	/// <summary>
@@ -53,6 +53,6 @@ unsafe partial class SDL
 	/// <returns>True.</returns>
 	[LibraryImport(LibraryName, EntryPoint = "SDL_ClearError")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
-	[return: MarshalAs(NativeBool)]
+	[return: MarshalAs(BoolSize)]
 	public static partial bool ClearError();
 }
