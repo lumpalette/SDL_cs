@@ -367,7 +367,7 @@ unsafe partial class SDL
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_FILE_DIALOG_DRIVER">documentation</see> for more details.
 		/// </remarks>
-		public const string FileDialogDriver = "SDL_HINT_FILE_DIALOG_DRIVER";
+		public const string FileDialogDriver = "SDL_FILE_DIALOG_DRIVER";
 
 		/// <summary>
 		/// A variable controlling whether raising the window should be done more forcefully.
