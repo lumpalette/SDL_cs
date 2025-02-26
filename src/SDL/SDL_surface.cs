@@ -155,6 +155,16 @@ unsafe partial class SDL
 			/// mapping. This defaults to "chrome".
 			/// </summary>
 			public const string TonemapOperatorString = "SDL.surface.tonemap";
+
+            /// <summary>
+            /// The hotspot pixel offset from the left edge of the image, if this surface is being used as a cursor.
+            /// </summary>
+            public const string HotspotXNumber = "SDL.surface.hotspot.x";
+
+            /// <summary>
+            /// The hotspot pixel offset from the top edge of the image, if this surface is being used as a cursor.
+            /// </summary>
+            public const string HotspotYNumber = "SDL.surface.hotspot.y";
 		}
 	}
 
@@ -838,6 +848,23 @@ unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(BoolSize)]
 	public static partial bool BlitSurfaceUncheckedScaled(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect, SDL_ScaleMode scaleMode);
+
+    /// <summary>
+    /// Perform a stretched pixel copy from one surface to another.
+    /// </summary>
+    /// <remarks>
+    /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_StretchSurface">documentation</see> for more details.
+    /// </remarks>
+    /// <param name="src">The <see cref="SDL_Surface"/> structure to be copied from.</param>
+    /// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be copied, may not be <see langword="null"/>.</param>
+    /// <param name="dst">The <see cref="SDL_Surface"/> structure that is the blit target.</param>
+    /// <param name="dstRect">The <see cref="SDL_Rect"/> structure representing the target rectangle in the destination surface, may not be <see langword="null"/>.</param>
+    /// <param name="scaleMode">The SDL_ScaleMode to be used.</param>
+    /// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
+    [LibraryImport(LibraryName, EntryPoint = "SDL_StretchSurface")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(BoolSize)]
+	public static partial bool StretchSurface(SDL_Surface* src, [Const] SDL_Rect* srcRect, SDL_Surface* dst, [Const] SDL_Rect* dstRect, SDL_ScaleMode scaleMode);
 
 	/// <summary>
 	/// Perform a tiled blit to a destination surface, which may be of a different format.

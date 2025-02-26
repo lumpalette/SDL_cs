@@ -41,7 +41,7 @@ unsafe partial class SDL
 		{
 			/// <summary>
 			/// A pointer to a list of <see cref="SDL_DialogFileFilter"/> structs, which will be used as filters for file-based selections.
-			/// Ignored if the dialog is an "Open Folder" dialog. If non-NULL, the array of filters must remain valid at least until the
+			/// Ignored if the dialog is an "Open Folder" dialog. If non-null, the array of filters must remain valid at least until the
 			/// callback is invoked.
 			/// </summary>
 			public const string FiltersPointer = "SDL.filedialog.filters";

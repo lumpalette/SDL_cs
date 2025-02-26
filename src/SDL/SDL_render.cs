@@ -1753,16 +1753,16 @@ unsafe partial class SDL
 	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderGeometryRaw(SDL_Renderer* renderer, SDL_Texture* texture, [Const] float* xy, int xyStride, [Const] SDL_FColor* color, int colorStride, [Const] float* uv, int uvStride, int numVertices, [Const] nint indices, int numIndices, int sizeIndices);
 
-	/// <summary>
-	/// Read pixels from the current rendering target.
-	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderReadPixels">documentation</see> for more details.
-	/// </remarks>
-	/// <param name="renderer">The rendering context.</param>
-	/// <param name="rect">An <see cref="SDL_Rect"/> structure representing the area in pixels relative to the to current viewport, or <see langword="null"/> for the entire viewport.</param>
-	/// <returns>A new <see cref="SDL_Surface"/> on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderReadPixels")]
+    /// <summary>
+    /// Read pixels from the current rendering target.
+    /// </summary>
+    /// <remarks>
+    /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderReadPixels">documentation</see> for more details.
+    /// </remarks>
+    /// <param name="renderer">The rendering context.</param>
+    /// <param name="rect">An <see cref="SDL_Rect"/> structure representing the area to read, which will be clipped to the current viewport, or <see langword="null"/> for the entire viewport.</param>
+    /// <returns>A new <see cref="SDL_Surface"/> on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+    [LibraryImport(LibraryName, EntryPoint = "SDL_RenderReadPixels")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Surface* RenderReadPixels(SDL_Renderer* renderer, [Const] SDL_Rect* rect);
 

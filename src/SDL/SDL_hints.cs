@@ -617,13 +617,21 @@ unsafe partial class SDL
 		/// </remarks>
 		public const string JoystickGameInput = "SDL_JOYSTICK_GAMEINPUT";
 
-		/// <summary>
-		/// A variable containing a list of devices known to have a GameCube form factor.
-		/// </summary>
-		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_GAMECUBE_DEVICES">documentation</see> for more details.
-		/// </remarks>
-		public const string JoystickGamecubeDevices = "SDL_JOYSTICK_GAMECUBE_DEVICES";
+        /// <summary>
+        /// A variable containing a list of devices and their desired number of haptic (force feedback) enabled axis.
+        /// </summary>
+        /// <remarks>
+        /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_HAPTIC_AXES">documentation</see> for more details.
+        /// </remarks>
+        public const string JoystickHapticAxes = "SDL_JOYSTICK_HAPTIC_AXES";
+
+        /// <summary>
+        /// A variable containing a list of devices known to have a GameCube form factor.
+        /// </summary>
+        /// <remarks>
+        /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_GAMECUBE_DEVICES">documentation</see> for more details.
+        /// </remarks>
+        public const string JoystickGamecubeDevices = "SDL_JOYSTICK_GAMECUBE_DEVICES";
 
 		/// <summary>
 		/// A variable containing a list of devices known not to have a GameCube form factor.
