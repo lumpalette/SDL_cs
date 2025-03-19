@@ -50,14 +50,6 @@ unsafe partial class SDL
 		public const string AndroidBlockOnPause = "SDL_ANDROID_BLOCK_ON_PAUSE";
 
 		/// <summary>
-		/// A variable to control whether SDL will pause audio in background.
-		/// </summary>
-		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_ANDROID_BLOCK_ON_PAUSE_PAUSEAUDIO">documentation</see> for more details.
-		/// </remarks>
-		public const string AndroidBlockOnPausePauseAudio = "SDL_ANDROID_BLOCK_ON_PAUSE_PAUSEAUDIO";
-
-		/// <summary>
 		/// A variable to control whether low latency audio should be enabled.
 		/// </summary>
 		/// <remarks>
@@ -152,14 +144,6 @@ unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_CHANNELS">documentation</see> for more details.
 		/// </remarks>
 		public const string AudioChannels = "SDL_AUDIO_CHANNELS";
-
-		/// <summary>
-		/// Specify an application name for an audio device.
-		/// </summary>
-		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_AUDIO_DEVICE_APP_NAME">documentation</see> for more details.
-		/// </remarks>
-		public const string AudioDeviceAppName = "SDL_AUDIO_DEVICE_APP_NAME";
 
 		/// <summary>
 		/// Specify an application icon name for an audio device.
@@ -295,7 +279,7 @@ unsafe partial class SDL
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_CPU_FEATURE_MASK">documentation</see> for more details.
 		/// </remarks>
-		public const string CpuFeatureMask = "SDL_CPU_FEATURE_MASK";
+		public const string CPUFeatureMask = "SDL_CPU_FEATURE_MASK";
 
 		/// <summary>
 		/// Override for <see cref="GetDisplayUsableBounds(SDL_DisplayId, SDL_Rect*)"/>.
@@ -426,6 +410,14 @@ unsafe partial class SDL
 		public const string GamecontrollerConfigFile = "SDL_GAMECONTROLLERCONFIG_FILE";
 
 		/// <summary>
+		/// A variable that overrides the automatic controller type detection.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_GAMECONTROLLERTYPE">documentation</see> for more details.
+		/// </remarks>
+		public const string GamecontrollerType = "SDL_GAMECONTROLLERTYPE";
+
+		/// <summary>
 		/// This variable sets the default text of the TextInput window on GDK platforms.
 		/// </summary>
 		/// <remarks>
@@ -469,7 +461,7 @@ unsafe partial class SDL
 		/// A variable that specifies a GPU backend to use.
 		/// </summary>
 		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GPU_DRIVER">documentation</see> for more details.
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_GPU_DRIVER">documentation</see> for more details.
 		/// </remarks>
 		public const string GPUDriver = "SDL_GPU_DRIVER";
 
@@ -692,6 +684,14 @@ unsafe partial class SDL
 		public const string JoystickHidapiJoyConHomeLED = "SDL_JOYSTICK_HIDAPI_JOYCON_HOME_LED";
 
 		/// <summary>
+		/// A variable controlling whether the HIDAPI driver for some Logitech wheels should be used.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_HIDAPI_LG4FF">documentation</see> for more details.
+		/// </remarks>
+		public const string JoystickHidapiLG4FF = "SDL_JOYSTICK_HIDAPI_LG4FF";
+
+		/// <summary>
 		/// A variable controlling whether the HIDAPI driver for Amazon Luna controllers connected via Bluetooth should be used.
 		/// </summary>
 		/// <remarks>
@@ -740,14 +740,6 @@ unsafe partial class SDL
 		public const string JoystickHidapiPS4ReportInterval = "SDL_JOYSTICK_HIDAPI_PS4_REPORT_INTERVAL";
 
 		/// <summary>
-		/// A variable controlling whether extended input reports should be used for PS4 controllers when using the HIDAPI driver.
-		/// </summary>
-		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_HIDAPI_PS4_RUMBLE">documentation</see> for more details.
-		/// </remarks>
-		public const string JoystickHidapiPS4Rumble = "SDL_JOYSTICK_HIDAPI_PS4_RUMBLE";
-
-		/// <summary>
 		/// A variable controlling whether the HIDAPI driver for PS5 controllers should be used.
 		/// </summary>
 		/// <remarks>
@@ -762,14 +754,6 @@ unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_HIDAPI_PS5_PLAYER_LED">documentation</see> for more details.
 		/// </remarks>
 		public const string JoystickHidapiPS5PlayerLED = "SDL_JOYSTICK_HIDAPI_PS5_PLAYER_LED";
-
-		/// <summary>
-		/// A variable controlling whether extended input reports should be used for PS5 controllers when using the HIDAPI driver.
-		/// </summary>
-		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_JOYSTICK_HIDAPI_PS5_RUMBLE">documentation</see> for more details.
-		/// </remarks>
-		public const string JoystickHidapiPS5Rumble = "SDL_JOYSTICK_HIDAPI_PS5_RUMBLE";
 
 		/// <summary>
 		/// A variable controlling whether the HIDAPI driver for NVIDIA SHIELD controllers should be used.
@@ -1104,6 +1088,14 @@ unsafe partial class SDL
 		public const string MacOpenGLAsyncDispatch = "SDL_MAC_OPENGL_ASYNC_DISPATCH";
 
 		/// <summary>
+		/// A variable controlling whether the Option key on macOS should be remapped to act as the Alt key.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_MAC_OPTION_AS_ALT">documentation</see> for more details.
+		/// </remarks>
+		public const string MacOptionAsAlt = "SDL_MAC_OPTION_AS_ALT";
+
+		/// <summary>
 		/// A variable controlling whether <see cref="SDL_EventType.MouseWheel"/> event values will have momentum on macOS.
 		/// </summary>
 		/// <remarks>
@@ -1174,15 +1166,6 @@ unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_MOUSE_NORMAL_SPEED_SCALE">documentation</see> for more details.
 		/// </remarks>
 		public const string MouseNormalSpeedScale = "SDL_MOUSE_NORMAL_SPEED_SCALE";
-
-		/// <summary>
-		/// Controls how often SDL issues cursor confinement commands to the operating system while relative mode is active, in case
-		/// the desired confinement state became out-of-sync due to interference from other running programs.
-		/// </summary>
-		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_MOUSE_RELATIVE_CLIP_INTERVAL">documentation</see> for more details.
-		/// </remarks>
-		public const string MouseRelativeClipInterval = "SDL_MOUSE_RELATIVE_CLIP_INTERVAL";
 
 		/// <summary>
 		/// A variable controlling whether the hardware cursor stays visible when relative mode is active.
@@ -1579,6 +1562,14 @@ unsafe partial class SDL
 		public const string VideoMacFullscreenSpaces = "SDL_VIDEO_MAC_FULLSCREEN_SPACES";
 
 		/// <summary>
+		/// A variable controlling whether SDL will attempt to automatically set the destination display to a mode most closely matching that of the previous display if an exclusive fullscreen window is moved onto it.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VIDEO_MATCH_EXCLUSIVE_MODE_ON_MOVE">documentation</see> for more details.
+		/// </remarks>
+		public const string VideoMatchExclusiveModeOnMove = "SDL_VIDEO_MATCH_EXCLUSIVE_MODE_ON_MOVE";
+
+		/// <summary>
 		/// A variable controlling whether fullscreen windows are minimized when they lose focus.
 		/// </summary>
 		/// <remarks>
@@ -1609,14 +1600,6 @@ unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VIDEO_WAYLAND_ALLOW_LIBDECOR">documentation</see> for more details.
 		/// </remarks>
 		public const string VideoWaylandAllowLibdecor = "SDL_VIDEO_WAYLAND_ALLOW_LIBDECOR";
-
-		/// <summary>
-		/// Enable or disable hidden mouse pointer warp emulation, needed by some older games.
-		/// </summary>
-		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VIDEO_WAYLAND_EMULATE_MOUSE_WARP">documentation</see> for more details.
-		/// </remarks>
-		public const string VideoWaylandEmulateMouseWarp = "SDL_VIDEO_WAYLAND_EMULATE_MOUSE_WARP";
 
 		/// <summary>
 		/// A variable controlling whether video mode emulation is enabled under Wayland.
@@ -1659,6 +1642,14 @@ unsafe partial class SDL
 		public const string VideoWinD3Dcompiler = "SDL_VIDEO_WIN_D3DCOMPILER";
 
 		/// <summary>
+		/// A variable controlling whether SDL should call <c>XSelectInput()</c> to enable input events on X11 windows wrapped by SDL windows.
+		/// </summary>
+		/// <remarks>
+		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VIDEO_X11_EXTERNAL_WINDOW_INPUT">documentation</see> for more details.
+		/// </remarks>
+		public const string VideoX11ExternalWindowInput = "SDL_VIDEO_X11_EXTERNAL_WINDOW_INPUT";
+
+		/// <summary>
 		/// A variable controlling whether the X11 _NET_WM_BYPASS_COMPOSITOR hint should be used.
 		/// </summary>
 		/// <remarks>
@@ -1696,7 +1687,7 @@ unsafe partial class SDL
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VIDEO_X11_VISUALID">documentation</see> for more details.
 		/// </remarks>
-		public const string VideoVisualId = "SDL_VIDEO_X11_VISUALID";
+		public const string VideoX11VisualId = "SDL_VIDEO_X11_VISUALID";
 
 		/// <summary>
 		/// A variable forcing the visual ID chosen for new X11 windows.
@@ -1771,7 +1762,7 @@ unsafe partial class SDL
 		public const string VitaTouchMouseDevice = "SDL_VITA_TOUCH_MOUSE_DEVICE";
 
 		/// <summary>
-		/// A variable overriding the display index used in <see cref="SDL_Vulkan_CreateSurface()"/>.
+		/// A variable overriding the display index used in <see cref="FIXME:SDL_Vulkan_CreateSurface()"/>.
 		/// </summary>
 		/// <remarks>
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_VULKAN_DISPLAY">documentation</see> for more details.
@@ -1889,14 +1880,6 @@ unsafe partial class SDL
 		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_WINDOWS_ERASE_BACKGROUND_MODE">documentation</see> for more details.
 		/// </remarks>
 		public const string WindowsEraseBackgroundMode = "SDL_WINDOWS_ERASE_BACKGROUND_MODE";
-
-		/// <summary>
-		/// A variable controlling whether SDL uses Critical Sections for mutexes on Windows.
-		/// </summary>
-		/// <remarks>
-		/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_HINT_WINDOWS_FORCE_MUTEX_CRITICAL_SECTIONS">documentation</see> for more details.
-		/// </remarks>
-		public const string WindowsForceMutexCriticalSections = "SDL_WINDOWS_FORCE_MUTEX_CRITICAL_SECTIONS";
 
 		/// <summary>
 		/// A variable controlling whether SDL uses Kernel Semaphores on Windows.
