@@ -160,14 +160,50 @@ public enum SDL_PixelFormat
 	ARGB128Float = 0x1b308010,
 	BGRA128Float = 0x1b508010,
 	ABGR128Float = 0x1b608010,
+
+	/// <summary>
+	/// Planar mode: Y + V + U  (3 planes).
+	/// </summary>
 	YV12 = 0x32315659,
+
+	/// <summary>
+	/// Planar mode: Y + U + V  (3 planes).
+	/// </summary>
 	IYUV = 0x56555949,
+
+	/// <summary>
+	/// Packed mode: Y0+U0+Y1+V0 (1 plane).
+	/// </summary>
 	YUY2 = 0x32595559,
+
+	/// <summary>
+	/// Packed mode: U0+Y0+V0+Y1 (1 plane).
+	/// </summary>
 	UYVY = 0x59565955,
+
+	/// <summary>
+	/// Packed mode: Y0+V0+Y1+U0 (1 plane).
+	/// </summary>
 	YVYU = 0x55595659,
+
+	/// <summary>
+	/// Planar mode: Y + U/V interleaved  (2 planes).
+	/// </summary>
 	NV12 = 0x3231564e,
+
+	/// <summary>
+	/// Planar mode: Y + V/U interleaved  (2 planes).
+	/// </summary>
 	NV21 = 0x3132564e,
+
+	/// <summary>
+	/// Planar mode: Y + U/V interleaved  (2 planes)
+	/// </summary>
 	P010 = 0x30313050,
+
+	/// <summary>
+	/// Android video texture format.
+	/// </summary>
 	ExternalOes = 0x2053454f,
 }
 
