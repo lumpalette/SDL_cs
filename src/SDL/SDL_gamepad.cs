@@ -33,6 +33,10 @@ public enum SDL_GamepadType
 	NintendoSwitchJoyconLeft,
 	NintendoSwitchJoyconRight,
 	NintendoSwitchJoyconPair,
+
+	/// <summary>
+	/// The number of constants defined by the enumeration.
+	/// </summary>
 	Count
 }
 
@@ -135,6 +139,10 @@ public enum SDL_GamepadButton
 	/// Additional button.
 	/// </summary>
 	Misc6,
+
+	/// <summary>
+	/// The number of constants defined by the enumeration.
+	/// </summary>
 	Count
 }
 
@@ -172,6 +180,10 @@ public enum SDL_GamepadAxis
 	RightY,
 	LeftTrigger,
 	RightTrigger,
+
+	/// <summary>
+	/// The number of constants defined by the enumeration.
+	/// </summary>
 	Count
 }
 
@@ -1032,9 +1044,9 @@ unsafe partial class SDL
 	/// <param name="y">A pointer filled with the y position, normalized 0 to 1, with the origin in the upper left, may be <see langword="null"/>.</param>
 	/// <param name="pressure">A pointer filled with pressure value, may be <see langword="null"/>.</param>
 	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
+#pragma warning disable SYSLIB1054 // TODO: find a way to implement bool* with libraryimport.
 	[DllImport(LibraryName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "SDL_GetGamepadTouchpadFinger")]
 	[return: MarshalAs(BoolSize)]
-#pragma warning disable SYSLIB1054 // TODO: find a way to implement bool* with libraryimport.
 	public static extern bool GetGamepadTouchpadFinger(SDL_Gamepad* gamepad, int touchpad, int finger, [MarshalAs(BoolSize)] bool* down, float* x, float* y, float* pressure);
 #pragma warning restore SYSLIB1054 
 

@@ -141,7 +141,10 @@ public unsafe struct SDL_MessageBoxColorScheme
 	/// <summary>
 	/// An array of length <see cref="SDL_MessageBoxColorType.Count"/> containing the colors to use.
 	/// </summary>
-	public SDL_MessageBoxColor* Colors; // i can't use a fixed buffer here, so just suppose this have a length of SDL_MessageBoxColorType.Count.
+	/// <remarks>
+	/// Since we can't use a fixed buffer here, assume the length is <see cref="SDL_MessageBoxColorType.Count"/>.
+	/// </remarks>
+	public SDL_MessageBoxColor* Colors;
 }
 
 /// <summary>

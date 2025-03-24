@@ -48,6 +48,10 @@ public enum SDL_JoystickType
 	DrumKit,
 	ArcadePad,
 	Throttle,
+
+	/// <summary>
+	/// The number of constants defined by the enumeration.
+	/// </summary>
 	Count
 }
 

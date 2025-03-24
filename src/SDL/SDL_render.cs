@@ -243,7 +243,7 @@ unsafe partial class SDL
 			/// True if the output colorspace is <see cref="SDL_Colorspace.SRGBLinear"/> and the renderer is showing on a display with
 			/// HDR enabled. This property can change dynamically when <see cref="SDL_EventType.WindowHdrStateChanged"/> is sent.
 			/// </summary>
-			public const string HdrEnabledBoolean = "SDL.renderer.HDR_enabled"; // TODO: report this error
+			public const string HdrEnabledBoolean = "SDL.renderer.HDR_enabled";
 
 			/// <summary>
 			/// The value of SDR white in the <see cref="SDL_Colorspace.SRGBLinear"/> colorspace. When HDR is enabled, this value is
@@ -1709,6 +1709,28 @@ unsafe partial class SDL
 	public static partial bool RenderTexture9Grid(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, [Const] SDL_FRect* dstRect);
 
 	/// <summary>
+	/// Perform a scaled copy using the 9-grid algorithm to the current rendering target at subpixel precision.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderTexture9GridTiled">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="renderer">The renderer which should copy parts of a texture.</param>
+	/// <param name="texture">The source texture.</param>
+	/// <param name="srcRect">The <see cref="SDL_Rect"/> structure representing the rectangle to be used for the 9-grid, or <see langword="null"/> to use the entire texture.</param>
+	/// <param name="leftWidth">The width, in pixels, of the left corners in <paramref name="srcRect"/>.</param>
+	/// <param name="rightWidth">The width, in pixels, of the right corners in <paramref name="srcRect"/>.</param>
+	/// <param name="topHeight">The height, in pixels, of the top corners in <paramref name="srcRect"/>.</param>
+	/// <param name="bottomHeight">The height, in pixels, of the bottom corners in <paramref name="srcRect"/>.</param>
+	/// <param name="scale">The scale used to transform the corner of srcrect into the corner of dstrect, or 0.0f for an unscaled copy.</param>
+	/// <param name="dstRect">A pointer to the destination rectangle, or <see langword="null"/> for the entire rendering target.</param>
+	/// <param name="tileScale">The scale used to transform the borders and center of srcrect into the borders and middle of dstrect, or 1.0f for an unscaled copy.</param>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderTexture9GridTiled")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(BoolSize)]
+	public static partial bool RenderTexture9GridTiled(SDL_Renderer* renderer, SDL_Texture* texture, [Const] SDL_FRect* srcRect, float leftWidth, float rightWidth, float topHeight, float bottomHeight, float scale, [Const] SDL_FRect* dstRect, float tileScale);
+
+	/// <summary>
 	/// Render a list of triangles, optionally using a texture and indices into the vertex array Color and alpha modulation
 	/// is done per vertex.
 	/// </summary>
@@ -1753,16 +1775,16 @@ unsafe partial class SDL
 	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderGeometryRaw(SDL_Renderer* renderer, SDL_Texture* texture, [Const] float* xy, int xyStride, [Const] SDL_FColor* color, int colorStride, [Const] float* uv, int uvStride, int numVertices, [Const] nint indices, int numIndices, int sizeIndices);
 
-    /// <summary>
-    /// Read pixels from the current rendering target.
-    /// </summary>
-    /// <remarks>
-    /// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderReadPixels">documentation</see> for more details.
-    /// </remarks>
-    /// <param name="renderer">The rendering context.</param>
-    /// <param name="rect">An <see cref="SDL_Rect"/> structure representing the area to read, which will be clipped to the current viewport, or <see langword="null"/> for the entire viewport.</param>
-    /// <returns>A new <see cref="SDL_Surface"/> on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
-    [LibraryImport(LibraryName, EntryPoint = "SDL_RenderReadPixels")]
+	/// <summary>
+	/// Read pixels from the current rendering target.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_RenderReadPixels">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="renderer">The rendering context.</param>
+	/// <param name="rect">An <see cref="SDL_Rect"/> structure representing the area to read, which will be clipped to the current viewport, or <see langword="null"/> for the entire viewport.</param>
+	/// <returns>A new <see cref="SDL_Surface"/> on success or <see langword="null"/> on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_RenderReadPixels")]
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	public static partial SDL_Surface* RenderReadPixels(SDL_Renderer* renderer, [Const] SDL_Rect* rect);
 
@@ -1869,12 +1891,14 @@ unsafe partial class SDL
 	public static partial bool SetRenderVSync(SDL_Renderer* renderer, int vsync);
 
 	/// <summary>
-	/// The size, in pixels, of a single <see cref="RenderDebugText(SDL_Renderer*, float, float, string)"/> character.
+	/// Please refer to <see cref="SetRenderVSync(SDL_Renderer*, int)"/> for details.
 	/// </summary>
-	/// <remarks>
-	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DEBUG_TEXT_FONT_CHARACTER_SIZE">documentation</see> for more details.
-	/// </remarks>
-	public const byte DebugTextFontCharacterSize = 8;
+	public const int RendererVSyncDisabled = 0;
+
+	/// <summary>
+	/// Please refer to <see cref="SetRenderVSync(SDL_Renderer*, int)"/> for details.
+	/// </summary>
+	public const int RendererVSyncAdaptive = -1;
 
 	/// <summary>
 	/// Get VSync of the given renderer.
@@ -1891,14 +1915,12 @@ unsafe partial class SDL
 	public static partial bool GetRenderVSync(SDL_Renderer* renderer, int* vsync);
 
 	/// <summary>
-	/// Please refer to <see cref="SetRenderVSync(SDL_Renderer*, int)"/> for details.
+	/// The size, in pixels, of a single <see cref="RenderDebugText(SDL_Renderer*, float, float, string)"/> character.
 	/// </summary>
-	public const int RendererVSyncDisabled = 0;
-
-	/// <summary>
-	/// Please refer to <see cref="SetRenderVSync(SDL_Renderer*, int)"/> for details.
-	/// </summary>
-	public const int RendererVSyncAdaptive = -1;
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_DEBUG_TEXT_FONT_CHARACTER_SIZE">documentation</see> for more details.
+	/// </remarks>
+	public const byte DebugTextFontCharacterSize = 8;
 
 	/// <summary>
 	/// Draw debug text to an <see cref="SDL_Renderer"/>.
@@ -1915,4 +1937,32 @@ unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(BoolSize)]
 	public static partial bool RenderDebugText(SDL_Renderer* renderer, float x, float y, string str);
+
+	/// <summary>
+	/// Set default scale mode for new textures for given renderer.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetDefaultTextureScaleMode">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="renderer">The renderer to update.</param>
+	/// <param name="scaleMode">The scale mode to change to for new textures.</param>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetDefaultTextureScaleMode", StringMarshalling = StringMarshalling.Utf8)]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetDefaultTextureScaleMode(SDL_Renderer* renderer, SDL_ScaleMode scaleMode);
+
+	/// <summary>
+	/// Get default texture scale mode of the given renderer.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_GetDefaultTextureScaleMode">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="renderer">The renderer to get data from.</param>
+	/// <param name="scaleMode">An <see cref="SDL_ScaleMode"/> filled with current default scale mode. See <see cref="SetDefaultTextureScaleMode(SDL_Renderer*, SDL_ScaleMode)"/> for the meaning of the value.</param>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_GetDefaultTextureScaleMode", StringMarshalling = StringMarshalling.Utf8)]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(BoolSize)]
+	public static partial bool GetDefaultTextureScaleMode(SDL_Renderer* renderer, SDL_ScaleMode* scaleMode);
 }

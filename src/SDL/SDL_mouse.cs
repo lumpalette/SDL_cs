@@ -137,6 +137,9 @@ public enum SDL_SystemCursor
 	/// </summary>
 	WResize,
 
+	/// <summary>
+	/// The number of constants defined by the enumeration.
+	/// </summary>
 	Count
 }
 
@@ -354,6 +357,19 @@ unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(BoolSize)]
 	public static partial bool WarpMouseGlobal(float x, float y);
+
+	/// <summary>
+	/// Set a user-defined function by which to transform relative mouse inputs.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetRelativeMouseTransform">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="callback">A callback used to transform relative mouse motion, or <see langword="null"/> for default behavior.</param>
+	/// <param name="userData">A pointer that will be passed to <paramref name="callback"/>.</param>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetRelativeMouseTransform")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetRelativeMouseTransform(delegate* unmanaged[Cdecl]<nint, ulong, SDL_Window*, SDL_MouseId, float, float, void> callback, nint userData);
 
 	/// <summary>
 	/// Set relative mouse mode for a window.
