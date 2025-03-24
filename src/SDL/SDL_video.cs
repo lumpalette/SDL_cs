@@ -330,6 +330,40 @@ public enum SDL_FlashOperation
 }
 
 /// <summary>
+/// Window progress state
+/// </summary>
+/// <remarks>
+/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_ProgressState">documentation</see> for more details.
+/// </remarks>
+public enum SDL_ProgressState
+{
+	/// <summary>
+	/// No progress bar is shown.
+	/// </summary>
+	None,
+
+	/// <summary>
+	/// The progress bar is shown in a indeterminate state.
+	/// </summary>
+	Indeterminate,
+
+	/// <summary>
+	/// The progress bar is shown in a normal state.
+	/// </summary>
+	Normal,
+
+	/// <summary>
+	/// The progress bar is shown in a paused state.
+	/// </summary>
+	Paused,
+
+	/// <summary>
+	/// The progress bar is shown in an error state
+	/// </summary>
+	Error
+}
+
+/// <summary>
 /// An opaque handle to an OpenGL context.
 /// </summary>
 /// <remarks>
@@ -1046,37 +1080,77 @@ unsafe partial class SDL
 	}
 
 	/// <summary>
-	/// Used to indicate that you don't care what the window position is.
+	/// A magic value used with <see cref="WindowposUndefined"/>.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WINDOWPOS_UNDEFINED_MASK">documentation</see> for more details.
 	/// </remarks>
 	public const uint WindowposUndefinedMask = 0x1FFF0000u;
 
-	public static uint WindowposUndefinedDisplay(SDL_DisplayId x) => WindowposUndefinedMask | (uint)x;
-
 	/// <summary>
 	/// Used to indicate that you don't care what the window position is.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WINDOWPOS_UNDEFINED_DISPLAY">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="x">The <see cref="SDL_DisplayId"/> of the display to use.</param>
+	/// <returns></returns>
+	[Macro]
+	public static uint WindowposUndefinedDisplay(SDL_DisplayId x) => WindowposUndefinedMask | (uint)x;
+
+	/// <summary>
+	/// Used to indicate that you don't care what the window position/display is.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WINDOWPOS_UNDEFINED">documentation</see> for more details.
+	/// </remarks>
 	public static uint WindowposUndefined => WindowposUndefinedDisplay(0);
 
+	/// <summary>
+	/// A macro to test if the window position is marked as "undefined."
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WINDOWPOS_ISUNDEFINED">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="x">The window position value.</param>
+	/// <returns></returns>
+	[Macro]
 	public static bool WindowposIsUndefined(uint x) => (x & 0xFFFF0000) == WindowposUndefinedMask;
 
 	/// <summary>
-	/// Used to indicate that the window position should be centered.
+	/// A magic value used with <see cref="WindowposCentered"/>.
 	/// </summary>
 	/// <remarks>
 	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WINDOWPOS_CENTERED_MASK">documentation</see> for more details.
 	/// </remarks>
 	public const uint WindowposCenteredMask = 0x2FFF0000u;
 
+	/// <summary>
+	/// Used to indicate that the window position should be centered.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WINDOWPOS_CENTERED_DISPLAY">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="x">The <see cref="SDL_DisplayId"/> of the display to use.</param>
+	/// <returns></returns>
 	public static uint WindowposCenteredDisplay(SDL_DisplayId x) => WindowposCenteredMask | (uint)x;
 
 	/// <summary>
 	/// Used to indicate that the window position should be centered.
 	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WINDOWPOS_CENTERED">documentation</see> for more details.
+	/// </remarks>
 	public static uint WindowposCentered => WindowposCenteredDisplay(0);
 
+	/// <summary>
+	/// A macro to test if the window position is marked as "centered."
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_WINDOWPOS_ISCENTERED">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="x">The window position value.</param>
+	/// <returns></returns>
 	public static bool WindowposIsCentered(uint x) => (x & 0xFFFF0000) == WindowposCenteredMask;
 
 	/// <summary>
@@ -2222,6 +2296,34 @@ unsafe partial class SDL
 	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
 	[return: MarshalAs(BoolSize)]
 	public static partial bool FlashWindow(SDL_Window* window, SDL_FlashOperation operation);
+
+	/// <summary>
+	/// Sets the state of the progress bar for the given window’s taskbar icon.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowProgressState">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="window">The window whose progress state is to be modified.</param>
+	/// <param name="state">The progress state. <see cref="SDL_ProgressState.None"/> stops displaying the progress bar.</param>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowProgressState")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetWindowProgressState(SDL_Window* window, SDL_ProgressState state);
+
+	/// <summary>
+	/// Sets the value of the progress bar for the given window’s taskbar icon.
+	/// </summary>
+	/// <remarks>
+	/// Refer to the official <see href="https://wiki.libsdl.org/SDL3/SDL_SetWindowProgressValue">documentation</see> for more details.
+	/// </remarks>
+	/// <param name="window">The window whose progress value is to be modified.</param>
+	/// <param name="value">The progress value (0.0f - start, 1.0f - end). If the value is outside the valid range, it gets clamped.</param>
+	/// <returns>True on success or false on failure; call <see cref="GetError"/> for more information.</returns>
+	[LibraryImport(LibraryName, EntryPoint = "SDL_SetWindowProgressValue")]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	[return: MarshalAs(BoolSize)]
+	public static partial bool SetWindowProgessValue(SDL_Window* window, float value);
 
 	/// <summary>
 	/// Destroy a window.
