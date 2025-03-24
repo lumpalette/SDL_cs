@@ -45,6 +45,11 @@ public enum SDL_SurfaceFlags : uint
 public enum SDL_ScaleMode
 {
 	/// <summary>
+	/// Invalid scale mode.
+	/// </summary>
+	Invalid = -1,
+
+	/// <summary>
 	/// Nearest pixel sampling.
 	/// </summary>
 	Nearest,
@@ -52,7 +57,12 @@ public enum SDL_ScaleMode
 	/// <summary>
 	/// Linear filtering.
 	/// </summary>
-	Linear
+	Linear,
+
+	/// <summary>
+	/// Nearest pixel sampling with improved scaling for pixel art
+	/// </summary>
+	PixelArt
 }
 
 /// <summary>
